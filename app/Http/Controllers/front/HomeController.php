@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use App\Product;
+use App\Advertisement;
 use App\Contact;
 use App\Client;
 use App\ClientAddress;
@@ -535,7 +536,9 @@ class HomeController extends Controller
 
     public function indexv2(){
 
-        return view('frontv2.index');
+        $slides = Advertisement::where('type', 'slider')->get();
+
+        return view('frontv2.index', compact('slides'));
 
     }
 

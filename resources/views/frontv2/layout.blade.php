@@ -59,7 +59,7 @@
 	<!-- social-likes-->
 	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/social-likes_flat.css')}}">
 	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
 
 	
 	<?php
@@ -800,7 +800,7 @@
 						<ul class="list-unstyled m-0 p-2">
 							<li>
 								<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 text-white" type="button">
-									<img src="images/lang/en.webp" alt="English Language"> English
+									<img src="{{url('public/frontv2/images/lang/en.webp')}}" alt="English Language"> English
 								</a>
 							</li>
 

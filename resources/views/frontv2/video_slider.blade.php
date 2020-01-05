@@ -4,21 +4,13 @@
       <div class="col-md-8 col-xl-8">
         <div id="carouselExampleControls" class="carousel slide my-2" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100 rounded" src="{{url('public/frontv2/images/owl_carousel/slide-1.jpg')}}" alt="First slide">
-            </div>
-
+            
+            @foreach ($slides as $slide)
             <div class="carousel-item">
-              <img class="d-block w-100 rounded" src="{{url('public/frontv2/images/owl_carousel/slide-2.jpg')}}" alt="Second slide">
+              <img class="d-block w-100 rounded" src="{{url($slide->image)}}" alt="Second slide">
             </div>
+            @endforeach
 
-            <div class="carousel-item">
-              <img class="d-block w-100 rounded" src="{{url('public/frontv2/images/owl_carousel/slide-3.jpg')}}" alt="Third slide">
-            </div>
-
-            <div class="carousel-item">
-              <img class="d-block w-100 rounded" src="{{url('public/frontv2/images/owl_carousel/slide-3.webp')}}" alt="Third slide">
-            </div>
           </div>
 
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -51,3 +43,9 @@
     </div>
   </div>
 </section>
+
+@section('scripts')
+    <script>
+      $('.carousel-item').first().addClass('active')
+    </script>
+@endsection
