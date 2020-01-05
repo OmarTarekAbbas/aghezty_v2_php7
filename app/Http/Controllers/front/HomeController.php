@@ -530,4 +530,16 @@ class HomeController extends Controller
     {
         return view('front.service_center');
     }
+
+    /*********************************************************** start design v2 *****/
+
+    public function indexv2(){
+
+        return view('frontv2.index');
+
+    }
+
+
+    /*********************************************************** end design v2 *******/
+
 }
