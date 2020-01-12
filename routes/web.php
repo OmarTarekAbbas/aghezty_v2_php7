@@ -40,9 +40,7 @@ Route::prefix('clients')->group(function() {
     Route::get('mail',function(){
         return view('front.mail');
     });
-    /*************** designv2 routes ****/
-    Route::get('homev2', 'front\HomeController@indexv2');
-    /*************** end ***************/
+
     Route::group(['middleware' => 'auth:client'], function () {
         Route::get('profile','front\HomeController@profile');
         Route::post('updated','front\HomeController@update');
@@ -58,5 +56,10 @@ Route::prefix('clients')->group(function() {
         Route::get('thanks','front\HomeController@thanks');
         Route::get('logout','front\HomeController@logout');
    });
+
+    /*************** designv2 routes ****/
+    Route::get('homev2', 'front\HomeController@indexv2');
+    /*************** end ***************/
+
 });
 Route::get('token','front\HomeController@get_token');

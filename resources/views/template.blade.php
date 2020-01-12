@@ -13,6 +13,8 @@
             #resizable { width: 150px; height: 150px; padding: 0.5em; }
             #resizable h3 { text-align: center; margin: 0; }
         </style>
+        
+        @yield('styles')
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!--page specific css styles-->
@@ -610,20 +612,36 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                         </ul>
 
                         <ul class="nav nav-list">
-                                <li id="advertisement">
-                                    <a href="#" class="dropdown-toggle">
-                                        <i class="glyphicon glyphicon-folder-open"></i>
-                                        <span>@lang('messages.advertisement')</span>
-                                        <b class="arrow fa fa-angle-right"></b>
-                                    </a>
+                            <li id="advertisement">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                    <span>@lang('messages.advertisement')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
 
-                                    <!-- BEGIN Submenu -->
-                                    <ul class="submenu">
-                                        <li id="advertisement_index"><a href="{{url('advertisement')}}">@lang('messages.list_advertisement')</a></li>
-                                        <li id="advertisement_create"><a href="{{url('advertisement/create')}}">@lang('messages.create_advertisement')</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li id="advertisement_index"><a href="{{url('advertisement')}}">@lang('messages.list_advertisement')</a></li>
+                                    <li id="advertisement_create"><a href="{{url('advertisement/create')}}">@lang('messages.create_advertisement')</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="nav nav-list">
+                            <li id="homepage">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    <span>@lang('messages.homepage')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
+
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li id="advertisement_slides"><a href="{{url('homepage/slides')}}">@lang('messages.slides')</a></li>
+                                    <li id="advertisement_banners"><a href="{{url('homepage/banners')}}">@lang('messages.banners')</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     {{--@endif--}}
                 </ul>
                 <!-- END Navlist -->

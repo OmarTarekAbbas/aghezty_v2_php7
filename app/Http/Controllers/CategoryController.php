@@ -73,7 +73,7 @@ class CategoryController extends Controller
           {
               \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
               return back();
-         }
+          }
         }
         $category->save();
         \Session::flash('success', 'Category Created Successfully');

@@ -94,4 +94,6 @@
     $('#category_index').addClass('active');
 
 </script>
+
+
 @stop

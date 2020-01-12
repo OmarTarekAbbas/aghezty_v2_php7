@@ -5,6 +5,9 @@ return [
     'role' => 'الادوار',
     'create-role' => 'انشاء دور',
     'dashboard' => 'لوحة التحكم',
+    'homepage' => 'الصفحة الرئيسية',
+    'slides' => 'الشرائح',
+    'banners' => 'شعارات',
     'text-messages' => 'الرسائل النصيه',
     'text-messages-send-message' => 'ارسال رساله',
     'text-messages-file-to-sms' => 'رسائل من ملف',
@@ -385,8 +388,11 @@ return [
     'model' => 'نموذج',
     'discount' => 'خصم',
     'stock_number' => 'عدد القطع',
+    'inch_number' => 'بوصة',
     'special' => 'خاص',
     'active' => 'نشط',
+    'recently_added' => 'المضافة حديثاً',
+    'selected_for_you' => 'المختارة لك',
 
     'home_telephone' => 'هاتف المنزل',
 

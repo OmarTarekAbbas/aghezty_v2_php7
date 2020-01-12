@@ -21,43 +21,43 @@ class AddTypeToAdvertisements extends Migration
         DB::table('advertisements')->insert(
             array(
                 array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-1.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-2.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-3.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-1.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-2.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-3.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-1.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-2.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-3.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/slide-1.jpg',
                     'type' => 'slider',
                     'active' => true,
                 ),array(
@@ -65,23 +65,23 @@ class AddTypeToAdvertisements extends Migration
                     'type' => 'homeads',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/top-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/bottom-banner.jpg',
                     'type' => 'homeads',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/top-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/top-wide.jpg',
                     'type' => 'homeads',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/top-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/right.jpg',
                     'type' => 'homeads',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/top-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/left.jpg',
                     'type' => 'homeads',
                     'active' => true,
                 ),array(
-                    'image' => 'public/frontv2/images/ads/top-banner.jpg',
+                    'image' => 'public/frontv2/images/ads/bottom-wide.jpg',
                     'type' => 'homeads',
                     'active' => true,
                 )

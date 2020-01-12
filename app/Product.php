@@ -10,7 +10,7 @@ class Product extends Model
     protected $table="products";
   //use ForceDeletes;
   protected $fillable = ['title','main_image','price','discount','price_after_discount',
-                        'special','active','description','short_description','category_id','brand_id','stock'];
+                        'special','active','description','short_description','category_id','brand_id','stock', 'inch'];
   public function getPriceAttribute($value){
     return (int) $value;
   }

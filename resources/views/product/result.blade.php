@@ -11,6 +11,8 @@
         <th>@lang('messages.price')</th>
         <th>@lang('messages.main_image')</th>
         <th>@lang('messages.rate')</th>
+        <th>@lang('messages.recently_added')</th>
+        <th>@lang('messages.selected_for_you')</th>
         <th>@lang('messages.action')</th>
     </tr>
     </thead>
@@ -44,6 +46,18 @@
                 <img class="" width="100px" height="100px" src="{{$value->main_image}}"/>
             </td>
             <td>{{$value->rate() ? $value->rate():__('messages.not_have_rate_yet')}}</td>
+            <td id="recently_added">
+                <label class="switch">
+                    <input id="{{$value->id}}" type="checkbox" name="switch" {{$value->recently_added? 'checked':''}}>
+                    <span class="slider round"></span>
+                </label>
+            </td>
+            <td id="selected_for_you">
+                <label class="switch">
+                    <input id="{{$value->id}}" type="checkbox" name="switch" {{$value->selected_for_you? 'checked':''}}>
+                    <span class="slider round"></span>
+                </label>
+            </td>
             <td>
                 <a class="btn btn-sm btn-info show-tooltip" title="Show Product"
                    href="{{url("clients/product/".$value->id)}}" data-original-title="Show Product"><i

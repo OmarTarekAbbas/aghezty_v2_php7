@@ -11,7 +11,7 @@
         <div class="col-md-12 col-xl-12 d-none d-sm-block">
           <a href="#">
             <div class="full_banner">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/ads/top-wide.jpg')}}" alt="Top Wide">
+              <img class="rounded w-100" src="{{url($ads[2]->image)}}" alt="Top Wide">
             </div>
           </a>
         </div>
@@ -114,7 +114,7 @@
         <div class="col-md-6 col-xl-6 pl-0 ">
           <div class="left-img mt-3">
             <a href="listproduct.php">
-              <img class="w-100" src="{{url('public/frontv2/images/left.jpg')}}" alt="left">
+              <img class="w-100" src="{{url($ads[3]->image)}}" alt="left">
             </a>
           </div>
         </div>
@@ -122,7 +122,7 @@
         <div class="col-md-6 col-xl-6 pl-0">
           <div class="left-img mt-3">
             <a href="listproduct.php">
-              <img class="w-100" src="{{url('public/frontv2/images/right.webp')}}" alt="right">
+              <img class="w-100" src="{{url($ads[4]->image)}}" alt="right">
             </a>
           </div>
         </div>
@@ -230,7 +230,7 @@
         <div class="col-md-12 col-xl-12 col-12">
           <a href="listproduct.php">
             <div class="full_banner mt-3">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/ads/bottom-wide.jpg')}}" alt="bottom Wide">
+              <img class="rounded w-100" src="{{url($ads[5]->image)}}" alt="bottom Wide">
             </div>
           </a>
         </div>

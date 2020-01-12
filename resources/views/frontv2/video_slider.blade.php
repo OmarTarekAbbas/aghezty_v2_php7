@@ -29,13 +29,13 @@
         <div class="row">
           <div class="col-md-12 col-xl-12 col-6 top_banner">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/ads/top-banner.jpg')}}" alt="Cash Offers">
+              <img class="rounded w-100" src="{{url($ads[0]->image)}}" alt="Cash Offers">
             </a>
           </div>
 
           <div class="col-md-12 col-xl-12 col-6 top_banner bottom_banner mt-2">
             <a href="#">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/ads/bottom-banner.jpg')}}" alt="Pay your installment online">
+              <img class="rounded w-100" src="{{url($ads[1]->image)}}" alt="Pay your installment online">
             </a>
           </div>
         </div>

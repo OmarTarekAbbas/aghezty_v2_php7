@@ -129,6 +129,13 @@
 </div>
 
 <div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.inch_number')<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+            {!! Form::number('inch',null,['placeholder'=>__('messages.inch_number'),'class'=>'form-control' , 'min' => 0]) !!}
+    </div>
+</div>
+
+<div class="form-group">
     <div class="col-sm-6">
         <label class="col-sm-5 col-lg-4 control-label">@lang('messages.special')  </label>
         <div class="col-sm-7 col-lg-8 controls" >

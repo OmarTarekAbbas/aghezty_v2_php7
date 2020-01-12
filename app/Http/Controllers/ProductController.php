@@ -62,6 +62,7 @@ class ProductController extends Controller
             'main_image' => 'required',
             'price' => 'required',
             'stock' => 'required',
+            'inch' => '',
             'discount' => '',
             'special'  => '',
             'active'    => '',
@@ -162,6 +163,7 @@ class ProductController extends Controller
             'main_image' => '',
             'price' => 'required',
             'stock' => 'required',
+            'inch' => '',
             'discount' => '',
             'special'  => '',
             'active'    => '',
@@ -315,6 +317,7 @@ class ProductController extends Controller
                       $product->price_after_discount = $row->price - (($dis/100)*$row->price);
                     }
                     $product->stock = $row->stock;
+                    $product->inch = $row->inch;
                     $product->special = (strtolower($row->special) == 'yes') ? 1:0;
                     $product->active = (strtolower($row->active) == 'yes') ? 1:0;
                     $product->main_image = $row->main_image;

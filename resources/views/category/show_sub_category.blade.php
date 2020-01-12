@@ -39,6 +39,7 @@
                                       <th>@lang('messages.campain.title')</th>
                                     <th>@lang('messages.coding')</th>
                                     <th>@lang('messages.image')</th>
+                                    <th>@lang('messages.homepage')</th>
                                     <th >@lang('messages.action')</th>
                                   </tr>
                               </thead>
@@ -55,6 +56,12 @@
                                       <td>{{$value->coding}}</td>
                                       <td>
                                           <img  width="100px" height="100px" src="{{$value->image}}"/>
+                                      </td>
+                                      <td id="homepage">
+                                        <label class="switch">
+                                            <input id="{{$value->id}}" type="checkbox" name="switch" {{$value->homepage? 'checked':''}}>
+                                            <span class="slider round"></span>
+                                        </label>
                                       </td>
                                       <td class="visible-md visible-lg">
                                           <div class="btn-group">
@@ -92,4 +99,27 @@ $('#category').addClass('active');
 $('#category_index').addClass('active');
 
 </script>
+
+
+<script>
+	$('#homepage .switch input').change(function(){
+        var x = $(this).siblings();
+		$.ajax({
+            type:'GET',
+            url:'{{url("homepage/homepage_category")}}',
+            headers:'_token = {{ csrf_token() }}',
+			data: {
+				switch: $(this).is( ':checked'),
+				id: $(this).attr('id')
+			},
+            success: function(data) {
+                if(data == 'no'){
+                    alert('max product selected!');
+                    x.trigger('click');
+                }
+            }
+		});
+	})
+</script>
+
 @stop
