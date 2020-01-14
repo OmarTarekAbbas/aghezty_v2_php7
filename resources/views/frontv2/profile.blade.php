@@ -73,7 +73,7 @@
             </div>
 
             <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-              <button type="submit" class="btn_save btn btn-secondary text-secondary bg-light mb-2 m-auto d-block w-75 text-capitalize">Save</button>
+              <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize">Save</button>
             </div>
           </form>
         </div>

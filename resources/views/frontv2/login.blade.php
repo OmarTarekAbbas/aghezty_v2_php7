@@ -8,7 +8,6 @@
 		<div class="mobile_views">
 			<div class="log_in_bg rounded">
 				<form action="#" method="post">
-					<input type="hidden" name="_token" value="xgnOt2OAHRTUAzHxV6ZmzT5X1o8NrFj0NaPQ43Yn">
 					<div class="row">
 						<div class="col-md-12 col-lg-12 col-xl-12 col-12">
 							<div class="login_title mb-4">
@@ -41,7 +40,7 @@
 
 									<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 										<div class="form-check mb-2 text-center">
-											<input class="form-check-input" type="checkbox" id="autoSizingCheck">
+											<input class="form-check-input form-check-input_login" type="checkbox" id="autoSizingCheck">
 											<label class="form-check-label" for="autoSizingCheck">
 												Remember me
 											</label>
@@ -49,7 +48,7 @@
 									</div>
 
 									<div class="col-md-12 col-lg-12 col-xl-12 col-auto">
-									<button type="submit" class="btn_save btn btn-secondary text-secondary bg-light mb-2 m-auto d-block w-50 text-capitalize">login</button>
+									<button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-50 text-capitalize">login</button>
 
 										<a href="#0" class="btn forgot_your_password text-capitalize text-white m-auto d-block">Forgot Your Password?</a>
 									</div>

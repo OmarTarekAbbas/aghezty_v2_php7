@@ -24,28 +24,28 @@
 			<div class="row">
 				<div class="col-md-3 col-lg-3 col-xl-3 col-6">
 					<div class="order_method text-center">
-						<h6 class="date_order text-center text-capitalize">Order Placed</h6>
+						<h6 class="date_order text-center text-capitalize">Making Order</h6>
 						<i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
 					</div>
 				</div>
 
 				<div class="col-md-3 col-lg-3 col-xl-3 col-6">
 					<div class="order_method text-center">
-						<h6 class="date_order text-center text-capitalize">Processing Complet</h6>
+						<h6 class="date_order text-center text-capitalize">Order Confirmed</h6>
 						<i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
 					</div>
 				</div>
 
 				<div class="col-md-3 col-lg-3 col-xl-3 col-6">
 					<div class="order_method text-center">
-						<h6 class="date_order text-center text-capitalize">production complet</h6>
+						<h6 class="date_order text-center text-capitalize">Order under shipment</h6>
 						<i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
 					</div>
 				</div>
 
 				<div class="col-md-3 col-lg-3 col-xl-3 col-6">
 					<div class="order_method text-center">
-						<h6 class="date_order text-center text-capitalize">shipped</h6>
+						<h6 class="date_order text-center text-capitalize">order completed</h6>
 						<i class="fas fa-truck fa-2x text-center rounded-circle p-3 order_icon_track"></i>
 					</div>
 				</div>
@@ -66,7 +66,32 @@
 	<section class="order_two">
 		<div class="mobile_views">
 			<div class="row mt-5">
-				<div class="col-md-6 col-lg-6 col-xl-6 col-6">
+				<div class="col-md-3 col-lg-5 col-xl-5 col-5">
+					<h6 class="date_order">
+						Sony PlayStation 4 Slim, 1TB, 2 Controller, Black
+					</h6>
+
+					<img src="images/products/3.jpg" class="img_order rounded img-thumbnail" alt="Fridge">
+				</div>
+
+				<div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
+					<h6 class="date_order text-center">Price</h6>
+					<p class="date_order text-center">7500 LE</p>
+				</div>
+
+				<div class="col-md-3 col-lg-2 col-xl-2 col-2 p-0">
+					<h6 class="date_order text-center">Quantity</h6>
+					<p class="date_order text-center">2</p>
+				</div>
+
+				<div class="col-md-3 col-lg-2 col-xl-2 col-2 text-right">
+					<h6 class="date_order text-center">Total</h6>
+					<p class="date_order text-center">15000 LE</p>
+				</div>
+			</div>
+
+			<div class="row mt-5">
+				<div class="col-md-3 col-lg-5 col-xl-5 col-5">
 					<h6 class="date_order">
 						Samsung RT28M3424S8 253 L4 Star Inverter frost Free Refrigerator
 					</h6>
@@ -75,13 +100,52 @@
 				</div>
 
 				<div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
-					<h6 class="date_order">Quantity</h6>
-					<p class="date_order">1</p>
+					<h6 class="date_order text-center">Price</h6>
+					<p class="date_order text-center">9850 LE</p>
 				</div>
 
-				<div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
-					<h6 class="date_order">Total</h6>
-					<p class="date_order">9850 LE</p>
+				<div class="col-md-3 col-lg-2 col-xl-2 col-2 p-0">
+					<h6 class="date_order text-center">Quantity</h6>
+					<p class="date_order text-center">1</p>
+				</div>
+
+				<div class="col-md-3 col-lg-2 col-xl-2 col-2 text-right">
+					<h6 class="date_order text-center">Total</h6>
+					<p class="date_order text-center">9850 LE</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xl-12">
+					<aside class="cart-aside w-100">
+						<div class="summary w-100 p-3 my-3 border border-secondary bg-light text-dark">
+							<div class="summary-total-items text-center">
+								<span class="total-items"></span> Order 1
+							</div>
+
+							<div class="summary-subtotal">
+								<div class="subtotal-title text-left w-50 float-left">Total Price</div>
+								<div class="subtotal-value final-value text-right w-50 float-right item-price">1450</div>
+							</div>
+
+							<div class="summary-subtotal">
+								<div class="subtotal-title text-left w-50 float-left">Shipping Amount</div>
+								<div class="subtotal-value final-value text-right w-50 float-right">50</div>
+							</div>
+							<div class="summary-subtotal">
+								<div class="subtotal-title text-left w-50 float-left"> Total Price After Shipping</div>
+								<div class="subtotal-value final-value text-right w-50 float-right item-total">1500</div>
+							</div>
+							<div class="summary-subtotal">
+								<div class="subtotal-title text-left w-50 float-left">My Addresses</div>
+								<div class="final-value text-right w-50 float-right">Nasrcity, Cairo, Egypt</div>
+							</div>
+							<div class="summary-subtotal">
+								<div class="subtotal-title text-left w-50 float-left">Status</div>
+								<div class="final-value text-right w-50 float-right">Pending</div>
+							</div>
+						</div>
+					</aside>
 				</div>
 			</div>
 		</div>
@@ -135,12 +199,12 @@
 							</a>
 
 							<div class="price-box">
-								<span class="regular-price" id="product-price-13085">
+								<span class="regular-price">
 									<span class="price">1,900 EGP</span>
 								</span>
 
 								<p class="old-price">
-									<span class="price" id="old-price-20549">
+									<span class="price">
 										2,200 EGP </span>
 								</p>
 							</div>
@@ -158,12 +222,12 @@
 							</a>
 
 							<div class="price-box">
-								<span class="regular-price" id="product-price-13085">
+								<span class="regular-price">
 									<span class="price">7,100 EGP</span>
 								</span>
 
 								<p class="old-price">
-									<span class="price" id="old-price-20549">
+									<span class="price">
 										8,999 EGP </span>
 								</p>
 							</div>
@@ -181,7 +245,7 @@
 							</a>
 
 							<div class="price-box">
-								<span class="regular-price" id="product-price-13085">
+								<span class="regular-price">
 									<span class="price">6,680 EGP</span>
 								</span>
 							</div>
@@ -199,12 +263,12 @@
 							</a>
 
 							<div class="price-box">
-								<span class="regular-price" id="product-price-13085">
+								<span class="regular-price">
 									<span class="price">300 EGP</span>
 								</span>
 
 								<p class="old-price">
-									<span class="price" id="old-price-20549">
+									<span class="price">
 										700 EGP </span>
 								</p>
 							</div>
@@ -222,12 +286,12 @@
 							</a>
 
 							<div class="price-box">
-								<span class="regular-price" id="product-price-13085">
+								<span class="regular-price">
 									<span class="price">7,100 EGP</span>
 								</span>
 
 								<p class="old-price">
-									<span class="price" id="old-price-20549">
+									<span class="price">
 										8,999 EGP </span>
 								</p>
 							</div>

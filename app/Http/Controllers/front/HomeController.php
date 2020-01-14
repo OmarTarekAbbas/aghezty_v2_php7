@@ -52,12 +52,10 @@ class HomeController extends Controller
         if($request->has('to') && $request->to!=''){
             $products = $products->where('price','<',$request->to);
         }
-        if($request->has('ifrom') && $request->from !=''){
-            dd('ifrom');
+        if($request->has('ifrom') && $request->ifrom !=''){
             $products = $products->where('inch','>=',$request->ifrom);
         }
-        if($request->has('ito') && $request->to!=''){
-            dd('ito');
+        if($request->has('ito') && $request->ito!=''){
             $products = $products->where('inch','<',$request->ito);
         }
 
@@ -86,10 +84,10 @@ class HomeController extends Controller
         if($request->has('to') && $request->to!=''){
             $products = $products->where('price','<',$request->to);
         }
-        if($request->has('ifrom') && $request->from !=''){
+        if($request->has('ifrom') && $request->ifrom !=''){
             $products = $products->where('inch','>=',$request->from);
         }
-        if($request->has('ito') && $request->to!=''){
+        if($request->has('ito') && $request->ito!=''){
             $products = $products->where('inch','<',$request->to);
         }
 
@@ -555,16 +553,27 @@ class HomeController extends Controller
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $homepage_cat = Category::where('homepage', 1)->get();
         
         if(count($recently_added) != 6){
-            $recently_added = Product::orderBy('created_at', 'desc')->limit(6)->get();
+            $limit = 6 - count($recently_added);
+            $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
+            $recently_added = $recently_added->toBase()->merge($recently_addedR);
         }
         
         if(count($selected_for_you) != 6){
-            $selected_for_you = Product::all()->random(6);
+            $limit = 6 - count($selected_for_you);
+            $selected_for_youR = Product::all()->random($limit);
+            $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+        }
+        
+        if(count($homepage_cat) != 6){
+            $limit = 6 - count($homepage_cat);
+            $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+            $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
         }
 
-        return view('frontv2.index', compact('slides', 'ads'));
+        return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat'));
 
     }
 
@@ -589,6 +598,30 @@ class HomeController extends Controller
         $slide = Advertisement::findorfail($request->id);
 
         return view('homepage.editslides', compact('slide'));
+
+    }
+
+    public function Recently_Addedv(){
+
+        $recently_added = Product::where('recently_added', 1)->orderBy('created_at', 'ASC')->get();
+
+        return view('homepage.Recently_Added', compact('recently_added'));
+
+    }
+
+    public function selected_for_youv(){
+
+        $selected_for_you = Product::where('selected_for_you', 1)->orderBy('created_at', 'ASC')->get();
+
+        return view('homepage.selected_for_you', compact('selected_for_you'));
+
+    }
+
+    public function selected_HPcat(){
+
+        $selected_HPcat = Category::where('homepage', 1)->orderBy('created_at', 'ASC')->get();
+
+        return view('homepage.selected_HPcat', compact('selected_HPcat'));
 
     }
 
@@ -700,7 +733,7 @@ class HomeController extends Controller
         }else{
             $category->homepage = false;
         }
-        $product->save();
+        $category->save();
         return 'yes';
     
     }

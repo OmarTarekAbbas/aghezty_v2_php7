@@ -8,7 +8,6 @@
 		<div class="mobile_views">
 			<div class="log_in_bg rounded">
 				<form action="#" method="POST">
-					<input type="hidden" name="_token" value="xgnOt2OAHRTUAzHxV6ZmzT5X1o8NrFj0NaPQ43Yn">
 					<div>
 						<div class="reg-title text-center mb-4">
 							<h5 class="text-capitalize m-auto w-25 border-bottom border-secondary">Create New Account</h5>
@@ -123,7 +122,7 @@
 							</div>
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-12">
-								<button type="submit" class="btn_save btn btn-secondary text-secondary bg-light mb-2 m-auto d-block w-50 text-capitalize">Save</button>
+								<button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-50 text-capitalize">Save</button>
 							</div>
 						</div>
 					</div>

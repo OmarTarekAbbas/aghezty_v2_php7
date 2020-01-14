@@ -639,6 +639,9 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <ul class="submenu">
                                     <li id="advertisement_slides"><a href="{{url('homepage/slides')}}">@lang('messages.slides')</a></li>
                                     <li id="advertisement_banners"><a href="{{url('homepage/banners')}}">@lang('messages.banners')</a></li>
+                                    <li id="recently_added"><a href="{{url('homepage/recently_addedv')}}">@lang('messages.recently_added')</a></li>
+                                    <li id="selected_for_you"><a href="{{url('homepage/selected_for_youv')}}">@lang('messages.selected_for_you')</a></li>
+                                    <li id="selected_HPcat"><a href="{{url('homepage/selected_HPcat')}}">@lang('messages.category')</a></li>
                                 </ul>
                             </li>
                         </ul>

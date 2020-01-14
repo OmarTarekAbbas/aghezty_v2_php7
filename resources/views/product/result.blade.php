@@ -46,13 +46,13 @@
                 <img class="" width="100px" height="100px" src="{{$value->main_image}}"/>
             </td>
             <td>{{$value->rate() ? $value->rate():__('messages.not_have_rate_yet')}}</td>
-            <td id="recently_added">
+            <td class="recently_added">
                 <label class="switch">
                     <input id="{{$value->id}}" type="checkbox" name="switch" {{$value->recently_added? 'checked':''}}>
                     <span class="slider round"></span>
                 </label>
             </td>
-            <td id="selected_for_you">
+            <td class="selected_for_you">
                 <label class="switch">
                     <input id="{{$value->id}}" type="checkbox" name="switch" {{$value->selected_for_you? 'checked':''}}>
                     <span class="slider round"></span>
@@ -77,4 +77,50 @@
     @endforeach
     </tbody>
 </table>
+@section('script')
+    
+<script>
+	$('.recently_added .switch input').change(function(){
+        var x = $(this).siblings();
+		$.ajax({
+               type:'GET',
+               url:'{{url("homepage/recently_added")}}',
+               headers:'_token = {{ csrf_token() }}',
+			data: {
+				switch: $(this).is( ':checked'),
+				id: $(this).attr('id')
+			},
+            success: function(data) {
+                if(data == 'no'){
+                    alert('max product to select is 6!');
+                    x.trigger('click');
+                }
+            }
+		});
+	})
+</script>
+
+
+<script>
+	$('.selected_for_you .switch input').change(function(){
+        var x = $(this).siblings();
+		$.ajax({
+            type:'GET',
+            url:'{{url("homepage/selected_for_you")}}',
+            headers:'_token = {{ csrf_token() }}',
+			data: {
+				switch: $(this).is( ':checked'),
+				id: $(this).attr('id')
+			},
+            success: function(data) {
+                if(data == 'no'){
+                    alert('max product to select is 6!');
+                    x.trigger('click');
+                }
+            }
+		});
+	})
+</script>
+
+@endsection
 {{ $products->appends(Request::all())->render() }}

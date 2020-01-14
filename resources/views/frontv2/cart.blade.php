@@ -133,11 +133,11 @@
 
           <div class="row btn_shopping table-bordered mx-0 py-3">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button class="btn continue_shopping btn-secondary text-capitalize text-secondary bg-light text-left">continue shopping</button>
+              <button class="btn continue_shopping btn-secondary text-capitalize text-white text-left">continue shopping</button>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button class="btn clear_shopping btn-secondary text-capitalize text-secondary bg-light text-right">clear shopping cart</button>
+              <button class="btn clear_shopping btn-secondary text-capitalize text-white text-right">clear shopping cart</button>
             </div>
           </div>
         </div>
@@ -294,12 +294,12 @@
               </a>
 
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
+                <span class="regular-price">
                   <span class="price">699 EGP</span>
                 </span>
 
                 <p class="old-price">
-                  <span class="price" id="old-price-20549">
+                  <span class="price">
                     799 EGP </span>
                 </p>
               </div>
@@ -317,7 +317,7 @@
               </a>
 
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
+                <span class="regular-price">
                   <span class="price">899 EGP</span>
                 </span>
               </div>
@@ -335,12 +335,12 @@
               </a>
 
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
+                <span class="regular-price">
                   <span class="price">399 EGP</span>
                 </span>
 
                 <p class="old-price">
-                  <span class="price" id="old-price-20549">599 EGP </span>
+                  <span class="price">599 EGP </span>
                 </p>
               </div>
             </div>
@@ -357,12 +357,12 @@
               </a>
 
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
+                <span class="regular-price">
                   <span class="price">4,649 EGP</span>
                 </span>
 
                 <p class="old-price">
-                  <span class="price" id="old-price-20549">4,899 EGP </span>
+                  <span class="price">4,899 EGP </span>
                 </p>
               </div>
             </div>
@@ -379,12 +379,12 @@
               </a>
 
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
+                <span class="regular-price">
                   <span class="price">699 EGP</span>
                 </span>
 
                 <p class="old-price">
-                  <span class="price" id="old-price-20549">
+                  <span class="price">
                     799 EGP </span>
                 </p>
               </div>
@@ -402,12 +402,12 @@
               </a>
 
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
+                <span class="regular-price">
                   <span class="price">399 EGP</span>
                 </span>
 
                 <p class="old-price">
-                  <span class="price" id="old-price-20549">599 EGP </span>
+                  <span class="price">599 EGP </span>
                 </p>
               </div>
             </div>

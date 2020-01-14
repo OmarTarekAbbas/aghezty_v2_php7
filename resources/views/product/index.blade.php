@@ -289,7 +289,7 @@ input:checked + .slider:before {
 </script>
 
 <script>
-	$('#recently_added .switch input').change(function(){
+	$('.recently_added .switch input').change(function(){
         var x = $(this).siblings();
 		$.ajax({
                type:'GET',
@@ -301,7 +301,7 @@ input:checked + .slider:before {
 			},
             success: function(data) {
                 if(data == 'no'){
-                    alert('max product selected!');
+                    alert('max product to select is 6!');
                     x.trigger('click');
                 }
             }
@@ -311,7 +311,7 @@ input:checked + .slider:before {
 
 
 <script>
-	$('#selected_for_you .switch input').change(function(){
+	$('.selected_for_you .switch input').change(function(){
         var x = $(this).siblings();
 		$.ajax({
             type:'GET',
@@ -323,7 +323,7 @@ input:checked + .slider:before {
 			},
             success: function(data) {
                 if(data == 'no'){
-                    alert('max product selected!');
+                    alert('max product to select is 6!');
                     x.trigger('click');
                 }
             }

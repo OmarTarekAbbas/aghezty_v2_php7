@@ -1,17 +1,48 @@
-@extends('frontv2.layout')
+@extends('frontv2.master')
+
+@section('style')
+    <style>
+      .hovertitle{
+        opacity: 0;
+        position: absolute;
+        background-color: black;
+        height: 100%;
+        width: 100%;
+        align-self: center;
+        text-align: center;
+        top: 0;
+        left: 0;
+        padding-top: 30%;
+        color: #fff;
+        transition: all 1s;
+      }
+      .hoverabley:hover .hovertitle{
+        opacity: 0.7;
+      }
+      .choose_category_form{
+        transition: all 1s;
+      }
+      .hovertitle p{
+        font-weight: bold;
+        opacity: 1 !important;
+        text-shadow: 0px 0px 10px white
+      }
+
+    </style>
+@endsection
+
 @section('content')
 
 <div class="main">
   <!-- Start Slider Carsoul -->
   @include('frontv2.video_slider')
-
-  <section class="carsoul_ads">
+  <section class="carsoul_ads d-none d-sm-block">
     <div class="mobile_views ">
       <div class="row">
-        <div class="col-md-12 col-xl-12 d-none d-sm-block">
-          <a href="#">
+        <div class="col-md-12 col-xl-12">
+          <a href="{{$ads[2]->ads_url}}">
             <div class="full_banner">
-              <img class="rounded w-100" src="{{url($ads[2]->image)}}" alt="Top Wide">
+              <img class="rounded w-100" src="{{$ads[2]->image}}" alt="{{$ads[2]->ads_url}}">
             </div>
           </a>
         </div>
@@ -110,23 +141,18 @@
         </div>
       </div>
 
-      <div class="row ml-0">
-        <div class="col-md-6 col-xl-6 pl-0 ">
-          <div class="left-img mt-3">
-            <a href="listproduct.php">
-              <img class="w-100" src="{{url($ads[3]->image)}}" alt="left">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-xl-6 pl-0">
-          <div class="left-img mt-3">
-            <a href="listproduct.php">
-              <img class="w-100" src="{{url($ads[4]->image)}}" alt="right">
-            </a>
-          </div>
+      @if(count($ads) > 3)
+          
+      <div class="row d-none d-sm-block">
+        <div class="col-md-12 col-xl-12 col-12">
+          <a href="{{$ads[3]->ads_url}}">
+            <div class="full_banner mt-3">
+              <img class="rounded w-100" src="{{$ads[3]->image}}" alt="{{$ads[3]->ads_url}}">
+            </div>
+          </a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -226,15 +252,42 @@
         </div>
       </div>
 
-      <div class="row d-none d-sm-block">
-        <div class="col-md-12 col-xl-12 col-12">
-          <a href="listproduct.php">
-            <div class="full_banner mt-3">
-              <img class="rounded w-100" src="{{url($ads[5]->image)}}" alt="bottom Wide">
-            </div>
-          </a>
+
+      <div class="row ml-0">
+
+        @if (count($ads) == 5)
+
+        <div class="col-md-12 col-xl-12 pl-0 ">
+          <div class="left-img mt-3">
+            <a href="{{$ads[4]->ads_url}}">
+              <img class="w-100" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
+            </a>
+          </div>
         </div>
+
+        @elseif (count($ads) > 5)
+
+        <div class="col-md-6 col-xl-6 pl-0 ">
+          <div class="left-img mt-3">
+            <a href="{{$ads[4]->ads_url}}">
+              <img class="w-100" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-6 pl-0">
+          <div class="left-img mt-3">
+            <a href="{{$ads[5]->ads_url}}">
+              <img class="w-100" src="{{$ads[5]->image}}" alt="{{$ads[5]->ads_url}}">
+            </a>
+          </div>
+        </div>
+
+        @endif
+
       </div>
+      
+      @endif
     </div>
   </section>
 
@@ -243,7 +296,7 @@
       <div class="product_view_type">
         <div class="product_title mb-3">
           <div class="title_left text-left font-weight-bold">
-            <strong>Recently Added</strong>
+            <strong class="recently_added_funnyText">Recently Added</strong>
           </div>
 
           <div class="title_right text-right">
@@ -252,138 +305,42 @@
         </div>
 
         <div class="row">
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/1.jpg')}}" alt="product" class="w-75 d-block m-auto">
 
-                <div>
-                  <p class="full_desc">2 Cozy Kids Buff Bean Bag, Solid Pattern, Waterproof</p>
+          {{--  --}}
+          @foreach ($recently_added as $item)
+          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
+            <div class="px-2 product_desc hvr-bob rounded">
+              <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
+                <img src="{{$item->main_image}}" alt="{{$item->title}}" class="w-75 d-block m-auto">
+                
+                <div class="mt-1">
+                  <p class="full_desc">{{$item->title}}</p>
                 </div>
               </a>
-
+              @if ($item->price_after_discount >0)
+                  
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">300 EGP</span>
+                  <span class="price">{{$item->price_after_discount}} EGP</span>
                 </span>
-
+                
                 <p class="old-price">
                   <span class="price">
-                    700 EGP </span>
+                    {{$item->price}} EGP</span>
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/2.webp')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Arzum Okka - OK006 - Turkish Coffee Machine</p>
+                @else
+                <div class="price-box">
+                  <span class="regular-price">
+                    <span class="price">{{$item->price}} EGP</span>
+                  </span>
                 </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">1,900 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">
-                    2,200 EGP </span>
-                </p>
+                @endif
               </div>
             </div>
-          </div>
+            @endforeach
+            {{--  --}}
 
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/3.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">7,100 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">
-                    8,999 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/4.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Beko Front Loading Digital Washing Machine</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">6,680 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/1.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">2 Cozy Kids Buff Bean Bag, Solid Pattern, Waterproof</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">300 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">
-                    700 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/3.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">7,100 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">
-                    8,999 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -392,53 +349,24 @@
   <section class="choose_category mt-3">
     <div class="mobile_views">
       <div class="row no_margin">
+
+        {{--  --}}
+        @foreach ($homepage_cat as $item)
+            
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/stationary.jpg')}}" alt="stationary">
+            <a class="hoverabley" href="{{url('clients/products?sub_category_id='.$item->id)}}">
+              <div class="hovertitle">
+                <p>{{$item->title}}</p>
+              </div>
+              <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->title}}">
             </a>
           </div>
         </div>
 
-        <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/computers.jpg')}}" alt="computers">
-            </a>
-          </div>
-        </div>
+        @endforeach
+        {{--  --}}
 
-        <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/appliances.jpg')}}" alt="appliances">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/personal-care.jpg')}}" alt="personal-care">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/small-appliances.jpg')}}" alt="small-appliances">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/mobile-accessories.jpg')}}" alt="mobile-accessories">
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -448,7 +376,7 @@
       <div class="product_view_type">
         <div class="product_title mb-3">
           <div class="title_left text-left font-weight-bold">
-            <strong>Selected For You</strong>
+            <strong class="selected_fYou_funnyText">Selected For You</strong>
           </div>
 
           <div class="title_right text-right">
@@ -457,139 +385,47 @@
         </div>
 
         <div class="row">
+          {{--  --}}
+          @foreach ($selected_for_you as $item)
+              
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
+            <div class="px-2 product_desc hvr-bob rounded">
+              <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
+                <img src="{{$item->main_image}}" alt="{{$item->title}}" class="w-75 d-block m-auto">
+                
                 <div>
-                  <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
+                  <p class="full_desc">{{$item->title}}</p>
                 </div>
               </a>
-
+              
+              @if ($item->price_after_discount >0)
+                  
               <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">699 EGP</span>
+                <span class="regular-price">
+                  <span class="price">{{$item->price_after_discount}} EGP</span>
                 </span>
-
+                
                 <p class="old-price">
-                  <span class="price" id="old-price-20549">
-                    799 EGP </span>
+                  <span class="price">
+                    {{$item->price}} EGP</span>
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/6.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Philips Daily Collection Sandwich Maker, 2 Toasts, 820 Watt, White</p>
+                @else
+                <div class="price-box">
+                  <span class="regular-price">
+                    <span class="price">{{$item->price}} EGP</span>
+                  </span>
                 </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">899 EGP</span>
-                </span>
-              </div>
+                @endif
             </div>
           </div>
 
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-75 d-block m-auto">
+          @endforeach
+          {{--  --}}
 
-                <div>
-                  <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">399 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">599 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/8.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Unionaire 49 Inch Smart Full HD LED TV - ML49US615</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">4,649 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">4,899 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">699 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">
-                    799 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-75 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price" id="product-price-13085">
-                  <span class="price">399 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price" id="old-price-20549">599 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
 </div>
-    
 @endsection

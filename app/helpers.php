@@ -83,7 +83,7 @@ Route::get('/test','DashboardController@test');
         Route::get('/clear-cache','DashboardController@clear_cache' );
         Route::get('admin/elfinder', 'ElfinderController@getIndex');
         Route::post('admin/elfinder', 'ElfinderController@getIndex');
-         Route::get('admin/seed_manager', 'DashboardController@seed_manager');
+        Route::get('admin/seed_manager', 'DashboardController@seed_manager');
         Route::post('admin/seed_tables', 'DashboardController@seed_tables');
         Route::get('admin/migrate_manager', 'DashboardController@migrate_manager');
         Route::post('admin/migrate_tables', 'DashboardController@migrate_tables');
@@ -98,6 +98,9 @@ Route::get('/test','DashboardController@test');
         Route::get('homepage/homepage_category', 'front\HomeController@homepage_category');
         Route::get('homepage/change_order', 'front\HomeController@change_order');
         Route::get('homepage/banners', 'front\HomeController@bannersv2');
+        Route::get('homepage/recently_addedv', 'front\HomeController@Recently_Addedv');
+        Route::get('homepage/selected_for_youv', 'front\HomeController@selected_for_youv');
+        Route::get('homepage/selected_HPcat', 'front\HomeController@selected_HPcat');
         /*****************************end */
     });
 

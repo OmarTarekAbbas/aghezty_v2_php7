@@ -30,24 +30,24 @@
 				Gold - GR-EF37-J-G</h3>
 
 			<span class="rating rating_star">
-				<i class="fas fa-star fa-xs" id="colorstar"></i>
-				<i class="fas fa-star fa-xs" id="colorstar"></i>
-				<i class="fas fa-star fa-xs" id="colorstar"></i>
-				<i class="fas fa-star fa-xs" id="colorstar"></i>
+				<i class="fas fa-star fa-xs colorstar"></i>
+				<i class="fas fa-star fa-xs colorstar"></i>
+				<i class="fas fa-star fa-xs colorstar"></i>
+				<i class="fas fa-star fa-xs colorstar"></i>
 				<i class="far fa-star fa-xs"></i>
 			</span>
 
-			<span class="rating rating_review  d-none d-lg-inline-block">8 Review(s) </span>
+			<span class="rating rating_review">8 Review(s) </span>
 
-			<span class="d-none rating_space d-lg-inline-block" style="color: #c3c5c9;"> | </span>
+			<span class="rating_space" style="color: #c3c5c9;"> | </span>
 
-			<a href="#review">
-				<span class="rating rating_addReview d-none d-lg-inline-block"> Add Your Review</span>
+			<a id="go_to_nickname" href="#review">
+				<span class="rating rating_addReview"> Add Your Review</span>
 			</a>
 		</div>
 
 		<div class="row w-100">
-			<div class="col-lg-7">
+			<div class="col-lg-6 col-12">
 				<div class="row">
 					<div class="col-md-3 d-none d-sm-block">
 						<div class="c-slide border btn bg-white my-1">
@@ -63,8 +63,8 @@
 						</div>
 					</div>
 
-					<div class="col-md-9">
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="border: 1px solid #dcdcdc;">
+					<div class="col-md-9 col-12">
+						<div id="carouselExampleControls" class="carousel slide w-75" data-ride="carousel" style="border: 1px solid #dcdcdc;">
 							<div class="carousel-inner">
 								<div class="carousel-item active">
 									<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
@@ -84,11 +84,11 @@
 							</div>
 
 							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-								<i class="fas fa-chevron-left fa-3x left_slider" style="color:#106db6"></i>
+								<i class="fas fa-chevron-left fa-3x left_slider"></i>
 							</a>
 
 							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-								<i class="fas fa-chevron-right fa-3x right_slider" style="color:#106db6"></i>
+								<i class="fas fa-chevron-right fa-3x right_slider"></i>
 								<span class="sr-only">Next</span>
 							</a>
 						</div>
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 
-			<div class="info col-lg-5">
+			<div class="info col-lg-6 w-100">
 				<div class="row">
 					<div class="features col-md-12">
 						<h5 class="font-weight-bold py-2">Key Features</h5>
@@ -157,7 +157,7 @@
 								<i class="fa fa-minus fa-xs" aria-hidden="true"></i>
 							</span>
 
-							<button class="w-75 btn btn-primary float-left font-weight-bold" id="add_to">ADD TO CART</button>
+							<button class="w-75 btn btn-primary float-left font-weight-bold hvr-wobble-to-bottom-right" id="add_to">ADD TO CART</button>
 						</form>
 					</div>
 
@@ -165,22 +165,36 @@
             <p class="text-danger m-2 font-weight-bold"><i class="fa fa-heart"></i> ADD TO WISHLIST</p>
 					</div> -->
 
-					<div class="social-share col-md-12 col-lg-12 col-xl-12 mt-3">
-						<div class="social-likes">
-							<div data-service="facebook" title="Share link on Facebook"></div>
+					<div class="rounded-social-buttons m-auto">
+						<a class="social-button facebook_link" href="https://www.facebook.com/" target="_blank" title="Facebook">
+							<i class="fab fa-facebook-f facebook_icon"></i>
+						</a>
 
-							<div data-service="twitter" title="Share link on Twitter"></div>
+						<a class="social-button messenger_link" href="https://www.messenger.com/" target="_blank" title="Messenger">
+							<i class="fab fa-facebook-messenger messenger_icon"></i>
+						</a>
 
-							<div class="social-likes__widget_whatsapp text-center">
-								<img src="images/whatsapp.PNG" alt="">
-							</div>
-						</div>
+						<a class="social-button whatsapp_link" href="whatsapp://send?abid=+20111682831&text=Hello%2C%20World!" title="Whatsapp">
+							<i class="fab fa-whatsapp whatsapp_icon"></i>
+						</a>
+
+						<a class="social-button twitter_link" href="https://www.twitter.com/" target="_blank" title="Twitter">
+							<i class="fab fa-twitter twitter_icon"></i>
+						</a>
+
+						<!-- <a class="social-button instagram_link" href="https://www.instagram.com/" target="_blank" title="Instagram">
+							<i class="fab fa-instagram instagram_icon"></i>
+						</a> -->
+
+						<a class="social-button phone_link" href="tel:+20233047920" title="Phone Number">
+							<i class="fas fa-phone phone_icon"></i>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="mobile_view taste mt-5">
+		<div class="mobile_view mt-2">
 			<div class="border-bottom w-100 mt-3"></div>
 		</div>
 	</section>
@@ -439,8 +453,8 @@
 						</a>
 
 						<div class="rating_list_product">
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
@@ -466,9 +480,9 @@
 						</a>
 
 						<div class="rating_list_product">
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
 						</div>
@@ -496,10 +510,10 @@
 						</a>
 
 						<div class="rating_list_product">
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
 							<i class="far fa-star"></i>
 						</div>
 
@@ -526,11 +540,11 @@
 						</a>
 
 						<div class="rating_list_product">
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
 						</div>
 
 						<div class="price-description text-uppercase">Cash Price</div>
@@ -553,8 +567,8 @@
 						</a>
 
 						<div class="rating_list_product">
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
@@ -580,9 +594,9 @@
 						</a>
 
 						<div class="rating_list_product">
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
-							<i class="fas fa-star" id="colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
+							<i class="fas fa-star colorstar"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
 						</div>
@@ -608,26 +622,26 @@
 						<h4 class="text-capitalize">Reviews</h4>
 					</div>
 
-					<div class="review-area">
+					<div class="review-area my-3">
 						<span class="review-by"> Review by <strong>Mohamed </strong> on 12/8/2019</span>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
 						<p>
 							<strong class="review-area-title">Good product </strong><br>
 							Good production </p>
 					</div>
 
-					<div class="review-area mt-3">
+					<div class="review-area my-3">
 						<span class="review-by"> Review by <strong>Moaz Mahmoud </strong> on 11/3/2019</span>
 
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
-						<i class="fas fa-star" id="colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
+						<i class="fas fa-star colorstar"></i>
 						<p>
 							<strong class="review-area-title">Good product</strong><br>
 							Thank You for this product
@@ -677,17 +691,17 @@
 					<form action="" class="mt-3 mb-3 add_comment">
 						<label for="nickname_field" class="required w-100">Nickname
 							<em>*</em>
-							<input type="text" class="form-control">
+							<input id="focus_to_review" type="text" placeholder="Nickname" class="form-control">
 						</label>
 
 						<label for="nickname_field" class="required w-100">Summary of Your Review
 							<em>*</em>
-							<input type="text" class="form-control">
+							<input type="text" placeholder="Summary of Your Review" class="form-control">
 						</label>
 
 						<label for="nickname_field" class="required w-100">Review
 							<em>*</em>
-							<textarea type="text" cols="5" rows="3" class="form-control"></textarea>
+							<textarea type="text" placeholder="Description of Your Review" cols="5" rows="3" class="form-control"></textarea>
 						</label>
 
 						<button class="btn btn-primary" style="float: right;margin-top: 11px;">Submit Review</button>

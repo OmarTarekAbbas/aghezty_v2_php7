@@ -1,5 +1,4 @@
 /* global $, window, document */
-
 // ************************************************
 // Shopping Cart API
 // ************************************************
@@ -290,8 +289,14 @@ $(document).ready(function () {
 
 // changes Animation From Right To Left In Mobile View
 $("#button_jq").click(function () {
-  $("#exampleModal").addClass("slide-right");
-  $("#exampleModal").removeClass("slide-out-right");
+  var x = $("#exampleModal").css('display');
+  if (x != 'none') {
+    $("#exampleModal").addClass("slide-out-right");
+  } else {
+    $("#exampleModal").addClass("slide-right");
+    $("#exampleModal").removeClass("slide-out-right");
+  }
+  // $("#exampleModal").removeClass("slide-out-right");
 });
 
 // Close Modal In Mobile View
@@ -535,31 +540,7 @@ $('#radioOne,#radioTwo').click(function () {
   $('#checkout-form').unbind('submit')
   $('.btn-block').prop('disabled', false)
 })
-
 /* ===== End Payment Method  ==== */
-
-/* Start owl carousel pay */
-$('.owl-pay').owlCarousel({
-  center: true,
-  // rtl: true,
-  loop: true,
-  nav: true,
-  dots: false,
-  responsive: {
-    0: {
-      items: 3
-    },
-    600: {
-      items: 3
-    },
-    1000: {
-      items: 3
-    }
-  }
-});
-$(".owl-prev-pay").html('<i class="fas fa-chevron-left fa-3x"></i>');
-$(".owl-next-pay").html('<i class="fas fa-chevron-right fa-3x"></i>');
-/* End owl carousel pay */
 
 /* Start Active Menu */
 $(function () {
@@ -630,3 +611,123 @@ $('.item-total').each(function () {
 
 // $('.pay').html(pay);
 /* End Cart Page */
+
+/* Start Slider */
+$(document).ready(function ($) {
+  $('.fadeOut').owlCarousel({
+    items: 1,
+    center: true,
+    loop: true,
+    autoplay: true,
+    // margin: 10,
+    nav: true,
+    // animateOut: 'slideOutDown',
+    animateOut: 'lightSpeedIn',
+    animateIn: 'lightSpeedOut',
+    smartSpeed: 1000,
+  });
+});
+/* End Slider */
+
+/* Start Add Your Review Focus To Input Nickname */
+$('#go_to_nickname').click(function (evt) {
+  $('input#focus_to_review').removeAttr('placeholder');
+  $("input#focus_to_review").focus();
+  evt.preventDefault();
+});
+/* End Add Your Review Focus To Input Nickname */
+
+/* Start jQuery slide toggle menu */
+$(document).ready(function () {
+  $(".slide_toggle").click(function () {
+    var target = $(this).parent().children(".slideContent");
+    $(target).parent().siblings().children(".slideContent").slideUp(500);
+    $(target).not().parent().children(".slideContent").slideToggle();
+  });
+});
+
+// $(document).ready(function () {
+//   $(".slide_toggle").click(function () {
+//     var target = $(this).parent().children(".slideContent");
+//     $(target).parent().siblings().slideToggle();
+//   });
+// });
+/* End jQuery slide toggle menu */
+
+/* Start Funny Text */
+$(document).ready(function() {
+  $('.recently_added_funnyText').funnyText({
+    speed: 200,
+    activeColor: '#fff',
+    color: 'black',
+    borderColor: '#fff',
+    direction: 'both',
+    fontSize: '8em'
+  });
+  
+  $('.selected_fYou_funnyText').funnyText({
+    speed: 200,
+    activeColor: '#fff',
+    color: 'black',
+    borderColor: '#fff',
+    direction: 'both',
+    fontSize: '7em',
+  });
+});
+/* End Funny Text */
+
+/* Start Typed JS */
+var heavy_machines_title_typed = new Typed('#heavy_machines_title_typed', {
+  strings: ['Heavy Machines'],
+  typeSpeed: 150,
+  backSpeed: 0,
+  fadeOut: true,
+  smartBackspace: true, // this is a default
+  loop: true
+});
+
+var shop_title1_typed = new Typed('#shop_title1_typed', {
+  strings: ['Shop By Price'],
+  typeSpeed: 150,
+  backSpeed: 0,
+  fadeOut: true,
+  smartBackspace: true, // this is a default
+  loop: true
+});
+
+var light_machines_title_typed = new Typed('#light_machines_title_typed', {
+  strings: ['Light Machines'],
+  typeSpeed: 150,
+  backSpeed: 0,
+  fadeOut: true,
+  smartBackspace: true, // this is a default
+  loop: true
+});
+
+var shop_title2_typed = new Typed('#shop_title2_typed', {
+  strings: ['Shop By Price'],
+  typeSpeed: 150,
+  backSpeed: 0,
+  fadeOut: true,
+  smartBackspace: true, // this is a default
+  loop: true
+});
+
+var brands_title_typed = new Typed('#brands_title_typed', {
+  strings: ['Brands'],
+  typeSpeed: 150,
+  backSpeed: 0,
+  fadeOut: true,
+  smartBackspace: true, // this is a default
+  loop: true
+});
+
+var shop_title3_typed = new Typed('#shop_title3_typed', {
+  strings: ['Shop By Price'],
+  typeSpeed: 150,
+  backSpeed: 0,
+  fadeOut: true,
+  smartBackspace: true, // this is a default
+  loop: true
+});
+/* End Typed JS */

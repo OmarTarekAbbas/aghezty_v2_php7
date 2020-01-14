@@ -105,9 +105,6 @@
 										</div>
 									</div>
 								</div>
-
-								<meta name="api_token" content="">
-								<input id="nonce" name="payment_method_nonce" type="hidden" />
 							</form>
 
 							<button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto">Paid Now</button>
