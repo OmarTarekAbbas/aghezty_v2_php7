@@ -393,6 +393,7 @@ return [
     'active' => 'نشط',
     'recently_added' => 'المضافة حديثاً',
     'selected_for_you' => 'المختارة لك',
+    'search' => 'بحث...',
 
     'home_telephone' => 'هاتف المنزل',
 
@@ -432,5 +433,6 @@ return [
     'coupon_number' => 'رقم الكوبون',
 
     'price_after_discount' => 'السعر بعد الخصم',
+    'view_more' => 'المزيد',
 
 ];

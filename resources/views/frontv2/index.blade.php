@@ -296,11 +296,11 @@
       <div class="product_view_type">
         <div class="product_title mb-3">
           <div class="title_left text-left font-weight-bold">
-            <strong class="recently_added_funnyText">Recently Added</strong>
+            <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong>
           </div>
 
           <div class="title_right text-right">
-            <button class="btn btn-dark">View More</button>
+            <button class="btn btn-dark">@lang('messages.view_more')</button>
           </div>
         </div>
 
@@ -311,10 +311,10 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->title}}" class="w-75 d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto">
                 
                 <div class="mt-1">
-                  <p class="full_desc">{{$item->title}}</p>
+                  <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
               @if ($item->price_after_discount >0)
@@ -357,9 +357,9 @@
           <div class="choose_category_form text-center">
             <a class="hoverabley" href="{{url('clients/products?sub_category_id='.$item->id)}}">
               <div class="hovertitle">
-                <p>{{$item->title}}</p>
+                <p>{{$item->getTranslation('title',getCode())}}</p>
               </div>
-              <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->title}}">
+              <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
             </a>
           </div>
         </div>
@@ -376,11 +376,11 @@
       <div class="product_view_type">
         <div class="product_title mb-3">
           <div class="title_left text-left font-weight-bold">
-            <strong class="selected_fYou_funnyText">Selected For You</strong>
+            <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong>
           </div>
 
           <div class="title_right text-right">
-            <button class="btn btn-dark">View More</button>
+            <button class="btn btn-dark">@lang('messages.view_more')</button>
           </div>
         </div>
 
@@ -391,10 +391,10 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->title}}" class="w-75 d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto">
                 
                 <div>
-                  <p class="full_desc">{{$item->title}}</p>
+                  <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
               

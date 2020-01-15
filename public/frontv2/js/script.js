@@ -622,8 +622,8 @@ $(document).ready(function ($) {
     // margin: 10,
     nav: true,
     // animateOut: 'slideOutDown',
-    animateOut: 'lightSpeedIn',
-    animateIn: 'lightSpeedOut',
+    animateOut: 'lightSpeedOut',
+    animateIn: 'lightSpeedIn',
     smartSpeed: 1000,
   });
 });
@@ -653,81 +653,3 @@ $(document).ready(function () {
 //   });
 // });
 /* End jQuery slide toggle menu */
-
-/* Start Funny Text */
-$(document).ready(function() {
-  $('.recently_added_funnyText').funnyText({
-    speed: 200,
-    activeColor: '#fff',
-    color: 'black',
-    borderColor: '#fff',
-    direction: 'both',
-    fontSize: '8em'
-  });
-  
-  $('.selected_fYou_funnyText').funnyText({
-    speed: 200,
-    activeColor: '#fff',
-    color: 'black',
-    borderColor: '#fff',
-    direction: 'both',
-    fontSize: '7em',
-  });
-});
-/* End Funny Text */
-
-/* Start Typed JS */
-var heavy_machines_title_typed = new Typed('#heavy_machines_title_typed', {
-  strings: ['Heavy Machines'],
-  typeSpeed: 150,
-  backSpeed: 0,
-  fadeOut: true,
-  smartBackspace: true, // this is a default
-  loop: true
-});
-
-var shop_title1_typed = new Typed('#shop_title1_typed', {
-  strings: ['Shop By Price'],
-  typeSpeed: 150,
-  backSpeed: 0,
-  fadeOut: true,
-  smartBackspace: true, // this is a default
-  loop: true
-});
-
-var light_machines_title_typed = new Typed('#light_machines_title_typed', {
-  strings: ['Light Machines'],
-  typeSpeed: 150,
-  backSpeed: 0,
-  fadeOut: true,
-  smartBackspace: true, // this is a default
-  loop: true
-});
-
-var shop_title2_typed = new Typed('#shop_title2_typed', {
-  strings: ['Shop By Price'],
-  typeSpeed: 150,
-  backSpeed: 0,
-  fadeOut: true,
-  smartBackspace: true, // this is a default
-  loop: true
-});
-
-var brands_title_typed = new Typed('#brands_title_typed', {
-  strings: ['Brands'],
-  typeSpeed: 150,
-  backSpeed: 0,
-  fadeOut: true,
-  smartBackspace: true, // this is a default
-  loop: true
-});
-
-var shop_title3_typed = new Typed('#shop_title3_typed', {
-  strings: ['Shop By Price'],
-  typeSpeed: 150,
-  backSpeed: 0,
-  fadeOut: true,
-  smartBackspace: true, // this is a default
-  loop: true
-});
-/* End Typed JS */

@@ -60,18 +60,13 @@
 	<!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
 	<link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
 
-	<?php
-	if (isset($_REQUEST['lang'])  &&  $_REQUEST['lang']  == "ar") {
-	?>
-		<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
-
-	<?php
-	} else {
-	?>
-		<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
-	<?php
-	}
-	?>
+@if (\Session::has('applocale'))
+@if (\Session::get('applocale') == 'ar')
+	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
+@else
+	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
+@endif
+@endif
 
 </head>
 
@@ -88,7 +83,7 @@
 
 			<div class="col-md-6 col-lg-6 col-xl-10">
 				<form class="search-container">
-					<input type="text" id="search-bar" placeholder="Search...">
+					<input type="text" id="search-bar" placeholder="@lang('messages.search')">
 					<a href="#">
 						<div class="search_background">
 							<i class="search-icon fas fa-search fa-2x"></i>
@@ -114,100 +109,63 @@
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
 			<a class="mobile_logo d-sm-block d-md-block d-lg-none" href="index.php">
-				<img class="d-block m-auto w-25" src="images/logo/01.png" alt="Logo">
+				<img class="d-block m-auto w-25" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
 			</a>
 
 			<!-- Collapse button -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
+			@php
+			$categorys = categorys();
+			@endphp
 			<!-- Collapsible content -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent2">
 				<ul id="sub-header" class="navbar-nav w-100">
 					<!-- Start Heavy Machines -->
+					@foreach ($categorys as $category)
+					@if($category->sub_cats->count() > 0)
 					<li class="nav-item dropdown mega-dropdown active m-auto">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Heavy Machines
-							<span class="sr-only">(current)</span>
+						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$category->getTranslation('title',getCode())}}
+							{{-- <span class="sr-only">(current)</span> --}}
 						</a>
 
 						<div id="heavy_machines" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink2">
 
 							<div class="row">
 								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
-									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="heavy_machines_title_typed"></h6>
+									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block type_anime{{$category->id}}" id="heavy_machines_title_typed"></h6>
 									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Dish Washers</a>
-										</li>
+										@php
+										    $count = $category->sub_cats->count();
+										    $limit = $count/2;
+										@endphp
+										@foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Hobs</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$sub_category->getTranslation('title',getCode())}}</a>
 										</li>
 
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> B-In</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Ovens</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Bult-In Washer Dryers</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Dryers</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Washing Machines</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0  hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Washer Dryers</a>
-										</li>
+										@endforeach
 									</ul>
 								</div>
-
+								
 								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mt-4">
 									<!-- <h6 class="sub-title text-uppercase font-weight-bold white-text ">Heavy Machines</h6> -->
 									<ul class="list-unstyled">
+										@foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Fridges</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$sub_category->getTranslation('title',getCode())}}</a>
 										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Freezers</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> TV</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Cookers</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Air Conditioner</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Kitchen Ventilating Fan</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Kitchen Cooker Hood</a>
-										</li>
+										@endforeach
 									</ul>
 								</div>
-
+								
 								<div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
-									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title1_typed"></h6>
+									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title{{$category->id}}_typed"></h6>
 
 									<ul class="list-unstyled">
+										
 										<li>
 											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
 										</li>
@@ -223,221 +181,53 @@
 										<li>
 											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
 										</li>
+										
 									</ul>
 								</div>
 							</div>
 						</div>
 					</li>
+					@endif
+					@endforeach
 					<!-- End Heavy Machines -->
 
-					<!-- Start Light Machines -->
-					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Light Machines</a>
-
-						<div id="light_machines" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink3">
-							<div class="row">
-								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
-									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="light_machines_title_typed"></h6>
-									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Microwaves</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Coffee &amp; Espresso Makers</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Electric Kettle</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Food Steamer</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Air Fryer</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Table Grill</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Sandwich Maker</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Fans</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Sound Bar</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Home Theater</a>
-										</li>
-									</ul>
-								</div>
-
-								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mt-4">
-									<!-- <h6 class="sub-title text-uppercase font-weight-bold">Light Machines</h6> -->
-									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Blenders</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> PowerLife Bagged</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Collection Salad Maker</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Iron</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Water Dispenser</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Water Heater</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Oil Heater</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Wall Clock</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Shake System</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Portable Hot Plate</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> One Box Entertainment</a>
-										</li>
-									</ul>
-								</div>
-
-								<div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
-									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title2_typed"></h6>
-
-									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- End Light Machines -->
-
+					@php
+					$brands = brands();
+					@endphp
 					<!-- Start Brands-->
 					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands</a>
+						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> @lang('front.brands')</a>
 
 						<div id="brands" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink4">
 							<div class="row">
 								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
 									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="brands_title_typed"></h6>
 									<ul class="list-unstyled">
+										@php
+										    $count = $brands->count();
+										    $limit = $count/2;
+										@endphp
+										@foreach ($brands->slice(0, $limit) as $item)
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Ariston</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
 										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Philips</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> QLED TVs</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Samsung</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> LG</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Sharp</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Toshiba</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Tornado</a>
-										</li>
+										@endforeach
 									</ul>
 								</div>
 
 								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mt-4">
 									<!-- <h6 class="sub-title text-uppercase font-weight-bold">Brands</h6> -->
 									<ul class="list-unstyled">
+										@foreach ($brands->slice($limit, $count) as $item)
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Candy</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
 										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Sony</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> La Germania</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Mienta</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Elba</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Franke</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Hover</a>
-										</li>
-
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> I Cook</a>
-										</li>
+										@endforeach
 									</ul>
 								</div>
 
 								<div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
-									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title3_typed"></h6>
+									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_titleb_typed"></h6>
 
 									<ul class="list-unstyled">
 										<li>
@@ -464,27 +254,21 @@
 
 					<!-- Start Offers -->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="#0" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">Offers</a>
+						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/products?offer=offer')}}" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">@lang('front.offer')</a>
 					</li>
 					<!-- End Offers -->
 
 					<!-- Start Maintenance -->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="maintenance.php" id="navbarDropdownMenuLink6" aria-haspopup="true" aria-expanded="false">Maintenance</a>
+						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/service_center')}}" id="navbarDropdownMenuLink6" aria-haspopup="true" aria-expanded="false">@lang('front.service_center')</a>
 					</li>
 					<!-- End Maintenance -->
 
 					<!-- Start Contact Us -->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="contact_us.php" id="navbarDropdownMenuLink7" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/contact')}}" id="navbarDropdownMenuLink7" aria-haspopup="true" aria-expanded="false">@lang('front.contact')</a>
 					</li>
 					<!-- End Contact Us -->
-
-					<!-- Start My Wishlist -->
-					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="#0" id="navbarDropdownMenuLink8" aria-haspopup="true" aria-expanded="false">My Wishlist</a>
-					</li>
-					<!-- End My Wishlist -->
 
 					<!-- Start Register-->
 					<li class="nav-item">
@@ -541,9 +325,9 @@
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
 									<ul class="list-unstyled">
 										<li>
-											<button class="menu-item pl-0 dropdown-item active hvr-icon-forward" type="button">
-												<img src="images/lang/en.webp" alt="English Language"> English
-											</button>
+											<a class="menu-item pl-0 dropdown-item active hvr-icon-forward" href="{{url('lang/en')}}" type="button">
+												<img src="{{url('public/frontv2/images/lang/en.webp')}}" alt="English Language"> English
+											</a>
 										</li>
 									</ul>
 								</div>
@@ -551,9 +335,9 @@
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
 									<ul class="list-unstyled">
 										<li>
-											<button class="menu-item pl-0 dropdown-item hvr-icon-forward" type="button">
-												<img src="images/lang/ar.webp" alt="Arabic Language"> Arabic
-											</button>
+											<a class="menu-item pl-0 dropdown-item hvr-icon-forward" href="{{url('lang/ar')}}" type="button">
+												<img src="{{url('public/frontv2/images/lang/ar.webp')}}" alt="Arabic Language"> Arabic
+											</a>
 										</li>
 									</ul>
 								</div>
@@ -622,10 +406,13 @@
         
                         <div class="block_content">
                           <div class="row">
+
+					@foreach ($categorys as $category)
+
                             <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
-                                  <strong class="font-weight-bold border-bottom">Heavy Machines</strong>
+                                  <strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
                                 </a>
         
                                 <li>
@@ -697,8 +484,8 @@
                                 </li>
         
                               </ul>
-                            </div>
-        
+					   </div>
+					   @endforeach
                             <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
@@ -1016,7 +803,62 @@
         <!-- typed JS -->
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
         <!-- Script JS -->
-        <script src="{{url('public/frontv2/js/script.js')}}"></script>
+	   <script src="{{url('public/frontv2/js/script.js')}}"></script>
+		@foreach ($categorys as $category)
+		@if($category->sub_cats->count() > 0)
+		    
+		<script>
+			
+			$(document).ready(function() {
+
+				var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
+					strings: [$('.type_anime{{$category->id}}').parent().parent().parent().siblings('a').html()],
+					typeSpeed: 150,
+					backSpeed: 0,
+					fadeOut: true,
+					smartBackspace: true, // this is a default
+					loop: true
+				});
+
+
+				var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
+					strings: ['Shop By Price'],
+					typeSpeed: 150,
+					backSpeed: 0,
+					fadeOut: true,
+					smartBackspace: true, // this is a default
+					loop: true
+				});
+
+
+
+			});
+
+		</script>
+
+		@endif
+		@endforeach
+
+		<script>
+		var heavy_machines_title_typed = new Typed("#brands_title_typed", {
+			strings: [$('#brands_title_typed').parent().parent().parent().siblings('a').html()],
+			typeSpeed: 150,
+			backSpeed: 0,
+			fadeOut: true,
+			smartBackspace: true, // this is a default
+			loop: true
+		});
+
+		var shop_titleb_typed = new Typed('#shop_titleb_typed', {
+			strings: ['Shop By Price'],
+			typeSpeed: 150,
+			backSpeed: 0,
+			fadeOut: true,
+			smartBackspace: true, // this is a default
+			loop: true
+		});
+		</script>
+
         @yield('script')
         </body>
         

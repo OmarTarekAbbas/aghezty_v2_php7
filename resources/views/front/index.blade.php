@@ -30,7 +30,7 @@
             <img src="{{asset('front/img/logo_3.png')}}" alt="اجهزتى">
         </div>
         <!--<h2>اجهزتى</h2>-->
-        <a href="{{url('clients/home')}}" class="wow pulse" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="1.5s">
+        <a href="{{url('clients/homev2')}}" class="wow pulse" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="1.5s">
             <i class="fas fa-angle-double-right fa-2x"></i>
         </a>
 

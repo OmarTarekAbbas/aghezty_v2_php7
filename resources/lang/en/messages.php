@@ -429,4 +429,8 @@ return [
     'coupon_number' => 'Coupon Number',
 
     'price_after_discount' => 'Price After Discount',
+
+    'view_more' => 'View More',
+    'search' => 'Search...',
+
 ];
