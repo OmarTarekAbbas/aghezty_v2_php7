@@ -577,6 +577,18 @@ class HomeController extends Controller
 
     }
 
+    public function service_centerv2(){
+
+        return view('frontv2.maintenance');
+
+    }
+
+    public function contactusv2(){
+
+        return view('frontv2.contact_us');
+
+    }
+
     public function slidesv2(){
 
         $slides = Advertisement::where('type', 'slider')->orderBy('order', 'asc')->get();
@@ -747,6 +759,39 @@ class HomeController extends Controller
             $i++;
         }
         return 'changed!';
+    }
+
+    public function productsv2(Request $request)
+    {
+
+        $products = Product::latest('products.created_at');
+        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+            $request->sub_category_id = (array) $request->sub_category_id;
+            $products = $products->whereIn('category_id',$request->sub_category_id);
+        }
+        if($request->has('offer') && $request->offer !=''){
+            $products =  $products->where('discount','>',0);
+        }
+        if($request->has('brand_id') && $request->brand_id !=''){
+            $request->brand_id = (array) $request->brand_id;
+            $products = $products->whereIn('brand_id',$request->brand_id);
+        }
+        if($request->has('from') && $request->from !=''){
+            $products = $products->where('price','>=',$request->from);
+        }
+        if($request->has('to') && $request->to!=''){
+            $products = $products->where('price','<',$request->to);
+        }
+        if($request->has('ifrom') && $request->ifrom !=''){
+            $products = $products->where('inch','>=',$request->ifrom);
+        }
+        if($request->has('ito') && $request->ito!=''){
+            $products = $products->where('inch','<',$request->ito);
+        }
+
+
+        $products = $products->limit(get_limit_paginate())->get();
+        return view('frontv2.listproduct',compact('products'));
     }
 
     /*********************************************************** end design v2 *******/

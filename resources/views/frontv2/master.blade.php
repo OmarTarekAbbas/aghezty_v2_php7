@@ -77,7 +77,7 @@
 		<div class="row mr-0">
 			<div class="col-md-3 col-lg-3 col-xl-1">
 				<div class="img_logo">
-					<a href="index.php">
+					<a href="{{url('clients/homev2')}}">
 						<img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
 					</a>
 				</div>
@@ -110,7 +110,7 @@
 	<header class="head_three ">
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
-			<a class="mobile_logo d-sm-block d-md-block d-lg-none" href="index.php">
+			<a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{url('clients/homev2')}}">
 				<img class="d-block m-auto w-25" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
 			</a>
 
@@ -262,42 +262,42 @@
 
 					<!-- Start Maintenance -->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/service_center')}}" id="navbarDropdownMenuLink6" aria-haspopup="true" aria-expanded="false">@lang('front.service_center')</a>
+						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/service_centerv2')}}" id="navbarDropdownMenuLink6" aria-haspopup="true" aria-expanded="false">@lang('front.service_center')</a>
 					</li>
 					<!-- End Maintenance -->
 
 					<!-- Start Contact Us -->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/contact')}}" id="navbarDropdownMenuLink7" aria-haspopup="true" aria-expanded="false">@lang('front.contact')</a>
+						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/contactv2')}}" id="navbarDropdownMenuLink7" aria-haspopup="true" aria-expanded="false">@lang('front.contact')</a>
 					</li>
 					<!-- End Contact Us -->
 
 					<!-- Start Register-->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="register.php" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">Register</a>
+						<a class="nav-link nav_link2 text-uppercase" href="register.php" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.auth.register')</a>
 					</li>
 					<!-- End Register -->
 
 					<!-- Start Log In-->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="login.php" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">Log In</a>
+						<a class="nav-link nav_link2 text-uppercase" href="login.php" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.auth.login')</a>
 					</li>
 					<!-- End Log In -->
 
 					<!-- Start My Account-->
 					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('front.auth.info')</a>
 
 						<div id="my_account" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink11" style="">
 							<div class="row">
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
 									<ul class="list-unstyled">
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="profile.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Profile</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="profile.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.profile')</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="address.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Address</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="address.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.address')</a>
 										</li>
 									</ul>
 								</div>
@@ -305,11 +305,11 @@
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
 									<ul class="list-unstyled">
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="password.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Password</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="password.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.auth.password')</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="orders.php"><i class="fas fa-caret-right pl-1 pr-2"></i> orders</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="orders.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.order')</a>
 										</li>
 									</ul>
 								</div>
@@ -320,14 +320,17 @@
 
 					<!-- Start Languages-->
 					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink112" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Languages</a>
+						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink112" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">												
+							<img src="{{url('public/frontv2/images/lang/'.\Session::get('applocale').'.webp')}}" alt="{{\Session::get('applocale') == 'en'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'en'? " English" : " العربية"}}
+						</a>
 
 						<div id="languages" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink112">
 							<div class="row">
+								
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
 									<ul class="list-unstyled">
 										<li>
-											<a class="menu-item pl-0 dropdown-item active hvr-icon-forward" href="{{url('lang/en')}}" type="button">
+											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'en'? "active" : ""}}" href="{{url('lang/en')}}" type="button">
 												<img src="{{url('public/frontv2/images/lang/en.webp')}}" alt="English Language"> English
 											</a>
 										</li>
@@ -337,7 +340,7 @@
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
 									<ul class="list-unstyled">
 										<li>
-											<a class="menu-item pl-0 dropdown-item hvr-icon-forward" href="{{url('lang/ar')}}" type="button">
+											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'ar'? "active" : ""}}" href="{{url('lang/ar')}}" type="button">
 												<img src="{{url('public/frontv2/images/lang/ar.webp')}}" alt="Arabic Language"> Arabic
 											</a>
 										</li>
@@ -409,150 +412,52 @@
                         <div class="block_content">
                           <div class="row">
 
-					@foreach ($categorys as $category)
-					@if($category->sub_cats->count() > 0)
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
-                                </a>
-						  @php
-						  $count = $category->sub_cats->count();
-						  $limit = $count/2;
-						  @endphp
-						  @foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
-						  <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
-                                </li>
-						  @endforeach
-                              </ul>
-                            </div>
-        
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
-                                </a>
-        
-						  @foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
-						  <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
-                                </li>
-						  @endforeach
-        
-                              </ul>
-					   </div>
-					   @endif
-					   @endforeach
-                            {{-- <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom">Light Machines</strong>
-                                </a>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Microwaves">Microwaves</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Coffee &amp; Espresso Makers">Coffee &amp; Espresso Makers</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Electric Kettle">Electric Kettle</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Food Steamer">Food Steamer</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Air Fryer">Air Fryer</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Table Grill">Table Grill</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Sandwich Maker">Sandwich Maker</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Blenders">Blenders</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="PowerLife Bagged">PowerLife Bagged</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Collection Salad Maker">Collection Salad Maker</a>
-                                </li>
-                              </ul>
-                            </div>
-        
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom invisible">Light Machines</strong>
-                                </a>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Microwaves">Iron</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Water Dispenser">Water Dispenser</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Water Heater">Water Heater</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Oil Heater">Oil Heater</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Fans">Fans</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Wall Clock">Wall Clock</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Portable Hot Plate">Portable Hot Plate</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Sound Bar">Sound Bar</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Home Theater">Home Theater</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Shake System">Shake System</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="One Box Entertainment">One Box Entertainment</a>
-                                </li>
-                              </ul>
-                            </div>
+						@foreach ($categorys as $category)
+						@if($category->sub_cats->count() > 0)
+						<div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+							<ul class="list-unstyled ul_links">
+							<a href="{{url('clients/products?sub_category_id='.$sub_category->id)}}">
+							<strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
+							</a>
+							@php
+							$count = $category->sub_cats->count();
+							$limit = $count/2;
+							@endphp
+							@foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
+							<li>
+							<a class="hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+							</li>
+							@endforeach
+							</ul>
+						</div>
+		
+						<div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+							<ul class="list-unstyled ul_links">
+							<a href="{{url('clients/products?sub_category_id='.$sub_category->id)}}">
+							<strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
+							</a>
+		
+							@foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
+							<li>
+							<a class="hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+							</li>
+							@endforeach
+		
+							</ul>
+						</div>
+						@endif
+						@endforeach
+
                           </div>
                         </div>
                       </div>
-                    </div> --}}
+                    </div>
 	   
 				
 				@php
 					$brands = brands();
 				@endphp
-				
+
                     <div class="col-md-6 col-xl-3 col-12">
                       <div class="block block_brand_content">
                         <div class="block_title mb-3">
@@ -561,79 +466,33 @@
         
                         <div class="block_content">
                           <div class="row">
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+                            <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
-                                  <strong class="font-weight-bold border-bottom">Brands</strong>
+                                  <strong class="font-weight-bold border-bottom">@lang('front.brands')</strong>
                                 </a>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Ariston">Ariston</a>
+						  @php
+						  $count = $brands->count();
+						  $limit = $count/2;
+						  @endphp
+						  @foreach ($brands->slice(0, $limit) as $item)
+						  <li>
+                                  <a class="hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
                                 </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Philips">Philips</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Samsung">Samsung</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="LG">LG</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Sharp">Sharp</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Toshiba">Toshiba</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Tornado">Tornado</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Hover">Hover</a>
-                                </li>
+						  @endforeach
                               </ul>
                             </div>
         
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+                            <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
-                                  <strong class="font-weight-bold border-bottom invisible">Brands</strong>
+                                  <strong class="font-weight-bold border-bottom invisible">@lang('front.brands')</strong>
                                 </a>
-        
+						  @foreach ($brands->slice($limit, $count) as $item)
                                 <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Candy">Candy</a>
+                                  <a class="hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
                                 </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Sony">Sony</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="La Germania">La Germania</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Mienta">Mienta</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Elba">Elba</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Franke">Franke</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="I Cook">I Cook</a>
-                                </li>
+						  @endforeach
                               </ul>
                             </div>
                           </div>
@@ -652,11 +511,11 @@
                             <div class="col-xl-12 col-12">
                               <ul class="list-unstyled ul_links">
                                 <li>
-                                  <a class="text-capitalize hvr-icon-forward" href="contact_us.php" title="Contact Us">Contact Us</a>
+                                  <a class="text-capitalize hvr-icon-forward" href="{{url('clients/contactv2')}}" title="Contact Us">@lang('front.contact')</a>
                                 </li>
         
                                 <li>
-                                  <a class="text-capitalize hvr-icon-forward" href="maintenance.php" title="Maintenance">Maintenance</a>
+                                  <a class="text-capitalize hvr-icon-forward" href="{{url('clients/service_centerv2')}}" title="Maintenance">@lang('front.service_center')</a>
                                 </li>
                               </ul>
                             </div>
