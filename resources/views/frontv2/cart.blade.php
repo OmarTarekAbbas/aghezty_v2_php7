@@ -11,12 +11,14 @@
     <div class="row">
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
         <div class="shopping_cart_title mt-3">
-          <h2 class="text-center text-uppercase h2 text-primary font-weight-bold">Shopping Cart</h2>
+          <h2 class="text-center text-uppercase h2 text-primary font-weight-bold">
+            <marquee class="marquee_cart" behavior="scroll">Shopping Cart</marquee>
+          </h2>
         </div>
       </div>
 
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-        <div class="alert_msg alert alert-success my-3" role="alert">Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold was added to your shopping Cart.
+        <div class="alert_msg alert alert-success my-3 w-100 hvr-wobble-to-bottom-right" role="alert">Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold was added to your shopping Cart.
           <i class="fas fa-times fa-lg float-right mt-1"></i>
         </div>
       </div>
@@ -46,7 +48,9 @@
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
-                    <img class="w-25" src="images/product1.jfif" alt="iphone">
+                    <a class="img_link" ref="inner-page.php">
+                      <img class="w-25 hvr-outline-in" src="images/product1.jfif" alt="iphone">
+                    </a>
 
                     <span>Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold</span>
                   </th>
@@ -76,7 +80,10 @@
                       <i class="fas fa-times fa-lg"></i>
                     </a>
 
-                    <img class="w-25" src="images/products/4.jpg" alt="iphone">
+                    <a href="inner-page.php">
+                      <img class="w-25" src="images/products/4.jpg" alt="iphone">
+                    </a>
+
                     <span>Beko Front Loading Digital Washing Machine</span>
                   </th>
 
@@ -105,7 +112,10 @@
                       <i class="fas fa-times fa-lg"></i>
                     </a>
 
-                    <img class="w-25" src="images/products/3.jpg" alt="iphone">
+                    <a href="inner-page.php">
+                      <img class="w-25" src="images/products/3.jpg" alt="iphone">
+                    </a>
+
                     <span>Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</span>
                   </th>
 

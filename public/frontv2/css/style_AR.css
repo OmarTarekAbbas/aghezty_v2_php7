@@ -592,7 +592,7 @@ a {
   -o-transition: all 1.1s linear;
 }
 .main .content_view a img:hover, .main .content_view a img:focus {
-  width: 100% !important;
+  width: 85% !important;
 }
 .main .content_view a .full_desc {
   font-weight: bold;
@@ -681,7 +681,7 @@ a {
 /***************************************** start inner-page ********************************************/
 .main #inner-page .price_disc_offer .product-label {
   position: absolute;
-  top: 61%;
+  top: 51%;
   left: 6rem;
   font-size: 14px;
   color: #FFF;
@@ -926,6 +926,27 @@ a {
 .main #inner-page .rounded-social-buttons .social-button .instagram_icon,
 .main #inner-page .rounded-social-buttons .social-button .messenger_icon {
   font-size: 25px;
+}
+.main #inner-page .contact_us {
+  text-align: right !important;
+}
+.main #inner-page .contact_us .rounded-social-buttons {
+  padding: 0 0.5rem;
+}
+.main #inner-page .contact_us .rounded-social-buttons .social-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  line-height: 2.5rem;
+  border-radius: 0.5rem !important;
+  -webkit-border-radius: 0.5rem !important;
+  -moz-border-radius: 0.5rem !important;
+  -ms-border-radius: 0.5rem !important;
+  -o-border-radius: 0.5rem !important;
+}
+.main #inner-page .contact_us .rounded-social-buttons .social-button .phone_icon,
+.main #inner-page .contact_us .rounded-social-buttons .social-button .whatsapp_icon {
+  font-size: 21px;
 }
 .main #inner-page .more-seller p {
   font-size: 0.8rem;
@@ -1266,6 +1287,7 @@ a {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
 }
+.log_in .log_in_bg form .all_forms .btn_save:hover,
 .log_in .log_in_bg form .all_forms .btn_save:focus {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
@@ -1368,21 +1390,51 @@ a {
 /*----------------------------------------- End Status Page -----------------------------------------*/
 /*----------------------------------------- Strat Profile page -----------------------------------------*/
 .my_profile .my_profile_bg {
-  background-color: #e8e8e8;
+  background-color: #343a40;
 }
-.my_profile .my_profile_bg .my_profile_title h3 {
-  width: 9%;
-  margin: 0 auto;
+.my_profile .my_profile_bg .my_profile_title h5 {
+  font-size: 1.75rem;
 }
 .my_profile .my_profile_bg .my_profile_title .change_title {
   width: 15%;
 }
-.my_profile .my_profile_bg .profile_img img {
-  width: 16%;
-}
 .my_profile .my_profile_bg .profile_img .upload_img {
-  right: 47%;
-  color: #707273;
+  cursor: pointer;
+  color: #343a40;
+  font-size: 0.75rem;
+  width: 100%;
+  position: relative;
+  transition: all 1.1s ease-in-out;
+  -webkit-transition: all 1.1s ease-in-out;
+  -moz-transition: all 1.1s ease-in-out;
+  -ms-transition: all 1.1s ease-in-out;
+  -o-transition: all 1.1s ease-in-out;
+}
+.my_profile .my_profile_bg .profile_img .upload_img img {
+  height: 20vh;
+  width: 12%;
+  transition: all 1.1s ease-in-out;
+  -webkit-transition: all 1.1s ease-in-out;
+  -moz-transition: all 1.1s ease-in-out;
+  -ms-transition: all 1.1s ease-in-out;
+  -o-transition: all 1.1s ease-in-out;
+}
+.my_profile .my_profile_bg .profile_img .upload_img .upload_icon_img {
+  font-size: 2.2rem;
+  position: absolute;
+  top: 5rem;
+  right: 34%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.my_profile .my_profile_bg .profile_img .upload_img img:hover, .my_profile .my_profile_bg .profile_img .upload_img img:focus {
+  height: 25vh;
+  width: 15%;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
 }
 .my_profile .my_profile_bg .accordion_add {
   color: #444;
@@ -1436,8 +1488,13 @@ a {
 .my_profile .my_profile_bg .accordion_add .card .card-body .input-group .form-control:hover,
 .my_profile .my_profile_bg .accordion_add .card .card-body .input-group textarea:focus,
 .my_profile .my_profile_bg .accordion_add .card .card-body .input-group textarea:hover {
-  box-shadow: 0 0 0 0.2rem rgba(101, 101, 101, 0.25);
-  border-color: #969798;
+  box-shadow: 0 0 0 0.2rem rgba(101, 101, 101, 0.25) !important;
+  border-color: #969798 !important;
+}
+.my_profile .my_profile_bg .accordion_add .card .card-body .btn_save:focus,
+.my_profile .my_profile_bg .accordion_add .card .card-body .btn_save:hover {
+  box-shadow: 0 0 0 0.2rem rgba(101, 101, 101, 0.25) !important;
+  border-color: #969798 !important;
 }
 .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr th {
   width: 10%;
@@ -1447,6 +1504,17 @@ a {
   width: 90%;
   text-align: left;
   direction: rtl;
+}
+.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image {
+  width: 15%;
+  transition: all 1.1s linear;
+  -webkit-transition: all 1.1s linear;
+  -moz-transition: all 1.1s linear;
+  -ms-transition: all 1.1s linear;
+  -o-transition: all 1.1s linear;
+}
+.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:hover, .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:focus {
+  width: 20%;
 }
 .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .currency_shortcuts {
   float: left;
@@ -1467,6 +1535,11 @@ a {
   margin: 1rem 0;
   overflow: hidden;
   padding: 0.5rem 0;
+  transition: all 0.6s linear;
+  -webkit-transition: all 0.6s linear;
+  -moz-transition: all 0.6s linear;
+  -ms-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
 }
 .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-title {
   color: #111;
@@ -1483,6 +1556,9 @@ a {
 .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .final-value {
   text-align: left !important;
 }
+.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:hover, .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:focus {
+  font-size: 1.5rem;
+}
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:focus,
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:hover,
 .my_profile .my_profile_bg .profile_accordion .input-group textarea:focus,
@@ -1495,8 +1571,8 @@ a {
 .my_profile .my_profile_bg .password_accordion .input-group .form-control:hover,
 .my_profile .my_profile_bg .password_accordion .input-group textarea:focus,
 .my_profile .my_profile_bg .password_accordion .input-group textarea:hover {
-  box-shadow: 0 0 0 0.2rem rgba(101, 101, 101, 0.25);
-  border-color: #969798;
+  box-shadow: 0 0 0 0.2rem white !important;
+  border-color: #343a40 !important;
 }
 .my_profile .my_profile_bg .profile_accordion .input-group .input-group-text,
 .my_profile .my_profile_bg .address_accordion .input-group .input-group-text,
@@ -1513,6 +1589,15 @@ a {
   border-bottom-right-radius: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+}
+.my_profile .my_profile_bg .profile_accordion .btn_save:focus,
+.my_profile .my_profile_bg .profile_accordion .btn_save:hover,
+.my_profile .my_profile_bg .address_accordion .btn_save:focus,
+.my_profile .my_profile_bg .address_accordion .btn_save:hover,
+.my_profile .my_profile_bg .password_accordion .btn_save:focus,
+.my_profile .my_profile_bg .password_accordion .btn_save:hover {
+  box-shadow: 0 0 0 0.2rem white !important;
+  border-color: #343a40 !important;
 }
 .my_profile .my_profile_bg .card-header button {
   color: #666;
@@ -1616,34 +1701,44 @@ a {
 /*----------------------------------------- Start Upload Img Section Include -----------------------------------------*/
 .profile_img {
   position: relative;
+}
+.profile_img .upload_img {
+  cursor: pointer;
+  color: #343a40;
+  font-size: 0.75rem;
+  width: 100%;
+  position: relative;
   transition: all 1.1s ease-in-out;
   -webkit-transition: all 1.1s ease-in-out;
   -moz-transition: all 1.1s ease-in-out;
   -ms-transition: all 1.1s ease-in-out;
   -o-transition: all 1.1s ease-in-out;
 }
-.profile_img:hover, .profile_img:focus {
-  transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
+.profile_img .upload_img img {
+  height: 20vh;
+  width: 12%;
+  transition: all 1.1s ease-in-out;
+  -webkit-transition: all 1.1s ease-in-out;
+  -moz-transition: all 1.1s ease-in-out;
+  -ms-transition: all 1.1s ease-in-out;
+  -o-transition: all 1.1s ease-in-out;
 }
-.profile_img img {
-  height: 250px;
-  width: 18%;
-}
-.profile_img .upload_img {
-  cursor: pointer;
-  color: #343a40;
+.profile_img .upload_img .upload_icon_img {
+  font-size: 2.2rem;
   position: absolute;
-  top: 87%;
-  right: 47.25%;
+  top: 5rem;
+  right: 34%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+}
+.profile_img .upload_img img:hover, .profile_img .upload_img img:focus {
+  height: 25vh;
+  width: 15%;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
 }
 
 /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
@@ -2279,17 +2374,24 @@ a {
   .main .cart_shopping .discount_code_accordion .ads_img {
     display: none;
   }
+  .main .log_in .log_in_bg .login_title h5 {
+    width: 70% !important;
+  }
   .main .log_in .log_in_bg .reg-title h5 {
     width: 70% !important;
   }
-  .main .log_in .log_in_bg .profile_img img {
+  .main .log_in .log_in_bg .profile_img .upload_img img {
     width: 55%;
     height: 180px;
   }
-  .main .log_in .log_in_bg .profile_img .upload_img {
-    top: 86%;
-    right: 40%;
-    font-size: 0.7rem;
+  .main .log_in .log_in_bg .profile_img .upload_img .upload_icon_img {
+    top: 5rem;
+    right: 37%;
+    font-size: 1.5rem;
+  }
+  .main .log_in .log_in_bg .profile_img .upload_img img:hover, .main .log_in .log_in_bg .profile_img .upload_img img:focus {
+    margin-bottom: 0;
+    margin-left: 0;
   }
   .main .log_in .log_in_bg form .all_forms {
     margin: 0 auto;
@@ -2344,23 +2446,29 @@ a {
   .main .choose-address .card-body button {
     width: 100% !important;
   }
-  .main .my_profile .my_profile_bg .my_profile_title h3 {
-    width: 49%;
+  .main .my_profile .my_profile_bg .my_profile_title h5 {
+    width: 70% !important;
   }
   .main .my_profile .my_profile_bg .my_profile_title .change_title {
-    width: 80%;
+    width: 85% !important;
+    font-size: 1.5rem;
   }
   .main .my_profile .my_profile_bg .no_padding_mobile {
     padding-right: 5px;
     padding-left: 5px;
   }
-  .main .my_profile .my_profile_bg .profile_img img {
-    width: 62%;
-    height: 215px;
+  .main .my_profile .my_profile_bg .profile_img .upload_img img {
+    width: 55%;
+    height: 180px;
   }
-  .main .my_profile .my_profile_bg .profile_img .upload_img {
-    right: 39%;
-    font-size: 12px;
+  .main .my_profile .my_profile_bg .profile_img .upload_img .upload_icon_img {
+    top: 5rem;
+    right: 37%;
+    font-size: 1.5rem;
+  }
+  .main .my_profile .my_profile_bg .profile_img .upload_img img:hover, .main .my_profile .my_profile_bg .profile_img .upload_img img:focus {
+    margin-bottom: 0;
+    margin-left: 0;
   }
   .main .my_profile .my_profile_bg .profile_accordion .input-group,
 .main .my_profile .my_profile_bg .address_accordion .input-group,
@@ -2377,6 +2485,8 @@ a {
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-body {
     padding: 5px 5px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-body .table_title {
     width: 50%;
@@ -2394,9 +2504,15 @@ a {
   .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image {
     width: 75%;
   }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:hover, .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:focus {
+    width: 90%;
+  }
   .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .currency_shortcuts {
     float: left;
     margin-right: 3px;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:hover, .main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:focus {
+    font-size: 1.25rem;
   }
   .main .your_comments form .col-12 {
     padding-left: 0 !important;
@@ -2917,17 +3033,24 @@ a {
   .main .cart_shopping .discount_code_accordion .ads_img {
     display: none;
   }
+  .main .log_in .log_in_bg .login_title h5 {
+    width: 70% !important;
+  }
   .main .log_in .log_in_bg .reg-title h5 {
     width: 70% !important;
   }
-  .main .log_in .log_in_bg .profile_img img {
+  .main .log_in .log_in_bg .profile_img .upload_img img {
     width: 50%;
     height: 180px;
   }
-  .main .log_in .log_in_bg .profile_img .upload_img {
-    top: 86%;
-    right: 41%;
-    font-size: 0.7rem;
+  .main .log_in .log_in_bg .profile_img .upload_img .upload_icon_img {
+    top: 5rem;
+    right: 37%;
+    font-size: 1.7rem;
+  }
+  .main .log_in .log_in_bg .profile_img .upload_img img:hover, .main .log_in .log_in_bg .profile_img .upload_img img:focus {
+    margin-bottom: 0;
+    margin-left: 0;
   }
   .main .log_in .log_in_bg form .all_forms {
     margin: 0 auto;
@@ -2982,23 +3105,29 @@ a {
   .main .choose-address .card-body button {
     width: 100% !important;
   }
-  .main .my_profile .my_profile_bg .my_profile_title h3 {
-    width: 49%;
+  .main .my_profile .my_profile_bg .my_profile_title h5 {
+    width: 70% !important;
   }
   .main .my_profile .my_profile_bg .my_profile_title .change_title {
-    width: 80%;
+    width: 90% !important;
+    font-size: 1.75rem;
   }
   .main .my_profile .my_profile_bg .no_padding_mobile {
     padding-right: 5px;
     padding-left: 5px;
   }
-  .main .my_profile .my_profile_bg .profile_img img {
-    width: 62%;
-    height: 215px;
+  .main .my_profile .my_profile_bg .profile_img .upload_img img {
+    width: 50%;
+    height: 180px;
   }
-  .main .my_profile .my_profile_bg .profile_img .upload_img {
-    right: 39%;
-    font-size: 12px;
+  .main .my_profile .my_profile_bg .profile_img .upload_img .upload_icon_img {
+    top: 5rem;
+    right: 37%;
+    font-size: 1.7rem;
+  }
+  .main .my_profile .my_profile_bg .profile_img .upload_img img:hover, .main .my_profile .my_profile_bg .profile_img .upload_img img:focus {
+    margin-bottom: 0;
+    margin-left: 0;
   }
   .main .my_profile .my_profile_bg .profile_accordion .input-group,
 .main .my_profile .my_profile_bg .address_accordion .input-group,
@@ -3010,19 +3139,13 @@ a {
 .main .my_profile .my_profile_bg .password_accordion button.btn {
     width: 100% !important;
   }
-  .main .my_profile .my_profile_bg .profile_accordion button.btn_save:hover, .main .my_profile .my_profile_bg .profile_accordion button.btn_save:focus,
-.main .my_profile .my_profile_bg .address_accordion button.btn_save:hover,
-.main .my_profile .my_profile_bg .address_accordion button.btn_save:focus,
-.main .my_profile .my_profile_bg .password_accordion button.btn_save:hover,
-.main .my_profile .my_profile_bg .password_accordion button.btn_save:focus {
-    background-color: #dae0e5 !important;
-    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
-  }
   .main .my_profile .my_profile_bg .accordion_add {
     padding: 8px;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-body {
     padding: 5px 5px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-body .table_title {
     width: 50%;
@@ -3040,9 +3163,15 @@ a {
   .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image {
     width: 75%;
   }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:hover, .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:focus {
+    width: 90%;
+  }
   .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .currency_shortcuts {
     float: left;
     margin-right: 3px;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:hover, .main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:focus {
+    font-size: 1.25rem;
   }
   .main .your_comments form .col-12 {
     padding-left: 0 !important;
@@ -3403,25 +3532,6 @@ a {
   bottom: -8px;
   left: -8px;
   opacity: 1;
-}
-
-/* Icon Spin */
-.hvr-icon-spin {
-  transition: all 1.1s linear;
-  -webkit-transition: all 1.1s linear;
-  -moz-transition: all 1.1s linear;
-  -ms-transition: all 1.1s linear;
-  -o-transition: all 1.1s linear;
-}
-
-.hvr-icon-spin:hover,
-.hvr-icon-spin:focus,
-.hvr-icon-spin:active {
-  transform: rotate(-360deg);
-  -webkit-transform: rotate(-360deg);
-  -moz-transform: rotate(-360deg);
-  -ms-transform: rotate(-360deg);
-  -o-transform: rotate(-360deg);
 }
 
 /* Float */

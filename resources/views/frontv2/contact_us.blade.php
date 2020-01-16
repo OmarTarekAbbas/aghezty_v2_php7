@@ -19,17 +19,17 @@
 <!-- end header-->
 
 <!-- main content -->
-<div class="main">
+<div class="main p-0">
 	<div class="mobile_views">
 		<h2 class="text-center mt-4">Contact Us</h2>
-		<div class="call-center w-100 m-auto p-3">
+		<div class="call-center w-100 m-auto p-3 hvr-wobble-to-bottom-right">
 			<a href="tel:1999">
 				<span class="font-weight-bold">1999</span>
 				<i class="fas fa-phone fa-2x"></i>
 			</a>
 		</div>
 
-		<div class="call-center w-100 m-auto p-3">
+		<div class="call-center w-100 m-auto p-3 hvr-wobble-to-bottom-right">
 			<a href="mailto:info@aghzty.com9">
 				<span class="font-weight-bold">info@aghzty.com</span>
 				<i class="far fa-envelope fa-2x"></i>
@@ -49,23 +49,23 @@
 			<form>
 				<div class="row m-0">
 					<div class="col-md-6 col-lg-6 col-xl-6 col-12">
-						<input type="text" class="form-control my-2" placeholder="Username">
+						<input type="text" class="form-control my-2 hvr-float" placeholder="Username">
 					</div>
 
 					<div class="col-md-6 col-lg-6 col-xl-6 col-12">
-						<input type="email" class="form-control my-2" placeholder="Email">
+						<input type="email" class="form-control my-2 hvr-float" placeholder="Email">
 					</div>
 
 					<div class="col-md-12 col-lg-12 col-xl-12 col-12">
-						<input type="tel" class="form-control my-2" placeholder="Phone">
+						<input type="tel" class="form-control my-2 hvr-float" placeholder="Phone">
 					</div>
 
 					<div class="col-12">
-						<textarea placeholder="Add Your Message" class="form-control w-100 my-2" name="" id="" cols="10" rows="5"></textarea>
+						<textarea placeholder="Add Your Message" class="form-control w-100 my-2 hvr-float" name="" id="" cols="10" rows="5"></textarea>
 					</div>
 
 					<div class="col-12">
-						<button class="btn btn-secondary w-100 my-2">Send</button>
+						<button class="btn btn-secondary w-100 my-2 hvr-wobble-to-bottom-right">Send</button>
 					</div>
 				</div>
 			</form>

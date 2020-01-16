@@ -17,10 +17,10 @@
 						<?php include 'upload_img.php'; ?>
 						<!-- End Upload Image -->
 
-						<div class="all_forms">
+						<div class="all_forms my-5">
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupNameReg">Name</label>
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-user"></i></div>
 									</div>
@@ -30,7 +30,7 @@
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupEmailReg">Email</label>
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text">
 											<i class="fas fa-at"></i>
@@ -42,7 +42,7 @@
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupPhoneReg">Phone</label>
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-phone"></i></div>
 									</div>
@@ -52,7 +52,7 @@
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupPasswordReg">Password</label>
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
 									</div>
@@ -62,7 +62,7 @@
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupConfirmPasswordReg">Confirm Password</label>
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
 									</div>
@@ -72,11 +72,11 @@
 
 
 							<div class="reg-title text-center mb-4">
-								<h5 class="text-capitalize m-auto w-25 border-bottom border-secondary">Address</h5>
+								<h5 class="text-capitalize m-auto w-75 border-bottom border-secondary">Address</h5>
 							</div>
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
 									</div>
@@ -90,7 +90,7 @@
 							</div>
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
-								<div class="input-group mb-2 m-auto w-50">
+								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
 									</div>
@@ -104,10 +104,10 @@
 							</div>
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
-								<div class="input-group mb-2">
-									<div class="input-group-prepend m-auto">
+								<div class="input-group w-75 m-auto">
+									<div class="input-group-prepend w-100 m-auto hvr-float">
 										<div class="input-group-text"><i class="fas fa-keyboard"></i></div>
-										<textarea name="" id="" cols="97" rows="5"></textarea>
+										<textarea class="w-100" name="" id="" cols="97" rows="5"></textarea>
 									</div>
 								</div>
 							</div>
@@ -122,7 +122,7 @@
 							</div>
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-12">
-								<button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-50 text-capitalize">Save</button>
+								<button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">Save</button>
 							</div>
 						</div>
 					</div>

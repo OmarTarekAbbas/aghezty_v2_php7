@@ -653,3 +653,79 @@ $(document).ready(function () {
 //   });
 // });
 /* End jQuery slide toggle menu */
+
+/* Start Typed JS  */
+// $(document).ready(function () {
+  var heavy_machines_title_typed = new Typed('#heavy_machines_title_typed', {
+    strings: ['Heavy Machines'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var shop_title1_typed = new Typed('#shop_title1_typed', {
+    strings: ['Shop By Price'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var light_machines_title_typed = new Typed('#light_machines_title_typed', {
+    strings: ['Light Machines'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var shop_title2_typed = new Typed('#shop_title2_typed', {
+    strings: ['Shop By Price'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var brands_title_typed = new Typed('#brands_title_typed', {
+    strings: ['Brands'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var shop_title3_typed = new Typed('#shop_title3_typed', {
+    strings: ['Shop By Price'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var recently_added_funnyText = new Typed('#recently_added_funnyText', {
+    strings: ['Recently Added'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+
+  var selected_fYou_funnyText = new Typed('#selected_fYou_funnyText', {
+    strings: ['Selected For You'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+// });
+/* End Typed JS */

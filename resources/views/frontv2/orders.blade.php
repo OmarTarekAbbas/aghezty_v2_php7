@@ -10,10 +10,6 @@
   .padding_right_newPassword {
     padding-right: 35px;
   }
-
-  .product_image {
-    width: 15%;
-  }
 </style>
 
 <div class="main mt-2">
@@ -22,8 +18,8 @@
       <div class="my_profile_bg rounded">
         <div class="row m-0">
           <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-            <div class="my_profile_title text-center my-2">
-              <h3 class="border-bottom border-secondary text-dark text-capitalize">My Orders</h3>
+            <div class="my_profile_title text-center my-3">
+              <h5 class="text-capitalize text-white m-auto w-25 border-bottom border-secondary">My Orders</h5>
             </div>
           </div>
 
@@ -58,7 +54,9 @@
                           <tr>
                             <th>Product Image</th>
                             <td>
-                              <img class="product_image" src="images/products/fridge_1.jpg" alt="fridge">
+                              <a href="inner-page.php">
+                                <img class="product_image hvr-outline-in" src="images/products/fridge_1.jpg" alt="fridge">
+                              </a>
                             </td>
                           </tr>
 
@@ -104,7 +102,9 @@
                           <tr>
                             <th>Product Image</th>
                             <td>
-                              <img class="product_image" src="images/products/fridge_2.jpg" alt="fridge">
+                              <a href="inner-page.php">
+                                <img class="product_image" src="images/products/fridge_2.jpg" alt="fridge">
+                              </a>
                             </td>
                           </tr>
 
@@ -141,24 +141,24 @@
                               <span class="total-items"></span> Order 1
                             </div>
 
-                            <div class="summary-subtotal">
+                            <div class="summary-subtotal hvr-float">
                               <div class="subtotal-title text-left w-50 float-left">Total Price</div>
                               <div class="subtotal-value final-value text-right w-50 float-right item-price">1450</div>
                             </div>
 
-                            <div class="summary-subtotal">
+                            <div class="summary-subtotal hvr-float">
                               <div class="subtotal-title text-left w-50 float-left">Shipping Amount</div>
                               <div class="subtotal-value final-value text-right w-50 float-right">50</div>
                             </div>
-                            <div class="summary-subtotal">
+                            <div class="summary-subtotal hvr-float">
                               <div class="subtotal-title text-left w-50 float-left"> Total Price After Shipping</div>
                               <div class="subtotal-value final-value text-right w-50 float-right item-total">1500</div>
                             </div>
-                            <div class="summary-subtotal">
+                            <div class="summary-subtotal hvr-float">
                               <div class="subtotal-title text-left w-50 float-left">My Addresses</div>
                               <div class="final-value text-right w-50 float-right">Nasrcity, Cairo, Egypt</div>
                             </div>
-                            <div class="summary-subtotal">
+                            <div class="summary-subtotal hvr-float">
                               <div class="subtotal-title text-left w-50 float-left">Status</div>
                               <div class="final-value text-right w-50 float-right">Pending</div>
                             </div>
@@ -200,7 +200,9 @@
                           <tr>
                             <th>Product Image</th>
                             <td>
-                              <img class="product_image" src="images/product8.jfif" alt="Mobile">
+                              <a href="inner-page.php">
+                                <img class="product_image" src="images/product8.jfif" alt="Mobile">
+                              </a>
                             </td>
                           </tr>
 
@@ -246,7 +248,9 @@
                           <tr>
                             <th>Product Image</th>
                             <td>
-                              <img class="product_image" src="images/products/4.jpg" alt="fridge">
+                              <a href="inner-page.php">
+                                <img class="product_image" src="images/products/4.jpg" alt="fridge">
+                              </a>
                             </td>
                           </tr>
 
@@ -292,7 +296,10 @@
                           <tr>
                             <th>Product Image</th>
                             <td>
-                              <img class="product_image" src="images/products/3.jpg" alt="fridge">
+                              <a href="inner-page.php">
+                                <img class="product_image" src="images/products/3.jpg" alt="fridge">
+
+                              </a>
                             </td>
                           </tr>
 

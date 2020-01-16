@@ -7,8 +7,8 @@
       <div class="my_profile_bg rounded">
         <div class="row m-0">
           <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-            <div class="my_profile_title text-center my-2">
-              <h3 class="border-bottom border-secondary text-dark text-capitalize">My Address</h3>
+            <div class="my_profile_title text-center my-3">
+              <h5 class="text-capitalize text-white m-auto w-25 border-bottom border-secondary">My Address</h5>
             </div>
           </div>
 
@@ -34,7 +34,7 @@
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                        <div class="input-group mb-2 m-auto w-75">
+                        <div class="input-group mb-2 m-auto w-75 hvr-float">
                           <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
@@ -48,7 +48,7 @@
                       </div>
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                        <div class="input-group mb-2 m-auto w-75">
+                        <div class="input-group mb-2 m-auto w-75 hvr-float">
                           <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
@@ -62,7 +62,7 @@
                       </div>
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                        <div class="input-group mb-2 w-75 m-auto">
+                        <div class="input-group mb-2 w-75 m-auto hvr-float">
                           <div class="input-group-prepend ">
                             <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
                             <textarea class="p-3 w-100" placeholder="My Address" cols="150" rows="2"></textarea>
@@ -71,7 +71,7 @@
                       </div>
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                        <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize">Save</button>
+                        <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">Save</button>
                       </div>
                     </div>
                   </div>
@@ -87,10 +87,11 @@
                       </button>
                     </h5>
                   </div>
+
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                        <div class="input-group mb-2 m-auto w-75">
+                        <div class="input-group mb-2 m-auto w-75 hvr-float">
                           <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
@@ -104,7 +105,7 @@
                       </div>
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                        <div class="input-group mb-2 m-auto w-75">
+                        <div class="input-group mb-2 m-auto w-75 hvr-float">
                           <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
@@ -118,7 +119,7 @@
                       </div>
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                        <div class="input-group mb-2 w-75 m-auto">
+                        <div class="input-group mb-2 w-75 m-auto hvr-float">
                           <div class="input-group-prepend ">
                             <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
                             <textarea class="p-3 w-100" placeholder="My Address" cols="150" rows="2"></textarea>
@@ -127,7 +128,7 @@
                       </div>
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                        <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize">Save</button>
+                        <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">Save</button>
                       </div>
                     </div>
                   </div>

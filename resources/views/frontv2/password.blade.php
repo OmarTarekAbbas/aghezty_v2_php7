@@ -18,8 +18,8 @@
       <div class="my_profile_bg rounded">
         <div class="row m-0">
           <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-            <div class="my_profile_title text-center my-2">
-              <h3 class="border-bottom border-secondary text-dark text-capitalize change_title">Change Password</h3>
+            <div class="my_profile_title text-center my-3">
+              <h3 class="text-capitalize text-white m-auto w-25 border-bottom border-secondary change_title">Change Password</h3>
             </div>
           </div>
 
@@ -27,7 +27,7 @@
             <form class="password_accordion w-100 my-3" action="">
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupOldPassword">Old Password</label>
-                <div class="input-group mb-2 m-auto w-75">
+                <div class="input-group mb-2 m-auto w-75 hvr-float">
                   <div class="input-group-prepend d-none d-sm-block">
                     <div class="input-group-text padding_right_oldPassword">Old Password</div>
                   </div>
@@ -40,7 +40,7 @@
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupNewPassword">New Password</label>
-                <div class="input-group mb-2 m-auto w-75">
+                <div class="input-group mb-2 m-auto w-75 hvr-float">
                   <div class="input-group-prepend d-none d-sm-block">
                     <div class="input-group-text padding_right_newPassword">New Password</div>
                   </div>
@@ -53,7 +53,7 @@
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupConfirmPassword">Confirm Password</label>
-                <div class="input-group mb-2 m-auto w-75">
+                <div class="input-group mb-2 m-auto w-75 hvr-float">
                   <div class="input-group-prepend d-none d-sm-block">
                     <div class="input-group-text">Confirm Password</div>
                   </div>
@@ -65,7 +65,7 @@
               </div>
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize">Save</button>
+                <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">Save</button>
               </div>
             </form>
           </div>

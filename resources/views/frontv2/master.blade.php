@@ -66,6 +66,8 @@
 @else
 	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
 @endif
+@else
+<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
 @endif
 
 </head>
@@ -408,44 +410,21 @@
                           <div class="row">
 
 					@foreach ($categorys as $category)
-
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+					@if($category->sub_cats->count() > 0)
+                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
                                   <strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
                                 </a>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">Dish Washers</a>
+						  @php
+						  $count = $category->sub_cats->count();
+						  $limit = $count/2;
+						  @endphp
+						  @foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
+						  <li>
+                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
                                 </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Hobs">Hobs</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="B - in">B-In</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Ovens">Ovens</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Bult-In Washer Dryers">Bult-In Washer Dryers</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Dryers">Dryers</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Washing Machines">Washing Machines</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Washer Dryers">Washer Dryers</a>
-                                </li>
+						  @endforeach
                               </ul>
                             </div>
         
@@ -455,38 +434,17 @@
                                   <strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
                                 </a>
         
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Fridges">Fridges</a>
+						  @foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
+						  <li>
+                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
                                 </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Freezers">Freezers</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="TV">TV</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Cookers">Cookers</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Air Conditioner">Air Conditioner</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Kitchen Ventilating Fan">Kitchen Ventilating Fan</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Kitchen Cooker Hood">Kitchen Cooker Hood</a>
-                                </li>
+						  @endforeach
         
                               </ul>
 					   </div>
+					   @endif
 					   @endforeach
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+                            {{-- <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
                                   <strong class="font-weight-bold border-bottom">Light Machines</strong>
@@ -588,8 +546,13 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-        
+                    </div> --}}
+	   
+				
+				@php
+					$brands = brands();
+				@endphp
+				
                     <div class="col-md-6 col-xl-3 col-12">
                       <div class="block block_brand_content">
                         <div class="block_title mb-3">

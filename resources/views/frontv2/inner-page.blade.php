@@ -50,13 +50,13 @@
 			<div class="col-lg-6 col-12">
 				<div class="row">
 					<div class="col-md-3 d-none d-sm-block">
-						<div class="c-slide border btn bg-white my-1">
+						<div class="c-slide hvr-outline-in border btn bg-white my-1">
 							<p data-target="#carouselExampleControls" data-slide-to="0" class="active">
 								<img class="w-100 d-block" src="images/products/fridge_1.jpg" />
 							</p>
 						</div>
 
-						<div class="c-slide border btn btn bg-white my-1">
+						<div class="c-slide hvr-outline-in border btn btn bg-white my-1">
 							<p data-target="#carouselExampleControls" data-slide-to="1">
 								<img class="w-100 d-block" src="images/products/fridge_2.jpg" />
 							</p>
@@ -98,6 +98,7 @@
 
 			<div class="info col-lg-6 w-100">
 				<div class="row">
+
 					<div class="features col-md-12">
 						<h5 class="font-weight-bold py-2">Key Features</h5>
 
@@ -111,20 +112,6 @@
 								<p class="d-inline-block px-1">BUILT IN WASHER DRYERS-Ariston-BHWD 125 GCC</p>
 						</div>
 
-						<!-- <div>
-              <h5 class="font-weight-bold d-inline-block">Cooling Type:</h6>
-                <p class="d-inline-block px-1">No Frost</p>
-						</div>
-
-            <div>
-              <h5 class="font-weight-bold d-inline-block">Number Of Doors:</h6>
-                <p class="d-inline-block px-1">2</p>
-						</div>
-
-            <div>
-              <h5 class="font-weight-bold d-inline-block">Total Capacity In Litres:</h6>
-                <p class="d-inline-block px-1">328 Liters</p>
-			</div> -->
 						<div>
 							<h6 class="font-weight-bold d-inline-block">Availability:</h6>
 							<p class="d-inline-block px-1">In stock</p>
@@ -137,6 +124,22 @@
 								<span class="sale-product-icon">
 									<span class="testtt"></span>
 								</span>
+							</div>
+						</div>
+
+						<div class="contact_us w-100 text-left mb-3">
+							<div class="contact_us_head d-inline-block">
+								<h6 class="text-left text-capitalize font-weight-bold">Contact Us: </h6>
+							</div>
+
+							<div class="rounded-social-buttons d-inline-block">
+								<a class="social-button phone_link" href="tel:+20111682831" title="Phone Number">
+									<i class="fas fa-phone phone_icon"></i>
+								</a>
+
+								<a class="social-button whatsapp_link" href="whatsapp://send?abid=+20111682831&text=Hello%2C%20World!" title="Whatsapp">
+									<i class="fab fa-whatsapp whatsapp_icon"></i>
+								</a>
 							</div>
 						</div>
 
@@ -165,7 +168,7 @@
             <p class="text-danger m-2 font-weight-bold"><i class="fa fa-heart"></i> ADD TO WISHLIST</p>
 					</div> -->
 
-					<div class="rounded-social-buttons m-auto">
+					<div class="rounded-social-buttons w-100 text-center">
 						<a class="social-button facebook_link" href="https://www.facebook.com/" target="_blank" title="Facebook">
 							<i class="fab fa-facebook-f facebook_icon"></i>
 						</a>
@@ -186,7 +189,7 @@
 							<i class="fab fa-instagram instagram_icon"></i>
 						</a> -->
 
-						<a class="social-button phone_link" href="tel:+20233047920" title="Phone Number">
+						<a class="social-button phone_link" href="tel:+20111682831" title="Phone Number">
 							<i class="fas fa-phone phone_icon"></i>
 						</a>
 					</div>
@@ -438,13 +441,13 @@
 	<section class="based_selection">
 		<div class="mobile_views mt-5">
 			<div class="table_desc_title">
-				<h6 class="font-weight-bold">BASED ON YOUR SELECTION YOU MAY ALSO LIKE</h6>
+				<h6 class="font-weight-bold d-inline-block text-uppercase" id="based_selection_typed"></h6>
 			</div>
 
 			<div class="border-bottom w-100"></div>
 			<div class="row  mt-3">
 				<div class="col-md-2 col-6 mb-3">
-					<div class="content_view px-2 h-100 bg-white">
+					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
 							<img src="images/download.jfif" alt="Product" class="w-100">
 
@@ -471,7 +474,7 @@
 				</div>
 
 				<div class="col-md-2 col-6 mb-3">
-					<div class="content_view px-2 h-100 bg-white">
+					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
 							<img src="images/product2.webp" alt="Product" class="w-100">
 
@@ -498,7 +501,7 @@
 				</div>
 
 				<div class="col-md-2 col-6 mb-3">
-					<div class="content_view px-2 h-100 bg-white">
+					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
 							<img src="images/product3.webp" alt="Product" class="w-100">
 
@@ -532,7 +535,7 @@
 				</div>
 
 				<div class="col-md-2 col-6 mb-3">
-					<div class="content_view px-2 h-100 bg-white">
+					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
 							<img src="images/product3.webp" alt="Product" class="w-100">
 
@@ -558,7 +561,7 @@
 				</div>
 
 				<div class="col-md-2 col-6 mb-3">
-					<div class="content_view px-2 h-100 bg-white">
+					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
 							<img src="images/download.jfif" alt="Product" class="w-100">
 
@@ -585,7 +588,7 @@
 				</div>
 
 				<div class="col-md-2 col-6 mb-3">
-					<div class="content_view px-2 h-100 bg-white">
+					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
 							<img src="images/product2.webp" alt="Product" class="w-100">
 
@@ -619,7 +622,7 @@
 			<div class="row mt-5">
 				<div class="col-md-6">
 					<div class="review_title">
-						<h4 class="text-capitalize">Reviews</h4>
+						<h4 class="text-capitalize d-inline-block" id="review_comment_title_typed">Reviews</h4>
 					</div>
 
 					<div class="review-area my-3">
@@ -651,7 +654,7 @@
 
 				<div class="col-md-6" id="review">
 					<div class="review_title">
-						<h4 class="text-capitalize">Write Your Own Review</h4>
+						<h4 class="text-capitalize d-inline-block" id="review_title3_title_typed"></h4>
 					</div>
 
 					<p style="color: #777;">How do you rate this product? *</p>
@@ -704,7 +707,7 @@
 							<textarea type="text" placeholder="Description of Your Review" cols="5" rows="3" class="form-control"></textarea>
 						</label>
 
-						<button class="btn btn-primary" style="float: right;margin-top: 11px;">Submit Review</button>
+						<button class="btn btn-primary hvr-wobble-to-bottom-right" style="float: right;margin-top: 11px;">Submit Review</button>
 					</form>
 				</div>
 			</div>
@@ -712,6 +715,37 @@
 	</section>
 </div>
 
+
+
 <!-- Start Footer -->
 <?php include 'footer.php'; ?>
 <!-- End Footer -->
+
+<script>
+	var based_selection_typed = new Typed('#based_selection_typed', {
+		strings: ['BASED ON YOUR SELECTION YOU MAY ALSO LIKE'],
+		typeSpeed: 150,
+		backSpeed: 0,
+		fadeOut: true,
+		smartBackspace: true, // this is a default
+		loop: true
+	});
+
+	var review_comment_title_typed = new Typed('#review_comment_title_typed', {
+		strings: ['Reviews'],
+		typeSpeed: 150,
+		backSpeed: 0,
+		fadeOut: true,
+		smartBackspace: true, // this is a default
+		loop: true
+	});
+
+	var review_title3_title_typed = new Typed('#review_title3_title_typed', {
+		strings: ['Write Your Own Review'],
+		typeSpeed: 150,
+		backSpeed: 0,
+		fadeOut: true,
+		smartBackspace: true, // this is a default
+		loop: true
+	});
+</script>
