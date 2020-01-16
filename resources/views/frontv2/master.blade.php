@@ -34,6 +34,7 @@
 	}
 </style>
 @yield('style')
+
 <head>
 	<title>Aghezty V2</title>
 	<meta charset="utf-8">
@@ -54,21 +55,19 @@
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
 	<link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
-	<!-- funnyText -->
-	<link rel="stylesheet" href="{{url('public/frontv2/css/jquery.funnyText.css')}}">
 	<!-- hover -->
 	<!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
 	<link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
 
-@if (\Session::has('applocale'))
-@if (\Session::get('applocale') == 'ar')
+	@if (\Session::has('applocale'))
+	@if (\Session::get('applocale') == 'ar')
 	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
-@else
+	@else
 	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
-@endif
-@else
-<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
-@endif
+	@endif
+	@else
+	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
+	@endif
 
 </head>
 
@@ -139,8 +138,8 @@
 									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block type_anime{{$category->id}}" id="heavy_machines_title_typed"></h6>
 									<ul class="list-unstyled">
 										@php
-										    $count = $category->sub_cats->count();
-										    $limit = $count/2;
+										$count = $category->sub_cats->count();
+										$limit = $count/2;
 										@endphp
 										@foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
 
@@ -151,7 +150,7 @@
 										@endforeach
 									</ul>
 								</div>
-								
+
 								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mt-4">
 									<!-- <h6 class="sub-title text-uppercase font-weight-bold white-text ">Heavy Machines</h6> -->
 									<ul class="list-unstyled">
@@ -162,12 +161,12 @@
 										@endforeach
 									</ul>
 								</div>
-								
+
 								<div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
 									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title{{$category->id}}_typed"></h6>
 
 									<ul class="list-unstyled">
-										
+
 										<li>
 											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
 										</li>
@@ -183,7 +182,7 @@
 										<li>
 											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
 										</li>
-										
+
 									</ul>
 								</div>
 							</div>
@@ -206,8 +205,8 @@
 									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="brands_title_typed"></h6>
 									<ul class="list-unstyled">
 										@php
-										    $count = $brands->count();
-										    $limit = $count/2;
+										$count = $brands->count();
+										$limit = $count/2;
 										@endphp
 										@foreach ($brands->slice(0, $limit) as $item)
 										<li>
@@ -390,154 +389,154 @@
 				</div>
 			</div>
 		</div>
-     </div>
-     
-     @yield('content')
+	</div>
 
-     <footer class="footer_footer">
-          <div class="footer_content">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12 col-xl-12 col-12">
-                  <div class="row">
-                    <div class="col-md-12 col-xl-6 col-12">
-                      <div class="block">
-                        <div class="block_title mb-3">
-                          <strong>Shop By Category</strong>
-                        </div>
-        
-                        <div class="block_content">
-                          <div class="row">
+	@yield('content')
 
-					@foreach ($categorys as $category)
-					@if($category->sub_cats->count() > 0)
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
-                                </a>
-						  @php
-						  $count = $category->sub_cats->count();
-						  $limit = $count/2;
-						  @endphp
-						  @foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
-						  <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
-                                </li>
-						  @endforeach
-                              </ul>
-                            </div>
-        
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
-                                </a>
-        
-						  @foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
-						  <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
-                                </li>
-						  @endforeach
-        
-                              </ul>
-					   </div>
-					   @endif
-					   @endforeach
-                            {{-- <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+	<footer class="footer_footer">
+		<div class="footer_content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-xl-12 col-12">
+						<div class="row">
+							<div class="col-md-12 col-xl-6 col-12">
+								<div class="block">
+									<div class="block_title mb-3">
+										<strong>Shop By Category</strong>
+									</div>
+
+									<div class="block_content">
+										<div class="row">
+
+											@foreach ($categorys as $category)
+											@if($category->sub_cats->count() > 0)
+											<div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+												<ul class="list-unstyled ul_links">
+													<a href="#0">
+														<strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
+													</a>
+													@php
+													$count = $category->sub_cats->count();
+													$limit = $count/2;
+													@endphp
+													@foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
+													<li>
+														<a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+													</li>
+													@endforeach
+												</ul>
+											</div>
+
+											<div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+												<ul class="list-unstyled ul_links">
+													<a href="#0">
+														<strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
+													</a>
+
+													@foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
+													<li>
+														<a class="hvr-icon-forward" href="#0" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+													</li>
+													@endforeach
+
+												</ul>
+											</div>
+											@endif
+											@endforeach
+											{{-- <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
                                   <strong class="font-weight-bold border-bottom">Light Machines</strong>
                                 </a>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Microwaves">Microwaves</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Coffee &amp; Espresso Makers">Coffee &amp; Espresso Makers</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Electric Kettle">Electric Kettle</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Food Steamer">Food Steamer</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Air Fryer">Air Fryer</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Table Grill">Table Grill</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Sandwich Maker">Sandwich Maker</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Blenders">Blenders</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="PowerLife Bagged">PowerLife Bagged</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Collection Salad Maker">Collection Salad Maker</a>
                                 </li>
                               </ul>
                             </div>
-        
+
                             <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
                                   <strong class="font-weight-bold border-bottom invisible">Light Machines</strong>
                                 </a>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Microwaves">Iron</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Water Dispenser">Water Dispenser</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Water Heater">Water Heater</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Oil Heater">Oil Heater</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Fans">Fans</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Wall Clock">Wall Clock</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Portable Hot Plate">Portable Hot Plate</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Sound Bar">Sound Bar</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Home Theater">Home Theater</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="Shake System">Shake System</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="hvr-icon-forward" href="#0" title="One Box Entertainment">One Box Entertainment</a>
                                 </li>
@@ -547,262 +546,253 @@
                         </div>
                       </div>
                     </div> --}}
-	   
-				
-				@php
-					$brands = brands();
-				@endphp
-				
-                    <div class="col-md-6 col-xl-3 col-12">
-                      <div class="block block_brand_content">
-                        <div class="block_title mb-3">
-                          <strong>Shop By Brand</strong>
-                        </div>
-        
-                        <div class="block_content">
-                          <div class="row">
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom">Brands</strong>
-                                </a>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Ariston">Ariston</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Philips">Philips</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Samsung">Samsung</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="LG">LG</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Sharp">Sharp</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Toshiba">Toshiba</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Tornado">Tornado</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Hover">Hover</a>
-                                </li>
-                              </ul>
-                            </div>
-        
-                            <div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
-                              <ul class="list-unstyled ul_links">
-                                <a href="#0">
-                                  <strong class="font-weight-bold border-bottom invisible">Brands</strong>
-                                </a>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Candy">Candy</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Sony">Sony</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="La Germania">La Germania</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Mienta">Mienta</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Elba">Elba</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="Franke">Franke</a>
-                                </li>
-        
-                                <li>
-                                  <a class="hvr-icon-forward" href="#0" title="I Cook">I Cook</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="mobile_center col-md-6 col-xl-3 col-12">
-                      <div class="block">
-                        <div class="block_title mb-2">
-                          <strong>Important Links</strong>
-                        </div>
-        
-                        <div class="block_content">
-                          <div class="row">
-                            <div class="col-xl-12 col-12">
-                              <ul class="list-unstyled ul_links">
-                                <li>
-                                  <a class="text-capitalize hvr-icon-forward" href="contact_us.php" title="Contact Us">Contact Us</a>
-                                </li>
-        
-                                <li>
-                                  <a class="text-capitalize hvr-icon-forward" href="maintenance.php" title="Maintenance">Maintenance</a>
-                                </li>
-                              </ul>
-                            </div>
-        
-                            <div class="col-xl-12 col-12">
-                              <div class="block_title mb-3">
-                                <strong>Find Us On</strong>
-                              </div>
-        
-                              <div class="block_content">
-                                <div class="row">
-                                  <div class="col-xl-6 col-6">
-                                    <a class="app-icon" href="https://play.google.com/store" title="Google Play">
-                                      <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/google-play.svg')}}" alt="Google Play">
-                                    </a>
-                                  </div>
-        
-                                  <div class="col-xl-6 col-6">
-                                    <a class="app-icon" href="https://www.apple.com/ios/app-store/" title="Google Play">
-                                      <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/app-store.svg')}}" alt="App Store">
-                                    </a>
-                                  </div>
-        
-                                  <div class="col-sm-12 col-lg-12 col-xl-12">
-                                    <div class="rounded-social-buttons text-center my-3">
-                                      <a class="social-button facebook_link" title="Facebook" href="https://www.facebook.com/" target="_blank">
-                                        <i class="fab fa-facebook-f facebook_icon"></i>
-                                      </a>
-        
-                                      <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?abid=phonenumber&text=Hello%2C%20World!">
-                                        <i class="fab fa-whatsapp whatsapp_icon"></i>
-                                      </a>
-        
-                                      <a class="social-button phone_link" title="Phone Number" href="tel:+20111682831">
-                                        <i class="fas fa-phone phone_icon"></i>
-                                      </a>
-        
-                                      <a class="social-button sms_link" title="Messege" href="sms:123">
-                                        <i class="far fa-comment sms_icon"></i>
-                                      </a>
-        
-                                      <a class="social-button mail_link" title="Email" href="mailto:mailto:info@aghzty.com">
-                                        <i class="fas fa-envelope mail_icon"></i>
-                                      </a>
-                                    </div>
-                                  </div>
-        
-                                  <div class="col-sm-12 col-lg-12 col-xl-12">
-                                    <div class="payment_methods text-center">
-                                      <img class="w-50" src="{{url('public/frontv2/images/payment-icons.png')}}" alt="Visa">
-                                    </div>
-                                  </div>
-        
-                                  <div class="col-sm-12 col-xl-12">
-                                    <div class="hotline mt-2 text-center">
-                                      <strong>Telephone</strong>
-                                      <a class="d-block" href="tel:+20233047920" title="Phone number">
-                                        <strong>0233047920</strong>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-        
-                  <div class="row">
-                    <div class="col-sm-12 col-xl-12">
-                      <div class="block_bottom">
-                        <div class="row">
-                          <div class="col-sm-8 col-xl-12 text-right">
-                            <address>Aghezty.com 2019 ©. All Rights Reserved.</address>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <!-- Scroll Up -->
-          <a class="rounded" href="javascript:" id="return-to-top">
-            <i class="fas fa-chevron-up"></i>
-          </a>
-        </footer>
-        
-        <!-- script -->
-        <!-- jQuery JS -->
-        <script src="{{url('public/frontv2/js/jquery-3.3.1.min.js')}}"></script>
-        <!-- Bootstrap Popper JS -->
-        <script src="{{url('public/frontv2/js/popper.min.js')}}"></script>
-        <!-- Bootstrap JS -->
-        <!-- <script src="js/bootstrap.min.js"></script> -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <!-- Easy Zoom JS -->
-        <script src="{{url('public/frontv2/js/easyzoom.js')}}"></script>
-        <!-- owl carousel JS -->
-        <script src="{{url('public/frontv2/js/owl.carousel.min.js')}}"></script>
-        <!-- funnyText JS -->
-        <script src="{{url('public/frontv2/js/jquery.funnyText.min.js')}}"></script>
-        <!-- typed JS -->
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-        <!-- Script JS -->
-	   <script src="{{url('public/frontv2/js/script.js')}}"></script>
-		@foreach ($categorys as $category)
-		@if($category->sub_cats->count() > 0)
-		    
-		<script>
-			
-			$(document).ready(function() {
-
-				var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
-					strings: [$('.type_anime{{$category->id}}').parent().parent().parent().siblings('a').html()],
-					typeSpeed: 150,
-					backSpeed: 0,
-					fadeOut: true,
-					smartBackspace: true, // this is a default
-					loop: true
-				});
 
 
-				var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
-					strings: ['Shop By Price'],
-					typeSpeed: 150,
-					backSpeed: 0,
-					fadeOut: true,
-					smartBackspace: true, // this is a default
-					loop: true
-				});
+											@php
+											$brands = brands();
+											@endphp
 
+											<div class="col-md-6 col-xl-3 col-12">
+												<div class="block block_brand_content">
+													<div class="block_title mb-3">
+														<strong>Shop By Brand</strong>
+													</div>
 
+													<div class="block_content">
+														<div class="row">
+															<div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+																<ul class="list-unstyled ul_links">
+																	<a href="#0">
+																		<strong class="font-weight-bold border-bottom">Brands</strong>
+																	</a>
 
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Ariston">Ariston</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Philips">Philips</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Samsung">Samsung</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="LG">LG</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Sharp">Sharp</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Toshiba">Toshiba</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Tornado">Tornado</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Hover">Hover</a>
+																	</li>
+																</ul>
+															</div>
+
+															<div class="col-md-3 col-xl-3 col-6 pr-0 pl-0 no_padding_mobile">
+																<ul class="list-unstyled ul_links">
+																	<a href="#0">
+																		<strong class="font-weight-bold border-bottom invisible">Brands</strong>
+																	</a>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Candy">Candy</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Sony">Sony</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="La Germania">La Germania</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Mienta">Mienta</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Elba">Elba</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="Franke">Franke</a>
+																	</li>
+
+																	<li>
+																		<a class="hvr-icon-forward" href="#0" title="I Cook">I Cook</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="mobile_center col-md-6 col-xl-3 col-12">
+												<div class="block">
+													<div class="block_title mb-2">
+														<strong>Important Links</strong>
+													</div>
+
+													<div class="block_content">
+														<div class="row">
+															<div class="col-xl-12 col-12">
+																<ul class="list-unstyled ul_links">
+																	<li>
+																		<a class="text-capitalize hvr-icon-forward" href="contact_us.php" title="Contact Us">Contact Us</a>
+																	</li>
+
+																	<li>
+																		<a class="text-capitalize hvr-icon-forward" href="maintenance.php" title="Maintenance">Maintenance</a>
+																	</li>
+																</ul>
+															</div>
+
+															<div class="col-xl-12 col-12">
+																<div class="block_title mb-3">
+																	<strong>Find Us On</strong>
+																</div>
+
+																<div class="block_content">
+																	<div class="row">
+																		<div class="col-xl-6 col-6">
+																			<a class="app-icon" href="https://play.google.com/store" title="Google Play">
+																				<img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/google-play.svg')}}" alt="Google Play">
+																			</a>
+																		</div>
+
+																		<div class="col-xl-6 col-6">
+																			<a class="app-icon" href="https://www.apple.com/ios/app-store/" title="Google Play">
+																				<img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/app-store.svg')}}" alt="App Store">
+																			</a>
+																		</div>
+
+																		<div class="col-sm-12 col-lg-12 col-xl-12">
+																			<div class="rounded-social-buttons text-center my-3">
+																				<a class="social-button facebook_link" title="Facebook" href="https://www.facebook.com/" target="_blank">
+																					<i class="fab fa-facebook-f facebook_icon"></i>
+																				</a>
+
+																				<a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?abid=phonenumber&text=Hello%2C%20World!">
+																					<i class="fab fa-whatsapp whatsapp_icon"></i>
+																				</a>
+
+																				<a class="social-button phone_link" title="Phone Number" href="tel:+20111682831">
+																					<i class="fas fa-phone phone_icon"></i>
+																				</a>
+
+																				<a class="social-button sms_link" title="Messege" href="sms:123">
+																					<i class="far fa-comment sms_icon"></i>
+																				</a>
+
+																				<a class="social-button mail_link" title="Email" href="mailto:mailto:info@aghzty.com">
+																					<i class="fas fa-envelope mail_icon"></i>
+																				</a>
+																			</div>
+																		</div>
+
+																		<div class="col-sm-12 col-lg-12 col-xl-12">
+																			<div class="payment_methods text-center">
+																				<img class="w-50" src="{{url('public/frontv2/images/payment-icons.png')}}" alt="Visa">
+																			</div>
+																		</div>
+
+																		<div class="col-sm-12 col-xl-12">
+																			<div class="hotline mt-2 text-center">
+																				<strong>Telephone</strong>
+																				<a class="d-block" href="tel:+20233047920" title="Phone number">
+																					<strong>0233047920</strong>
+																				</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-12 col-xl-12">
+												<div class="block_bottom">
+													<div class="row">
+														<div class="col-sm-8 col-xl-12 text-right">
+															<address>Aghezty.com 2019 ©. All Rights Reserved.</address>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Scroll Up -->
+						<a class="rounded" href="javascript:" id="return-to-top">
+							<i class="fas fa-chevron-up"></i>
+						</a>
+	</footer>
+
+	<!-- script -->
+	<!-- jQuery JS -->
+	<script src="{{url('public/frontv2/js/jquery-3.3.1.min.js')}}"></script>
+	<!-- Bootstrap Popper JS -->
+	<script src="{{url('public/frontv2/js/popper.min.js')}}"></script>
+	<!-- Bootstrap JS -->
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!-- Easy Zoom JS -->
+	<script src="{{url('public/frontv2/js/easyzoom.js')}}"></script>
+	<!-- owl carousel JS -->
+	<script src="{{url('public/frontv2/js/owl.carousel.min.js')}}"></script>
+	<!-- typed JS -->
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+	<!-- Script JS -->
+	<script src="{{url('public/frontv2/js/script.js')}}"></script>
+	@foreach ($categorys as $category)
+	@if($category->sub_cats->count() > 0)
+
+	<script>
+		$(document).ready(function() {
+			var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
+				strings: [$('.type_anime{{$category->id}}').parent().parent().parent().siblings('a').html()],
+				typeSpeed: 150,
+				backSpeed: 0,
+				fadeOut: true,
+				smartBackspace: true, // this is a default
+				loop: true
 			});
 
-		</script>
+			var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
+				strings: ['Shop By Price'],
+				typeSpeed: 150,
+				backSpeed: 0,
+				fadeOut: true,
+				smartBackspace: true, // this is a default
+				loop: true
+			});
+		});
+	</script>
 
-		@endif
-		@endforeach
+	@endif
+	@endforeach
 
-		<script>
+	<script>
 		var heavy_machines_title_typed = new Typed("#brands_title_typed", {
 			strings: [$('#brands_title_typed').parent().parent().parent().siblings('a').html()],
 			typeSpeed: 150,
@@ -820,9 +810,9 @@
 			smartBackspace: true, // this is a default
 			loop: true
 		});
-		</script>
+	</script>
 
-        @yield('script')
-        </body>
-        
-        </html>
+	@yield('script')
+</body>
+
+</html>

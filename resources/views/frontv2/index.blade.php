@@ -1,34 +1,36 @@
 @extends('frontv2.master')
 
 @section('style')
-    <style>
-      .hovertitle{
-        opacity: 0;
-        position: absolute;
-        background-color: black;
-        height: 100%;
-        width: 100%;
-        align-self: center;
-        text-align: center;
-        top: 0;
-        left: 0;
-        padding-top: 30%;
-        color: #fff;
-        transition: all 1s;
-      }
-      .hoverabley:hover .hovertitle{
-        opacity: 0.7;
-      }
-      .choose_category_form{
-        transition: all 1s;
-      }
-      .hovertitle p{
-        font-weight: bold;
-        opacity: 1 !important;
-        text-shadow: 0px 0px 10px white
-      }
+<style>
+  .hovertitle {
+    opacity: 0;
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    top: 0;
+    left: 0;
+    padding-top: 30%;
+    color: #fff;
+    transition: all 1s;
+  }
 
-    </style>
+  .hoverabley:hover .hovertitle {
+    opacity: 0.7;
+  }
+
+  .choose_category_form {
+    transition: all 1s;
+  }
+
+  .hovertitle p {
+    font-weight: bold;
+    opacity: 1 !important;
+    text-shadow: 0px 0px 10px white
+  }
+</style>
 @endsection
 
 @section('content')
@@ -142,7 +144,7 @@
       </div>
 
       @if(count($ads) > 3)
-          
+
       <div class="row d-none d-sm-block">
         <div class="col-md-12 col-xl-12 col-12">
           <a href="{{$ads[3]->ads_url}}">
@@ -286,7 +288,7 @@
         @endif
 
       </div>
-      
+
       @endif
     </div>
   </section>
@@ -306,40 +308,40 @@
 
         <div class="row">
 
-          {{--  --}}
+          {{-- --}}
           @foreach ($recently_added as $item)
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto">
-                
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 d-block m-auto">
+
                 <div class="mt-1">
                   <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
               @if ($item->price_after_discount >0)
-                  
+
               <div class="price-box">
                 <span class="regular-price">
                   <span class="price">{{$item->price_after_discount}} EGP</span>
                 </span>
-                
+
                 <p class="old-price">
                   <span class="price">
                     {{$item->price}} EGP</span>
                 </p>
               </div>
-                @else
-                <div class="price-box">
-                  <span class="regular-price">
-                    <span class="price">{{$item->price}} EGP</span>
-                  </span>
-                </div>
-                @endif
+              @else
+              <div class="price-box">
+                <span class="regular-price">
+                  <span class="price">{{$item->price}} EGP</span>
+                </span>
               </div>
+              @endif
             </div>
-            @endforeach
-            {{--  --}}
+          </div>
+          @endforeach
+          {{-- --}}
 
         </div>
       </div>
@@ -350,13 +352,13 @@
     <div class="mobile_views">
       <div class="row no_margin">
 
-        {{--  --}}
+        {{-- --}}
         @foreach ($homepage_cat as $item)
-            
+
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
-            <a class="hoverabley" href="{{url('clients/products?sub_category_id='.$item->id)}}">
-              <div class="hovertitle">
+            <a class="hoverabley " href="{{url('clients/products?sub_category_id='.$item->id)}}">
+              <div class="hovertitle rounded">
                 <p>{{$item->getTranslation('title',getCode())}}</p>
               </div>
               <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
@@ -365,7 +367,7 @@
         </div>
 
         @endforeach
-        {{--  --}}
+        {{-- --}}
 
       </div>
     </div>
@@ -385,47 +387,72 @@
         </div>
 
         <div class="row">
-          {{--  --}}
+          {{-- --}}
           @foreach ($selected_for_you as $item)
-              
+
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto">
-                
+
                 <div>
                   <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
-              
+
               @if ($item->price_after_discount >0)
-                  
+
               <div class="price-box">
                 <span class="regular-price">
                   <span class="price">{{$item->price_after_discount}} EGP</span>
                 </span>
-                
+
                 <p class="old-price">
                   <span class="price">
                     {{$item->price}} EGP</span>
                 </p>
               </div>
-                @else
-                <div class="price-box">
-                  <span class="regular-price">
-                    <span class="price">{{$item->price}} EGP</span>
-                  </span>
-                </div>
-                @endif
+              @else
+              <div class="price-box">
+                <span class="regular-price">
+                  <span class="price">{{$item->price}} EGP</span>
+                </span>
+              </div>
+              @endif
             </div>
           </div>
 
           @endforeach
-          {{--  --}}
+          {{-- --}}
 
         </div>
       </div>
     </div>
   </section>
 </div>
+@endsection
+
+@section('script')
+
+<script>
+  $(document).ready(function() {
+    var recently_added_funnyTexty = new Typed(".recently_added_funnyTexty", {
+      strings: [$('.recently_added_funnyTexty').html()],
+      typeSpeed: 150,
+      backSpeed: 0,
+      fadeOut: true,
+      smartBackspace: true, // this is a default
+      loop: true
+    });
+
+    var selected_fYou_funnyTexty = new Typed(".selected_fYou_funnyTexty", {
+      strings: [$('.selected_fYou_funnyTexty').html()],
+      typeSpeed: 150,
+      backSpeed: 0,
+      fadeOut: true,
+      smartBackspace: true, // this is a default
+      loop: true
+    });
+  });
+</script>
 @endsection

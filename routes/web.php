@@ -33,6 +33,17 @@ Route::prefix('clients')->group(function() {
     Route::post('is_available','front\HomeController@is_available');
     Route::get('city/{id}','front\HomeController@get_city');
     Route::get('cart','front\HomeController@my_cart');
+
+    /* Start Baher Routes */
+    Route::get('cartv2',function(){
+        return view('frontv2.cart');
+    });
+
+    Route::get('myorder',function(){
+        return view('frontv2.myorder');
+    });
+    /* End Baher Routes */
+
     Route::post('cart','front\HomeController@store_cart');
     Route::get('update_cart','front\HomeController@update_cart');
     Route::get('delete_cart','front\HomeController@delete_cart');
