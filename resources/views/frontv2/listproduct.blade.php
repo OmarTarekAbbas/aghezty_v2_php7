@@ -517,7 +517,7 @@
       <!-- Start Image Cover -->
       <div class="col-md-10">
         <div class="list_cover">
-          <img class="w-100 " src="images/oppo.jfif" alt="Cover" title="Apple">
+          <img class="w-100 " src="{{url('public/frontv2/images/oppo.jfif')}}" alt="Cover" title="Apple">
         </div>
         <!-- End Image Cover -->
 

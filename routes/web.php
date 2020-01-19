@@ -50,6 +50,10 @@ Route::prefix('clients')->group(function() {
     Route::get('orders',function(){
         return view('frontv2.orders');
     });
+
+    Route::get('innerv2',function(){
+        return view('frontv2.inner-page');
+    });
     /* End Baher Routes */
 
     Route::post('cart','front\HomeController@store_cart');
