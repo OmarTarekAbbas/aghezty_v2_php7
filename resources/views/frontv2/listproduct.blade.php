@@ -548,30 +548,34 @@
 
         <!-- start row product -->
         <div id="grid_two" class="row mt-3 content_view_mobile">
-          
+
           @foreach ($products as $product)
-              
+
           <div class="col-md-3 col-6 mb-3">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
+              <a href="{{route('front.home.inner',['id' => $product->id]) }}">
                 <img src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">
 
                 <h6 class="full_desc text-dark text-center text-capitalize">{{$product->title}}</h6>
               </a>
 
               <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
+                  @for ($i = 1; $i <= 5; $i++)
+                    @if(round($product->rate() - .25) >= $i)
+                      <i class="fas fa-star colorstar"></i>
+                    @elseif(round($product->rate() + .25) >= $i)
+                      <i class="fas fa-star-half-alt colorstar"></i>
+                    @else
+                      <i class="fas fa-star"></i>
+                    @endif
+                  @endfor
               </div>
 
               <div class="price-description text-uppercase">Cash Price</div>
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price font-weight-bold">{{$product->price}}</span>
+                  <span class="price font-weight-bold">{{$product->discount?$product->price_after_discount:$product->price}}</span>
                 </span>
               </div>
             </div>
@@ -586,5 +590,42 @@
     <!-- end row -->
   </div>
 </div>
+<div class="load" style="position: fixed;top: 40%;left:40%;display:none"><img src="{{url('front/img/loading.gif')}}"
+  width="10%" /></div>
 <!-- end container -->
+@endsection
+@section('script')
+<script type="text/javascript">
+  var start = 0;
+  var action = 'inactive';
+  $('.load').hide();
+  $(window).on("scroll", function() {
+      if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
+          $('.load').show();
+          action = 'active';
+          start = start + {{get_limit_paginate()}};
+          setTimeout(function() {
+              load_content_data(start);
+          }, 500);
+
+      }
+  });
+
+  function load_content_data(start) {
+      $.ajax({
+          url: '{{url("clients/loadproductsv2")}}?' + window.location.search.substring(1) + '&start=' + start,
+          type: "get",
+          success: function(data) {
+              if (data.html == '') {
+                  action = 'active';
+              } else {
+                  $('#grid_two').append(data.html);
+                  action = 'inactive';
+              }
+              $('.load').hide();
+          },
+      });
+
+  }
+  </script>
 @endsection

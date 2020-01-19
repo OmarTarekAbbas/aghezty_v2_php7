@@ -622,6 +622,37 @@ class HomeController extends Controller
         return view('frontv2.listproduct',compact('products'));
     }
 
+    public function load_productsv2(Request $request)
+    {
+        $products = Product::latest('created_at');
+        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+            $request->sub_category_id = (array) $request->sub_category_id;
+            $products = $products->whereIn('category_id',$request->sub_category_id);
+        }
+        if($request->has('offer') && $request->offer !=''){
+            $products =  $products->where('discount','>',0);
+        }
+        if($request->has('brand_id') && $request->brand_id !=''){
+            $request->brand_id = (array) $request->brand_id;
+            $products = $products->whereIn('brand_id',$request->brand_id);
+        }
+        if($request->has('from') && $request->from !=''){
+            $products = $products->where('price','>=',$request->from);
+        }
+        if($request->has('to') && $request->to!=''){
+            $products = $products->where('price','<',$request->to);
+        }
+        if($request->has('ifrom') && $request->ifrom !=''){
+            $products = $products->where('inch','>=',$request->from);
+        }
+        if($request->has('ito') && $request->ito!=''){
+            $products = $products->where('inch','<',$request->to);
+        }
+
+        $products = $products->offset($request->start)->limit(get_limit_paginate())->get();
+        $view = view('frontv2.load_products', compact('products'))->render();
+        return Response(array('html' => $view));
+    }
     /*********************************************************** end design v2 *******/
 
 }

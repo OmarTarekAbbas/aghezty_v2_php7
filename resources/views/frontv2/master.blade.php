@@ -145,29 +145,29 @@
 										@foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$sub_category->getTranslation('title',getCode())}}</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$sub_category->getTranslation('title',getCode())}}</a>
 										</li>
 
 										@endforeach
 									</ul>
 								</div>
-								
+
 								<div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mt-4">
 									<!-- <h6 class="sub-title text-uppercase font-weight-bold white-text ">Heavy Machines</h6> -->
 									<ul class="list-unstyled">
 										@foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$sub_category->getTranslation('title',getCode())}}</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$sub_category->getTranslation('title',getCode())}}</a>
 										</li>
 										@endforeach
 									</ul>
 								</div>
-								
+
 								<div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
 									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title{{$category->id}}_typed"></h6>
 
 									<ul class="list-unstyled">
-										
+
 										<li>
 											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
 										</li>
@@ -183,7 +183,7 @@
 										<li>
 											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
 										</li>
-										
+
 									</ul>
 								</div>
 							</div>
@@ -211,7 +211,7 @@
 										@endphp
 										@foreach ($brands->slice(0, $limit) as $item)
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
 										</li>
 										@endforeach
 									</ul>
@@ -222,7 +222,7 @@
 									<ul class="list-unstyled">
 										@foreach ($brands->slice($limit, $count) as $item)
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
 										</li>
 										@endforeach
 									</ul>
@@ -256,7 +256,7 @@
 
 					<!-- Start Offers -->
 					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/products?offer=offer')}}" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">@lang('front.offer')</a>
+						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/productsv2?offer=offer')}}" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">@lang('front.offer')</a>
 					</li>
 					<!-- End Offers -->
 
@@ -320,13 +320,13 @@
 
 					<!-- Start Languages-->
 					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink112" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">												
+						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink112" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<img src="{{url('public/frontv2/images/lang/'.\Session::get('applocale').'.webp')}}" alt="{{\Session::get('applocale') == 'en'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'en'? " English" : " العربية"}}
 						</a>
 
 						<div id="languages" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink112">
 							<div class="row">
-								
+
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
 									<ul class="list-unstyled">
 										<li>
@@ -394,7 +394,7 @@
 			</div>
 		</div>
      </div>
-     
+
      @yield('content')
 
      <footer class="footer_footer">
@@ -408,7 +408,7 @@
                         <div class="block_title mb-3">
                           <strong>Shop By Category</strong>
                         </div>
-        
+
                         <div class="block_content">
                           <div class="row">
 
@@ -416,7 +416,7 @@
 						@if($category->sub_cats->count() > 0)
 						<div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
 							<ul class="list-unstyled ul_links">
-							<a href="{{url('clients/products?sub_category_id='.$sub_category->id)}}">
+							<a href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}">
 							<strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
 							</a>
 							@php
@@ -425,24 +425,24 @@
 							@endphp
 							@foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
 							<li>
-							<a class="hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+							<a class="hvr-icon-forward" href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
 							</li>
 							@endforeach
 							</ul>
 						</div>
-		
+
 						<div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
 							<ul class="list-unstyled ul_links">
-							<a href="{{url('clients/products?sub_category_id='.$sub_category->id)}}">
+							<a href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}">
 							<strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
 							</a>
-		
+
 							@foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
 							<li>
-							<a class="hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+							<a class="hvr-icon-forward" href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
 							</li>
 							@endforeach
-		
+
 							</ul>
 						</div>
 						@endif
@@ -452,8 +452,8 @@
                         </div>
                       </div>
                     </div>
-	   
-				
+
+
 				@php
 					$brands = brands();
 				@endphp
@@ -463,7 +463,7 @@
                         <div class="block_title mb-3">
                           <strong>Shop By Brand</strong>
                         </div>
-        
+
                         <div class="block_content">
                           <div class="row">
                             <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
@@ -477,12 +477,12 @@
 						  @endphp
 						  @foreach ($brands->slice(0, $limit) as $item)
 						  <li>
-                                  <a class="hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
+                                  <a class="hvr-icon-forward" href="{{url('clients/productsv2?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
                                 </li>
 						  @endforeach
                               </ul>
                             </div>
-        
+
                             <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
                               <ul class="list-unstyled ul_links">
                                 <a href="#0">
@@ -490,7 +490,7 @@
                                 </a>
 						  @foreach ($brands->slice($limit, $count) as $item)
                                 <li>
-                                  <a class="hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
+                                  <a class="hvr-icon-forward" href="{{url('clients/productsv2?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
                                 </li>
 						  @endforeach
                               </ul>
@@ -499,13 +499,13 @@
                         </div>
                       </div>
                     </div>
-        
+
                     <div class="mobile_center col-md-6 col-xl-3 col-12">
                       <div class="block">
                         <div class="block_title mb-2">
                           <strong>Important Links</strong>
                         </div>
-        
+
                         <div class="block_content">
                           <div class="row">
                             <div class="col-xl-12 col-12">
@@ -513,18 +513,18 @@
                                 <li>
                                   <a class="text-capitalize hvr-icon-forward" href="{{url('clients/contactv2')}}" title="Contact Us">@lang('front.contact')</a>
                                 </li>
-        
+
                                 <li>
                                   <a class="text-capitalize hvr-icon-forward" href="{{url('clients/service_centerv2')}}" title="Maintenance">@lang('front.service_center')</a>
                                 </li>
                               </ul>
                             </div>
-        
+
                             <div class="col-xl-12 col-12">
                               <div class="block_title mb-3">
                                 <strong>Find Us On</strong>
                               </div>
-        
+
                               <div class="block_content">
                                 <div class="row">
                                   <div class="col-xl-6 col-6">
@@ -532,43 +532,43 @@
                                       <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/google-play.svg')}}" alt="Google Play">
                                     </a>
                                   </div>
-        
+
                                   <div class="col-xl-6 col-6">
                                     <a class="app-icon" href="https://www.apple.com/ios/app-store/" title="Google Play">
                                       <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/app-store.svg')}}" alt="App Store">
                                     </a>
                                   </div>
-        
+
                                   <div class="col-sm-12 col-lg-12 col-xl-12">
                                     <div class="rounded-social-buttons text-center my-3">
                                       <a class="social-button facebook_link" title="Facebook" href="https://www.facebook.com/" target="_blank">
                                         <i class="fab fa-facebook-f facebook_icon"></i>
                                       </a>
-        
+
                                       <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?abid=phonenumber&text=Hello%2C%20World!">
                                         <i class="fab fa-whatsapp whatsapp_icon"></i>
                                       </a>
-        
+
                                       <a class="social-button phone_link" title="Phone Number" href="tel:+20111682831">
                                         <i class="fas fa-phone phone_icon"></i>
                                       </a>
-        
+
                                       <a class="social-button sms_link" title="Messege" href="sms:123">
                                         <i class="far fa-comment sms_icon"></i>
                                       </a>
-        
+
                                       <a class="social-button mail_link" title="Email" href="mailto:mailto:info@aghzty.com">
                                         <i class="fas fa-envelope mail_icon"></i>
                                       </a>
                                     </div>
                                   </div>
-        
+
                                   <div class="col-sm-12 col-lg-12 col-xl-12">
                                     <div class="payment_methods text-center">
                                       <img class="w-50" src="{{url('public/frontv2/images/payment-icons.png')}}" alt="Visa">
                                     </div>
                                   </div>
-        
+
                                   <div class="col-sm-12 col-xl-12">
                                     <div class="hotline mt-2 text-center">
                                       <strong>Telephone</strong>
@@ -585,7 +585,7 @@
                       </div>
                     </div>
                   </div>
-        
+
                   <div class="row">
                     <div class="col-sm-12 col-xl-12">
                       <div class="block_bottom">
@@ -601,13 +601,13 @@
               </div>
             </div>
           </div>
-        
+
           <!-- Scroll Up -->
           <a class="rounded" href="javascript:" id="return-to-top">
             <i class="fas fa-chevron-up"></i>
           </a>
         </footer>
-        
+
         <!-- script -->
         <!-- jQuery JS -->
         <script src="{{url('public/frontv2/js/jquery-3.3.1.min.js')}}"></script>
@@ -628,9 +628,9 @@
 	   <script src="{{url('public/frontv2/js/script.js')}}"></script>
 		@foreach ($categorys as $category)
 		@if($category->sub_cats->count() > 0)
-		    
+
 		<script>
-			
+
 			$(document).ready(function() {
 
 				var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
@@ -683,5 +683,5 @@
 
         @yield('script')
         </body>
-        
+
         </html>

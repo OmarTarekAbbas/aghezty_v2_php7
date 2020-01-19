@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(ScaffoldinterfacesTableSeeder::class);
         // $this->call(RelationsTableSeeder::class);
         // $this->call(PasswordResetsTableSeeder::class);
-         $this->call(RoutesTableSeeder::class);
+         //$this->call(RoutesTableSeeder::class);
         // $this->call(RoleRouteTableSeeder::class);
         // $this->call(TypesTableSeeder::class);
-         $this->call(SettingsTableSeeder::class);
+         //$this->call(SettingsTableSeeder::class);
         // $this->call(DeleteAllFlagsTableSeeder::class);
         // $this->call(CountriesTableSeeder::class);
         // $this->call(OperatorsTableSeeder::class);
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         // //$this->call(FactorySeeder::class);
         // //$this->call(MigrationsTableSeeder::class);
         // //factory(App\Client::class, 10)->create();
-        // //factory(App\ClientRate::class, 20)->create();
+        factory(App\ClientRate::class, 50)->create();
         // //factory(App\ClientAddress::class, 20)->create();
         // //factory(App\ClientCarts::class, 20)->create();
         // $this->call(OrdersTableSeeder::class);
