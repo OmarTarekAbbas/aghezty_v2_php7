@@ -7,7 +7,7 @@
     padding-left: 0 !important;
   }
 </style>
-
+<link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
 <!-- start container -->
 <div class="main">
   <nav class="mobile_views nav_breadcrumb" aria-label="breadcrumb">
@@ -28,241 +28,87 @@
     <!-- start row -->
     <div class="row">
       <!-- start col-md-2 -->
-      <button type="button" id="button_jq" class="btn btn-dark d-md-none" data-toggle="modal" data-target="#exampleModal">
+      <button type="button"  id="button_jq" class="btn btn-dark d-md-none" data-toggle="modal" data-target="#exampleModal">
         <i class="fas fa-sliders-h" data-toggle="modal" data-target="#exampleModal"></i>
       </button>
 
       <!-- Start Filter Search -->
       <div id="toggle_plus_minus" class="col-md-2 d-none d-md-block">
-        <button class="accordion active  w-100 border border-light text-uppercase">Heavy Machines
-          <i class="fas fa-minus float-right"></i>
-        </button>
+        <form id="filter_form" method="post">
+          @csrf
+          @foreach (categorys() as $item)
+                @if(count($item->sub_cats) > 0)
+                  <button type="button" class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
+                      <i class="fas fa-minus float-right"></i>
+                  </button>
 
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_1" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_1">BUILT IN DISH WASHERS</label>
+                  <div class="panel mb-3 w-100 border border-light">
+                    @foreach ($item->sub_cats as $category)
+                    <div class="z-checkbox hvr-icon-forward">
+                        <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{(isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id'])?'checked':''}} type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                        <label class="d-block text-capitalize" for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                    </div>
+                    @endforeach
+                  </div>
+                @endif
+              @endforeach
+
+          <button type="button" class="accordion active w-100 border border-light text-uppercase">BRAND
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+
+          <div class="panel mb-3 w-100 border border-light">
+              @foreach (brands() as $brand)
+              <div class="z-checkbox hvr-icon-forward">
+                  <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id" {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} type="checkbox" name="brand_id[]"  value="{{$brand->id}}">
+                  <label class="d-block text-capitalize" for="panel_brand_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
+              </div>
+              @endforeach
+            </div>
+
+          <button type="button" class="accordion active w-100 border border-light text-uppercase">PRICE by shop
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+          <div class="panel mb-3 w-100 border border-light">
+            <div class="z-checkbox hvr-icon-forward">
+              <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
+              <label class="d-block text-capitalize" for="panel_34">Less Than - 1000 EGP</label>
+            </div>
+
+            <div class="z-checkbox hvr-icon-forward">
+              <input id="panel_35" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox" name="from_to" value="1000,3000">
+              <label class="d-block text-capitalize" for="panel_35">1000 EGP - 3000 EGP</label>
+            </div>
+
+            <div class="z-checkbox hvr-icon-forward">
+              <input id="panel_36" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox" name="from_to" value="3000,6000">
+              <label class="d-block text-capitalize" for="panel_36">3000 EGP - 6000 EGP</label>
+            </div>
+
+            <div class="z-checkbox hvr-icon-forward">
+              <input id="panel_37" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox" name="from_to" value="6000,10000">
+              <label class="d-block text-capitalize" for="panel_37">6000 EGP - 10,000 EGP</label>
+            </div>
+
+            <div class="z-checkbox hvr-icon-forward">
+              <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox" name="from" value="10000">
+              <label class="d-block text-capitalize" for="panel_38">10,000 EGP - More Than</label>
+            </div>
           </div>
 
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_2" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_2">HOBS</label>
+          <button type="button" class="accordion active active w-100 border border-light text-uppercase">Offer
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+          <div class="panel w-100 border border-light">
+            <div class="z-checkbox hvr-icon-forward ">
+              <input id="panel_39" class="mb-2 offer" type="checkbox" name="offer" value="offer">
+              <label class="d-block text-capitalize" for="panel_39">Offer</label>
+            </div>
           </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_3" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_3">B-in</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_4" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_4">OVENS</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_5" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_5">cookers</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_6" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_6">Dish washer</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_7" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_7">BUILT IN WASHER DRYERS</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_8" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_8">DRYERS</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_9" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_9">washing machines</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_10" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_10">TV</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_11" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_11">Air Conditioner</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_12" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_12">Kitchen Cooker Hood</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_13" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_13">Air</label>
-          </div>
-        </div>
-
-        <button class="accordion active w-100 border border-light text-uppercase">Light Machines
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_14" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_14">MICROWAVE</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_15" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_15">Coffee &amp; Espresso Makers</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_16" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_16">Electric kettle</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_17" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_17">Food Steamer</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_18" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_18">Air Fryer</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_19" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_19">Table Grill</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_20" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_20">Sandwich Maker</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_200" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_200">Blenders</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_21" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_21">PowerLife Bagged</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_22" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_22">Collection Salad Maker</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_23" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_23">iron</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_24" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_24">Water Dispenser</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_25" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_25">Water Heater</label>
-          </div>
-        </div>
-
-        <button class="accordion active w-100 border border-light text-uppercase">BRAND
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_26" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_26">Apple</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_27" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_27">Devia</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_28" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_28">Ariston</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_29" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_29">Philips</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_30" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_30">SAMSUNG</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_31" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_31">LG</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_32" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_32">sharp</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_33" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_33">TOSHIBA</label>
-          </div>
-        </div>
-
-        <button class="accordion active w-100 border border-light text-uppercase">PRICE by shop
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_34" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_34">Less Than - 1000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_35" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_35">1000 EGP - 3000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_36" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_36">3000 EGP - 6000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_37" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_37">6000 EGP - 10,000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_38" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_38">10,000 EGP - More Than</label>
-          </div>
-        </div>
-
-        <button class="accordion active active w-100 border border-light text-uppercase">Offer
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward ">
-            <input id="panel_39" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_39">Offer</label>
-          </div>
-        </div>
+        </form>
       </div>
       <!-- End Filter Search -->
 
@@ -278,192 +124,34 @@
             </div>
 
             <div id="toggle_plus_minus" class="modal-body">
-              <button class="accordion active w-100 border border-light">Heavy Machines
-                <i class="fas fa-minus float-right"></i>
-              </button>
+              @foreach (categorys() as $item)
+                @if(count($item->sub_cats) > 0)
+                  <button class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
+                      <i class="fas fa-minus float-right"></i>
+                  </button>
 
-              <div class="panel mb-3 border border-secondary">
-                <div class="z-checkbox">
-                  <input id="panel_100" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_100">BUILT IN DISH WASHERS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_2000" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_2000">HOBS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_300" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_300">B-in</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="400" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="400">OVENS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_5" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_5">cookers</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_6" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_6">Dish washer</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_7" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_7">BUILT IN WASHER DRYERS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_8" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_8">DRYERS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_9" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_9">washing machines</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_10" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_10">TV</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_11" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_11">Air Conditioner</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_12" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_12">Kitchen Cooker Hood</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_13" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_13">Air</label>
-                </div>
-              </div>
-
-              <button class="accordion active w-100 border border-light">Light Machines
-                <i class="fas fa-minus float-right"></i>
-              </button>
-
-              <div class="panel mb-3 border border-secondary">
-                <div class="z-checkbox">
-                  <input id="panel_14" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_14">MICROWAVE</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_15" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_15">Coffee &amp; Espresso Makers</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_16" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_16">Electric kettle</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_17" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_17">Food Steamer</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_18" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_18">Air Fryer</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_19" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_19">Table Grill</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_20" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_20">Sandwich Maker</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_200" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_200">Blenders</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_21" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_21">PowerLife Bagged</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_22" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_22">Collection Salad Maker</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_23" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_23">iron</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_24" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_24">Water Dispenser</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_25" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_25">Water Heater</label>
-                </div>
-              </div>
+                  <div class="panel mb-3 border border-secondary">
+                    @foreach ($item->sub_cats as $category)
+                    <div class="z-checkbox">
+                        <input id="panel_category_{{$category->id}}" {{(isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id'])?'checked':''}} class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                        <label class="d-block text-capitalize" for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                    </div>
+                    @endforeach
+                  </div>
+                @endif
+              @endforeach
 
               <button class="accordion active w-100 border border-light">BRAND
                 <i class="fas fa-minus float-right"></i>
               </button>
 
               <div class="panel mb-3 border border-secondary">
-                <div class="z-checkbox">
-                  <input id="panel_26" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_26">Apple</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_27" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_27">Devia</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_28" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_28">Ariston</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_29" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_29">Philips</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_30" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_30">SAMSUNG</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_31" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_31">LG</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_32" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_32">sharp</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_33" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_33">TOSHIBA</label>
-                </div>
+                  @foreach (brands() as $brand)
+                  <div class="z-checkbox">
+                      <input id="panel_brand_{{$brand->id}}" {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
+                      <label class="d-block text-capitalize" for="panel_brand_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
+                  </div>
+                  @endforeach
               </div>
 
               <button class="accordion active w-100 border border-light">PRICE
@@ -472,27 +160,27 @@
 
               <div class="panel mb-3 border border-secondary">
                 <div class="z-checkbox">
-                  <input id="panel_34" class="mb-2" type="checkbox" name="vehicle" value="Bike">
+                  <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])}} type="checkbox" name="to" value="1000">
                   <label class="d-block text-capitalize" for="panel_34">Less Than - 1000 EGP</label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_35" class="mb-2" type="checkbox" name="vehicle" value="Bike">
+                  <input id="panel_35" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox" name="from_to" value="1000,3000">
                   <label class="d-block text-capitalize" for="panel_35">1000 EGP - 3000 EGP</label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_36" class="mb-2" type="checkbox" name="vehicle" value="Bike">
+                  <input id="panel_36" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox" name="from_to" value="3000,6000">
                   <label class="d-block text-capitalize" for="panel_36">3000 EGP - 6000 EGP</label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_37" class="mb-2" type="checkbox" name="vehicle" value="Bike">
+                  <input id="panel_37" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox" name="from_to" value="6000,10000">
                   <label class="d-block text-capitalize" for="panel_37">6000 EGP - 10,000 EGP</label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_38" class="mb-2" type="checkbox" name="vehicle" value="Bike">
+                  <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox" name="from" value="10000">
                   <label class="d-block text-capitalize" for="panel_38">10,000 EGP - More Than</label>
                 </div>
               </div>
@@ -503,7 +191,7 @@
 
               <div class="panel border border-secondary">
                 <div class="z-checkbox">
-                  <input id="panel_39" class="mb-2" type="checkbox" name="vehicle" value="Bike">
+                  <input id="panel_39" class="mb-2 offer" type="checkbox" name="offer" value="offer">
                   <label class="d-block text-capitalize" for="panel_39">Offer</label>
                 </div>
               </div>
@@ -517,7 +205,7 @@
       <!-- Start Image Cover -->
       <div class="col-md-10">
         <div class="list_cover">
-          <img class="w-100 " src="images/oppo.jfif" alt="Cover" title="Apple">
+          <img class="w-100 " src="{{asset('public/frontv2/images/oppo.jfif')}}" alt="Cover" title="Apple">
         </div>
         <!-- End Image Cover -->
 
@@ -527,11 +215,11 @@
             <label class="labelclass m-auto font-weight-normal">Sort By:</label>
           </div>
 
-          <select class="selsort p-1 border border-secondary bg-white">
-            <option>Name A-Z</option>
-            <option>Name Z-A</option>
-            <option>Price DESC</option>
-            <option>Price ASC</option>
+          <select class="selsort p-1 border border-secondary bg-white" id="sorted" form="filter_form" name="sorted">
+            <option value="">Select</option>
+            <option value="title,asc">Name</option>
+            <option value="price,desc">Price DESC</option>
+            <option value="price,asc">Price ASC</option>
           </select>
 
           <strong class="grid_list float-right">
@@ -555,8 +243,12 @@
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->id]) }}">
                 <img src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">{{$product->title}}</h6>
+                @if($product->discount > 0)
+                  <div class="product-label text-center font-weight-bold">
+                      <span class="sale-product-icon">-{{$product->discount}}%</span>
+                  </div>
+                @endif
+                <h6 class="full_desc text-dark text-center text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
               </a>
 
               <div class="rating_list_product">
@@ -566,7 +258,7 @@
                     @elseif(round($product->rate() + .25) >= $i)
                       <i class="fas fa-star-half-alt colorstar"></i>
                     @else
-                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
                     @endif
                   @endfor
               </div>
@@ -575,8 +267,13 @@
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price font-weight-bold">{{$product->discount?$product->price_after_discount:$product->price}}</span>
+                  <span class="price font-weight-bold">{{($product->discount > 0)?$product->price_after_discount:$product->price}} EGP</span>
                 </span>
+                @if($product->discount > 0)
+                <p class="old-price">
+                    <span class="price font-weight-bold">{{$product->price}} EGP </span>
+                </p>
+                @endif
               </div>
             </div>
           </div>
@@ -590,8 +287,33 @@
     <!-- end row -->
   </div>
 </div>
-<div class="load" style="position: fixed;top: 40%;left:40%;display:none"><img src="{{url('front/img/loading.gif')}}"
-  width="10%" /></div>
+<div class="load" style="position: fixed;top: 40%;left:40%;display:none">
+    <div class='loader'>
+        <div class='loader_overlay'></div>
+        <div class='loader_cogs'>
+          <div class='loader_cogs__top'>
+            <div class='top_part'></div>
+            <div class='top_part'></div>
+            <div class='top_part'></div>
+            <div class='top_hole'></div>
+          </div>
+          <div class='loader_cogs__left'>
+            <div class='left_part'></div>
+            <div class='left_part'></div>
+            <div class='left_part'></div>
+            <div class='left_hole'></div>
+          </div>
+          <div class='loader_cogs__bottom'>
+            <div class='bottom_part'></div>
+            <div class='bottom_part'></div>
+            <div class='bottom_part'></div>
+            <div class='bottom_hole'><!-- lol --></div>
+          </div>
+        </div>
+      </div>
+    {{-- <img id="loading" src="http://www.vitorazevedo.net/external_files/loading_small.png"> --}}
+  {{-- <img src="{{url('front/img/loading.gif')}}" width="10%" /> --}}
+</div>
 <!-- end container -->
 @endsection
 @section('script')
@@ -614,7 +336,8 @@
   function load_content_data(start) {
       $.ajax({
           url: '{{url("clients/loadproductsv2")}}?' + window.location.search.substring(1) + '&start=' + start,
-          type: "get",
+          type: "post",
+          data:$('#filter_form').serialize(),
           success: function(data) {
               if (data.html == '') {
                   action = 'active';
@@ -627,5 +350,24 @@
       });
 
   }
+
+  $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function(){
+    $('.load').show();
+    start = 0
+    $.ajax({
+          url: '{{url("clients/loadproductsv2")}}?start=0',
+          type: "post",
+          data:$('#filter_form').serialize(),
+          success: function(data) {
+              if (data.html == '') {
+                  action = 'active';
+              } else {
+                  $('#grid_two').html(data.html);
+                  action = 'inactive';
+              }
+              $('.load').hide();
+          },
+      });
+  })
   </script>
 @endsection

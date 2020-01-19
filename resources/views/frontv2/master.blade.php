@@ -84,9 +84,9 @@
 			</div>
 
 			<div class="col-md-6 col-lg-6 col-xl-10">
-				<form class="search-container">
-					<input type="text" id="search-bar" placeholder="@lang('messages.search')">
-					<a href="#">
+				<form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
+					<input type="text" id="search-bar" name="search" placeholder="@lang('messages.search')">
+					<a href="#" onclick="document.getElementById('form_search').submit()">
 						<div class="search_background">
 							<i class="search-icon fas fa-search fa-2x"></i>
 						</div>
@@ -169,19 +169,19 @@
 									<ul class="list-unstyled">
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
 										</li>
 
 									</ul>
@@ -232,21 +232,21 @@
 									<h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_titleb_typed"></h6>
 
 									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
-										</li>
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
+                      </li>
 
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
-										</li>
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
+                      </li>
 
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
-										</li>
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
+                      </li>
 
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
-										</li>
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
+                      </li>
 									</ul>
 								</div>
 							</div>

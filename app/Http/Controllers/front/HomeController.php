@@ -592,7 +592,7 @@ class HomeController extends Controller
     public function productsv2(Request $request)
     {
 
-        $products = Product::latest('products.created_at');
+        $products = Product::query();
         if($request->has('sub_category_id') && $request->sub_category_id !=''){
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id',$request->sub_category_id);
@@ -616,7 +616,12 @@ class HomeController extends Controller
         if($request->has('ito') && $request->ito!=''){
             $products = $products->where('inch','<',$request->ito);
         }
-
+        if($request->has('search') && $request->search!=''){
+          $products = $products->whereLike(['title'],$request->search);
+        }
+        if($request->has('sorted') && $request->sorted!=''){
+          $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
+        }
 
         $products = $products->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct',compact('products'));
@@ -624,7 +629,8 @@ class HomeController extends Controller
 
     public function load_productsv2(Request $request)
     {
-        $products = Product::latest('created_at');
+        return $request->all();
+        $products = Product::query();
         if($request->has('sub_category_id') && $request->sub_category_id !=''){
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id',$request->sub_category_id);
@@ -642,11 +648,20 @@ class HomeController extends Controller
         if($request->has('to') && $request->to!=''){
             $products = $products->where('price','<',$request->to);
         }
+        if($request->has('from_to') && $request->from_to!=''){
+          $products = $products->whereBetween('price',explode(',',$request->from_to));
+       }
         if($request->has('ifrom') && $request->ifrom !=''){
             $products = $products->where('inch','>=',$request->from);
         }
         if($request->has('ito') && $request->ito!=''){
             $products = $products->where('inch','<',$request->to);
+        }
+        if($request->has('sorted') && $request->sorted!=''){
+          $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
+        }
+        if($request->has('search') && $request->search!=''){
+          $products = $products->whereLike(['title','price','discount','price_after_discount','description','short_description', 'inch'],$request->search);
         }
 
         $products = $products->offset($request->start)->limit(get_limit_paginate())->get();
