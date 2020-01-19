@@ -393,7 +393,7 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto" style="height: 180px">
 
                 <div>
                   <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>

@@ -1,6 +1,5 @@
-<!-- header -->
-<?php include 'header.php'; ?>
-<!-- end header-->
+@extends('frontv2.master')
+@section('content')
 
 <style>
   .padding_right_oldPassword {
@@ -55,7 +54,7 @@
                             <th>Product Image</th>
                             <td>
                               <a href="inner-page.php">
-                                <img class="product_image hvr-outline-in" src="images/products/fridge_1.jpg" alt="fridge">
+                                <img class="product_image" src="{{url('public/frontv2/images/products/fridge_1.jpg')}}" alt="fridge">
                               </a>
                             </td>
                           </tr>
@@ -103,7 +102,7 @@
                             <th>Product Image</th>
                             <td>
                               <a href="inner-page.php">
-                                <img class="product_image" src="images/products/fridge_2.jpg" alt="fridge">
+                                <img class="product_image" src="{{url('public/frontv2/images/products/fridge_2.jpg')}}" alt="fridge">
                               </a>
                             </td>
                           </tr>
@@ -373,6 +372,4 @@
   </section>
 </div>
 
-<!-- footer -->
-<?php include 'footer.php'; ?>
-<!-- end footer-->
+@endsection

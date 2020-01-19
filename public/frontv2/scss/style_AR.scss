@@ -3302,6 +3302,12 @@ a {
     .order_two {
       .img_order {
         width: 100%;
+
+        &:hover,
+        &:focus {
+          width: 100% !important;
+          border: #e1e1e1 solid 2px;
+        }
       }
 
       .cart-aside {
@@ -4342,6 +4348,12 @@ a {
     .order_two {
       .img_order {
         width: 100%;
+
+        &:hover,
+        &:focus {
+          width: 100% !important;
+          border: #e1e1e1 solid 2px;
+        }
       }
 
       .cart-aside {

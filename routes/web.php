@@ -42,6 +42,14 @@ Route::prefix('clients')->group(function() {
     Route::get('myorder',function(){
         return view('frontv2.myorder');
     });
+
+    Route::get('address',function(){
+        return view('frontv2.address');
+    });
+
+    Route::get('orders',function(){
+        return view('frontv2.orders');
+    });
     /* End Baher Routes */
 
     Route::post('cart','front\HomeController@store_cart');
