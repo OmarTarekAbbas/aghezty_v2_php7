@@ -1,6 +1,5 @@
-<!-- header -->
-<?php include 'header.php'; ?>
-<!-- end header-->
+@extends('frontv2.master')
+@section('content')
 
 <div class="main mt-2">
   <section class="my_profile">
@@ -15,7 +14,7 @@
 
           <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3">
             <!-- Start Upload Image -->
-            <?php include 'upload_img.php'; ?>
+            @include('frontv2.upload_img')
             <!-- End Upload Image -->
           </div>
 
@@ -82,6 +81,4 @@
   </section>
 </div>
 
-<!-- footer -->
-<?php include 'footer.php'; ?>
-<!-- end footer-->
+@endsection

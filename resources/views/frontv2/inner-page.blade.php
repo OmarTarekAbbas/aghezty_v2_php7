@@ -159,7 +159,7 @@
 								<i class="fa fa-minus fa-xs" aria-hidden="true"></i>
 							</span>
 
-							<button class="w-75 btn btn-primary float-left font-weight-bold hvr-wobble-to-bottom-right" id="add_to">ADD TO CART</button>
+							<button class="w-75 btn float-left font-weight-bold hvr-wobble-to-bottom-right" id="add_to">ADD TO CART</button>
 						</form>
 					</div>
 

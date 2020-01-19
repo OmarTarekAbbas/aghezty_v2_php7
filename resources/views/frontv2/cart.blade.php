@@ -3,6 +3,7 @@
 
 <div class="main">
   <!-- Start Slider Carsoul -->
+
   <!-- End Slider Carsoul -->
 
   <div class="mobile_views">
@@ -285,7 +286,7 @@
       <div class="product_view_type">
         <div class="product_title mb-3">
           <div class="title_left text-left font-weight-bold">
-            <strong>Selected For You</strong>
+            <strong id="cart_selected_typed"></strong>
           </div>
 
           <div class="title_right text-right">
@@ -428,4 +429,17 @@
     </div>
   </section>
 </div>
+@endsection
+
+@section('script')
+<script>
+  var cart_selected_typed = new Typed('#cart_selected_typed', {
+    strings: ['Selected For You'],
+    typeSpeed: 150,
+    backSpeed: 0,
+    fadeOut: true,
+    smartBackspace: true, // this is a default
+    loop: true
+  });
+</script>
 @endsection

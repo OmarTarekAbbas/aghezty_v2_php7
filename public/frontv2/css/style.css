@@ -560,6 +560,7 @@ a {
 }
 .main .content_view a img {
   width: 85% !important;
+  height: 271px;
   margin: 0 auto;
   display: block;
   transition: all 1.1s linear;
@@ -799,10 +800,15 @@ a {
   top: 24px;
 }
 .main #inner-page .quantity-form #add_to {
+  background-color: #fe9901;
+  color: #FFF;
   position: absolute;
   left: 90px;
   top: 0px;
   height: 48px;
+}
+.main #inner-page .quantity-form #add_to:hover, .main #inner-page .quantity-form #add_to:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
 .main #inner-page .rounded-social-buttons .social-button {
   display: inline-block;
@@ -1174,7 +1180,7 @@ a {
   background-color: #fe9901;
   color: #FFF;
 }
-.main .cart_shopping .discount_code_accordion .card-body .cart_checkout button:focus {
+.main .cart_shopping .discount_code_accordion .card-body .cart_checkout button:hover, .main .cart_shopping .discount_code_accordion .card-body .cart_checkout button:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
 .main .choose_category .choose_category_form {
@@ -3225,7 +3231,7 @@ a {
     letter-spacing: 0.35rem;
   }
   .main .product_view .product_view_type .product_desc a img {
-    height: 141px !important;
+    height: 120px !important;
   }
   .main #toggle_plus_minus .accordion {
     padding: 5px;
@@ -3239,6 +3245,13 @@ a {
   }
   .main #toggle_plus_minus .panel .z-checkbox {
     width: 100% !important;
+  }
+  .main .content_view a img {
+    height: 172px;
+  }
+  .main .content_view a img:hover, .main .content_view a img:focus {
+    width: 100% !important;
+    height: 200px !important;
   }
   .main #inner-page .price_disc_offer .product-label {
     right: 3rem;
@@ -3254,6 +3267,37 @@ a {
   }
   .main .based_selection .content_view .price-box {
     font-size: 0.9rem;
+  }
+  .main .cart_shopping table th .img_link img {
+    height: 125px !important;
+  }
+  .main .cart_shopping .discount_code_accordion .ads_img img {
+    height: 13.4rem !important;
+  }
+  .main .my_profile .my_profile_bg .upload_img img,
+.main .my_profile .log_in_bg .upload_img img,
+.main .log_in .my_profile_bg .upload_img img,
+.main .log_in .log_in_bg .upload_img img {
+    height: 24vh !important;
+    width: 15% !important;
+  }
+  .main .my_profile .my_profile_bg .upload_img img:hover, .main .my_profile .my_profile_bg .upload_img img:focus,
+.main .my_profile .log_in_bg .upload_img img:hover,
+.main .my_profile .log_in_bg .upload_img img:focus,
+.main .log_in .my_profile_bg .upload_img img:hover,
+.main .log_in .my_profile_bg .upload_img img:focus,
+.main .log_in .log_in_bg .upload_img img:hover,
+.main .log_in .log_in_bg .upload_img img:focus {
+    height: 30vh !important;
+    width: 18% !important;
+  }
+  .main .my_profile .my_profile_bg .upload_img .upload_icon_img,
+.main .my_profile .log_in_bg .upload_img .upload_icon_img,
+.main .log_in .my_profile_bg .upload_img .upload_icon_img,
+.main .log_in .log_in_bg .upload_img .upload_icon_img {
+    font-size: 2rem;
+    top: 4rem;
+    right: 31%;
   }
 
   .footer_footer .footer_content .rounded-social-buttons .social-button {

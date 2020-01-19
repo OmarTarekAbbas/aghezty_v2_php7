@@ -39,20 +39,48 @@ Route::prefix('clients')->group(function() {
         return view('frontv2.cart');
     });
 
-    Route::get('myorder',function(){
+    Route::get('contact_usv2',function(){
+        return view('frontv2.contact_us');
+    });
+
+    Route::get('loginv2',function(){
+        return view('frontv2.login');
+    });
+
+    Route::get('maintenancev2',function(){
+        return view('frontv2.maintenance');
+    });
+
+    Route::get('myorderv2',function(){
         return view('frontv2.myorder');
     });
 
-    Route::get('address',function(){
+    Route::get('addressv2',function(){
         return view('frontv2.address');
     });
 
-    Route::get('orders',function(){
+    Route::get('ordersv2',function(){
         return view('frontv2.orders');
+    });
+
+    Route::get('passwordv2',function(){
+        return view('frontv2.password');
+    });
+
+    Route::get('paymentv2',function(){
+        return view('frontv2.payment');
+    });
+
+    Route::get('profilev2',function(){
+        return view('frontv2.profile');
     });
 
     Route::get('innerv2',function(){
         return view('frontv2.inner-page');
+    });
+
+    Route::get('registerv2',function(){
+        return view('frontv2.register');
     });
     /* End Baher Routes */
 

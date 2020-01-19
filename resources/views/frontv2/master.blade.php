@@ -84,7 +84,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-6 col-xl-10">
+      <div class="col-md-6 col-lg-6 col-xl-10 no_padding">
         <form class="search-container">
           <input type="text" id="search-bar" placeholder="@lang('messages.search')">
           <a href="#">

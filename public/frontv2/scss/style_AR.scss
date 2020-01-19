@@ -1064,11 +1064,18 @@ a {
         top: 24px;
       }
 
-      button {
+      #add_to {
+        background-color: #fe9901;
+        color: #FFF;
         position: absolute;
         right: 90px;
         top: 0px;
         height: 48px;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+        }
       }
     }
 
@@ -4740,16 +4747,86 @@ a {
   }
 }
 
-@media (min-width: 992px) and (max-width: 1400px) {
+@media (min-width: 992px) and (max-width: 1600px) {
   .head_two {
     .img_logo {
       img {
-        width: 35%;
+        width: 100%;
       }
     }
 
-    .search-container {
-      margin: 3.5% auto !important;
+    .no_padding {
+      padding-right: 0 !important;
+      padding-left: 73px !important;
+
+      .search-container {
+        margin: 1.8% auto !important;
+      }
+    }
+
+    .shopping_cart {
+      button {
+        .shopping_cart_num {
+          left: 46px;
+          font-size: 1.25rem;
+        }
+
+        .shopping_cart_img {
+          width: 72%;
+          left: 40px;
+        }
+      }
+    }
+  }
+
+  .head_three {
+    .navbar {
+      .navbar-nav {
+        .nav-item {
+          .dropdown-menu {
+            min-width: 55%;
+
+            &.dropdown-menu-mob {
+              min-width: 25%;
+              text-align: justify;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .carsoul_ads {
+    .owl-one {
+      .item {
+        a {
+          img {
+            height: 325px;
+          }
+        }
+      }
+
+      .owl-nav {
+
+        .owl-prev,
+        .owl-next {
+          bottom: 3rem;
+        }
+      }
+    }
+
+    .top_banner {
+      a {
+        img {
+          height: 153px;
+        }
+      }
+    }
+
+    .full_banner {
+      img {
+        height: 137px;
+      }
     }
   }
 
@@ -4767,22 +4844,182 @@ a {
     }
   }
 
-  .product_view {
-    .product_view_type {
-      div.col-lg-4 {
-        margin-bottom: 15px !important;
+  .main {
+    .choose_category {
+      .choose_category_background {
+        .choose_category_form {
+          .diamond_sample {
+            width: 100% !important;
+            height: 11rem !important;
+
+            .diamond_sample_title {
+              font-size: 1rem !important;
+            }
+          }
+        }
+      }
+
+      .full_banner {
+        img {
+          height: 138px;
+        }
+      }
+
+      .left-img {
+        a {
+          img {
+            height: 179px;
+          }
+        }
+      }
+
+      .choose_category_form {
+        .hoverabley {
+          .hovertitle {
+            p {
+              font-size: 1rem;
+              letter-spacing: 0.35rem;
+            }
+          }
+        }
+      }
+    }
+
+    .product_view {
+      .product_view_type {
+        .product_desc {
+          a {
+            img {
+              height: 120px !important;
+            }
+          }
+        }
+      }
+    }
+
+    #toggle_plus_minus {
+      .accordion {
+        padding: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        width: 11.75rem !important;
+      }
+
+      .panel {
+        padding: 10px 10px;
+        width: 11.75rem !important;
+
+        .z-checkbox {
+          width: 100% !important;
+        }
+      }
+    }
+
+    .content_view {
+      a {
+        img {
+          height: 172px;
+
+          &:hover,
+          &:focus {
+            width: 100% !important;
+            height: 200px !important;
+          }
+        }
+      }
+    }
+
+    #inner-page {
+      .price_disc_offer {
+        .product-label {
+          right: 3rem;
+        }
+      }
+
+      #carouselExampleControls {
+        width: 100% !important;
+      }
+    }
+
+    .based_selection {
+      .content_view {
+        a {
+          h6 {
+            line-height: 1.35rem;
+            height: 2.5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+
+        .price-box {
+          font-size: 0.90rem;
+        }
+      }
+    }
+
+    .cart_shopping {
+      table {
+        th {
+          .img_link {
+            img {
+              height: 125px !important;
+            }
+          }
+
+        }
+      }
+
+      .discount_code_accordion {
+        .ads_img {
+          img {
+            height: 13.4rem !important;
+          }
+        }
+      }
+    }
+
+    .my_profile,
+    .log_in {
+
+      .my_profile_bg,
+      .log_in_bg {
+        .upload_img {
+          img {
+            height: 24vh !important;
+            width: 15% !important;
+
+            &:hover,
+            &:focus {
+              height: 30vh !important;
+              width: 18% !important;
+            }
+          }
+
+          .upload_icon_img {
+            font-size: 2rem;
+            top: 4rem;
+            right: 31%;
+          }
+        }
       }
     }
   }
 
   .footer_footer {
     .footer_content {
-      .block {
-        .block_content {
-          .social-links {
-            a {
-              font-size: 17px;
-            }
+      .rounded-social-buttons {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 1.75rem;
+
+          .facebook_icon,
+          .whatsapp_icon,
+          .phone_icon,
+          .sms_icon,
+          .mail_icon {
+            font-size: 20px;
           }
         }
       }
