@@ -554,19 +554,19 @@ class HomeController extends Controller
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
-        
+
         if(count($recently_added) != 6){
             $limit = 6 - count($recently_added);
             $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
             $recently_added = $recently_added->toBase()->merge($recently_addedR);
         }
-        
+
         if(count($selected_for_you) != 6){
             $limit = 6 - count($selected_for_you);
             $selected_for_youR = Product::all()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
-        
+
         if(count($homepage_cat) != 6){
             $limit = 6 - count($homepage_cat);
             $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
@@ -592,7 +592,7 @@ class HomeController extends Controller
     public function slidesv2(){
 
         $slides = Advertisement::where('type', 'slider')->orderBy('order', 'asc')->get();
-        
+
         return view('homepage.slides', compact('slides'));
 
     }
@@ -648,9 +648,9 @@ class HomeController extends Controller
         }
 
         $slide = Advertisement::findorfail($request->id);
-        
+
         $imgExtensions = array("png","jpeg","jpg");
-        
+
         $img = $request->file;
 
         if(! in_array($img->getClientOriginalExtension(),$imgExtensions))
@@ -671,9 +671,9 @@ class HomeController extends Controller
 
         $id = $request->id;
         $active = $request->switch;
-        
+
         $slide = Advertisement::findorfail($id);
-        
+
         if($active == 'true'){
             $slide->active = true;
         }else{
@@ -685,12 +685,12 @@ class HomeController extends Controller
 
     public function recently_added(Request $request){
 
-        
+
         $id = $request->id;
         $recently_added = $request->switch;
-        
+
         $product = Product::findorfail($id);
-        
+
         if($recently_added == 'true'){
             $RAproduct = Product::where('recently_added', 1)->count();
             if($RAproduct < 6){
@@ -703,16 +703,16 @@ class HomeController extends Controller
         }
         $product->save();
         return 'yes';
-            
+
     }
 
     public function selected_for_you(Request $request){
 
         $id = $request->id;
         $selected_for_you = $request->switch;
-        
+
         $product = Product::findorfail($id);
-        
+
         if($selected_for_you == 'true'){
             $RAproduct = Product::where('selected_for_you', 1)->count();
             if($RAproduct < 6){
@@ -725,16 +725,16 @@ class HomeController extends Controller
         }
         $product->save();
         return 'yes';
-    
+
     }
 
     public function homepage_category(Request $request){
 
         $id = $request->id;
         $homepage = $request->switch;
-        
+
         $category = Category::findorfail($id);
-        
+
         if($homepage == 'true'){
             $homepageCat = Category::where('homepage', 1)->count();
             if($homepageCat < 6){
@@ -747,7 +747,7 @@ class HomeController extends Controller
         }
         $category->save();
         return 'yes';
-    
+
     }
 
     public function change_order(Request $request){

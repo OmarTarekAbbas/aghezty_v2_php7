@@ -1,9 +1,8 @@
-<!-- Start Header -->
-<?php include 'header.php'; ?>
-<!-- End Header -->
+@extends('frontv2.master')
+@section('content')
 
 <!-- Start Owl Carsoul -->
-<?php include 'video_slider.php'; ?>
+
 <!-- End Owl Carsoul -->
 
 <div class="main">
@@ -71,7 +70,7 @@
 						Sony PlayStation 4 Slim, 1TB, 2 Controller, Black
 					</h6>
 
-					<img src="images/products/3.jpg" class="img_order rounded img-thumbnail" alt="Fridge">
+					<img src="{{url('public/frontv2/images/products/3.jpg')}}" class="img_order rounded img-thumbnail" alt="Fridge">
 				</div>
 
 				<div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
@@ -96,7 +95,7 @@
 						Samsung RT28M3424S8 253 L4 Star Inverter frost Free Refrigerator
 					</h6>
 
-					<img src="images/products/fridge_1.jpg" class="img_order rounded img-thumbnail" alt="Fridge">
+					<img src="{{url('public/frontv2/images/products/fridge_1.jpg')}}" class="img_order rounded img-thumbnail" alt="Fridge">
 				</div>
 
 				<div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
@@ -156,7 +155,7 @@
 			<div class="product_view_type">
 				<div class="product_title mb-3">
 					<div class="title_left text-left font-weight-bold">
-						<strong>Recently Added</strong>
+						<strong class="recently_added_funnyTexty">Recently Added</strong>
 					</div>
 
 					<div class="title_right text-right">
@@ -166,9 +165,9 @@
 
 				<div class="row">
 					<div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-						<div class="px-2 product_desc rounded">
+						<div class="px-2 product_desc hvr-bob rounded">
 							<a href="inner-page.php">
-								<img src="images/products/1.jpg" alt="product" class="w-75 d-block m-auto">
+								<img src="{{url('public/frontv2/images/products/1.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
 								<div>
 									<p class="full_desc">2 Cozy Kids Buff Bean Bag, Solid Pattern, Waterproof</p>
@@ -189,9 +188,9 @@
 					</div>
 
 					<div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-						<div class="px-2 product_desc rounded">
+						<div class="px-2 product_desc hvr-bob rounded">
 							<a href="inner-page.php">
-								<img src="images/products/2.webp" alt="product" class="w-75 d-block m-auto">
+								<img src="{{url('public/frontv2/images/products/2.webp')}}" alt="product" class="w-100 d-block m-auto">
 
 								<div>
 									<p class="full_desc">Arzum Okka - OK006 - Turkish Coffee Machine</p>
@@ -212,9 +211,9 @@
 					</div>
 
 					<div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-						<div class="px-2 product_desc rounded">
+						<div class="px-2 product_desc hvr-bob rounded">
 							<a href="inner-page.php">
-								<img src="images/products/3.jpg" alt="product" class="w-75 d-block m-auto">
+								<img src="{{url('public/frontv2/images/products/3.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
 								<div>
 									<p class="full_desc">Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</p>
@@ -235,9 +234,9 @@
 					</div>
 
 					<div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-						<div class="px-2 product_desc rounded">
+						<div class="px-2 product_desc hvr-bob rounded">
 							<a href="inner-page.php">
-								<img src="images/products/4.jpg" alt="product" class="w-75 d-block m-auto">
+								<img src="{{url('public/frontv2/images/products/4.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
 								<div>
 									<p class="full_desc">Beko Front Loading Digital Washing Machine</p>
@@ -253,9 +252,9 @@
 					</div>
 
 					<div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-						<div class="px-2 product_desc rounded">
+						<div class="px-2 product_desc hvr-bob rounded">
 							<a href="inner-page.php">
-								<img src="images/products/1.jpg" alt="product" class="w-75 d-block m-auto">
+								<img src="{{url('public/frontv2/images/products/1.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
 								<div>
 									<p class="full_desc">2 Cozy Kids Buff Bean Bag, Solid Pattern, Waterproof</p>
@@ -276,9 +275,9 @@
 					</div>
 
 					<div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-						<div class="px-2 product_desc rounded">
+						<div class="px-2 product_desc hvr-bob rounded">
 							<a href="inner-page.php">
-								<img src="images/products/3.jpg" alt="product" class="w-75 d-block m-auto">
+								<img src="{{url('public/frontv2/images/products/3.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
 								<div>
 									<p class="full_desc">Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</p>
@@ -302,6 +301,20 @@
 		</div>
 	</section>
 </div>
-<!-- Start Footer -->
-<?php include 'footer.php'; ?>
-<!-- End Footer -->
+
+@endsection
+@section('script')
+
+<script>
+  $(document).ready(function() {
+    var recently_added_funnyTexty = new Typed(".recently_added_funnyTexty", {
+      strings: [$('.recently_added_funnyTexty').html()],
+      typeSpeed: 150,
+      backSpeed: 0,
+      fadeOut: true,
+      smartBackspace: true, // this is a default
+      loop: true
+    });
+  });
+</script>
+@endsection

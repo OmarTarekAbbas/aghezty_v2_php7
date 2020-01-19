@@ -1,10 +1,8 @@
-<!-- Start Header -->
-<?php include 'header.php'; ?>
-<!-- End Header -->
+@extends('frontv2.master')
+@section('content')
 
 <div class="main">
   <!-- Start Slider Carsoul -->
-  <?php include 'video_slider.php'; ?>
   <!-- End Slider Carsoul -->
 
   <div class="mobile_views">
@@ -18,7 +16,8 @@
       </div>
 
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-        <div class="alert_msg alert alert-success my-3 w-100 hvr-wobble-to-bottom-right" role="alert">Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold was added to your shopping Cart.
+        <div class="alert_msg alert alert-success my-3 w-100 hvr-wobble-to-bottom-right" role="alert">Apple iPhone 11
+          Pro,256GB, 4GB RAM, 4G LTE, Gold was added to your shopping Cart.
           <i class="fas fa-times fa-lg float-right mt-1"></i>
         </div>
       </div>
@@ -49,7 +48,7 @@
                     </a>
 
                     <a class="img_link" ref="inner-page.php">
-                      <img class="w-25 hvr-outline-in" src="images/product1.jfif" alt="iphone">
+                      <img class="w-25" src="{{url('public/frontv2/images/product1.jfif')}}" alt="iphone">
                     </a>
 
                     <span>Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold</span>
@@ -80,8 +79,8 @@
                       <i class="fas fa-times fa-lg"></i>
                     </a>
 
-                    <a href="inner-page.php">
-                      <img class="w-25" src="images/products/4.jpg" alt="iphone">
+                    <a class="img_link" href="inner-page.php">
+                      <img class="w-25" src="{{url('public/frontv2/images/products/4.jpg')}}" alt="iphone">
                     </a>
 
                     <span>Beko Front Loading Digital Washing Machine</span>
@@ -112,8 +111,8 @@
                       <i class="fas fa-times fa-lg"></i>
                     </a>
 
-                    <a href="inner-page.php">
-                      <img class="w-25" src="images/products/3.jpg" alt="iphone">
+                    <a class="img_link" href="inner-page.php">
+                      <img class="w-25" src="{{url('public/frontv2/images/products/3.jpg')}}" alt="iphone">
                     </a>
 
                     <span>Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</span>
@@ -143,11 +142,13 @@
 
           <div class="row btn_shopping table-bordered mx-0 py-3">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button class="btn continue_shopping btn-secondary text-capitalize text-white text-left">continue shopping</button>
+              <button class="btn continue_shopping btn-secondary text-capitalize text-white text-left hvr-wobble-to-bottom-right">continue
+                shopping</button>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button class="btn clear_shopping btn-secondary text-capitalize text-white text-right">clear shopping cart</button>
+              <button class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">clear shopping
+                cart</button>
             </div>
           </div>
         </div>
@@ -166,7 +167,7 @@
 
               <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                 <div class="card-body">
-                  <div class="input-group mb-2 m-auto w-100">
+                  <div class="input-group mb-2 m-auto w-100 hvr-float">
                     <div class="input-group-prepend">
                       <div class="input-group-text text-capitalize">coupon</div>
                     </div>
@@ -209,7 +210,7 @@
                   </div>
 
                   <div class="cart_checkout w-100 my-3">
-                    <button class="btn w-100 text-uppercase font-weight-bold">proceed to checkout</button>
+                    <button class="btn w-100 text-uppercase font-weight-bold hvr-wobble-to-bottom-right">proceed to checkout</button>
                   </div>
                 </div>
               </div>
@@ -217,7 +218,7 @@
             <!-- End Cart Totals -->
 
             <div class="ads_img">
-              <img class="rounded w-100" style="height:14rem" src="images/ads/top-banner.jpg" alt="">
+              <img class="rounded w-100" style="height:14rem" src="{{url('public/frontv2/images/ads/top-banner.jpg')}}" alt="Ads">
             </div>
           </div>
         </div>
@@ -229,49 +230,49 @@
     <div class="mobile_views">
       <div class="row no_margin">
         <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
+          <div class="choose_category_form text-center w-100 hvr-outline-in">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="images/stationary.jpg" alt="stationary">
+              <img class="rounded w-100" src="{{url('public/frontv2/images/stationary.jpg')}}" alt="stationary">
             </a>
           </div>
         </div>
 
         <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
+          <div class="choose_category_form text-center w-100 hvr-outline-in">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="images/computers.jpg" alt="computers">
+              <img class="rounded w-100" src="{{url('public/frontv2/images/computers.jpg')}}" alt="computers">
             </a>
           </div>
         </div>
 
         <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
+          <div class="choose_category_form text-center w-100 hvr-outline-in">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="images/appliances.jpg" alt="appliances">
+              <img class="rounded w-100" src="{{url('public/frontv2/images/appliances.jpg')}}" alt="appliances">
             </a>
           </div>
         </div>
 
         <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
+          <div class="choose_category_form text-center w-100 hvr-outline-in">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="images/personal-care.jpg" alt="personal-care">
+              <img class="rounded w-100" src="{{url('public/frontv2/images/personal-care.jpg')}}" alt="personal-care">
             </a>
           </div>
         </div>
 
         <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
+          <div class="choose_category_form text-center w-100 hvr-outline-in">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="images/small-appliances.jpg" alt="small-appliances">
+              <img class="rounded w-100" src="{{url('public/frontv2/images/small-appliances.jpg')}}" alt="small-appliances">
             </a>
           </div>
         </div>
 
         <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center">
+          <div class="choose_category_form text-center w-100 hvr-outline-in">
             <a href="listproduct.php">
-              <img class="rounded w-100" src="images/mobile-accessories.jpg" alt="mobile-accessories">
+              <img class="rounded w-100" src="{{url('public/frontv2/images/mobile-accessories.jpg')}}" alt="mobile-accessories">
             </a>
           </div>
         </div>
@@ -294,9 +295,9 @@
 
         <div class="row">
           <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
+            <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
-                <img src="images/products/5.jpg" alt="product" class="w-75 d-block m-auto">
+                <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
                 <div>
                   <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
@@ -317,9 +318,9 @@
           </div>
 
           <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
+            <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
-                <img src="images/products/6.jpg" alt="product" class="w-75 d-block m-auto">
+                <img src="{{url('public/frontv2/images/products/6.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
                 <div>
                   <p class="full_desc">Philips Daily Collection Sandwich Maker, 2 Toasts, 820 Watt, White</p>
@@ -335,9 +336,9 @@
           </div>
 
           <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
+            <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
-                <img src="images/products/7.jpg" alt="product" class="w-75 d-block m-auto">
+                <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
                 <div>
                   <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
@@ -357,9 +358,9 @@
           </div>
 
           <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
+            <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
-                <img src="images/products/8.jpg" alt="product" class="w-75 d-block m-auto">
+                <img src="{{url('public/frontv2/images/products/8.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
                 <div>
                   <p class="full_desc">Unionaire 49 Inch Smart Full HD LED TV - ML49US615</p>
@@ -379,9 +380,9 @@
           </div>
 
           <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
+            <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
-                <img src="images/products/5.jpg" alt="product" class="w-75 d-block m-auto">
+                <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
                 <div>
                   <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
@@ -402,9 +403,9 @@
           </div>
 
           <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc rounded">
+            <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
-                <img src="images/products/7.jpg" alt="product" class="w-75 d-block m-auto">
+                <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
                 <div>
                   <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
@@ -427,7 +428,4 @@
     </div>
   </section>
 </div>
-
-<!-- Start Footer -->
-<?php include 'footer.php'; ?>
-<!-- End Footer -->
+@endsection
