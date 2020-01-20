@@ -629,7 +629,7 @@ class HomeController extends Controller
 
     public function load_productsv2(Request $request)
     {
-        return $request->all();
+        //return $request->all();
         $products = Product::query();
         if($request->has('sub_category_id') && $request->sub_category_id !=''){
             $request->sub_category_id = (array) $request->sub_category_id;
