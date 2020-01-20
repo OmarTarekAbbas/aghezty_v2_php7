@@ -9,7 +9,7 @@
             <span class="sale-product-icon">-{{$product->discount}}%</span>
         </div>
       @endif
-      <h6 class="full_desc text-dark text-center text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
+      <h6 class="full_desc text-dark text-left text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
     </a>
 
     <div class="rating_list_product">

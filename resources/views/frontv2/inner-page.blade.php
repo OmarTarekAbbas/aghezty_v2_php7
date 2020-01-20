@@ -451,7 +451,7 @@
 						<a href="#0">
 							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100 based_selection_img">
 
-							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
+							<h6 class="text-dark text-left text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
 								Grey</h6>
 						</a>
 
@@ -478,7 +478,7 @@
 						<a href="#0">
 							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100 based_selection_img">
 
-							<h6 class="text-dark text-center text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
+							<h6 class="text-dark text-left text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
 								Tea</h6>
 						</a>
 
@@ -509,7 +509,7 @@
 								<span class="sale-product-icon">-10%</span>
 							</div>
 
-							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
+							<h6 class="text-dark text-left text-capitalize my-3">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
 						</a>
 
 						<div class="rating_list_product">
@@ -539,7 +539,7 @@
 						<a href="#0">
 							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100 based_selection_img">
 
-							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
+							<h6 class="text-dark text-left text-capitalize my-3">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
 						</a>
 
 						<div class="rating_list_product">
@@ -565,7 +565,7 @@
 						<a href="#0">
 							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100 based_selection_img">
 
-							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
+							<h6 class="text-dark text-left text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
 								Grey</h6>
 						</a>
 
@@ -592,7 +592,7 @@
 						<a href="#0">
 							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100 based_selection_img">
 
-							<h6 class="text-dark text-center text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
+							<h6 class="text-dark text-left text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
 								Tea</h6>
 						</a>
 

@@ -3,7 +3,7 @@
 
 <div class="main">
   <!-- Start Slider Carsoul -->
-
+  {{-- @include('frontv2.video_slider') --}}
   <!-- End Slider Carsoul -->
 
   <div class="mobile_views">
@@ -43,16 +43,18 @@
 
               <tbody>
                 <tr>
-                  <th class="th_th text-primary h6" scope="row">
+                  <th class="th_th h6" scope="row">
                     <a class="item-delete btn btn-sm text-primary" href="#0">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
                     <a class="img_link" ref="inner-page.php">
                       <img class="w-25" src="{{url('public/frontv2/images/product1.jfif')}}" alt="iphone">
-                    </a>
 
-                    <span>Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold</span>
+                      <div class="cart_shopping_title">
+                        <span>Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold</span>
+                      </div>
+                    </a>
                   </th>
 
                   <td class="item-price align-middle">9850 EGP</td>
@@ -82,9 +84,11 @@
 
                     <a class="img_link" href="inner-page.php">
                       <img class="w-25" src="{{url('public/frontv2/images/products/4.jpg')}}" alt="iphone">
-                    </a>
 
-                    <span>Beko Front Loading Digital Washing Machine</span>
+                      <div class="cart_shopping_title">
+                        <span>Beko Front Loading Digital Washing Machine</span>
+                      </div>
+                    </a>
                   </th>
 
                   <td class="item-price align-middle">6,680 EGP</td>
@@ -114,9 +118,11 @@
 
                     <a class="img_link" href="inner-page.php">
                       <img class="w-25" src="{{url('public/frontv2/images/products/3.jpg')}}" alt="iphone">
-                    </a>
 
-                    <span>Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</span>
+                      <div class="cart_shopping_title">
+                        <span>Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</span>
+                      </div>
+                    </a>
                   </th>
 
                   <td class="item-price align-middle">7,100 EGP</td>
@@ -300,6 +306,10 @@
               <a href="listproduct.php">
                 <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-10%</span>
+                </div>
+
                 <div>
                   <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
                 </div>
@@ -341,6 +351,10 @@
               <a href="listproduct.php">
                 <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-10%</span>
+                </div>
+
                 <div>
                   <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
                 </div>
@@ -362,6 +376,10 @@
             <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
                 <img src="{{url('public/frontv2/images/products/8.jpg')}}" alt="product" class="w-100 d-block m-auto">
+
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-10%</span>
+                </div>
 
                 <div>
                   <p class="full_desc">Unionaire 49 Inch Smart Full HD LED TV - ML49US615</p>
@@ -385,6 +403,10 @@
               <a href="listproduct.php">
                 <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-100 d-block m-auto">
 
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-10%</span>
+                </div>
+
                 <div>
                   <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
                 </div>
@@ -407,6 +429,10 @@
             <div class="px-2 product_desc hvr-bob rounded">
               <a href="listproduct.php">
                 <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-100 d-block m-auto">
+
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-10%</span>
+                </div>
 
                 <div>
                   <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
