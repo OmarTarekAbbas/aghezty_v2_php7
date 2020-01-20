@@ -445,11 +445,11 @@
 
       <div class="border-bottom w-100"></div>
 
-			<div class="row  mt-3">
+			<div class="row mt-3">
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100 based_selection_img">
 
 							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
 								Grey</h6>
@@ -476,7 +476,7 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100 based_selection_img">
 
 							<h6 class="text-dark text-center text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
 								Tea</h6>
@@ -503,7 +503,7 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100 based_selection_img">
 
 							<div class="product-label text-center font-weight-bold">
 								<span class="sale-product-icon">-10%</span>
@@ -537,7 +537,7 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100 based_selection_img">
 
 							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
 						</a>
@@ -563,7 +563,7 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100 based_selection_img">
 
 							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
 								Grey</h6>
@@ -590,7 +590,7 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100 based_selection_img">
 
 							<h6 class="text-dark text-center text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
 								Tea</h6>
