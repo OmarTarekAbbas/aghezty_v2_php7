@@ -56,9 +56,18 @@
 
 
     <div class="border-bottom border-dark my-5"></div>
-
+    @if(Session::has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@lang('front.success')!</strong> {{Session::get('success')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    @include('errors')
     <div class="your_comments w-100 p-3 rounded">
       <form action="{{url('clients/contact')}}" method="post">
+        @csrf
         <h1 class="text-center">@lang('front.contact')</h1>
 
         <div class="row m-0">

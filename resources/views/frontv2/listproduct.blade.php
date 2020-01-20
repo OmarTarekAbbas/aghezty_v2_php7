@@ -13,14 +13,15 @@
   <nav class="mobile_views nav_breadcrumb" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.php" title="Go To Home">Home</a>
+        <a href="{{ route('front.home.index')}}" title="Go To Home">Home</a>
       </li>
-
-      <li class="breadcrumb-item">
-        <a href="listproduct.php" title="Go To Heavy Machine">Heavy Machine</a>
-      </li>
-
-      <li class="breadcrumb-item active" aria-current="page">Mobile</li>
+      @if(isset($_REQUEST['sub_category_id']))
+      <li class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</li>
+      @elseif(isset($_REQUEST['brand_id']))
+      <li class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</li>
+      @else
+      <li class="breadcrumb-item active" aria-current="page">@lang('front.home.list_product')</li>
+      @endif
     </ol>
   </nav>
 
@@ -160,7 +161,7 @@
 
               <div class="panel mb-3 border border-secondary">
                 <div class="z-checkbox">
-                  <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])}} type="checkbox" name="to" value="1000">
+                  <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
                   <label class="d-block text-capitalize" for="panel_34">Less Than - 1000 EGP</label>
                 </div>
 
@@ -205,7 +206,7 @@
       <!-- Start Image Cover -->
       <div class="col-md-10">
         <div class="list_cover">
-          <img class="w-100 " src="{{asset('public/frontv2/images/oppo.jfif')}}" alt="Cover" title="Apple">
+          <img class="w-100 " src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
         </div>
         <!-- End Image Cover -->
 
@@ -350,12 +351,16 @@
       });
 
   }
-
+  $('.price').click(function(){
+    $('.price').not(this).each(function(){
+         $(this).prop('checked',false)
+     });
+  })
   $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function(){
     $('.load').show();
     start = 0
     $.ajax({
-          url: '{{url("clients/loadproductsv2")}}?start=0',
+          url: '{{url("clients/loadproductsv2")}}?start=0'+'&'+window.location.search.substring(1),
           type: "post",
           data:$('#filter_form').serialize(),
           success: function(data) {

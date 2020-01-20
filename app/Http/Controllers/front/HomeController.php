@@ -622,6 +622,9 @@ class HomeController extends Controller
         if($request->has('sorted') && $request->sorted!=''){
           $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
         }
+        if($request->has('last') && $request->last!=''){
+          $products = $products->latest('created_at');
+        }
 
         $products = $products->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct',compact('products'));
@@ -652,16 +655,22 @@ class HomeController extends Controller
           $products = $products->whereBetween('price',explode(',',$request->from_to));
        }
         if($request->has('ifrom') && $request->ifrom !=''){
-            $products = $products->where('inch','>=',$request->from);
+            $products = $products->where('inch','>=',$request->ifrom);
         }
+        if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
+          $products = $products->whereBetween('inch',explode(',',$request->ifrom_ito));
+       }
         if($request->has('ito') && $request->ito!=''){
-            $products = $products->where('inch','<',$request->to);
+            $products = $products->where('inch','<',$request->ito);
         }
         if($request->has('sorted') && $request->sorted!=''){
           $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
         }
         if($request->has('search') && $request->search!=''){
-          $products = $products->whereLike(['title','price','discount','price_after_discount','description','short_description', 'inch'],$request->search);
+          $products = $products->whereLike(['title'],$request->search);
+        }
+        if($request->has('last') && $request->last!=''){
+          $products = $products->latest('created_at');
         }
 
         $products = $products->offset($request->start)->limit(get_limit_paginate())->get();

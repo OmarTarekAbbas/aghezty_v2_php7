@@ -109,10 +109,10 @@ Route::prefix('clients')->group(function() {
    });
 
     /*************** designv2 routes ****/
-    Route::get('homev2', 'front\HomeController@indexv2');
+    Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');;
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('contactv2', 'front\HomeController@contactusv2');
-    Route::get('productsv2', 'front\HomeController@productsv2');
+    Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
     Route::any('loadproductsv2', 'front\HomeController@load_productsv2');
     Route::get('productv2/{id}', 'front\HomeController@inner_productsv2')->name('front.home.inner');
     /*************** end ***************/

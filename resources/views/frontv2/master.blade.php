@@ -84,7 +84,7 @@
 			</div>
 
 			<div class="col-md-6 col-lg-6 col-xl-10">
-				<form class="search-container" action="{{url('clients/produtsv2')}}" method="get">
+				<form class="search-container" action="{{url('clients/productsv2')}}" method="get">
 					<input type="text" id="search-bar" name="search" placeholder="@lang('messages.search')">
 					<a href="#">
 						<div class="search_background">
@@ -169,19 +169,19 @@
 									<ul class="list-unstyled">
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.less') @lang('front.from')  1000 EGP</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 1000 EGP @lang('front.to') 3000 EGP</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 6000 EGP @lang('front.to') 10000 EGP</a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.more') @lang('front.from')  10000 EGP</a>
 										</li>
 
 									</ul>
@@ -233,19 +233,19 @@
 
 									<ul class="list-unstyled">
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.less') @lang('front.from')  1000 EGP</a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 1000 EGP @lang('front.to') 3000 EGP</a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 6000 EGP @lang('front.to') 10000 EGP</a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.more') @lang('front.from')  10000 EGP</a>
                       </li>
 									</ul>
 								</div>
@@ -406,7 +406,7 @@
                     <div class="col-md-12 col-xl-6 col-12">
                       <div class="block">
                         <div class="block_title mb-3">
-                          <strong>Shop By Category</strong>
+                          <strong>@lang('front.shop_by_category')</strong>
                         </div>
 
                         <div class="block_content">
@@ -461,7 +461,7 @@
                     <div class="col-md-6 col-xl-3 col-12">
                       <div class="block block_brand_content">
                         <div class="block_title mb-3">
-                          <strong>Shop By Brand</strong>
+                          <strong>@lang('front.shop_by_brand')</strong>
                         </div>
 
                         <div class="block_content">
@@ -503,7 +503,7 @@
                     <div class="mobile_center col-md-6 col-xl-3 col-12">
                       <div class="block">
                         <div class="block_title mb-2">
-                          <strong>Important Links</strong>
+                          <strong>@lang('front.important_links')</strong>
                         </div>
 
                         <div class="block_content">
@@ -522,7 +522,7 @@
 
                             <div class="col-xl-12 col-12">
                               <div class="block_title mb-3">
-                                <strong>Find Us On</strong>
+                                <strong>@lang('front.find_us')</strong>
                               </div>
 
                               <div class="block_content">
@@ -644,7 +644,7 @@
 
 
 				var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
-					strings: ['Shop By Price'],
+					strings: ['@lang("front.shop_by_price")'],
 					typeSpeed: 150,
 					backSpeed: 0,
 					fadeOut: true,
@@ -672,7 +672,7 @@
 		});
 
 		var shop_titleb_typed = new Typed('#shop_titleb_typed', {
-			strings: ['Shop By Price'],
+			strings: ['@lang("front.shop_by_price")'],
 			typeSpeed: 150,
 			backSpeed: 0,
 			fadeOut: true,
