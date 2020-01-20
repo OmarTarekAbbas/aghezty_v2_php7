@@ -878,7 +878,6 @@ a {
 .main {
   #inner-page {
     .price_disc_offer {
-
       .product-label {
         position: absolute;
         top: 51%;
@@ -1372,6 +1371,17 @@ a {
     form {
       em {
         color: #eb340a;
+      }
+    }
+  }
+
+  .based_selection {
+    .content_view {
+      a {
+        .based_selection_img {
+          width: 100% !important;
+          height: 246px !important;
+        }
       }
     }
   }
@@ -4705,6 +4715,11 @@ a {
     .based_selection {
       .content_view {
         a {
+          .based_selection_img {
+            width: 100% !important;
+            height: 153px !important;
+          }
+
           h6 {
             line-height: 1.35rem;
             height: 2.5rem;

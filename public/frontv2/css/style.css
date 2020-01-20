@@ -1062,6 +1062,10 @@ a {
 .main .review_comment form em {
   color: #eb340a;
 }
+.main .based_selection .content_view a .based_selection_img {
+  width: 100% !important;
+  height: 246px !important;
+}
 
 .colorstar {
   color: #ffc600;
@@ -3302,6 +3306,10 @@ a {
   }
   .main #inner-page #carouselExampleControls {
     width: 100% !important;
+  }
+  .main .based_selection .content_view a .based_selection_img {
+    width: 100% !important;
+    height: 153px !important;
   }
   .main .based_selection .content_view a h6 {
     line-height: 1.35rem;

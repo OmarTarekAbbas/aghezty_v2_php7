@@ -1035,6 +1035,10 @@ a {
 .main .based_selection {
   text-align: right;
 }
+.main .based_selection .content_view a .based_selection_img {
+  width: 100% !important;
+  height: 246px !important;
+}
 .main .review_comment {
   text-align: right;
 }
@@ -3558,10 +3562,14 @@ a {
     height: 200px !important;
   }
   .main #inner-page .price_disc_offer .product-label {
-    right: 3rem;
+    left: 3rem;
   }
   .main #inner-page #carouselExampleControls {
     width: 100% !important;
+  }
+  .main .based_selection .content_view a .based_selection_img {
+    width: 100% !important;
+    height: 153px !important;
   }
   .main .based_selection .content_view a h6 {
     line-height: 1.35rem;

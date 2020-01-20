@@ -1316,6 +1316,15 @@ a {
 
   .based_selection {
     text-align: right;
+
+    .content_view {
+      a {
+        .based_selection_img {
+          width: 100% !important;
+          height: 246px !important;
+        }
+      }
+    }
   }
 
   .review_comment {
@@ -5027,7 +5036,7 @@ a {
     #inner-page {
       .price_disc_offer {
         .product-label {
-          right: 3rem;
+          left: 3rem;
         }
       }
 
@@ -5039,6 +5048,11 @@ a {
     .based_selection {
       .content_view {
         a {
+          .based_selection_img {
+            width: 100% !important;
+            height: 153px !important;
+          }
+
           h6 {
             line-height: 1.35rem;
             height: 2.5rem;
