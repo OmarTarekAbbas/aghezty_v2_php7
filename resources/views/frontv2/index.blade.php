@@ -282,6 +282,12 @@
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 rounded d-block m-auto">
 
+                {{-- @if($product->discount > 0)
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-{{$product->discount}}%</span>
+                </div>
+                @endif --}}
+
                 <div class="mt-1">
                   <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
@@ -360,7 +366,13 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto" style="height: 180px">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="img_size w-75 d-block m-auto">
+
+                {{-- @if($product->discount > 0)
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-{{$product->discount}}%</span>
+                </div>
+                @endif --}}
 
                 <div>
                   <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>

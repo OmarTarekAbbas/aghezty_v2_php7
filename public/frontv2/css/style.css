@@ -143,6 +143,7 @@ a {
   -o-transform: translate(-50%, -50%);
 }
 .head_two .shopping_cart button .shopping_cart_img {
+  width: 45%;
   position: absolute;
   top: 38px;
   left: 53px;
@@ -241,6 +242,9 @@ a {
 .carsoul_ads .owl-one .owl-dots {
   display: none;
 }
+.carsoul_ads .top_banner a img {
+  height: 230px;
+}
 .carsoul_ads .full_banner img {
   height: 175px;
 }
@@ -313,6 +317,12 @@ a {
 .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:hover, .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:focus {
   font-size: 1.75rem;
   line-height: 33px;
+}
+.main .choose_category .full_banner img {
+  height: 203px;
+}
+.main .choose_category .left-img a img {
+  height: 269px;
 }
 
 .product_view .product_view_type {
@@ -519,6 +529,9 @@ a {
   text-decoration: underline !important;
   font-weight: 700;
 }
+.main .list_cover img {
+  height: 326px;
+}
 .main .toolbar {
   border-color: #e4e9ed;
 }
@@ -571,6 +584,7 @@ a {
 }
 .main .content_view a img:hover, .main .content_view a img:focus {
   width: 100% !important;
+  height: 318px;
 }
 .main .content_view a .full_desc {
   font-weight: bold;
@@ -579,8 +593,8 @@ a {
   height: 2rem;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.1rem;
 }
 .main .content_view .product-label {
   position: absolute;
@@ -1225,6 +1239,9 @@ a {
 }
 .main .product_view .product_view_type .product_desc a img {
   height: 240px;
+}
+.main .product_view .product_view_type .product_desc a .img_size {
+  height: 180px !important;
 }
 
 /*----------------------------------------- End Cart Page -----------------------------------------*/
@@ -3220,18 +3237,31 @@ a {
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
     font-size: 1rem !important;
   }
+  .main .choose_category .choose_category_background .choose_category_form .hoverabley img {
+    height: 168px;
+  }
+  .main .choose_category .choose_category_form .hoverabley .hovertitle {
+    top: -4.85rem;
+    height: 11rem;
+  }
+  .main .choose_category .choose_category_form .hoverabley img {
+    height: 168px;
+  }
   .main .choose_category .full_banner img {
     height: 138px;
   }
   .main .choose_category .left-img a img {
-    height: 179px;
+    height: 181px;
   }
   .main .choose_category .choose_category_form .hoverabley .hovertitle p {
     font-size: 1rem;
     letter-spacing: 0.35rem;
   }
   .main .product_view .product_view_type .product_desc a img {
-    height: 120px !important;
+    height: 146px !important;
+  }
+  .main .product_view .product_view_type .product_desc a .img_size {
+    height: 110px !important;
   }
   .main #toggle_plus_minus .accordion {
     padding: 5px;
