@@ -1,6 +1,6 @@
-<!-- header -->
-<?php include 'header.php'; ?>
-<!-- end header-->
+@extends('frontv2.master')
+@section('content')
+
 
 <!-- main content -->
 <div class="main mt-2">
@@ -14,7 +14,7 @@
 						</div>
 
 						<!-- Start Upload Image -->
-						<?php include 'upload_img.php'; ?>
+						@include('frontv2.upload_img')
 						<!-- End Upload Image -->
 
 						<div class="all_forms my-5">
@@ -131,6 +131,5 @@
 		</div>
 	</section>
 </div>
-<!-- footer -->
-<?php include 'footer.php'; ?>
-<!-- end footer-->
+
+@endsection

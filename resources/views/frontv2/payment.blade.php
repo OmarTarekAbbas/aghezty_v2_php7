@@ -1,9 +1,8 @@
-<!-- Start Header -->
-<?php include 'header.php'; ?>
-<!-- End Header -->
+@extends('frontv2.master')
+@section('content')
 
 <!-- Start Owl Carsoul -->
-<?php include 'video_slider.php'; ?>
+
 <!-- End Owl Carsoul -->
 
 <div class="main">
@@ -22,7 +21,7 @@
 
 					<div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
 						<div class="card-body">
-							<div class="choose-visa input-group w-75 m-auto rounded px-2 py-1">
+							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
 								<div class="visa-cash input-group-prepend">
 									<span class="span_input_radio">
 										<input type="radio" name="payment" value="1" form="checkout-form" id="radioOne">
@@ -38,7 +37,7 @@
 								</div>
 							</div>
 
-							<div class="choose-visa input-group w-75 m-auto rounded px-2 py-1">
+							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
 								<div class="visa-cash input-group-prepend">
 									<span class="span_input_radio">
 										<input type="radio" name="payment" value="3" form="checkout-form" id="radioTwo">
@@ -54,9 +53,9 @@
 								</div>
 							</div>
 
-							<div class="choose-visa input-group w-75 m-auto rounded px-2 py-1">
+							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
 								<div class="visa-cash input-group-prepend">
-									<span class="span_input_radio">
+									<span class="span_input_radio ">
 										<input type="radio" name="payment" value="2" form="checkout-form" id="radioThree">
 									</span>
 
@@ -77,7 +76,7 @@
 										<div class="form-row" style="display:none">
 											<div class="form-group w-100" style="height:55px">
 												<label for="cc_number">Credit Card Number</label>
-												<input type="number" class="form-control" min="0">
+												<input type="number" class="form-control hvr-float" min="0">
 												<div class="form-group" id="card-number"></div>
 											</div>
 										</div>
@@ -88,7 +87,7 @@
 										<div class="form-row" style="display:none">
 											<div class="form-group w-100" style="height:55px">
 												<label for="cc_number">Expiry</label>
-												<input type="number" class="form-control" min="0">
+												<input type="number" class="form-control hvr-float" min="0">
 												<div class="form-group" id="card-number"></div>
 											</div>
 										</div>
@@ -99,7 +98,7 @@
 										<div class="form-row" style="display:none">
 											<div class="form-group w-100" style="height:55px">
 												<label for="cc_number">CVV</label>
-												<input type="number" class="form-control" min="0">
+												<input type="number" class="form-control hvr-float" min="0">
 												<div class="form-group" id="card-number"></div>
 											</div>
 										</div>
@@ -107,7 +106,7 @@
 								</div>
 							</form>
 
-							<button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto">Paid Now</button>
+							<button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right">Paid Now</button>
 						</div>
 					</div>
 				</div>
@@ -115,6 +114,5 @@
 		</section>
 	</div>
 </div>
-<!-- Start Footer -->
-<?php include 'footer.php'; ?>
-<!-- End Footer -->
+
+@endsection

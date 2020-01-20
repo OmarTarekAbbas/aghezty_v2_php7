@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" style="height:100%;">
 <style>
-	button:focus {
-		outline: 0 !important;
+  button:focus {
+    outline: 0 !important;
 
-	}
+  }
 
-	.accordion_two:hover,
-	.accordion_two:focus {
-		background-color: #FFF !important;
-	}
+  .accordion_two:hover,
+  .accordion_two:focus {
+    background-color: #FFF !important;
+  }
 
-	.panel {
-		display: none;
-	}
+  .panel {
+    display: none;
+  }
 
-	.panel ul li {
-		line-height: 2;
-	}
+  .panel ul li {
+    line-height: 2;
+  }
 
-	.panel ul li a:hover,
-	.panel ul li a:focus {
-		color: #FFF !important;
-		text-decoration: underline !important;
-	}
+  .panel ul li a:hover,
+  .panel ul li a:focus {
+    color: #FFF !important;
+    text-decoration: underline !important;
+  }
 
-	.panel ul li:nth-child(odd) {
-		background: #343a40;
-	}
+  .panel ul li:nth-child(odd) {
+    background: #343a40;
+  }
 
-	.panel ul li:nth-child(even) {
-		background: #3c434a;
-	}
+  .panel ul li:nth-child(even) {
+    background: #3c434a;
+  }
 </style>
 @yield('style')
-<head>
-	<title>Aghezty V2</title>
-	<meta charset="utf-8">
-	<!--IE Compatibility Meta-->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- Mobile Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- SEO Engine -->
-	<meta name="keywords" content="Buy Online, Buy in Egypt, Shop in Egypt, Online Shop, Online Store, Aghezty, Aghezty.com, Electronics, Mobiles, Tablets, Laptops, Computers, TVs, Home Appliance, Personal Care, Refrigerators, Cookers, Heaters, Accessories. Electronics Brands, Cash On Delivery, Installment, Premium Card, Ahly Visa Installment, Credit Card, Free Delivery, Agent Warranty, شراء عبر الإنترنت ، شراء في مصر ، متجر في مصر ، متجر على الإنترنت ، متجر على شبكة الإنترنت ، إلكترونيات ، هواتف محمولة ، أجهزة لوحية ، أجهزة الكمبيوتر المحمولة ، أجهزة الكمبيوتر ، تلفزيونات ، الأجهزة المنزلية ، العناية الشخصية ، ثلاجات ، طباخات ، سخانات ، اكسسوارات. العلامات التجارية الإلكترونية ، الدفع عند الاستلام ، القسط ، البطاقة المميزة ، تقسيط بطاقة التأشيرة من الأهلي ، بطاقة الائتمان ، التوصيل المجاني ، ضمان الوكيل">
-	<meta name="description" content="Aghezty is the is the first and largest e-commerce website in Egypt dedicated for all types of consumer electronics, أجهزتى هو أول وأكبر موقع للتجارة الإلكترونية في مصر مخصص لجميع أنواع الإلكترونيات الاستهلاكية">
-	<meta name="title" content="Buy Online, Buy in Egypt, Shop in Egypt, Online Shop, Online Store, Aghezty, Aghezty.com, Electronics, Mobiles, Tablets, Laptops, Computers, TVs, Home Appliance, Personal Care, Refrigerators, Cookers, Heaters, Accessories. Electronics Brands, Cash On Delivery, Installment, Premium Card, Ahly Visa Installment, Credit Card, Free Delivery, Agent Warranty, شراء عبر الإنترنت ، شراء في مصر ، متجر في مصر ، متجر على الإنترنت ، متجر على شبكة الإنترنت ، إلكترونيات ، هواتف محمولة ، أجهزة لوحية ، أجهزة الكمبيوتر المحمولة ، أجهزة الكمبيوتر ، تلفزيونات ، الأجهزة المنزلية ، العناية الشخصية ، ثلاجات ، طباخات ، سخانات ، اكسسوارات. العلامات التجارية الإلكترونية ، الدفع عند الاستلام ، القسط ، البطاقة المميزة ، تقسيط بطاقة التأشيرة من الأهلي ، بطاقة الائتمان ، التوصيل المجاني ، ضمان الوكيل" />
-	<!-- Bootstrap CSS-->
-	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/bootstrap.min.css')}}">
-	<!-- Fontawesome CSS-->
-	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/all.min.css')}}">
-	<!-- Easy Zoom-->
-	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/easyzoom.css')}}">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
-	<!-- funnyText -->
-	<link rel="stylesheet" href="{{url('public/frontv2/css/jquery.funnyText.css')}}">
-	<!-- hover -->
-	<!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
-	<link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
 
-@if (\Session::has('applocale'))
-@if (\Session::get('applocale') == 'ar')
-	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
-@else
-	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
-@endif
-@else
-<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
-@endif
+<head>
+  <title>Aghezty V2</title>
+  <meta charset="utf-8">
+  <!--IE Compatibility Meta-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Mobile Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- SEO Engine -->
+  <meta name="keywords" content="Buy Online, Buy in Egypt, Shop in Egypt, Online Shop, Online Store, Aghezty, Aghezty.com, Electronics, Mobiles, Tablets, Laptops, Computers, TVs, Home Appliance, Personal Care, Refrigerators, Cookers, Heaters, Accessories. Electronics Brands, Cash On Delivery, Installment, Premium Card, Ahly Visa Installment, Credit Card, Free Delivery, Agent Warranty, شراء عبر الإنترنت ، شراء في مصر ، متجر في مصر ، متجر على الإنترنت ، متجر على شبكة الإنترنت ، إلكترونيات ، هواتف محمولة ، أجهزة لوحية ، أجهزة الكمبيوتر المحمولة ، أجهزة الكمبيوتر ، تلفزيونات ، الأجهزة المنزلية ، العناية الشخصية ، ثلاجات ، طباخات ، سخانات ، اكسسوارات. العلامات التجارية الإلكترونية ، الدفع عند الاستلام ، القسط ، البطاقة المميزة ، تقسيط بطاقة التأشيرة من الأهلي ، بطاقة الائتمان ، التوصيل المجاني ، ضمان الوكيل">
+  <meta name="description" content="Aghezty is the is the first and largest e-commerce website in Egypt dedicated for all types of consumer electronics, أجهزتى هو أول وأكبر موقع للتجارة الإلكترونية في مصر مخصص لجميع أنواع الإلكترونيات الاستهلاكية">
+  <meta name="title" content="Buy Online, Buy in Egypt, Shop in Egypt, Online Shop, Online Store, Aghezty, Aghezty.com, Electronics, Mobiles, Tablets, Laptops, Computers, TVs, Home Appliance, Personal Care, Refrigerators, Cookers, Heaters, Accessories. Electronics Brands, Cash On Delivery, Installment, Premium Card, Ahly Visa Installment, Credit Card, Free Delivery, Agent Warranty, شراء عبر الإنترنت ، شراء في مصر ، متجر في مصر ، متجر على الإنترنت ، متجر على شبكة الإنترنت ، إلكترونيات ، هواتف محمولة ، أجهزة لوحية ، أجهزة الكمبيوتر المحمولة ، أجهزة الكمبيوتر ، تلفزيونات ، الأجهزة المنزلية ، العناية الشخصية ، ثلاجات ، طباخات ، سخانات ، اكسسوارات. العلامات التجارية الإلكترونية ، الدفع عند الاستلام ، القسط ، البطاقة المميزة ، تقسيط بطاقة التأشيرة من الأهلي ، بطاقة الائتمان ، التوصيل المجاني ، ضمان الوكيل" />
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/bootstrap.min.css')}}">
+  <!-- Fontawesome CSS-->
+  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/all.min.css')}}">
+  <!-- Easy Zoom-->
+  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/easyzoom.css')}}">
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
+  <!-- funnyText -->
+  <link rel="stylesheet" href="{{url('public/frontv2/css/jquery.funnyText.css')}}">
+  <!-- hover -->
+  <!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
+  <link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
+
+  @if (\Session::has('applocale'))
+  @if (\Session::get('applocale') == 'ar')
+  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
+  @else
+  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
+  @endif
+  @else
+  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
+  @endif
 
 </head>
 
@@ -448,8 +449,337 @@
 						@endif
 						@endforeach
 
-                          </div>
-                        </div>
+                <div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title{{$category->id}}_typed"></h6>
+
+                  <ul class="list-unstyled">
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          @endif
+          @endforeach
+          <!-- End Heavy Machines -->
+
+          @php
+          $brands = brands();
+          @endphp
+          <!-- Start Brands-->
+          <li class="nav-item dropdown mega-dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> @lang('front.brands')</a>
+
+            <div id="brands" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink4">
+              <div class="row">
+                <div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="brands_title_typed"></h6>
+                  <ul class="list-unstyled">
+                    @php
+                    $count = $brands->count();
+                    $limit = $count/2;
+                    @endphp
+                    @foreach ($brands->slice(0, $limit) as $item)
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                </div>
+
+                <div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mt-4">
+                  <!-- <h6 class="sub-title text-uppercase font-weight-bold">Brands</h6> -->
+                  <ul class="list-unstyled">
+                    @foreach ($brands->slice($limit, $count) as $item)
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                </div>
+
+                <div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_titleb_typed"></h6>
+
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> Less Than 1000 EGP</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 1000 EGP TO 3000 EGP</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> From 6000 EGP TO 10000 EGP</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="listproduct.php"><i class="fas fa-caret-right pl-1 pr-2"></i> More Than 10000 EGP</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- End Brands-->
+
+          <!-- Start Offers -->
+          <li class="nav-item">
+            <a class="nav-link nav_link2 text-uppercase" href="{{url('clients/products?offer=offer')}}" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">@lang('front.offer')</a>
+          </li>
+          <!-- End Offers -->
+
+          <!-- Start Maintenance -->
+          <li class="nav-item">
+            <a class="nav-link nav_link2 text-uppercase" href="{{url('clients/service_centerv2')}}" id="navbarDropdownMenuLink6" aria-haspopup="true" aria-expanded="false">@lang('front.service_center')</a>
+          </li>
+          <!-- End Maintenance -->
+
+          <!-- Start Contact Us -->
+          <li class="nav-item">
+            <a class="nav-link nav_link2 text-uppercase" href="{{url('clients/contactv2')}}" id="navbarDropdownMenuLink7" aria-haspopup="true" aria-expanded="false">@lang('front.contact')</a>
+          </li>
+          <!-- End Contact Us -->
+
+          <!-- Start Register-->
+          <li class="nav-item">
+            <a class="nav-link nav_link2 text-uppercase" href="register.php" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.auth.register')</a>
+          </li>
+          <!-- End Register -->
+
+          <!-- Start Log In-->
+          <li class="nav-item">
+            <a class="nav-link nav_link2 text-uppercase" href="login.php" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.auth.login')</a>
+          </li>
+          <!-- End Log In -->
+
+          <!-- Start My Account-->
+          <li class="nav-item dropdown mega-dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('front.auth.info')</a>
+
+            <div id="my_account" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink11" style="">
+              <div class="row">
+                <div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="profile.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.profile')</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="address.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.address')</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="password.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.auth.password')</a>
+                    </li>
+
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="orders.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.order')</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- End My Account-->
+
+          <!-- Start Languages-->
+          <li class="nav-item dropdown mega-dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink112" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="{{url('public/frontv2/images/lang/'.\Session::get('applocale').'.webp')}}" alt="{{\Session::get('applocale') == 'en'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'en'? " English" : " العربية"}}
+            </a>
+
+            <div id="languages" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink112">
+              <div class="row">
+
+                <div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'en'? "active" : ""}}" href="{{url('lang/en')}}" type="button">
+                        <img src="{{url('public/frontv2/images/lang/en.webp')}}" alt="English Language"> English
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'ar'? "active" : ""}}" href="{{url('lang/ar')}}" type="button">
+                        <img src="{{url('public/frontv2/images/lang/ar.webp')}}" alt="Arabic Language"> Arabic
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- End Languages-->
+        </ul>
+      </div>
+      <!-- Collapsible content -->
+    </nav>
+
+    <!-- Navbar -->
+  </header>
+
+  <section class="search_mobile d-block d-sm-none d-md-none d-lg-none d-xl-none">
+    <div class="col-12">
+      <form class="search-container">
+        <input type="text" placeholder="Search...">
+        <a href="#">
+          <div class="search_background">
+            <i class="search-icon fas fa-search fa-2x"></i>
+          </div>
+        </a>
+      </form>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="show-cart table">
+
+          </table>
+          <div>Total price: $<span class="total-cart"></span></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Order now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @yield('content')
+
+  <footer class="footer_footer">
+    <div class="footer_content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 col-xl-12 col-12">
+            <div class="row">
+              <div class="col-md-12 col-xl-6 col-12">
+                <div class="block">
+                  <div class="block_title mb-3">
+                    <strong>Shop By Category</strong>
+                  </div>
+
+                  <div class="block_content">
+                    <div class="row">
+
+                      @foreach ($categorys as $category)
+                      @if($category->sub_cats->count() > 0)
+                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                        <ul class="list-unstyled ul_links">
+                          <a href="{{url('clients/products?sub_category_id='.$sub_category->id)}}">
+                            <strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
+                          </a>
+                          @php
+                          $count = $category->sub_cats->count();
+                          $limit = $count/2;
+                          @endphp
+                          @foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
+                          <li>
+                            <a class="hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+                          </li>
+                          @endforeach
+                        </ul>
+                      </div>
+
+                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                        <ul class="list-unstyled ul_links">
+                          <a href="{{url('clients/products?sub_category_id='.$sub_category->id)}}">
+                            <strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
+                          </a>
+
+                          @foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
+                          <li>
+                            <a class="hvr-icon-forward" href="{{url('clients/products?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+                          </li>
+                          @endforeach
+
+                        </ul>
+                      </div>
+                      @endif
+                      @endforeach
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              @php
+              $brands = brands();
+              @endphp
+
+              <div class="col-md-6 col-xl-3 col-12">
+                <div class="block block_brand_content">
+                  <div class="block_title mb-3">
+                    <strong>Shop By Brand</strong>
+                  </div>
+
+                  <div class="block_content">
+                    <div class="row">
+                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                        <ul class="list-unstyled ul_links">
+                          <a href="#0">
+                            <strong class="font-weight-bold border-bottom">@lang('front.brands')</strong>
+                          </a>
+                          @php
+                          $count = $brands->count();
+                          $limit = $count/2;
+                          @endphp
+                          @foreach ($brands->slice(0, $limit) as $item)
+                          <li>
+                            <a class="hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
+                          </li>
+                          @endforeach
+                        </ul>
+                      </div>
+
+                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                        <ul class="list-unstyled ul_links">
+                          <a href="#0">
+                            <strong class="font-weight-bold border-bottom invisible">@lang('front.brands')</strong>
+                          </a>
+                          @foreach ($brands->slice($limit, $count) as $item)
+                          <li>
+                            <a class="hvr-icon-forward" href="{{url('clients/products?brand_id='.$item->id)}}" title="{{$item->getTranslation('title',getCode())}}">{{$item->getTranslation('title',getCode())}}</a>
+                          </li>
+                          @endforeach
+                        </ul>
                       </div>
                     </div>
 
@@ -461,7 +791,7 @@
                     <div class="col-md-6 col-xl-3 col-12">
                       <div class="block block_brand_content">
                         <div class="block_title mb-3">
-                          <strong>Shop By Brand</strong>
+                          <strong>Find Us On</strong>
                         </div>
 
                         <div class="block_content">
@@ -585,16 +915,9 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
-                    <div class="col-sm-12 col-xl-12">
-                      <div class="block_bottom">
-                        <div class="row">
-                          <div class="col-sm-8 col-xl-12 text-right">
-                            <address>Aghezty.com 2019 ©. All Rights Reserved.</address>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="col-sm-8 col-xl-12 text-right">
+                      <address>Aghezty.com 2019 ©. All Rights Reserved.</address>
                     </div>
                   </div>
                 </div>

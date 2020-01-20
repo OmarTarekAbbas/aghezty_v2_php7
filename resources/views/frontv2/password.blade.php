@@ -1,16 +1,17 @@
-<!-- header -->
-<?php include 'header.php'; ?>
-<!-- end header-->
+@extends('frontv2.master')
 
+@section('style')
 <style>
   .padding_right_oldPassword {
-    padding-right: 44px;
+    padding-right: 44px !important;
   }
 
   .padding_right_newPassword {
-    padding-right: 35px;
+    padding-right: 35px !important;
   }
 </style>
+@endsection
+@section('content')
 
 <div class="main mt-2">
   <section class="my_profile">
@@ -75,6 +76,4 @@
   </section>
 </div>
 
-<!-- footer -->
-<?php include 'footer.php'; ?>
-<!-- end footer-->
+@endsection

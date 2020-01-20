@@ -1,6 +1,5 @@
-<!-- Start Header -->
-<?php include 'header.php'; ?>
-<!-- End Header -->
+@extends('frontv2.master')
+@section('content')
 
 <style>
 	nav.container-fluid {
@@ -52,13 +51,13 @@
 					<div class="col-md-3 d-none d-sm-block">
 						<div class="c-slide hvr-outline-in border btn bg-white my-1">
 							<p data-target="#carouselExampleControls" data-slide-to="0" class="active">
-								<img class="w-100 d-block" src="images/products/fridge_1.jpg" />
+								<img class="w-100 d-block" src="{{url('public/frontv2/images/products/fridge_1.jpg')}}" alt="fridge"/>
 							</p>
 						</div>
 
 						<div class="c-slide hvr-outline-in border btn btn bg-white my-1">
 							<p data-target="#carouselExampleControls" data-slide-to="1">
-								<img class="w-100 d-block" src="images/products/fridge_2.jpg" />
+								<img class="w-100 d-block" src="{{url('public/frontv2/images/products/fridge_2.jpg')}}" alt="fridge"/>
 							</p>
 						</div>
 					</div>
@@ -68,16 +67,16 @@
 							<div class="carousel-inner">
 								<div class="carousel-item active">
 									<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-										<a class="zoom_image" href="images/products/fridge_1.jpg">
-											<img class="w-100" src="images/products/fridge_1.jpg" alt="First slide" />
+										<a class="zoom_image" href="{{url('public/frontv2/images/products/fridge_1.jpg')}}">
+											<img class="w-100" src="{{url('public/frontv2/images/products/fridge_1.jpg')}}" alt="First slide" />
 										</a>
 									</div>
 								</div>
 
 								<div class="carousel-item">
 									<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-										<a class="zoom_image" href="images/products/fridge_2.jpg">
-											<img class="w-100" src="images/products/fridge_2.jpg" alt="Second slide" />
+										<a class="zoom_image" href="{{url('public/frontv2/images/products/fridge_2.jpg')}}">
+											<img class="w-100" src="{{url('public/frontv2/images/products/fridge_2.jpg')}}" alt="Second slide" />
 										</a>
 									</div>
 								</div>
@@ -160,7 +159,7 @@
 								<i class="fa fa-minus fa-xs" aria-hidden="true"></i>
 							</span>
 
-							<button class="w-75 btn btn-primary float-left font-weight-bold hvr-wobble-to-bottom-right" id="add_to">ADD TO CART</button>
+							<button class="w-75 btn float-left font-weight-bold hvr-wobble-to-bottom-right" id="add_to">ADD TO CART</button>
 						</form>
 					</div>
 
@@ -444,14 +443,15 @@
 				<h6 class="font-weight-bold d-inline-block text-uppercase" id="based_selection_typed"></h6>
 			</div>
 
-			<div class="border-bottom w-100"></div>
+      <div class="border-bottom w-100"></div>
+
 			<div class="row  mt-3">
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="images/download.jfif" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100">
 
-							<h6 class="text-dark text-center text-capitalize">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
+							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
 								Grey</h6>
 						</a>
 
@@ -476,9 +476,9 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="images/product2.webp" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100">
 
-							<h6 class="text-dark text-center text-capitalize">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
+							<h6 class="text-dark text-center text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
 								Tea</h6>
 						</a>
 
@@ -503,13 +503,13 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="images/product3.webp" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100">
 
 							<div class="product-label text-center font-weight-bold">
 								<span class="sale-product-icon">-10%</span>
 							</div>
 
-							<h6 class="text-dark text-center text-capitalize">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
+							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
 						</a>
 
 						<div class="rating_list_product">
@@ -537,9 +537,9 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="images/product3.webp" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product3.webp')}}" alt="Product" class="w-100">
 
-							<h6 class="text-dark text-center text-capitalize">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
+							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
 						</a>
 
 						<div class="rating_list_product">
@@ -563,9 +563,9 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="images/download.jfif" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/download.jfif')}}" alt="Product" class="w-100">
 
-							<h6 class="text-dark text-center text-capitalize">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
+							<h6 class="text-dark text-center text-capitalize my-3">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
 								Grey</h6>
 						</a>
 
@@ -590,9 +590,9 @@
 				<div class="col-md-2 col-6 mb-3">
 					<div class="content_view hvr-bob px-2 h-100 bg-white">
 						<a href="#0">
-							<img src="images/product2.webp" alt="Product" class="w-100">
+							<img src="{{url('public/frontv2/images/product2.webp')}}" alt="Product" class="w-100">
 
-							<h6 class="text-dark text-center text-capitalize">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
+							<h6 class="text-dark text-center text-capitalize my-3">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear
 								Tea</h6>
 						</a>
 
@@ -715,12 +715,9 @@
 	</section>
 </div>
 
+@endsection
 
-
-<!-- Start Footer -->
-<?php include 'footer.php'; ?>
-<!-- End Footer -->
-
+@section('script')
 <script>
 	var based_selection_typed = new Typed('#based_selection_typed', {
 		strings: ['BASED ON YOUR SELECTION YOU MAY ALSO LIKE'],
@@ -749,3 +746,4 @@
 		loop: true
 	});
 </script>
+@endsection

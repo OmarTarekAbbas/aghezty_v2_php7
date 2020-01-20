@@ -1,38 +1,5 @@
 @extends('frontv2.master')
 
-@section('style')
-<style>
-  .hovertitle {
-    opacity: 0;
-    position: absolute;
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    align-self: center;
-    text-align: center;
-    top: 0;
-    left: 0;
-    padding-top: 30%;
-    color: #fff;
-    transition: all 1s;
-  }
-
-  .hoverabley:hover .hovertitle {
-    opacity: 0.7;
-  }
-
-  .choose_category_form {
-    transition: all 1s;
-  }
-
-  .hovertitle p {
-    font-weight: bold;
-    opacity: 1 !important;
-    text-shadow: 0px 0px 10px white
-  }
-</style>
-@endsection
-
 @section('content')
 
 <div class="main">
@@ -262,7 +229,7 @@
         <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
             <a href="{{$ads[4]->ads_url}}">
-              <img class="w-100" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
+              <img class="w-100 rounded" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
             </a>
           </div>
         </div>
@@ -272,7 +239,7 @@
         <div class="col-md-6 col-xl-6 pl-0 ">
           <div class="left-img mt-3">
             <a href="{{$ads[4]->ads_url}}">
-              <img class="w-100" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
+              <img class="w-100 rounded" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
             </a>
           </div>
         </div>
@@ -280,7 +247,7 @@
         <div class="col-md-6 col-xl-6 pl-0">
           <div class="left-img mt-3">
             <a href="{{$ads[5]->ads_url}}">
-              <img class="w-100" src="{{$ads[5]->image}}" alt="{{$ads[5]->ads_url}}">
+              <img class="w-100 rounded" src="{{$ads[5]->image}}" alt="{{$ads[5]->ads_url}}">
             </a>
           </div>
         </div>
@@ -313,10 +280,10 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 rounded d-block m-auto">
 
                 <div class="mt-1">
-                  <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>
+                  <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
               @if ($item->price_after_discount >0)
@@ -357,7 +324,7 @@
 
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
-            <a class="hoverabley " href="{{url('clients/products?sub_category_id='.$item->id)}}">
+            <a class="hoverabley" href="{{url('clients/products?sub_category_id='.$item->id)}}">
               <div class="hovertitle rounded">
                 <p>{{$item->getTranslation('title',getCode())}}</p>
               </div>
@@ -393,10 +360,10 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{url('clients/product/'.$item->id)}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-75 d-block m-auto" style="height: 180px">
 
                 <div>
-                  <p class="full_desc">{{$item->getTranslation('title',getCode())}}</p>
+                  <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
 

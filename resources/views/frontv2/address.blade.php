@@ -1,6 +1,6 @@
-<!-- header -->
-<?php include 'header.php'; ?>
-<!-- end header-->
+@extends('frontv2.master')
+@section('content')
+
 <div class="main mt-2">
   <section class="my_profile">
     <div class="mobile_views">
@@ -143,6 +143,4 @@
   </section>
 </div>
 
-<!-- footer -->
-<?php include 'footer.php'; ?>
-<!-- end footer-->
+@endsection
