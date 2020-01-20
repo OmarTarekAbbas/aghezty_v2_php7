@@ -415,6 +415,8 @@ a {
   width: 100% !important;
 }
 .main #grid_two .col-md-6 .content_view a img {
+  width: 65% !important;
+  height: 444px;
   transition: all 1.1s linear;
   -webkit-transition: all 1.1s linear;
   -moz-transition: all 1.1s linear;
@@ -422,10 +424,11 @@ a {
   -o-transition: all 1.1s linear;
 }
 .main #grid_two .col-md-6 .content_view a img:hover, .main #grid_two .col-md-6 .content_view a img:focus {
-  width: 60% !important;
+  width: 75% !important;
+  height: 512px;
 }
 .main #grid_two .col-md-6 .content_view a .full_desc {
-  text-align: center !important;
+  text-align: left !important;
 }
 .main #grid_two .col-md-6 .content_view:hover, .main #grid_two .col-md-6 .content_view:focus {
   width: 100% !important;
@@ -3263,6 +3266,9 @@ a {
   .main .product_view .product_view_type .product_desc a .img_size {
     height: 110px !important;
   }
+  .main .list_cover img {
+    height: 220px;
+  }
   .main #toggle_plus_minus .accordion {
     padding: 5px;
     font-size: 14px;
@@ -3275,6 +3281,14 @@ a {
   }
   .main #toggle_plus_minus .panel .z-checkbox {
     width: 100% !important;
+  }
+  .main #grid_two .col-md-6 .content_view a img {
+    width: 50% !important;
+    height: 225px;
+  }
+  .main #grid_two .col-md-6 .content_view a img:hover, .main #grid_two .col-md-6 .content_view a img:focus {
+    width: 60% !important;
+    height: 270px !important;
   }
   .main .content_view a img {
     height: 172px;
