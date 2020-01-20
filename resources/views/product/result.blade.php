@@ -25,12 +25,12 @@
             <td>
                 @foreach($languages as $language)
                     <li><b>{{$language->title}}
-                            :</b> {{$value->category->getTranslation('title',$language->short_code)}}</li>
+                            :</b> {{$value->category?$value->category->getTranslation('title',$language->short_code):''}}</li>
                 @endforeach
             </td>
             <td>
                 @foreach($languages as $language)
-                    <li><b>{{$language->title}} :</b> {{$value->brand->getTranslation('title',$language->short_code)}}
+                    <li><b>{{$language->title}} :</b> {{$value->brand?$value->brand->getTranslation('title',$language->short_code):''}}
                     </li>
                 @endforeach
             </td>
