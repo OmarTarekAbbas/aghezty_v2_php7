@@ -26,12 +26,12 @@
         <div class="row mr-0 ml-0">
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['search' => 'mobile' , 'offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles.jpg" alt="mobiles"> -->
                 <div class="diamond_sample diamond_bg_1">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">Mobile</strong>
-                    <strong class="d-block"> @lang('front.offer')</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.mobile'):__('front.offer')  }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.mobile') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -40,12 +40,12 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['to' => '1000'])}}">
+              <a href="{{route('front.home.list',['to' => '1000','search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/less-1000.jpg" alt="less-1000"> -->
                 <div class="diamond_sample diamond_bg_2">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
                     <strong class="d-block"> @lang('front.less') @lang('front.from')</strong>
-                    <strong class="d-block"> 1000 EGP</strong>
+                    <strong class="d-block"> 1000 @lang('front.egp') </strong>
                   </h5>
                 </div>
               </a>
@@ -54,12 +54,12 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from_to' => '1000,3000'])}}">
+              <a href="{{route('front.home.list',['from_to' => '1000,3000','search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-1000-3000.jpg" alt="mobiles-1000-3000"> -->
                 <div class="diamond_sample diamond_bg_3">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">@lang('front.from') 1000 EGP</strong>
-                    <strong class="d-block">@lang('front.to') 3000 EGP</strong>
+                    <strong class="d-block">@lang('front.from') 1000 @lang('front.egp') </strong>
+                    <strong class="d-block">@lang('front.to') 3000 @lang('front.egp') </strong>
                   </h5>
                 </div>
               </a>
@@ -68,12 +68,12 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from_to' => '3000,6000'])}}">
+              <a href="{{route('front.home.list',['from_to' => '3000,6000','search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-3000-6000.jpg" alt="mobiles-3000-6000"> -->
                 <div class="diamond_sample diamond_bg_4">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">@lang('front.from') 3000 EGP</strong>
-                    <strong class="d-block">@lang('front.to') 6000 EGP</strong>
+                    <strong class="d-block">@lang('front.from') 3000 @lang('front.egp') </strong>
+                    <strong class="d-block">@lang('front.to') 6000 @lang('front.egp') </strong>
                   </h5>
                 </div>
               </a>
@@ -82,12 +82,12 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from_to' => '6000,10000'])}}">
+              <a href="{{route('front.home.list',['from_to' => '6000,10000','search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-6000-10000.jpg" alt="mobiles-6000-10000"> -->
                 <div class="diamond_sample diamond_bg_5">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">@lang('front.from') 6000 EGP</strong>
-                    <strong class="d-block">@lang('front.to') 10000 EGP</strong>
+                    <strong class="d-block">@lang('front.from') 6000 @lang('front.egp') </strong>
+                    <strong class="d-block">@lang('front.to') 10000 @lang('front.egp') </strong>
                   </h5>
                 </div>
               </a>
@@ -96,12 +96,12 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from' => '10000'])}}">
+              <a href="{{route('front.home.list',['from' => '10000','search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/more-10000.jpg" alt="more-10000"> -->
                 <div class="diamond_sample diamond_bg_6">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
                     <strong class="d-block">@lang('front.more') @lang('front.from')</strong>
-                    <strong class="d-block"> 10000 EGP</strong>
+                    <strong class="d-block"> 10000 @lang('front.egp') </strong>
                   </h5>
                 </div>
               </a>
@@ -131,13 +131,13 @@
         <div class="row mr-0 ml-0">
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['search' => 'television' ,  'offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['search' => 'TV-','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/tv-offers.webp" alt="mobiles"> -->
 
                 <div class="diamond_sample diamond_bg_1">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">Television</strong>
-                    <strong class="d-block"> @lang('front.offer')</strong>
+                      <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
+                      <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -146,13 +146,13 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ito' => '32'])}}">
+              <a href="{{route('front.home.list',['ito' => '21','search' => 'TV-','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
 
                 <div class="diamond_sample diamond_bg_2">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
                     <strong class="d-block"> @lang('front.less') @lang('front.from')</strong>
-                    <strong class="d-block"> 32 @lang('front.inch')</strong>
+                    <strong class="d-block"> 21 @lang('front.inch')</strong>
                   </h5>
                 </div>
               </a>
@@ -161,7 +161,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '32,43'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '32,43','search' => 'TV-','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
 
                 <div class="diamond_sample diamond_bg_3">
@@ -176,7 +176,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '49,55'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '49,55','search' => 'TV-','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/49-55-inch.jpg" alt="mobiles-1000-3000"> -->
 
                 <div class="diamond_sample diamond_bg_4">
@@ -191,7 +191,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '60,75'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '60,75','search' => 'TV-'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/60-75-inch.jpg" alt="mobiles-3000-6000"> -->
 
                 <div class="diamond_sample diamond_bg_5">
@@ -206,7 +206,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom' => '75'])}}">
+              <a href="{{route('front.home.list',['ifrom' => '75','search' => 'TV-'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->
 
                 <div class="diamond_sample diamond_bg_6">
@@ -296,18 +296,18 @@
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price_after_discount}} EGP</span>
+                  <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
                 </span>
 
                 <p class="old-price">
                   <span class="price">
-                    {{$item->price}} EGP</span>
+                    {{$item->price}} @lang('front.egp') </span>
                 </p>
               </div>
               @else
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price}} EGP</span>
+                  <span class="price">{{$item->price}} @lang('front.egp') </span>
                 </span>
               </div>
               @endif
@@ -330,7 +330,7 @@
 
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
-            <a class="hoverabley" href="{{url('clients/products?sub_category_id='.$item->id)}}">
+            <a class="hoverabley" href="{{route('front.home.list',['sub_category_id' => $item->id])}}">
               <div class="hovertitle rounded">
                 <p>{{$item->getTranslation('title',getCode())}}</p>
               </div>
@@ -383,18 +383,18 @@
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price_after_discount}} EGP</span>
+                  <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
                 </span>
 
                 <p class="old-price">
                   <span class="price">
-                    {{$item->price}} EGP</span>
+                    {{$item->price}} @lang('front.egp') </span>
                 </p>
               </div>
               @else
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price}} EGP</span>
+                  <span class="price">{{$item->price}} @lang('front.egp') </span>
                 </span>
               </div>
               @endif

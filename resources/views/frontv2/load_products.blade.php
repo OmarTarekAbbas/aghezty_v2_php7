@@ -9,7 +9,7 @@
             <span class="sale-product-icon">-{{$product->discount}}%</span>
         </div>
       @endif
-      <h6 class="full_desc text-dark text-center text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
+      <h6 class="full_desc text-dark text-left text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
     </a>
 
     <div class="rating_list_product">
@@ -28,11 +28,11 @@
 
     <div class="price-box">
       <span class="regular-price">
-        <span class="price font-weight-bold">{{$product->discount?$product->price_after_discount:$product->price}} EGP</span>
+        <span class="price font-weight-bold">{{$product->discount?$product->price_after_discount:$product->price}} @lang('front.egp') </span>
       </span>
       @if($product->discount)
       <p class="old-price">
-          <span class="price font-weight-bold">{{$product->price}} EGP </span>
+          <span class="price font-weight-bold">{{$product->price}} @lang('front.egp')  </span>
       </p>
       @endif
     </div>

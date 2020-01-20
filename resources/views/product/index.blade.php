@@ -331,4 +331,46 @@ input:checked + .slider:before {
 	})
 </script>
 
+<script>
+    $(document).on('change','.recently_added .switch input',function(){
+      var x = $(this).siblings();
+      $.ajax({
+        type:'GET',
+        url:'{{url("homepage/recently_added")}}',
+        headers:'_token = {{ csrf_token() }}',
+        data: {
+          switch: $(this).is( ':checked'),
+          id: $(this).attr('id')
+        },
+        success: function(data) {
+            if(data == 'no'){
+                alert('max product to select is 6!');
+                //x.trigger('click');
+            }
+        }
+      });
+    })
+  </script>
+
+
+  <script>
+    $(document).on('change','.selected_for_you .switch input',function(){
+      var x = $(this).siblings();
+      $.ajax({
+        type:'GET',
+        url:'{{url("homepage/selected_for_you")}}',
+        headers:'_token = {{ csrf_token() }}',
+        data: {
+          switch: $(this).is( ':checked'),
+          id: $(this).attr('id')
+        },
+        success: function(data) {
+            if(data == 'no'){
+                alert('max product to select is 6!');
+                //x.trigger('click');
+            }
+        }
+      });
+    })
+  </script>
 @stop

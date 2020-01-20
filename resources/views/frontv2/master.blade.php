@@ -84,9 +84,9 @@
 			</div>
 
 			<div class="col-md-6 col-lg-6 col-xl-10">
-				<form class="search-container" action="{{url('clients/productsv2')}}" method="get">
+				<form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
 					<input type="text" id="search-bar" name="search" placeholder="@lang('messages.search')">
-					<a href="#">
+					<a onclick="document.getElementById('form_search').submit()" href="#">
 						<div class="search_background">
 							<i class="search-icon fas fa-search fa-2x"></i>
 						</div>
@@ -169,19 +169,19 @@
 									<ul class="list-unstyled">
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.less') @lang('front.from')  1000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.less') @lang('front.from')  1000 @lang('front.egp') </a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 1000 EGP @lang('front.to') 3000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 1000 @lang('front.egp')  @lang('front.to') 3000 @lang('front.egp') </a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 6000 EGP @lang('front.to') 10000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 6000 @lang('front.egp')  @lang('front.to') 10000 @lang('front.egp') </a>
 										</li>
 
 										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.more') @lang('front.from')  10000 EGP</a>
+											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.more') @lang('front.from')  10000 @lang('front.egp') </a>
 										</li>
 
 									</ul>
@@ -233,19 +233,19 @@
 
 									<ul class="list-unstyled">
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.less') @lang('front.from')  1000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?to=1000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.less') @lang('front.from')  1000 @lang('front.egp') </a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 1000 EGP @lang('front.to') 3000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=1000,3000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 1000 @lang('front.egp')  @lang('front.to') 3000 @lang('front.egp') </a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 6000 EGP @lang('front.to') 10000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from_to=6000,10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.from') 6000 @lang('front.egp')  @lang('front.to') 10000 @lang('front.egp') </a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.more') @lang('front.from')  10000 EGP</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?from=10000')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.more') @lang('front.from')  10000 @lang('front.egp') </a>
                       </li>
 									</ul>
 								</div>
@@ -330,7 +330,7 @@
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
 									<ul class="list-unstyled">
 										<li>
-											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'en'? "active" : ""}}" href="{{url('lang/en')}}" type="button">
+											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'en'? "active" : ""}}" href="{{url('lang/en')}}">
 												<img src="{{url('public/frontv2/images/lang/en.webp')}}" alt="English Language"> English
 											</a>
 										</li>
@@ -340,7 +340,7 @@
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
 									<ul class="list-unstyled">
 										<li>
-											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'ar'? "active" : ""}}" href="{{url('lang/ar')}}" type="button">
+											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'ar'? "active" : ""}}" href="{{url('lang/ar')}}">
 												<img src="{{url('public/frontv2/images/lang/ar.webp')}}" alt="Arabic Language"> Arabic
 											</a>
 										</li>

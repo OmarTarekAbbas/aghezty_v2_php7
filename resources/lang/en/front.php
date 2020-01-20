@@ -94,6 +94,12 @@ return [
     'less' => 'Less',
     'inch' => 'INCH',
     'find_us' => 'Find Us On',
+    'egp' => 'EGP',
+    'mobile' => 'Mobile',
+    'tv' => 'Televation',
+    'sort_by' => 'Sort By',
+    'asc' => 'ASC',
+    'desc' => 'DESC',
     'auth'=>[
         'login' => 'Login',
         'register' => 'Register',
