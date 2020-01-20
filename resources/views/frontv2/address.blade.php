@@ -35,10 +35,10 @@
                     <div class="card-body">
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                         <div class="input-group mb-2 m-auto w-75 hvr-float">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend hvr-float">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
-                          <select class="form-control .dropdown-dark">
+                          <select class="form-control hvr-float">
                             <option value="Governorate">Governorate</option>
                             <option value="Cairo">Cairo</option>
                             <option value="Giza">Giza</option>
@@ -49,10 +49,10 @@
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                         <div class="input-group mb-2 m-auto w-75 hvr-float">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend hvr-float">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
-                          <select class="form-control .dropdown-dark">
+                          <select class="form-control hvr-float">
                             <option value="Governorate">City</option>
                             <option value="Nasrcity">Nasrcity</option>
                             <option value="Masr El Gdida">Masr El Gdida</option>
@@ -63,9 +63,9 @@
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                         <div class="input-group mb-2 w-75 m-auto hvr-float">
-                          <div class="input-group-prepend ">
+                          <div class="input-group-prepend hvr-float">
                             <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
-                            <textarea class="p-3 w-100" placeholder="My Address" cols="150" rows="2"></textarea>
+                            <textarea class="p-3 w-100 hvr-float" placeholder="My Address" cols="150" rows="2"></textarea>
                           </div>
                         </div>
                       </div>
@@ -92,10 +92,10 @@
                     <div class="card-body">
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                         <div class="input-group mb-2 m-auto w-75 hvr-float">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend hvr-float">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
-                          <select class="form-control .dropdown-dark">
+                          <select class="form-control hvr-float">
                             <option value="Governorate">Governorate</option>
                             <option value="Cairo">Cairo</option>
                             <option value="Giza">Giza</option>
@@ -106,10 +106,10 @@
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                         <div class="input-group mb-2 m-auto w-75 hvr-float">
-                          <div class="input-group-prepend">
+                          <div class="input-group-prepend hvr-float">
                             <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                           </div>
-                          <select class="form-control .dropdown-dark">
+                          <select class="form-control hvr-float">
                             <option value="Governorate">City</option>
                             <option value="Nasrcity">Nasrcity</option>
                             <option value="Masr El Gdida">Masr El Gdida</option>
@@ -120,9 +120,9 @@
 
                       <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                         <div class="input-group mb-2 w-75 m-auto hvr-float">
-                          <div class="input-group-prepend ">
+                          <div class="input-group-prepend hvr-float">
                             <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
-                            <textarea class="p-3 w-100" placeholder="My Address" cols="150" rows="2"></textarea>
+                            <textarea class="p-3 w-100 hvr-float" placeholder="My Address" cols="150" rows="2"></textarea>
                           </div>
                         </div>
                       </div>

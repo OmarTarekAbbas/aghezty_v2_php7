@@ -3666,6 +3666,12 @@ a {
     top: 4rem;
     right: 31%;
   }
+  .main .my_profile .my_profile_bg form .all_forms .form-check .form-check-input_login,
+.main .my_profile .log_in_bg form .all_forms .form-check .form-check-input_login,
+.main .log_in .my_profile_bg form .all_forms .form-check .form-check-input_login,
+.main .log_in .log_in_bg form .all_forms .form-check .form-check-input_login {
+    right: 42%;
+  }
 
   .footer_footer .footer_content .rounded-social-buttons .social-button {
     width: 2.125rem;
