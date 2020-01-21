@@ -9,8 +9,25 @@ $white_color: #FFF;
 $black_color: #000;
 $yellow_color: #ffeb00;
 
+/* width */
 ::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #Fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fe9901;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
 
 .active_menu {
@@ -458,19 +475,7 @@ a {
       }
 
       .title_right {
-        position: relative;
         text-align: left !important;
-
-        button {
-          position: absolute;
-          left: 51px;
-          top: -12px;
-          transform: translate(-50%, -50%);
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-        }
       }
     }
 
@@ -616,6 +621,7 @@ a {
 
       .content_view {
         width: 100% !important;
+        text-align: center !important;
 
         a {
           img {
@@ -635,9 +641,25 @@ a {
           }
 
           .full_desc {
-            text-align: right !important;
+            text-align: center !important;
           }
 
+        }
+
+        .rating_list_product,
+        .price-description {
+          text-align: center !important;
+        }
+
+        .price-box {
+          text-align: center !important;
+
+          .old-price {
+            float: inherit;
+            display: inline;
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
         }
       }
     }
@@ -2842,6 +2864,14 @@ a {
       }
     }
 
+    .top_banner {
+      a {
+        img {
+          height: 115px;
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 175px;
@@ -2889,7 +2919,21 @@ a {
             .diamond_sample_title {
               line-height: 25px;
               font-size: 0.8rem;
+
+              &:hover,
+              &:focus {
+                line-height: 25px;
+                font-size: 0.8rem;
+              }
             }
+          }
+        }
+      }
+
+      .left-img {
+        a {
+          img {
+            height: 115px;
           }
         }
       }
@@ -2909,15 +2953,6 @@ a {
           }
 
           .title_right {
-
-            button {
-              top: -12px !important;
-              left: 37px !important;
-              padding: .25rem .5rem;
-              font-size: .875rem;
-              line-height: 1.5;
-              border-radius: .2rem;
-            }
           }
         }
 
@@ -2932,6 +2967,11 @@ a {
             img {
               width: 100% !important;
               height: 136px;
+            }
+
+            .img_size {
+              width: 100% !important;
+              height: 136px !important;
             }
 
             .full_desc {
@@ -2981,6 +3021,12 @@ a {
       }
     }
 
+    .list_cover {
+      img {
+        height: 110px;
+      }
+    }
+
     .grid_list {
       margin-left: 21px;
     }
@@ -3001,12 +3047,8 @@ a {
         .content_view {
           a {
             img {
-              width: 75% !important;
-
-              &:hover,
-              &:focus {
-                width: 85% !important;
-              }
+              width: 100% !important;
+              height: 300px;
             }
           }
         }
@@ -3019,6 +3061,7 @@ a {
         a {
           img {
             width: 100% !important;
+            height: 150px;
           }
 
           .product-label {
@@ -3364,7 +3407,7 @@ a {
 
     .choose_category {
       .choose_category_form {
-        a {
+        .hoverabley {
           img {
             height: 155px;
           }
@@ -3896,6 +3939,14 @@ a {
       }
     }
 
+    .top_banner {
+      a {
+        img {
+          height: 130px;
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 175px;
@@ -3943,7 +3994,21 @@ a {
             .diamond_sample_title {
               line-height: 25px;
               font-size: 0.8rem;
+
+              &:hover,
+              &:focus {
+                line-height: 25px;
+                font-size: 0.8rem;
+              }
             }
+          }
+        }
+      }
+
+      .left-img {
+        a {
+          img {
+            height: 130px;
           }
         }
       }
@@ -3963,15 +4028,6 @@ a {
           }
 
           .title_right {
-
-            button {
-              top: -12px !important;
-              left: 37px !important;
-              padding: .25rem .5rem;
-              font-size: .875rem;
-              line-height: 1.5;
-              border-radius: .2rem;
-            }
           }
         }
 
@@ -3986,6 +4042,10 @@ a {
             img {
               width: 100% !important;
               height: 162px;
+            }
+
+            .img_size {
+              height: 162px !important;
             }
 
             .full_desc {
@@ -4403,7 +4463,7 @@ a {
 
     .choose_category {
       .choose_category_form {
-        a {
+        .hoverabley  {
           img {
             height: 181px;
           }
@@ -5180,7 +5240,7 @@ a {
         }
 
         form {
-          .all_forms  {
+          .all_forms {
             .form-check {
               .form-check-input_login {
                 right: 42%;
@@ -5355,8 +5415,8 @@ a {
 .hvr-icon-forward:hover,
 .hvr-icon-forward:focus,
 .hvr-icon-forward:active {
-  -webkit-transform: translateX(-12px);
-  transform: translateX(-12px);
+  -webkit-transform: translateX(12px);
+  transform: translateX(12px);
 }
 
 /* Wobble To Bottom Right */
@@ -5463,10 +5523,11 @@ a {
   bottom: -16px;
   left: -16px;
   opacity: 0;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: top, right, bottom, left;
-  transition-property: top, right, bottom, left;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: all;
+  transition-property: all;
 }
 
 .hvr-outline-in:hover:before,
@@ -5494,11 +5555,105 @@ a {
   transition-timing-function: ease-out;
 }
 
-.hvr-float:hover,
 .hvr-float:focus,
+.hvr-float:hover,
 .hvr-float:active {
   -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
+}
+
+/* Sweep To Bottom */
+.hvr-sweep-to-bottom {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.hvr-sweep-to-bottom:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fe9901;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-sweep-to-bottom:hover,
+.hvr-sweep-to-bottom:focus,
+.hvr-sweep-to-bottom:active {
+  color: white;
+}
+
+.hvr-sweep-to-bottom:hover:before,
+.hvr-sweep-to-bottom:focus:before,
+.hvr-sweep-to-bottom:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+}
+
+/* Pulse */
+@-webkit-keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+.hvr-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.hvr-pulse:hover,
+.hvr-pulse:focus,
+.hvr-pulse:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 
 /* End Animation */

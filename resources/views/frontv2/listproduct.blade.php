@@ -242,7 +242,7 @@ nav.container-fluid {
       <!-- Start Image Cover -->
       <div class="col-md-10">
         <div class="list_cover">
-          <img class="w-100 " src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
+          <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
         </div>
         <!-- End Image Cover -->
 

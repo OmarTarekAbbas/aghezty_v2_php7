@@ -9,8 +9,25 @@ $white_color: #FFF;
 $black_color: #000;
 $yellow_color: #ffeb00;
 
+/* width */
 ::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #Fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fe9901;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
 
 .active_menu {
@@ -49,6 +66,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #FAFAFA;
+  overflow-y: scroll !important;
   // background-color: $black_color;
   // background-color: #000;
   // background-image: url('../images/BG.png');
@@ -444,20 +462,7 @@ a {
     .product_title {
       padding: 10px 4px;
 
-      .title_right {
-        position: relative;
-
-        button {
-          position: absolute;
-          right: -51px;
-          top: -17px;
-          transform: translate(-50%, -50%);
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-        }
-      }
+      .title_right {}
     }
 
     .product_desc {
@@ -600,6 +605,7 @@ a {
 
       .content_view {
         width: 100% !important;
+        text-align: center !important;
 
         a {
           img {
@@ -619,9 +625,19 @@ a {
           }
 
           .full_desc {
-            text-align: left !important;
+            text-align: center !important;
           }
+        }
 
+        .price-box {
+          text-align: center !important;
+
+          .old-price {
+            float: inherit;
+            display: inline;
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
         }
 
         &:hover,
@@ -2620,6 +2636,14 @@ a {
       }
     }
 
+    .top_banner {
+      a {
+        img {
+          height: 115px;
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 175px;
@@ -2666,7 +2690,21 @@ a {
             .diamond_sample_title {
               line-height: 25px;
               font-size: 0.8rem;
+
+              &:hover,
+              &:focus {
+                line-height: 25px;
+                font-size: 0.8rem;
+              }
             }
+          }
+        }
+      }
+
+      .left-img {
+        a {
+          img {
+            height: 115px;
           }
         }
       }
@@ -2685,16 +2723,7 @@ a {
             }
           }
 
-          .title_right {
-
-            button {
-              top: -12px !important;
-              padding: .25rem .5rem;
-              font-size: .875rem;
-              line-height: 1.5;
-              border-radius: .2rem;
-            }
-          }
+          .title_right {}
         }
 
         .margin_bottom_mob {
@@ -2707,7 +2736,12 @@ a {
           a {
             img {
               width: 100% !important;
-              height: 136px;
+              height: 136px !important;
+            }
+
+            .img_size {
+              width: 100% !important;
+              height: 136px !important;
             }
 
             .full_desc {
@@ -2756,6 +2790,12 @@ a {
       }
     }
 
+    .list_cover {
+      img {
+        height: 110px;
+      }
+    }
+
     .grid_list {
       margin-right: 21px;
     }
@@ -2776,12 +2816,8 @@ a {
         .content_view {
           a {
             img {
-              width: 75% !important;
-
-              &:hover,
-              &:focus {
-                width: 85% !important;
-              }
+              width: 100% !important;
+              height: 300px;
             }
           }
         }
@@ -2793,6 +2829,7 @@ a {
         a {
           img {
             width: 100% !important;
+            height: 150px;
           }
 
           .product-label {
@@ -3125,7 +3162,7 @@ a {
 
     .choose_category {
       .choose_category_form {
-        a {
+        .hoverabley {
           img {
             height: 155px;
           }
@@ -3605,6 +3642,14 @@ a {
       }
     }
 
+    .top_banner {
+      a {
+        img {
+          height: 130px;
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 175px;
@@ -3651,7 +3696,21 @@ a {
             .diamond_sample_title {
               line-height: 25px;
               font-size: 0.8rem;
+
+              &:hover,
+              &:focus {
+                line-height: 25px;
+                font-size: 0.8rem;
+              }
             }
+          }
+        }
+      }
+
+      .left-img {
+        a {
+          img {
+            height: 130px;
           }
         }
       }
@@ -3670,16 +3729,7 @@ a {
             }
           }
 
-          .title_right {
-
-            button {
-              top: -12px !important;
-              padding: .25rem .5rem;
-              font-size: .875rem;
-              line-height: 1.5;
-              border-radius: .2rem;
-            }
-          }
+          .title_right {}
         }
 
         .margin_bottom_mob {
@@ -3693,6 +3743,10 @@ a {
             img {
               width: 100% !important;
               height: 162px;
+            }
+
+            .img_size {
+              height: 162px !important;
             }
 
             .full_desc {
@@ -4109,7 +4163,7 @@ a {
 
     .choose_category {
       .choose_category_form {
-        a {
+        .hoverabley {
           img {
             height: 181px;
           }
@@ -5200,21 +5254,25 @@ a {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+
   75% {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
 }
+
 @keyframes hvr-pulse {
   25% {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+
   75% {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
 }
+
 .hvr-pulse {
   display: inline-block;
   vertical-align: middle;
@@ -5222,7 +5280,10 @@ a {
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
-.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+
+.hvr-pulse:hover,
+.hvr-pulse:focus,
+.hvr-pulse:active {
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
   -webkit-animation-duration: 1.2s;
@@ -5232,4 +5293,5 @@ a {
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
 }
+
 /* End Animation */

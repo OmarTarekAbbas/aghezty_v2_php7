@@ -136,8 +136,8 @@
 
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                      <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
-                      <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -264,12 +264,18 @@
     <div class="mobile_views">
       <div class="product_view_type">
         <div class="product_title mb-3">
-          <div class="title_left text-left font-weight-bold">
-            <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong>
-          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="title_left text-left font-weight-bold">
+                <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong>
+              </div>
+            </div>
 
-          <div class="title_right text-right">
-            <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+            <div class="col-6">
+              <div class="title_right text-right">
+                <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -336,6 +342,7 @@
               </div>
               <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
             </a>
+            <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">ovens</h4>
           </div>
         </div>
 
@@ -350,12 +357,18 @@
     <div class="mobile_views">
       <div class="product_view_type">
         <div class="product_title mb-3">
-          <div class="title_left text-left font-weight-bold">
-            <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong>
-          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="title_left text-left font-weight-bold">
+                <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong>
+              </div>
+            </div>
 
-          <div class="title_right text-right">
-            <button class="btn btn-dark">@lang('messages.view_more')</button>
+            <div class="col-6">
+              <div class="title_right text-right">
+              <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+              </div>
+            </div>
           </div>
         </div>
 
