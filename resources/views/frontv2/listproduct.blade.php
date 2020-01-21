@@ -122,7 +122,7 @@ nav.container-fluid {
           </button>
 
           <div class="panel w-100 border border-light">
-            <div class="z-checkbox hvr-icon-forward ">
+            <div class="z-checkbox">
               <input id="panel_39" class="mb-2 offer" {{isset($_REQUEST['offer'])?'checked':''}} type="checkbox" name="offer" value="offer">
               <label class="d-block text-capitalize" for="panel_39">@lang('front.offer') </label>
             </div>
@@ -243,7 +243,7 @@ nav.container-fluid {
       <!-- Start Image Cover -->
       <div class="col-md-10">
         <div class="list_cover">
-          <img class="w-100 " src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
+          <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
         </div>
         <!-- End Image Cover -->
 

@@ -621,6 +621,7 @@ a {
 
       .content_view {
         width: 100% !important;
+        text-align: center !important;
 
         a {
           img {
@@ -640,9 +641,25 @@ a {
           }
 
           .full_desc {
-            text-align: right !important;
+            text-align: center !important;
           }
 
+        }
+
+        .rating_list_product,
+        .price-description {
+          text-align: center !important;
+        }
+
+        .price-box {
+          text-align: center !important;
+
+          .old-price {
+            float: inherit;
+            display: inline;
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
         }
       }
     }
@@ -3004,6 +3021,12 @@ a {
       }
     }
 
+    .list_cover {
+      img {
+        height: 110px;
+      }
+    }
+
     .grid_list {
       margin-left: 21px;
     }
@@ -3024,12 +3047,8 @@ a {
         .content_view {
           a {
             img {
-              width: 75% !important;
-
-              &:hover,
-              &:focus {
-                width: 85% !important;
-              }
+              width: 100% !important;
+              height: 300px;
             }
           }
         }
@@ -3042,6 +3061,7 @@ a {
         a {
           img {
             width: 100% !important;
+            height: 150px;
           }
 
           .product-label {

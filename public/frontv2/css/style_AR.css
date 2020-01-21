@@ -471,6 +471,7 @@ a {
 }
 .main #grid_two .col-md-6 .content_view {
   width: 100% !important;
+  text-align: center !important;
 }
 .main #grid_two .col-md-6 .content_view a img {
   width: 65% !important;
@@ -487,7 +488,20 @@ a {
   } */
 }
 .main #grid_two .col-md-6 .content_view a .full_desc {
-  text-align: right !important;
+  text-align: center !important;
+}
+.main #grid_two .col-md-6 .content_view .rating_list_product,
+.main #grid_two .col-md-6 .content_view .price-description {
+  text-align: center !important;
+}
+.main #grid_two .col-md-6 .content_view .price-box {
+  text-align: center !important;
+}
+.main #grid_two .col-md-6 .content_view .price-box .old-price {
+  float: inherit;
+  display: inline;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .main .modal.open_left .modal-dialog,
 .main .modal.open_right .modal-dialog {
@@ -2303,6 +2317,9 @@ a {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
   }
+  .main .list_cover img {
+    height: 110px;
+  }
   .main .grid_list {
     margin-left: 21px;
   }
@@ -2319,16 +2336,15 @@ a {
     padding-right: 0;
   }
   .main .content_view_mobile .col-12 .content_view a img {
-    width: 75% !important;
-  }
-  .main .content_view_mobile .col-12 .content_view a img:hover, .main .content_view_mobile .col-12 .content_view a img:focus {
-    width: 85% !important;
+    width: 100% !important;
+    height: 300px;
   }
   .main .content_view_mobile .content_view {
     border: 1px solid #CCC;
   }
   .main .content_view_mobile .content_view a img {
     width: 100% !important;
+    height: 150px;
   }
   .main .content_view_mobile .content_view a .product-label {
     top: 3px;
