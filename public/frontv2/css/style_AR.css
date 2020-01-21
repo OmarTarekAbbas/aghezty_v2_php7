@@ -18,7 +18,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #666;
 }
 
 .active_menu a {
@@ -351,18 +351,7 @@ a {
   text-align: right !important;
 }
 .product_view .product_view_type .product_title .title_right {
-  position: relative;
   text-align: left !important;
-}
-.product_view .product_view_type .product_title .title_right button {
-  position: absolute;
-  left: 51px;
-  top: -12px;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
 }
 .product_view .product_view_type .product_desc {
   background: #FFF;
@@ -2225,7 +2214,7 @@ a {
     right: -0.8rem;
   }
   .carsoul_ads .top_banner a img {
-    height: 100px;
+    height: 115px;
   }
   .carsoul_ads .full_banner img {
     height: 175px;
@@ -2260,8 +2249,11 @@ a {
     font-size: 0.8rem;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:hover, .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:focus {
-    line-height: 20px;
+    line-height: 25px;
     font-size: 0.8rem;
+  }
+  .main .choose_category .left-img a img {
+    height: 115px;
   }
   .main .product_view .product_view_type .product_title {
     padding: 5px 0;
@@ -2272,14 +2264,6 @@ a {
   .main .product_view .product_view_type .product_title .title_left strong {
     font-size: 15px;
   }
-  .main .product_view .product_view_type .product_title .title_right button {
-    top: -12px !important;
-    left: 37px !important;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;
-  }
   .main .product_view .product_view_type .margin_bottom_mob {
     margin-bottom: 15px;
     padding-left: 5px;
@@ -2288,6 +2272,10 @@ a {
   .main .product_view .product_view_type .product_desc a img {
     width: 100% !important;
     height: 136px;
+  }
+  .main .product_view .product_view_type .product_desc a .img_size {
+    width: 100% !important;
+    height: 136px !important;
   }
   .main .product_view .product_view_type .product_desc a .full_desc {
     font-weight: normal;
@@ -2583,7 +2571,7 @@ a {
   .main .cart_shopping .discount_code_accordion .ads_img {
     display: none;
   }
-  .main .choose_category .choose_category_form a img {
+  .main .choose_category .choose_category_form .hoverabley img {
     height: 155px;
   }
   .main .log_in .log_in_bg .login_title h5 {
@@ -2907,6 +2895,9 @@ a {
 .carsoul_ads .owl-one .owl-nav .owl-next.owl-next {
     right: -0.8rem;
   }
+  .carsoul_ads .top_banner a img {
+    height: 130px;
+  }
   .carsoul_ads .full_banner img {
     height: 175px;
   }
@@ -2939,6 +2930,13 @@ a {
     line-height: 25px;
     font-size: 0.8rem;
   }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:hover, .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:focus {
+    line-height: 25px;
+    font-size: 0.8rem;
+  }
+  .main .choose_category .left-img a img {
+    height: 130px;
+  }
   .main .product_view .product_view_type .product_title {
     padding: 5px 0;
   }
@@ -2948,14 +2946,6 @@ a {
   .main .product_view .product_view_type .product_title .title_left strong {
     font-size: 15px;
   }
-  .main .product_view .product_view_type .product_title .title_right button {
-    top: -12px !important;
-    left: 37px !important;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;
-  }
   .main .product_view .product_view_type .margin_bottom_mob {
     margin-bottom: 15px;
     padding-left: 5px;
@@ -2964,6 +2954,9 @@ a {
   .main .product_view .product_view_type .product_desc a img {
     width: 100% !important;
     height: 162px;
+  }
+  .main .product_view .product_view_type .product_desc a .img_size {
+    height: 162px !important;
   }
   .main .product_view .product_view_type .product_desc a .full_desc {
     font-weight: normal;
@@ -3255,7 +3248,7 @@ a {
   .main .cart_shopping .discount_code_accordion .ads_img {
     display: none;
   }
-  .main .choose_category .choose_category_form a img {
+  .main .choose_category .choose_category_form .hoverabley img {
     height: 181px;
   }
   .main .log_in .log_in_bg .login_title h5 {
