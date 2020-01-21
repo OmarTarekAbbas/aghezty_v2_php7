@@ -9,8 +9,26 @@ $white_color: #FFF;
 $black_color: #000;
 $yellow_color: #ffeb00;
 
+/* width */
 ::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #Fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fe9901;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .active_menu {
@@ -49,6 +67,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #FAFAFA;
+  overflow-y: scroll !important;
   // background-color: $black_color;
   // background-color: #000;
   // background-image: url('../images/BG.png');
@@ -2620,6 +2639,14 @@ a {
       }
     }
 
+    .top_banner {
+      a {
+        img {
+          height: 100px;
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 175px;
@@ -2666,6 +2693,12 @@ a {
             .diamond_sample_title {
               line-height: 25px;
               font-size: 0.8rem;
+
+              &:hover,
+              &:focus {
+                line-height: 20px;
+                font-size: 0.8rem;
+              }
             }
           }
         }
@@ -5200,21 +5233,25 @@ a {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+
   75% {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
 }
+
 @keyframes hvr-pulse {
   25% {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+
   75% {
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
 }
+
 .hvr-pulse {
   display: inline-block;
   vertical-align: middle;
@@ -5222,7 +5259,10 @@ a {
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
-.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+
+.hvr-pulse:hover,
+.hvr-pulse:focus,
+.hvr-pulse:active {
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
   -webkit-animation-duration: 1.2s;
@@ -5232,4 +5272,5 @@ a {
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
 }
+
 /* End Animation */

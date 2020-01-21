@@ -1,7 +1,24 @@
 @charset "UTF-8";
 /* general */
+/* width */
 ::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #Fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fe9901;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .active_menu a {
@@ -29,6 +46,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #FAFAFA;
+  overflow-y: scroll !important;
 }
 
 * {
@@ -2004,6 +2022,9 @@ a {
 .carsoul_ads .owl-one .owl-nav .owl-next.owl-next {
     right: -0.8rem;
   }
+  .carsoul_ads .top_banner a img {
+    height: 100px;
+  }
   .carsoul_ads .full_banner img {
     height: 175px;
   }
@@ -2034,6 +2055,10 @@ a {
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
     line-height: 25px;
+    font-size: 0.8rem;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:hover, .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:focus {
+    line-height: 20px;
     font-size: 0.8rem;
   }
   .main .product_view .product_view_type .product_title {
@@ -3738,7 +3763,9 @@ a {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
-.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+.hvr-pulse:hover,
+.hvr-pulse:focus,
+.hvr-pulse:active {
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
   -webkit-animation-duration: 1.2s;
