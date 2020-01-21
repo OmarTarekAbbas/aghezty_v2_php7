@@ -122,6 +122,7 @@ Route::prefix('clients')->group(function() {
     Route::post('/loginv2', 'Auth\ClientLoginController@login')->name('front.client.login.submit');
     Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
     Route::get('logoutv2','front\HomeController@logoutv2')->name('front.home.logout');
+    Route::post('updatedv2','front\HomeController@updatev2')->name('front.home.update');
     /*************** end ***************/
 
 });

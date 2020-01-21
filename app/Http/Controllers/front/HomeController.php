@@ -722,6 +722,25 @@ class HomeController extends Controller
         return view('frontv2.profile',compact('countrys','citys'));
     }
 
+    public function updatev2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:clients,id,'.\Auth::guard('client')->user()->id,
+            'name' => 'required',
+            'phone' => '',
+        ]);
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        if($request->image){
+            $this->delete_image_if_exists(\Auth::guard('client')->user()->image);
+        }
+        $client = Client::find(\Auth::guard('client')->user()->id);
+        $client->update($request->all());
+        \Session::flash('success',__('front.client_success_message'));
+        return back();
+    }
+
     public function logoutv2()
     {
         auth()->guard('client')->logout();
