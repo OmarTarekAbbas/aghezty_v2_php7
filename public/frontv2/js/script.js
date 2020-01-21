@@ -644,6 +644,12 @@ $(document).ready(function () {
         $(target).parent().siblings().children(".slideContent").slideUp(500);
         $(target).not().parent().children(".slideContent").slideToggle();
     });
+    $("img.lazy").Lazy();
+    $(document).ajaxStop(function(){
+      $("img.lazy").Lazy({
+          effect: "fadeIn"
+      }).removeClass("lazy");
+  });
 });
 
 // $(document).ready(function () {

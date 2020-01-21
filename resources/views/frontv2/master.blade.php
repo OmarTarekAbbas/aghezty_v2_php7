@@ -631,6 +631,8 @@
         <script src="{{url('public/frontv2/js/owl.carousel.min.js')}}"></script>
         <!-- typed JS -->
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+        <!-- typed JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.js"></script>
         <!-- Script JS -->
 	   <script src="{{url('public/frontv2/js/script.js')}}"></script>
 		@foreach ($categorys as $category)
