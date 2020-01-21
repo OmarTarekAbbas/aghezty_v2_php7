@@ -54,8 +54,6 @@
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
 	<link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
-	<!-- funnyText -->
-	<link rel="stylesheet" href="{{url('public/frontv2/css/jquery.funnyText.css')}}">
 	<!-- hover -->
 	<!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
 	<link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
@@ -620,8 +618,6 @@
         <script src="{{url('public/frontv2/js/easyzoom.js')}}"></script>
         <!-- owl carousel JS -->
         <script src="{{url('public/frontv2/js/owl.carousel.min.js')}}"></script>
-        <!-- funnyText JS -->
-        <script src="{{url('public/frontv2/js/jquery.funnyText.min.js')}}"></script>
         <!-- typed JS -->
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
         <!-- Script JS -->

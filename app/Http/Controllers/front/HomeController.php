@@ -683,6 +683,12 @@ class HomeController extends Controller
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
     }
+
+    public function inner_productv2($id)
+    {
+        $product = Product::latest('created_at')->whereId($id)->first();
+        return view('frontv2.inner_page',compact('product'));
+    }
     /*********************************************************** end design v2 *******/
 
 }

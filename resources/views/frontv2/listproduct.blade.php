@@ -113,7 +113,7 @@ nav.container-fluid {
             <div class="z-checkbox hvr-icon-forward">
               <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
                 name="from" value="10000">
-              <label class="d-block text-capitalize" for="panel_38">10,000 @lang('front.egp')  - More @lang('front.from') </label>
+              <label class="d-block text-capitalize" for="panel_38">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>
             </div>
           </div>
 
@@ -123,10 +123,15 @@ nav.container-fluid {
 
           <div class="panel w-100 border border-light">
             <div class="z-checkbox hvr-icon-forward ">
-              <input id="panel_39" class="mb-2 offer" type="checkbox" name="offer" value="offer">
+              <input id="panel_39" class="mb-2 offer" {{isset($_REQUEST['offer'])?'checked':''}} type="checkbox" name="offer" value="offer">
               <label class="d-block text-capitalize" for="panel_39">@lang('front.offer') </label>
             </div>
           </div>
+
+          <input type="hidden" id="search_in" name="search" value="{{isset($_REQUEST['search'])?$_REQUEST['search']:''}}">
+          <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
+          <input type="hidden" id="ifrom_in"  name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
+          <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
         </form>
       </div>
       <!-- End Filter Search -->
@@ -153,11 +158,11 @@ nav.container-fluid {
               <div class="panel mb-3 border border-secondary">
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_category_{{$category->id}}"
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
                     {{(isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id'])?'checked':''}}
                     class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
-                    for="panel_mobile_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                    for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
               </div>
@@ -171,11 +176,11 @@ nav.container-fluid {
               <div class="panel mb-3 border border-secondary">
                 @foreach (brands() as $brand)
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_brand_mobile_{{$brand->id}}"
+                  <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
                     {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}}
                     class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
-                    for="panel_brand_mobile_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
+                    for="panel_brand_{{$brand->id}}_mobile">{{$brand->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
               </div>
@@ -186,35 +191,35 @@ nav.container-fluid {
 
               <div class="panel mb-3 border border-secondary">
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
-                  <label class="d-block text-capitalize" for="panel_mobile_34">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
+                  <input form="filter_form" id="panel_34_mobile" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
+                  <label class="d-block text-capitalize" for="panel_34_mobile">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_35" class="mb-2 price"
+                  <input form="filter_form" id="panel_35_mobile" class="mb-2 price"
                     {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}}
                     type="checkbox" name="from_to" value="1000,3000">
-                  <label class="d-block text-capitalize" for="panel_mobile_35">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
+                  <label class="d-block text-capitalize" for="panel_35_mobile">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_36" class="mb-2 price"
+                  <input form="filter_form" id="panel_36_mobile" class="mb-2 price"
                     {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}}
                     type="checkbox" name="from_to" value="3000,6000">
                   <label class="d-block text-capitalize" for="panel_mobile_36">3000 @lang('front.egp')  - 6000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_37" class="mb-2 price"
+                  <input form="filter_form" id="panel_37_mobile" class="mb-2 price"
                     {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}}
                     type="checkbox" name="from_to" value="6000,10000">
-                  <label class="d-block text-capitalize" for="panel_mobile_37">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
+                  <label class="d-block text-capitalize" for="panel_37_mobile">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
+                  <input form="filter_form" id="panel_38_mobile" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
                     name="from" value="10000">
-                  <label class="d-block text-capitalize" for="panel_mobile_38">10,000 @lang('front.egp')  - More @lang('front.from') </label>
+                  <label class="d-block text-capitalize" for="panel_38_mobile">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>
                 </div>
               </div>
 
@@ -224,8 +229,8 @@ nav.container-fluid {
 
               <div class="panel border border-secondary">
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_mobile_39" class="mb-2 offer" type="checkbox" name="offer" value="offer">
-                  <label class="d-block text-capitalize" for="panel_mobile_39">@lang('front.offer') </label>
+                  <input form="filter_form" id="panel_39_mobile" {{isset($_REQUEST['offer'])?'checked':''}} class="mb-2 offer" type="checkbox" name="offer" value="offer">
+                  <label class="d-block text-capitalize" for="panel_39_mobile">@lang('front.offer') </label>
                 </div>
               </div>
             </div>
@@ -288,13 +293,14 @@ nav.container-fluid {
               </a>
 
               <div class="rating_list_product">
-                @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
-                  <i class="fas fa-star colorstar"></i>
-                  @elseif(round($product->rate() + .25) >= $i)
-                  <i class="fas fa-star-half-alt colorstar"></i>
-                  @else
-                  <i class="far fa-star"></i>
-                  @endif
+                  @for ($i = 1; $i <= 5; $i++)
+                    @if(round($product->rate() - .25) >= $i)
+                      <i class="fas fa-star colorstar"></i>
+                    @elseif(round($product->rate() + .25) >= $i)
+                     <i class="fas fa-star-half-alt colorstar"></i>
+                    @else
+                     <i class="far fa-star"></i>
+                    @endif
                   @endfor
               </div>
 
@@ -380,7 +386,7 @@ $(window).on("scroll", function() {
 
 function load_content_data(start) {
   $.ajax({
-    url: '{{url("clients/loadproductsv2")}}?' + window.location.search.substring(1) + '&start=' + start,
+    url: '{{url("clients/loadproductsv2")}}?'+ '&start=' + start,
     type: "post",
     data: $('#filter_form').serialize(),
     success: function(data) {
@@ -398,9 +404,16 @@ function load_content_data(start) {
 
 $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
   $('.load').show();
+  $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
+  if($(this).prop('checked')==false){
+    str = $(this).attr('id')
+    $(this).removeAttr('checked')
+    $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
+    $('#'+str.split('_mobile')[0]).removeAttr('checked')
+  }
   start = 0
   $.ajax({
-    url: '{{url("clients/loadproductsv2")}}?start=0&'+ window.location.search.substring(1),
+    url: '{{url("clients/loadproductsv2")}}?start=0',
     type: "post",
     data: $('#filter_form').serialize(),
     success: function(data) {

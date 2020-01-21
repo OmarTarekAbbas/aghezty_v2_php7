@@ -12,28 +12,31 @@
 	<nav class="mobile_views nav_breadcrumb" aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="index.php" title="Go To Home">Home</a>
+				<a href="{{route('front.home.index')}}" title="Go To Home">Home</a>
 			</li>
 
 			<li class="breadcrumb-item">
-				<a href="listproduct.php" title="Go To Heavy Machine">Heavy Machine</a>
+				<a href="{{route('front.home.list',['sub_category_id' => $product->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
 			</li>
 
-			<li class="breadcrumb-item active" aria-current="page">Fridge</li>
+			<li class="breadcrumb-item active" aria-current="page">{{$product->getTranslation('title',getCode())}}</li>
 		</ol>
 	</nav>
 
 	<section id="inner-page" class="mobile_views">
 		<div class="">
-			<h3 class="product-title font-weight-bold">Toshiba Freestanding Refrigerator No Frost, 349 Litres, 2 Doors,
-				Gold - GR-EF37-J-G</h3>
+			<h3 class="product-title font-weight-bold">{{$product->getTranslation('title',getCode())}}</h3>
 
 			<span class="rating rating_star">
-				<i class="fas fa-star fa-xs colorstar"></i>
-				<i class="fas fa-star fa-xs colorstar"></i>
-				<i class="fas fa-star fa-xs colorstar"></i>
-				<i class="fas fa-star fa-xs colorstar"></i>
-				<i class="far fa-star fa-xs"></i>
+          @for ($i = 1; $i <= 5; $i++)
+            @if(round($product->rate() - .25) >= $i)
+              <i class="fas fa-star colorstar"></i>
+            @elseif(round($product->rate() + .25) >= $i)
+              <i class="fas fa-star-half-alt colorstar"></i>
+            @else
+              <i class="far fa-star"></i>
+            @endif
+          @endfor
 			</span>
 
 			<span class="rating rating_review">8 Review(s) </span>
