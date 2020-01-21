@@ -49,7 +49,7 @@ nav.container-fluid {
 
           <div class="panel mb-3 w-100 border border-light">
             @foreach ($item->sub_cats as $category)
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id"
                 {{(isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id'])?'checked':''}}
                 type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
@@ -68,7 +68,7 @@ nav.container-fluid {
 
           <div class="panel mb-3 w-100 border border-light">
             @foreach (brands() as $brand)
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
                 {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} type="checkbox"
                 name="brand_id[]" value="{{$brand->id}}">
@@ -83,34 +83,34 @@ nav.container-fluid {
           </button>
 
           <div class="panel mb-3 w-100 border border-light">
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to"
                 value="1000">
               <label class="d-block text-capitalize" for="panel_34">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
             </div>
 
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_35" class="mb-2 price"
                 {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox"
                 name="from_to" value="1000,3000">
               <label class="d-block text-capitalize" for="panel_35">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
             </div>
 
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_36" class="mb-2 price"
                 {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox"
                 name="from_to" value="3000,6000">
               <label class="d-block text-capitalize" for="panel_36">3000 @lang('front.egp')  - 6000 @lang('front.egp') </label>
             </div>
 
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_37" class="mb-2 price"
                 {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox"
                 name="from_to" value="6000,10000">
               <label class="d-block text-capitalize" for="panel_37">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
             </div>
 
-            <div class="z-checkbox hvr-icon-forward">
+            <div class="z-checkbox">
               <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
                 name="from" value="10000">
               <label class="d-block text-capitalize" for="panel_38">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>

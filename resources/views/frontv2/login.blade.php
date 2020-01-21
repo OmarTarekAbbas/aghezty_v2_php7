@@ -18,22 +18,22 @@
 									<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 										<label class="sr-only" for="inlineFormInputGroup">Email</label>
 										<div class="input-group mb-2 m-auto w-50 hvr-float">
-											<div class="input-group-prepend">
+											<div class="input-group-prepend hvr-float">
 												<div class="input-group-text">
 													<i class="fas fa-at"></i>
 												</div>
 											</div>
-											<input type="text" class="form-control text-center" id="inlineFormInputGroupUsername" placeholder="Email">
+                      <input type="text" class="form-control text-center hvr-float" id="inlineFormInputGroupUsername" placeholder="Email">
 										</div>
 									</div>
 
 									<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 										<label class="sr-only" for="inlineFormInputGroup">Password</label>
 										<div class="input-group mb-2 m-auto w-50 hvr-float">
-											<div class="input-group-prepend">
+											<div class="input-group-prepend hvr-float">
 												<div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
 											</div>
-											<input type="text" class="form-control text-center" id="inlineFormInputGroupPassword" placeholder="Password">
+											<input type="text" class="form-control text-center hvr-float" id="inlineFormInputGroupPassword" placeholder="Password">
 										</div>
 									</div>
 

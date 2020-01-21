@@ -29,39 +29,40 @@
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupOldPassword">Old Password</label>
                 <div class="input-group mb-2 m-auto w-75 hvr-float">
-                  <div class="input-group-prepend d-none d-sm-block">
+                  <div class="input-group-prepend d-none d-sm-block hvr-float">
                     <div class="input-group-text padding_right_oldPassword">Old Password</div>
                   </div>
-                  <div class="input-group-prepend">
+
+                  <div class="input-group-prepend hvr-float">
                     <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                   </div>
-                  <input type="password" class="form-control text-center" id="inlineFormInputGroupOldPassword" placeholder="Old Password">
+                  <input type="password" class="form-control text-center hvr-float" id="inlineFormInputGroupOldPassword" placeholder="Old Password">
                 </div>
               </div>
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupNewPassword">New Password</label>
                 <div class="input-group mb-2 m-auto w-75 hvr-float">
-                  <div class="input-group-prepend d-none d-sm-block">
+                  <div class="input-group-prepend d-none d-sm-block hvr-float">
                     <div class="input-group-text padding_right_newPassword">New Password</div>
                   </div>
-                  <div class="input-group-prepend">
+                  <div class="input-group-prepend hvr-float">
                     <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                   </div>
-                  <input type="password" class="form-control text-center" id="inlineFormInputGroupNewPassword" placeholder="New Password">
+                  <input type="password" class="form-control text-center hvr-float" id="inlineFormInputGroupNewPassword" placeholder="New Password">
                 </div>
               </div>
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupConfirmPassword">Confirm Password</label>
                 <div class="input-group mb-2 m-auto w-75 hvr-float">
-                  <div class="input-group-prepend d-none d-sm-block">
+                  <div class="input-group-prepend d-none d-sm-block hvr-float">
                     <div class="input-group-text">Confirm Password</div>
                   </div>
-                  <div class="input-group-prepend">
+                  <div class="input-group-prepend hvr-float">
                     <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                   </div>
-                  <input type="password" class="form-control text-center" id="inlineFormInputGroupConfirmPassword" placeholder="Confirm Password">
+                  <input type="password" class="form-control text-center hvr-float" id="inlineFormInputGroupConfirmPassword" placeholder="Confirm Password">
                 </div>
               </div>
 

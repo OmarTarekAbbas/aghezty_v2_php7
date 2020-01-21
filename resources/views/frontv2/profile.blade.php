@@ -22,13 +22,13 @@
             <div class="col-md-12 col-lg-12 col-xl-12 col-12 mb-4">
               <label class="sr-only" for="inlineFormInputGroupNameProfile">Name</label>
               <div class="input-group mb-2 m-auto w-75 hvr-float">
-                <div class="input-group-prepend d-none d-sm-block">
-                  <div class="input-group-text ">Name</div>
+                <div class="input-group-prepend d-none d-sm-block hvr-float">
+                  <div class="input-group-text hvr-float">Name</div>
                 </div>
-                <div class="input-group-prepend">
+                <div class="input-group-prepend hvr-float">
                   <div class="input-group-text"><i class="fas fa-user"></i></div>
                 </div>
-                <input type="text" class="form-control text-center" id="inlineFormInputGroupNameProfile" placeholder="Name">
+                <input type="text" class="form-control text-center hvr-float" id="inlineFormInputGroupNameProfile" placeholder="Name">
               </div>
             </div>
 

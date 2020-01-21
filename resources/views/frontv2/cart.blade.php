@@ -175,10 +175,10 @@
               <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                 <div class="card-body">
                   <div class="input-group mb-2 m-auto w-100 hvr-float">
-                    <div class="input-group-prepend">
+                    <div class="input-group-prepend hvr-float">
                       <div class="input-group-text text-capitalize">coupon</div>
                     </div>
-                    <input type="text" class="form-control text-center" placeholder="Code">
+                    <input type="text" class="form-control text-center hvr-float" placeholder="Code">
                   </div>
                 </div>
               </div>
