@@ -4,5 +4,5 @@
 
     <i id="icon_upload" class="upload_icon_img fas fa-camera fa-3x"></i>
   </a>
-  <input type="file" accept='image/*' id="file_upload_id" onchange="openFile(event)" style="display:none">
+  <input type="file" name="image" accept='image/*' id="file_upload_id" onchange="openFile(event)" style="display:none">
 </section>

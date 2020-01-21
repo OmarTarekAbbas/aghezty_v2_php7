@@ -687,7 +687,45 @@ class HomeController extends Controller
     public function inner_productv2($id)
     {
         $product = Product::latest('created_at')->whereId($id)->first();
-        return view('frontv2.inner_page',compact('product'));
+        $items   = Product::where('category_id',$product->category->id)->whereNotIn('id',[$id])->inRandomOrder()->take(6)->get();
+        return view('frontv2.inner-page',compact('product','items'));
+    }
+
+    public function add_ratev2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'product_id' => 'required',
+            'rate' => 'required',
+            'comment' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $client_rate = ClientRate::create([
+            'product_id' => $request->product_id,
+            'client_id' => \Auth::guard('client')->user()->id,
+            'rate' => $request->rate,
+            'publish' => 0,
+            'comment'=> $request->comment
+
+        ]);
+        \Session::flash('success',__('front.rate_add_success_message'));
+        return back();
+    }
+
+    public function profilev2()
+    {
+        $countrys = Governorate::all();
+        $citys    = City::all();
+        return view('frontv2.profile',compact('countrys','citys'));
+    }
+
+    public function logoutv2()
+    {
+        auth()->guard('client')->logout();
+        return redirect(route('front.home.index'));
     }
     /*********************************************************** end design v2 *******/
 

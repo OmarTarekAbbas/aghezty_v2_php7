@@ -269,60 +269,71 @@
 						<a class="nav-link nav_link2 text-uppercase" href="{{url('clients/contactv2')}}" id="navbarDropdownMenuLink7" aria-haspopup="true" aria-expanded="false">@lang('front.contact')</a>
 					</li>
 					<!-- End Contact Us -->
+          @if(!Auth::guard('client')->user())
+            <!-- Start Register-->
+            <li class="nav-item">
+              <a class="nav-link nav_link2 text-uppercase" href="{{route('front.client.register')}}" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.auth.register')</a>
+            </li>
+            <!-- End Register -->
 
-					<!-- Start Register-->
-					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="register.php" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.auth.register')</a>
-					</li>
-					<!-- End Register -->
+            <!-- Start Log In-->
+            <li class="nav-item">
+              <a class="nav-link nav_link2 text-uppercase" href="{{route('front.client.login')}}" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.auth.login')</a>
+            </li>
+            <!-- End Log In -->
+          @else
+            <!-- Start My Account-->
+            <li class="nav-item dropdown mega-dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::guard('client')->user()->name}}</a>
 
-					<!-- Start Log In-->
-					<li class="nav-item">
-						<a class="nav-link nav_link2 text-uppercase" href="login.php" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.auth.login')</a>
-					</li>
-					<!-- End Log In -->
+              <div id="my_account" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink11" style="">
+                <div class="row">
+                  <div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
+                    <ul class="list-unstyled">
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.profile')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.profile')</a>
+                      </li>
 
-					<!-- Start My Account-->
-					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('front.auth.info')</a>
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="address.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.address')</a>
+                      </li>
+                    </ul>
+                  </div>
 
-						<div id="my_account" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink11" style="">
-							<div class="row">
-								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
-									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="profile.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.profile')</a>
-										</li>
+                  <div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
+                    <ul class="list-unstyled">
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="password.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.auth.password')</a>
+                      </li>
 
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="address.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.address')</a>
-										</li>
-									</ul>
-								</div>
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="orders.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.order')</a>
+                      </li>
 
-								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
-									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="password.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.auth.password')</a>
-										</li>
+                    </ul>
+                  </div>
 
-										<li>
-											<a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="orders.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.order')</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- End My Account-->
-
+                  <div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.logout')}}">
+                            <i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.sign_out')
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+              </div>
+            </li>
+            <!-- End My Account-->
+          @endif
 					<!-- Start Languages-->
-					<li class="nav-item dropdown mega-dropdown">
-						<a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink112" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img src="{{url('public/frontv2/images/lang/'.\Session::get('applocale').'.webp')}}" alt="{{\Session::get('applocale') == 'en'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'en'? " English" : " العربية"}}
+					<li class="nav-item">
+						<a class="nav-link text-uppercase slide_toggle" id="navbarDropdownMenuLink112" href="{{url('lang')}}/{{Session::get('applocale') == 'en'? "ar" : "en"}}">
+							<img src="{{url('public/frontv2/images/lang/'.(Session::get('applocale') == 'ar'? 'en' : 'ar').'.webp')}}" alt="{{\Session::get('applocale') == 'ar'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'ar'? " English" : " العربية"}}
 						</a>
 
-						<div id="languages" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink112">
+						{{-- <div id="languages" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink112">
 							<div class="row">
 
 								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
@@ -345,7 +356,7 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 					</li>
 					<!-- End Languages-->
 				</ul>
@@ -358,14 +369,14 @@
 
 	<section class="search_mobile d-block d-sm-none d-md-none d-lg-none d-xl-none">
 		<div class="col-12">
-			<form class="search-container">
-				<input type="text" placeholder="Search...">
-				<a href="#">
-					<div class="search_background">
-						<i class="search-icon fas fa-search fa-2x"></i>
-					</div>
-				</a>
-			</form>
+        <form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
+					<input type="text"  name="search" placeholder="@lang('messages.search')">
+					<a onclick="document.getElementById('form_search').submit()" href="#">
+						<div class="search_background">
+							<i class="search-icon fas fa-search fa-2x"></i>
+						</div>
+					</a>
+				</form>
 		</div>
 	</section>
 

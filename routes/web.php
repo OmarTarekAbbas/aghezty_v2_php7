@@ -35,53 +35,53 @@ Route::prefix('clients')->group(function() {
     Route::get('cart','front\HomeController@my_cart');
 
     /* Start Baher Routes */
-    Route::get('cartv2',function(){
-        return view('frontv2.cart');
-    });
+    // Route::get('cartv2',function(){
+    //     return view('frontv2.cart');
+    // });
 
-    Route::get('contact_usv2',function(){
-        return view('frontv2.contact_us');
-    });
+    // Route::get('contact_usv2',function(){
+    //     return view('frontv2.contact_us');
+    // });
 
-    Route::get('loginv2',function(){
-        return view('frontv2.login');
-    });
+    // Route::get('loginv2',function(){
+    //     return view('frontv2.login');
+    // });
 
-    Route::get('maintenancev2',function(){
-        return view('frontv2.maintenance');
-    });
+    // Route::get('maintenancev2',function(){
+    //     return view('frontv2.maintenance');
+    // });
 
-    Route::get('myorderv2',function(){
-        return view('frontv2.myorder');
-    });
+    // Route::get('myorderv2',function(){
+    //     return view('frontv2.myorder');
+    // });
 
-    Route::get('addressv2',function(){
-        return view('frontv2.address');
-    });
+    // Route::get('addressv2',function(){
+    //     return view('frontv2.address');
+    // });
 
-    Route::get('ordersv2',function(){
-        return view('frontv2.orders');
-    });
+    // Route::get('ordersv2',function(){
+    //     return view('frontv2.orders');
+    // });
 
-    Route::get('passwordv2',function(){
-        return view('frontv2.password');
-    });
+    // Route::get('passwordv2',function(){
+    //     return view('frontv2.password');
+    // });
 
-    Route::get('paymentv2',function(){
-        return view('frontv2.payment');
-    });
+    // Route::get('paymentv2',function(){
+    //     return view('frontv2.payment');
+    // });
 
-    Route::get('profilev2',function(){
-        return view('frontv2.profile');
-    });
+    // Route::get('profilev2',function(){
+    //     return view('frontv2.profile');
+    // });
 
-    Route::get('innerv2',function(){
-        return view('frontv2.inner-page');
-    });
+    // Route::get('innerv2',function(){
+    //     return view('frontv2.inner-page');
+    // });
 
-    Route::get('registerv2',function(){
-        return view('frontv2.register');
-    });
+    // Route::get('registerv2',function(){
+    //     return view('frontv2.register');
+    // });
     /* End Baher Routes */
 
     Route::post('cart','front\HomeController@store_cart');
@@ -114,7 +114,14 @@ Route::prefix('clients')->group(function() {
     Route::get('contactv2', 'front\HomeController@contactusv2');
     Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
     Route::any('loadproductsv2', 'front\HomeController@load_productsv2');
-    Route::get('productv2/{id}', 'front\HomeController@inner_productsv2')->name('front.home.inner');
+    Route::get('productv2/{id}', 'front\HomeController@inner_productv2')->name('front.home.inner');
+    Route::post('add_ratev2','front\HomeController@add_ratev2')->name('front.home.rate');
+    Route::get('/registerv2', 'Auth\ClientRegisterController@showLoginForm')->name('front.client.register');
+    Route::post('/registerv2', 'Auth\ClientRegisterController@register')->name('front.client.register.submit');
+    Route::get('/loginv2', 'Auth\ClientLoginController@showLoginForm')->name('front.client.login');
+    Route::post('/loginv2', 'Auth\ClientLoginController@login')->name('front.client.login.submit');
+    Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
+    Route::get('logoutv2','front\HomeController@logoutv2')->name('front.home.logout');
     /*************** end ***************/
 
 });
