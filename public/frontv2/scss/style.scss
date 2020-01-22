@@ -23,6 +23,10 @@ $yellow_color: #ffeb00;
 ::-webkit-scrollbar-thumb {
   background: #fe9901;
   border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
 /* Handle on hover */
@@ -3045,6 +3049,32 @@ a {
       .add_comment {
         button {
           width: 100% !important;
+        }
+      }
+    }
+
+    // List Product Page
+    #grid_two {
+      .content_view {
+        a {
+          .full_desc {
+            text-align: center !important;
+          }
+        }
+
+        .rating_list_product,
+        .price-description,
+        .price-box {
+          text-align: center !important;
+        }
+
+        .price-box {
+          .old-price {
+            float: inherit;
+            display: inline;
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
         }
       }
     }
