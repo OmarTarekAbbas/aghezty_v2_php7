@@ -4358,6 +4358,7 @@ a {
 
       .info {
         .features {
+
           .modal_feature,
           .desc_feature {
             line-height: 15px !important;
@@ -4444,6 +4445,7 @@ a {
       .table_desc {
         max-width: 100%;
         overflow: hidden;
+
         .table_desc_title {
           h5 {
             font-weight: bold;
@@ -5315,9 +5317,29 @@ a {
     }
 
     #inner-page {
-      .price_disc_offer {
-        .product-label {
-          left: 3rem;
+      .info {
+        .features {
+          .price_disc_offer {
+            .product-label {
+              left: 3rem;
+            }
+          }
+
+          .contact_us {
+            .rounded-social-buttons {
+              margin-left: 4.5rem;
+              margin-top: -10% !important;
+              margin-bottom: 0 !important;
+
+              .social-button {
+                right: 33%;
+              }
+            }
+          }
+
+          .quantity {
+            width: 25%;
+          }
         }
       }
 

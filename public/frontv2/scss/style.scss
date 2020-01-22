@@ -4981,9 +4981,29 @@ a {
     }
 
     #inner-page {
-      .price_disc_offer {
-        .product-label {
-          right: 3rem;
+      .info {
+        .features {
+          .price_disc_offer {
+            .product-label {
+              right: 3rem;
+            }
+          }
+
+          .contact_us {
+            .rounded-social-buttons {
+              margin-left: 4.5rem;
+              margin-top: -10% !important;
+              margin-bottom: 0 !important;
+
+              .social-button {
+                left: -1.5rem;
+              }
+            }
+          }
+
+          .quantity {
+            width: 25%;
+          }
         }
       }
 

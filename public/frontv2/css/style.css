@@ -3496,8 +3496,19 @@ a {
       height: 200px !important;
     } */
   }
-  .main #inner-page .price_disc_offer .product-label {
+  .main #inner-page .info .features .price_disc_offer .product-label {
     right: 3rem;
+  }
+  .main #inner-page .info .features .contact_us .rounded-social-buttons {
+    margin-left: 4.5rem;
+    margin-top: -10% !important;
+    margin-bottom: 0 !important;
+  }
+  .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
+    left: -1.5rem;
+  }
+  .main #inner-page .info .features .quantity {
+    width: 25%;
   }
   .main #inner-page #carouselExampleControls {
     width: 100% !important;
