@@ -153,7 +153,7 @@
 
 					<div class="col-md-12">
 						<form class="quantity-form">
-							<input id="np-qu" class="form-control" type="text" value="1">
+							<input class="form-control quantity-input" type="text" value="1">
 
 							<span class="btn btn-light btn-sm border np-plus p-0 px-1">
 								<i class="fa fa-plus fa-xs" aria-hidden="true"></i>
@@ -163,7 +163,7 @@
 								<i class="fa fa-minus fa-xs" aria-hidden="true"></i>
 							</span>
 
-							<button class="w-75 btn float-left font-weight-bold hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
+							<button class="w-75 btn float-left font-weight-bold hvr-wobble-to-bottom-right"  id="add_to">@lang('front.buy_now')</button>
 						</form>
 					</div>
 
@@ -201,7 +201,10 @@
 		<div class="mobile_views">
 			<div class="table_desc pt-3">
         <h3 style="text-decoration:underline">@lang('front.product_info')</h3>
-        {!! $product->getTranslation('description',getCode()) !!}
+        <div style="max-width: 100%; overflow:hidden;">
+          {!! $product->getTranslation('description',getCode()) !!}
+        </div>
+
 			</div>
 		</div>
 	</section>
@@ -244,7 +247,7 @@
                   <span
                     class="price font-weight-bold">{{($item->discount > 0)?$item->price_after_discount:$item->price}}
                     @lang('front.egp') </span>
-                </span>
+                 </span>
                 @if($item->discount > 0)
                 <p class="old-price">
                   <span class="price font-weight-bold">{{$item->price}} @lang('front.egp')  </span>
@@ -355,6 +358,32 @@
 @endsection
 
 @section('script')
+<script>
+  sessionStorage.setItem("current_url", document.referrer)
+$('#add_to').click(function(e) {
+  e.preventDefault()
+    $.ajax({
+        url: "{{route('front.home.cart.add')}}",
+        type: "POST",
+        data: {
+            'product_id': '{{$product->id}}',
+            'counter': $('.quantity-input').val(),
+            'price': '{{($product->discount)?$product->price_after_discount:$product->price}}'
+        },
+        success: function(data) {
+            if(data.status == 'success'){
+                $('.shopping_cart_num').html(parseInt($('.shopping_cart_num').html()) + 1)
+                location.href = "{{route('front.home.cart',['product_id' => $product->id])}}"
+            }
+            else{
+                console.log(data.status);
+                alert("@lang('front.you_already_take_this_product_in_your_cart')")
+            }
+
+        },
+    });
+})
+</script>
 <script>
 	var based_selection_typed = new Typed('#based_selection_typed', {
 		strings: ['@lang("front.inner.based_on_your_select")'],

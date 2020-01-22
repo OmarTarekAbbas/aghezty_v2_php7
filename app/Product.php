@@ -87,6 +87,7 @@ class Product extends Model
   {
     return \DB::table('client_rates')
           ->where('product_id',$this->id)
+          ->where('publish',1)
           ->avg('rate');
   }
 

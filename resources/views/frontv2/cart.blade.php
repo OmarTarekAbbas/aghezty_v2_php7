@@ -15,13 +15,13 @@
           </h2>
         </div>
       </div>
-
+      @if (Session::get('product'))
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-        <div class="alert_msg alert alert-success my-3 w-100 hvr-wobble-to-bottom-right" role="alert">Apple iPhone 11
-          Pro,256GB, 4GB RAM, 4G LTE, Gold was added to your shopping Cart.
+        <div class="alert_msg alert alert-success my-3 w-100 hvr-wobble-to-bottom-right" role="alert">{{Session::get('product')->getTranslation('title',getCode())}} @lang('front.add_message').
           <i class="fas fa-times fa-lg float-right mt-1"></i>
         </div>
       </div>
+      @endif
     </div>
   </div>
 
@@ -31,118 +31,86 @@
         <div class="col-md-8 col-lg-8 col-xl-8 col-12">
           <div class='table-responsive'>
             <table id="tablePreview" class="table text-secondary table-sm table-bordered mb-0">
-
               <thead>
                 <tr class="text-light bg-dark">
-                  <th class="text-capitalize align-middle text-center">product name</th>
-                  <th class="text-capitalize align-middle text-center">unit price</th>
-                  <th class="text-capitalize align-middle text-center">quantity</th>
-                  <th class="text-capitalize align-middle text-center">subtotal</th>
+                  <th class="text-capitalize align-middle text-center">@lang('front.product')</th>
+                  <th class="text-capitalize align-middle text-center">@lang('front.price')</th>
+                  <th class="text-capitalize align-middle text-center">@lang('front.quantity')</th>
+                  <th class="text-capitalize align-middle text-center">@lang('front.sub_total')</th>
                 </tr>
               </thead>
 
               <tbody>
+                @foreach ($auth_carts as $cart)
                 <tr>
                   <th class="th_th h6" scope="row">
                     <a class="item-delete btn btn-sm text-primary" href="#0">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
-                    <a class="img_link" ref="inner-page.php">
-                      <img class="w-25" src="{{url('public/frontv2/images/product1.jfif')}}" alt="iphone">
+                    <a class="img_link" ref="{{route('front.home.inner',['id' => $cart->pivot->product_id])}}">
+                      <img class="w-25" src="{{product($cart->pivot->product_id)->main_image}}" alt="iphone">
 
                       <div class="cart_shopping_title">
-                        <span>Apple iPhone 11 Pro,256GB, 4GB RAM, 4G LTE, Gold</span>
+                        <span>{{product($cart->pivot->product_id)->getTranslation('title',getCode())}}</span>
                       </div>
                     </a>
                   </th>
 
-                  <td class="item-price align-middle">9850 EGP</td>
+                  <td class="item-price align-middle">{{(int)$cart->pivot->price}} @lang('front.egp')</td>
 
                   <td class="td_td align-middle text-center w-25">
                     <div class="qty-holder text-center">
                       <a href="#0" class="table_qty_dec">-</a>
 
-                      <input value="1" size="4" title="Qty" class="input-text qty" maxlength="12">
+                      <input value="{{$cart->pivot->quantity}}" name="quantity" size="4" title="Qty" class="input-text qty" maxlength="12">
 
                       <a href="#0" class="table_qty_inc">+</a>
 
-                      <a href="inner-page.php">
+                      <a href="{{route('front.home.inner',['id' => $cart->pivot->product_id])}}">
                         <i class="far fa-eye px-2 h6"></i>
                       </a>
                     </div>
                   </td>
 
-                  <td class="item-total align-middle">9,850 EGP</td>
+                  <td class="item-total align-middle">{{(int)$cart->pivot->total_price }} @lang('front.egp')</td>
                 </tr>
+                @endforeach
+                @for ($i =0; $i < count($session_carts); $i++)
+                  <tr>
+                    <th class="th_th h6" scope="row">
+                      <a class="item-delete btn btn-sm text-primary" href="#0">
+                        <i class="fas fa-times fa-lg "></i>
+                      </a>
 
-                <tr>
-                  <th class="th_th text-primary h6" scope="row">
-                    <a class="item-delete btn btn-sm text-primary" href="#0">
-                      <i class="fas fa-times fa-lg"></i>
-                    </a>
+                      <a class="img_link" ref="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
+                        <img class="w-25" src="{{product($session_carts[$i]['product_id'])->main_image}}" alt="iphone">
 
-                    <a class="img_link" href="inner-page.php">
-                      <img class="w-25" src="{{url('public/frontv2/images/products/4.jpg')}}" alt="iphone">
+                        <div class="cart_shopping_title">
+                          <span>{{product($session_carts[$i]['product_id'])->getTranslation('title',getCode())}}</span>
+                        </div>
+                      </a>
+                    </th>
 
-                      <div class="cart_shopping_title">
-                        <span>Beko Front Loading Digital Washing Machine</span>
+                    <td class="item-price align-middle">{{(int)$session_carts[$i]['price']}} @lang('front.egp')</td>
+
+                    <td class="td_td align-middle text-center w-25">
+                      <div class="qty-holder text-center">
+                        <a href="#0" class="table_qty_dec">-</a>
+
+                        <input value="{{$session_carts[$i]['quantity']}}" size="4" title="Qty" class="input-text qty" maxlength="12">
+
+                        <a href="#0" class="table_qty_inc">+</a>
+
+                        <a href="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
+                          <i class="far fa-eye px-2 h6"></i>
+                        </a>
                       </div>
-                    </a>
-                  </th>
+                    </td>
 
-                  <td class="item-price align-middle">6,680 EGP</td>
-
-                  <td class="td_td align-middle text-center w-25">
-                    <div class="qty-holder text-center">
-                      <a href="#0" class="table_qty_dec">-</a>
-
-                      <input value="2" size="4" title="Qty" class="input-text qty" maxlength="12">
-
-                      <a href="#0" class="table_qty_inc">+</a>
-
-                      <a href="inner-page.php">
-                        <i class="far fa-eye px-2 h6"></i>
-                      </a>
-                    </div>
-                  </td>
-
-                  <td class="item-total align-middle">‭13,360‬ EGP</td>
-                </tr>
-
-                <tr>
-                  <th class="th_th text-primary h6" scope="row">
-                    <a class="item-delete btn btn-sm text-primary" href="#0">
-                      <i class="fas fa-times fa-lg"></i>
-                    </a>
-
-                    <a class="img_link" href="inner-page.php">
-                      <img class="w-25" src="{{url('public/frontv2/images/products/3.jpg')}}" alt="iphone">
-
-                      <div class="cart_shopping_title">
-                        <span>Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</span>
-                      </div>
-                    </a>
-                  </th>
-
-                  <td class="item-price align-middle">7,100 EGP</td>
-
-                  <td class="td_td align-middle text-center w-25">
-                    <div class="qty-holder text-center">
-                      <a href="#0" class="table_qty_dec">-</a>
-
-                      <input value="3" size="4" title="Qty" class="input-text qty" maxlength="12">
-
-                      <a href="#0" class="table_qty_inc">+</a>
-
-                      <a href="inner-page.php">
-                        <i class="far fa-eye px-2 h6"></i>
-                      </a>
-                    </div>
-                  </td>
-
-                  <td class="item-total align-middle">‭21,300‬ EGP</td>
-                </tr>
+                    <td class="item-total align-middle">{{(int)$session_carts[$i]['total_price']}} @lang('front.egp')</td>
+                  </tr>
+                @endfor
               </tbody>
             </table>
           </div>
@@ -159,11 +127,21 @@
             </div>
           </div>
         </div>
-
+        @if (count($auth_carts) > 0 || count($session_carts) > 0)
         <div class="col-md-4 col-lg-4 col-xl-4">
           <div class="discount_code_accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
             <!-- Start Discount Codes -->
+            @if(Auth::guard('client')->user())
             <div class="card">
+              @if(Session::has('success'))
+              <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>@lang('front.success')!</strong> {{Session::get('success')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              @endif
+              @include('errors')
               <div class="card-header w-100" role="tab" id="headingOne1">
                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
                   <h5 class="mb-0 text-uppercase text-dark">
@@ -173,16 +151,26 @@
               </div>
 
               <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                <div class="card-body">
-                  <div class="input-group mb-2 m-auto w-100 hvr-float">
-                    <div class="input-group-prepend hvr-float">
-                      <div class="input-group-text text-capitalize">coupon</div>
+                <form action="{{route('front.home.coupon')}}" method="post">
+                  @csrf
+                  <div class="card-body">
+                    <div class="input-group mb-2 m-auto w-100 hvr-float">
+                      <div class="input-group-prepend hvr-float">
+                        <div class="input-group-text text-capitalize">coupon</div>
+                      </div>
+                      <input type="text" name="coupon" class="form-control text-center hvr-float" placeholder="Code">
+                      @if(Session::get('fail'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ Session::get('fail') }}</strong>
+                          </span>
+                      @endif
+                      <input type="submit" class="btn btn-primary" value="@lang('front.coupon.add')" >
                     </div>
-                    <input type="text" class="form-control text-center hvr-float" placeholder="Code">
                   </div>
-                </div>
+                </form>
               </div>
             </div>
+            @endif
             <!-- End Discount Codes -->
 
             <!-- Start Cart Totals -->
@@ -190,7 +178,7 @@
               <div class="card-header w-100" role="tab" id="headingTwo2">
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                   <h5 class="mb-0 text-uppercase text-dark">
-                    cart totals <i class="fas fa-angle-down rotate-icon float-right"></i>
+                    @lang('front.invoice') <i class="fas fa-angle-down rotate-icon float-right"></i>
                   </h5>
                 </a>
               </div>
@@ -199,21 +187,29 @@
                 <div class="card-body">
                   <div class="sub_total">
                     <strong class="text-capitalize">subtotal</strong>
-                    <strong class="subtotal_price text-uppercase float-right">41,150 <span>egp</span></strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{(int)$total_price}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
                   <div class="sub_total">
                     <strong class="text-capitalize">shipping</strong>
-                    <strong class="subtotal_price text-uppercase float-right">250 <span>egp</span></strong>
+                    <strong class="subtotal_price text-uppercase float-right">@if($city) {{(int)$city->shipping_amount}} @else 0 @endif <span>@lang('front.egp')</span> </strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
                   <div class="sub_total">
+                    <strong class="text-capitalize">Coupon</strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : '0'}} <span>@lang('front.egp')</span></strong>
+                  </div>
+
+
+                  <div class="border-bottom border-secondary w-100 my-3"></div>
+
+                  <div class="sub_total">
                     <strong class="text-capitalize">grand total</strong>
-                    <strong class="subtotal_price text-uppercase float-right">41,400 <span>egp</span></strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{($city ? $total_price+$city->shipping_amount:(int)$total_price) + (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0)}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="cart_checkout w-100 my-3">
@@ -225,10 +221,11 @@
             <!-- End Cart Totals -->
 
             <div class="ads_img">
-              <img class="rounded w-100" style="height:14rem" src="{{url('public/frontv2/images/ads/top-banner.jpg')}}" alt="Ads">
+              <img class="rounded w-100" style="height:14rem" src="{{$ads->image}}" alt="Ads">
             </div>
           </div>
         </div>
+        @endif
       </div>
     </div>
   </section>
@@ -236,53 +233,25 @@
   <section class="choose_category mt-3">
     <div class="mobile_views">
       <div class="row no_margin">
-        <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center w-100 hvr-outline-in">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/stationary.jpg')}}" alt="stationary">
+
+        {{-- --}}
+        @foreach ($homepage_cat as $item)
+
+        <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
+          <div class="choose_category_form text-center">
+            <a class="hoverabley" href="{{route('front.home.list',['sub_category_id' => $item->id])}}">
+              <div class="hovertitle rounded">
+                <p>{{$item->getTranslation('title',getCode())}}</p>
+              </div>
+              <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
             </a>
+            <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">ovens</h4>
           </div>
         </div>
 
-        <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center w-100 hvr-outline-in">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/computers.jpg')}}" alt="computers">
-            </a>
-          </div>
-        </div>
+        @endforeach
+        {{-- --}}
 
-        <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center w-100 hvr-outline-in">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/appliances.jpg')}}" alt="appliances">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center w-100 hvr-outline-in">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/personal-care.jpg')}}" alt="personal-care">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center w-100 hvr-outline-in">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/small-appliances.jpg')}}" alt="small-appliances">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-xl-2 col-6 margin_bottom_mob">
-          <div class="choose_category_form text-center w-100 hvr-outline-in">
-            <a href="listproduct.php">
-              <img class="rounded w-100" src="{{url('public/frontv2/images/mobile-accessories.jpg')}}" alt="mobile-accessories">
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -291,165 +260,66 @@
     <div class="mobile_views">
       <div class="product_view_type">
         <div class="product_title mb-3">
-          <div class="title_left text-left font-weight-bold">
-            <strong id="cart_selected_typed"></strong>
-          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="title_left text-left font-weight-bold">
+                <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong>
+              </div>
+            </div>
 
-          <div class="title_right text-right">
-            <button class="btn btn-dark">View More</button>
+            <div class="col-6">
+              <div class="title_right text-right">
+              <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-100 d-block m-auto">
+          {{-- --}}
+          @foreach ($selected_for_you as $item)
 
+          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
+            <div class="px-2 product_desc hvr-bob rounded">
+              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="img_size w-75 d-block m-auto">
+
+                @if($item->discount > 0)
                 <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
+                  <span class="sale-product-icon">-{{$item->discount}}%</span>
                 </div>
+                @endif
 
                 <div>
-                  <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
+                  <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
 
+              @if ($item->price_after_discount >0)
+
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">699 EGP</span>
+                  <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
                 </span>
 
                 <p class="old-price">
                   <span class="price">
-                    799 EGP </span>
+                    {{$item->price}} @lang('front.egp') </span>
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/6.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Philips Daily Collection Sandwich Maker, 2 Toasts, 820 Watt, White</p>
-                </div>
-              </a>
-
+              @else
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">899 EGP</span>
+                  <span class="price">{{$item->price}} @lang('front.egp') </span>
                 </span>
               </div>
+              @endif
             </div>
           </div>
 
-          <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-100 d-block m-auto">
+          @endforeach
+          {{-- --}}
 
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">399 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">599 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/8.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Unionaire 49 Inch Smart Full HD LED TV - ML49US615</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">4,649 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">4,899 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/5.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Philips Viva Collection Citrus press - HR2744/40</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">699 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">
-                    799 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="listproduct.php">
-                <img src="{{url('public/frontv2/images/products/7.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Cozy Sporty Buff Bean Bag, Printed Pattern England, Waterproof</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">399 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">599 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

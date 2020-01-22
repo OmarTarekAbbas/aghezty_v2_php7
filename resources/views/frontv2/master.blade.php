@@ -57,7 +57,7 @@
 	<!-- hover -->
 	<!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
 	<link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
-
+	<meta name="token" content="{{ csrf_token() }}">
 @if (\Session::has('applocale'))
 @if (\Session::get('applocale') == 'ar')
 	<link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
@@ -94,9 +94,9 @@
 
 			<div class="col-md-3 col-lg-3 col-xl-1">
 				<div class="shopping_cart">
-					<button type="button" class="" data-toggle="modal" data-target="#cart">
+					<button type="button" onclick="location.href = '{{route('front.home.cart')}}'">
 						<!-- <i class="fas fa-shopping-cart fa-3x"></i> -->
-						<span class="shopping_cart_num">0</span>
+						<span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
 						<img src="{{url('public/frontv2/images/cart-dark.png')}}" class="shopping_cart_img" alt="Cart Shop">
 					</button>
 					<!-- (<span class="total-count"></span>) -->
@@ -295,7 +295,7 @@
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="address.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.address')</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.address')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.address')</a>
                       </li>
                     </ul>
                   </div>
@@ -303,11 +303,11 @@
                   <div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
                     <ul class="list-unstyled">
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="password.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.auth.password')</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.password')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.auth.password')</a>
                       </li>
 
                       <li>
-                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="orders.php"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.order')</a>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.order')}}"><i class="fas fa-caret-right pl-1 pr-2"></i> @lang('front.order')</a>
                       </li>
 
                     </ul>
@@ -688,6 +688,12 @@
 			smartBackspace: true, // this is a default
 			loop: true
 		});
+
+		$.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            }
+        });
 		</script>
 
         @yield('script')

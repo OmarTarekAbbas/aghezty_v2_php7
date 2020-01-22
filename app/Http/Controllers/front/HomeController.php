@@ -725,9 +725,9 @@ class HomeController extends Controller
     public function updatev2(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:clients,id,'.\Auth::guard('client')->user()->id,
+            'email' => 'required|email|unique:clients,email,'.\Auth::guard('client')->user()->id,
             'name' => 'required',
-            'phone' => '',
+            'phone' => 'required|unique:clients,phone,'.\Auth::guard('client')->user()->id,
         ]);
         if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
@@ -738,6 +738,210 @@ class HomeController extends Controller
         $client = Client::find(\Auth::guard('client')->user()->id);
         $client->update($request->all());
         \Session::flash('success',__('front.client_success_message'));
+        return back();
+    }
+    public function get_passwordv2(Request $request)
+    {
+      return view('frontv2.password');
+    }
+
+    public function updated_passwordv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+
+        if(!\Hash::check($request->old_password, \Auth::guard('client')->user()->password)){
+          return back()->with('fail', __('front.password_error_message'));
+        }
+
+        \Auth::guard('client')->user()->update([
+            'password' => \Hash::make($request->password)
+        ]);
+
+        \Session::flash('success',__('front.client_success_message'));
+        return back();
+
+    }
+
+    public function get_addressv2(Request $request)
+    {
+      $countrys = Governorate::all();
+      $citys    = City::all();
+      return view('frontv2.address',compact('countrys','citys'));
+    }
+
+    public function add_addressv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'city_id' => 'required',
+            'governorate_id' => 'required',
+            'address' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => \Auth::guard('client')->user()->id, 'address'=> $request->address]);
+
+        if($request->has('type')){
+            return redirect('clients/cartv2?address_id='.$request->city_id);
+        }
+        \Session::flash('success',__('front.address_success_message'));
+        return back();
+    }
+
+    public function updated_addressv2(Request $request,$id)
+    {
+        $validator = Validator::make($request->all(), [
+          'city_id' => 'required',
+          'governorate_id' => 'required',
+          'address' => 'required',
+        ],['address.required' => 'يجب ادخال العنوان بالتفصيل']);
+
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        $client_address = ClientAddress::find($id)->update([
+            'city_id' => $request->city_id,
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address'=> $request->address
+        ]);
+
+        \Session::flash('success',__('front.address_success_message'));
+        return back();
+    }
+
+    public function delete_addressv2($id)
+    {
+        $address = ClientAddress::find($id);
+        $address->delete();
+        \Session::flash('success', __('front.address_delete_success_message'));
+        return back();
+    }
+
+    public function get_ordersv2(Request $request)
+    {
+      return view('frontv2.orders');
+    }
+
+    public function my_cartv2(Request $request)
+    {
+        $auth_carts = [];
+        $session_carts =[];
+        $total_price =0;
+        $city = Null;
+        if($request->has('address_id')){
+            $city = City::whereId($request->address_id)->first();
+        }
+        if(\Auth::guard('client')->check()){
+            $auth_carts = \Auth::guard('client')->user()->carts;
+            $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+            if(!$city){
+                $city = \Auth::guard('client')->user()->cities[0];
+                $city = City::whereId($city->pivot->city_id)->first();
+            }
+        }
+        if(isset($_COOKIE['carts'])){
+            $session_carts = unserialize($_COOKIE['carts']);
+            for ($i=0; $i < count($session_carts) ; $i++) {
+                $total_price  += $session_carts[$i]['total_price'];
+            }
+        }
+
+        if($request->has('product_id'))
+        {
+          \Session::flash('product',Product::find($request->product_id));
+        }
+
+        $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $homepage_cat = Category::where('homepage', 1)->get();
+        $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->inRandomOrder()->first();
+
+        if(count($selected_for_you) != 6){
+          $limit = 6 - count($selected_for_you);
+          $selected_for_youR = Product::all()->random($limit);
+          $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+      }
+
+      if(count($homepage_cat) != 6){
+          $limit = 6 - count($homepage_cat);
+          $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+          $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
+      }
+        return view('frontv2.cart',compact('auth_carts','session_carts','total_price','city', 'selected_for_you', 'homepage_cat','ads'));
+    }
+
+    public function store_cartv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'product_id' => 'required',
+            'counter' => '',
+            'price' =>  'required'
+      ]);
+        //$request->request->add(['counter' => 1]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+        }
+        if(\Auth::guard('client')->check()){
+            $product = Cart::where('client_id',\Auth::guard('client')->user()->id)->where('product_id',$request->product_id)->first();
+            if($product){
+                return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
+            }
+            $cart = Cart::create([
+                'product_id' => $request->product_id,
+                'client_id' => \Auth::guard('client')->user()->id,
+                'quantity'=> $request->counter,
+                'price'  => $request->price,
+                'total_price' => $request->price * $request->counter
+            ]);
+        }
+        else{
+            $arr = isset($_COOKIE['carts']) ? unserialize($_COOKIE['carts']) : [];
+            for($i=0;$i<count($arr);$i++){
+                if($arr[$i]['product_id'] == $request->product_id){
+                    return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
+                }
+            }
+            $data['product_id'] = $request->product_id;
+            $data['quantity']   = $request->counter;
+            $data['price']      = $request->price;
+            $data['total_price']= $request->price * $request->counter;
+            array_push($arr,$data);
+            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+        }
+        return response()->json(['success' => 'Added To Cart Successfully' , 'status' => 'success']);
+    }
+
+    public function check_couponv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'coupon' => 'required',
+        ]);
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        $found_coupon = Coupon::where('coupon',$request->coupon)->first();
+        if(!$found_coupon){
+            \Session::flash('fail' , __('front.coupon.not_correct'));
+        }
+        $used_coupon = Coupon::where('coupon',$request->coupon)->where(function($q){
+            $q->where('used',1);
+            $q->orWhere('used',2);
+        })->first();
+        if($used_coupon){
+          \Session::flash('fail' , __('front.coupon.used_befor'));
+        }
+        $coupon = Coupon::where('coupon',$request->coupon)->first();
+        $coupon->client_id = \Auth::guard('client')->user()->id;
+        $coupon->used      = 1;
+        $coupon->save();
+        \Session::flash('success',__('front.coupon.add_success'));
         return back();
     }
 

@@ -331,14 +331,18 @@ $(document).ready(function () {
 /********************start inc and decr*********************/
 
 $('.np-plus').click(function () {
-    var x = parseInt($('#np-qu').val()) + 1;
-    $('#np-qu').val(x);
+    console.log('ok');
+
+    var x = parseInt($('.quantity-input').val()) + 1;
+    console.log(x);
+
+    $('.quantity-input').val(x);
 })
 
 $('.np-minus').click(function () {
-    var x = parseInt($('#np-qu').val()) - 1;
+    var x = parseInt($('.quantity-input').val()) - 1;
     if (x > 0)
-        $('#np-qu').val(x);
+        $('.quantity-input').val(x);
 })
 
 /********************end inc and decr*********************/

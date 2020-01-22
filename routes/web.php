@@ -123,6 +123,16 @@ Route::prefix('clients')->group(function() {
     Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
     Route::get('logoutv2','front\HomeController@logoutv2')->name('front.home.logout');
     Route::post('updatedv2','front\HomeController@updatev2')->name('front.home.update');
+    Route::get('passwordv2','front\HomeController@get_passwordv2')->name('front.home.password');
+    Route::post('updated_passwordv2','front\HomeController@updated_passwordv2')->name('front.home.password.update');
+    Route::get('addressv2','front\HomeController@get_addressv2')->name('front.home.address');
+    Route::post('updated_addressv2/{id}','front\HomeController@updated_addressv2')->name('front.home.address.update');
+    Route::post('add_addressv2','front\HomeController@add_addressv2')->name('front.home.address.add');
+    Route::get('addressv2/{id}/delete','front\HomeController@delete_addressv2')->name('front.home.address.delete');
+    Route::get('ordersv2','front\HomeController@get_ordersv2')->name('front.home.order');
+    Route::get('cartv2','front\HomeController@my_cartv2')->name('front.home.cart');
+    Route::post('cartv2','front\HomeController@store_cartv2')->name('front.home.cart.add');
+    Route::post('check_couponv2','front\HomeController@check_couponv2')->name('front.home.coupon');
     /*************** end ***************/
 
 });
