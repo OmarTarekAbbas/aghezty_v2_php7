@@ -14,6 +14,10 @@
 ::-webkit-scrollbar-thumb {
   background: #fe9901;
   border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
 /* Handle on hover */
@@ -2287,6 +2291,20 @@ a {
   }
   .main .review_comment .add_comment button {
     width: 100% !important;
+  }
+  .main #grid_two .content_view a .full_desc {
+    text-align: center !important;
+  }
+  .main #grid_two .content_view .rating_list_product,
+.main #grid_two .content_view .price-description,
+.main #grid_two .content_view .price-box {
+    text-align: center !important;
+  }
+  .main #grid_two .content_view .price-box .old-price {
+    float: inherit;
+    display: inline;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
   .main .alert_msg {
     position: relative;
