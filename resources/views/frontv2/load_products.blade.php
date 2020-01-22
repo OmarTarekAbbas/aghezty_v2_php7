@@ -1,6 +1,6 @@
 @foreach ($products as $product)
 
-<div class="col-md-3 col-6 mb-3">
+<div class="col-md-3 col-6 mb-3 content_view_mobile_col6">
   <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
     <a href="{{route('front.home.inner',['id' => $product->id]) }}">
       <img src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">

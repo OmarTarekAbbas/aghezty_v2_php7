@@ -130,7 +130,7 @@
           @if($category->sub_cats->count() > 0)
           <li class="nav-item dropdown mega-dropdown active m-auto">
             <a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{$category->getTranslation('title',getCode())}}
-              {{-- <span class="sr-only">(current)</span> --}}
+              <span class="sr-only">(current)</span>
             </a>
 
             <div id="heavy_machines" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink2">
