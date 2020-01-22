@@ -2485,6 +2485,9 @@ a {
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
+  .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
+    right: 0;
+  }
   .main #inner-page .info .features .quantity {
     width: 40%;
     margin: 0 auto;
@@ -3222,6 +3225,9 @@ a {
     margin-right: 4.5rem;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
+  }
+  .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
+    right: 0;
   }
   .main #inner-page .info .features .quantity {
     width: 40%;
