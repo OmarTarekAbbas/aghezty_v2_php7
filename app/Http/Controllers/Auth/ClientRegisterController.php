@@ -28,7 +28,7 @@ class ClientRegisterController extends Controller
 
     public function showLoginForm()
     {
-        return view('front.auth.login');
+        return view('frontv2.auth.register');
     }
 
     /**
@@ -38,7 +38,7 @@ class ClientRegisterController extends Controller
      */
     protected function redirectTo()
     {
-        return url('clients/cart');
+        return url('clients/cartv2');
     }
 
     /**

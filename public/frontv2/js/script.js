@@ -391,7 +391,7 @@ $('.star-input').click(function () {
     prevStars.attr('checked', true);
     nextStars.attr('checked', false);
     $(this).attr('checked', true);
-
+  $('#rate_fo').val(($(this).prevAll().length/2)+1)
 });
 
 $('.star-input-label').on('mouseover', function () {
@@ -644,6 +644,12 @@ $(document).ready(function () {
         $(target).parent().siblings().children(".slideContent").slideUp(500);
         $(target).not().parent().children(".slideContent").slideToggle();
     });
+    $("img.lazy").Lazy();
+    $(document).ajaxStop(function(){
+      $("img.lazy").Lazy({
+          effect: "fadeIn"
+      }).removeClass("lazy");
+  });
 });
 
 // $(document).ready(function () {

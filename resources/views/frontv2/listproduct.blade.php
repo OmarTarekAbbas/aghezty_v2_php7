@@ -50,8 +50,7 @@ nav.container-fluid {
           <div class="panel mb-3 w-100 border border-light">
             @foreach ($item->sub_cats as $category)
             <div class="z-checkbox">
-              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id"
-                {{(isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id'])?'checked':''}}
+              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{(isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id'])?'checked':''}}
                 type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
               <label class="d-block text-capitalize"
                 for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -117,7 +116,7 @@ nav.container-fluid {
             </div>
           </div>
 
-          <button type="button" class="accordion active active w-100 border border-light text-uppercase">@lang('front.offer')
+          <button type="button" class="accordion active  w-100 border border-light text-uppercase">@lang('front.offer')
             <i class="fas fa-minus float-right"></i>
           </button>
 
@@ -280,7 +279,7 @@ nav.container-fluid {
           <div class="col-md-3 col-6 mb-3 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->id]) }}">
-                <img src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">
+                <img class="lazy" src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">
 
                 @if($product->discount > 0)
                 <div class="product-label text-center font-weight-bold">
@@ -419,6 +418,7 @@ $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
     success: function(data) {
       if (data.html == '') {
         action = 'active';
+        $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
       } else {
         $('#grid_two').html(data.html);
         action = 'inactive';
