@@ -221,6 +221,12 @@
               <a href="{{route('front.home.inner',['id' => $item->id])}}">
                 <img src="{{url($item->main_image)}}" alt="Product" class="w-100 based_selection_img">
 
+                @if($item->discount > 0)
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">-{{$item->discount}}%</span>
+                </div>
+                @endif
+
                 <h6 class="text-dark text-left text-capitalize my-3">{{$item->getTranslation('title',getCode())}}
                   </h6>
               </a>

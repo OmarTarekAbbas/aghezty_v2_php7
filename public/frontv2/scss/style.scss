@@ -1245,6 +1245,8 @@ a {
         padding: 0 0.5rem;
 
         .social-button {
+          margin-bottom: 5%;
+          left: 69%;
           width: 2.5rem;
           height: 2.5rem;
           font-size: 1rem;
@@ -2958,44 +2960,55 @@ a {
       }
 
       .info {
+        .features {
 
-        .modal_feature,
-        .desc_feature {
-          line-height: 15px !important;
+          .modal_feature,
+          .desc_feature {
+            line-height: 15px !important;
 
-          h5 {
-            font-size: 12px;
+            h5 {
+              font-size: 12px;
+            }
+          }
+
+          .price_disc_offer {
+            position: relative;
+            margin-top: 0;
+
+            .price {
+              font-size: 18px;
+              margin: 0;
+            }
+
+            .discount {
+              position: absolute;
+              text-align: right;
+              right: 83px;
+              font-size: 18px;
+              margin: 0;
+            }
+
+            .product-label {
+              top: 9px;
+              right: 6px;
+            }
+          }
+
+          .contact_us {
+            .rounded-social-buttons {
+              margin-left: 6rem;
+              margin-top: -10% !important;
+              margin-bottom: 0 !important;
+            }
+          }
+
+          .quantity {
+            width: 40%;
+            margin: 0 auto;
+            margin-bottom: 5%;
           }
         }
 
-        .price_disc_offer {
-          position: relative;
-          margin-top: 0;
-
-          .price {
-            font-size: 18px;
-            margin: 0;
-          }
-
-          .discount {
-            position: absolute;
-            text-align: right;
-            right: 100px;
-            font-size: 18px;
-            margin: 0;
-          }
-
-          .product-label {
-            top: 9px;
-            right: 27px;
-          }
-        }
-
-        .quantity {
-          width: 30%;
-          margin: 0 auto;
-          margin-bottom: 5%;
-        }
 
         #add_to {
           width: 70% !important;
@@ -3005,6 +3018,7 @@ a {
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
+        margin-left: 4.5rem;
         text-align: center;
 
         .social-button {
@@ -3029,6 +3043,9 @@ a {
 
     .inner_table_desc {
       .table_desc {
+        max-width: 100%;
+        overflow: hidden;
+
         .table_desc_title {
           h5 {
             font-weight: bold;
@@ -3037,11 +3054,15 @@ a {
         }
 
         table {
+          width: 100%;
+
           tr {
+            width: 100%;
 
             th,
             td {
               padding: 4px 6px !important;
+              width: 100%;
             }
           }
         }
@@ -3066,8 +3087,21 @@ a {
       }
 
       .content_view {
-        .product-label {
-          right: 4px;
+        a {
+          .based_selection_img {
+            height: 150px !important;
+          }
+
+          .product-label {
+            right: 4px;
+          }
+
+          h6 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 1;
+            height: 3rem !important;
+          }
         }
 
         .price-box {
@@ -3204,6 +3238,15 @@ a {
     .choose_category {
       .choose_category_form {
         .hoverabley {
+          .hovertitle {
+            height: 12rem;
+            top: -4rem;
+
+            p {
+              letter-spacing: 5px;
+            }
+          }
+
           img {
             height: 155px;
           }
@@ -4012,43 +4055,52 @@ a {
       }
 
       .info {
+        .features {
+          .modal_feature,
+          .desc_feature {
+            line-height: 15px !important;
 
-        .modal_feature,
-        .desc_feature {
-          line-height: 15px !important;
-
-          h5 {
-            font-size: 12px;
-          }
-        }
-
-        .price_disc_offer {
-          position: relative;
-          margin-top: 0;
-
-          .price {
-            font-size: 18px;
-            margin: 0;
+            h5 {
+              font-size: 12px;
+            }
           }
 
-          .discount {
-            position: absolute;
-            text-align: right;
-            right: 100px;
-            font-size: 18px;
-            margin: 0;
+          .price_disc_offer {
+            position: relative;
+            margin-top: 0;
+
+            .price {
+              font-size: 18px;
+              margin: 0;
+            }
+
+            .discount {
+              position: absolute;
+              text-align: right;
+              right: 100px;
+              font-size: 18px;
+              margin: 0;
+            }
+
+            .product-label {
+              top: 9px;
+              right: 27px;
+            }
           }
 
-          .product-label {
-            top: 9px;
-            right: 27px;
+          .contact_us {
+            .rounded-social-buttons {
+              margin-left: 4.5rem;
+              margin-top: -10% !important;
+              margin-bottom: 0 !important;
+            }
           }
-        }
 
-        .quantity {
-          width: 30%;
-          margin: 0 auto;
-          margin-bottom: 5%;
+          .quantity {
+            width: 40%;
+            margin: 0 auto;
+            margin-bottom: 5%;
+          }
         }
 
         #add_to {
@@ -4059,6 +4111,7 @@ a {
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
+        margin-left: 4.5rem;
         text-align: center;
 
         .social-button {
@@ -4083,6 +4136,9 @@ a {
 
     .inner_table_desc {
       .table_desc {
+        max-width: 100%;
+        overflow: hidden;
+
         .table_desc_title {
           h5 {
             font-weight: bold;
@@ -4120,8 +4176,21 @@ a {
       }
 
       .content_view {
-        .product-label {
-          right: 4px;
+        a {
+          .based_selection_img {
+            height: 170px !important;
+          }
+
+          .product-label {
+            right: 4px;
+          }
+
+          h6 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 1.5;
+            height: 3rem !important;
+          }
         }
 
         .price-box {
@@ -4258,6 +4327,15 @@ a {
     .choose_category {
       .choose_category_form {
         .hoverabley {
+          .hovertitle {
+            height: 14rem;
+            top: -5rem;
+
+            p {
+              letter-spacing: 5px;
+            }
+          }
+
           img {
             height: 181px;
           }
