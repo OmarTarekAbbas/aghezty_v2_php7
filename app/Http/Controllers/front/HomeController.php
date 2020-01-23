@@ -589,7 +589,7 @@ class HomeController extends Controller
 
     }
 
-    public function listproductsv2(Request $request)
+    public function productsv2(Request $request)
     {
         //return $request->all();
         $products = Product::query();

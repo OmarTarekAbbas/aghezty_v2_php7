@@ -50,7 +50,7 @@ nav.container-fluid {
           <div class="panel mb-3 w-100 border border-light">
             @foreach ($item->sub_cats as $category)
             <div class="z-checkbox">
-              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || $_REQUEST['search'] == $category->title)?'checked':''}}
+              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title))?'checked':''}}
                 type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
               <label class="d-block text-capitalize"
                 for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -158,7 +158,7 @@ nav.container-fluid {
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
-                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || $_REQUEST['search'] == $category->title)?'checked':''}}
+                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title))?'checked':''}}
                     class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
