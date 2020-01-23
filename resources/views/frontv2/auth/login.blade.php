@@ -18,22 +18,22 @@
                 <div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
                   <label class="sr-only" for="inlineFormInputGroup">@lang('front.auth.email')</label>
                   <div class="input-group mb-2 m-auto w-50 hvr-float">
-                    <div class="input-group-prepend hvr-float">
+                    <div class="input-group-prepend">
                       <div class="input-group-text">
                         <i class="fas fa-at"></i>
                       </div>
                     </div>
-                    <input type="text" name="email" class="form-control text-center hvr-float" id="inlineFormInputGroupUsername" placeholder="@lang('front.auth.email')">
+                    <input type="text" name="email" class="form-control text-center" id="inlineFormInputGroupUsername" placeholder="@lang('front.auth.email')">
                   </div>
                 </div>
 
                 <div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
                   <label class="sr-only" for="inlineFormInputGroup">@lang('front.auth.password')</label>
                   <div class="input-group mb-2 m-auto w-50 hvr-float">
-                    <div class="input-group-prepend hvr-float">
+                    <div class="input-group-prepend">
                       <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                     </div>
-                    <input type="text" type="password" name="password" class="form-control text-center hvr-float" id="inlineFormInputGroupPassword" placeholder="@lang('front.auth.password')">
+                    <input type="text" type="password" name="password" class="form-control text-center" id="inlineFormInputGroupPassword" placeholder="@lang('front.auth.password')">
                   </div>
                 </div>
 

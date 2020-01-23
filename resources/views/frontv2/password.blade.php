@@ -2,8 +2,9 @@
 
 @section('style')
 <style>
-  .padding_right_oldPassword {
-    padding-right: 44px !important;
+  .padding_right_oldPassword,
+  .padding_right_confirmPassword {
+    padding-right: 40px !important;
   }
 
   .padding_right_newPassword {
@@ -24,8 +25,8 @@
             </div>
           </div>
           @if(Session::has('success'))
-          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-success alert-dismissible fade show" role="alert">
-              <strong>@lang('front.success')!</strong> {{Session::get('success')}}
+          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-success alert-dismissible msg_success_min bounce-in-bottom text-capitalize fade show" role="alert">
+              {{Session::get('success')}}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -46,40 +47,40 @@
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupOldPassword">@lang('front.old_password')</label>
                 <div class="input-group mb-2 m-auto w-75 hvr-float">
-                  <div class="input-group-prepend d-none d-sm-block hvr-float">
+                  <div class="input-group-prepend d-none d-sm-block">
                     <div class="input-group-text padding_right_oldPassword">@lang('front.old_password')</div>
                   </div>
 
-                  <div class="input-group-prepend hvr-float">
+                  <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                   </div>
-                  <input type="password" name="old_password" class="form-control text-center hvr-float" id="inlineFormInputGroupOldPassword" placeholder="@lang('front.old_password')">
+                  <input type="password" name="old_password" class="form-control text-center" id="inlineFormInputGroupOldPassword" placeholder="@lang('front.old_password')">
                 </div>
               </div>
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupNewPassword">@lang('front.new_password')</label>
                 <div class="input-group mb-2 m-auto w-75 hvr-float">
-                  <div class="input-group-prepend d-none d-sm-block hvr-float">
+                  <div class="input-group-prepend d-none d-sm-block">
                     <div class="input-group-text padding_right_newPassword">@lang('front.new_password')</div>
                   </div>
-                  <div class="input-group-prepend hvr-float">
+                  <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                   </div>
-                  <input type="password" name="password" class="form-control text-center hvr-float" id="inlineFormInputGroupNewPassword" placeholder="@lang('front.new_password')">
+                  <input type="password" name="password" class="form-control text-center" id="inlineFormInputGroupNewPassword" placeholder="@lang('front.new_password')">
                 </div>
               </div>
 
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                 <label class="sr-only" for="inlineFormInputGroupConfirmPassword">@lang('front.confirm_password')</label>
                 <div class="input-group mb-2 m-auto w-75 hvr-float">
-                  <div class="input-group-prepend d-none d-sm-block hvr-float">
-                    <div class="input-group-text">@lang('front.confirm_password')</div>
+                  <div class="input-group-prepend d-none d-sm-block">
+                    <div class="input-group-text padding_right_confirmPassword">@lang('front.confirm_password')</div>
                   </div>
-                  <div class="input-group-prepend hvr-float">
+                  <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-user-lock"></i></div>
                   </div>
-                  <input type="password" name="password_confirmation" class="form-control text-center hvr-float" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('front.confirm_password')">
+                  <input type="password" name="password_confirmation" class="form-control text-center" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('front.confirm_password')">
                 </div>
               </div>
 

@@ -58,7 +58,7 @@
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
 									</div>
-									<input type="text" class="form-control text-center" name="password" id="inlineFormInputGroupPasswordReg" placeholder="@lang('front.auth.name')">
+									<input type="password" class="form-control text-center" name="password" id="inlineFormInputGroupPasswordReg" placeholder="@lang('front.auth.password')">
 								</div>
 							</div>
 
@@ -68,7 +68,7 @@
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
 									</div>
-									<input type="text" class="form-control text-center" name="password_confirmation" placeholder="@lang('front.auth.confirm_password')" id="inlineFormInputGroupConfirmPasswordReg">
+									<input type="password" class="form-control text-center" name="password_confirmation" placeholder="@lang('front.auth.confirm_password')" id="inlineFormInputGroupConfirmPasswordReg">
 								</div>
 							</div>
 

@@ -13,11 +13,15 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #fe9901;
-  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  /* border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+  -o-border-radius: 4px; */
 }
 
 /* Handle on hover */
@@ -32,6 +36,7 @@
 }
 
 a {
+  outline: 0;
   text-decoration: none !important;
   cursor: pointer;
 }
@@ -57,9 +62,29 @@ body {
   outline: 0;
 }
 
-a {
-  text-decoration: none;
-  outline: 0;
+.alert-success.msg_success_min, .alert-success.msg_danger_min,
+.alert-danger.msg_success_min,
+.alert-danger.msg_danger_min {
+  text-align: right;
+  padding: 0.75rem 0.5rem !important;
+  border: 0 !important;
+  max-width: 73%;
+  margin: 0.75rem auto;
+}
+.alert-success.msg_success_min button.close, .alert-success.msg_danger_min button.close,
+.alert-danger.msg_success_min button.close,
+.alert-danger.msg_danger_min button.close {
+  right: 96% !important;
+}
+.alert-success.msg_success_min ul, .alert-success.msg_danger_min ul,
+.alert-danger.msg_success_min ul,
+.alert-danger.msg_danger_min ul {
+  margin-bottom: 0 !important;
+}
+.alert-success.msg_success_min ul li, .alert-success.msg_danger_min ul li,
+.alert-danger.msg_success_min ul li,
+.alert-danger.msg_danger_min ul li {
+  margin-top: 0.5rem;
 }
 
 /*----------------------------------------- Start Header -----------------------------------------*/
@@ -1787,8 +1812,8 @@ a {
 .my_profile .my_profile_bg .password_accordion .input-group .input-group-text {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:not(:first-child),
 .my_profile .my_profile_bg .address_accordion .input-group .form-control:not(:first-child),
