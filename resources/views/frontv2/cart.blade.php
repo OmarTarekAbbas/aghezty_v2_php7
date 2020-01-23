@@ -352,7 +352,7 @@
       if (x > 0)
           $('.qty').val(x);
   })
-  $(document).on('change paste keyup select', '#quan', function(e) {
+  $(document).on('change', '#quan', function(e) {
     e.preventDefault();
     $.ajax({
         url: "{{route('front.home.cart.update')}}",
