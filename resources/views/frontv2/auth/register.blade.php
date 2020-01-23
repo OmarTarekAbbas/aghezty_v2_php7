@@ -3,11 +3,11 @@
 
 
 <!-- main content -->
-@include('errors')
 <div class="main mt-2">
 	<section class="log_in justify-content-center">
 		<div class="mobile_views">
 			<div class="log_in_bg rounded">
+        @include('errors')
         <form action="{{route('front.client.register.submit')}}" method="POST">
           @csrf
 					<div>
