@@ -63,7 +63,7 @@
                     <div class="qty-holder text-center">
                       <a href="#0" class="table_qty_dec">-</a>
 
-                      <input value="{{$cart->pivot->quantity}}" name="quantity" data-cart="{{$cart->pivot->id}}" data-type = "auth" size="4"  id="quan" title="Qty" class="input-text qty" maxlength="12">
+                      <input value="{{$cart->pivot->quantity}}" name="quantity" data-cart="{{$cart->pivot->id}}" data-type = "auth" size="4"   title="Qty" class="input-text qty" maxlength="12">
 
                       <a href="#0" class="table_qty_inc">+</a>
 
@@ -98,7 +98,7 @@
                       <div class="qty-holder text-center">
                         <a href="#0" class="table_qty_dec">-</a>
 
-                        <input value="{{$session_carts[$i]['quantity']}}" data-cart="{{$i}}" data-type = "cookie" size="4" title="Qty" class="input-text qty" id="quan" maxlength="12">
+                        <input value="{{$session_carts[$i]['quantity']}}" data-cart="{{$i}}" data-type = "cookie" size="4" title="Qty" class="input-text qty"  maxlength="12">
 
                         <a href="#0" class="table_qty_inc">+</a>
 
@@ -343,16 +343,46 @@
 </script>
 <script>
   $(document).on('click','.table_qty_inc',function () {
-      var x = parseInt($('.qty').val()) + 1;
-      $('.qty').val(x);
+      var x = parseInt($(this).parent().children('.qty').val()) + 1;
+      $(this).parent().children('.qty').val(x);
+      $.ajax({
+            url: "{{route('front.home.cart.update')}}",
+            type: "get",
+            data: {
+                cart_id: $(this).parent().children('.qty').data('cart'),
+                type: $(this).parent().children('.qty').data('type'),
+                value: $(this).parent().children('.qty').val()
+            },
+            success: function(data) {
+                console.log(data.status);
+                if (data.status == 'success') {
+                    $("#href_load").load(location.href + " #href_load>*", "");
+                }
+            },
+        });
   })
 
   $(document).on('click','.table_qty_dec',function () {
-      var x = parseInt($('.qty').val()) - 1;
+    var x = parseInt($(this).parent().children('.qty').val()) - 1;
       if (x > 0)
-          $('.qty').val(x);
+          $(this).parent().children('.qty').val(x);
+          $.ajax({
+            url: "{{route('front.home.cart.update')}}",
+            type: "get",
+            data: {
+                cart_id: $(this).parent().children('.qty').data('cart'),
+                type: $(this).parent().children('.qty').data('type'),
+                value: $(this).parent().children('.qty').val()
+            },
+            success: function(data) {
+                console.log(data.status);
+                if (data.status == 'success') {
+                    $("#href_load").load(location.href + " #href_load>*", "");
+                }
+            },
+        });
   })
-  $(document).on('change', '#quan', function(e) {
+  $(document).on('change', '.qty', function(e) {
     e.preventDefault();
     $.ajax({
         url: "{{route('front.home.cart.update')}}",
