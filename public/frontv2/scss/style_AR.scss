@@ -115,7 +115,6 @@ body {
   }
 }
 
-
 /*----------------------------------------- Start Header -----------------------------------------*/
 .head_two {
   background-color: $greyTitle_color;
@@ -2795,6 +2794,34 @@ body {
 /*----------------------------------------- Start Media Query -----------------------------------------*/
 /* Start Media Query Mobile */
 @media (min-width: 320px) and (max-width: 375px) {
+
+  .alert-success,
+  .alert-danger {
+
+    &.msg_success_min,
+    &.msg_danger_min {
+      text-align: right;
+      padding: 0.75rem 0.5rem !important;
+      border: 0 !important;
+      max-width: 90%;
+      margin: 0.75rem auto;
+
+      button {
+        &.close {
+          right: 86% !important;
+        }
+      }
+
+      ul {
+        margin-bottom: 0 !important;
+
+        li {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
   .head_three {
     .navbar-nav {
       padding: 0;
@@ -3939,6 +3966,34 @@ body {
 }
 
 @media (min-width: 376px) and (max-width: 415px) {
+
+  .alert-success,
+  .alert-danger {
+
+    &.msg_success_min,
+    &.msg_danger_min {
+      text-align: right;
+      padding: 0.75rem 0.5rem !important;
+      border: 0 !important;
+      max-width: 92%;
+      margin: 0.75rem auto;
+
+      button {
+        &.close {
+          right: 88% !important;
+        }
+      }
+
+      ul {
+        margin-bottom: 0 !important;
+
+        li {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
   .head_three {
     .navbar {
       padding: 5px 0;
