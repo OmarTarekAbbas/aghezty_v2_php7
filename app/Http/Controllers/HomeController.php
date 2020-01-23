@@ -46,12 +46,12 @@ class HomeController extends Controller
 
     }
 
-    public function Recently_Addedv2()
+    public function Recently_Addedv()
     {
 
         $recently_added = Product::where('recently_added', 1)->orderBy('created_at', 'ASC')->get();
 
-        return view('homepage.Recently_Added', compact('recently_added'));
+        return view('homepage.recently_added', compact('recently_added'));
 
     }
 

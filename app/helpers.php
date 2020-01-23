@@ -98,7 +98,7 @@ Route::get('/test','DashboardController@test');
         Route::get('homepage/homepage_category', 'HomeController@homepage_category');
         Route::get('homepage/change_order', 'HomeController@change_order');
         Route::get('homepage/banners', 'HomeController@bannersv2');
-        Route::get('homepage/recently_addedv2', 'HomeController@Recently_Addedv2');
+        Route::get('homepage/recently_addedv', 'HomeController@Recently_Addedv');
         Route::get('homepage/selected_for_youv', 'HomeController@selected_for_youv');
         Route::get('homepage/selected_HPcat', 'HomeController@selected_HPcat');
         /*****************************end */
