@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     }
 
-    public function Recently_Addedv()
+    public function Recently_Addedv2()
     {
 
         $recently_added = Product::where('recently_added', 1)->orderBy('created_at', 'ASC')->get();
