@@ -945,6 +945,22 @@ class HomeController extends Controller
         return back();
     }
 
+    public function delete_cartv2(Request $request)
+    {
+        if($request->type == "cookie"){
+            $arr = unserialize($_COOKIE['carts']);
+            unset($arr[$request->cart_id]);
+            $arr = array_values($arr);
+            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+        }
+        if($request->type == "auth"){
+            $cart = Cart::find($request->cart_id);
+            $cart->delete();
+        }
+        \Session::flash('success','delete will');
+        return back();
+    }
+
     public function logoutv2()
     {
         auth()->guard('client')->logout();

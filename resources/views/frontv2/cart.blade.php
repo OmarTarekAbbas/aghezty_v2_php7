@@ -44,7 +44,7 @@
                 @foreach ($auth_carts as $cart)
                 <tr>
                   <th class="th_th h6" scope="row">
-                    <a class="item-delete btn btn-sm text-primary" href="#0">
+                    <a class="item-delete btn btn-sm text-primary" href="{{route('front.home.cart.delete',['cart_id' => $cart->id , 'type' => 'auth'])}}">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
@@ -79,7 +79,7 @@
                 @for ($i =0; $i < count($session_carts); $i++)
                   <tr>
                     <th class="th_th h6" scope="row">
-                      <a class="item-delete btn btn-sm text-primary" href="#0">
+                      <a class="item-delete btn btn-sm text-primary" href="{{route('front.home.cart.delete',['cart_id' => $i , 'type' => 'cookie'])}}">
                         <i class="fas fa-times fa-lg "></i>
                       </a>
 

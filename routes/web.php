@@ -133,6 +133,8 @@ Route::prefix('clients')->group(function() {
     Route::get('cartv2','front\HomeController@my_cartv2')->name('front.home.cart');
     Route::post('cartv2','front\HomeController@store_cartv2')->name('front.home.cart.add');
     Route::post('check_couponv2','front\HomeController@check_couponv2')->name('front.home.coupon');
+    Route::get('update_cartv2','front\HomeController@update_cartv2');
+    Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
     /*************** end ***************/
 
 });
