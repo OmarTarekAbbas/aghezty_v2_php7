@@ -134,16 +134,16 @@
             @if(Auth::guard('client')->user())
             <div class="card">
               @if(Session::has('success'))
-              <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>@lang('front.success')!</strong> {{Session::get('success')}}
+              <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-success alert-dismissible msg_success_min bounce-in-bottom text-capitalize fade show" role="alert">
+                  {{Session::get('success')}}
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
               </div>
               @endif
               @if(Session::has('fail'))
-              <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>@lang('front.fail')!</strong> {{Session::get('fail')}}
+              <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-danger alert-dismissible msg_danger_min bounce-in-bottom text-capitalize fade show" role="alert">
+                  {{Session::get('fail')}}
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -163,11 +163,11 @@
                   @csrf
                   <div class="card-body">
                     <div class="input-group mb-2 m-auto w-100 hvr-float">
-                      <div class="input-group-prepend hvr-float">
+                      <div class="input-group-prepend">
                         <div class="input-group-text text-capitalize">coupon</div>
                       </div>
-                      <input type="text" name="coupon" class="form-control text-center hvr-float" placeholder="Code">
-                      <input type="submit" class="btn btn-primary" value="@lang('front.coupon.add')" >
+                      <input type="text" name="coupon" class="form-control text-center" placeholder="Code">
+                      <input type="submit" class="btn add_coupon" value="@lang('front.coupon.add')">
                     </div>
                   </div>
                 </form>

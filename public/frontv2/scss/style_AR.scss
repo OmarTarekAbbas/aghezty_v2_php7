@@ -90,6 +90,7 @@ body {
 
 .alert-success,
 .alert-danger {
+
   &.msg_success_min,
   &.msg_danger_min {
     text-align: right;
@@ -232,6 +233,7 @@ body {
       }
 
       .shopping_cart_img {
+        cursor: pointer;
         width: 45%;
         position: absolute;
         top: 38px;
@@ -261,6 +263,24 @@ body {
     .mobile_logo {
       margin-bottom: -15%;
       margin-top: -3%;
+    }
+
+    .shopping_cart_img {
+      margin-bottom: -1%;
+      margin-top: -10%;
+      margin-left: 2%;
+
+      .shopping_cart_num {
+        color: $white_color;
+        position: absolute;
+        top: 1rem;
+        left: 2rem;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+      }
     }
 
     .navbar-toggler {
@@ -1763,6 +1783,33 @@ body {
         outline: 0;
       }
 
+      .alert-success,
+      .alert-danger {
+
+        &.msg_success_min,
+        &.msg_danger_min {
+          text-align: right;
+          padding: 0.75rem 0.5rem !important;
+          border: 0 !important;
+          max-width: 96%;
+          margin: 0.75rem auto;
+
+          button {
+            &.close {
+              right: 92% !important;
+            }
+          }
+
+          ul {
+            margin-bottom: 0 !important;
+
+            li {
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }
+
       .card-header {
         h5 {
           text-align: right;
@@ -1775,9 +1822,21 @@ body {
 
       .card-body {
         .input-group {
+          .add_coupon {
+            background-color: #fe9901;
+            color: $white_color;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+
+            &:hover,
+            &:focus {
+              box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+            }
+          }
+
           .form-control {
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
 
@@ -2332,7 +2391,7 @@ body {
           border-bottom-right-radius: 0;
         }
 
-        
+
 
         .form-control:not(:first-child) {
           border-top-right-radius: 0;

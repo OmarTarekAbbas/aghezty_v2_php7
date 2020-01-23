@@ -110,12 +110,17 @@
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
 			<a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{url('clients/homev2')}}">
 				<img class="d-block m-auto w-25" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
-			</a>
+      </a>
 
 			<!-- Collapse button -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
-			</button>
+      </button>
+      
+      <a class="shopping_cart_img d-sm-block d-md-block d-lg-none" href="{{url('clients/cartv2')}}">
+        <span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
+				<img class="d-block m-auto w-100" src="{{url('public/frontv2/images/cart-dark.png')}}" alt="Logo">
+			</a>
 			@php
 			$categorys = categorys();
 			@endphp
