@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                          <div class="input-group mb-2 m-auto w-75 hvr-float">
+                          <div class="input-group mb-2 m-auto w-75    ">
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>

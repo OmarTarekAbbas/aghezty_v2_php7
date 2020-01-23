@@ -33,7 +33,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
                     </div>
-                    <input type="text" type="password" name="password" class="form-control text-center" id="inlineFormInputGroupPassword" placeholder="@lang('front.auth.password')">
+                    <input type="password" name="password" class="form-control text-center" id="inlineFormInputGroupPassword" placeholder="@lang('front.auth.password')">
                   </div>
                 </div>
 

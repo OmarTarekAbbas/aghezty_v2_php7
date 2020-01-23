@@ -185,6 +185,7 @@ body {
   -o-transform: translate(-50%, -50%);
 }
 .head_two .shopping_cart button .shopping_cart_img {
+  cursor: pointer;
   width: 45%;
   position: absolute;
   top: 38px;
@@ -206,6 +207,22 @@ body {
 .head_three .navbar .mobile_logo {
   margin-bottom: -15%;
   margin-top: -3%;
+}
+.head_three .navbar .shopping_cart_img {
+  margin-bottom: -1%;
+  margin-top: -10%;
+  margin-right: 4%;
+}
+.head_three .navbar .shopping_cart_img .shopping_cart_num {
+  color: #FFF;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 .head_three .navbar .navbar-toggler {
   margin-bottom: 13px;
@@ -1271,6 +1288,34 @@ body {
   background-color: #fafafa;
   font-weight: bold;
   outline: 0;
+}
+.main .cart_shopping .discount_code_accordion .alert-success.msg_success_min, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min {
+  text-align: left;
+  padding: 0.75rem 0.5rem !important;
+  border: 0 !important;
+  max-width: 96%;
+  margin: 0.75rem auto;
+}
+.main .cart_shopping .discount_code_accordion .alert-success.msg_success_min ul, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min ul,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min ul,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min ul {
+  margin-bottom: 0 !important;
+}
+.main .cart_shopping .discount_code_accordion .alert-success.msg_success_min ul li, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min ul li,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min ul li,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min ul li {
+  margin-top: 0.5rem;
+}
+.main .cart_shopping .discount_code_accordion .card-body .input-group .add_coupon {
+  background-color: #fe9901;
+  color: #FFF;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.main .cart_shopping .discount_code_accordion .card-body .input-group .add_coupon:hover, .main .cart_shopping .discount_code_accordion .card-body .input-group .add_coupon:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
 .main .cart_shopping .discount_code_accordion .card-body .input-group .form-control:focus {
   box-shadow: 0 0 0 0.1rem #d4d4d4;
