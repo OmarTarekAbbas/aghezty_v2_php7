@@ -2523,6 +2523,30 @@ body {
   .main .cart_shopping .discount_code_accordion {
     margin: 0.5rem auto;
   }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min {
+    text-align: left;
+    padding: 0.75rem 0.5rem !important;
+    border: 0 !important;
+    max-width: 95%;
+    margin: 0.75rem auto;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min button.close, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min button.close,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min button.close,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min button.close {
+    right: -4% !important;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min ul, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min ul,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min ul,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min ul {
+    margin-bottom: 0 !important;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min ul li, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min ul li,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min ul li,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min ul li {
+    margin-top: 0;
+  }
   .main .cart_shopping .discount_code_accordion .ads_img {
     display: none;
   }
@@ -3256,6 +3280,30 @@ body {
   }
   .main .cart_shopping .discount_code_accordion {
     margin: 0.5rem auto;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min {
+    text-align: left;
+    padding: 0.75rem 0.5rem !important;
+    border: 0 !important;
+    max-width: 95%;
+    margin: 0.75rem auto;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min button.close, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min button.close,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min button.close,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min button.close {
+    right: -4% !important;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min ul, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min ul,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min ul,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min ul {
+    margin-bottom: 0 !important;
+  }
+  .main .cart_shopping .discount_code_accordion .alert-success.msg_success_min ul li, .main .cart_shopping .discount_code_accordion .alert-success.msg_danger_min ul li,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_success_min ul li,
+.main .cart_shopping .discount_code_accordion .alert-danger.msg_danger_min ul li {
+    margin-top: 0;
   }
   .main .cart_shopping .discount_code_accordion .ads_img {
     display: none;

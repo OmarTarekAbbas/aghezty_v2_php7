@@ -220,7 +220,7 @@
 			<div class="row mt-3">
         @foreach ($items as $item)
         <div class="col-md-2 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white">
+            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $item->id])}}">
                 <img src="{{url($item->main_image)}}" alt="Product" class="w-100 based_selection_img">
 
