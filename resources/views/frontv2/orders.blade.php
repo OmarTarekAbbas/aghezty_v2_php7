@@ -30,15 +30,15 @@
               @foreach (Auth::guard('client')->user()->orders as $key=>$order)
                 <!-- Start My Order 2 -->
                 <div class="card z-depth-0 bordered">
-                  <div class="card-header" id="headingFour">
+                  <div class="card-header" id="heading{{$key+1}}">
                     <h5 class="mb-0">
-                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseFour">
                         @lang('front.order') {{$key+1}}
                       </button>
                     </h5>
                   </div>
 
-                  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample_2">
+                  <div id="collapse{{$key+1}}" class="collapse {{(!$key)? 'show' : ''}}" aria-labelledby="heading{{$key+1}}" data-parent="#accordionExample_2">
                     <div class="card-body">
                       <div class='table-responsive'>
                         @foreach ($order->products as $key=>$product)

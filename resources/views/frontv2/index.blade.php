@@ -366,7 +366,7 @@
 
             <div class="col-6">
               <div class="title_right text-right">
-              <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+              <a href="{{route('front.home.list',['random' => 'random'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
               </div>
             </div>
           </div>

@@ -99,6 +99,10 @@ return [
     'sort_by' => 'ترتيب',
     'asc' => 'الاقل',
     'desc' => 'الاعلى',
+    'sub_total' => 'السعر قبل الخصومات والشحن',
+    'shopping_cart' => 'عربة الطلبات',
+    'clear' => 'مسح',
+    'cont_shop' => 'متابعة الشراء',
     'inner' => [
       'add_your_review' => 'اضف تعليقك',
       'reviews' => 'التعليقات',

@@ -631,6 +631,9 @@ class HomeController extends Controller
         if($request->has('last') && $request->last!=''){
           $products = $products->latest('created_at');
         }
+        if($request->has('random') && $request->random!=''){
+          $products = $products->inRandomOrder();
+        }
 
         $products = $products->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct',compact('products'));
@@ -677,6 +680,9 @@ class HomeController extends Controller
         }
         if($request->has('last') && $request->last!=''){
           $products = $products->latest('created_at');
+        }
+        if($request->has('random') && $request->random!=''){
+          $products = $products->inRandomOrder();
         }
 
         $products = $products->offset($request->start)->limit(get_limit_paginate())->get();

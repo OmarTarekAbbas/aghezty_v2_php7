@@ -36,9 +36,9 @@
                 @foreach (Auth::guard('client')->user()->cities as $key=>$item)
                 <!-- Start My Address 1 -->
                 <div class="card z-depth-0 bordered">
-                  <div class="card-header" id="headingOne">
+                  <div class="card-header" id="heading{{$key+1}}">
                     <h5 class="mb-0 d-flex">
-                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
                         @lang('front.my_address') {{$key+1}}
                       </button>
 
@@ -50,7 +50,7 @@
                     </h5>
                   </div>
 
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div id="collapse{{$key+1}}" class="collapse {{(!$key)? 'active' : ''}}" aria-labelledby="heading{{$key+1}}" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.update',['id' => $item->pivot->id])}}" method="post">
                       @csrf
                       <div class="card-body">
@@ -100,7 +100,7 @@
                     </h5>
                   </div>
 
-                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.add')}}" method="post">
                       @csrf
                       <div class="card-body">

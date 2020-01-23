@@ -100,6 +100,10 @@ return [
     'sort_by' => 'Sort By',
     'asc' => 'ASC',
     'desc' => 'DESC',
+    'sub_total' => 'Subtotal',
+    'shopping_cart' => 'Shopping Cart',
+    'clear' => 'Clear',
+    'cont_shop' => 'continue Shopping',
     'inner' => [
       'add_your_review' => 'Add Your Review',
       'reviews' => 'Reviews',

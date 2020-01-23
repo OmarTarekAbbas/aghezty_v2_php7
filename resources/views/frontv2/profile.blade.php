@@ -3,17 +3,17 @@
 <style>
   .padding_right_name {
     padding-right: 3.5rem !important;
-    padding-left: 3.5rem !important;  
+    padding-left: 3.5rem !important;
   }
 
   .padding_right_email {
     padding-right: 1.5rem  !important;
-    padding-left: 1.5rem  !important;  
+    padding-left: 1.5rem  !important;
   }
 
   .padding_right_phone {
     padding-right: 2.5rem !important;
-    padding-left: 2.5rem !important;  
+    padding-left: 2.5rem !important;
   }
 </style>
 @endsection
@@ -85,7 +85,7 @@
             </div>
 
             <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-              <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">Save</button>
+              <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.send')</button>
             </div>
           </form>
         </div>

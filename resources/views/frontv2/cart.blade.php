@@ -11,7 +11,7 @@
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
         <div class="shopping_cart_title mt-3">
           <h2 class="text-center text-uppercase h2 text-primary font-weight-bold">
-            <marquee class="marquee_cart" behavior="scroll">Shopping Cart</marquee>
+            <marquee class="marquee_cart" behavior="scroll">@lang('front.shopping_cart')</marquee>
           </h2>
         </div>
       </div>
@@ -117,13 +117,11 @@
 
           <div class="row btn_shopping table-bordered mx-0 py-3">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button onclick="location.href = '{{route('front.home.list')}}'" class="btn continue_shopping btn-secondary text-capitalize text-white text-left hvr-wobble-to-bottom-right">continue
-                shopping</button>
+              <button onclick="location.href = '{{route('front.home.list')}}'" class="btn continue_shopping btn-secondary text-capitalize text-white text-left hvr-wobble-to-bottom-right">@lang('front.cont_shop')</button>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button onclick="location.href= '{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}'" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">clear shopping
-                cart</button>
+              <button onclick="location.href= '{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}'" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">@lang('front.clear') @lang('front.shopping_cart')</button>
             </div>
           </div>
         </div>
@@ -153,7 +151,7 @@
               <div class="card-header w-100" role="tab" id="headingOne1">
                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
                   <h5 class="mb-0 text-uppercase text-dark">
-                    discount codes <i class="fas fa-angle-down rotate-icon float-right"></i>
+                   @lang('front.coupon.do_you_have_coupon')<i class="fas fa-angle-down rotate-icon float-right"></i>
                   </h5>
                 </a>
               </div>
@@ -164,9 +162,9 @@
                   <div class="card-body">
                     <div class="input-group mb-2 m-auto w-100 hvr-float">
                       <div class="input-group-prepend">
-                        <div class="input-group-text text-capitalize">coupon</div>
+                        <div class="input-group-text text-capitalize">@lang('messages.coupon')</div>
                       </div>
-                      <input type="text" name="coupon" class="form-control text-center" placeholder="Code">
+                      <input type="text" name="coupon" class="form-control text-center" placeholder="@lang('messages.coupon')">
                       <input type="submit" class="btn add_coupon" value="@lang('front.coupon.add')">
                     </div>
                   </div>
@@ -189,21 +187,21 @@
               <div id="collapseTwo2" class="collapse show" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
                 <div class="card-body">
                   <div class="sub_total">
-                    <strong class="text-capitalize">subtotal</strong>
+                    <strong class="text-capitalize">@lang('front.sub_total')</strong>
                     <strong class="subtotal_price text-uppercase float-right">{{(int)$total_price}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
                   <div class="sub_total">
-                    <strong class="text-capitalize">shipping</strong>
+                    <strong class="text-capitalize">@lang('front.shipping_amount')</strong>
                     <strong class="subtotal_price text-uppercase float-right">@if($city) {{(int)$city->shipping_amount}} @else 0 @endif <span>@lang('front.egp')</span> </strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
                   <div class="sub_total">
-                    <strong class="text-capitalize">Coupon</strong>
+                    <strong class="text-capitalize">@lang('front.coupon.discount')</strong>
                     <strong class="subtotal_price text-uppercase float-right">{{Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : '0'}} <span>@lang('front.egp')</span></strong>
                   </div>
 
@@ -211,12 +209,12 @@
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
                   <div class="sub_total">
-                    <strong class="text-capitalize">grand total</strong>
-                    <strong class="subtotal_price text-uppercase float-right">{{($city ? $total_price+$city->shipping_amount:(int)$total_price) + (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0)}} <span>@lang('front.egp')</span></strong>
+                    <strong class="text-capitalize">@lang('front.total_price')</strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{($city ? $total_price+$city->shipping_amount:(int)$total_price) - (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0)}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="cart_checkout w-100 my-3">
-                    <button class="btn w-100 text-uppercase font-weight-bold hvr-wobble-to-bottom-right">proceed to checkout</button>
+                    <button class="btn w-100 text-uppercase font-weight-bold hvr-wobble-to-bottom-right">@lang('front.continue_buy')</button>
                   </div>
                 </div>
               </div>
@@ -272,7 +270,7 @@
 
             <div class="col-6">
               <div class="title_right text-right">
-              <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+              <a href="{{route('front.home.list',['random' => 'random'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
               </div>
             </div>
           </div>
