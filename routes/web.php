@@ -15,7 +15,7 @@ get_static_routes() ;
 get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
 Route::get('/',function(){
-    return view('front.index');
+    return redirect(route('front.home.index'));
 });
 Route::prefix('clients')->group(function() {
     Route::get('/register', 'Auth\ClientRegisterController@showLoginForm')->name('client.register');
@@ -33,6 +33,57 @@ Route::prefix('clients')->group(function() {
     Route::post('is_available','front\HomeController@is_available');
     Route::get('city/{id}','front\HomeController@get_city');
     Route::get('cart','front\HomeController@my_cart');
+
+    /* Start Baher Routes */
+    // Route::get('cartv2',function(){
+    //     return view('frontv2.cart');
+    // });
+
+    // Route::get('contact_usv2',function(){
+    //     return view('frontv2.contact_us');
+    // });
+
+    // Route::get('loginv2',function(){
+    //     return view('frontv2.login');
+    // });
+
+    // Route::get('maintenancev2',function(){
+    //     return view('frontv2.maintenance');
+    // });
+
+    // Route::get('myorderv2',function(){
+    //     return view('frontv2.myorder');
+    // });
+
+    // Route::get('addressv2',function(){
+    //     return view('frontv2.address');
+    // });
+
+    // Route::get('ordersv2',function(){
+    //     return view('frontv2.orders');
+    // });
+
+    // Route::get('passwordv2',function(){
+    //     return view('frontv2.password');
+    // });
+
+    // Route::get('paymentv2',function(){
+    //     return view('frontv2.payment');
+    // });
+
+    // Route::get('profilev2',function(){
+    //     return view('frontv2.profile');
+    // });
+
+    // Route::get('innerv2',function(){
+    //     return view('frontv2.inner-page');
+    // });
+
+    // Route::get('registerv2',function(){
+    //     return view('frontv2.register');
+    // });
+    /* End Baher Routes */
+
     Route::post('cart','front\HomeController@store_cart');
     Route::get('update_cart','front\HomeController@update_cart');
     Route::get('delete_cart','front\HomeController@delete_cart');
@@ -58,7 +109,32 @@ Route::prefix('clients')->group(function() {
    });
 
     /*************** designv2 routes ****/
-    Route::get('homev2', 'front\HomeController@indexv2');
+    Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');;
+    Route::get('service_centerv2', 'front\HomeController@service_centerv2');
+    Route::get('contactv2', 'front\HomeController@contactusv2');
+    Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
+    Route::any('loadproductsv2', 'front\HomeController@load_productsv2');
+    Route::get('productv2/{id}', 'front\HomeController@inner_productv2')->name('front.home.inner');
+    Route::post('add_ratev2','front\HomeController@add_ratev2')->name('front.home.rate');
+    Route::get('/registerv2', 'Auth\ClientRegisterController@showLoginForm')->name('front.client.register');
+    Route::post('/registerv2', 'Auth\ClientRegisterController@register')->name('front.client.register.submit');
+    Route::get('/loginv2', 'Auth\ClientLoginController@showLoginForm')->name('front.client.login');
+    Route::post('/loginv2', 'Auth\ClientLoginController@login')->name('front.client.login.submit');
+    Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
+    Route::get('logoutv2','front\HomeController@logoutv2')->name('front.home.logout');
+    Route::post('updatedv2','front\HomeController@updatev2')->name('front.home.update');
+    Route::get('passwordv2','front\HomeController@get_passwordv2')->name('front.home.password');
+    Route::post('updated_passwordv2','front\HomeController@updated_passwordv2')->name('front.home.password.update');
+    Route::get('addressv2','front\HomeController@get_addressv2')->name('front.home.address');
+    Route::post('updated_addressv2/{id}','front\HomeController@updated_addressv2')->name('front.home.address.update');
+    Route::post('add_addressv2','front\HomeController@add_addressv2')->name('front.home.address.add');
+    Route::get('addressv2/{id}/delete','front\HomeController@delete_addressv2')->name('front.home.address.delete');
+    Route::get('ordersv2','front\HomeController@get_ordersv2')->name('front.home.order');
+    Route::get('cartv2','front\HomeController@my_cartv2')->name('front.home.cart');
+    Route::post('cartv2','front\HomeController@store_cartv2')->name('front.home.cart.add');
+    Route::post('check_couponv2','front\HomeController@check_couponv2')->name('front.home.coupon');
+    Route::get('update_cartv2','front\HomeController@update_cartv2')->name('front.home.cart.update');
+    Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
     /*************** end ***************/
 
 });

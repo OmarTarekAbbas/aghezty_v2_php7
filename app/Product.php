@@ -85,9 +85,10 @@ class Product extends Model
 
   public function rate()
   {
-    return round(\DB::table('client_rates')
-        ->where('product_id',$this->id)
-        ->avg('rate'));
+    return \DB::table('client_rates')
+          ->where('product_id',$this->id)
+          ->where('publish',1)
+          ->avg('rate');
   }
 
   protected static function boot() {

@@ -554,19 +554,19 @@ class HomeController extends Controller
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
-        
+
         if(count($recently_added) != 6){
             $limit = 6 - count($recently_added);
             $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
             $recently_added = $recently_added->toBase()->merge($recently_addedR);
         }
-        
+
         if(count($selected_for_you) != 6){
             $limit = 6 - count($selected_for_you);
             $selected_for_youR = Product::all()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
-        
+
         if(count($homepage_cat) != 6){
             $limit = 6 - count($homepage_cat);
             $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
@@ -577,178 +577,431 @@ class HomeController extends Controller
 
     }
 
-    public function slidesv2(){
+    public function service_centerv2(){
 
-        $slides = Advertisement::where('type', 'slider')->orderBy('order', 'asc')->get();
-        
-        return view('homepage.slides', compact('slides'));
+        return view('frontv2.maintenance');
 
     }
 
-    public function bannersv2(){
+    public function contactusv2(){
 
-        $slides = Advertisement::where('type', 'homeads')->orderBy('order', 'ASC')->get();
-
-        return view('homepage.banners', compact('slides'));
+        return view('frontv2.contact_us');
 
     }
 
-    public function editv2(Request $request){
+    public function productsv2(Request $request)
+    {
+        //return $request->all();
+        $products = Product::query();
+        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+            $request->sub_category_id = (array) $request->sub_category_id;
+            $products = $products->whereIn('category_id',$request->sub_category_id);
+        }
+        if($request->has('brand_id') && $request->brand_id !=''){
+            $request->brand_id = (array) $request->brand_id;
+            $products = $products->whereIn('brand_id',$request->brand_id);
+        }
+        if($request->has('from') && $request->from !=''){
+            $products = $products->where('price','>=',$request->from);
+        }
+        if($request->has('to') && $request->to!=''){
+            $products = $products->where('price','<',$request->to);
+        }
+        if($request->has('from_to') && $request->from_to!=''){
+          $products = $products->whereBetween('price',explode(',',$request->from_to));
+       }
+        if($request->has('ifrom') && $request->ifrom !=''){
+            $products = $products->where('inch','>=',$request->ifrom);
+        }
+        if($request->has('ito') && $request->ito!=''){
+            $products = $products->where('inch','=',$request->ito);
+        }
+        if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
+          $products = $products->whereBetween('inch',explode(',',$request->ifrom_ito));
+       }
+        if($request->has('search') && $request->search!=''){
+          $products = $products->whereLike(['title'],$request->search);
+        }
+        if($request->has('offer') && $request->offer !=''){
+          $products =  $products->orderBy('discount','desc');
+        }
+        if($request->has('sorted') && $request->sorted!=''){
+          $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
+        }
+        if($request->has('last') && $request->last!=''){
+          $products = $products->latest('created_at');
+        }
+        if($request->has('random') && $request->random!=''){
+          $products = $products->inRandomOrder();
+        }
 
-        $slide = Advertisement::findorfail($request->id);
-
-        return view('homepage.editslides', compact('slide'));
-
+        $products = $products->limit(get_limit_paginate())->get();
+        return view('frontv2.listproduct',compact('products'));
     }
 
-    public function Recently_Addedv(){
+    public function load_productsv2(Request $request)
+    {
+        //return $request->all();
+        $products = Product::query();
+        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+            $request->sub_category_id = (array) $request->sub_category_id;
+            $products = $products->whereIn('category_id',$request->sub_category_id);
+        }
+        if($request->has('brand_id') && $request->brand_id !=''){
+            $request->brand_id = (array) $request->brand_id;
+            $products = $products->whereIn('brand_id',$request->brand_id);
+        }
+        if($request->has('from') && $request->from !=''){
+            $products = $products->where('price','>=',$request->from);
+        }
+        if($request->has('to') && $request->to!=''){
+            $products = $products->where('price','<',$request->to);
+        }
+        if($request->has('from_to') && $request->from_to!=''){
+          $products = $products->whereBetween('price',explode(',',$request->from_to));
+       }
+        if($request->has('ifrom') && $request->ifrom !=''){
+            $products = $products->where('inch','>=',$request->ifrom);
+        }
+        if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
+          $products = $products->whereBetween('inch',explode(',',$request->ifrom_ito));
+       }
+        if($request->has('ito') && $request->ito!=''){
+            $products = $products->where('inch','<',$request->ito);
+        }
+        if($request->has('search') && $request->search!=''){
+          $products = $products->whereLike(['title'],$request->search);
+        }
+        if($request->has('sorted') && $request->sorted!=''){
+          $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
+        }
+        if($request->has('offer') && $request->offer !=''){
+          $products =  $products->orderBy('discount','desc');
+        }
+        if($request->has('last') && $request->last!=''){
+          $products = $products->latest('created_at');
+        }
+        if($request->has('random') && $request->random!=''){
+          $products = $products->inRandomOrder();
+        }
 
-        $recently_added = Product::where('recently_added', 1)->orderBy('created_at', 'ASC')->get();
-
-        return view('homepage.Recently_Added', compact('recently_added'));
-
+        $products = $products->offset($request->start)->limit(get_limit_paginate())->get();
+        $view = view('frontv2.load_products', compact('products'))->render();
+        return Response(array('html' => $view));
     }
 
-    public function selected_for_youv(){
-
-        $selected_for_you = Product::where('selected_for_you', 1)->orderBy('created_at', 'ASC')->get();
-
-        return view('homepage.selected_for_you', compact('selected_for_you'));
-
+    public function inner_productv2($id)
+    {
+        $product = Product::latest('created_at')->whereId($id)->first();
+        $items   = Product::where('category_id',$product->category->id)->whereNotIn('id',[$id])->inRandomOrder()->take(6)->get();
+        return view('frontv2.inner-page',compact('product','items'));
     }
 
-    public function selected_HPcat(){
-
-        $selected_HPcat = Category::where('homepage', 1)->orderBy('created_at', 'ASC')->get();
-
-        return view('homepage.selected_HPcat', compact('selected_HPcat'));
-
-    }
-
-    public function adsUpdatev2(Request $request){
-
+    public function add_ratev2(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-            'file' => 'required',
+            'product_id' => 'required',
+            'rate' => 'required',
+            'comment' => 'required',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        $slide = Advertisement::findorfail($request->id);
-        
-        $imgExtensions = array("png","jpeg","jpg");
-        
-        $img = $request->file;
+        $client_rate = ClientRate::create([
+            'product_id' => $request->product_id,
+            'client_id' => \Auth::guard('client')->user()->id,
+            'rate' => $request->rate,
+            'publish' => 0,
+            'comment'=> $request->comment
 
-        if(! in_array($img->getClientOriginalExtension(),$imgExtensions))
+        ]);
+        \Session::flash('success',__('front.rate_add_success_message'));
+        return back();
+    }
+
+    public function profilev2()
+    {
+        $countrys = Governorate::all();
+        $citys    = City::all();
+        return view('frontv2.profile',compact('countrys','citys'));
+    }
+
+    public function updatev2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:clients,email,'.\Auth::guard('client')->user()->id,
+            'name' => 'required',
+            'phone' => 'required|unique:clients,phone,'.\Auth::guard('client')->user()->id,
+        ]);
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        if($request->image){
+            $this->delete_image_if_exists(\Auth::guard('client')->user()->image);
+        }
+        $client = Client::find(\Auth::guard('client')->user()->id);
+        $client->update($request->all());
+        \Session::flash('success',__('front.client_success_message'));
+        return back();
+    }
+    public function get_passwordv2(Request $request)
+    {
+      return view('frontv2.password');
+    }
+
+    public function updated_passwordv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+
+        if(!\Hash::check($request->old_password, \Auth::guard('client')->user()->password)){
+          return back()->with('fail', __('front.password_error_message'));
+        }
+
+        \Auth::guard('client')->user()->update([
+            'password' => \Hash::make($request->password)
+        ]);
+
+        \Session::flash('success',__('front.client_success_message'));
+        return back();
+
+    }
+
+    public function get_addressv2(Request $request)
+    {
+      $countrys = Governorate::all();
+      $citys    = City::all();
+      return view('frontv2.address',compact('countrys','citys'));
+    }
+
+    public function add_addressv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'city_id' => 'required',
+            'governorate_id' => 'required',
+            'address' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => \Auth::guard('client')->user()->id, 'address'=> $request->address]);
+
+        if($request->has('type')){
+            return redirect('clients/cartv2?address_id='.$request->city_id);
+        }
+        \Session::flash('success',__('front.address_success_message'));
+        return back();
+    }
+
+    public function updated_addressv2(Request $request,$id)
+    {
+        $validator = Validator::make($request->all(), [
+          'city_id' => 'required',
+          'governorate_id' => 'required',
+          'address' => 'required',
+        ],['address.required' => 'يجب ادخال العنوان بالتفصيل']);
+
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        $client_address = ClientAddress::find($id)->update([
+            'city_id' => $request->city_id,
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address'=> $request->address
+        ]);
+
+        \Session::flash('success',__('front.address_success_message'));
+        return back();
+    }
+
+    public function delete_addressv2($id)
+    {
+        $address = ClientAddress::find($id);
+        $address->delete();
+        \Session::flash('success', __('front.address_delete_success_message'));
+        return back();
+    }
+
+    public function get_ordersv2(Request $request)
+    {
+      return view('frontv2.orders');
+    }
+
+    public function my_cartv2(Request $request)
+    {
+        $auth_carts = [];
+        $session_carts =[];
+        $total_price =0;
+        $city = Null;
+        if($request->has('address_id')){
+            $city = City::whereId($request->address_id)->first();
+        }
+        if(\Auth::guard('client')->check()){
+            $auth_carts = \Auth::guard('client')->user()->carts;
+            $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+            if(!$city){
+                $city = \Auth::guard('client')->user()->cities[0];
+                $city = City::whereId($city->pivot->city_id)->first();
+            }
+        }
+        if(isset($_COOKIE['carts'])){
+            $session_carts = unserialize($_COOKIE['carts']);
+            for ($i=0; $i < count($session_carts) ; $i++) {
+                $total_price  += $session_carts[$i]['total_price'];
+            }
+        }
+
+        if($request->has('success_pr'))
         {
-            \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+          \Session::flash('success_pr',Product::find($request->product_id));
+        }
+
+        $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $homepage_cat = Category::where('homepage', 1)->get();
+        $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->inRandomOrder()->first();
+
+        if(count($selected_for_you) != 6){
+          $limit = 6 - count($selected_for_you);
+          $selected_for_youR = Product::all()->random($limit);
+          $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+      }
+
+      if(count($homepage_cat) != 6){
+          $limit = 6 - count($homepage_cat);
+          $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+          $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
+      }
+        return view('frontv2.cart',compact('auth_carts','session_carts','total_price','city', 'selected_for_you', 'homepage_cat','ads'));
+    }
+
+    public function store_cartv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'product_id' => 'required',
+            'counter' => '',
+            'price' =>  'required'
+      ]);
+        //$request->request->add(['counter' => 1]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+        }
+        if(\Auth::guard('client')->check()){
+            $product = Cart::where('client_id',\Auth::guard('client')->user()->id)->where('product_id',$request->product_id)->first();
+            if($product){
+                return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
+            }
+            $cart = Cart::create([
+                'product_id' => $request->product_id,
+                'client_id' => \Auth::guard('client')->user()->id,
+                'quantity'=> $request->counter,
+                'price'  => $request->price,
+                'total_price' => $request->price * $request->counter
+            ]);
+        }
+        else{
+            $arr = isset($_COOKIE['carts']) ? unserialize($_COOKIE['carts']) : [];
+            for($i=0;$i<count($arr);$i++){
+                if($arr[$i]['product_id'] == $request->product_id){
+                    return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
+                }
+            }
+            $data['product_id'] = $request->product_id;
+            $data['quantity']   = $request->counter;
+            $data['price']      = $request->price;
+            $data['total_price']= $request->price * $request->counter;
+            array_push($arr,$data);
+            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+        }
+        return response()->json(['success' => 'Added To Cart Successfully' , 'status' => 'success']);
+    }
+
+    public function check_couponv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'coupon' => 'required',
+        ]);
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        $found_coupon = Coupon::where('coupon',$request->coupon)->first();
+        if(!$found_coupon){
+            \Session::flash('fail' , __('front.coupon.not_correct'));
             return back();
         }
-
-        $slide->image = $img;
-        $slide->save();
-
-        \Session::flash('success', 'Updated Successfully');
-        return redirect()->back();
-
-    }
-
-    public function change_state(Request $request){
-
-        $id = $request->id;
-        $active = $request->switch;
-        
-        $slide = Advertisement::findorfail($id);
-        
-        if($active == 'true'){
-            $slide->active = true;
-        }else{
-            $slide->active = false;
+        $used_coupon = Coupon::where('coupon',$request->coupon)->where(function($q){
+            $q->where('used',1);
+            $q->orWhere('used',2);
+        })->first();
+        if($used_coupon){
+          \Session::flash('fail' , __('front.coupon.used_befor'));
+          return back();
         }
-        $slide->save();
-        return 'changed!';
+        $coupon = Coupon::where('coupon',$request->coupon)->first();
+        $coupon->client_id = \Auth::guard('client')->user()->id;
+        $coupon->used      = 1;
+        $coupon->save();
+        \Session::flash('success',__('front.coupon.add_success'));
+        return back();
     }
 
-    public function recently_added(Request $request){
-
-        
-        $id = $request->id;
-        $recently_added = $request->switch;
-        
-        $product = Product::findorfail($id);
-        
-        if($recently_added == 'true'){
-            $RAproduct = Product::where('recently_added', 1)->count();
-            if($RAproduct < 6){
-                $product->recently_added = true;
-            }else{
-                return 'no';
-            }
-        }else{
-            $product->recently_added = false;
+    public function delete_cartv2(Request $request)
+    {
+        if($request->type == "cookie"){
+          if($request->has('cart_id')){
+            $arr = unserialize($_COOKIE['carts']);
+            unset($arr[$request->cart_id]);
+            $arr = array_values($arr);
+            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+          }
+          else{
+            unset($_COOKIE['carts']);
+            setcookie('carts','', time() - 3600);
+          }
         }
-        $product->save();
-        return 'yes';
-            
-    }
-
-    public function selected_for_you(Request $request){
-
-        $id = $request->id;
-        $selected_for_you = $request->switch;
-        
-        $product = Product::findorfail($id);
-        
-        if($selected_for_you == 'true'){
-            $RAproduct = Product::where('selected_for_you', 1)->count();
-            if($RAproduct < 6){
-                $product->selected_for_you = true;
-            }else{
-                return 'no';
-            }
-        }else{
-            $product->selected_for_you = false;
+        if($request->type == "auth"){
+          if($request->has('cart_id')){
+            $cart = Cart::find($request->cart_id);
+            $cart->delete();
+          }
+          else{
+            Cart::where('client_id',\Auth::guard('client')->user()->id)->delete();
+          }
         }
-        $product->save();
-        return 'yes';
-    
+        \Session::flash('success','delete will');
+        return back();
     }
 
-    public function homepage_category(Request $request){
-
-        $id = $request->id;
-        $homepage = $request->switch;
-        
-        $category = Category::findorfail($id);
-        
-        if($homepage == 'true'){
-            $homepageCat = Category::where('homepage', 1)->count();
-            if($homepageCat < 6){
-                $category->homepage = true;
-            }else{
-                return 'no';
-            }
-        }else{
-            $category->homepage = false;
+    public function update_cartv2(Request $request)
+    {
+        if($request->type == "cookie"){
+            $arr = unserialize($_COOKIE['carts']);
+            $arr[$request->cart_id]['quantity'] = $request->value;
+            $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
+            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
         }
-        $category->save();
-        return 'yes';
-    
-    }
-
-    public function change_order(Request $request){
-        $i = 1;
-        foreach($request->item as $item){
-            $slide = Advertisement::findorfail($item);
-            $slide->order = $i;
-            $slide->save();
-            $i++;
+        if($request->type == "auth"){
+            $cart = Cart::find($request->cart_id);
+            $cart->quantity = $request->value;
+            $cart->total_price = $request->value * $cart->price;
+            $cart->save();
         }
-        return 'changed!';
+        return response()->json(['status' => 'success' , 'data' => 'update will']);
     }
 
+    public function logoutv2()
+    {
+        auth()->guard('client')->logout();
+        return redirect(route('front.home.index'));
+    }
     /*********************************************************** end design v2 *******/
 
 }

@@ -87,20 +87,20 @@ Route::get('/test','DashboardController@test');
         Route::post('admin/seed_tables', 'DashboardController@seed_tables');
         Route::get('admin/migrate_manager', 'DashboardController@migrate_manager');
         Route::post('admin/migrate_tables', 'DashboardController@migrate_tables');
-        
+
         /*****************start design v2 */
-        Route::get('homepage/slides', 'front\HomeController@slidesv2');
-        Route::get('slides/{id}/edit', 'front\HomeController@editv2');
-        Route::post('slides/{id}/edit', 'front\HomeController@adsUpdatev2');
-        Route::get('homepage/change_state', 'front\HomeController@change_state');
-        Route::get('homepage/recently_added', 'front\HomeController@recently_added');
-        Route::get('homepage/selected_for_you', 'front\HomeController@selected_for_you');
-        Route::get('homepage/homepage_category', 'front\HomeController@homepage_category');
-        Route::get('homepage/change_order', 'front\HomeController@change_order');
-        Route::get('homepage/banners', 'front\HomeController@bannersv2');
-        Route::get('homepage/recently_addedv', 'front\HomeController@Recently_Addedv');
-        Route::get('homepage/selected_for_youv', 'front\HomeController@selected_for_youv');
-        Route::get('homepage/selected_HPcat', 'front\HomeController@selected_HPcat');
+        Route::get('homepage/slides', 'HomeController@slidesv2');
+        Route::get('slides/{id}/edit', 'HomeController@editv2');
+        Route::post('slides/{id}/edit', 'HomeController@adsUpdatev2');
+        Route::get('homepage/change_state', 'HomeController@change_state');
+        Route::get('homepage/recently_added', 'HomeController@recently_added');
+        Route::get('homepage/selected_for_you', 'HomeController@selected_for_you');
+        Route::get('homepage/homepage_category', 'HomeController@homepage_category');
+        Route::get('homepage/change_order', 'HomeController@change_order');
+        Route::get('homepage/banners', 'HomeController@bannersv2');
+        Route::get('homepage/recently_addedv', 'HomeController@Recently_Addedv');
+        Route::get('homepage/selected_for_youv', 'HomeController@selected_for_youv');
+        Route::get('homepage/selected_HPcat', 'HomeController@selected_HPcat');
         /*****************************end */
     });
 

@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
         $products = Product::latest('created_at');
         if($request->has('search_value')){
-            $products = $products->where('title','like','%'.$request->search_value.'%');
+            $products = $products->whereLike(['title','id','price','stock'],$request->search_value);
         }
         $products = $products->paginate(10);
         // if($request->has('search_value')){
@@ -210,6 +210,7 @@ class ProductController extends Controller
         foreach ($request->short_description as $key => $value) {
             $product->setTranslation('short_description', $key, $value);
         }
+        $product->save();
         $product->update($request->except('title','images','counter_img','description','short_description'));
         if ($request->has('images')){
             $product->images()->saveMany($images);

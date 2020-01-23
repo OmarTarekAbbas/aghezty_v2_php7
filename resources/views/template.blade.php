@@ -13,7 +13,7 @@
             #resizable { width: 150px; height: 150px; padding: 0.5em; }
             #resizable h3 { text-align: center; margin: 0; }
         </style>
-        
+
         @yield('styles')
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -727,7 +727,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
 
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="{{url('assets_/data-tables/bootstrap3/dataTables.bootstrap.js')}}"></script>
+        <script type="text/javascript" src="{{url('assets/data-tables/bootstrap3/dataTables.bootstrap.js')}}"></script>
         <script src="{{url('js/pusher.min.js')}}"></script>
         <script src="{{url('js/pusher_config.js')}}"></script>
         <script src="{{url('js/vue.min.js')}}"></script>

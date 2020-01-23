@@ -1,27 +1,29 @@
-<!-- Start Header -->
-<?php include 'header.php'; ?>
-<!-- End Header -->
+@extends('frontv2.master')
+@section('content')
 
 <style>
-  nav.container-fluid {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
+nav.container-fluid {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
 </style>
+
+<link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
 
 <!-- start container -->
 <div class="main">
   <nav class="mobile_views nav_breadcrumb" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.php" title="Go To Home">Home</a>
+        <a href="{{ route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
       </li>
-
-      <li class="breadcrumb-item">
-        <a href="listproduct.php" title="Go To Heavy Machine">Heavy Machine</a>
-      </li>
-
-      <li class="breadcrumb-item active" aria-current="page">Mobile</li>
+      @if(isset($_REQUEST['sub_category_id']) && isset($products[0]))
+      <li class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</li>
+      @elseif(isset($_REQUEST['brand_id']) && isset($products[0]))
+      <li class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</li>
+      @else
+      <li class="breadcrumb-item active" aria-current="page">@lang('front.products')</li>
+      @endif
     </ol>
   </nav>
 
@@ -29,246 +31,113 @@
     <!-- start row -->
     <div class="row">
       <!-- start col-md-2 -->
-      <button type="button" id="button_jq" class="btn btn-dark d-md-none" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" id="button_jq" class="btn btn-dark d-md-none" data-toggle="modal"
+        data-target="#exampleModal">
         <i class="fas fa-sliders-h" data-toggle="modal" data-target="#exampleModal"></i>
       </button>
 
       <!-- Start Filter Search -->
       <div id="toggle_plus_minus" class="col-md-2 d-none d-md-block">
-        <button class="accordion active  w-100 border border-light text-uppercase">Heavy Machines
-          <i class="fas fa-minus float-right"></i>
-        </button>
+        <form id="filter_form" method="post">
+          @csrf
+          @foreach (categorys() as $item)
+          @if(count($item->sub_cats) > 0)
+          <button type="button"
+            class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
+            <i class="fas fa-minus float-right"></i>
+          </button>
 
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_1" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_1">BUILT IN DISH WASHERS</label>
+          <div class="panel mb-3 w-100 border border-light">
+            @foreach ($item->sub_cats as $category)
+            <div class="z-checkbox">
+              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title))?'checked':''}}
+                type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+              <label class="d-block text-capitalize"
+                for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+            </div>
+            @endforeach
+          </div>
+          @endif
+          @endforeach
+
+          <button type="button" class="accordion active w-100 border border-light text-uppercase">@lang('front.brands')
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+
+          <div class="panel mb-3 w-100 border border-light">
+            @foreach (brands() as $brand)
+            <div class="z-checkbox">
+              <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
+                {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} type="checkbox"
+                name="brand_id[]" value="{{$brand->id}}">
+              <label class="d-block text-capitalize"
+                for="panel_brand_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
+            </div>
+            @endforeach
           </div>
 
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_2" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_2">HOBS</label>
+          <button type="button" class="accordion active w-100 border border-light text-uppercase">@lang('front.shop_by_price')
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+          <div class="panel mb-3 w-100 border border-light">
+            <div class="z-checkbox">
+              <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to"
+                value="1000">
+              <label class="d-block text-capitalize" for="panel_34">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
+            </div>
+
+            <div class="z-checkbox">
+              <input id="panel_35" class="mb-2 price"
+                {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox"
+                name="from_to" value="1000,3000">
+              <label class="d-block text-capitalize" for="panel_35">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
+            </div>
+
+            <div class="z-checkbox">
+              <input id="panel_36" class="mb-2 price"
+                {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox"
+                name="from_to" value="3000,6000">
+              <label class="d-block text-capitalize" for="panel_36">3000 @lang('front.egp')  - 6000 @lang('front.egp') </label>
+            </div>
+
+            <div class="z-checkbox">
+              <input id="panel_37" class="mb-2 price"
+                {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox"
+                name="from_to" value="6000,10000">
+              <label class="d-block text-capitalize" for="panel_37">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
+            </div>
+
+            <div class="z-checkbox">
+              <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
+                name="from" value="10000">
+              <label class="d-block text-capitalize" for="panel_38">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>
+            </div>
           </div>
 
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_3" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_3">B-in</label>
+          <button type="button" class="accordion active  w-100 border border-light text-uppercase">@lang('front.offer')
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+          <div class="panel w-100 border border-light">
+            <div class="z-checkbox">
+              <input id="panel_39" class="mb-2 offer" {{isset($_REQUEST['offer'])?'checked':''}} type="checkbox" name="offer" value="offer">
+              <label class="d-block text-capitalize" for="panel_39">@lang('front.offer') </label>
+            </div>
           </div>
 
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_4" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_4">OVENS</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_5" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_5">cookers</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_6" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_6">Dish washer</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_7" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_7">BUILT IN WASHER DRYERS</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_8" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_8">DRYERS</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_9" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_9">washing machines</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_10" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_10">TV</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_11" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_11">Air Conditioner</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_12" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_12">Kitchen Cooker Hood</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_13" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_13">Air</label>
-          </div>
-        </div>
-
-        <button class="accordion active w-100 border border-light text-uppercase">Light Machines
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_14" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_14">MICROWAVE</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_15" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_15">Coffee &amp; Espresso Makers</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_16" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_16">Electric kettle</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_17" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_17">Food Steamer</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_18" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_18">Air Fryer</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_19" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_19">Table Grill</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_20" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_20">Sandwich Maker</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_200" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_200">Blenders</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_21" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_21">PowerLife Bagged</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_22" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_22">Collection Salad Maker</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_23" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_23">iron</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_24" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_24">Water Dispenser</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_25" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_25">Water Heater</label>
-          </div>
-        </div>
-
-        <button class="accordion active w-100 border border-light text-uppercase">BRAND
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_26" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_26">Apple</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_27" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_27">Devia</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_28" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_28">Ariston</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_29" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_29">Philips</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_30" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_30">SAMSUNG</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_31" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_31">LG</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_32" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_32">sharp</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_33" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_33">TOSHIBA</label>
-          </div>
-        </div>
-
-        <button class="accordion active w-100 border border-light text-uppercase">PRICE by shop
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel mb-3 w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_34" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_34">Less Than - 1000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_35" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_35">1000 EGP - 3000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_36" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_36">3000 EGP - 6000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_37" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_37">6000 EGP - 10,000 EGP</label>
-          </div>
-
-          <div class="z-checkbox hvr-icon-forward">
-            <input id="panel_38" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_38">10,000 EGP - More Than</label>
-          </div>
-        </div>
-
-        <button class="accordion active active w-100 border border-light text-uppercase">Offer
-          <i class="fas fa-minus float-right"></i>
-        </button>
-
-        <div class="panel w-100 border border-light">
-          <div class="z-checkbox hvr-icon-forward ">
-            <input id="panel_39" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-            <label class="d-block text-capitalize" for="panel_39">Offer</label>
-          </div>
-        </div>
+          <input type="hidden" id="search_in" name="search" value="{{isset($_REQUEST['search'])?$_REQUEST['search']:''}}">
+          <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
+          <input type="hidden" id="ifrom_in"  name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
+          <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
+        </form>
       </div>
       <!-- End Filter Search -->
 
       <!-- Modal -->
-      <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -279,233 +148,88 @@
             </div>
 
             <div id="toggle_plus_minus" class="modal-body">
-              <button class="accordion active w-100 border border-light">Heavy Machines
+              @foreach (categorys() as $item)
+              @if(count($item->sub_cats) > 0)
+              <button class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
+                <i class="fas fa-minus float-right"></i>
+              </button>
+
+              <div class="panel mb-3 border border-secondary">
+                @foreach ($item->sub_cats as $category)
+                <div class="z-checkbox">
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title))?'checked':''}}
+                    class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
+              </div>
+              @endif
+              @endforeach
+
+              <button class="accordion active w-100 border border-light">@lang('front.brands')
+                <i class="fas fa-minus float-right"></i>
+              </button>
+
+              <div class="panel mb-3 border border-secondary">
+                @foreach (brands() as $brand)
+                <div class="z-checkbox">
+                  <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
+                    {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}}
+                    class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_brand_{{$brand->id}}_mobile">{{$brand->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
+              </div>
+
+              <button class="accordion active w-100 border border-light">@lang('front.price')
                 <i class="fas fa-minus float-right"></i>
               </button>
 
               <div class="panel mb-3 border border-secondary">
                 <div class="z-checkbox">
-                  <input id="panel_100" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_100">BUILT IN DISH WASHERS</label>
+                  <input form="filter_form" id="panel_34_mobile" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
+                  <label class="d-block text-capitalize" for="panel_34_mobile">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_2000" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_2000">HOBS</label>
+                  <input form="filter_form" id="panel_35_mobile" class="mb-2 price"
+                    {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}}
+                    type="checkbox" name="from_to" value="1000,3000">
+                  <label class="d-block text-capitalize" for="panel_35_mobile">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_300" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_300">B-in</label>
+                  <input form="filter_form" id="panel_36_mobile" class="mb-2 price"
+                    {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}}
+                    type="checkbox" name="from_to" value="3000,6000">
+                  <label class="d-block text-capitalize" for="panel_mobile_36">3000 @lang('front.egp')  - 6000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="400" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="400">OVENS</label>
+                  <input form="filter_form" id="panel_37_mobile" class="mb-2 price"
+                    {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}}
+                    type="checkbox" name="from_to" value="6000,10000">
+                  <label class="d-block text-capitalize" for="panel_37_mobile">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input id="panel_5" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_5">cookers</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_6" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_6">Dish washer</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_7" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_7">BUILT IN WASHER DRYERS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_8" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_8">DRYERS</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_9" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_9">washing machines</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_10" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_10">TV</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_11" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_11">Air Conditioner</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_12" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_12">Kitchen Cooker Hood</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_13" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_13">Air</label>
+                  <input form="filter_form" id="panel_38_mobile" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
+                    name="from" value="10000">
+                  <label class="d-block text-capitalize" for="panel_38_mobile">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>
                 </div>
               </div>
 
-              <button class="accordion active w-100 border border-light">Light Machines
-                <i class="fas fa-minus float-right"></i>
-              </button>
-
-              <div class="panel mb-3 border border-secondary">
-                <div class="z-checkbox">
-                  <input id="panel_14" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_14">MICROWAVE</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_15" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_15">Coffee &amp; Espresso Makers</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_16" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_16">Electric kettle</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_17" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_17">Food Steamer</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_18" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_18">Air Fryer</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_19" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_19">Table Grill</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_20" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_20">Sandwich Maker</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_200" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_200">Blenders</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_21" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_21">PowerLife Bagged</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_22" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_22">Collection Salad Maker</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_23" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_23">iron</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_24" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_24">Water Dispenser</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_25" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_25">Water Heater</label>
-                </div>
-              </div>
-
-              <button class="accordion active w-100 border border-light">BRAND
-                <i class="fas fa-minus float-right"></i>
-              </button>
-
-              <div class="panel mb-3 border border-secondary">
-                <div class="z-checkbox">
-                  <input id="panel_26" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_26">Apple</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_27" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_27">Devia</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_28" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_28">Ariston</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_29" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_29">Philips</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_30" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_30">SAMSUNG</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_31" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_31">LG</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_32" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_32">sharp</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_33" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_33">TOSHIBA</label>
-                </div>
-              </div>
-
-              <button class="accordion active w-100 border border-light">PRICE
-                <i class="fas fa-minus float-right"></i>
-              </button>
-
-              <div class="panel mb-3 border border-secondary">
-                <div class="z-checkbox">
-                  <input id="panel_34" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_34">Less Than - 1000 EGP</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_35" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_35">1000 EGP - 3000 EGP</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_36" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_36">3000 EGP - 6000 EGP</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_37" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_37">6000 EGP - 10,000 EGP</label>
-                </div>
-
-                <div class="z-checkbox">
-                  <input id="panel_38" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_38">10,000 EGP - More Than</label>
-                </div>
-              </div>
-
-              <button class="accordion active active w-100 border border-light">Offer
+              <button class="accordion active active w-100 border border-light">@lang('front.offer')
                 <i class="fas fa-minus float-right"></i>
               </button>
 
               <div class="panel border border-secondary">
                 <div class="z-checkbox">
-                  <input id="panel_39" class="mb-2" type="checkbox" name="vehicle" value="Bike">
-                  <label class="d-block text-capitalize" for="panel_39">Offer</label>
+                  <input form="filter_form" id="panel_39_mobile" {{isset($_REQUEST['offer'])?'checked':''}} class="mb-2 offer" type="checkbox" name="offer" value="offer">
+                  <label class="d-block text-capitalize" for="panel_39_mobile">@lang('front.offer') </label>
                 </div>
               </div>
             </div>
@@ -518,21 +242,21 @@
       <!-- Start Image Cover -->
       <div class="col-md-10">
         <div class="list_cover">
-          <img class="w-100 " src="images/oppo.jfif" alt="Cover" title="Apple">
+          <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
         </div>
         <!-- End Image Cover -->
 
         <!-- Start Toolbar -->
         <div class="toolbar mt-3 p-2 border bg-white">
           <div class="sort-by mr-3 float-left">
-            <label class="labelclass m-auto font-weight-normal">Sort By:</label>
+            <label class="labelclass m-auto font-weight-normal">@lang('front.sort_by'):</label>
           </div>
 
-          <select class="selsort p-1 border border-secondary bg-white">
-            <option>Name A-Z</option>
-            <option>Name Z-A</option>
-            <option>Price DESC</option>
-            <option>Price ASC</option>
+          <select class="selsort p-1 border border-secondary bg-white" id="sorted" form="filter_form" name="sorted">
+            <option value="">@lang('messages.users.select')</option>
+            <option value="title,asc">@lang('messages.scheduled.name')</option>
+            <option value="price,desc">@lang('front.price') @lang('front.desc')</option>
+            <option value="price,asc">@lang('front.price') @lang('front.asc')</option>
           </select>
 
           <strong class="grid_list float-right">
@@ -549,480 +273,55 @@
 
         <!-- start row product -->
         <div id="grid_two" class="row mt-3 content_view_mobile">
-          <div class="col-md-3 col-6 mb-3">
+
+          @foreach ($products as $product)
+
+          <div class="col-md-3 col-6 mb-3 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/download.jfif" alt="Product" class="w-75 d-block m-auto">
+              <a href="{{route('front.home.inner',['id' => $product->id]) }}">
+                <img class="lazy" src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">
 
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
-                  Grey</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">30,200 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product2.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear Tea</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">349 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
+                @if($product->discount > 0)
                 <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
+                  <span class="sale-product-icon">-{{$product->discount}}%</span>
                 </div>
+                @endif
 
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
+                <h6 class="full_desc text-dark text-left text-capitalize">
+                  {{$product->getTranslation('title',getCode())}}</h6>
               </a>
 
               <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
+                  @for ($i = 1; $i <= 5; $i++)
+                    @if(round($product->rate() - .25) >= $i)
+                      <i class="fas fa-star colorstar"></i>
+                    @elseif(round($product->rate() + .25) >= $i)
+                     <i class="fas fa-star-half-alt colorstar"></i>
+                    @else
+                     <i class="far fa-star"></i>
+                    @endif
+                  @endfor
               </div>
 
               <div class="price-description text-uppercase">Cash Price</div>
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price font-weight-bold">16,999 EGP</span>
+                  <span
+                    class="price font-weight-bold">{{($product->discount > 0)?$product->price_after_discount:$product->price}}
+                    @lang('front.egp') </span>
                 </span>
-
+                @if($product->discount > 0)
                 <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
+                  <span class="price font-weight-bold">{{$product->price}} @lang('front.egp')  </span>
                 </p>
+                @endif
               </div>
             </div>
           </div>
 
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
+          @endforeach
 
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">27,500 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/download.jfif" alt="Product" class="w-75 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space Grey</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">30,200 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product2.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear Tea</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">349 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">16,999 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">27,500 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/download.jfif" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space Grey</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">30,200 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product2.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Devia Ocean2 series case for iPhone XI 5.8 2019 - Clear Tea</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">349 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">16,999 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">27,500 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/download.jfif" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS Max, 256GB, 4GB RAM, 4G LTE, Space
-                  Grey</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">30,200 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product2.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Devia Ocean2 series case for iPhone XI 5.8 2019 -
-                  Clear Tea</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">349 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="inner-page.php">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone 11, 128GB, 4GB RAM, 4G LTE, Green</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">16,999 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price font-weight-bold">506 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-6 mb-3">
-            <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="#0">
-                <img src="images/product3.webp" alt="Product" class="w-75 d-block m-auto">
-
-                <h6 class="full_desc text-dark text-center text-capitalize">Apple iPhone XS, 256GB, 4GB RAM, 4G LTE, Gold</h6>
-              </a>
-
-              <div class="rating_list_product">
-                <i class="fas fa-star colorstar"></i>
-                <i class="fas fa-star colorstar"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">27,500 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <!-- End row product -->
@@ -1030,9 +329,103 @@
     <!-- end row -->
   </div>
 </div>
+
+<div class="load" style="position: fixed;top: 40%;left:40%;display:none">
+  {{-- <div class='loader'>
+    <div class='loader_overlay'></div>
+    <div class='loader_cogs'>
+      <div class='loader_cogs__top'>
+        <div class='top_part'></div>
+        <div class='top_part'></div>
+        <div class='top_part'></div>
+        <div class='top_hole'></div>
+      </div>
+      <div class='loader_cogs__left'>
+        <div class='left_part'></div>
+        <div class='left_part'></div>
+        <div class='left_part'></div>
+        <div class='left_hole'></div>
+      </div>
+      <div class='loader_cogs__bottom'>
+        <div class='bottom_part'></div>
+        <div class='bottom_part'></div>
+        <div class='bottom_part'></div>
+        <div class='bottom_hole'>
+          <!-- lol -->
+        </div>
+      </div>
+    </div>
+  </div> --}}
+  {{-- <img id="loading" src="http://www.vitorazevedo.net/external_files/loading_small.png"> --}}
+  <img src="{{url('public\frontv2\images\loading\load1.gif')}}" width="22%" />
+</div>
 <!-- end container -->
+@endsection
+@section('script')
+<script type="text/javascript">
+var start = 0;
+var action = 'inactive';
+$('.load').hide();
+$(window).on("scroll", function() {
+  if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
+    $('.load').show();
+    action = 'active';
+    start = start + {{ get_limit_paginate() }};
+    setTimeout(function() {
+      load_content_data(start);
+    }, 500);
+   }
+  })
 
+  $('.price').click(function(){
+    $('.price').not(this).each(function(){
+         $(this).prop('checked',false)
+     });
+  })
 
-<!-- Start Footer -->
-<?php include 'footer.php'; ?>
-<!-- End Footer -->
+function load_content_data(start) {
+  $.ajax({
+    url: '{{url("clients/loadproductsv2")}}?'+ '&start=' + start,
+    type: "post",
+    data: $('#filter_form').serialize(),
+    success: function(data) {
+      if (data.html == '') {
+        action = 'active';
+      } else {
+        $('#grid_two').append(data.html);
+        action = 'inactive';
+      }
+      $('.load').hide();
+    },
+  });
+
+}
+
+$('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
+  $('.load').show();
+  $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
+  if($(this).prop('checked')==false){
+    str = $(this).attr('id')
+    $(this).removeAttr('checked')
+    $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
+    $('#'+str.split('_mobile')[0]).removeAttr('checked')
+  }
+  start = 0
+  $.ajax({
+    url: '{{url("clients/loadproductsv2")}}?start=0',
+    type: "post",
+    data: $('#filter_form').serialize(),
+    success: function(data) {
+      if (data.html == '') {
+        action = 'active';
+        $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+      } else {
+        $('#grid_two').html(data.html);
+        action = 'inactive';
+      }
+      $('.load').hide();
+    },
+  });
+})
+</script>
+@endsection

@@ -25,12 +25,12 @@
             <td>
                 @foreach($languages as $language)
                     <li><b>{{$language->title}}
-                            :</b> {{$value->category->getTranslation('title',$language->short_code)}}</li>
+                            :</b> {{$value->category?$value->category->getTranslation('title',$language->short_code):''}}</li>
                 @endforeach
             </td>
             <td>
                 @foreach($languages as $language)
-                    <li><b>{{$language->title}} :</b> {{$value->brand->getTranslation('title',$language->short_code)}}
+                    <li><b>{{$language->title}} :</b> {{$value->brand?$value->brand->getTranslation('title',$language->short_code):''}}
                     </li>
                 @endforeach
             </td>
@@ -77,50 +77,4 @@
     @endforeach
     </tbody>
 </table>
-@section('script')
-    
-<script>
-	$('.recently_added .switch input').change(function(){
-        var x = $(this).siblings();
-		$.ajax({
-               type:'GET',
-               url:'{{url("homepage/recently_added")}}',
-               headers:'_token = {{ csrf_token() }}',
-			data: {
-				switch: $(this).is( ':checked'),
-				id: $(this).attr('id')
-			},
-            success: function(data) {
-                if(data == 'no'){
-                    alert('max product to select is 6!');
-                    x.trigger('click');
-                }
-            }
-		});
-	})
-</script>
-
-
-<script>
-	$('.selected_for_you .switch input').change(function(){
-        var x = $(this).siblings();
-		$.ajax({
-            type:'GET',
-            url:'{{url("homepage/selected_for_you")}}',
-            headers:'_token = {{ csrf_token() }}',
-			data: {
-				switch: $(this).is( ':checked'),
-				id: $(this).attr('id')
-			},
-            success: function(data) {
-                if(data == 'no'){
-                    alert('max product to select is 6!');
-                    x.trigger('click');
-                }
-            }
-		});
-	})
-</script>
-
-@endsection
 {{ $products->appends(Request::all())->render() }}
