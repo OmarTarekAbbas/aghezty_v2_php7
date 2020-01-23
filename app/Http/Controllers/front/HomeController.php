@@ -854,9 +854,9 @@ class HomeController extends Controller
             }
         }
 
-        if($request->has('product_id'))
+        if($request->has('success_pr'))
         {
-          \Session::flash('product',Product::find($request->product_id));
+          \Session::flash('success_pr',Product::find($request->product_id));
         }
 
         $selected_for_you = Product::where('selected_for_you', 1)->get();
@@ -929,6 +929,7 @@ class HomeController extends Controller
         $found_coupon = Coupon::where('coupon',$request->coupon)->first();
         if(!$found_coupon){
             \Session::flash('fail' , __('front.coupon.not_correct'));
+            return back();
         }
         $used_coupon = Coupon::where('coupon',$request->coupon)->where(function($q){
             $q->where('used',1);
@@ -936,6 +937,7 @@ class HomeController extends Controller
         })->first();
         if($used_coupon){
           \Session::flash('fail' , __('front.coupon.used_befor'));
+          return back();
         }
         $coupon = Coupon::where('coupon',$request->coupon)->first();
         $coupon->client_id = \Auth::guard('client')->user()->id;
@@ -948,17 +950,45 @@ class HomeController extends Controller
     public function delete_cartv2(Request $request)
     {
         if($request->type == "cookie"){
+          if($request->has('cart_id')){
             $arr = unserialize($_COOKIE['carts']);
             unset($arr[$request->cart_id]);
             $arr = array_values($arr);
             setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+          }
+          else{
+            unset($_COOKIE['carts']);
+            setcookie('carts','', time() - 3600);
+          }
         }
         if($request->type == "auth"){
+          if($request->has('cart_id')){
             $cart = Cart::find($request->cart_id);
             $cart->delete();
+          }
+          else{
+            Cart::where('client_id',\Auth::guard('client')->user()->id)->delete();
+          }
         }
         \Session::flash('success','delete will');
         return back();
+    }
+
+    public function update_cartv2(Request $request)
+    {
+        if($request->type == "cookie"){
+            $arr = unserialize($_COOKIE['carts']);
+            $arr[$request->cart_id]['quantity'] = $request->value;
+            $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
+            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+        }
+        if($request->type == "auth"){
+            $cart = Cart::find($request->cart_id);
+            $cart->quantity = $request->value;
+            $cart->total_price = $request->value * $cart->price;
+            $cart->save();
+        }
+        return response()->json(['status' => 'success' , 'data' => 'update will']);
     }
 
     public function logoutv2()

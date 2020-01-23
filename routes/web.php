@@ -15,7 +15,7 @@ get_static_routes() ;
 get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
 Route::get('/',function(){
-    return view('front.index');
+    return redirect(route('front.home.index'));
 });
 Route::prefix('clients')->group(function() {
     Route::get('/register', 'Auth\ClientRegisterController@showLoginForm')->name('client.register');
@@ -133,7 +133,7 @@ Route::prefix('clients')->group(function() {
     Route::get('cartv2','front\HomeController@my_cartv2')->name('front.home.cart');
     Route::post('cartv2','front\HomeController@store_cartv2')->name('front.home.cart.add');
     Route::post('check_couponv2','front\HomeController@check_couponv2')->name('front.home.coupon');
-    Route::get('update_cartv2','front\HomeController@update_cartv2');
+    Route::get('update_cartv2','front\HomeController@update_cartv2')->name('front.home.cart.update');
     Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
     /*************** end ***************/
 

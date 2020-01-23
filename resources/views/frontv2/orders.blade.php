@@ -15,10 +15,13 @@
   <section class="my_profile">
     <div class="mobile_views">
       <div class="my_profile_bg rounded">
-        <div class="row m-0">
+        <div class="row m-0" style="min-height:400px">
           <div class="col-md-12 col-lg-12 col-xl-12 col-12">
             <div class="my_profile_title text-center my-3">
               <h5 class="text-capitalize text-white m-auto w-25 border-bottom border-secondary">@lang('front.my_order')</h5>
+              @if(count(Auth::guard('client')->user()->orders) == 0)
+              <h6>There Is No Order Yet</h6>
+              @endif
             </div>
           </div>
 

@@ -15,7 +15,7 @@
           </h2>
         </div>
       </div>
-      @if (Session::get('product'))
+      @if (Session::has('success_pr'))
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
         <div class="alert_msg alert alert-success my-3 w-100 hvr-wobble-to-bottom-right" role="alert">{{Session::get('product')->getTranslation('title',getCode())}} @lang('front.add_message').
           <i class="fas fa-times fa-lg float-right mt-1"></i>
@@ -27,7 +27,7 @@
 
   <section class="cart_shopping my-2">
     <div class="mobile_views">
-      <div class="row">
+      <div class="row" id="href_load">
         <div class="col-md-8 col-lg-8 col-xl-8 col-12">
           <div class='table-responsive'>
             <table id="tablePreview" class="table text-secondary table-sm table-bordered mb-0">
@@ -44,7 +44,7 @@
                 @foreach ($auth_carts as $cart)
                 <tr>
                   <th class="th_th h6" scope="row">
-                    <a class="item-delete btn btn-sm text-primary" href="{{route('front.home.cart.delete',['cart_id' => $cart->id , 'type' => 'auth'])}}">
+                    <a class="item-delete btn btn-sm text-primary" href="{{route('front.home.cart.delete',['cart_id' => $cart->pivot->id , 'type' => 'auth'])}}">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
@@ -63,7 +63,7 @@
                     <div class="qty-holder text-center">
                       <a href="#0" class="table_qty_dec">-</a>
 
-                      <input value="{{$cart->pivot->quantity}}" name="quantity" size="4" title="Qty" class="input-text qty" maxlength="12">
+                      <input value="{{$cart->pivot->quantity}}" name="quantity" data-cart="{{$cart->pivot->id}}" data-type = "auth" size="4"  id="quan" title="Qty" class="input-text qty" maxlength="12">
 
                       <a href="#0" class="table_qty_inc">+</a>
 
@@ -98,7 +98,7 @@
                       <div class="qty-holder text-center">
                         <a href="#0" class="table_qty_dec">-</a>
 
-                        <input value="{{$session_carts[$i]['quantity']}}" size="4" title="Qty" class="input-text qty" maxlength="12">
+                        <input value="{{$session_carts[$i]['quantity']}}" data-cart="{{$i}}" data-type = "cookie" size="4" title="Qty" class="input-text qty" id="quan" maxlength="12">
 
                         <a href="#0" class="table_qty_inc">+</a>
 
@@ -117,12 +117,12 @@
 
           <div class="row btn_shopping table-bordered mx-0 py-3">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button class="btn continue_shopping btn-secondary text-capitalize text-white text-left hvr-wobble-to-bottom-right">continue
+              <button onclick="location.href = '{{route('front.home.list')}}'" class="btn continue_shopping btn-secondary text-capitalize text-white text-left hvr-wobble-to-bottom-right">continue
                 shopping</button>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">clear shopping
+              <button onclick="location.href= '{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}'" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">clear shopping
                 cart</button>
             </div>
           </div>
@@ -136,6 +136,14 @@
               @if(Session::has('success'))
               <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-success alert-dismissible fade show" role="alert">
                   <strong>@lang('front.success')!</strong> {{Session::get('success')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              @endif
+              @if(Session::has('fail'))
+              <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mt-3 alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>@lang('front.fail')!</strong> {{Session::get('fail')}}
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -159,11 +167,6 @@
                         <div class="input-group-text text-capitalize">coupon</div>
                       </div>
                       <input type="text" name="coupon" class="form-control text-center hvr-float" placeholder="Code">
-                      @if(Session::get('fail'))
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ Session::get('fail') }}</strong>
-                          </span>
-                      @endif
                       <input type="submit" class="btn btn-primary" value="@lang('front.coupon.add')" >
                     </div>
                   </div>
@@ -337,5 +340,35 @@
     smartBackspace: true, // this is a default
     loop: true
   });
+</script>
+<script>
+  $(document).on('click','.table_qty_inc',function () {
+      var x = parseInt($('.qty').val()) + 1;
+      $('.qty').val(x);
+  })
+
+  $(document).on('click','.table_qty_dec',function () {
+      var x = parseInt($('.qty').val()) - 1;
+      if (x > 0)
+          $('.qty').val(x);
+  })
+  $(document).on('change paste keyup select', '#quan', function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: "{{route('front.home.cart.update')}}",
+        type: "get",
+        data: {
+            cart_id: $(this).data('cart'),
+            type: $(this).data('type'),
+            value: $(this).val()
+        },
+        success: function(data) {
+            console.log(data.status);
+            if (data.status == 'success') {
+                $("#href_load").load(location.href + " #href_load>*", "");
+            }
+        },
+    });
+  })
 </script>
 @endsection

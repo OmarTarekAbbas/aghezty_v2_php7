@@ -342,7 +342,7 @@
               </div>
               <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
             </a>
-            <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">ovens</h4>
+            <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">{{$item->getTranslation('title',getCode())}}</h4>
           </div>
         </div>
 

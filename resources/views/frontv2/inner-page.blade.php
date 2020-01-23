@@ -127,20 +127,20 @@
 							</div>
 
 							<div class="rounded-social-buttons d-inline-block">
-								<a class="social-button phone_link" href="tel:+20111682831" title="Phone Number">
+								<a class="social-button phone_link" href="tel:{{setting('phone')}}" title="Phone Number">
 									<i class="fas fa-phone phone_icon"></i>
 								</a>
 
-								<a class="social-button whatsapp_link" href="whatsapp://send?abid=+20111682831&text=Hello%2C%20World!" title="Whatsapp">
+								<a class="social-button whatsapp_link" href="whatsapp://send?phone={{setting('phone')}}" title="Whatsapp">
                   <i class="fab fa-whatsapp whatsapp_icon"></i>
                 </a>
 
 
-                <a class="social-button messenger_link" href="https://www.messenger.com/" target="_blank" title="Messenger">
+                <a class="social-button messenger_link" href="http://m.me/Aghezty.me" target="_blank" title="Messenger">
                   <i class="fab fa-facebook-messenger messenger_icon"></i>
                 </a>
 
-                <a class="social-button sms_link" title="Messege" href="sms:+20111682831">
+                <a class="social-button sms_link" title="Messege" href="sms:{{setting('phone')}}">
                     <i class="far fa-comment sms_icon"></i>
                 </a>
 							</div>
@@ -372,6 +372,7 @@ $('#add_to').click(function(e) {
         url: "{{route('front.home.cart.add')}}",
         type: "POST",
         data: {
+            'success_pr':'success_pr',
             'product_id': '{{$product->id}}',
             'counter': $('.quantity-input').val(),
             'price': '{{($product->discount)?$product->price_after_discount:$product->price}}'

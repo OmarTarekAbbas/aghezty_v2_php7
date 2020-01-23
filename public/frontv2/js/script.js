@@ -331,11 +331,7 @@ $(document).ready(function () {
 /********************start inc and decr*********************/
 
 $('.np-plus').click(function () {
-    console.log('ok');
-
     var x = parseInt($('.quantity-input').val()) + 1;
-    console.log(x);
-
     $('.quantity-input').val(x);
 })
 

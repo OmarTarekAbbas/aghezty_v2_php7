@@ -37,14 +37,17 @@
         <i class="far fa-envelope fa-2x"></i>
       </a>
     </div>
+    @if(Session::get('applocale') == 'en')
+      <style>
+        .font-weight-bold p{
+          float:left
+        }
+      </style>
+    @endif
     <div class="call-center w-100 m-auto p-3 hvr-wobble-to-bottom-right">
       <a>
-        <div class="row">
-          <span class="font-weight-bold col-11">{!! setting_2('address') !!}</span>
-          <span class="col-1 text-right">
-            <i class="fas fa-map-marker-alt fa-2x"></i>
-          </span>
-        </div>
+          <span class="font-weight-bold">{!! setting_2('address') !!}</span>
+          <i class="fas fa-map-marker-alt fa-2x"></i>
       </a>
     </div>
     <div class="border-bottom border-dark my-5"></div>

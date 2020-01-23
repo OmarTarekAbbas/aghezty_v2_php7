@@ -369,9 +369,9 @@
 
 	<section class="search_mobile d-block d-sm-none d-md-none d-lg-none d-xl-none">
 		<div class="col-12">
-        <form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
+        <form class="search-container" id="form_search_m" action="{{url('clients/productsv2')}}" method="get">
 					<input type="text"  name="search" placeholder="@lang('messages.search')">
-					<a onclick="document.getElementById('form_search').submit()" href="#">
+					<a onclick="document.getElementById('form_search_m').submit()" href="#">
 						<div class="search_background">
 							<i class="search-icon fas fa-search fa-2x"></i>
 						</div>
@@ -537,36 +537,36 @@
                               <div class="block_content">
                                 <div class="row">
                                   <div class="col-xl-6 col-6">
-                                    <a class="app-icon" href="https://play.google.com/store" title="Google Play">
+                                    <a class="app-icon" href="{{setting('android_link')}}" title="Google Play">
                                       <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/google-play.svg')}}" alt="Google Play">
                                     </a>
                                   </div>
 
                                   <div class="col-xl-6 col-6">
-                                    <a class="app-icon" href="https://www.apple.com/ios/app-store/" title="Google Play">
+                                    <a class="app-icon" href="{{setting('ios_link')}}" title="Google Play">
                                       <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/app-store.svg')}}" alt="App Store">
                                     </a>
                                   </div>
 
                                   <div class="col-sm-12 col-lg-12 col-xl-12">
                                     <div class="rounded-social-buttons text-center my-3">
-                                      <a class="social-button facebook_link" title="Facebook" href="https://www.facebook.com/" target="_blank">
+                                      <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">
                                         <i class="fab fa-facebook-f facebook_icon"></i>
                                       </a>
 
-                                      <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?abid=phonenumber&text=Hello%2C%20World!">
+                                      <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?phone={{setting('phone')}}">
                                         <i class="fab fa-whatsapp whatsapp_icon"></i>
                                       </a>
 
-                                      <a class="social-button phone_link" title="Phone Number" href="tel:+20111682831">
+                                      <a class="social-button phone_link" title="Phone Number" href="tel:{{setting('phone')}}">
                                         <i class="fas fa-phone phone_icon"></i>
                                       </a>
 
-                                      <a class="social-button sms_link" title="Messege" href="sms:123">
+                                      <a class="social-button sms_link" title="Messege" href="sms:{{setting('sms')}}">
                                         <i class="far fa-comment sms_icon"></i>
                                       </a>
 
-                                      <a class="social-button mail_link" title="Email" href="mailto:mailto:info@aghzty.com">
+                                      <a class="social-button mail_link" title="Email" href="{{setting('mail')}}">
                                         <i class="fas fa-envelope mail_icon"></i>
                                       </a>
                                     </div>
@@ -580,8 +580,8 @@
 
                                   <div class="col-sm-12 col-xl-12">
                                     <div class="hotline mt-2 text-center">
-                                      <strong>Telephone</strong>
-                                      <a class="d-block" href="tel:+20233047920" title="Phone number">
+                                      <strong>@lang('front.auth.phone')</strong>
+                                      <a class="d-block" href="tel:{{setting('phone')}}" title="Phone number">
                                         <strong>0233047920</strong>
                                       </a>
                                     </div>

@@ -6,6 +6,7 @@
 	<section class="log_in justify-content-center">
 		<div class="mobile_views">
 			<div class="log_in_bg rounded">
+        @include('errors')
         <form action="{{route('front.client.login.submit')}}" method="post">
           @csrf
 					<div class="row">
