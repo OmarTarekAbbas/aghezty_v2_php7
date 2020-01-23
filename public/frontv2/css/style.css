@@ -1984,6 +1984,31 @@ body {
 /*----------------------------------------- Start Media Query -----------------------------------------*/
 /* Start Media Query Mobile */
 @media (min-width: 320px) and (max-width: 375px) {
+  .alert-success.msg_success_min, .alert-success.msg_danger_min,
+.alert-danger.msg_success_min,
+.alert-danger.msg_danger_min {
+    text-align: left;
+    padding: 0.75rem 0.5rem !important;
+    border: 0 !important;
+    max-width: 90%;
+    margin: 0.75rem auto;
+  }
+  .alert-success.msg_success_min button.close, .alert-success.msg_danger_min button.close,
+.alert-danger.msg_success_min button.close,
+.alert-danger.msg_danger_min button.close {
+    right: -4% !important;
+  }
+  .alert-success.msg_success_min ul, .alert-success.msg_danger_min ul,
+.alert-danger.msg_success_min ul,
+.alert-danger.msg_danger_min ul {
+    margin-bottom: 0 !important;
+  }
+  .alert-success.msg_success_min ul li, .alert-success.msg_danger_min ul li,
+.alert-danger.msg_success_min ul li,
+.alert-danger.msg_danger_min ul li {
+    margin-top: 0;
+  }
+
   .head_three .navbar {
     padding: 5px 0;
   }
@@ -2696,6 +2721,31 @@ body {
   }
 }
 @media (min-width: 376px) and (max-width: 415px) {
+  .alert-success.msg_success_min, .alert-success.msg_danger_min,
+.alert-danger.msg_success_min,
+.alert-danger.msg_danger_min {
+    text-align: left;
+    padding: 0.75rem 0.5rem !important;
+    border: 0 !important;
+    max-width: 92%;
+    margin: 0.75rem auto;
+  }
+  .alert-success.msg_success_min button.close, .alert-success.msg_danger_min button.close,
+.alert-danger.msg_success_min button.close,
+.alert-danger.msg_danger_min button.close {
+    right: -2% !important;
+  }
+  .alert-success.msg_success_min ul, .alert-success.msg_danger_min ul,
+.alert-danger.msg_success_min ul,
+.alert-danger.msg_danger_min ul {
+    margin-bottom: 0 !important;
+  }
+  .alert-success.msg_success_min ul li, .alert-success.msg_danger_min ul li,
+.alert-danger.msg_success_min ul li,
+.alert-danger.msg_danger_min ul li {
+    margin-top: 0.5rem;
+  }
+
   .head_three .navbar {
     padding: 5px 0;
   }
