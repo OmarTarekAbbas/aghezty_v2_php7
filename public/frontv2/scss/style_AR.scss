@@ -604,6 +604,7 @@ body {
       .price-box {
         .regular-price {
           color: #444;
+          float: right;
 
           .price {
             color: #008eff;
@@ -613,7 +614,7 @@ body {
 
         .old-price {
           margin-left: 5px;
-          float: right;
+          float: left;
           color: #333;
           letter-spacing: .5px;
           font-size: 12px;
@@ -1630,7 +1631,7 @@ body {
 
         .item-delete {
           float: right;
-          line-height: 6;
+          line-height: 10;
 
           i {
             font-size: 0.8rem;
@@ -3585,6 +3586,33 @@ body {
       .discount_code_accordion {
         margin: 0.5rem auto;
 
+        .alert-success,
+        .alert-danger {
+
+          &.msg_success_min,
+          &.msg_danger_min {
+            text-align: right;
+            padding: 0.75rem 0.5rem !important;
+            border: 0 !important;
+            max-width: 95%;
+            margin: 0.75rem auto;
+
+            button {
+              &.close {
+                right: 86% !important;
+              }
+            }
+
+            ul {
+              margin-bottom: 0 !important;
+
+              li {
+                margin-top: 0;
+              }
+            }
+          }
+        }
+
         .ads_img {
           display: none;
         }
@@ -4758,6 +4786,33 @@ body {
 
       .discount_code_accordion {
         margin: 0.5rem auto;
+
+        .alert-success,
+        .alert-danger {
+
+          &.msg_success_min,
+          &.msg_danger_min {
+            text-align: right;
+            padding: 0.75rem 0.5rem !important;
+            border: 0 !important;
+            max-width: 95%;
+            margin: 0.75rem auto;
+
+            button {
+              &.close {
+                right: 86% !important;
+              }
+            }
+
+            ul {
+              margin-bottom: 0 !important;
+
+              li {
+                margin-top: 0;
+              }
+            }
+          }
+        }
 
         .ads_img {
           display: none;
@@ -5989,4 +6044,131 @@ body {
   animation-iteration-count: 1;
 }
 
+/* Start Animation For Flash Alert */
+.bounce-in-bottom {
+  animation: bounce-in-bottom 1.1s ease-in-out 0.5s alternate both;
+  -webkit-animation: bounce-in-bottom 1.1s ease-in-out 0.5s alternate both;
+}
+
+@-webkit-keyframes bounce-in-bottom {
+  0% {
+    -webkit-transform: translateY(500px);
+    transform: translateY(500px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  38% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+
+  55% {
+    -webkit-transform: translateY(65px);
+    transform: translateY(65px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  72% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  81% {
+    -webkit-transform: translateY(28px);
+    transform: translateY(28px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  90% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  95% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes bounce-in-bottom {
+  0% {
+    -webkit-transform: translateY(500px);
+    transform: translateY(500px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  38% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+
+  55% {
+    -webkit-transform: translateY(65px);
+    transform: translateY(65px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  72% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  81% {
+    -webkit-transform: translateY(28px);
+    transform: translateY(28px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  90% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  95% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+/* End Animation For Flash Alert */
 /* End Animation */
