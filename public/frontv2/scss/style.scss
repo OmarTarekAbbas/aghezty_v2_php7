@@ -3328,6 +3328,33 @@ body {
       .discount_code_accordion {
         margin: 0.5rem auto;
 
+        .alert-success,
+        .alert-danger {
+
+          &.msg_success_min,
+          &.msg_danger_min {
+            text-align: left;
+            padding: 0.75rem 0.5rem !important;
+            border: 0 !important;
+            max-width: 95%;
+            margin: 0.75rem auto;
+
+            button {
+              &.close {
+                right: -4% !important;
+              }
+            }
+
+            ul {
+              margin-bottom: 0 !important;
+
+              li {
+                margin-top: 0;
+              }
+            }
+          }
+        }
+
         .ads_img {
           display: none;
         }
@@ -3674,6 +3701,7 @@ body {
 }
 
 @media (min-width: 376px) and (max-width: 415px) {
+
   .alert-success,
   .alert-danger {
 
@@ -4448,6 +4476,33 @@ body {
 
       .discount_code_accordion {
         margin: 0.5rem auto;
+
+        .alert-success,
+        .alert-danger {
+
+          &.msg_success_min,
+          &.msg_danger_min {
+            text-align: left;
+            padding: 0.75rem 0.5rem !important;
+            border: 0 !important;
+            max-width: 95%;
+            margin: 0.75rem auto;
+
+            button {
+              &.close {
+                right: -4% !important;
+              }
+            }
+
+            ul {
+              margin-bottom: 0 !important;
+
+              li {
+                margin-top: 0;
+              }
+            }
+          }
+        }
 
         .ads_img {
           display: none;
@@ -5742,7 +5797,6 @@ body {
     animation-timing-function: ease-out;
   }
 }
-
 /* End Animation For Flash Alert */
 
 /* End Animation */
