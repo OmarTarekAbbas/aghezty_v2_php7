@@ -705,16 +705,39 @@
     <script>
       channel = pusher.subscribe('product');
       channel.bind('product-event', function(data) {
+        // Let's check whether notification permissions have already been granted
+        if (Notification.permission === "granted") {
+          // If it's okay let's create a notification
           var notification = new window.Notification("{{__('front.title')}}!", {
-              body: data.message,
-              icon: "{{url('front/img/logo_2.png')}}",
+                body: data.message,
+                icon: "{{url('front/img/logo_2.png')}}",
+            });
+            notification.onclick = function(event) {
+                event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+                var new_window = window.open('','_blank'); //open empty window(tab)
+                new_window.location = data.url; //set url of newly created window(tab) and focus
+                this.close()
+            };
+        }
+
+        // Otherwise, we need to ask the user for permission
+        else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then(function (permission) {
+            // If the user accepts, let's create a notification
+              if (permission === "granted") {
+                var notification = new window.Notification("{{__('front.title')}}!", {
+                  body: data.message,
+                  icon: "{{url('front/img/logo_2.png')}}",
+              });
+              notification.onclick = function(event) {
+                  event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+                  var new_window = window.open('','_blank'); //open empty window(tab)
+                  new_window.location = data.url; //set url of newly created window(tab) and focus
+                  this.close()
+              };
+            }
           });
-          notification.onclick = function(event) {
-              event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
-              var new_window = window.open('','_blank'); //open empty window(tab)
-              new_window.location = data.url; //set url of newly created window(tab) and focus
-              this.close()
-          };
+        }
       })
     </script>
     @yield('script')
