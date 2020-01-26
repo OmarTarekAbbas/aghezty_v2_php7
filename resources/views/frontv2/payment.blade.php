@@ -8,7 +8,7 @@
 <div class="main">
 	<div class="mobile_views">
 		<div class="status_title my-3">
-			<h4 class="text-center border-bottom border-secondary w-25 m-auto">Select Payment Method</h4>
+			<h4 class="text-center border-bottom border-secondary w-25 m-auto">@lang('front.choose_payment')</h4>
 		</div>
 
 		<section class="choose-address">
@@ -32,7 +32,7 @@
 									</span>
 
 									<span class="span_label_cash">
-										<label for="radioOne">Cash</label>
+										<label for="radioOne">@lang('front.cash')</label>
 									</span>
 								</div>
 							</div>
@@ -48,7 +48,7 @@
 									</span>
 
 									<span class="span_label_cash">
-										<label for="radioTwo">Visa After Deliver</label>
+										<label for="radioTwo">@lang('front.visa_after_deliver')</label>
 									</span>
 								</div>
 							</div>
@@ -64,49 +64,46 @@
 									</span>
 
 									<span class="span_label_cash">
-										<label for="radioThree">Visa</label>
+										<label for="radioThree">@lang('front.visa')</label>
 									</span>
 								</div>
 							</div>
 
-							<form class="w-100" action="#0" id="checkout-form" method="POST">
-								<div class="row mb-4">
-									<div class="col-md-4 col-lg-4 col-xl-4 col-12">
-										<input type="hidden" name="address_id" value="197">
-										<div class="form-row" style="display:none">
-											<div class="form-group w-100" style="height:55px">
-												<label for="cc_number">Credit Card Number</label>
-												<input type="number" class="form-control hvr-float" min="0">
-												<div class="form-group" id="card-number"></div>
-											</div>
-										</div>
-									</div>
+              <form action="{{route('front.home.checkout.submit')}}"  id="checkout-form" method="POST">
+                {{ csrf_field() }}
+                @if(isset($_REQUEST['address_id']))
+                <input type="hidden" name="address_id" class="add_id" value="{{$_REQUEST['address_id']}}">
+                @else
+                <input type="hidden" name="address_id" class="add_id"   value="{{Auth::guard('client')->user()->cities[0]->id}}">
+                @endif
+                <div id="charge-error" class="alert alert-danger" style="display:none">
+                </div>
 
-									<div class="col-md-4 col-lg-4 col-xl-4 col-6">
-										<input type="hidden" name="address_id" value="197">
-										<div class="form-row" style="display:none">
-											<div class="form-group w-100" style="height:55px">
-												<label for="cc_number">Expiry</label>
-												<input type="number" class="form-control hvr-float" min="0">
-												<div class="form-group" id="card-number"></div>
-											</div>
-										</div>
-									</div>
+                <div class="form-row" style="direction: {{dir_ar_en()}};display:none;text-align: center;display: flow-root;">
+                    <div class="">
+                        <div id="paypal-button" class="has paypal-button"></div>
+                    </div>
+                </div>
+                    {{-- <div class="form-group" style="height:45px">
+                        <label for="cc_number">Credit Card Number</label>
+                        <!-- <input type="number" class="form-control" id="card-number"> -->
+                        <div class="form-group" id="card-number"></div>
+                    </div>
 
-									<div class="col-md-4 col-lg-4 col-xl-4 col-6">
-										<input type="hidden" name="address_id" value="197">
-										<div class="form-row" style="display:none">
-											<div class="form-group w-100" style="height:55px">
-												<label for="cc_number">CVV</label>
-												<input type="number" class="form-control hvr-float" min="0">
-												<div class="form-group" id="card-number"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
+                    <div class="col-6">
+                        <label for="expiry">Expiry</label>
+                        <div class="form-group" id="expiration-date"></div>
+                    </div>
 
-							<button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right">Paid Now</button>
+                    <div class="col-6">
+                        <label for="cvv">CVV</label>
+                        <div class="form-group" id="cvv"></div>
+                    </div>
+                </div>
+                <meta name="api_token" content="">
+                <input id="nonce" name="payment_method_nonce" type="hidden" /> --}}
+                <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right" disabled>@lang('front.paid_now')</button>
+            </form>
 						</div>
 					</div>
 				</div>
@@ -115,4 +112,8 @@
 	</div>
 </div>
 
+@endsection
+@section('script')
+<script src="{{asset('js/checkout.js')}}"></script>
+<script src="{{asset('js/paymentv2.js')}}"></script>
 @endsection

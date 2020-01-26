@@ -22,7 +22,18 @@ use App\OrderDetail;
 use App\Http\Middleware\Language;
 use Validator;
 use Mail;
-use Braintree_Gateway;
+//use Braintree_Gateway;
+use PayPal\Api\Item;
+use PayPal\Api\Payer;
+use PayPal\Api\Amount;
+use PayPal\Api\Details;
+use PayPal\Api\Payment;
+use PayPal\Api\ItemList;
+use PayPal\Api\WebProfile;
+use PayPal\Api\InputFields;
+use PayPal\Api\Transaction;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\PaymentExecution;
 class HomeController extends Controller
 {
     public function index()
@@ -399,6 +410,90 @@ class HomeController extends Controller
         $token = $gateway->ClientToken()->generate();
 
         return $token;
+    }
+
+    public function create_payment(Request $request)
+    {
+        $apiContext = new \PayPal\Rest\ApiContext(
+            new \PayPal\Auth\OAuthTokenCredential(
+                'AW-e1NvkRoUaHz5CujWzPFNW4NufX1Laf9qkviuJhGBJ2ezRCPtidMOpYPsmdV10_gC4boRYQSTaqTEE',     // ClientID
+                'EO9_yYqG7w2ILNZOWuFtqeth0Wr24MdrBeO51EL-srlE2jDHR0Q6MzLFl9EuI-IRLdk6YFXIzZW897DF'      // ClientSecret
+            )
+        );
+        $payer = new Payer();
+        $payer->setPaymentMethod("paypal");
+        $city = City::find(1);
+        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->sum('value');
+        $items = [];
+        foreach($carts as $cart){
+            $item = new Item();
+            $item->setName(Product::whereId($cart->product_id)->first()->title_en)
+                ->setCurrency('USD')
+                ->setQuantity($cart->quantity)
+                ->setSku($cart->product_id) // Similar to `item_number` in Classic API
+                ->setPrice($cart->price);
+            array_push($items,$item);
+        }
+        $itemList = new ItemList();
+        $itemList->setItems($items);
+        $details = new Details();
+        $details->setShipping($city->shipping_amount)
+            ->setTax(0.0)
+            ->setSubtotal($total_price -$count_coupon);
+        $amount = new Amount();
+        $amount->setCurrency("USD")
+            ->setTotal(($total_price + $city->shipping_amount)-$count_coupon)
+            ->setDetails($details);
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment description")
+            ->setInvoiceNumber(uniqid());
+        $redirectUrls = new RedirectUrls();
+        $redirectUrls->setReturnUrl(url('/clients/payment'))
+            ->setCancelUrl(url('/clients/payment'));
+        // Add NO SHIPPING OPTION
+        $inputFields = new InputFields();
+        $inputFields->setNoShipping(1);
+        $webProfile = new WebProfile();
+        $webProfile->setName('test' . uniqid())->setInputFields($inputFields);
+        $webProfileId = $webProfile->create($apiContext)->getId();
+        $payment = new Payment();
+        $payment->setExperienceProfileId($webProfileId); // no shipping
+        $payment->setIntent("sale")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions(array($transaction));
+        try {
+            $payment->create($apiContext);
+        } catch (PayPal\Exception\PayPalConnectionException $ex) {
+            echo $ex;
+            exit(1);
+        }
+        return $payment;
+    }
+    public function execute_payment(Request $request)
+    {
+        $apiContext = new \PayPal\Rest\ApiContext(
+            new \PayPal\Auth\OAuthTokenCredential(
+                'AW-e1NvkRoUaHz5CujWzPFNW4NufX1Laf9qkviuJhGBJ2ezRCPtidMOpYPsmdV10_gC4boRYQSTaqTEE',     // ClientID
+                'EO9_yYqG7w2ILNZOWuFtqeth0Wr24MdrBeO51EL-srlE2jDHR0Q6MzLFl9EuI-IRLdk6YFXIzZW897DF'      // ClientSecret
+            )
+        );
+        $paymentId = $request->paymentID;
+        $payment = Payment::get($paymentId, $apiContext);
+        $execution = new PaymentExecution();
+        $execution->setPayerId($request->payerID);
+        try {
+            $result = $payment->execute($execution, $apiContext);
+        } catch (Exception $ex) {
+            echo $ex;
+            exit(1);
+        }
+        return $result;
     }
 
     public function make_order(Request $request)
@@ -995,6 +1090,153 @@ class HomeController extends Controller
             $cart->save();
         }
         return response()->json(['status' => 'success' , 'data' => 'update will']);
+    }
+
+    public function create_paymentv2(Request $request)
+    {
+        $apiContext = new \PayPal\Rest\ApiContext(
+            new \PayPal\Auth\OAuthTokenCredential(
+                env('client_id'),
+                env('client_secret')
+            )
+        );
+        $payer = new Payer();
+        $payer->setPaymentMethod("paypal");
+        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->sum('value');
+        $items = [];
+        foreach($carts as $cart){
+            $item = new Item();
+            $product = Product::whereId($cart->product_id)->first();
+            $item->setName($product->getTranslation('title',getCode()))
+                ->setCurrency('USD')
+                ->setQuantity($cart->quantity)
+                ->setSku($cart->product_id) // Similar to `item_number` in Classic API
+                ->setPrice($cart->price);
+            array_push($items,$item);
+        }
+        $itemList = new ItemList();
+        $itemList->setItems($items);
+        $details = new Details();
+        $details->setShipping($address->city->shipping_amount  - $count_coupon)
+            ->setTax(0.0)
+            ->setSubtotal($total_price);
+        $amount = new Amount();
+        $amount->setCurrency("USD")
+            ->setTotal($total_price + ($address->city->shipping_amount  - $count_coupon))
+            ->setDetails($details);
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment description")
+            ->setInvoiceNumber(uniqid());
+        $redirectUrls = new RedirectUrls();
+        $redirectUrls->setReturnUrl(url('/clients/paymentv2'))
+            ->setCancelUrl(url('/clients/paymentv2'));
+        // Add NO SHIPPING OPTION
+        $inputFields = new InputFields();
+        $inputFields->setNoShipping(1);
+        $webProfile = new WebProfile();
+        $webProfile->setName('test' . uniqid())->setInputFields($inputFields);
+        $webProfileId = $webProfile->create($apiContext)->getId();
+        $payment = new Payment();
+        $payment->setExperienceProfileId($webProfileId); // no shipping
+        $payment->setIntent("sale")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions(array($transaction));
+        try {
+            $payment->create($apiContext);
+        } catch (PayPal\Exception\PayPalConnectionException $ex) {
+            echo $ex;
+            exit(1);
+        }
+        return $payment;
+    }
+    public function execute_paymentv2(Request $request)
+    {
+        $apiContext = new \PayPal\Rest\ApiContext(
+            new \PayPal\Auth\OAuthTokenCredential(
+              env('client_id'),
+              env('client_secret')
+            )
+        );
+        $paymentId = $request->paymentID;
+        $payment = Payment::get($paymentId, $apiContext);
+        $execution = new PaymentExecution();
+        $execution->setPayerId($request->payerID);
+        try {
+            $result = $payment->execute($execution, $apiContext);
+        } catch (Exception $ex) {
+            echo $ex;
+            exit(1);
+        }
+        return $result;
+    }
+
+    public function make_orderv2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'address_id' => 'required',
+            'payment' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $city = City::find($request->address_id);
+        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = 0;
+        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
+        foreach($coupons as $coupon){
+            $count_coupon += $coupon->value;
+            $coupon->used = 2;
+            $coupon->save();
+        }
+        $order = Order::create([
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address_id' =>$address->id,
+            'shipping_amount' =>$city->shipping_amount,
+            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
+            'lang' => getCode(),
+            'payment' => $request->payment
+        ]);
+        foreach($carts as $cart){
+            $detail = OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' =>$cart->product_id,
+                'quantity' =>$cart->quantity,
+                'price' =>$cart->price,
+                'total_price' =>$cart->total_price,
+            ]);
+            $cart->delete();
+        }
+        $client = \Auth::guard('client')->user();
+        Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+            $m->from($client->email, __('front.order'));
+            $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+        });
+        $link = url('order/'.$order->id);
+        send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+        return redirect('clients/thanksv2');
+    }
+
+    public function choose_addressv2()
+    {
+       return view('frontv2.order_address');
+    }
+
+    public function paymentv2()
+    {
+        return view('frontv2.payment');
+    }
+
+    public function thanksv2()
+    {
+        return view('frontv2.thanks');
     }
 
     public function logoutv2()
