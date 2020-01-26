@@ -1226,7 +1226,9 @@ class HomeController extends Controller
 
     public function choose_addressv2()
     {
-       return view('frontv2.order_address');
+      $countrys = Governorate::all();
+      $citys    = City::all();
+       return view('frontv2.order_address',compact('countrys','citys'));
     }
 
     public function paymentv2()

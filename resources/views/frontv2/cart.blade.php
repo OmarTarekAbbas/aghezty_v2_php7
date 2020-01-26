@@ -214,7 +214,7 @@
                   </div>
 
                   <div class="cart_checkout w-100 my-3">
-                    <button onclick="location.href ='{{route('front.home.checkout.get')}}'" class="btn w-100 text-uppercase font-weight-bold hvr-wobble-to-bottom-right">@lang('front.continue_buy')</button>
+                    <button onclick="location.href ='{{route('front.home.checkout.address')}}'" class="btn w-100 text-uppercase font-weight-bold hvr-wobble-to-bottom-right">@lang('front.continue_buy')</button>
                   </div>
                 </div>
               </div>

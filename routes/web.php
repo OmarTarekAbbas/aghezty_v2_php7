@@ -35,7 +35,7 @@ Route::prefix('clients')->group(function() {
     Route::get('cart','front\HomeController@my_cart');
 
     /* Start Baher Routes */
-    Route::get('order_addressv2','front\HomeController@order_addressv2');
+    //Route::get('order_addressv2','front\HomeController@order_addressv2');
 
     // Route::get('contact_usv2',function(){
     //     return view('frontv2.contact_us');
@@ -116,7 +116,8 @@ Route::prefix('clients')->group(function() {
         Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
         Route::get('paymentv2','front\HomeController@paymentv2')->name('front.home.checkout.get');
         Route::post('paymentv2','front\HomeController@make_orderv2')->name('front.home.checkout.submit');
-        Route::get('thanksv2','front\HomeController@thanksv2');
+        Route::get('thanksv2','front\HomeController@thanksv2')->name('front.home.checkout.thanks');
+        Route::get('order_addressv2','front\HomeController@choose_addressv2')->name('front.home.checkout.address');
    });
 
     /*************** designv2 routes ****/

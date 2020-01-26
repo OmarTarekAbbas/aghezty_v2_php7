@@ -116,7 +116,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <a class="shopping_cart_img d-sm-block d-md-block d-lg-none" href="{{url('clients/cartv2')}}">
         <span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
 				<img class="d-block m-auto w-100" src="{{url('public/frontv2/images/cart-dark.png')}}" alt="Logo">
@@ -699,9 +699,25 @@
                 'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
             }
         });
-		</script>
-
-        @yield('script')
-        </body>
+    </script>
+    <script src="{{url('js/pusher.min.js')}}"></script>
+    <script src="{{url('js/pusher_config.js')}}"></script>
+    <script>
+      channel = pusher.subscribe('product');
+      channel.bind('product-event', function(data) {
+          var notification = new window.Notification("{{__('front.title')}}!", {
+              body: data.message,
+              icon: "{{url('front/img/logo_2.png')}}",
+          });
+          notification.onclick = function(event) {
+              event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+              var new_window = window.open('','_blank'); //open empty window(tab)
+              new_window.location = data.url; //set url of newly created window(tab) and focus
+              this.close()
+          };
+      })
+    </script>
+    @yield('script')
+    </body>
 
         </html>
