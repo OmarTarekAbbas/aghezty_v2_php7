@@ -428,7 +428,7 @@ $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
   });
 })
 
-$('#button_jq').click(function(){
+$('#button_jq , .fa-sliders-h').click(function(){
   //$(this).prop('disabled',true)
   if($('#exampleModal').hasClass('show')){
     $('.modal-backdrop').remove();
