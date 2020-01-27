@@ -379,14 +379,14 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'address_id' => 'required',
             'payment' => 'required',
+            'carts' => 'required|array'
         ]);
         if ($validator->fails()) {
             return response()->json(['data' => $validator->errors()->all() , 'status' => 'error' , 'message' => 'Error In Data']);
         }
         $address = ClientAddress::find($request->address_id);
         $city = \App\City::find($address->city_id);
-        $carts =  Cart::where('client_id',\Auth::user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::user()->id)->sum('total_price');
+        $total_price = array_sum(array_column($request->carts, 'total_price'));
         $count_coupon = 0;
         $coupons = \App\Coupon::where('client_id',\Auth::user()->id)->where('used',1)->get();
         foreach($coupons as $coupon){
@@ -402,37 +402,13 @@ class HomeController extends Controller
             'lang' => getCode(),
             'payment' => $request->payment
         ]);
-        foreach($carts as $cart){
+        foreach($request->carts as $cart){
             $detail = OrderDetail::create([
                 'order_id' => $order->id,
-                'product_id' =>$cart->product_id,
-                'quantity' =>$cart->quantity,
-                'price' =>$cart->price,
-                'total_price' =>$cart->total_price,
-            ]);
-            $cart->delete();
-        }
-        $check = $request->payment;
-        if($check == 2){
-            $gateway = new Braintree_Gateway([
-                'environment' => config('services.braintree.environment'),
-                'merchantId' => config('services.braintree.merchantId'),
-                'publicKey' => config('services.braintree.publicKey'),
-                'privateKey' => config('services.braintree.privateKey')
-            ]);
-
-            $nonce = $request->payment_method_nonce;
-            $result = $gateway->transaction()->sale([
-                'amount' => ($total_price + $city->shipping_amount)-$count_coupon,
-                'paymentMethodNonce' => $nonce,
-                'customer' => [
-                    'firstName' => \Auth::user()->name,
-                    'lastName' => \Auth::user()->name,
-                    'email' => \Auth::user()->email,
-                ],
-                'options' => [
-                    'submitForSettlement' => true
-                ]
+                'product_id' =>$cart['product_id'],
+                'quantity' =>$cart['quantity'],
+                'price' =>$cart['price'],
+                'total_price' =>$cart['total_price'],
             ]);
         }
         $client = \Auth::user();
