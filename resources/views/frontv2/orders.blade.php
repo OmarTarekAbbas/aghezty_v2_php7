@@ -46,7 +46,7 @@
                           <table id="tablePreview" class="table table-sm table-hover">
                             <!--Table body-->
                             <div class="table_title">
-                              <h3>@lang('front.order') {{$key+1}}</h3>
+                              <h3> <a href="{{route('front.home.inner.order',['id' => $order->id])}}"> @lang('front.order') {{$key+1}} </a> </h3>
                             </div>
 
                             <tbody>
@@ -58,7 +58,7 @@
                               <tr>
                                 <th>@lang('front.product_image')</th>
                                 <td>
-                                  <a href="inner-page.php">
+                                  <a href="{{route('front.home.inner',['id' => $product->product_id])}}">
                                     <img class="product_image" src="{{product($product->product_id)->main_image}}" alt="Mobile">
                                   </a>
                                 </td>

@@ -1224,6 +1224,13 @@ class HomeController extends Controller
         return redirect('clients/thanksv2');
     }
 
+    public function myorderv2($id)
+    {
+      $order = Order::find($id);
+      $recently_added = Product::where('recently_added', 1)->get();
+      return view('frontv2.myorder',compact('order','recently_added'));
+    }
+
     public function choose_addressv2()
     {
       $countrys = Governorate::all();

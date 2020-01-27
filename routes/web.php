@@ -118,6 +118,7 @@ Route::prefix('clients')->group(function() {
         Route::post('paymentv2','front\HomeController@make_orderv2')->name('front.home.checkout.submit');
         Route::get('thanksv2','front\HomeController@thanksv2')->name('front.home.checkout.thanks');
         Route::get('order_addressv2','front\HomeController@choose_addressv2')->name('front.home.checkout.address');
+        Route::get('myorderv2/{id}','front\HomeController@myorderv2')->name('front.home.inner.order');
    });
 
     /*************** designv2 routes ****/

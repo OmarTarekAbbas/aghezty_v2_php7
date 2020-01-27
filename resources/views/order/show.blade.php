@@ -120,8 +120,8 @@
                             <p><strong>@lang('messages.shipping_amount'):</strong> <span>{{(int)$order->shipping_amount}}</span></p>
                             <p><strong>@lang('messages.price_after_shipping') :</strong> <span>{{$order->sum() + $order->shipping_amount}}</span></p>
                             @if((($order->sum() + $order->shipping_amount)-$order->total_price) > 0)
-                            <p><strong>@lang('messages.coupon.discount'):</strong> <span>{{($order->sum() + $order->shipping_amount) - $order->total_price}}</span></p>
-                            <p><strong>@lang('messages.total_price'):</strong> <span class="green"><strong>{{$order->total_price}}</strong></span></p>
+                            <p><strong>@lang('front.coupon.discount'):</strong> <span>{{($order->sum() + $order->shipping_amount) - $order->total_price}}</span></p>
+                            <p><strong>@lang('front.total_price_after_coupon'):</strong> <span class="green"><strong>{{$order->total_price}}</strong></span></p>
                             @endif
 
                         </div>
