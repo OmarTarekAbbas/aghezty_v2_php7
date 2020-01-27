@@ -46,7 +46,7 @@
                           <table id="tablePreview" class="table table-sm table-hover">
                             <!--Table body-->
                             <div class="table_title">
-                              <h3> <a href="{{route('front.home.inner.order',['id' => $order->id])}}"> @lang('front.order') {{$key+1}} </a> </h3>
+                              <h3> <a href="{{route('front.home.inner.order',['id' => $order->id])}}"> @lang('front.product_no') {{$key+1}} </a> </h3>
                             </div>
 
                             <tbody>

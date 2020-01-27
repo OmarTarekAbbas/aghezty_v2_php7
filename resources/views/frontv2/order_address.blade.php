@@ -38,7 +38,7 @@
                 <div class="card z-depth-0 bordered">
                   <div class="card-header" id="headingOne">
                     <h5 class="mb-0 d-flex">
-                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
                         @lang('front.my_address') {{$key+1}}
                       </button>
                     </h5>
@@ -49,7 +49,7 @@
                     </div>
                   </div>
 
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div id="collapse{{$key+1}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.update',['id' => $item->pivot->id])}}" method="post">
                       @csrf
                       <div class="card-body">

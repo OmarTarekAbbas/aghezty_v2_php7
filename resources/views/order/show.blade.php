@@ -94,7 +94,7 @@
                                     <td>{{$value->quantity}}</td>
                                     <td>{{$value->total_price}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-success show-tooltip" title="Show Product" href="{{url("clients/product/".$value->product->id)}}" data-original-title="Show Product"><i class="fa fa-forward"></i></a>
+                                        <a class="btn btn-sm btn-success show-tooltip" title="Show Product" href="{{route("front.home.inner",['id'=>$value->product->id])}}" data-original-title="Show Product"><i class="fa fa-forward"></i></a>
                                         {{-- <i class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></i> --}}
                                         {{-- <i class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("delete_order?product_id=".$value->id."&order_id=".$order->id)}}" title="Delete"><i class="fa fa-trash"></i></i> --}}
                                     </td>

@@ -67,7 +67,14 @@
 @else
 <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
 @endif
-
+<style>
+  .order_one .cart-aside .summary .summary-subtotal .subtotal-value::after, .order_two .cart-aside .summary .summary-subtotal .subtotal-value::after{
+    content:" @lang('front.egp')"
+  }
+  .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-value::after{
+    content:" @lang('front.egp')"
+  }
+  </style>
 </head>
 
 <body>

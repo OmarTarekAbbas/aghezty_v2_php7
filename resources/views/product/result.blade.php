@@ -3,7 +3,8 @@
     <thead>
     <tr>
         <th style="width:18px"><input type="checkbox" onclick="select_all('products')"></th>
-        <th>id</th>
+        <th>serial id</th>
+        <th>product id</th>
         <th>@lang('messages.category')</th>
         <th>@lang('messages.brands')</th>
         <th>@lang('messages.model')</th>
@@ -22,6 +23,7 @@
             <td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}"
                        class="roles" onclick="collect_selected(this)"></td>
             <td>{{$key+1}}</td>
+            <td>{{$value->id}}</td>
             <td>
                 @foreach($languages as $language)
                     <li><b>{{$language->title}}
@@ -60,7 +62,7 @@
             </td>
             <td>
                 <a class="btn btn-sm btn-info show-tooltip" title="Show Product"
-                   href="{{url("clients/product/".$value->id)}}" data-original-title="Show Product"><i
+                   href="{{route("front.home.inner",['id'=>$value->id])}}" data-original-title="Show Product"><i
                         class="fa fa-forward"></i></a>
                 @if(count($value->admin_rates) > 0)
                     <a class="btn btn-sm btn-primary show-tooltip" title="Show Rate"

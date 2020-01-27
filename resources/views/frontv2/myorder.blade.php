@@ -4,11 +4,6 @@
 <!-- Start Owl Carsoul -->
 
 <!-- End Owl Carsoul -->
-<style>
-.order_one .cart-aside .summary .summary-subtotal .subtotal-value::after, .order_two .cart-aside .summary .summary-subtotal .subtotal-value::after{
-  content:"@lang('front.egp')"
-}
-</style>
 <div class="main">
   <section class="order_one">
     <h3 class="text-center date_order">@lang('front.status')</h3>
@@ -28,7 +23,7 @@
         <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
             <h6 class="date_order text-center text-capitalize">@lang('front.admin_status.pending')</h6>
-            <i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
+            <i class="fas fa-check-circle fa-4x text-center {{$order->status === __('front.admin_status.pending') ? 'order_icon_check':''}}"></i>
           </div>
         </div>
 
@@ -36,14 +31,14 @@
         <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
             <h6 class="date_order text-center text-capitalize">@lang('front.admin_status.under_shipping')</h6>
-            <i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
+            <i class="fas fa-check-circle fa-4x text-center {{$order->status === __('front.admin_status.under_shipping') ? 'order_icon_check':''}}"></i>
           </div>
         </div>
 
         <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
-            <h6 class="date_order text-center text-capitalize">Finishd</h6>
-            <i class="fas fa-truck fa-2x text-center rounded-circle p-3 order_icon_track"></i>
+            <h6 class="date_order text-center text-capitalize">Finshed</h6>
+            <i class="fas fa-truck fa-2x text-center rounded-circle p-3 {{$order->status == 'Finshed' ? 'order_icon_check':'order_icon_track'}}"></i>
           </div>
         </div>
 
