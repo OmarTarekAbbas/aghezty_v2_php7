@@ -435,6 +435,7 @@ $('#button_jq , .fa-sliders-h').click(function(){
     $('#SL_balloon_obj').remove();
     $('#exampleModal').attr('aria-hidden',true)
     $('#exampleModal').css('display','none')
+    $('body').removeClass('modal-open')
   }
 })
 </script>
