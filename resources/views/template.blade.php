@@ -982,6 +982,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
 
             function delete_selected(table_name) {
+              console.log(selected_list);
+
                 var confirmation = confirm('Are you sure you want to delete this ?');
                 if (confirmation)
                 {
