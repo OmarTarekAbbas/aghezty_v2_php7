@@ -21,6 +21,9 @@ use App\Coupon;
 use App\OrderDetail;
 use App\Governorate;
 use App\City;
+use App\Advertisement;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 use Braintree_Gateway;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -74,6 +77,41 @@ class HomeController extends Controller
         }
     }
     // Make All Functionality Under Authorization Token
+    public function index()
+    {
+
+      $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
+      $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
+      $recently_added = Product::where('recently_added', 1)->get();
+      $selected_for_you = Product::where('selected_for_you', 1)->get();
+      $homepage_cat = Category::where('homepage', 1)->get();
+
+      if(count($recently_added) != 6){
+          $limit = 6 - count($recently_added);
+          $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
+          $recently_added = $recently_added->toBase()->merge($recently_addedR);
+      }
+
+      if(count($selected_for_you) != 6){
+          $limit = 6 - count($selected_for_you);
+          $selected_for_youR = Product::all()->random($limit);
+          $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+      }
+
+      if(count($homepage_cat) != 6){
+          $limit = 6 - count($homepage_cat);
+          $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+          $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
+      }
+      $data['slides']           = $slides;
+      $data['ads']              = $ads;
+      $data['recently_added']   = ProductResource::collection($recently_added);
+      $data['selected_for_you'] = ProductResource::collection($selected_for_you);
+      $data['homepage_cat']     = CategoryResource::collection($homepage_cat);
+
+      return response()->json(['status' => 'success' , 'data' => $data , 'message' => 'Home Page Data' ]);
+    }
+
     public function categorys(Request $request)
     {
         $language_id = Language::where('short_code', 'ar')->first()->id;
