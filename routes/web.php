@@ -35,9 +35,7 @@ Route::prefix('clients')->group(function() {
     Route::get('cart','front\HomeController@my_cart');
 
     /* Start Baher Routes */
-    // Route::get('cartv2',function(){
-    //     return view('frontv2.cart');
-    // });
+    //Route::get('order_addressv2','front\HomeController@order_addressv2');
 
     // Route::get('contact_usv2',function(){
     //     return view('frontv2.contact_us');
@@ -106,10 +104,25 @@ Route::prefix('clients')->group(function() {
         Route::post('payment','front\HomeController@make_order');
         Route::get('thanks','front\HomeController@thanks');
         Route::get('logout','front\HomeController@logout');
+
+        Route::post('updatedv2','front\HomeController@updatev2')->name('front.home.update');
+        Route::get('passwordv2','front\HomeController@get_passwordv2')->name('front.home.password');
+        Route::post('updated_passwordv2','front\HomeController@updated_passwordv2')->name('front.home.password.update');
+        Route::get('addressv2','front\HomeController@get_addressv2')->name('front.home.address');
+        Route::post('updated_addressv2/{id}','front\HomeController@updated_addressv2')->name('front.home.address.update');
+        Route::post('add_addressv2','front\HomeController@add_addressv2')->name('front.home.address.add');
+        Route::get('addressv2/{id}/delete','front\HomeController@delete_addressv2')->name('front.home.address.delete');
+        Route::get('ordersv2','front\HomeController@get_ordersv2')->name('front.home.order');
+        Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
+        Route::get('paymentv2','front\HomeController@paymentv2')->name('front.home.checkout.get');
+        Route::post('paymentv2','front\HomeController@make_orderv2')->name('front.home.checkout.submit');
+        Route::get('thanksv2','front\HomeController@thanksv2')->name('front.home.checkout.thanks');
+        Route::get('order_addressv2','front\HomeController@choose_addressv2')->name('front.home.checkout.address');
+        Route::get('myorderv2/{id}','front\HomeController@myorderv2')->name('front.home.inner.order');
    });
 
     /*************** designv2 routes ****/
-    Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');;
+    Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('contactv2', 'front\HomeController@contactusv2');
     Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
@@ -120,16 +133,7 @@ Route::prefix('clients')->group(function() {
     Route::post('/registerv2', 'Auth\ClientRegisterController@register')->name('front.client.register.submit');
     Route::get('/loginv2', 'Auth\ClientLoginController@showLoginForm')->name('front.client.login');
     Route::post('/loginv2', 'Auth\ClientLoginController@login')->name('front.client.login.submit');
-    Route::get('profilev2','front\HomeController@profilev2')->name('front.home.profile');
     Route::get('logoutv2','front\HomeController@logoutv2')->name('front.home.logout');
-    Route::post('updatedv2','front\HomeController@updatev2')->name('front.home.update');
-    Route::get('passwordv2','front\HomeController@get_passwordv2')->name('front.home.password');
-    Route::post('updated_passwordv2','front\HomeController@updated_passwordv2')->name('front.home.password.update');
-    Route::get('addressv2','front\HomeController@get_addressv2')->name('front.home.address');
-    Route::post('updated_addressv2/{id}','front\HomeController@updated_addressv2')->name('front.home.address.update');
-    Route::post('add_addressv2','front\HomeController@add_addressv2')->name('front.home.address.add');
-    Route::get('addressv2/{id}/delete','front\HomeController@delete_addressv2')->name('front.home.address.delete');
-    Route::get('ordersv2','front\HomeController@get_ordersv2')->name('front.home.order');
     Route::get('cartv2','front\HomeController@my_cartv2')->name('front.home.cart');
     Route::post('cartv2','front\HomeController@store_cartv2')->name('front.home.cart.add');
     Route::post('check_couponv2','front\HomeController@check_couponv2')->name('front.home.coupon');
@@ -139,3 +143,5 @@ Route::prefix('clients')->group(function() {
 
 });
 Route::get('token','front\HomeController@get_token');
+Route::post('create_paymentv2','front\HomeController@create_paymentv2');
+Route::post('execute_paymentv2','front\HomeController@execute_paymentv2');

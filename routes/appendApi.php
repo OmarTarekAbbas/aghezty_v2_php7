@@ -2,6 +2,7 @@
 Route::post('/register', 'HomeController@register');
 Route::post('/login', 'HomeController@login');
 
+Route::get('/home', 'HomeController@index');
 Route::get('/categorys', 'HomeController@categorys');
 Route::get('/products', 'HomeController@products');
 Route::get('/brands', 'HomeController@brands');

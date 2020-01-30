@@ -137,7 +137,7 @@ nav.container-fluid {
 
       <!-- Modal -->
       <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        aria-labelledby="exampleModalLabel" aria-hidden="false">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -426,6 +426,17 @@ $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
       $('.load').hide();
     },
   });
+})
+
+$('#button_jq , .fa-sliders-h').click(function(){
+  //$(this).prop('disabled',true)
+  if($('#exampleModal').hasClass('show')){
+    $('.modal-backdrop').remove();
+    $('#SL_balloon_obj').remove();
+    $('#exampleModal').attr('aria-hidden',true)
+    $('#exampleModal').css('display','none')
+    $('body').removeClass('modal-open')
+  }
 })
 </script>
 @endsection

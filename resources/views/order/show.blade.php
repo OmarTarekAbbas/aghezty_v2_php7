@@ -94,7 +94,7 @@
                                     <td>{{$value->quantity}}</td>
                                     <td>{{$value->total_price}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-success show-tooltip" title="Show Product" href="{{url("clients/product/".$value->product->id)}}" data-original-title="Show Product"><i class="fa fa-forward"></i></a>
+                                        <a class="btn btn-sm btn-success show-tooltip" title="Show Product" href="{{route("front.home.inner",['id'=>$value->product->id])}}" data-original-title="Show Product"><i class="fa fa-forward"></i></a>
                                         {{-- <i class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></i> --}}
                                         {{-- <i class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("delete_order?product_id=".$value->id."&order_id=".$order->id)}}" title="Delete"><i class="fa fa-trash"></i></i> --}}
                                     </td>
@@ -120,8 +120,8 @@
                             <p><strong>@lang('messages.shipping_amount'):</strong> <span>{{(int)$order->shipping_amount}}</span></p>
                             <p><strong>@lang('messages.price_after_shipping') :</strong> <span>{{$order->sum() + $order->shipping_amount}}</span></p>
                             @if((($order->sum() + $order->shipping_amount)-$order->total_price) > 0)
-                            <p><strong>@lang('messages.coupon.discount'):</strong> <span>{{($order->sum() + $order->shipping_amount) - $order->total_price}}</span></p>
-                            <p><strong>@lang('messages.total_price'):</strong> <span class="green"><strong>{{$order->total_price}}</strong></span></p>
+                            <p><strong>@lang('front.coupon.discount'):</strong> <span>{{($order->sum() + $order->shipping_amount) - $order->total_price}}</span></p>
+                            <p><strong>@lang('front.total_price_after_coupon'):</strong> <span class="green"><strong>{{$order->total_price}}</strong></span></p>
                             @endif
 
                         </div>

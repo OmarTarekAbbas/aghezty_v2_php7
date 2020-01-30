@@ -345,7 +345,7 @@ class ProductController extends Controller
         //    unlink(base_path().'/uploads/rbt/excel/'.$filename);
         $failures = $total_counter - $counter ;
         $request->session()->flash('success', $counter.' item(s) created successfully, and '.$failures.' item(s) failed');
-        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/products?sub_category_id='.$request->category_id.'&brand_id='.$request->brand_id.'')))->toOthers();
+        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productsv2?sub_category_id='.$request->category_id.'&brand_id='.$request->brand_id.'')))->toOthers();
         return redirect('category/'.$request->category_id);
     }
 

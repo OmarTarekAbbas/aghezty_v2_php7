@@ -47,6 +47,7 @@ return [
     'lang_ar' => 'عربى',
     'buy_now' => 'اشترى الان',
     'cart' => 'عربة التسوق',
+    'product_no' => 'منتج',
     'all_comment' => 'جميع التعيقات',
     'product_info' => 'تفاصيل المنتج',
     'rate_product' => 'تقيم المنتج',

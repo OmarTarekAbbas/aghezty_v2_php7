@@ -4,59 +4,52 @@
 <!-- Start Owl Carsoul -->
 
 <!-- End Owl Carsoul -->
-
 <div class="main">
   <section class="order_one">
-    <h3 class="text-center date_order">Order Status</h3>
+    <h3 class="text-center date_order">@lang('front.status')</h3>
 
     <div class="mobile_views">
       <div class="row">
         <div class="col-md-6 col-lg-6 col-xl-6 col-6 my-3">
-          <h4 class="date_order date_order_1 text-left">Sep. 18,2019</h4>
+          <h4 class="date_order date_order_1 text-left">{{$order->created_at->format('M  d,Y')}}</h4>
         </div>
 
-        <div class="col-md-6 col-lg-6 col-xl-6 col-6 my-3">
-          <h4 class="date_order date_order_2 text-right">Sep. 25,2019</h4>
-        </div>
+        {{-- <div class="col-md-6 col-lg-6 col-xl-6 col-6 my-3">
+          <h4 class="date_order date_order_2 text-right">{{$order->created_at->format('M d,Y')}}</h4>
+        </div> --}}
       </div>
 
       <div class="row">
-        <div class="col-md-3 col-lg-3 col-xl-3 col-6">
+        <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
-            <h6 class="date_order text-center text-capitalize">Making Order</h6>
-            <i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
+            <h6 class="date_order text-center text-capitalize">@lang('front.admin_status.pending')</h6>
+            <i class="fas fa-check-circle fa-4x text-center {{$order->status === __('front.admin_status.pending') ? 'order_icon_check':''}}"></i>
           </div>
         </div>
 
-        <div class="col-md-3 col-lg-3 col-xl-3 col-6">
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
-            <h6 class="date_order text-center text-capitalize">Order Confirmed</h6>
-            <i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
+            <h6 class="date_order text-center text-capitalize">@lang('front.admin_status.under_shipping')</h6>
+            <i class="fas fa-check-circle fa-4x text-center {{$order->status === __('front.admin_status.under_shipping') ? 'order_icon_check':''}}"></i>
           </div>
         </div>
 
-        <div class="col-md-3 col-lg-3 col-xl-3 col-6">
+        <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
-            <h6 class="date_order text-center text-capitalize">Order under shipment</h6>
-            <i class="fas fa-check-circle fa-4x text-center order_icon_check"></i>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-lg-3 col-xl-3 col-6">
-          <div class="order_method text-center">
-            <h6 class="date_order text-center text-capitalize">order completed</h6>
-            <i class="fas fa-truck fa-2x text-center rounded-circle p-3 order_icon_track"></i>
+            <h6 class="date_order text-center text-capitalize">Finshed</h6>
+            <i class="fas fa-truck fa-2x text-center rounded-circle p-3 {{$order->status == 'Finshed' ? 'order_icon_check':'order_icon_track'}}"></i>
           </div>
         </div>
 
         <div class="col-md-12 col-lg-12 col-xl-12 col-12 mt-4">
-          <h3 class="date_order">Order info</h3>
+          <h3 class="date_order">@lang('messages.order_details')</h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12 col-lg-12 col-xl-12 col-12">
-          <h3 class="text-center w-25 m-auto rounded py-2 order_nm">Order No. #7654</h3>
+          <h3 class="text-center w-25 m-auto rounded py-2 order_nm">@lang('messages.order_number'). #{{$order->id}}</h3>
         </div>
       </div>
     </div>
@@ -64,84 +57,72 @@
 
   <section class="order_two">
     <div class="mobile_views">
+      @foreach ($order->products as $product)
       <div class="row mt-5">
         <div class="col-md-3 col-lg-5 col-xl-5 col-5">
           <h6 class="date_order">
-            Sony PlayStation 4 Slim, 1TB, 2 Controller, Black
+            {{product($product->product_id)->getTranslation('title',getCode())}}
           </h6>
 
-          <img src="{{url('public/frontv2/images/products/3.jpg')}}" class="img_order rounded img-thumbnail" alt="Fridge">
+          <img src="{{product($product->product_id)->main_image}}" class="img_order rounded img-thumbnail" alt="{{product($product->product_id)->getTranslation('title',getCode())}}">
         </div>
 
         <div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
-          <h6 class="date_order text-center">Price</h6>
-          <p class="date_order text-center">7500 LE</p>
+          <h6 class="date_order text-center">@lang('front.price')</h6>
+          <p class="date_order text-center">{{$product->price}}@lang('front.egp')</p>
         </div>
 
         <div class="col-md-3 col-lg-2 col-xl-2 col-2 p-0">
-          <h6 class="date_order text-center">Quantity</h6>
-          <p class="date_order text-center">2</p>
+          <h6 class="date_order text-center">@lang('front.quantity')</h6>
+          <p class="date_order text-center">{{$product->quantity}}</p>
         </div>
 
         <div class="col-md-3 col-lg-2 col-xl-2 col-2 text-right">
-          <h6 class="date_order text-center">Total</h6>
-          <p class="date_order text-center">15000 LE</p>
+          <h6 class="date_order text-center">@lang('front.total_price')</h6>
+          <p class="date_order text-center">{{$product->total_price}}  @lang('front.egp')</p>
         </div>
       </div>
-
-      <div class="row mt-5">
-        <div class="col-md-3 col-lg-5 col-xl-5 col-5">
-          <h6 class="date_order">
-            Samsung RT28M3424S8 253 L4 Star Inverter frost Free Refrigerator
-          </h6>
-
-          <img src="{{url('public/frontv2/images/products/fridge_1.jpg')}}" class="img_order rounded img-thumbnail" alt="Fridge">
-        </div>
-
-        <div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
-          <h6 class="date_order text-center">Price</h6>
-          <p class="date_order text-center">9850 LE</p>
-        </div>
-
-        <div class="col-md-3 col-lg-2 col-xl-2 col-2 p-0">
-          <h6 class="date_order text-center">Quantity</h6>
-          <p class="date_order text-center">1</p>
-        </div>
-
-        <div class="col-md-3 col-lg-2 col-xl-2 col-2 text-right">
-          <h6 class="date_order text-center">Total</h6>
-          <p class="date_order text-center">9850 LE</p>
-        </div>
-      </div>
+      @endforeach
 
       <div class="row">
         <div class="col-xl-12">
           <aside class="cart-aside w-100">
             <div class="summary w-100 p-3 my-3 border border-secondary bg-light text-dark">
               <div class="summary-total-items text-center">
-                <span class="total-items"></span> Order 1
+                <span class="total-items"></span> @lang('front.order') {{$order->id}}
               </div>
 
               <div class="summary-subtotal">
-                <div class="subtotal-title text-left w-50 float-left">Total Price</div>
-                <div class="subtotal-value final-value text-right w-50 float-right item-price">1450</div>
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price')</div>
+                <div class="subtotal-value text-right w-50 float-right">{{$order->sum()}}</div>
               </div>
 
               <div class="summary-subtotal">
-                <div class="subtotal-title text-left w-50 float-left">Shipping Amount</div>
-                <div class="subtotal-value final-value text-right w-50 float-right">50</div>
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.shipping_amount')</div>
+                <div class="subtotal-value final-value text-right w-50 float-right">{{(int)$order->shipping_amount}}</div>
               </div>
               <div class="summary-subtotal">
-                <div class="subtotal-title text-left w-50 float-left"> Total Price After Shipping</div>
-                <div class="subtotal-value final-value text-right w-50 float-right item-total">1500</div>
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price_after_shipping')</div>
+                <div class="subtotal-value  text-right w-50 float-right ">{{$order->sum() + $order->shipping_amount}}</div>
+              </div>
+
+              <div class="summary-subtotal">
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.coupon.discount')</div>
+                <div class="subtotal-value  text-right w-50 float-right ">{{($order->sum() + $order->shipping_amount) - $order->total_price}}</div>
+              </div>
+
+              <div class="summary-subtotal">
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price_after_coupon')</div>
+                <div class="subtotal-value  text-right w-50 float-right ">{{$order->total_price}}</div>
+              </div>
+
+              <div class="summary-subtotal">
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.address')</div>
+                <div class="final-value text-right w-50 float-right">{{$order->address->address}} , {{$order->address->city['city_'.getcode()]}}-{{$order->address->city->governorate['title_'.getcode()]}}</div>
               </div>
               <div class="summary-subtotal">
-                <div class="subtotal-title text-left w-50 float-left">My Addresses</div>
-                <div class="final-value text-right w-50 float-right">Nasrcity, Cairo, Egypt</div>
-              </div>
-              <div class="summary-subtotal">
-                <div class="subtotal-title text-left w-50 float-left">Status</div>
-                <div class="final-value text-right w-50 float-right">Pending</div>
+                <div class="subtotal-title text-left w-50 float-left">@lang('front.status')</div>
+                <div class="final-value text-right w-50 float-right">{{$order->status}}</div>
               </div>
             </div>
           </aside>
@@ -155,167 +136,53 @@
       <div class="product_view_type">
         <div class="product_title mb-3">
           <div class="title_left text-left font-weight-bold">
-            <strong class="recently_added_funnyTexty">Recently Added</strong>
+            <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong>
           </div>
 
           <div class="title_right text-right">
-            <button class="btn btn-dark">View More</button>
+            <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/1.jpg')}}" alt="product" class="w-100 d-block m-auto">
+          @foreach ($recently_added as $item)
+            <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
+              <div class="px-2 product_desc hvr-bob rounded">
+                <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
+                  <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 rounded d-block m-auto">
 
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
+                  @if($item->discount > 0)
+                  <div class="product-label text-center font-weight-bold">
+                    <span class="sale-product-icon">-{{$item->discount}}%</span>
+                  </div>
+                  @endif
+
+                  <div class="mt-1">
+                    <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
+                  </div>
+                </a>
+                @if ($item->price_after_discount >0)
+
+                <div class="price-box">
+                  <span class="regular-price">
+                    <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
+                  </span>
+
+                  <p class="old-price">
+                    <span class="price">
+                      {{$item->price}} @lang('front.egp') </span>
+                  </p>
                 </div>
-
-                <div>
-                  <p class="full_desc">2 Cozy Kids Buff Bean Bag, Solid Pattern, Waterproof</p>
+                @else
+                <div class="price-box">
+                  <span class="regular-price">
+                    <span class="price">{{$item->price}} @lang('front.egp') </span>
+                  </span>
                 </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">300 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">
-                    700 EGP </span>
-                </p>
+                @endif
               </div>
             </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/2.webp')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Arzum Okka - OK006 - Turkish Coffee Machine</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">1,900 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">
-                    2,200 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/3.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">7,100 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">
-                    8,999 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/4.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div>
-                  <p class="full_desc">Beko Front Loading Digital Washing Machine</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">6,680 EGP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/1.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">2 Cozy Kids Buff Bean Bag, Solid Pattern, Waterproof</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">300 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">
-                    700 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
-            <div class="px-2 product_desc hvr-bob rounded">
-              <a href="inner-page.php">
-                <img src="{{url('public/frontv2/images/products/3.jpg')}}" alt="product" class="w-100 d-block m-auto">
-
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-10%</span>
-                </div>
-
-                <div>
-                  <p class="full_desc">Sony PlayStation 4 Slim, 1TB, 2 Controller, Black</p>
-                </div>
-              </a>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price">7,100 EGP</span>
-                </span>
-
-                <p class="old-price">
-                  <span class="price">
-                    8,999 EGP </span>
-                </p>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>

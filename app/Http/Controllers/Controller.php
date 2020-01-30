@@ -34,7 +34,7 @@ class Controller extends BaseController
         $path = $this->file_build_path("app","Http","Controllers") ;
         if ($handle = opendir($path)) {
             while (false !== ($file = readdir($handle))) {
-                if ($file != "." && $file != ".." && $file!="Auth" && $file!="Controller.php" && $file!="ScaffoldInterface"&& $file!="front") {
+                if ($file != "." && $file != ".." && $file!="Auth" && $file!="Controller.php" && $file!="ScaffoldInterface"&& $file!="front"&& $file!="Api") {
                     $parsed_methods[explode('.php',$file)[0]] =
                         $this->get_methods($file) ;
                 }

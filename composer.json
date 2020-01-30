@@ -22,7 +22,8 @@
         "pusher/pusher-php-server": "~3.0",
         "spatie/laravel-permission": "^1.12",
         "stripe/stripe-php": "^7.2",
-        "thiagoalessio/tesseract_ocr": "^2.7"
+        "thiagoalessio/tesseract_ocr": "^2.7",
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

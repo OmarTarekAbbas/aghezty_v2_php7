@@ -67,7 +67,14 @@
 @else
 <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
 @endif
-
+<style>
+  .order_one .cart-aside .summary .summary-subtotal .subtotal-value::after, .order_two .cart-aside .summary .summary-subtotal .subtotal-value::after{
+    content:" @lang('front.egp')"
+  }
+  .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-value::after{
+    content:" @lang('front.egp')"
+  }
+  </style>
 </head>
 
 <body>
@@ -116,7 +123,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <a class="shopping_cart_img d-sm-block d-md-block d-lg-none" href="{{url('clients/cartv2')}}">
         <span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
 				<img class="d-block m-auto w-100" src="{{url('public/frontv2/images/cart-dark.png')}}" alt="Logo">
@@ -699,9 +706,48 @@
                 'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
             }
         });
-		</script>
+    </script>
+    <script src="{{url('js/pusher.min.js')}}"></script>
+    <script src="{{url('js/pusher_config.js')}}"></script>
+    <script>
+      channel = pusher.subscribe('product');
+      channel.bind('product-event', function(data) {
+        // Let's check whether notification permissions have already been granted
+        if (Notification.permission === "granted") {
+          // If it's okay let's create a notification
+          var notification = new window.Notification("{{__('front.title')}}!", {
+                body: data.message,
+                icon: "{{url('front/img/logo_2.png')}}",
+            });
+            notification.onclick = function(event) {
+                event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+                var new_window = window.open('','_blank'); //open empty window(tab)
+                new_window.location = data.url; //set url of newly created window(tab) and focus
+                this.close()
+            };
+        }
 
-        @yield('script')
-        </body>
+        // Otherwise, we need to ask the user for permission
+        else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then(function (permission) {
+            // If the user accepts, let's create a notification
+              if (permission === "granted") {
+                var notification = new window.Notification("{{__('front.title')}}!", {
+                  body: data.message,
+                  icon: "{{url('front/img/logo_2.png')}}",
+              });
+              notification.onclick = function(event) {
+                  event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+                  var new_window = window.open('','_blank'); //open empty window(tab)
+                  new_window.location = data.url; //set url of newly created window(tab) and focus
+                  this.close()
+              };
+            }
+          });
+        }
+      })
+    </script>
+    @yield('script')
+    </body>
 
         </html>

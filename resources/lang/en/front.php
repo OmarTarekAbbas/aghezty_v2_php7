@@ -45,6 +45,7 @@ return [
     'lang_ar' => 'العربية',
     'buy_now' => 'Buy Now',
     'cart' => 'Cart',
+    'product_no' => 'Product',
     'all_comment' => 'Comments',
     'product_info' => 'Product Information',
     'rate_product' => 'Rate Product',

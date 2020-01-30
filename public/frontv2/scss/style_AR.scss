@@ -2240,6 +2240,81 @@ body {
               font-weight: 700;
             }
           }
+
+          .checkbox_select_address {
+            height: 0;
+
+            input[type="checkbox"] {
+              display: none;
+              appearance: none;
+
+              &:checked+label {
+                &:after {
+                  transform: scale(1) rotate(0deg);
+                }
+              }
+            }
+
+            label {
+              position: relative;
+              cursor: pointer;
+              cursor: pointer;
+              font-size: 13px;
+              color: #777;
+
+              &:before {
+                content: "";
+                width: 2rem;
+                height: 2rem;
+                background-color: #343a40;
+                border: 1px solid #ccc;
+                position: absolute;
+                left: 3rem;
+                top: -2.80rem;
+                border-radius: 4px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+              }
+
+              &:after {
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                content: "";
+                position: absolute;
+                left: 3rem;
+                top: -2.80rem;
+                width: 2rem;
+                height: 2rem;
+                background-color: #2096f3;
+                border: 1px solid #2096f3;
+                color: #FFF;
+                font-size: 1.5rem;
+                line-height: 1.75rem;
+                text-align: center;
+                transform: scale(0) rotate(360deg);
+                transition: all 0.3s ease-in-out;
+                border-radius: 4px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+              }
+            }
+          }
+
+          .add_new_address {
+            position: relative;
+
+            i {
+              position: absolute;
+              left: 3.25rem;
+              top: 0.5rem;
+              color: #343a40;
+              font-size: 1.5rem;
+            }
+          }
         }
 
         .card-body {
@@ -3844,6 +3919,35 @@ body {
           padding: 8px;
 
           .card {
+            .card-header {
+              .checkbox_select_address {
+                label {
+                  &:before {
+                    content: "";
+                    width: 1.75rem !important;
+                    height: 1.75rem !important;
+                    left: 0.5rem !important;
+
+                  }
+
+                  &:after {
+                    left: 0.5rem !important;
+                    width: 1.75rem !important;
+                    height: 1.75rem !important;
+                  }
+                }
+              }
+
+              .add_new_address {
+                position: relative;
+
+                i {
+                  left: 0.6rem !important;
+                  font-size: 1.25rem !important;
+                }
+              }
+            }
+
             .card-body {
               padding: 5px 5px;
               margin-top: 1rem;
@@ -5047,6 +5151,42 @@ body {
           padding: 8px;
 
           .card {
+            .card-header {
+              h5 {
+                button {
+                  color: $black_color;
+                  font-weight: 700;
+                }
+              }
+
+              .checkbox_select_address {
+                label {
+                  &:before {
+                    content: "";
+                    width: 1.75rem !important;
+                    height: 1.75rem !important;
+                    left: 0.5rem !important;
+
+                  }
+
+                  &:after {
+                    left: 0.5rem !important;
+                    width: 1.75rem !important;
+                    height: 1.75rem !important;
+                  }
+                }
+              }
+
+              .add_new_address {
+                position: relative;
+
+                i {
+                  left: 0.7rem !important;
+                  font-size: 1.25rem !important;
+                }
+              }
+            }
+
             .card-body {
               padding: 5px 5px;
               margin-top: 1rem;

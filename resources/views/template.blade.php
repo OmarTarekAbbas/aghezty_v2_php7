@@ -817,16 +817,38 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                               audio.play();
                               $('.badge-important').html(parseInt($('.badge-important').html()) + 1)
                               _this.notify_count = _this.notify_count+1;
-                              var notification = new window.Notification("{{__('front.title')}}!", {
-                                    body: data.send_user.name+' '+data.message,
-                                    icon: "{{url('front/img/logo_2.png')}}",
-                                });
-                              notification.onclick = function(event) {
-                                event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
-                                var new_window = window.open('','_blank'); //open empty window(tab)
-                                new_window.location = data.link; //set url of newly created window(tab) and focus
-                                this.close()
-                            };
+                                 // Let's check whether notification permissions have already been granted
+                                  if (Notification.permission === "granted") {
+                                    // If it's okay let's create a notification
+                                      var notification = new window.Notification("{{__('front.title')}}!", {
+                                        body: data.send_user.name+' '+data.message,
+                                        icon: "{{url('front/img/logo_2.png')}}",
+                                      });
+                                    notification.onclick = function(event) {
+                                      event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+                                      var new_window = window.open('','_blank'); //open empty window(tab)
+                                      new_window.location = data.link; //set url of newly created window(tab) and focus
+                                      this.close()
+                                  };
+                                }
+
+                                // Otherwise, we need to ask the user for permission
+                                else if (Notification.permission !== "denied") {
+                                   Notification.requestPermission().then(function (permission) {
+                                    // If the user accepts, let's create a notification
+                                      var notification = new window.Notification("{{__('front.title')}}!", {
+                                      body: data.send_user.name+' '+data.message,
+                                      icon: "{{url('front/img/logo_2.png')}}",
+                                      });
+                                    notification.onclick = function(event) {
+                                      event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
+                                      var new_window = window.open('','_blank'); //open empty window(tab)
+                                      new_window.location = data.link; //set url of newly created window(tab) and focus
+                                      this.close()
+                                  };
+                                })
+                              }
+
                           }.bind(this));
                           var el = document.getElementById(this.containerId)
                           if(el){
@@ -960,6 +982,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
 
             function delete_selected(table_name) {
+              console.log(selected_list);
+
                 var confirmation = confirm('Are you sure you want to delete this ?');
                 if (confirmation)
                 {
