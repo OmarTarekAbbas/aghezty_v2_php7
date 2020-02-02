@@ -3,6 +3,7 @@ var submit = document.querySelector('button');
 var $form ;
 $('#radioThree').click(function(){
     $('.form-row').show()
+    $('.btn-pay').attr('style','display:none !important');
   if($('.has').hasClass('paypal-button')){
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
         path_name = '/aghezty_v2_php7'
@@ -45,7 +46,7 @@ $('#radioThree').click(function(){
 })
 $('#radioOne,#radioTwo').click(function(){
     $('.form-row').hide()
-    $('.btn-block').prop('disabled',false)
+    $('.btn-pay').show()
 })
 
 

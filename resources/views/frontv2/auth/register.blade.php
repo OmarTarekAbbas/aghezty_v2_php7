@@ -8,7 +8,7 @@
 		<div class="mobile_views">
 			<div class="log_in_bg rounded">
         @include('errors')
-        <form action="{{route('front.client.register.submit')}}" method="POST">
+        <form action="{{route('front.client.register.submit')}}" method="POST" enctype="multipart/form-data">
           @csrf
 					<div>
 						<div class="reg-title text-center mb-4">

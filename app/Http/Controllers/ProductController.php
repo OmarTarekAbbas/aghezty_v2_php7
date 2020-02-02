@@ -115,7 +115,8 @@ class ProductController extends Controller
         }
         broadcast(new Products('The New Product is Added You Can See It Now',url('clients/product/'.$product->id)))->toOthers();
         \Session::flash('success', 'Product Created Successfully');
-        return redirect('category/'.$request->category_id);
+        //return redirect('category/'.$request->category_id);
+        return redirect('product');
     }
 
     /**
@@ -346,7 +347,8 @@ class ProductController extends Controller
         $failures = $total_counter - $counter ;
         $request->session()->flash('success', $counter.' item(s) created successfully, and '.$failures.' item(s) failed');
         broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productsv2?sub_category_id='.$request->category_id.'&brand_id='.$request->brand_id.'')))->toOthers();
-        return redirect('category/'.$request->category_id);
+        //return redirect('category/'.$request->category_id);
+        return redirect('product');
     }
 
     public function getDownload()

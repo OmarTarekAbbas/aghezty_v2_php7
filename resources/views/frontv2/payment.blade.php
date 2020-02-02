@@ -102,7 +102,7 @@
                 </div>
                 <meta name="api_token" content="">
                 <input id="nonce" name="payment_method_nonce" type="hidden" /> --}}
-                <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right" disabled>@lang('front.paid_now')</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
             </form>
 						</div>
 					</div>
