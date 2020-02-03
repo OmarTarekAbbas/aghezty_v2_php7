@@ -79,7 +79,7 @@
         }
         function remove_image(event,key,item_id=null)
         {
-        
+
             event.target.parentElement.remove()
             counter_img.push(key)
             if(item_id){
@@ -93,9 +93,16 @@
 
 
         }
-
         $('.discount').keyup(function(){
             $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
+        })
+        $('#cate').change(function(){
+          if($(this).find("option:selected").text().toLowerCase() == 'tv'){
+            $('.inch').show()
+          }
+          else{
+            $('.inch').hide()
+          }
         })
     </script>
 @stop

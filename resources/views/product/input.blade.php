@@ -11,7 +11,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.category')<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        <select name="category_id"  class="form-control chosen-rtl" required>
+        <select name="category_id" id="cate" class="form-control chosen-rtl" required>
             @foreach ($categorys as $category)
                 @if(count($category->sub_cats) > 0)
                     <optgroup label="{{$category->title}}">
@@ -128,8 +128,8 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.inch_number')<span class="text-danger">*</span></label>
+<div class="form-group inch" style="display:{{($product && $product->inch) ? 'block' : 'none'}};">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.inch_number')</label>
     <div class="col-sm-9 col-lg-10 controls">
             {!! Form::number('inch',null,['placeholder'=>__('messages.inch_number'),'class'=>'form-control' , 'min' => 0]) !!}
     </div>
