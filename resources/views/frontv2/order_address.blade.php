@@ -44,8 +44,8 @@
                     </h5>
 
                     <div class="checkbox_select_address">
-                      <input onchange="location.href='{{route('front.home.checkout.get',['address_id' => $item->pivot->city_id])}}'" type="checkbox" name="" id="id-1" />
-                      <label for="id-1"></label>
+                      <input onchange="location.href='{{route('front.home.checkout.get',['address_id' => $item->pivot->city_id])}}'" type="checkbox" name="" id="id-{{$key+1}}" />
+                      <label for="id-{{$key+1}}"></label>
                     </div>
                   </div>
 

@@ -38,7 +38,7 @@ return [
     'settings' => 'ألاعدادات',
     'profile' => 'ألحساب',
     'logout' => 'تسجيل الخروج',
-    'send' => 'ارسال',
+    'send' => 'حفظ',
     'update' => 'تعديل',
     'request_product' => 'المنتجات الغير المتاحه',
     'campain' => [

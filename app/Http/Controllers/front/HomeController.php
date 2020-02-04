@@ -642,7 +642,8 @@ class HomeController extends Controller
 
     /*********************************************************** start design v2 *****/
 
-    public function indexv2(){
+    public function indexv2()
+    {
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
@@ -672,13 +673,15 @@ class HomeController extends Controller
 
     }
 
-    public function service_centerv2(){
+    public function service_centerv2()
+    {
 
         return view('frontv2.maintenance');
 
     }
 
-    public function contactusv2(){
+    public function contactusv2()
+    {
 
         return view('frontv2.contact_us');
 
@@ -1246,6 +1249,40 @@ class HomeController extends Controller
     public function thanksv2()
     {
         return view('frontv2.thanks');
+    }
+
+    public function is_availablev2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'governorate_id' => 'required',
+            'city_id' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $contact = Contact::create([
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'name'  => $request->name ,
+            'product_id' => $request->product_id,
+            'city_id' =>$request->city_id,
+            'lang' => getCode()
+        ]);
+        $products = Product::whereId($request->product_id)->get();
+        Mail::send('front.mail2', ['products' => $products , 'client' => $contact , 'subject' => __('front.new_request_for_this_product')], function ($m) use ($request) {
+            $m->from($request->email, __('front.order'));
+            $m->to(setting('super_mail'), __('front.title'))->subject(__('front.product'));
+        });
+        $link = url('unavailable');
+        // if(\Auth::guard('client')->check()){
+        //     send_notification('Request For Order #'.$request->product_id.' ',\Auth::guard('client')->user()->id,$link);
+        // }
+        \Session::flash('success', __('front.client_success_message') );
+        return back();
+
     }
 
     public function logoutv2()

@@ -115,7 +115,8 @@ class ProductController extends Controller
         }
         broadcast(new Products('The New Product is Added You Can See It Now',url('clients/product/'.$product->id)))->toOthers();
         \Session::flash('success', 'Product Created Successfully');
-        return redirect('category/'.$request->category_id);
+        //return redirect('category/'.$request->category_id);
+        return redirect('product');
     }
 
     /**
@@ -318,7 +319,7 @@ class ProductController extends Controller
                       $product->price_after_discount = $row->price - (($dis/100)*$row->price);
                     }
                     $product->stock = $row->stock;
-                    $product->inch = $row->inch;
+                    $product->inch = isset($row->inch) ? $row->inch : null;
                     $product->special = (strtolower($row->special) == 'yes') ? 1:0;
                     $product->active = (strtolower($row->active) == 'yes') ? 1:0;
                     $product->main_image = $row->main_image;
@@ -346,7 +347,8 @@ class ProductController extends Controller
         $failures = $total_counter - $counter ;
         $request->session()->flash('success', $counter.' item(s) created successfully, and '.$failures.' item(s) failed');
         broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productsv2?sub_category_id='.$request->category_id.'&brand_id='.$request->brand_id.'')))->toOthers();
-        return redirect('category/'.$request->category_id);
+        //return redirect('category/'.$request->category_id);
+        return redirect('product');
     }
 
     public function getDownload()

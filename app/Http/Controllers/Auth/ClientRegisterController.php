@@ -94,7 +94,7 @@ class ClientRegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:clients',
             'password' => 'required|string|min:6|confirmed',
             'phone' => 'unique:clients',
-
+            'image' => ''
         ]);
     }
 
@@ -106,11 +106,22 @@ class ClientRegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $path='image';
+        $img_name= 'png';
+        if(isset($data['image']) && is_file($data['image']))
+        {
+          $value    = $data['image'];
+          $path     = '/uploads/clients/'.date('Y-m-d').'/';
+          $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
+          $value->move(base_path($path),$img_name);
+        }
+
         return Client::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'image' =>  $img_name
         ]);
     }
 }

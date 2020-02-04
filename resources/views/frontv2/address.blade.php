@@ -48,7 +48,7 @@
                     </h5>
                   </div>
 
-                  <div id="collapse{{$key+1}}" class="collapse {{(!$key)? 'active' : ''}}" aria-labelledby="heading{{$key+1}}" data-parent="#accordionExample">
+                  <div id="collapse{{$key+1}}" class="collapse {{(!$key)? 'show' : ''}}" aria-labelledby="heading{{$key+1}}" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.update',['id' => $item->pivot->id])}}" method="post">
                       @csrf
                       <div class="card-body">
@@ -98,7 +98,7 @@
                     </h5>
                   </div>
 
-                  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.add')}}" method="post">
                       @csrf
                       <div class="card-body">

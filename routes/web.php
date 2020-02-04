@@ -15,6 +15,7 @@ get_static_routes() ;
 get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
 Route::get('/',function(){
+   \Session::put('applocale', 'ar');
     return redirect(route('front.home.index'));
 });
 Route::prefix('clients')->group(function() {
@@ -129,6 +130,7 @@ Route::prefix('clients')->group(function() {
     Route::any('loadproductsv2', 'front\HomeController@load_productsv2');
     Route::get('productv2/{id}', 'front\HomeController@inner_productv2')->name('front.home.inner');
     Route::post('add_ratev2','front\HomeController@add_ratev2')->name('front.home.rate');
+    Route::post('is_availablev2','front\HomeController@is_availablev2')->name('front.home.available');
     Route::get('/registerv2', 'Auth\ClientRegisterController@showLoginForm')->name('front.client.register');
     Route::post('/registerv2', 'Auth\ClientRegisterController@register')->name('front.client.register.submit');
     Route::get('/loginv2', 'Auth\ClientLoginController@showLoginForm')->name('front.client.login');
