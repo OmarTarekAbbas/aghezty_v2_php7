@@ -992,6 +992,18 @@ body {
 .main #inner-page .quantity-form #add_to:hover, .main #inner-page .quantity-form #add_to:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
+.main #inner-page .quantity-form #notify_me {
+  background-color: #fe9901;
+  color: #FFF;
+  height: 48px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 6.5rem;
+  width: 87%;
+}
+.main #inner-page .quantity-form #notify_me:hover, .main #inner-page .quantity-form #notify_me:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+}
 .main #inner-page .rounded-social-buttons .social-button {
   display: inline-block;
   position: relative;
@@ -1126,6 +1138,40 @@ body {
 .main #inner-page .owl-next i {
   transform: scale(1, 6);
   color: #ccc;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog {
+  max-width: 65% !important;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content {
+  background-color: #FFF;
+  top: 9rem;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-header button.close {
+  opacity: 1;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms label {
+  float: right;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms input:hover, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms input:focus, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms input:active,
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms select:hover,
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms select:focus,
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms select:active {
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  border-color: #ffa50085;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button {
+  background-color: #fe9901;
+  color: #FFF;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button:hover, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button:focus, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button:active {
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close {
+  background-color: #fe9901;
+  color: #FFF;
+}
+.main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close:hover, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close:focus, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close:active {
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
 .main .inner_table_desc {
   text-align: right;
@@ -2662,6 +2708,13 @@ body {
   .main #inner-page .info #add_to {
     width: 70% !important;
   }
+  .main #inner-page .info #notify_me {
+    width: 100% !important;
+    margin-left: 0.25rem;
+  }
+  .main #inner-page .info .col-md-12.padding_right_mob {
+    padding-left: 0 !important;
+  }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
     margin-top: 5% !important;
@@ -2683,6 +2736,12 @@ body {
 .main #inner-page .rounded-social-buttons .social-button .instagram_icon,
 .main #inner-page .rounded-social-buttons .social-button .linkedin_icon {
     font-size: 1.5rem;
+  }
+  .main .model_notify_me #notify_me_modal .modal-dialog {
+    max-width: 95% !important;
+  }
+  .main .model_notify_me #notify_me_modal .modal-dialog .modal-content {
+    top: 2rem;
   }
   .main .inner_table_desc .table_desc {
     max-width: 100%;
@@ -3470,6 +3529,13 @@ body {
   .main #inner-page .info #add_to {
     width: 70% !important;
   }
+  .main #inner-page .info #notify_me {
+    width: 94% !important;
+    margin-left: 1.5rem;
+  }
+  .main #inner-page .info .col-md-12.padding_right_mob {
+    padding-left: 0 !important;
+  }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
     margin-top: 5% !important;
@@ -3491,6 +3557,12 @@ body {
 .main #inner-page .rounded-social-buttons .social-button .instagram_icon,
 .main #inner-page .rounded-social-buttons .social-button .linkedin_icon {
     font-size: 1.5rem;
+  }
+  .main .model_notify_me #notify_me_modal .modal-dialog {
+    max-width: 95% !important;
+  }
+  .main .model_notify_me #notify_me_modal .modal-dialog .modal-content {
+    top: 2rem;
   }
   .main .inner_table_desc .table_desc {
     max-width: 100%;

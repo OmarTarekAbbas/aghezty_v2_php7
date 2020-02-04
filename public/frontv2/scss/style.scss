@@ -1168,6 +1168,20 @@ body {
           box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
         }
       }
+
+      #notify_me {
+        background-color: #fe9901;
+        color: #FFF;
+        height: 48px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 87%;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+        }
+      }
     }
 
     .rounded-social-buttons {
@@ -1337,6 +1351,68 @@ body {
     .owl-next i {
       transform: scale(1, 6);
       color: #ccc;
+    }
+  }
+
+  .model_notify_me {
+    #notify_me_modal {
+      .modal-dialog {
+        max-width: 65% !important;
+
+        .modal-content {
+          background-color: $white_color;
+          top: 9rem;
+
+          .modal-header {
+            button {
+              &.close {
+                opacity: 1;
+              }
+            }
+          }
+
+          .modal-body {
+            .forms {
+              input,
+              select {
+
+                &:hover,
+                &:focus,
+                &:active {
+                  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+                  border-color: #ffa50085;
+                }
+              }
+
+              .model_send {
+                button {
+                  background-color: #fe9901;
+                  color: $white_color;
+
+                  &:hover,
+                  &:focus,
+                  &:active {
+                    box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+                  }
+                }
+              }
+            }
+          }
+
+          .modal-footer {
+            .modal_foot_close {
+              background-color: #fe9901;
+              color: $white_color;
+
+              &:hover,
+              &:focus,
+              &:active {
+                box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+              }
+            }
+          }
+        }
+      }
     }
   }
 
@@ -3185,7 +3261,17 @@ body {
 
 
         #add_to {
-          width: 70% !important;
+          width: 72% !important;
+        }
+
+        #notify_me {
+          width: 100% !important;
+        }
+
+        .col-md-12 {
+          &.padding_right_mob {
+            padding-right: 0 !important;
+          }
         }
       }
 
@@ -3210,6 +3296,18 @@ body {
           .instagram_icon,
           .linkedin_icon {
             font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .model_notify_me {
+      #notify_me_modal {
+        .modal-dialog {
+          max-width: 95% !important;
+
+          .modal-content {
+            top: 2rem;
           }
         }
       }
@@ -3647,7 +3745,7 @@ body {
                   font-weight: 700;
                 }
               }
-    
+
               .checkbox_select_address {
                 label {
                   &:before {
@@ -3655,9 +3753,9 @@ body {
                     width: 1.75rem !important;
                     height: 1.75rem !important;
                     left: 14rem !important;
-    
+
                   }
-    
+
                   &:after {
                     left: 14rem !important;
                     width: 1.75rem !important;
@@ -3665,10 +3763,10 @@ body {
                   }
                 }
               }
-    
+
               .add_new_address {
                 position: relative;
-    
+
                 i {
                   left: -2rem !important;
                   font-size: 1.25rem !important;
@@ -4376,6 +4474,16 @@ body {
         #add_to {
           width: 70% !important;
         }
+
+        #notify_me {
+          width: 94% !important;
+        }
+
+        .col-md-12 {
+          &.padding_right_mob {
+            padding-right: 0 !important;
+          }
+        }
       }
 
       .rounded-social-buttons {
@@ -4399,6 +4507,18 @@ body {
           .instagram_icon,
           .linkedin_icon {
             font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .model_notify_me {
+      #notify_me_modal {
+        .modal-dialog {
+          max-width: 95% !important;
+
+          .modal-content {
+            top: 2rem;
           }
         }
       }
@@ -4832,7 +4952,7 @@ body {
                   font-weight: 700;
                 }
               }
-    
+
               .checkbox_select_address {
                 label {
                   &:before {
@@ -4840,9 +4960,9 @@ body {
                     width: 1.75rem !important;
                     height: 1.75rem !important;
                     left: 17rem !important;
-    
+
                   }
-    
+
                   &:after {
                     left: 17rem !important;
                     width: 1.75rem !important;
@@ -4850,10 +4970,10 @@ body {
                   }
                 }
               }
-    
+
               .add_new_address {
                 position: relative;
-    
+
                 i {
                   left: -2rem !important;
                   font-size: 1.25rem !important;
@@ -5944,6 +6064,7 @@ body {
     animation-timing-function: ease-out;
   }
 }
+
 /* End Animation For Flash Alert */
 
 /* End Animation */

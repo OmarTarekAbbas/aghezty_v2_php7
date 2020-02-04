@@ -30,8 +30,10 @@
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles.jpg" alt="mobiles"> -->
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.mobile'):__('front.offer')  }}</strong>
-                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.mobile') }}</strong>
+                    <strong
+                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.mobile'):__('front.offer')  }}</strong>
+                    <strong
+                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.mobile') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -82,7 +84,8 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from_to' => '6000,10000','search' => 'Mobile','offer' => 'offer'])}}">
+              <a
+                href="{{route('front.home.list',['from_to' => '6000,10000','search' => 'Mobile','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-6000-10000.jpg" alt="mobiles-6000-10000"> -->
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -136,8 +139,10 @@
 
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
-                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
+                    <strong
+                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
+                    <strong
+                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -273,7 +278,8 @@
 
             <div class="col-6">
               <div class="title_right text-right">
-                <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+                <a href="{{route('front.home.list',['last' => 'last'])}}"
+                  class="btn btn-dark">@lang('messages.view_more')</a>
               </div>
             </div>
           </div>
@@ -286,7 +292,8 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 rounded d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
+                  class="w-100 rounded d-block m-auto">
 
                 @if($item->discount > 0)
                 <div class="product-label text-center font-weight-bold">
@@ -342,7 +349,8 @@
               </div>
               <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
             </a>
-            <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">{{$item->getTranslation('title',getCode())}}</h4>
+            <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">
+              {{$item->getTranslation('title',getCode())}}</h4>
           </div>
         </div>
 
@@ -366,7 +374,8 @@
 
             <div class="col-6">
               <div class="title_right text-right">
-              <a href="{{route('front.home.list',['random' => 'random'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
+                <a href="{{route('front.home.list',['random' => 'random'])}}"
+                  class="btn btn-dark">@lang('messages.view_more')</a>
               </div>
             </div>
           </div>
@@ -379,7 +388,8 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="img_size w-75 d-block m-auto">
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
+                  class="img_size w-75 d-block m-auto">
 
                 @if($item->discount > 0)
                 <div class="product-label text-center font-weight-bold">
@@ -427,7 +437,7 @@
 @section('script')
 
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     var recently_added_funnyTexty = new Typed(".recently_added_funnyTexty", {
       strings: [$('.recently_added_funnyTexty').html()],
       typeSpeed: 150,
@@ -446,5 +456,6 @@
       loop: true
     });
   });
+
 </script>
 @endsection

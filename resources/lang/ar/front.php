@@ -46,6 +46,7 @@ return [
     'lang_en' => 'English',
     'lang_ar' => 'عربى',
     'buy_now' => 'اشترى الان',
+    'notify_me' => 'ابلغنى عند التوافر',
     'cart' => 'عربة التسوق',
     'product_no' => 'منتج',
     'all_comment' => 'جميع التعيقات',
