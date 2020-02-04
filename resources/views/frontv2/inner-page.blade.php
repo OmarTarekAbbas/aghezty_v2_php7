@@ -250,8 +250,9 @@ nav.container-fluid {
 
                         <div class="modal-body">
                             <form class="form-group mx-auto" style="width:90%"
-                                action="{{url('clients/is_availablev2')}}" method="post">
+                                action="{{url('clients/is_available')}}" method="post">
                                 {{ csrf_field() }}
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <div class="form-row">
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 col-12 text-dark">
                                         <label for="exampleFormControlInput3">@lang('front.auth.email') *</label>
@@ -296,7 +297,7 @@ nav.container-fluid {
 
                                     <div class="form-group col-md-12 col-lg-12 col-xl-12 col-12">
                                         <div class="model_send my-3 hvr-float">
-                                            <button type="button" class="btn w-100" style="background-color: #fe9901;color: #FFF;">@lang('front.send')</button>
+                                            <button type="submit" class="btn w-100" style="background-color: #fe9901;color: #FFF;">@lang('front.send')</button>
                                         </div>
                                     </div>
                                 </div>

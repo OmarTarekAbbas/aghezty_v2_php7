@@ -592,6 +592,7 @@ class HomeController extends Controller
 
     public function is_available(Request $request)
     {
+      //dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
