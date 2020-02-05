@@ -1278,9 +1278,9 @@ class HomeController extends Controller
             $m->to(setting('super_mail'), __('front.title'))->subject(__('front.product'));
         });
         $link = url('unavailable');
-        // if(\Auth::guard('client')->check()){
-        //     send_notification('Request For Order #'.$request->product_id.' ',\Auth::guard('client')->user()->id,$link);
-        // }
+        if(\Auth::guard('client')->check()){
+            send_notification('Request For unavailable Product #'.$request->product_id.' ',\Auth::guard('client')->user()->id,$link);
+        }
         \Session::flash('success', __('front.client_success_message') );
         return back();
 

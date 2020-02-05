@@ -39,7 +39,7 @@
                     </div>
                     <div class="note-text" style="display:table-cell; padding:0.3em 2em">
                         <h5>@if($order->status == 'Finshed')  @lang('front.mail.thanks') @lang('front.title') @else @lang('front.mail.info') @endif :)</h5>
-                        <h4>{{$subject}} @if($order->status == 'Finshed') @lang('front.mail.contact')  <a href="{{url('/clients/contact?lang='.$order->lang)}}">@lang('front.mail.link')</a> @endif. </h4>
+                        <h4>{{$subject}} @if($order->status == 'Finshed') @lang('front.mail.contact')  <a href="{{url('/clients/contactv2?lang='.$order->lang)}}">@lang('front.mail.link')</a> @endif. </h4>
                     </div>
                 </div>
                 @endif

@@ -6,6 +6,14 @@ nav.container-fluid {
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
+.notify_me{
+   background-color: #fe9901;
+    color: #FFF;
+    position: absolute;
+    left: 90px;
+    top: 0px;
+    height: 48px;
+}
 </style>
 
 <div class="main">
@@ -187,9 +195,9 @@ nav.container-fluid {
                                 id="add_to">@lang('front.buy_now')</button>
                             @else
                                 <button
-                                class="w-75 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right"
-                                id="add_to" id="notify_me" data-toggle="modal"
-                                data-target="#notify_me_modal">@lang('front.notify_me')</button>
+                                class="w-75 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me"
+                                data-toggle="modal"
+                                data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
                             @endif
                         </form>
                     </div>
@@ -250,7 +258,7 @@ nav.container-fluid {
 
                         <div class="modal-body">
                             <form class="form-group mx-auto" style="width:90%"
-                                action="{{url('clients/is_available')}}" method="post">
+                                action="{{route('front.home.available')}}" method="post">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <div class="form-row">
@@ -513,6 +521,32 @@ $('#add_to').click(function(e) {
         },
     });
 })
+$('#gover_add').change(function(){
+      $.ajax({
+      url: "{{url('clients/city')}}/"+$(this).val(),
+      type: "get",
+      success: function(data){
+      $('#add_city').empty();
+          for (let i = 0; i < data.length; i++) {
+              const element = '<option value="'+data[i].id+'">'+data[i].city+'</option>'
+              $('#add_city').append(element)
+          }
+      },
+      });
+  })
+  $(document).ready(function () {
+  $.ajax({
+      url: "{{url('clients/city')}}/"+$('#gover_add').val(),
+      type: "get",
+      success: function(data){
+      $('#add_city').empty();
+          for (let i = 0; i < data.length; i++) {
+              const element = '<option value="'+data[i].id+'">'+data[i].city+'</option>'
+              $('#add_city').append(element)
+          }
+      },
+      });
+  });
 </script>
 <script>
 var based_selection_typed = new Typed('#based_selection_typed', {
