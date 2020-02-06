@@ -115,8 +115,8 @@ class ProductController extends Controller
         }
         broadcast(new Products('The New Product is Added You Can See It Now',url('clients/product/'.$product->id)))->toOthers();
         \Session::flash('success', 'Product Created Successfully');
-        //return redirect('category/'.$request->category_id);
-        return redirect('product');
+        return redirect('category/'.$request->category_id);
+        //return redirect('product');
     }
 
     /**

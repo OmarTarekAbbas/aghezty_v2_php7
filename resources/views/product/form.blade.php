@@ -63,6 +63,16 @@
 
         $('#product').addClass('active');
         $('#product_create').addClass('active');
+
+        $('document').ready(function(){
+          if($('#cate').find("option:selected").text().toLowerCase() == 'tv'){
+            $('.inch').show()
+          }
+          else{
+            $('.inch').hide()
+          }
+        })
+        
         var counter_img = [];
         function loadFile(event)
         {
@@ -104,5 +114,7 @@
             $('.inch').hide()
           }
         })
+
+
     </script>
 @stop

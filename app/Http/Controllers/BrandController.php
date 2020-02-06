@@ -84,7 +84,7 @@ class BrandController extends Controller
     public function show($id,Request $request)
     {
         $brand = Brand::findOrFail($id);
-        $products = Product::where('brand_id',$id)->paginate(10);
+        $products = Product::where('brand_id',$id)->latest('created_at')->paginate(10);
         $languages = Language::all();
         if ($request->ajax()) {
             return view('product.result',compact('products','languages'));

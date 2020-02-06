@@ -89,7 +89,7 @@ class CategoryController extends Controller
     public function show($id,Request $request)
     {
         $category = Category::findOrFail($id);
-        $products = Product::where('category_id',$id)->paginate(10);
+        $products = Product::where('category_id',$id)->latest('created_at')->paginate(10);
         $languages = Language::all();
         if ($request->ajax()) {
             return view('product.result',compact('products','languages'));
