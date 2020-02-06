@@ -13,7 +13,7 @@ class MakeAllTableInnodb extends Migration
      */
     public function up()
     {
-      $res = \DB::select("SELECT  CONCAT('ALTER TABLE `', table_name, '` ENGINE=InnoDB;') AS sql_statements FROM  information_schema.tables AS tb WHERE  table_schema = 'aghezty2' AND  `ENGINE` = 'MyISAM' AND  `TABLE_TYPE` = 'BASE TABLE' ORDER BY table_name DESC");
+      $res = \DB::select("SELECT  CONCAT('ALTER TABLE `', table_name, '` ENGINE=InnoDB;') AS sql_statements FROM  information_schema.tables AS tb WHERE  table_schema = 'aghezty_v2_php7' AND  `ENGINE` = 'MyISAM' AND  `TABLE_TYPE` = 'BASE TABLE' ORDER BY table_name DESC");
       foreach ($res as $re) {
         \DB::statement($re->sql_statements);
       }

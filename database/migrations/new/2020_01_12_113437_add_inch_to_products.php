@@ -14,7 +14,7 @@ class AddInchToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('inch')->nullable();
+            $table->integer('inch')->nullable()->change();
         });
     }
 

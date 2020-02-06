@@ -14,8 +14,8 @@ class AddAttrToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->boolean('recently_added')->nullable();
-            $table->boolean('selected_for_you')->nullable();
+            $table->boolean('recently_added')->nullable()->change();;
+            $table->boolean('selected_for_you')->nullable()->change();;
         });
     }
 
