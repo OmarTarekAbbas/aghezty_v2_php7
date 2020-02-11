@@ -126,10 +126,10 @@ nav.container-fluid {
 
                         <div class="row price_disc_offer">
                             <h4 class="col-md-6 price text-primary font-weight-bold">
-                                {{($product->discount > 0)?$product->price_after_discount:$product->price}}
+                                {{number_format(($product->discount > 0)?$product->price_after_discount:$product->price)}}
                                 @lang('front.egp')</h4>
                             @if($product->discount)
-                            <h4 class="col-md-6 discount text-muted font-weight-bold">{{$product->price}}
+                            <h4 class="col-md-6 discount text-muted font-weight-bold">{{number_format($product->price)}}
                                 @lang('front.egp')</h4>
                             <style>
                             .main #inner-page .price_disc_offer .product-label .sale-product-icon .testtt::before {
@@ -375,12 +375,12 @@ nav.container-fluid {
                         <div class="price-box">
                             <span class="regular-price">
                                 <span
-                                    class="price font-weight-bold">{{($item->discount > 0)?$item->price_after_discount:$item->price}}
+                                    class="price font-weight-bold">{{number_format(($item->discount > 0)?$item->price_after_discount:$item->price)}}
                                     @lang('front.egp') </span>
                             </span>
                             @if($item->discount > 0)
                             <p class="old-price">
-                                <span class="price font-weight-bold">{{$item->price}} @lang('front.egp') </span>
+                                <span class="price font-weight-bold">{{number_format($item->price)}} @lang('front.egp') </span>
                             </p>
                             @endif
                         </div>

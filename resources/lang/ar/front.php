@@ -55,7 +55,7 @@ return [
     'add_comment' => 'اضافة تعليق',
     'your_comment' => 'تعليقك',
     'invoice' => 'الفاتورة',
-    'continue_buy' => 'متابعه الشراء',
+    'continue_buy' => 'ادفع الان',
     'choose_address' => 'اختر عنوان الشحن',
     'befor_address' => 'عنوانك السابق',
     'payment' => 'طرق الدفع',

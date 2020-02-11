@@ -1242,6 +1242,29 @@ class HomeController extends Controller
        return view('frontv2.order_address',compact('countrys','citys'));
     }
 
+    public function confirm_order($id)
+    {
+        $auth_carts = [];
+        $session_carts =[];
+        $total_price =0;
+        $city = City::whereId($id)->first();
+        if(\Auth::guard('client')->check()){
+            $auth_carts = \Auth::guard('client')->user()->carts;
+            $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+            if(!$city){
+                $city = \Auth::guard('client')->user()->cities[0];
+                $city = City::whereId($city->pivot->city_id)->first();
+            }
+        }
+        if(isset($_COOKIE['carts'])){
+            $session_carts = unserialize($_COOKIE['carts']);
+            for ($i=0; $i < count($session_carts) ; $i++) {
+                $total_price  += $session_carts[$i]['total_price'];
+            }
+        }
+        return view('frontv2.confirm_order',compact('auth_carts','session_carts','total_price','id','city'));
+    }
+
     public function paymentv2()
     {
         return view('frontv2.payment');

@@ -308,12 +308,12 @@ nav.container-fluid {
               <div class="price-box">
                 <span class="regular-price">
                   <span
-                    class="price font-weight-bold">{{($product->discount > 0)?$product->price_after_discount:$product->price}}
+                    class="price font-weight-bold">{{number_format(($product->discount > 0)?$product->price_after_discount:$product->price)}}
                     @lang('front.egp') </span>
                 </span>
                 @if($product->discount > 0)
                 <p class="old-price">
-                  <span class="price font-weight-bold">{{$product->price}} @lang('front.egp')  </span>
+                  <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp')  </span>
                 </p>
                 @endif
               </div>

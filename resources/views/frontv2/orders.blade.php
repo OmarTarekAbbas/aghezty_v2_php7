@@ -71,7 +71,7 @@
 
                               <tr>
                                 <th>@lang('front.price')</th>
-                                <td>{{$product->price}} <span>@lang('front.pound')</span></td>
+                                <td>{{number_format($product->price)}} <span>@lang('front.pound')</span></td>
                               </tr>
                               @if($product->discount)
                               <tr>
@@ -81,7 +81,7 @@
                               @endif
                               <tr>
                                 <th>@lang('front.total_price')</th>
-                                <td>{{$order->total_price - $order->shipping_amount}} <span>@lang('front.pound')</span></td>
+                                <td>{{number_format($product->total_price)}} <span>@lang('front.pound')</span></td>
                               </tr>
                             </tbody>
                             <!--Table body-->
@@ -101,16 +101,16 @@
 
                               <div class="summary-subtotal">
                                 <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price')</div>
-                                <div class="subtotal-value text-right w-50 float-right">{{$order->total_price - $order->shipping_amount}}</div>
+                                <div class="subtotal-value text-right w-50 float-right">{{number_format($order->total_price - $order->shipping_amount)}}</div>
                               </div>
 
                               <div class="summary-subtotal">
                                 <div class="subtotal-title text-left w-50 float-left">@lang('front.shipping_amount')</div>
-                                <div class="subtotal-value final-value text-right w-50 float-right">{{(int)$order->shipping_amount}}</div>
+                                <div class="subtotal-value final-value text-right w-50 float-right">{{number_format((int)$order->shipping_amount)}}</div>
                               </div>
                               <div class="summary-subtotal">
                                 <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price_after_shipping')</div>
-                                <div class="subtotal-value  text-right w-50 float-right ">{{$order->total_price}}</div>
+                                <div class="subtotal-value  text-right w-50 float-right ">{{number_format($order->total_price)}}</div>
                               </div>
                               <div class="summary-subtotal">
                                 <div class="subtotal-title text-left w-50 float-left">@lang('front.address')</div>
