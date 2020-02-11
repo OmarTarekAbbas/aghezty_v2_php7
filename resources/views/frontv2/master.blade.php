@@ -646,7 +646,8 @@
         <!-- typed JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.js"></script>
         <!-- Script JS -->
-	   <script src="{{url('public/frontv2/js/script.js')}}"></script>
+     <script src="{{url('public/frontv2/js/script.js')}}"></script>
+     <script src="{{url('js/vue.min.js')}}"></script>
 		@foreach ($categorys as $category)
 		@if($category->sub_cats->count() > 0)
 

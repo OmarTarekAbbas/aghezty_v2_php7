@@ -127,6 +127,21 @@ nav.container-fluid {
             </div>
           </div>
 
+          <div id="propertys">
+            <template v-for="(property,i) in properties_data">
+              <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{properties_data[i].title}}
+                <i class="fas fa-minus float-right"></i>
+              </button>
+
+              <div class="panel w-100 border border-light">
+                <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
+                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" type="checkbox" name="property_value_id[]" :value="property_value.id">
+                  <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id">@{{property_value.value}} </label>
+                </div>
+              </div>
+            </template>
+          </div>
+
           <input type="hidden" id="search_in" name="search" value="{{isset($_REQUEST['search'])?$_REQUEST['search']:''}}">
           <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
           <input type="hidden" id="ifrom_in"  name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
@@ -232,6 +247,22 @@ nav.container-fluid {
                   <label class="d-block text-capitalize" for="panel_39_mobile">@lang('front.offer') </label>
                 </div>
               </div>
+
+              <div id="propertys_mobile">
+                <template v-for="(property,i) in properties_data">
+                  <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{properties_data[i].title}}
+                    <i class="fas fa-minus float-right"></i>
+                  </button>
+
+                  <div class="panel w-100 border border-light">
+                    <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
+                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" name="property_value_id[]" :value="property_value.id">
+                      <label class="d-block text-capitalize" :for="'panel_prm'+property_value.id">@{{property_value.value}} </label>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
             </div>
 
           </div>
@@ -401,8 +432,9 @@ function load_content_data(start) {
 
 }
 
-$('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
+$(document).on('change','.sub_cat_id , .brand_id , .price , .offer , #sorted',function() {
   $('.load').show();
+  console.log($(this).val());
   $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
   if($(this).prop('checked')==false){
     str = $(this).attr('id')
@@ -427,7 +459,33 @@ $('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
     },
   });
 })
-
+$(document).on('change','.property',function() {
+  $('.load').show();
+  console.log($(this).val());
+  $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
+  if($(this).prop('checked')==false){
+    str = $(this).attr('id')
+    $(this).removeAttr('checked')
+    $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
+    $('#'+str.split('_mobile')[0]).removeAttr('checked')
+  }
+  start = 0
+  $.ajax({
+    url: '{{url("clients/loadproductsv2")}}?start=0',
+    type: "post",
+    data: $('#filter_form').serialize(),
+    success: function(data) {
+      if (data.html == '') {
+        action = 'active';
+        $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+      } else {
+        $('#grid_two').html(data.html);
+        action = 'inactive';
+      }
+      $('.load').hide();
+    },
+  });
+})
 $('#button_jq , .fa-sliders-h').click(function(){
   //$(this).prop('disabled',true)
   if($('#exampleModal').hasClass('show')){
@@ -438,5 +496,99 @@ $('#button_jq , .fa-sliders-h').click(function(){
     $('body').removeClass('modal-open')
   }
 })
+</script>
+
+<script>
+  const property = new Vue({
+    el:'#propertys',
+    data:{
+      category_id : [],
+      properties_data : [],
+    },
+    methods: {
+      setProprtyValue(event){
+        console.log(event.target.value);
+      }
+    },
+    watch: {
+      category_id:function(val){
+        var _this = this
+        if(val.length  > 0){
+          $.ajax({
+            type: "get",
+            data: {category_id:val},
+            url: "{{url('property')}}",
+            success: function(data,status){
+              _this.properties_data = data
+            }
+          });
+        }
+        else{
+          this.properties_data = []
+        }
+      }
+    },
+    created() {
+      var _this = this
+      @if(isset($_REQUEST['sub_category_id']))
+      this.category_id.push("{{$_REQUEST['sub_category_id']}}")
+      @endif
+      $('.sub_cat_id').change(function(){
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+        }
+        else{
+          _this.category_id.pop($(this).val())
+        }
+      })
+    }
+  })
+</script>
+
+<script>
+  const propertys_mobile = new Vue({
+    el:'#propertys_mobile',
+    data:{
+      category_id : [],
+      properties_data : [],
+    },
+    methods: {
+      setProprtyValue(event){
+        console.log(event.target.value);
+      }
+    },
+    watch: {
+      category_id:function(val){
+        var _this = this
+        if(val.length  > 0){
+          $.ajax({
+            type: "get",
+            data: {category_id:val},
+            url: "{{url('property')}}",
+            success: function(data,status){
+              _this.properties_data = data
+            }
+          });
+        }
+        else{
+          this.properties_data = []
+        }
+      }
+    },
+    created() {
+      var _this = this
+      @if(isset($_REQUEST['sub_category_id']))
+      this.category_id.push("{{$_REQUEST['sub_category_id']}}")
+      @endif
+      $('.sub_cat_id').change(function(){
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+        }
+        else{
+          _this.category_id.pop($(this).val())
+        }
+      })
+    }
+  })
 </script>
 @endsection

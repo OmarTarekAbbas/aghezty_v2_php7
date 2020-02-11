@@ -59,62 +59,81 @@
 
 @stop
 @section('script')
-    <script>
+<script>
+const property = new Vue({
+  el:'#propertys',
+  data:{
+    category_id : '',
+    properties_data : [],
+  },
+  methods: {
+    setProprtyValue(event){
+      console.log(event.target.value);
+    }
+  },
+  watch: {
+    category_id:function(val){
+      var _this = this
+      $.get("{{url('property?category_id=')}}"+val,function(data,status){
+          _this.properties_data = data
+      })
+    }
+  },
+  created() {
+    var _this = this
+    this.category_id = $('#cate').find("option:selected").val()
+    $('#cate').change(function(){
+      _this.category_id = $(this).find("option:selected").val()
+    })
+  },
+  mounted() {
+    var _this = this
+    this.category_id = $('#cate').find("option:selected").val()
+    $('#cate').change(function(){
+      _this.category_id = $(this).find("option:selected").val()
+    })
+  }
+})
+</script>
+<script>
 
-        $('#product').addClass('active');
-        $('#product_create').addClass('active');
+    $('#product').addClass('active');
+    $('#product_create').addClass('active');
 
-        $('document').ready(function(){
-          if($('#cate').find("option:selected").text().toLowerCase() == 'tv'){
-            $('.inch').show()
-          }
-          else{
-            $('.inch').hide()
-          }
-        })
-        
-        var counter_img = [];
-        function loadFile(event)
-        {
-            $('#append_image .new_img').empty()
-            for (var i = 0; i < event.target.files.length; i++) {
-                var image_url = URL.createObjectURL(event.target.files[i])
-                var x = ' <div class="col-xs-4">\
-                            <img width="100%" height="100px" src="'+image_url+'" alt="upload image">\
-                        </div>';
-                $('#append_image').css('display','block')
-                $('#append_image .new_img').append(x);
-            }
-
+    var counter_img = [];
+    function loadFile(event)
+    {
+        $('#append_image .new_img').empty()
+        for (var i = 0; i < event.target.files.length; i++) {
+            var image_url = URL.createObjectURL(event.target.files[i])
+            var x = ' <div class="col-xs-4">\
+                        <img width="100%" height="100px" src="'+image_url+'" alt="upload image">\
+                    </div>';
+            $('#append_image').css('display','block')
+            $('#append_image .new_img').append(x);
         }
-        function remove_image(event,key,item_id=null)
-        {
 
-            event.target.parentElement.remove()
-            counter_img.push(key)
-            if(item_id){
-                $.get("{{url('delete_image/')}}/"+item_id,function(data,status){
-                    console.log(status);
-                });
-            }
-            else{
-                $('#counter_image').val(counter_img)
-            }
+    }
 
+    function remove_image(event,key,item_id=null)
+    {
 
+        event.target.parentElement.remove()
+        counter_img.push(key)
+        if(item_id){
+            $.get("{{url('delete_image/')}}/"+item_id,function(data,status){
+                console.log(status);
+            });
         }
-        $('.discount').keyup(function(){
-            $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
-        })
-        $('#cate').change(function(){
-          if($(this).find("option:selected").text().toLowerCase() == 'tv'){
-            $('.inch').show()
-          }
-          else{
-            $('.inch').hide()
-          }
-        })
+        else{
+            $('#counter_image').val(counter_img)
+        }
 
 
-    </script>
+    }
+
+    $('.discount').keyup(function(){
+        $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
+    })
+</script>
 @stop

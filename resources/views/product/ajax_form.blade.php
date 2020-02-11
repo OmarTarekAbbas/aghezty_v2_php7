@@ -29,6 +29,42 @@
     @include('product.input',['buttonAction'=>'Edit','required'=>'  (optional)'])
 {!! Form::close() !!}
 <script>
+  const property = new Vue({
+    el:'#propertys',
+    data:{
+      category_id : '',
+      properties_data : [],
+    },
+    methods: {
+      setProprtyValue(event){
+        console.log(event.target.value);
+      }
+    },
+    watch: {
+      category_id:function(val){
+        var _this = this
+        $.get("{{url('property?category_id=')}}"+val,function(data,status){
+            _this.properties_data = data
+        })
+      }
+    },
+    created() {
+      var _this = this
+      this.category_id = $('#cate').find("option:selected").val()
+      $('#cate').change(function(){
+        _this.category_id = $(this).find("option:selected").val()
+      })
+    },
+    mounted() {
+      var _this = this
+      this.category_id = $('#cate').find("option:selected").val()
+      $('#cate').change(function(){
+        _this.category_id = $(this).find("option:selected").val()
+      })
+    }
+  })
+</script>
+<script>
     $('#product').addClass('active');
     $('#product_create').addClass('active');
     var counter_img = [];

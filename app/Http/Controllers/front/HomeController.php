@@ -733,6 +733,11 @@ class HomeController extends Controller
         if($request->has('random') && $request->random!=''){
           $products = $products->inRandomOrder();
         }
+        if($request->has('property_value_id')){
+          $products = $products->whereHas('pr_value', function($q) use ($request){
+            $q->whereIn('property_values.id', $request->property_value_id);
+          });
+        }
 
         $products = $products->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct',compact('products'));
@@ -782,6 +787,11 @@ class HomeController extends Controller
         }
         if($request->has('random') && $request->random!=''){
           $products = $products->inRandomOrder();
+        }
+        if($request->has('property_value_id')){
+          $products = $products->whereHas('pr_value', function($q) use ($request){
+            $q->whereIn('property_values.id', $request->property_value_id);
+          });
         }
 
         $products = $products->offset($request->start)->limit(get_limit_paginate())->get();

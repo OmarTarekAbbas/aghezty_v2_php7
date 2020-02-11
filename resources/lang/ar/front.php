@@ -153,4 +153,15 @@ return [
         'link' => 'الرابط',
         'info' => 'معلومات عن الطلب الخاص بكم'
     ],
+    'admin' => [
+      'proprty' => [
+        'title' => 'اسم الخصية',
+        'propertys' => 'الخصائص',
+        'category' => 'القسم'
+      ],
+      'property_value' => [
+          'value' => 'القيمه',
+          'property_valus' => 'قيم الخصائص'
+      ]
+    ],
 ];

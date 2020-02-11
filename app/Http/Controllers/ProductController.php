@@ -98,7 +98,7 @@ class ProductController extends Controller
             }
         }
         $product = new Product();
-        $product->fill($request->except('title','images','counter_img','description','short_description'));
+        $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id'));
 
         foreach ($request->short_description as $key => $value) {
             $product->setTranslation('title', $key, $category->getTranslation('title',$key).'-'.$brand->getTranslation('title',$key).'-'.$request->short_description[$key]);
@@ -110,6 +110,12 @@ class ProductController extends Controller
             $product->setTranslation('short_description', $key, $value);
         }
         $product->save();
+
+        if($request->has('property_value_id')){
+          $property_value_id = array_values(array_filter($request->property_value_id));
+          $product->pr_value()->sync($request->property_value_id);
+        }
+
         if ($request->has('images')){
             $product->images()->saveMany($images);
         }
@@ -158,7 +164,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validator = Validator::make($request->all(), [
             'title' => '',
             'main_image' => '',
@@ -212,6 +217,12 @@ class ProductController extends Controller
             $product->setTranslation('short_description', $key, $value);
         }
         $product->save();
+
+        if($request->has('property_value_id')){
+          $property_value_id = array_values(array_filter($request->property_value_id));
+          $product->pr_value()->sync($property_value_id);
+        }
+
         $product->update($request->except('title','images','counter_img','description','short_description'));
         if ($request->has('images')){
             $product->images()->saveMany($images);

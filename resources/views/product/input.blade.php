@@ -128,13 +128,6 @@
     </div>
 </div>
 
-<div class="form-group inch" style="display:{{($product && $product->inch) ? 'block' : 'none'}};">
-    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.inch_number')</label>
-    <div class="col-sm-9 col-lg-10 controls">
-            {!! Form::number('inch',null,['placeholder'=>__('messages.inch_number'),'class'=>'form-control' , 'min' => 0]) !!}
-    </div>
-</div>
-
 <div class="form-group">
     <div class="col-sm-6">
         <label class="col-sm-5 col-lg-4 control-label">@lang('messages.special')  </label>
@@ -201,7 +194,28 @@
         <input type="file" name="images[]"   accept="image/*" onchange="loadFile(event)" multiple>
     </div>
 </div>
-
+<div style="background:#fff;box-shadow:1px 1px 1px #eee;color:#000" id="propertys">
+  <p class="text-center">@lang('front.admin.property.propertys')</p>
+  <div class="form-group" v-for="(property,i) in properties_data">
+    <div class="col-sm-6">
+      <label class="col-sm-5 col-lg-4 control-label">@lang('front.admin.property.title')</label>
+      <div class="col-sm-7 col-lg-8 controls">
+        <select class="form-control">
+          <option :value="properties_data[i].id">@{{properties_data[i].title}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <label class="col-sm-5 col-lg-4 control-label">@lang('front.admin.property_value.value')</label>
+      <div class="col-sm-7 col-lg-8 controls" >
+        <select class="form-control" @change="setProprtyValue($event)" name="property_value_id[]">
+          <option value=""></option>
+          <option v-for="property_value in properties_data[i].pvalue" :value="property_value.id" @if($product) :selected="!!~jQuery.inArray(property_value.id,{{$product->pr_value->pluck('id') }}) ?'selected' : ''" @endif>@{{property_value.value}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
 <input type="hidden" id="counter_image" name="counter_img">
 <div class="form-group">
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
