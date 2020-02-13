@@ -681,6 +681,13 @@ class HomeController extends Controller
 
     }
 
+    public function about_mev2()
+    {
+
+        return view('frontv2.aboutme');
+
+    }
+
     public function contactusv2()
     {
 
