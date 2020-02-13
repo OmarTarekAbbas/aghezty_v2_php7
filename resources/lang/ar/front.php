@@ -1,6 +1,8 @@
 <?php
 return [
     'title' => 'اجهزتى',
+    'about_mev2' => 'من نحن',
+
     'search_title' => 'بحث مفصل',
     'close' => 'اغلاق',
     'search' => 'بحث',

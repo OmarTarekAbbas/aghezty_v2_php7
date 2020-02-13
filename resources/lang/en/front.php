@@ -1,5 +1,7 @@
 <?php
 return [
+  'about_mev2' => 'Who We Are',
+
     'title' => 'Aghezty',
     'search_title' => 'Search With Details',
     'close' => 'Close',
