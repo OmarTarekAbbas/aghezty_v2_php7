@@ -214,13 +214,13 @@ nav.container-fluid {
                         </a>
 
                         <a class="social-button whatsapp_link"
-                            href="https://api.whatsapp.com/send?text={{$product->getTranslation('title')}} url: {{route('front.home.inner',['id' => $product->id])}}!"
+                            href="https://api.whatsapp.com/send?text={{$product->getTranslation('title')}} url: {{route('front.home.inner',['id' => $product->id])}}"
                             title="Whatsapp">
                             <i class="fab fa-whatsapp whatsapp_icon"></i>
                         </a>
 
                         <a class="social-button twitter_link"
-                            href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id])}}!"
+                            href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id])}}"
                             target="_blank" title="Twitter">
                             <i class="fab fa-twitter twitter_icon"></i>
                         </a>
