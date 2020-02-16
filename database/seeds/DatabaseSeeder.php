@@ -57,5 +57,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(AdvertisementsTableSeeder::class);
         // $this->call(CouponsTableSeeder::class);
         // $this->call(NotificationsTableSeeder::class);
+        $this->call(ProductPropertiesTableSeeder::class);
+        $this->call(PropertiesTableSeeder::class);
+        $this->call(PropertyValuesTableSeeder::class);
     }
 }

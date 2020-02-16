@@ -17,9 +17,11 @@ use App\Cart;
 use App\Category;
 use App\Order;
 use App\Coupon;
+use App\Http\Resources\PropertyResource;
 use Storage;
 use App\OrderDetail;
-use App\Http\Middleware\Language;
+use App\Property;
+use App\Language;
 use Validator;
 use Mail;
 //use Braintree_Gateway;
@@ -710,13 +712,25 @@ class HomeController extends Controller
           $products = $products->whereBetween('price',explode(',',$request->from_to));
        }
         if($request->has('ifrom') && $request->ifrom !=''){
-            $products = $products->where('inch','>=',$request->ifrom);
+            $products = $products->whereHas('pr_value', function($q) use ($request){
+              $q->join('properties','property_values.property_id','=','properties.id');
+              $q->where('properties.title','LIKE' ,'%inch%');
+              $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'>=',$request->ifrom);
+            });
         }
         if($request->has('ito') && $request->ito!=''){
-            $products = $products->where('inch','=',$request->ito);
+            $products = $products->whereHas('pr_value', function($q) use ($request){
+              $q->join('properties','property_values.property_id','=','properties.id');
+              $q->where('properties.title','LIKE' ,'%inch%');
+              $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'=',$request->ito);
+            });
         }
         if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
-          $products = $products->whereBetween('inch',explode(',',$request->ifrom_ito));
+          $products = $products->whereHas('pr_value', function($q) use ($request){
+            $q->join('properties','property_values.property_id','=','properties.id');
+            $q->where('properties.title','LIKE' ,'%inch%');
+            $q->whereBetween(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),explode(',',$request->ifrom_ito));
+          });
        }
         if($request->has('search') && $request->search!=''){
           $products = $products->whereLike(['title'],$request->search);
@@ -765,13 +779,25 @@ class HomeController extends Controller
           $products = $products->whereBetween('price',explode(',',$request->from_to));
        }
         if($request->has('ifrom') && $request->ifrom !=''){
-            $products = $products->where('inch','>=',$request->ifrom);
+          $products = $products->whereHas('pr_value', function($q) use ($request){
+            $q->join('properties','property_values.property_id','=','properties.id');
+            $q->where('properties.title','LIKE' ,'%inch%');
+            $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'>=',$request->ifrom);
+          });
+        }
+        if($request->has('ito') && $request->ito!=''){
+            $products = $products->whereHas('pr_value', function($q) use ($request){
+              $q->join('properties','property_values.property_id','=','properties.id');
+              $q->where('properties.title','LIKE' ,'%inch%');
+              $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'=',$request->ito);
+            });
         }
         if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
-          $products = $products->whereBetween('inch',explode(',',$request->ifrom_ito));
-       }
-        if($request->has('ito') && $request->ito!=''){
-            $products = $products->where('inch','<',$request->ito);
+          $products = $products->whereHas('pr_value', function($q) use ($request){
+            $q->join('properties','property_values.property_id','=','properties.id');
+            $q->where('properties.title','LIKE' ,'%inch%');
+            $q->whereBetween(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),explode(',',$request->ifrom_ito));
+          });
         }
         if($request->has('search') && $request->search!=''){
           $products = $products->whereLike(['title'],$request->search);
@@ -1323,6 +1349,18 @@ class HomeController extends Controller
     {
         auth()->guard('client')->logout();
         return redirect(route('front.home.index'));
+    }
+
+    //helper function api
+    public function getProperty(Request $request)
+    {
+      $propertys = Property::with(['pvalue']);
+      if($request->has('category_id')){
+        $propertys = $propertys->whereIn('category_id',(array)$request->category_id);
+      }
+      $propertys = $propertys->get();
+      return (PropertyResource::collection($propertys));
+
     }
     /*********************************************************** end design v2 *******/
 

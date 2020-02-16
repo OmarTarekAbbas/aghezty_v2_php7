@@ -121,7 +121,7 @@ nav.container-fluid {
                         <div>
                             <h6 class="font-weight-bold d-inline-block">@lang('front.inner.avialable'):</h6>
                             <p class="d-inline-block px-1">
-                                {{$product->stock ? __('front.inner.in_stock') : ('front.inner.not_stock') }}</p>
+                                {{$product->stock ? __('front.inner.in_stock') : __('front.inner.not_stock') }}</p>
                         </div>
 
                         <div class="row price_disc_offer">
