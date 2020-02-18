@@ -22,7 +22,7 @@
 					<div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
 						<div class="card-body">
 							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
-								<div class="visa-cash input-group-prepend">
+								<div class="visa-cash input-group-prepend cash" for="radioOne">
 									<span class="span_input_radio">
 										<input type="radio" name="payment" value="1" form="checkout-form" id="radioOne">
 									</span>
@@ -38,7 +38,7 @@
 							</div>
 
 							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
-								<div class="visa-cash input-group-prepend">
+								<div class="visa-cash input-group-prepend cash" for="radioTwo">
 									<span class="span_input_radio">
 										<input type="radio" name="payment" value="3" form="checkout-form" id="radioTwo">
 									</span>
@@ -54,7 +54,7 @@
 							</div>
 
 							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
-								<div class="visa-cash input-group-prepend">
+								<div class="visa-cash input-group-prepend visa" for="radioThree">
 									<span class="span_input_radio ">
 										<input type="radio" name="payment" value="2" form="checkout-form" id="radioThree">
 									</span>

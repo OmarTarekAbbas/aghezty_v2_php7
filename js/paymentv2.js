@@ -1,7 +1,7 @@
 
 var submit = document.querySelector('button');
 var $form ;
-$('#radioThree').click(function(){
+$('#radioThree,.visa').click(function(){
     $('.form-row').show()
     $('.btn-pay').attr('style','display:none !important');
   if($('.has').hasClass('paypal-button')){
@@ -44,7 +44,7 @@ $('#radioThree').click(function(){
     $('#paypal-button').removeAttr('id')
   }
 })
-$('#radioOne,#radioTwo').click(function(){
+$('#radioOne,#radioTwo,.cash').click(function(){
     $('.form-row').hide()
     $('.btn-pay').show()
 })

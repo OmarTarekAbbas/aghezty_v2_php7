@@ -38,18 +38,18 @@
                 <div class="card z-depth-0 bordered">
                   <div class="card-header" id="headingOne">
                     <h5 class="mb-0 d-flex">
-                      <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
-                        @lang('front.my_address') {{$key+1}}
+                      <button class="btn btn-link text-center w-100" onclick="document.getElementById('id-{{$key+1}}').checked = !(document.getElementById('id-{{$key+1}}').checked);" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
+                        @lang('front.choose_address') {{$key+1}}
                       </button>
                     </h5>
 
                     <div class="checkbox_select_address">
-                      <input onchange="location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'" type="checkbox" name="" id="id-{{$key+1}}" />
-                      <label for="id-{{$key+1}}"></label>
+                      <input  type="checkbox" name="" id="id-{{$key+1}}" />
+                      <label for="id-{{$key+1}}">
                     </div>
                   </div>
 
-                  <div id="collapse{{$key+1}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div id="collapse{{$key+1}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.update',['id' => $item->pivot->id])}}" method="post">
                       @csrf
                       <div class="card-body">
@@ -58,7 +58,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>
-                            {!! Form::select("governorate_id", $countrys->pluck('title_'.getCode(),'id'),$item->governorate->id, ['required','class' => 'form-control gover_update']) !!}
+                            {!! Form::select("governorate_id", $countrys->pluck('title_'.getCode(),'id'),$item->governorate->id, ['required','class' => 'form-control gover_update' , 'disabled']) !!}
                           </div>
                         </div>
 
@@ -67,7 +67,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>
-                            {!! Form::select("city_id", $citys->pluck('city_'.getCode(),'id'),$item->pivot->city_id , ['required' , 'class' => 'form-control update_city']) !!}
+                            {!! Form::select("city_id", $citys->pluck('city_'.getCode(),'id'),$item->pivot->city_id , ['required' , 'class' => 'form-control update_city' , 'disabled']) !!}
                           </div>
                         </div>
 
@@ -75,13 +75,13 @@
                           <div class="input-group mb-2 w-75 m-auto hvr-float">
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
-                              <textarea class="p-3 w-100" placeholder="@lang('front.my_address') {{$key+1}}" cols="150" rows="2" name="address">{{$item->pivot->address}}</textarea>
+                              <textarea class="p-3 w-100" placeholder="@lang('front.my_address') {{$key+1}}" cols="150" rows="2" name="address" readonly>{{$item->pivot->address}}</textarea>
                             </div>
                           </div>
                         </div>
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                          <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.send')</button>
+                          <button type="button" onclick="location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.send')</button>
                         </div>
                       </div>
                     </form>
