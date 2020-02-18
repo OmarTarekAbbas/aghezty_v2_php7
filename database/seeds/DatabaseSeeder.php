@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(ScaffoldinterfacesTableSeeder::class);
         // $this->call(RelationsTableSeeder::class);
         // $this->call(PasswordResetsTableSeeder::class);
-         //$this->call(RoutesTableSeeder::class);
+        $this->call(RoutesTableSeeder::class);
         // $this->call(RoleRouteTableSeeder::class);
         // $this->call(TypesTableSeeder::class);
          //$this->call(SettingsTableSeeder::class);
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         // //$this->call(FactorySeeder::class);
         // //$this->call(MigrationsTableSeeder::class);
         // //factory(App\Client::class, 10)->create();
-        factory(App\ClientRate::class, 50)->create();
+        //factory(App\ClientRate::class, 50)->create();
         // //factory(App\ClientAddress::class, 20)->create();
         // //factory(App\ClientCarts::class, 20)->create();
         // $this->call(OrdersTableSeeder::class);
@@ -57,8 +57,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(AdvertisementsTableSeeder::class);
         // $this->call(CouponsTableSeeder::class);
         // $this->call(NotificationsTableSeeder::class);
-        $this->call(ProductPropertiesTableSeeder::class);
-        $this->call(PropertiesTableSeeder::class);
-        $this->call(PropertyValuesTableSeeder::class);
+        // $this->call(ProductPropertiesTableSeeder::class);
+        // $this->call(PropertiesTableSeeder::class);
+        // $this->call(PropertyValuesTableSeeder::class);
     }
 }
