@@ -1897,6 +1897,16 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2020-02-11 12:10:30',
                 'function_name' => 'destroy',
             ),
+            188 => 
+            array (
+                'id' => 256,
+                'method' => 'get',
+                'route' => 'users/{id}/delete',
+                'controller_name' => 'UserController',
+                'created_at' => '2020-02-18 14:02:36',
+                'updated_at' => '2020-02-18 14:02:36',
+                'function_name' => 'destroy',
+            ),
         ));
         
         

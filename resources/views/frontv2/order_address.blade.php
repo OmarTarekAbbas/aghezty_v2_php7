@@ -38,18 +38,18 @@
                 <div class="card z-depth-0 bordered">
                   <div class="card-header" id="headingOne">
                     <h5 class="mb-0 d-flex">
-                      <button class="btn btn-link text-center w-100" onclick="document.getElementById('id-{{$key+1}}').checked = !(document.getElementById('id-{{$key+1}}').checked);" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
+                      <button class="btn btn-link text-center w-100 checked_add" data-value="{{$key+1}}"  type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
                         @lang('front.choose_address') {{$key+1}}
                       </button>
                     </h5>
 
                     <div class="checkbox_select_address">
-                      <input  type="checkbox" name="" id="id-{{$key+1}}" />
+                      <input  type="checkbox" name="" {{$key < 1 ? 'checked' : ''}} id="id-{{$key+1}}" />
                       <label for="id-{{$key+1}}">
                     </div>
                   </div>
 
-                  <div id="collapse{{$key+1}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div id="collapse{{$key+1}}" class="collapse {{$key < 1 ? 'show' : ''}}" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <form action="{{route('front.home.address.update',['id' => $item->pivot->id])}}" method="post">
                       @csrf
                       <div class="card-body">
@@ -198,5 +198,17 @@
       },
     });
   });
+
+  $('.checked_add').click(function(){
+    var value = $(this).data('value')
+    $('[type=checkbox]').each(function(){
+      if($(this).prop('id')  == 'id-'+value){
+        $(this).prop('checked',!$(this).prop('checked'))
+      }
+      else{
+        $(this).prop('checked',false)
+      }
+    })
+  })
 </script>
 @endsection
