@@ -55,6 +55,11 @@
         @if(App::getLocale() == 'ar')
         <link rel="stylesheet" type="text/css" href="{{url('css/rtl.css')}}">
         <link href="{{url('https://fonts.googleapis.com/css?family=Cairo:600')}}" rel="stylesheet">
+        <style>
+          .modal-open .modal {
+                overflow: auto;
+          }
+        </style>
         @endif
 
         <link rel="shortcut icon" href="{{url('img/favicon.png')}}">
