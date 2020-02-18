@@ -715,21 +715,21 @@ class HomeController extends Controller
             $products = $products->whereHas('pr_value', function($q) use ($request){
               $q->join('properties','property_values.property_id','=','properties.id');
               $q->where('properties.title','LIKE' ,'%inch%');
-              $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'>=',$request->ifrom);
+              $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'>=',$request->ifrom);
             });
         }
         if($request->has('ito') && $request->ito!=''){
             $products = $products->whereHas('pr_value', function($q) use ($request){
               $q->join('properties','property_values.property_id','=','properties.id');
               $q->where('properties.title','LIKE' ,'%inch%');
-              $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'=',$request->ito);
+              $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'=',$request->ito);
             });
         }
         if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
           $products = $products->whereHas('pr_value', function($q) use ($request){
             $q->join('properties','property_values.property_id','=','properties.id');
             $q->where('properties.title','LIKE' ,'%inch%');
-            $q->whereBetween(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),explode(',',$request->ifrom_ito));
+            $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),explode(',',$request->ifrom_ito));
           });
        }
         if($request->has('search') && $request->search!=''){
@@ -778,26 +778,26 @@ class HomeController extends Controller
         if($request->has('from_to') && $request->from_to!=''){
           $products = $products->whereBetween('price',explode(',',$request->from_to));
        }
-        if($request->has('ifrom') && $request->ifrom !=''){
-          $products = $products->whereHas('pr_value', function($q) use ($request){
-            $q->join('properties','property_values.property_id','=','properties.id');
-            $q->where('properties.title','LIKE' ,'%inch%');
-            $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'>=',$request->ifrom);
-          });
+       if($request->has('ifrom') && $request->ifrom !=''){
+        $products = $products->whereHas('pr_value', function($q) use ($request){
+          $q->join('properties','property_values.property_id','=','properties.id');
+          $q->where('properties.title','LIKE' ,'%inch%');
+          $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'>=',$request->ifrom);
+        });
         }
         if($request->has('ito') && $request->ito!=''){
             $products = $products->whereHas('pr_value', function($q) use ($request){
-              $q->join('properties','property_values.property_id','=','properties.id');
-              $q->where('properties.title','LIKE' ,'%inch%');
-              $q->where(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),'=',$request->ito);
+            $q->join('properties','property_values.property_id','=','properties.id');
+            $q->where('properties.title','LIKE' ,'%inch%');
+            $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'=',$request->ito);
             });
         }
         if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
-          $products = $products->whereHas('pr_value', function($q) use ($request){
+        $products = $products->whereHas('pr_value', function($q) use ($request){
             $q->join('properties','property_values.property_id','=','properties.id');
             $q->where('properties.title','LIKE' ,'%inch%');
-            $q->whereBetween(\DB::raw("REGEXP_SUBSTR(`property_values`.`value`,'[0-9]+')"),explode(',',$request->ifrom_ito));
-          });
+            $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),explode(',',$request->ifrom_ito));
+        });
         }
         if($request->has('search') && $request->search!=''){
           $products = $products->whereLike(['title'],$request->search);
