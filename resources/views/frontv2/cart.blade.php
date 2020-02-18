@@ -193,12 +193,12 @@
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
-                  <div class="sub_total">
+                  {{-- <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.shipping_amount')</strong>
-                    <strong class="subtotal_price text-uppercase float-right">@if($city) {{number_format((int)$city->shipping_amount)}} @else 0 @endif <span>@lang('front.egp')</span> </strong>
+                    <strong class="subtotal_price text-uppercase float-right"> 000<span>@lang('front.egp')</span> </strong>
                   </div>
 
-                  <div class="border-bottom border-secondary w-100 my-3"></div>
+                  <div class="border-bottom border-secondary w-100 my-3"></div> --}}
 
                   <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.coupon.discount')</strong>
@@ -210,7 +210,7 @@
 
                   <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.total_price')</strong>
-                    <strong class="subtotal_price text-uppercase float-right">{{number_format(($city ? $total_price+$city->shipping_amount:(int)$total_price) - (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0))}} <span>@lang('front.egp')</span></strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{number_format((int)$total_price - (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0))}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="cart_checkout w-100 my-3">
