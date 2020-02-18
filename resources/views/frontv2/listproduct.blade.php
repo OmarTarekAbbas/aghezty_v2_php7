@@ -137,7 +137,7 @@ nav.container-fluid {
 
               <div class="panel w-100 border border-light">
                 <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" :checked = 'property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2'   type="checkbox" name="property_value_id[]" :value="property_value.id">
+                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" :checked = 'property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)'   type="checkbox" name="property_value_id[]" :value="property_value.id">
                   <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id">@{{property_value.value}} </label>
                 </div>
               </div>
@@ -258,7 +258,7 @@ nav.container-fluid {
 
                   <div class="panel w-100 border border-light">
                     <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" :checked = 'property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2'  name="property_value_id[]" :value="property_value.id">
+                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" :checked = 'property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)'  name="property_value_id[]" :value="property_value.id">
                       <label class="d-block text-capitalize" :for="'panel_prm'+property_value.id">@{{property_value.value}} </label>
                     </div>
                   </div>
@@ -506,9 +506,6 @@ nav.container-fluid {
           return false;
         }
       });
-      @if(isset($_REQUEST['sub_category_id']))
-      this.category_id.push("{{$_REQUEST['sub_category_id']}}")
-      @endif
       $('.sub_cat_id').change(function(){
         if($(this).prop("checked") == true){
           _this.category_id.push($(this).val())
@@ -573,9 +570,7 @@ nav.container-fluid {
           return false;
         }
       });
-      @if(isset($_REQUEST['sub_category_id']))
-      this.category_id.push("{{$_REQUEST['sub_category_id']}}")
-      @endif
+  
       $('.sub_cat_id').change(function(){
         if($(this).prop("checked") == true){
           _this.category_id.push($(this).val())
