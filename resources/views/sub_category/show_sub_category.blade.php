@@ -66,6 +66,7 @@
                                               @if(count($value->sub_cats) > 0)
                                               <a class="btn btn-sm  btn-primary show-tooltip" title="Show Sub Category" href="{{url("sub_category/$value->id")}}" data-original-title="Show Sub Category"><i class="fa fa-step-forward"></i></a>
                                               @endif
+                                              <a class="btn btn-sm btn-warning show-tooltip" title="Add Property" href="{{url("property/create?category_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Property"><i class="fa fa-plus"></i></a>
                                           </div>
                                       </td>
                                   </tr>

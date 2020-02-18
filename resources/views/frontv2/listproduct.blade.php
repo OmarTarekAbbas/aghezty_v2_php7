@@ -127,6 +127,23 @@ nav.container-fluid {
             </div>
           </div>
 
+          <br>
+
+          <div id="propertys">
+            <template v-for="(property,i) in properties_data">
+              <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{properties_data[i].title}}
+                <i class="fas fa-minus float-right"></i>
+              </button>
+
+              <div class="panel w-100 border border-light">
+                <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
+                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" :checked = 'property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2'   type="checkbox" name="property_value_id[]" :value="property_value.id">
+                  <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id">@{{property_value.value}} </label>
+                </div>
+              </div>
+            </template>
+          </div>
+
           <input type="hidden" id="search_in" name="search" value="{{isset($_REQUEST['search'])?$_REQUEST['search']:''}}">
           <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
           <input type="hidden" id="ifrom_in"  name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
@@ -232,6 +249,22 @@ nav.container-fluid {
                   <label class="d-block text-capitalize" for="panel_39_mobile">@lang('front.offer') </label>
                 </div>
               </div>
+
+              <div id="propertys_mobile">
+                <template v-for="(property,i) in properties_data">
+                  <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{properties_data[i].title}}
+                    <i class="fas fa-minus float-right"></i>
+                  </button>
+
+                  <div class="panel w-100 border border-light">
+                    <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
+                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" :checked = 'property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2'  name="property_value_id[]" :value="property_value.id">
+                      <label class="d-block text-capitalize" :for="'panel_prm'+property_value.id">@{{property_value.value}} </label>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
             </div>
 
           </div>
@@ -308,12 +341,12 @@ nav.container-fluid {
               <div class="price-box">
                 <span class="regular-price">
                   <span
-                    class="price font-weight-bold">{{($product->discount > 0)?$product->price_after_discount:$product->price}}
+                    class="price font-weight-bold">{{number_format(($product->discount > 0)?$product->price_after_discount:$product->price)}}
                     @lang('front.egp') </span>
                 </span>
                 @if($product->discount > 0)
                 <p class="old-price">
-                  <span class="price font-weight-bold">{{$product->price}} @lang('front.egp')  </span>
+                  <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp')  </span>
                 </p>
                 @endif
               </div>
@@ -331,112 +364,246 @@ nav.container-fluid {
 </div>
 
 <div class="load" style="position: fixed;top: 40%;left:40%;display:none">
-  {{-- <div class='loader'>
-    <div class='loader_overlay'></div>
-    <div class='loader_cogs'>
-      <div class='loader_cogs__top'>
-        <div class='top_part'></div>
-        <div class='top_part'></div>
-        <div class='top_part'></div>
-        <div class='top_hole'></div>
-      </div>
-      <div class='loader_cogs__left'>
-        <div class='left_part'></div>
-        <div class='left_part'></div>
-        <div class='left_part'></div>
-        <div class='left_hole'></div>
-      </div>
-      <div class='loader_cogs__bottom'>
-        <div class='bottom_part'></div>
-        <div class='bottom_part'></div>
-        <div class='bottom_part'></div>
-        <div class='bottom_hole'>
-          <!-- lol -->
-        </div>
-      </div>
-    </div>
-  </div> --}}
-  {{-- <img id="loading" src="http://www.vitorazevedo.net/external_files/loading_small.png"> --}}
   <img src="{{url('public\frontv2\images\loading\load1.gif')}}" width="22%" />
 </div>
 <!-- end container -->
 @endsection
 @section('script')
 <script type="text/javascript">
-var start = 0;
-var action = 'inactive';
-$('.load').hide();
-$(window).on("scroll", function() {
-  if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
+  var start = 0;
+  var action = 'inactive';
+  $('.load').hide();
+  $(window).on("scroll", function() {
+    if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
+      $('.load').show();
+      action = 'active';
+      start = start + {{ get_limit_paginate() }};
+      setTimeout(function() {
+        load_content_data(start);
+      }, 500);
+    }
+    })
+
+    $('.price').click(function(){
+      $('.price').not(this).each(function(){
+          $(this).prop('checked',false)
+      });
+    })
+
+  function load_content_data(start) {
+    $.ajax({
+      url: '{{url("clients/loadproductsv2")}}?'+ '&start=' + start,
+      type: "post",
+      data: $('#filter_form').serialize(),
+      success: function(data) {
+        if (data.html == '') {
+          action = 'active';
+        } else {
+          $('#grid_two').append(data.html);
+          action = 'inactive';
+        }
+        $('.load').hide();
+      },
+    });
+
+  }
+  $(document).on('change','.sub_cat_id , .brand_id , .price , .offer , #sorted',function() {
     $('.load').show();
-    action = 'active';
-    start = start + {{ get_limit_paginate() }};
-    setTimeout(function() {
-      load_content_data(start);
-    }, 500);
-   }
+    console.log($(this).val());
+    $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
+    if($(this).prop('checked')==false){
+      str = $(this).attr('id')
+      $(this).removeAttr('checked')
+      $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
+      $('#'+str.split('_mobile')[0]).removeAttr('checked')
+    }
+    start = 0
+    $.ajax({
+      url: '{{url("clients/loadproductsv2")}}?start=0',
+      type: "post",
+      data: $('#filter_form').serialize(),
+      success: function(data) {
+        if (data.html == '') {
+          action = 'active';
+          $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+        } else {
+          $('#grid_two').html(data.html);
+          action = 'inactive';
+        }
+        $('.load').hide();
+      },
+    });
   })
-
-  $('.price').click(function(){
-    $('.price').not(this).each(function(){
-         $(this).prop('checked',false)
-     });
+  $(document).on('change','.property',function() {
+    $('.load').show();
+    console.log($(this).val());
+    $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
+    if($(this).prop('checked')==false){
+      str = $(this).attr('id')
+      $(this).removeAttr('checked')
+      $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
+      $('#'+str.split('_mobile')[0]).removeAttr('checked')
+    }
+    start = 0
+    $.ajax({
+      url: '{{url("clients/loadproductsv2")}}?start=0',
+      type: "post",
+      data: $('#filter_form').serialize(),
+      success: function(data) {
+        if (data.html == '') {
+          action = 'active';
+          $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+        } else {
+          $('#grid_two').html(data.html);
+          action = 'inactive';
+        }
+        $('.load').hide();
+      },
+    });
   })
-
-function load_content_data(start) {
-  $.ajax({
-    url: '{{url("clients/loadproductsv2")}}?'+ '&start=' + start,
-    type: "post",
-    data: $('#filter_form').serialize(),
-    success: function(data) {
-      if (data.html == '') {
-        action = 'active';
-      } else {
-        $('#grid_two').append(data.html);
-        action = 'inactive';
-      }
-      $('.load').hide();
+  $('#button_jq , .fa-sliders-h').click(function(){
+    //$(this).prop('disabled',true)
+    if($('#exampleModal').hasClass('show')){
+      $('.modal-backdrop').remove();
+      $('#SL_balloon_obj').remove();
+      $('#exampleModal').attr('aria-hidden',true)
+      $('#exampleModal').css('display','none')
+      $('body').removeClass('modal-open')
+    }
+  })
+</script>
+<script>
+  const property = new Vue({
+    el:'#propertys',
+    data:{
+      category_id : [],
+      properties_data : [],
+      checked_val :{'num1' : 0, 'num2':0}
     },
-  });
-
-}
-
-$('.sub_cat_id , .brand_id , .price , .offer , #sorted').change(function() {
-  $('.load').show();
-  $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
-  if($(this).prop('checked')==false){
-    str = $(this).attr('id')
-    $(this).removeAttr('checked')
-    $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
-    $('#'+str.split('_mobile')[0]).removeAttr('checked')
-  }
-  start = 0
-  $.ajax({
-    url: '{{url("clients/loadproductsv2")}}?start=0',
-    type: "post",
-    data: $('#filter_form').serialize(),
-    success: function(data) {
-      if (data.html == '') {
-        action = 'active';
-        $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
-      } else {
-        $('#grid_two').html(data.html);
-        action = 'inactive';
+    watch: {
+      category_id:function(val){
+        var _this = this
+        if(val.length  > 0){
+          $.ajax({
+            type: "get",
+            data: {category_id:val},
+            url: "{{url('getProperty')}}",
+            success: function(data,status){
+              _this.properties_data = data.data
+          }
+        });
+        }
+        else{
+          this.properties_data = []
+        }
       }
-      $('.load').hide();
     },
-  });
-})
-
-$('#button_jq , .fa-sliders-h').click(function(){
-  //$(this).prop('disabled',true)
-  if($('#exampleModal').hasClass('show')){
-    $('.modal-backdrop').remove();
-    $('#SL_balloon_obj').remove();
-    $('#exampleModal').attr('aria-hidden',true)
-    $('#exampleModal').css('display','none')
-    $('body').removeClass('modal-open')
-  }
-})
+    created() {
+      var _this = this
+      $('.sub_cat_id').each(function(i, obj) {
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+          return false;
+        }
+      });
+      @if(isset($_REQUEST['sub_category_id']))
+      this.category_id.push("{{$_REQUEST['sub_category_id']}}")
+      @endif
+      $('.sub_cat_id').change(function(){
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+        }
+        else{
+          _this.category_id.pop($(this).val())
+        }
+      })
+      @if(isset($_REQUEST['search']) == 'TV')
+      str = location.search;
+      number = str.substring(str.indexOf("=") + 1,str.indexOf("&"));
+      if(number.indexOf('%2C') != -1){
+        this.checked_val.num1 = number.split('%2C')[0]
+        this.checked_val.num2 = number.split('%2C')[1]
+      }
+      else{
+        if(str.indexOf('ifrom=') != -1){
+          this.checked_val.num1 = number
+          this.checked_val.num2 =  500
+        }
+        else{
+          this.checked_val.num1 = 0
+          this.checked_val.num2 = number
+        }
+      }
+      console.log(this.checked_val);
+      @endif
+    }
+  })
+</script>
+<script>
+  const propertys_mobile = new Vue({
+    el:'#propertys_mobile',
+    data:{
+      category_id : [],
+      properties_data : [],
+      checked_val :{'num1' : '', 'num2':''}
+    },
+    watch: {
+      category_id:function(val){
+        var _this = this
+        if(val.length  > 0){
+          $.ajax({
+            type: "get",
+            data: {category_id:val},
+            url: "{{url('getProperty')}}",
+            success: function(data,status){
+              _this.properties_data = data.data
+          }
+        });
+        }
+        else{
+          this.properties_data = []
+        }
+      }
+    },
+    created() {
+      var _this = this
+      $('.sub_cat_id').each(function(i, obj) {
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+          return false;
+        }
+      });
+      @if(isset($_REQUEST['sub_category_id']))
+      this.category_id.push("{{$_REQUEST['sub_category_id']}}")
+      @endif
+      $('.sub_cat_id').change(function(){
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+        }
+        else{
+          _this.category_id.pop($(this).val())
+        }
+      })
+      @if(isset($_REQUEST['search']) == 'TV')
+      str = location.search;
+      number = str.substring(str.indexOf("=") + 1,str.indexOf("&"));
+      if(number.indexOf('%2C') != -1){
+        this.checked_val.num1 = number.split('%2C')[0]
+        this.checked_val.num2 = number.split('%2C')[1]
+      }
+      else{
+        if(str.indexOf('ifrom=') != -1){
+          this.checked_val.num1 = 0
+          this.checked_val.num2 = number
+        }
+        else{
+          this.checked_val.num1 = number
+          this.checked_val.num2 = 0
+        }
+      }
+      console.log(this.checked_val);
+      @endif
+    }
+  })
 </script>
 @endsection

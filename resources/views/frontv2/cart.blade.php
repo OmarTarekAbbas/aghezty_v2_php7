@@ -57,7 +57,7 @@
                     </a>
                   </th>
 
-                  <td class="item-price align-middle">{{(int)$cart->pivot->price}} @lang('front.egp')</td>
+                  <td class="item-price align-middle">{{number_format((int)$cart->pivot->price)}} @lang('front.egp')</td>
 
                   <td class="td_td align-middle text-center w-25">
                     <div class="qty-holder text-center">
@@ -73,7 +73,7 @@
                     </div>
                   </td>
 
-                  <td class="item-total align-middle">{{(int)$cart->pivot->total_price }} @lang('front.egp')</td>
+                  <td class="item-total align-middle">{{number_format((int)$cart->pivot->total_price) }} @lang('front.egp')</td>
                 </tr>
                 @endforeach
                 @for ($i =0; $i < count($session_carts); $i++)
@@ -92,7 +92,7 @@
                       </a>
                     </th>
 
-                    <td class="item-price align-middle">{{(int)$session_carts[$i]['price']}} @lang('front.egp')</td>
+                    <td class="item-price align-middle">{{number_format((int)$session_carts[$i]['price'])}} @lang('front.egp')</td>
 
                     <td class="td_td align-middle text-center w-25">
                       <div class="qty-holder text-center">
@@ -108,7 +108,7 @@
                       </div>
                     </td>
 
-                    <td class="item-total align-middle">{{(int)$session_carts[$i]['total_price']}} @lang('front.egp')</td>
+                    <td class="item-total align-middle">{{number_format((int)$session_carts[$i]['total_price'])}} @lang('front.egp')</td>
                   </tr>
                 @endfor
               </tbody>
@@ -188,14 +188,14 @@
                 <div class="card-body">
                   <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.sub_total')</strong>
-                    <strong class="subtotal_price text-uppercase float-right">{{(int)$total_price}} <span>@lang('front.egp')</span></strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{number_format((int)$total_price)}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
 
                   <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.shipping_amount')</strong>
-                    <strong class="subtotal_price text-uppercase float-right">@if($city) {{(int)$city->shipping_amount}} @else 0 @endif <span>@lang('front.egp')</span> </strong>
+                    <strong class="subtotal_price text-uppercase float-right">@if($city) {{number_format((int)$city->shipping_amount)}} @else 0 @endif <span>@lang('front.egp')</span> </strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>
@@ -210,7 +210,7 @@
 
                   <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.total_price')</strong>
-                    <strong class="subtotal_price text-uppercase float-right">{{($city ? $total_price+$city->shipping_amount:(int)$total_price) - (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0)}} <span>@lang('front.egp')</span></strong>
+                    <strong class="subtotal_price text-uppercase float-right">{{number_format(($city ? $total_price+$city->shipping_amount:(int)$total_price) - (Auth::guard('client')->user() ? Auth::guard('client')->user()->coupons->sum('value') : 0))}} <span>@lang('front.egp')</span></strong>
                   </div>
 
                   <div class="cart_checkout w-100 my-3">
@@ -300,18 +300,18 @@
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
+                  <span class="price">{{number_format($item->price_after_discount)}} @lang('front.egp') </span>
                 </span>
 
                 <p class="old-price">
                   <span class="price">
-                    {{$item->price}} @lang('front.egp') </span>
+                    {{number_format($item->price)}} @lang('front.egp') </span>
                 </p>
               </div>
               @else
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price}} @lang('front.egp') </span>
+                  <span class="price">{{number_format($item->price)}} @lang('front.egp') </span>
                 </span>
               </div>
               @endif

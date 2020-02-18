@@ -50,4 +50,9 @@ class Category extends Model
     return $this->belongsTo('App\Category','parent_id','id');
   }
 
+  public function property()
+  {
+    return $this->hasMany(Property::class);
+  }
+
 }

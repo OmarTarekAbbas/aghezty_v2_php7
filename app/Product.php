@@ -83,6 +83,11 @@ class Product extends Model
       ->withPivot('id', 'quantity' , 'price' ,'total_price')->withTimestamps();
   }
 
+  public function pr_value()
+  {
+      return $this->belongsToMany('App\PropertyValue','product_properties','product_id','property_value_id');
+  }
+
   public function rate()
   {
     return \DB::table('client_rates')

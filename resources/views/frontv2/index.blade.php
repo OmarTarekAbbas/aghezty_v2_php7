@@ -134,7 +134,7 @@
         <div class="row mr-0 ml-0">
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['search' => 'TV-','offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['search' => 'TV','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/tv-offers.webp" alt="mobiles"> -->
 
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
@@ -151,7 +151,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ito' => '21','search' => 'TV-','offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['ito' => '21','search' => 'TV','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
 
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
@@ -166,7 +166,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '32,43','search' => 'TV-','offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '32,43','search' => 'TV','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
 
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
@@ -181,7 +181,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '49,55','search' => 'TV-','offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '49,55','search' => 'TV','offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/49-55-inch.jpg" alt="mobiles-1000-3000"> -->
 
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
@@ -196,7 +196,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '60,75','search' => 'TV-'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '60,75','search' => 'TV'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/60-75-inch.jpg" alt="mobiles-3000-6000"> -->
 
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
@@ -211,7 +211,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom' => '75','search' => 'TV-'])}}">
+              <a href="{{route('front.home.list',['ifrom' => '75','search' => 'TV'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->
 
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
@@ -309,18 +309,18 @@
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
+                  <span class="price">{{number_format($item->price_after_discount)}} @lang('front.egp') </span>
                 </span>
 
                 <p class="old-price">
                   <span class="price">
-                    {{$item->price}} @lang('front.egp') </span>
+                    {{number_format($item->price)}} @lang('front.egp') </span>
                 </p>
               </div>
               @else
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price}} @lang('front.egp') </span>
+                  <span class="price">{{number_format($item->price)}} @lang('front.egp') </span>
                 </span>
               </div>
               @endif
@@ -406,18 +406,18 @@
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
+                  <span class="price">{{number_format($item->price_after_discount)}} @lang('front.egp') </span>
                 </span>
 
                 <p class="old-price">
                   <span class="price">
-                    {{$item->price}} @lang('front.egp') </span>
+                    {{number_format($item->price)}} @lang('front.egp') </span>
                 </p>
               </div>
               @else
               <div class="price-box">
                 <span class="regular-price">
-                  <span class="price">{{$item->price}} @lang('front.egp') </span>
+                  <span class="price">{{number_format($item->price)}} @lang('front.egp') </span>
                 </span>
               </div>
               @endif

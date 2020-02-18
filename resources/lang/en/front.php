@@ -156,4 +156,16 @@ return [
         'link' => 'Link',
         'info' => 'Info About Your Order'
     ],
+
+    'admin' => [
+      'property' => [
+        'title' => 'Property Title',
+        'propertys' => 'Propertys',
+        'category' => 'Category'
+      ],
+      'property_value' => [
+          'value' => 'Property Value',
+          'property_values' => 'Property Values'
+      ]
+    ],
 ];

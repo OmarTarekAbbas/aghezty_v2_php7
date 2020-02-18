@@ -69,17 +69,17 @@
 
         <div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
           <h6 class="date_order text-center">@lang('front.price')</h6>
-          <p class="date_order text-center">{{$product->price}}@lang('front.egp')</p>
+          <p class="date_order text-center">{{number_format($product->price)}}@lang('front.egp')</p>
         </div>
 
         <div class="col-md-3 col-lg-2 col-xl-2 col-2 p-0">
           <h6 class="date_order text-center">@lang('front.quantity')</h6>
-          <p class="date_order text-center">{{$product->quantity}}</p>
+          <p class="date_order text-center">{{number_format($product->quantity)}}</p>
         </div>
 
         <div class="col-md-3 col-lg-2 col-xl-2 col-2 text-right">
           <h6 class="date_order text-center">@lang('front.total_price')</h6>
-          <p class="date_order text-center">{{$product->total_price}}  @lang('front.egp')</p>
+          <p class="date_order text-center">{{number_format($product->total_price)}}  @lang('front.egp')</p>
         </div>
       </div>
       @endforeach
@@ -94,26 +94,26 @@
 
               <div class="summary-subtotal">
                 <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price')</div>
-                <div class="subtotal-value text-right w-50 float-right">{{$order->sum()}}</div>
+                <div class="subtotal-value text-right w-50 float-right">{{number_format($order->sum())}}</div>
               </div>
 
               <div class="summary-subtotal">
                 <div class="subtotal-title text-left w-50 float-left">@lang('front.shipping_amount')</div>
-                <div class="subtotal-value final-value text-right w-50 float-right">{{(int)$order->shipping_amount}}</div>
+                <div class="subtotal-value final-value text-right w-50 float-right">{{number_format((int)$order->shipping_amount)}}</div>
               </div>
               <div class="summary-subtotal">
                 <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price_after_shipping')</div>
-                <div class="subtotal-value  text-right w-50 float-right ">{{$order->sum() + $order->shipping_amount}}</div>
+                <div class="subtotal-value  text-right w-50 float-right ">{{number_format($order->sum() + $order->shipping_amount)}}</div>
               </div>
 
               <div class="summary-subtotal">
                 <div class="subtotal-title text-left w-50 float-left">@lang('front.coupon.discount')</div>
-                <div class="subtotal-value  text-right w-50 float-right ">{{($order->sum() + $order->shipping_amount) - $order->total_price}}</div>
+                <div class="subtotal-value  text-right w-50 float-right ">{{number_format(($order->sum() + $order->shipping_amount) - $order->total_price)}}</div>
               </div>
 
               <div class="summary-subtotal">
                 <div class="subtotal-title text-left w-50 float-left">@lang('front.total_price_after_coupon')</div>
-                <div class="subtotal-value  text-right w-50 float-right ">{{$order->total_price}}</div>
+                <div class="subtotal-value  text-right w-50 float-right ">{{number_format($order->total_price)}}</div>
               </div>
 
               <div class="summary-subtotal">
@@ -165,18 +165,18 @@
 
                 <div class="price-box">
                   <span class="regular-price">
-                    <span class="price">{{$item->price_after_discount}} @lang('front.egp') </span>
+                    <span class="price">{{number_format($item->price_after_discount)}} @lang('front.egp') </span>
                   </span>
 
                   <p class="old-price">
                     <span class="price">
-                      {{$item->price}} @lang('front.egp') </span>
+                      {{number_format($item->price)}} @lang('front.egp') </span>
                   </p>
                 </div>
                 @else
                 <div class="price-box">
                   <span class="regular-price">
-                    <span class="price">{{$item->price}} @lang('front.egp') </span>
+                    <span class="price">{{number_format($item->price)}} @lang('front.egp') </span>
                   </span>
                 </div>
                 @endif
