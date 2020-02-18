@@ -17,7 +17,7 @@ class CreatePropertiesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

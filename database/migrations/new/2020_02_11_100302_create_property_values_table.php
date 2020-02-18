@@ -17,7 +17,7 @@ class CreatePropertyValuesTable extends Migration
             $table->increments('id');
             $table->string('value');
             $table->unsignedInteger('property_id');
-            $table->foreign('property_id')->references('id')->on('properties')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('property_id')->references('id')->on('properties')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
