@@ -133,7 +133,7 @@ nav.container-fluid {
                                 @lang('front.egp')</h4>
                             <style>
                             .main #inner-page .price_disc_offer .product-label .sale-product-icon .testtt::before {
-                                content:"-{{$product->discount}}%"
+                                content:"{{$product->discount}}"
                             }
                             </style>
                             <div class="product-label text-center font-weight-bold">
@@ -350,7 +350,7 @@ nav.container-fluid {
 
                             @if($item->discount > 0)
                             <div class="product-label text-center font-weight-bold">
-                                <span class="sale-product-icon">-{{$item->discount}}%</span>
+                                <span class="sale-product-icon">{{$item->discount}}</span>
                             </div>
                             @endif
 

@@ -612,7 +612,7 @@
                       <div class="block_bottom">
                         <div class="row">
                           <div class="col-sm-8 col-xl-12 text-right">
-                            <address>Aghezty.com 2019 ©. All Rights Reserved.</address>
+                            <address>Aghezty.com {{date('Y')}} ©. All Rights Reserved.</address>
                           </div>
                         </div>
                       </div>

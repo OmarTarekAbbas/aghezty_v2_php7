@@ -316,7 +316,7 @@ nav.container-fluid {
 
                 @if($product->discount > 0)
                 <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">-{{$product->discount}}%</span>
+                  <span class="sale-product-icon">{{$product->discount}}</span>
                 </div>
                 @endif
 
@@ -570,7 +570,7 @@ nav.container-fluid {
           return false;
         }
       });
-  
+
       $('.sub_cat_id').change(function(){
         if($(this).prop("checked") == true){
           _this.category_id.push($(this).val())

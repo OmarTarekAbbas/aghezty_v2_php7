@@ -6,7 +6,7 @@
       <img class="lazy" src="{{$product->main_image}}" alt="Product" class="w-75 d-block m-auto">
       @if($product->discount)
         <div class="product-label text-center font-weight-bold">
-            <span class="sale-product-icon">-{{$product->discount}}%</span>
+            <span class="sale-product-icon">{{$product->discount}}</span>
         </div>
       @endif
       <h6 class="full_desc text-dark text-left text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
