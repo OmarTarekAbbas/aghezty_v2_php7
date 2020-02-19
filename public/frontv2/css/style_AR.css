@@ -443,7 +443,7 @@ body {
   margin-left: 0px;
 }
 .product_view .product_view_type .product_desc a .product-label .sale-product-icon::after {
-  content: "OFF";
+  content: "LE";
   display: block;
   line-height: 1;
   position: relative;
@@ -780,7 +780,7 @@ body {
   margin-left: 0px;
 }
 .main .content_view .product-label .sale-product-icon::after {
-  content: "OFF";
+  content: "LE";
   display: block;
   line-height: 1;
   position: relative;
@@ -873,7 +873,7 @@ body {
   -o-transform: rotate(90deg);
 }
 .main #inner-page .price_disc_offer .product-label .sale-product-icon::after {
-  content: "OFF";
+  content: "LE";
   display: block;
   line-height: 1;
   position: relative;

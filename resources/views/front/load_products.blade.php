@@ -7,7 +7,7 @@
                         alt="" />
                     <div class="ribbon">
                         @if ($product->discount)
-                        <span>{{$product->discount}}%</span>
+                        <span>{{$product->discount}}</span>
                         @endif
                     </div>
                 </a>
