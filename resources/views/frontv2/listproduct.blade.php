@@ -364,7 +364,7 @@ nav.container-fluid {
 </div>
 
 <div class="load" style="position: fixed;top: 40%;left:40%;display:none">
-  <img src="{{url('public\frontv2\images\loading\load1.gif')}}" width="22%" />
+  <img src="{{url('public\frontv2\images\loading\load1.gif')}}" width="10%" />
 </div>
 <!-- end container -->
 @endsection
