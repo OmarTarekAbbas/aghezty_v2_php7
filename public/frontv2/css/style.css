@@ -238,8 +238,9 @@ body {
 .head_three .navbar .navbar-nav .nav-item {
   position: unset !important;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   margin: 0 auto;
+  font-weight: bold;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
   left: 0;
