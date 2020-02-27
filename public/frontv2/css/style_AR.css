@@ -2143,10 +2143,10 @@ body {
   content: "";
   display: block;
   height: 70px;
-  background: linear-gradient(to top left, #121214 0%, #121214 calc(50% - 0.8px), #121214 50%, rgba(0, 0, 0, 0) calc(50% + 0.8px), rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to top left, #383838 0%, #383838 calc(50% - 0.8px), #383838 50%, rgba(0, 0, 0, 0) calc(50% + 0.8px), rgba(0, 0, 0, 0) 100%);
 }
 .footer_footer .footer_content {
-  background-color: #121214;
+  background-color: #383838;
   color: #777;
   padding: 20px 0;
   font-size: 13px;
