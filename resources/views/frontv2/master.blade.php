@@ -32,6 +32,12 @@
 	.panel ul li:nth-child(even) {
 		background: #3c434a;
 	}
+  .footer_footer{
+    font-weight: bold;
+  }
+  .footer_footer .footer_content .block .block_content .ul_links li{
+    font-size: 16px !important;
+  }
 </style>
 @yield('style')
 <head>
