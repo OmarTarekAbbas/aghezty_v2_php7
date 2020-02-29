@@ -36,6 +36,8 @@ class ProductResource extends JsonResource
           'brand_id' => $this->brand_id,
           'stock' => $this->stock,
           'stars' => $this->rate() ? round($this->rate()) : 0,
+          'rates' => RateResource::collection($this->client_rates),
+          'gallery' => $this->images->pluck('image')
       ];
     }
 }

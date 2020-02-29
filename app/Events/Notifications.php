@@ -25,7 +25,7 @@ class Notifications implements ShouldBroadcast
      */
     public function __construct($message,$users=Null,$link)
     {
-        $this->send_user    = \Auth::guard('client')->user();
+        $this->send_user    = \Auth::guard('client')->user() ? \Auth::guard('client')->user() :  auth()->user() ;
         if($users)
         {
           if(is_array($users))

@@ -21,6 +21,7 @@ class CategoryResource extends JsonResource
           'coding' => $this->coding,
           'parent_id' =>$this->parent_id,
           'image' => $this->image,
+          'sub_cats' => CategoryResource::collection($this->sub_cats)
       ];
 
     }

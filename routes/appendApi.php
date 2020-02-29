@@ -7,7 +7,7 @@ Route::get('/categorys', 'HomeController@categorys');
 Route::get('/products', 'HomeController@products');
 Route::get('/brands', 'HomeController@brands');
 Route::get('/inner_product/{id}', 'HomeController@inner_product');
-Route::get('/service_center', 'HomeController@service_center');
+Route::get('/setting', 'HomeController@getSettign');
 Route::post('contact', 'HomeController@contact');
 Route::get('governorate', 'HomeController@governorate');
 Route::get('city', 'HomeController@city');
@@ -27,5 +27,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('check_out', 'HomeController@make_order');
     Route::post('add_rate', 'HomeController@add_rate');
     Route::post('available', 'HomeController@is_available');
-    Route::post('details_client', 'HomeController@details_client');
+    Route::get('client', 'HomeController@details_client');
 });

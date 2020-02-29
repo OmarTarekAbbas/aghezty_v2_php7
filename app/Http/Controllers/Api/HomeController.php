@@ -24,6 +24,7 @@ use App\City;
 use App\Advertisement;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductCollection;
 use Braintree_Gateway;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -36,13 +37,13 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|max:255|unique:clients',
+            'email' => 'required|email|max:255|unique:clients,email',
             'password' => 'required',
-            'phone' => 'required|unique:clients',
+            'phone' => 'required|unique:clients,phone',
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()], 401);
+            return response()->json(['data' => $validator->errors()->all() ,'status' => 'error' , 'message' => 'Error In Data'], 422);
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
@@ -56,7 +57,7 @@ class HomeController extends Controller
         }
         $success['token'] = $client->createToken('MyApp')->accessToken;
         $success['client'] = $client;
-        return response()->json(['success' => $success], 200);
+        return response()->json(['data' => $success,'status' => 'success' , 'message' => 'Register Successfully'], 200);
     }
     public function login(Request $request)
     {
@@ -65,15 +66,15 @@ class HomeController extends Controller
             'password' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()], 401);
+            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data'], 422);
         }
         $clients = ['email' => $request->email, 'password' => $request->password];
         if (Auth::guard('client')->attempt($clients)) {
             $client = Auth::guard('client')->user();
             $success['token'] = auth()->guard('client')->user()->createToken('MyApp')->accessToken;
-            return response()->json(['success' => $success], 200);
+            return response()->json(['data' => $success , 'status' => 'success' , 'message' => 'Login Successfully'], 200);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['data' => ['These credentials do not match our records'], 'status' => 'error' , 'message' => 'These credentials do not match our records'], 422);
         }
     }
     // Make All Functionality Under Authorization Token
@@ -109,75 +110,76 @@ class HomeController extends Controller
       $data['selected_for_you'] = ProductResource::collection($selected_for_you);
       $data['homepage_cat']     = CategoryResource::collection($homepage_cat);
 
-      return response()->json(['status' => 'success' , 'data' => $data , 'message' => 'Home Page Data' ]);
+      return response()->json(['status' => 'success' , 'data' => $data , 'message' => 'Home Page Data' ],200);
     }
-
     public function categorys(Request $request)
     {
-        $language_id = Language::where('short_code', 'ar')->first()->id;
-        $categorys = Category::select('categories.id','categories.title as title_en','tans_bodies.body as title_ar','categories.image','categories.coding','categories.parent_id')
-                     ->with(['sub_cats' => function ($query) use($language_id){
-                            $query->select('categories.id','title as title_en','tans_bodies.body as title_ar','image','coding','parent_id');
-                            $query->join('translatables','translatables.record_id','=','categories.id');
-                            $query->where('translatables.table_name','=','categories');
-                            $query->where('translatables.column_name','=','title');
-                            $query->join('tans_bodies','tans_bodies.translatable_id','translatables.id');
-                            $query->where('tans_bodies.language_id',$language_id);
-                      }])
-                     ->join('translatables','translatables.record_id','=','categories.id')
-                     ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
-                     ->where('translatables.table_name','=','categories')
-                     ->where('translatables.column_name','=','title')
-                     ->where('tans_bodies.language_id',$language_id)
-                     ->whereNull('parent_id')->get();
-        return response()->json(['status' => 'success' , 'data' => $categorys , 'message' => 'Get All Category' ]);
+        $categorys = CategoryResource::collection(Category::whereNull('parent_id')->get());
+        return response()->json(['status' => 'success' , 'data' => $categorys , 'message' => 'Get All Category' ],200);
     }
     public function products(Request $request)
     {
-        $products = Product::latest('products.created_at');
-        if($request->has('category_id') && $request->category_id !=''){
-            $request->sub_category_id = (array) $request->sub_category_id;
-            $products = $products->whereIn('category_id',$request->category_id);
-        }
-        if($request->has('offer') && $request->offer !=''){
-            $products =  $products->where('discount','>',0);
-        }
-        if($request->has('brand_id') && $request->brand_id !=''){
-            $request->brand_id = (array) $request->brand_id;
-            $products = $products->whereIn('brand_id',$request->brand_id);
-        }
-        if($request->has('from') && $request->from !=''){
-            $products = $products->where('price','>=',$request->from);
-        }
-        if($request->has('to') && $request->to!=''){
-            $products = $products->where('price','<',$request->to);
-        }
-        $products = $products->paginate(get_limit_paginate());
-        $products->appends($request->all());
-        $products_array = [];
-        foreach ($products as $product) {
-                $stars = round(\DB::table('client_rates')->where('product_id', $product->id)->avg('rate'));
-                array_push($products_array, [
-                  'id' => $product->id,
-                  'title_en' => $product->title,
-                  'title_ar' => $product->getTranslation('title','ar'),
-                  'main_image' => $product->main_image,
-                  'price' => $product->price,
-                  'discount' => $product->discount,
-                  'price_after_discount' => $product->price_after_discount,
-                  'special' => $product->special,
-                  'active' => $product->active,
-                  'description_en' => $product->description,
-                  'description_ar' => $product->getTranslation('description','ar'),
-                  'short_description_en' => $product->short_description,
-                  'short_description_ar' => $product->getTranslation('short_description','ar'),
-                  'category_id' => $product->category_id,
-                  'brand_id' => $product->brand_id,
-                  'stock' => $product->stock,
-                  'stars' => $stars,
-                ]);
-            }
-        return response()->json(['status' => 'success' , 'data' => (object)['data' => $products_array , 'next_url' => $products->nextPageUrl()] , 'message' => 'Get All Product' ]);
+      $products = Product::query();
+      if($request->has('category_id') && $request->category_id !=''){
+          $products = $products->whereIn('category_id',explode(',',$request->category_id));
+      }
+      if($request->has('brand_id') && $request->brand_id !=''){
+          $products = $products->whereIn('brand_id',explode(',',$request->brand_id));
+      }
+      if($request->has('from') && $request->from !=''){
+          $products = $products->where('price','>=',$request->from);
+      }
+      if($request->has('to') && $request->to!=''){
+          $products = $products->where('price','<',$request->to);
+      }
+      if($request->has('from_to') && $request->from_to!=''){
+        $products = $products->whereBetween('price',explode(',',$request->from_to));
+      }
+      if($request->has('ifrom') && $request->ifrom !=''){
+        $products = $products->whereHas('pr_value', function($q) use ($request){
+          $q->join('properties','property_values.property_id','=','properties.id');
+          $q->where('properties.title','LIKE' ,'%inch%');
+          $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'>=',$request->ifrom);
+        });
+      }
+      if($request->has('ito') && $request->ito!=''){
+          $products = $products->whereHas('pr_value', function($q) use ($request){
+          $q->join('properties','property_values.property_id','=','properties.id');
+          $q->where('properties.title','LIKE' ,'%inch%');
+          $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'=',$request->ito);
+          });
+      }
+      if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
+        $products = $products->whereHas('pr_value', function($q) use ($request){
+            $q->join('properties','property_values.property_id','=','properties.id');
+            $q->where('properties.title','LIKE' ,'%inch%');
+            $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),explode(',',$request->ifrom_ito));
+        });
+      }
+      if($request->has('search') && $request->search!=''){
+        $products = $products->whereLike(['title'],$request->search);
+      }
+      if($request->has('sorted') && $request->sorted!=''){
+        $products = $products->orderBy(explode(',',$request->sorted) [0] , explode(',',$request->sorted) [1]);
+      }
+      if($request->has('offer') && $request->offer !=''){
+        $products =  $products->orderBy('discount','desc');
+      }
+      if($request->has('last') && $request->last!=''){
+        $products = $products->latest('created_at');
+      }
+      if($request->has('random') && $request->random!=''){
+        $products = $products->inRandomOrder();
+      }
+      if($request->has('property_value_id')){
+        $products = $products->whereHas('pr_value', function($q) use ($request){
+          $q->whereIn('property_values.id', $request->property_value_id);
+        });
+      }
+      $products = $products->paginate(get_limit_paginate());
+      $products->appends($request->all());
+      $data = new ProductCollection($products);
+      return response()->json(['status' => 'success' , 'data' => $data , 'message' => 'Get All Product' ],200);
     }
     public function brands(Request $request)
     {
@@ -193,42 +195,17 @@ class HomeController extends Controller
               'category' => $sub_cat_from_brand
             ]);
         }
-        return response()->json(['status' => 'success' , 'data' => $brands_array , 'message' => 'Get All Brand' ]);
+        return response()->json(['status' => 'success' , 'data' => $brands_array , 'message' => 'Get All Brand' ],200);
     }
     public function inner_product(Request $request, $id)
     {
-        $product = Product::whereId($id)->first();
-        $comment_array = [];
-        $rates = ClientRate::join('clients', 'clients.id', '=', 'client_rates.client_id')
-                 ->select('client_rates.rate', 'client_rates.comment', 'clients.name' , \DB::raw("DATE_FORMAT(client_rates.created_at,'%e %b %Y') as created"))
-                 ->latest('client_rates.created_at')->where('product_id', $id)->where('client_rates.publish',1)->get();
-        if($product){
-        array_push($comment_array, [
-          'id' => $product->id,
-          'title_en' => $product->title,
-          'title_ar' => $product->getTranslation('title','ar'),
-          'main_image' => $product->main_image,
-          'price' => $product->price,
-          'discount' => $product->discount,
-          'price_after_discount' => $product->price_after_discount,
-          'special' => $product->special,
-          'active' => $product->active,
-          'description_en' => $product->description,
-          'description_ar' => $product->getTranslation('description','ar'),
-          'short_description_en' => $product->short_description,
-          'short_description_ar' => $product->getTranslation('short_description','ar'),
-          'category_id' => $product->category_id,
-          'brand_id' => $product->brand_id,
-          'stock' => $product->stock,
-          'rates' => $rates
-        ]);
-      }
-        return response()->json(['status' => 'success' , 'data' => $comment_array ? (object) $comment_array[0]:(object) $comment_array , 'message' => 'Get Product' ]);
+        $product = new ProductResource(Product::whereId($id)->first());
+        return response()->json(['status' => 'success' , 'data' => $product , 'message' => 'Get Product' ],200);
     }
-    public function service_center(Request $request)
+    public function getSettign(Request $request)
     {
-        $service = \DB::table('settings')->where('key','like', '%service_center%')->first();
-        return response()->json(['status' => 'success' , 'data' => $service ? $service->value : '' , 'message' => 'Get Service Center' ]);
+        $setting = setting($request->setting);
+        return response()->json(['status' => 'success' , 'data' => $setting , 'message' => 'Get Setting data' ],200);
     }
     public function contact(Request $request)
     {
@@ -238,25 +215,25 @@ class HomeController extends Controller
             'message' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data']);
+            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data'],422);
         }
         $contact = Contact::create($request->all());
-        return response()->json(['data' => $contact, 'status' => 'success' , 'message' => 'Add Contact Successfully']);
+        return response()->json(['data' => $contact, 'status' => 'success' , 'message' => 'Add Contact Successfully'],200);
     }
     public function edit_profile(Request $request)
     {
         $client = Auth::user();
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:clients,id,'.$client->id,
+            'email' => 'required|email|unique:clients,email,'.$client->id,
             'name' => 'required',
-            'phone' => 'requre|unique:clients,id,'.$client->id,
+            'phone' => 'required|unique:clients,phone,'.$client->id,
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all(), 'status' => 'error']);
+            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error','message' => 'error in data'],422);
         }
         $user = Client::find($client->id);
         $user->update($request->all());
-        return response()->json(['status' => 'success' , 'data' => $user,  'message' => 'Update Profile Successfully']);
+        return response()->json(['status' => 'success' , 'data' => $user,  'message' => 'Update Profile Successfully'],200);
     }
     public function updated_password(Request $request)
     {
@@ -265,16 +242,16 @@ class HomeController extends Controller
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all(), 'status' => 'error']);
+            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Old Password'],422);
         }
         $client = Auth::user();
         $user = Client::find($client->id);
         if (!Hash::check($request->old_password, $user->password)) {
-          return response()->json(['status' => 'error' , 'data' => (object)[],  'message' => 'Error In Old Password']);
+          return response()->json(['status' => 'error' , 'data' => ['Error In Old Password'],  'message' => 'Error In Old Password'],422);
         }
         $user->password = Hash::make($request->password);
         $user->save();
-        return response()->json(['status' => 'success' , 'data' => $user,  'message' => 'Update Password Successfully']);
+        return response()->json(['status' => 'success' , 'data' => $user,  'message' => 'Update Password Successfully'],200);
     }
     public function addresses(Request $request)
     {
@@ -284,7 +261,7 @@ class HomeController extends Controller
                     ->join('governorates', 'governorates.id', '=', 'cities.governorate_id')
                     ->select('client_addresses.id','client_addresses.address','cities.city_en', 'cities.city_ar','governorates.title_en as governorate_en', 'governorates.title_ar as governorate_ar')
                     ->get();
-        return response()->json(['status' => 'success' , 'data' => $addresses,  'message' => 'Get All Addresses']);
+        return response()->json(['status' => 'success' , 'data' => $addresses,  'message' => 'Get All Addresses'],200);
     }
     public function updated_address(Request $request,$id)
     {
@@ -293,14 +270,14 @@ class HomeController extends Controller
             'city_id' => 'required'
         ]);
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data']);
+            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data'],422);
         }
         $client_address = ClientAddress::find($id);
         if(!$client_address){
-          return response()->json(['data' => (object)[], 'status' => 'error' , 'message' => 'Error In Data']);
+          return response()->json(['data' => ['Error In Data'], 'status' => 'error' , 'message' => 'Error In Data'],422);
         }
         $addresses = $client_address->update($request->all());
-        return response()->json(['status' => 'success' , 'data' => $client_address,  'message' => 'Update Address Successfully']);
+        return response()->json(['status' => 'success' , 'data' => $client_address,  'message' => 'Update Address Successfully'],200);
     }
     public function add_address(Request $request)
     {
@@ -309,19 +286,19 @@ class HomeController extends Controller
             'address' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data']);
+            return response()->json(['data' => $validator->errors()->all(), 'status' => 'error' , 'message' => 'Error In Data'],422);
         }
         $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => auth()->user()->id, 'address' => $request->address]);
-        return response()->json(['data' => $address, 'status' => 'success' , 'message' => 'Add Address Successfully']);
+        return response()->json(['data' => $address, 'status' => 'success' , 'message' => 'Add Address Successfully'],200);
     }
     public function delete_address($id)
     {
         $address = ClientAddress::find($id);
         if(!$address){
-          return response()->json(['status' => 'error' , 'message' => 'Error In Data']);
+          return response()->json(['status' => 'error' , 'message' => 'Error In Data' , 'data' => ['Error In Data'] ],422);
         }
         $address->delete();
-        return response()->json(['message' => 'Delete Address Successfully ', 'status' => 'success']);
+        return response()->json(['message' => 'Delete Address Successfully ', 'status' => 'success' , 'data' => (object)[] ],200);
     }
     public function check_coupon(Request $request)
     {
@@ -329,24 +306,24 @@ class HomeController extends Controller
             'coupon' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all() , 'status' => 'error' , 'message' => 'Error In Data']);
+            return response()->json(['data' => $validator->errors()->all() , 'status' => 'error' , 'message' => 'Error In Data'],422);
         }
         $found_coupon = Coupon::where('coupon',$request->coupon)->first();
         if(!$found_coupon){
-            return response()->json(['message' => ['Not Correct Coupon'] , 'data' => '' , 'status' => 'error']);
+            return response()->json(['message' => 'Not Correct Coupon' , 'data' => ['Not Correct Coupon']  , 'status' => 'error'],422);
         }
         $used_coupon = Coupon::where('coupon',$request->coupon)->where(function($q){
             $q->where('used',1);
             $q->orWhere('used',2);
         })->first();
         if($used_coupon){
-            return response()->json(['message' => 'this coupon used befor' , 'data' => '' , 'status' => 'error']);
+            return response()->json(['message' => 'this coupon used befor' , 'data' => ['this coupon used befor'] , 'status' => 'error'],422);
         }
         $coupon = Coupon::where('coupon',$request->coupon)->first();
         $coupon->client_id = \Auth::user()->id;
         $coupon->used      = 1;
         $coupon->save();
-        return response()->json(['data' => $coupon->value , 'status' => 'success' , 'message' => 'Added Coupon Successfully']);
+        return response()->json(['data' => $coupon->value , 'status' => 'success' , 'message' => 'Added Coupon Successfully'],200);
     }
     public function my_cart(Request $request)
     {
@@ -359,7 +336,7 @@ class HomeController extends Controller
                       ->where('translatables.column_name','=','title')
                       ->where('tans_bodies.language_id',$language_id)
                       ->where('client_id',\Auth::user()->id)->get();
-        return response()->json(['message' => 'get all carts data' , 'data' => $auth_carts , 'status' => 'success']);
+        return response()->json(['message' => 'get all carts data' , 'data' => $auth_carts , 'status' => 'success'],200);
     }
     public function store_cart(Request $request)
     {
@@ -420,7 +397,7 @@ class HomeController extends Controller
             'carts' => 'required|array'
         ]);
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all() , 'status' => 'error' , 'message' => 'Error In Data']);
+            return response()->json(['data' => $validator->errors()->all() , 'status' => 'error' , 'message' => 'Error In Data'],422);
         }
         $address = ClientAddress::find($request->address_id);
         $city = \App\City::find($address->city_id);
@@ -455,10 +432,9 @@ class HomeController extends Controller
             $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
         });
         $link = url('order/'.$order->id);
-        send_notification(' Make New order  #'.$order->id.' ',\Auth::user()->id,$link);
-        return response()->json(['data' => $order , 'status' => 'success' , 'message' => 'Order Added Successfully']);
+        send_notification(' Make New order  #'.$order->id.' ',auth()->user()->id,$link);
+        return response()->json(['data' => $order , 'status' => 'success' , 'message' => 'Order Added Successfully'],200);
     }
-
     public function add_rate(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -468,7 +444,7 @@ class HomeController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all() , 'message' => 'error in data' , 'status' => 'error']);
+            return response()->json(['data' => $validator->errors()->all() , 'message' => 'error in data' , 'status' => 'error'],422);
         }
 
         $client_rate = ClientRate::create([
@@ -479,7 +455,7 @@ class HomeController extends Controller
             'comment'=> $request->comment
 
         ]);
-        return response()->json(['data' => $client_rate , 'status' => 'success' , 'message' => 'Rate Added Successfully']);
+        return response()->json(['data' => $client_rate , 'status' => 'success' , 'message' => 'Rate Added Successfully'],200);
     }
     public function is_available(Request $request)
     {
@@ -491,7 +467,7 @@ class HomeController extends Controller
             'city_id' => 'required'
         ]);
         if ($validator->fails()) {
-            return response()->json(['data' => $validator->errors()->all() , 'message' => 'error in data' , 'status' => 'error']);
+            return response()->json(['data' => $validator->errors()->all() , 'message' => 'error in data' , 'status' => 'error'],422);
         }
         $contact = Contact::create([
             'email' => $request->email,
@@ -507,20 +483,20 @@ class HomeController extends Controller
             $m->to(setting('super_mail'), __('front.title'))->subject(__('front.product'));
         });
         $link = url('unavailable');
-        return response()->json(['data' => $contact , 'message' => 'Send Mail Successfully' , 'status' => 'success']);
+        send_notification('Request For unavailable Product #'.$request->product_id.' ',auth()->user()->id,$link);
+        return response()->json(['data' => $contact , 'message' => 'Send Mail Successfully' , 'status' => 'success'],200);
 
     }
     public function details_client()
     {
         $client = Auth::user();
-        return response()->json(['success' => $client], $this->successStatus);
+        return response()->json(['data' => $client , 'status' => 'success' , 'message' => 'get user data'], 200);
     }
     public function governorate()
     {
       $governorate = Governorate::select('governorates.id','governorates.title_en as governorate_en', 'governorates.title_ar as governorate_ar')->get();
-      return response()->json(['data' => $governorate , 'message' => 'Get All Governorate' , 'status' => 'success']);
+      return response()->json(['data' => $governorate , 'message' => 'Get All Governorate' , 'status' => 'success'],200);
     }
-
     public function city(Request $request)
     {
       $city = City::latest('created_at');
@@ -528,7 +504,7 @@ class HomeController extends Controller
         $city = $city->where('governorate_id',$request->governorate_id);
       }
       $city = $city->select('cities.id','cities.city_en', 'cities.city_ar','cities.governorate_id')->get();
-      return response()->json(['data' => $city ,'message' => 'Get All City' , 'status' => 'success']);
+      return response()->json(['data' => $city ,'message' => 'Get All City' , 'status' => 'success'],200);
     }
     // use for get brands
     public function api_sub_cat_from_brand($brand_id)
