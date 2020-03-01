@@ -259,7 +259,7 @@ class HomeController extends Controller
         $addresses = ClientAddress::where('client_id', $client->id)
                     ->join('cities', 'cities.id', '=', 'client_addresses.city_id')
                     ->join('governorates', 'governorates.id', '=', 'cities.governorate_id')
-                    ->select('client_addresses.id','client_addresses.address','cities.id as city_id','cities.city_en', 'cities.city_ar','governorates.title_en as governorate_en', 'governorates.title_ar as governorate_ar')
+                    ->select('client_addresses.id','client_addresses.address','cities.id as city_id','governorates.is as gover_id','cities.city_en', 'cities.city_ar','governorates.title_en as governorate_en', 'governorates.title_ar as governorate_ar')
                     ->get();
         return response()->json(['status' => 'success' , 'data' => $addresses,  'message' => 'Get All Addresses'],200);
     }
