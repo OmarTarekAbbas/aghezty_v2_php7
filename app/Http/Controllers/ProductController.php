@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
         $products = Product::latest('created_at');
         if($request->has('search_value')){
-            $products = $products->whereLike(['title','id','price','stock'],$request->search_value);
+            $products = $products->whereLike(['title','id','price','stock','sku'],$request->search_value);
         }
         $products = $products->paginate(10);
         // if($request->has('search_value')){
@@ -100,8 +100,8 @@ class ProductController extends Controller
         $product = new Product();
         $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id'));
 
-        foreach ($request->short_description as $key => $value) {
-            $product->setTranslation('title', $key, $category->getTranslation('title',$key).'-'.$brand->getTranslation('title',$key).'-'.$request->short_description[$key]);
+        foreach ($request->title as $key => $value) {
+            $product->setTranslation('title', $key, $value);
         }
         foreach ($request->description as $key => $value) {
             $product->setTranslation('description', $key, $value);
@@ -207,8 +207,8 @@ class ProductController extends Controller
                  $images[] = new ProductImage(['image' => $image]);
             }
         }
-        foreach ($request->short_description as $key => $value) {
-            $product->setTranslation('title', $key, $product->category->getTranslation('title',$key).'-'.$product->brand->getTranslation('title',$key).'-'.$request->short_description[$key]);
+        foreach ($request->title as $key => $value) {
+          $product->setTranslation('title', $key, $value);
         }
         foreach ($request->description as $key => $value) {
             $product->setTranslation('description', $key, $value);
@@ -312,8 +312,10 @@ class ProductController extends Controller
                 foreach ($results as $row) {
                     $total_counter++;
                     $product = new Product();
-                    $product->setTranslation('title', 'ar', $category->getTranslation('title','ar').'-'.$brand->getTranslation('title','ar').'-'.$row->model_ar);
-                    $product->setTranslation('title', 'en', $category->getTranslation('title','en').'-'.$brand->getTranslation('title','en').'-'.$row->model_en);
+                    // $product->setTranslation('title', 'ar', $category->getTranslation('title','ar').'-'.$brand->getTranslation('title','ar').'-'.$row->model_ar);
+                    // $product->setTranslation('title', 'en', $category->getTranslation('title','en').'-'.$brand->getTranslation('title','en').'-'.$row->model_en);
+                    $product->setTranslation('title', 'ar', $row->title_ar);
+                    $product->setTranslation('title', 'en', $row->title_en);
                     $product->setTranslation('description', 'ar', $row->description_ar);
                     $product->setTranslation('description', 'en', $row->description_en);
                     $product->setTranslation('short_description', 'ar', $row->model_ar);
@@ -327,12 +329,10 @@ class ProductController extends Controller
                     }
                     else{
                       $dis = ($row->discount) ? $row->discount : 0;
-                      $product->price_after_discount = $row->price - (($dis/100)*$row->price);
+                      $product->price_after_discount = $row->price - $row->discount;
                     }
                     $product->stock = $row->stock;
                     $product->inch = isset($row->inch) ? $row->inch : null;
-                    $product->special = (strtolower($row->special) == 'yes') ? 1:0;
-                    $product->active = (strtolower($row->active) == 'yes') ? 1:0;
                     $product->main_image = $row->main_image;
                     $product->save();
                     $gallery  = explode(',',$row->gallery);
@@ -344,10 +344,10 @@ class ProductController extends Controller
                         }
 
                     }
-                        if ($product)
-                        {
-                            $counter++ ;
-                        }
+                    if ($product)
+                    {
+                        $counter++ ;
+                    }
                 }
             },false);
         }else{

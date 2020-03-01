@@ -12,6 +12,7 @@
         <th>@lang('messages.price')</th>
         <th>@lang('messages.main_image')</th>
         <th>@lang('messages.rate')</th>
+        <th>sku</th>
         <th>@lang('messages.recently_added')</th>
         <th>@lang('messages.selected_for_you')</th>
         <th>@lang('messages.action')</th>
@@ -48,6 +49,7 @@
                 <img class="" width="100px" height="100px" src="{{$value->main_image}}"/>
             </td>
             <td>{{$value->rate() ? $value->rate():__('messages.not_have_rate_yet')}}</td>
+            <td>{{$value->sku}}</td>
             <td class="recently_added">
                 <label class="switch">
                     <input id="{{$value->id}}" type="checkbox" name="switch" {{$value->recently_added? 'checked':''}}>

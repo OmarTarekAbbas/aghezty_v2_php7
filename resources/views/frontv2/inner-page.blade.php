@@ -123,6 +123,14 @@ nav.container-fluid {
                             <p class="d-inline-block px-1">
                                 {{$product->stock ? __('front.inner.in_stock') : __('front.inner.not_stock') }}</p>
                         </div>
+                        @if ($product->sku)
+                          <div>
+                            <h6 class="font-weight-bold d-inline-block">SKU:</h6>
+                            <p class="d-inline-block px-1">
+                              {{$product->sku}}
+                            </p>
+                          </div>
+                        @endif
 
                         <div class="row price_disc_offer">
                             <h4 class="col-md-6 price text-primary font-weight-bold">

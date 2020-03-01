@@ -48,7 +48,7 @@ class HomeController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $client = Client::create($input);
-        if($request->has('city_id') && $request->has('governorate_id') && $request->has('address')){
+        if($request->has('city_id') && $request->has('address')){
             ClientAddress::create([
                 'client_id' => $client->id,
                 'city_id'   => $request->city_id,

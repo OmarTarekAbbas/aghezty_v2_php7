@@ -45,6 +45,26 @@
 @endif
 
 <div class="form-group"  id="cktextarea">
+  <label class="col-sm-3 col-lg-2 control-label">@lang('messages.product_name') *</label>
+  <div class="col-sm-9 col-lg-10 controls" >
+      <ul id="myTab1" class="nav nav-tabs">
+              <?php $i=0;?>
+              @foreach($languages as $language)
+                  <li class="{{($i++)? '':'active'}}"><a href="#title{{$language->short_code}}" data-toggle="tab"> {{$language->title}}</a></li>
+              @endforeach
+      </ul>
+      <div class="tab-content">
+          <?php $i=0;?>
+          @foreach($languages as $language)
+              <div class="tab-pane fade in {{($i++)? '':'active'}}" id="title{{$language->short_code}}">
+                  <input class="form-control" name="title[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('title',$language->short_code)  !!}@endif" required />
+              </div>
+          @endforeach
+      </div>
+  </div>
+</div>
+
+<div class="form-group"  id="cktextarea">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.description') *</label>
     <div class="col-sm-9 col-lg-10 controls" >
         <ul id="myTab1" class="nav nav-tabs">
@@ -126,6 +146,13 @@
     <div class="col-sm-9 col-lg-10 controls">
             {!! Form::number('stock',null,['placeholder'=>__('messages.stock_number'),'class'=>'form-control' , 'min' => 0 , 'required' => true]) !!}
     </div>
+</div>
+
+<div class="form-group">
+  <label for="textfield5" class="col-sm-3 col-lg-2 control-label">sku</label>
+  <div class="col-sm-9 col-lg-10 controls">
+        {!! Form::text('sku',null,['placeholder'=>'sku','class'=>'form-control']) !!}
+  </div>
 </div>
 
 <div class="form-group">
