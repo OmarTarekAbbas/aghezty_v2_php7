@@ -467,7 +467,7 @@
     channel.bind('product-event', function(data) {
         var notification = new window.Notification("{{__('front.title')}}!", {
             body: data.message,
-            icon: "{{url('front/img/logo_2.png')}}",
+            icon: "{{url('public/frontv2/images/logo/01.png')}}",
         });
         notification.onclick = function(event) {
             event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
