@@ -101,8 +101,7 @@
             <?php $i=0;?>
             @foreach($languages as $language)
                 <div class="tab-pane fade in {{($i++)? '':'active'}}" id="short_description{{$language->short_code}}">
-                    <textarea class="form-control col-md-12" name="short_description[{{$language->short_code}}]" rows="6" required>@if($product){!! $product->getTranslation('short_description',$language->short_code)  !!}@endif
-                    </textarea>
+                    <textarea class="form-control col-md-12" name="short_description[{{$language->short_code}}]" rows="6" required>@if($product){!! $product->getTranslation('short_description',$language->short_code)  !!}@endif</textarea>
                 </div>
             @endforeach
         </div>
@@ -155,7 +154,7 @@
   </div>
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
     <div class="col-sm-6">
         <label class="col-sm-5 col-lg-4 control-label">@lang('messages.special')  </label>
         <div class="col-sm-7 col-lg-8 controls" >
@@ -170,7 +169,7 @@
             {!! Form::checkbox('active',true,null,['placeholder'=>__('messages.active'),'class'=>'form-control' ,(!$product)? 'checked' :'']) !!}
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="form-group">
     <label class="col-sm-3 col-md-2 control-label">@lang('messages.main_image') *</label>

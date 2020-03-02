@@ -827,7 +827,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                     // If it's okay let's create a notification
                                       var notification = new window.Notification("{{__('front.title')}}!", {
                                         body: data.send_user.name+' '+data.message,
-                                        icon: "{{url('front/img/logo_2.png')}}",
+                                        icon: "{{url('public/frontv2/images/logo/01.png')}}",
                                       });
                                     notification.onclick = function(event) {
                                       event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open
@@ -843,7 +843,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                     // If the user accepts, let's create a notification
                                       var notification = new window.Notification("{{__('front.title')}}!", {
                                       body: data.send_user.name+' '+data.message,
-                                      icon: "{{url('front/img/logo_2.png')}}",
+                                      icon: "{{url('public/frontv2/images/logo/01.png')}}",
                                       });
                                     notification.onclick = function(event) {
                                       event.preventDefault();  //prevent the browser from focusing the Notification's tab, while it stays also open

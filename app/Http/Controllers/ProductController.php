@@ -57,6 +57,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+      //return $request->all();
         $validator = Validator::make($request->all(), [
             'title' => '',
             'main_image' => 'required',
@@ -113,13 +114,13 @@ class ProductController extends Controller
 
         if($request->has('property_value_id')){
           $property_value_id = array_values(array_filter($request->property_value_id));
-          $product->pr_value()->sync($request->property_value_id);
+          $product->pr_value()->attach($property_value_id);
         }
 
         if ($request->has('images')){
             $product->images()->saveMany($images);
         }
-        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/product/'.$product->id)))->toOthers();
+        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productv2/'.$product->id)))->toOthers();
         \Session::flash('success', 'Product Created Successfully');
         return redirect('category/'.$request->category_id);
         //return redirect('product');
@@ -324,12 +325,13 @@ class ProductController extends Controller
                     $product->category_id = $request->category_id;
                     $product->price = $row->price;
                     $product->discount = $row->discount;
+                    $product->sku = $row->sku;
                     if($row->price_after_discount){
                       $product->price_after_discount = $row->price_after_discount;
                     }
                     else{
                       $dis = ($row->discount) ? $row->discount : 0;
-                      $product->price_after_discount = $row->price - $row->discount;
+                      $product->price_after_discount = $row->price - $dis;
                     }
                     $product->stock = $row->stock;
                     $product->inch = isset($row->inch) ? $row->inch : null;

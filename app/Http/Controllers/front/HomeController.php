@@ -143,6 +143,7 @@ class HomeController extends Controller
         if($request->has('lang')){
             \App::setLocale($request->lang);
             \Session::put('applocale', $request->lang);
+
         }
         return view('front.contact');
     }
@@ -690,9 +691,13 @@ class HomeController extends Controller
 
     }
 
-    public function contactusv2()
+    public function contactusv2(Request $request)
     {
+          if($request->has('lang')){
+            \App::setLocale($request->lang);
+            \Session::put('applocale', $request->lang);
 
+        }
         return view('frontv2.contact_us');
 
     }

@@ -133,7 +133,7 @@ const property = new Vue({
     }
 
     $('.discount').keyup(function(){
-        $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
+        $('.price_after').val($('.price').val() - $(this).val())
     })
 </script>
 @stop
