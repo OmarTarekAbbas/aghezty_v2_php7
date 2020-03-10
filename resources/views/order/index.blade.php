@@ -52,12 +52,20 @@
                                         <td><input class="select_all_template" type="checkbox" name="selected_rows[]" order="{{$order->id}}" class="roles" onclick="collect_selected(this)"></td>
                                         <td>{{($key+1)}}</td>
                                         <td>
+                                          @if($order->client && isset($order->client))
                                            {{$order->client->name}}
+                                          @endif
                                         </td>
                                         <td>{{$order->total_price - $order->shipping_amount}}</td>
                                         <td>{{(int)$order->shipping_amount}}</td>
                                         <td>{{$order->total_price}}</td>
-                                        <td>{{$order->address->address}} , {{$order->address->city->city_ar}}-{{$order->address->city->governorate->title_ar}}</td>
+
+                                        <td>
+                                          @if($order->address && isset($order->address))
+                                          {{$order->address->address}} , {{$order->address->city->city_ar}}-{{$order->address->city->governorate->title_ar}}
+                                          @endif
+                                        </td>
+
                                         <td><span class="blue">{{$order->status}}</span></td>
                                         <td>
                                             @if(count($order->products) > 0)
