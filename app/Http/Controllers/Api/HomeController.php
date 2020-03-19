@@ -528,6 +528,6 @@ class HomeController extends Controller
     {
       $client = Auth::user();
       $order = Order::where('client_id', $client->id)->get();
-      return response()->json(['status' => 'success' , 'data' => $order,  'message' => 'Get All Addresses'],200);
+      return response()->json(['status' => 'success' , 'data' => $order,  'message' => 'Get All order'],200);
     }
 }
