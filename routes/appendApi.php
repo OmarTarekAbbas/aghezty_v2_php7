@@ -28,4 +28,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('add_rate', 'HomeController@add_rate');
     Route::post('available', 'HomeController@is_available');
     Route::get('client', 'HomeController@details_client');
+    Route::get('order', 'HomeController@order_client');
+
 });

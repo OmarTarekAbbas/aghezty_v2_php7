@@ -523,4 +523,11 @@ class HomeController extends Controller
                  ->get();
       return $cats;
     }
+
+    public function order_client()
+    {
+      $client = Auth::user();
+      $order = Order::where('client_id', $client->id)->get();
+      return response()->json(['status' => 'success' , 'data' => $order,  'message' => 'Get All Addresses'],200);
+    }
 }
