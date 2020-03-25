@@ -28,6 +28,7 @@
           <div class="col-md-12 col-lg-12 col-xl-12 col-12 no_padding_mobile">
             <div class="accordion_add w-100 my-3" id="accordionExample_2">
               @foreach (Auth::guard('client')->user()->orders as $key=>$order)
+
                 <!-- Start My Order 2 -->
                 <div class="card z-depth-0 bordered">
                   <div class="card-header" id="heading{{$key+1}}">
