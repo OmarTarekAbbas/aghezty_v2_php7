@@ -80,6 +80,10 @@
   .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-value::after{
     content:" @lang('front.egp')"
   }
+  .head_three .navbar .navbar-nav .nav-link {
+    font-size: 15px !important;
+    font-weight: bolder !important;
+}
   </style>
 </head>
 
