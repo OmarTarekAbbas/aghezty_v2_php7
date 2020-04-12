@@ -471,6 +471,23 @@ nav.container-fluid {
       $('body').removeClass('modal-open')
     }
   })
+  $( document ).ready(function(){
+    $.ajax({
+      url: '{{url("clients/loadproductsv2")}}?start=0',
+      type: "post",
+      data: $('#filter_form').serialize(),
+      success: function(data) {
+        if (data.html == '') {
+          action = 'active';
+          $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+        } else {
+          $('#grid_two').html(data.html);
+          action = 'inactive';
+        }
+        $('.load').hide();
+      },
+    });
+  })
 </script>
 <script>
   const property = new Vue({
