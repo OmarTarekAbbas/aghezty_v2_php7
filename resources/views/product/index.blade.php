@@ -177,7 +177,7 @@ input:checked + .slider:before {
                                 <div class="col-md-4">
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                                    <select name="category_id[]" id="cate" class="form-control chosen-rtl" multiple>
+                                    <select name="category_id[]" class="form-control chosen-rtl" multiple>
                                       @foreach (categorys() as $category)
                                           @if(count($category->sub_cats) > 0)
                                               <optgroup label="{{$category->title}}">
@@ -229,7 +229,7 @@ input:checked + .slider:before {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body edit_body">
 
             </div>
         </div>
@@ -332,7 +332,7 @@ input:checked + .slider:before {
 	        })
 	        .done(function(data)
 	        {
-	            $(".modal-body").empty().html(data);
+	            $(".edit_body").empty().html(data);
 	            //location.hash = page;
 	        })
 	        .fail(function(jqXHR, ajaxOptions, thrownError)
