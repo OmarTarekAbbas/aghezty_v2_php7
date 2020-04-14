@@ -2,7 +2,7 @@
 <table id="myTable" class="table table-striped dt-responsive" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th style="width:18px"><input type="checkbox" onclick="select_all('products')"></th>
+        <th style="width:18px"><input data-check-all type="checkbox"></th>
         <th>serial id</th>
         <th>product id</th>
         <th>@lang('messages.category')</th>
@@ -21,8 +21,8 @@
     <tbody>
     @foreach($products as $key=>$value)
         <tr id="product_{{$value->id}}">
-            <td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}"
-                       class="roles" onclick="collect_selected(this)"></td>
+            <td><input data-check-all-item class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}"
+                       class="roles"></td>
             <td>{{$key+1}}</td>
             <td>{{$value->id}}</td>
             <td>
@@ -81,4 +81,4 @@
     @endforeach
     </tbody>
 </table>
-{{ $products->appends(Request::all())->render() }}
+{{ $products->appends(request()->all())->render() }}

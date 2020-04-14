@@ -106,19 +106,108 @@ input:checked + .slider:before {
                         <div class="btn-toolbar pull-right">
                             <div class="btn-group">
                                 <a class="btn btn-circle show-tooltip" title="" href="{{url('product/create'.$append)}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
-                                <?php
-                                $table_name = "products";
-                                // pass table name to delete all function
-                                // if the current route exists in delete all table flags it will appear in view
-                                // else it'll not appear
-                                ?>
-                                @include('partial.delete_all')
+                                <a onclick="remove_all()" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
+                                <a class="btn btn-sm show-tooltip" onclick="change()" title="@lang('messages.edit')"><i class="fa fa-edit"></i></a>
+                                <form action="{{route('admin.product.delete.all')}}" style="display:none;" id="delete_all" method="post">
+                                  @csrf
+                                  <input type="text" name="product_ids" class="product_ids" value="">
+                                </form>
+                                <div class="modal fade" id="change_column" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" style="width:60%!important" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Edit Some Of Product</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <form action="{{route('admin.product.update.all')}}" method="post">
+                                              @csrf
+                                              <div class="row">
+                                                <div class="col-md-12">
+                                                  <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                                      {!! Form::select('column',['price' => 'Price','discount' => 'Discount','short_description' => 'Model','stock' => 'Stock','sku'=>'Sku','active' => 'active'],null,['class'=>'form-control']) !!}
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                  <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-smile-o"></i></span>
+                                                      {!! Form::text('value',null,['class'=>'form-control','required']) !!}
+                                                  </div>
+                                                </div>
+                                                <input type="text" style="display:none;" name="product_ids" class="edit_product_ids" value="">
+                                                <button type="submit" class="btn btn-primary pull-right mr-2">Save</button>
+                                              </div>
+                                            </form>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                         <br><br>
-                        <div class="table-responsive">
-                          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
+                        <div data-check-all-container class="table-responsive">
+                          <form class="form-group form-search" id="filter_form" method="post">
+                            @csrf
+                           <div class="container">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                    <input  type="text" class="form-control" placeholder="Search.." name="search" placeholder="Email">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                    <input name="search_model" type="text" class="form-control" placeholder="Search For Multiple Model">
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                    <input name="sku" type="text" class="form-control" placeholder="Search For Multiple sku">
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <select name="category_id[]" id="cate" class="form-control chosen-rtl" multiple>
+                                      @foreach (categorys() as $category)
+                                          @if(count($category->sub_cats) > 0)
+                                              <optgroup label="{{$category->title}}">
+                                                  @foreach ($category->sub_cats as $sub_category)
+                                                  <option value="{{$sub_category->id}}">{{$sub_category->title}}</option>
+                                                  @endforeach
+                                              </optgroup>
+                                          @endif
+                                      @endforeach
+                                  </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                      {!! Form::select('brand_id[]',brands()->pluck('title','id'),null,['class'=>'form-control chosen-rtl','required' , 'multiple']) !!}
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                      {!! Form::select('limit',array_combine(range(10,500,10), range(10,500,10)),null,['class'=>'form-control chosen-rtl','required']) !!}
+                                  </div>
+                                </div>
+                                <div class="col-md-1">
+                                  <button class="btn btn-small btn-primary" type="button" onclick="Search()"> submit </button>
+                                </div>
+                              </div>
+                           </div>
+                          </form>
                           <div id="tag_container">
                                 @include('product.result')
                           </div>
@@ -154,16 +243,12 @@ input:checked + .slider:before {
     $('#product').addClass('active');
     $('#product_index').addClass('active');
 
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value
+    function Search() {
+
         $.ajax({
             url: "{{url('product')}}",
             type: "get",
-            data:{
-                'search_value' : filter
-            }
+            data: $('#filter_form').serialize(),
         }).done(function(data)
             {
                 $("#tag_container").empty().html(data);
@@ -197,10 +282,9 @@ input:checked + .slider:before {
 	        $('li').removeClass('active');
 	        $(this).parent('li').addClass('active');
 	        var myurl = $(this).attr('href');
-            var page=$(this).attr('href').split('page=')[1];
-            let url = new URL($(this).attr('href'));
-            search = url.searchParams.get('search_value') ? url.searchParams.get('search_value') : 0;  // to get search_value from url
-            console.log(search);
+          var page=$(this).attr('href').split('page=')[1];
+          let url = new URL($(this).attr('href'));
+          search = url.searchParams // to get search_value from url
 	        getData(page,search);
 	    });
 
@@ -209,11 +293,11 @@ input:checked + .slider:before {
         $('#page_number').val(page)
         append = '';
         if(value){
-            append = '&search_value='+ value
+            append = value
         }
 	        $.ajax(
 	        {
-	            url: '?page=' + page+append,
+	            url: '?'+append,
 	            type: "get",
 	            datatype: "html"
 	        })
@@ -373,4 +457,33 @@ input:checked + .slider:before {
       });
     })
   </script>
+
+<script type="text/javascript" src="{{ asset('js/check-all.umd.js') }}"></script>
+<script type="text/javascript">
+    var x= checkAll.default(document.querySelector('[data-check-all-container]'))
+    function remove_all(){
+      var str = ''
+      $('.select_all_template').each(function () {
+        if(this.checked){
+          str += $(this).val()+ ','
+        }
+      });
+      $('.product_ids').val(str.slice(0,-1))
+      if(confirm("are you Sure ?")){
+          $('#delete_all').submit()
+      }
+    }
+
+    function change(){
+      var str = ''
+      $('.select_all_template').each(function () {
+        if(this.checked){
+          str += $(this).val()+ ','
+        }
+      });
+      $('.edit_product_ids').val(str.slice(0,-1))
+      $('#change_column').modal('show')
+    }
+</script>
+
 @stop

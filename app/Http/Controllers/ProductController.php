@@ -20,14 +20,24 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+      //return $request->all();
         $products = Product::latest('created_at');
-        if($request->has('search_value')){
-            $products = $products->whereLike(['title','id','price','stock','sku'],$request->search_value);
+        if($request->has('search') && $request->search != ''){
+            $products = $products->whereLike(['title','id','price','stock','sku'],$request->search);
         }
-        $products = $products->paginate(10);
-        // if($request->has('search_value')){
-        //     $products->appends(['search_value' => $request->search_value]);
-        // }
+        if($request->has('category_id') && $request->category_id != ''){
+          $products = $products->whereIn('category_id',$request->category_id);
+        }
+        if($request->has('brand_id') && $request->brand_id != ''){
+          $products = $products->whereIn('brand_id',$request->brand_id);
+        }
+        if($request->has('search_model') && $request->search_model != ''){
+          $products = $products->whereIn('short_description',explode(',',$request->search_model));
+        }
+        if($request->has('sku') && $request->sku != ''){
+          $products = $products->whereIn('sku',explode(',',$request->sku));
+        }
+        $products = $products->paginate(request('limit',10));
         $languages = Language::all();
         if ($request->ajax()) {
             return view('product.result',compact('products','languages'));
@@ -372,5 +382,26 @@ class ProductController extends Controller
                   'Content-Type: application/xlsx',
                 );
         return response()->download($file, 'product.xlsx', $headers);
+    }
+
+    public function delete_all_product(Request $request)
+    {
+      $products = Product::whereIn('id',explode(',',$request->product_ids))->delete();
+      return back()->with('success','Delete All Product SuccessFully');
+    }
+
+    public function update_all_product(Request $request)
+    {
+      //return $request->all();
+      $col = $request->column;
+      $products = Product::whereIn('id',explode(',',$request->product_ids))->get();
+      foreach ($products as $key => $value) {
+        $value[$request->column] = $request->value;
+        if($request->column == 'discount'){
+          $value->price_after_discount = $value->price - (($value->price * $request->value)/100);
+        }
+        $value->save();
+      }
+      return back()->with('success','Delete All Product SuccessFully');
     }
 }

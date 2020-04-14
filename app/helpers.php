@@ -87,7 +87,8 @@ Route::get('/test','DashboardController@test');
         Route::post('admin/seed_tables', 'DashboardController@seed_tables');
         Route::get('admin/migrate_manager', 'DashboardController@migrate_manager');
         Route::post('admin/migrate_tables', 'DashboardController@migrate_tables');
-
+        Route::post('admin/product/delete/all', 'ProductController@delete_all_product')->name('admin.product.delete.all');
+        Route::post('admin/product/update/all', 'ProductController@update_all_product')->name('admin.product.update.all');
         /*****************start design v2 */
         Route::get('homepage/slides', 'HomeController@slidesv2');
         Route::get('slides/{id}/edit', 'HomeController@editv2');

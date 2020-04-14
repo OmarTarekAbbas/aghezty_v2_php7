@@ -765,7 +765,7 @@ class HomeController extends Controller
           });
         }
 
-        $products = $products->limit(get_limit_paginate())->get();
+        $products = $products->where('products.active',1)->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct',compact('products'));
     }
 
@@ -832,15 +832,15 @@ class HomeController extends Controller
           });
         }
 
-        $products = $products->offset($request->start)->limit(get_limit_paginate())->get();
+        $products = $products->where('products.active',1)->offset($request->start)->limit(get_limit_paginate())->get();
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
     }
 
     public function inner_productv2($id)
     {
-        $product = Product::latest('created_at')->whereId($id)->first();
-        $items   = Product::where('category_id',$product->category->id)->whereNotIn('id',[$id])->inRandomOrder()->take(6)->get();
+        $product = Product::latest('created_at')->whereId($id)->where('products.active',1)->first();
+        $items   = Product::where('category_id',$product->category->id)->whereNotIn('id',[$id])->where('products.active',1)->inRandomOrder()->take(6)->get();
         return view('frontv2.inner-page',compact('product','items'));
     }
 
