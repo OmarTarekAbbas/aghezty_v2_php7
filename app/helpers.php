@@ -89,6 +89,9 @@ Route::get('/test','DashboardController@test');
         Route::post('admin/migrate_tables', 'DashboardController@migrate_tables');
         Route::post('admin/product/delete/all', 'ProductController@delete_all_product')->name('admin.product.delete.all');
         Route::post('admin/product/update/all', 'ProductController@update_all_product')->name('admin.product.update.all');
+        Route::resource('admin/product/image', 'ImageController',['as' => 'admin']);
+        Route::post('admin/image/order/{id}','ImageController@orderImage');
+        Route::get('image/{id}/delete','ImageController@destroy');
         /*****************start design v2 */
         Route::get('homepage/slides', 'HomeController@slidesv2');
         Route::get('slides/{id}/edit', 'HomeController@editv2');

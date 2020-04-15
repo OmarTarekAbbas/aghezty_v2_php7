@@ -135,5 +135,10 @@ const property = new Vue({
     $('.discount').keyup(function(){
         $('.price_after').val($('.price').val() - $(this).val())
     })
+
+    jQuery(document).ready(function() {
+    CKEDITOR.replace( 'ckeditor1' );
+    CKEDITOR.replace( 'ckeditor2' );
+    });
 </script>
 @stop

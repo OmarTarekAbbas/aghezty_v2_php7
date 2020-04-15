@@ -40,7 +40,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" />
         <link rel="stylesheet" href="{{url('assets/data-tables/bootstrap3/dataTables.bootstrap.css')}}" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-
+        <link rel="stylesheet" type="text/css" href="{{url('css/quill.snow.css')}}" />
 
         <!--base css styles-->
         <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
@@ -736,6 +736,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
         <script src="{{url('js/pusher.min.js')}}"></script>
         <script src="{{url('js/pusher_config.js')}}"></script>
         <script src="{{url('js/vue.min.js')}}"></script>
+        <script src="{{url('js/quill.js')}}"></script>
+        <script src="{{url('js/ckquill.js')}}"></script>
 
         <!--flaty scripts-->
         <script>
@@ -1033,8 +1035,10 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     "pageLength": 50
                 });
             });
+            jQuery(document).ready(function() {
             CKEDITOR.replace( 'ckeditor1' );
             CKEDITOR.replace( 'ckeditor2' );
+            });
         </script>
         <script src="{{url('js/cropper.min.js')}}" defer></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

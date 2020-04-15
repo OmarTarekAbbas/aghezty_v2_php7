@@ -66,6 +66,9 @@
                 <a class="btn btn-sm btn-info show-tooltip" title="Show Product"
                    href="{{route("front.home.inner",['id'=>$value->id])}}" data-original-title="Show Product"><i
                         class="fa fa-forward"></i></a>
+                <a class="btn btn-sm btn-success show-tooltip" title="Image Control"
+                   href="{{route("admin.image.index",['product_id'=>$value->id])}}" data-original-title="Show Product"><i
+                        class="fa fa-image"></i></a>
                 @if(count($value->admin_rates) > 0)
                     <a class="btn btn-sm btn-primary show-tooltip" title="Show Rate"
                        href="{{url("rate?product_id=$value->id")}}" data-original-title="show Rate"><i

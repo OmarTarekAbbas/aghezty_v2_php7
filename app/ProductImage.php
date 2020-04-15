@@ -23,7 +23,10 @@ class ProductImage extends Model
         $value->move(base_path($path),$img_name);
         $this->attributes['image']= $path.$img_name ;
         }
-        else{
+
+        if(strpos($value,'uploads/product') !== false){
+          $this->attributes['image'] = $value;
+        }else{
         $this->attributes['image']= $path.$value ;
         }
 
