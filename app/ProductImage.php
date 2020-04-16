@@ -17,17 +17,17 @@ class ProductImage extends Model
     public function setImageAttribute($value)
     {
         $path     = '/uploads/product/'.date('Y-m-d').'/';
+
+        if(strpos($value,'uploads/product') !== false)
+        {
+          $this->attributes['image'] = $value;
+        }
+        
         if(is_file($value))
         {
         $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
         $value->move(base_path($path),$img_name);
         $this->attributes['image']= $path.$img_name ;
-        }
-
-        if(strpos($value,'uploads/product') !== false){
-          $this->attributes['image'] = $value;
-        }else{
-        $this->attributes['image']= $path.$value ;
         }
 
     }
