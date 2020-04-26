@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Advertisement;
 use App\Category;
+use Validator;
 class HomeController extends Controller
 {
     /**
