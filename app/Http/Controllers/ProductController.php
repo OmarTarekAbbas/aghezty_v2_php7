@@ -130,7 +130,7 @@ class ProductController extends Controller
         if ($request->has('images')){
             $product->images()->saveMany($images);
         }
-        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productv2/'.$product->id)))->toOthers();
+        // broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productv2/'.$product->id)))->toOthers();
         \Session::flash('success', 'Product Created Successfully');
         return redirect('category/'.$request->category_id);
         //return redirect('product');
