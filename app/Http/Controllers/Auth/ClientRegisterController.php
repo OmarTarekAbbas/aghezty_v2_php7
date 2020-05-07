@@ -53,7 +53,7 @@ class ClientRegisterController extends Controller
 
     public function register(Request $request)
     {
-        $this->validator($request->except('city_id','governorate_id','address'))->validate();
+        $this->validator($request->except('city_id','governorate_id'))->validate();
         event(new Registered($user = $this->create($request->except('city_id','governorate_id','address'))));
         if($request->has('city_id') && $request->has('governorate_id') && $request->has('address')){
             ClientAddress::create([
@@ -94,7 +94,8 @@ class ClientRegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:clients',
             'password' => 'required|string|min:6|confirmed',
             'phone' => 'unique:clients',
-            'image' => ''
+            'image' => '',
+            "address" => "required"
         ]);
     }
 
