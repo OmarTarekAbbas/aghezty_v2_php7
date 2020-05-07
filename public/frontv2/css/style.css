@@ -422,7 +422,7 @@ body {
   margin-left: 0px;
 }
 .product_view .product_view_type .product_desc a .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;
@@ -731,7 +731,7 @@ body {
   margin-left: 0px;
 }
 .main .content_view .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;
@@ -815,7 +815,7 @@ body {
   text-align: center;
 }
 .main #inner-page .price_disc_offer .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;

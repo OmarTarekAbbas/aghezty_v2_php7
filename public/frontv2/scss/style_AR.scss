@@ -577,7 +577,7 @@ body {
             }
 
             &::after {
-              content: "LE";
+              content: "%";
               display: block;
               line-height: 1;
               position: relative;
@@ -997,7 +997,7 @@ body {
         }
 
         &::after {
-          content: "LE";
+          content: "%";
           display: block;
           line-height: 1;
           position: relative;
@@ -1115,7 +1115,7 @@ body {
           }
 
           &::after {
-            content: "LE";
+            content: "%";
             display: block;
             line-height: 1;
             position: relative;
@@ -3394,7 +3394,7 @@ body {
             font-size: 11px;
 
             .sale-product-icon {
-              line-height: 22px;
+              line-height: 30px;
 
               &::before {
                 bottom: -35px;
@@ -3404,7 +3404,7 @@ body {
 
               &::after {
                 font-size: 11px;
-                line-height: 3;
+                line-height: 2;
               }
             }
           }

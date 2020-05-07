@@ -552,7 +552,7 @@ body {
             }
 
             &::after {
-              content: "LE";
+              content: "%";
               display: block;
               line-height: 1;
               position: relative;
@@ -939,7 +939,7 @@ body {
         }
 
         &::after {
-          content: "LE";
+          content: "%";
           display: block;
           line-height: 1;
           position: relative;
@@ -1047,7 +1047,7 @@ body {
           }
 
           &::after {
-            content: "LE";
+            content: "%";
             display: block;
             line-height: 1;
             position: relative;

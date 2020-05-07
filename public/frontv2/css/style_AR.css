@@ -444,7 +444,7 @@ body {
   margin-left: 0px;
 }
 .product_view .product_view_type .product_desc a .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;
@@ -781,7 +781,7 @@ body {
   margin-left: 0px;
 }
 .main .content_view .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;
@@ -874,7 +874,7 @@ body {
   -o-transform: rotate(90deg);
 }
 .main #inner-page .price_disc_offer .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;
@@ -2602,7 +2602,7 @@ body {
     font-size: 11px;
   }
   .main .content_view_mobile .content_view a .product-label .sale-product-icon {
-    line-height: 22px;
+    line-height: 30px;
   }
   .main .content_view_mobile .content_view a .product-label .sale-product-icon::before {
     bottom: -35px;
@@ -2611,7 +2611,7 @@ body {
   }
   .main .content_view_mobile .content_view a .product-label .sale-product-icon::after {
     font-size: 11px;
-    line-height: 3;
+    line-height: 2;
   }
   .main .content_view_mobile .content_view a .full_desc {
     font-size: 12px;
