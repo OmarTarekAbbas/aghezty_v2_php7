@@ -359,7 +359,7 @@ nav.container-fluid {
 
                             @if($item->discount > 0)
                             <div class="product-label text-center font-weight-bold">
-                                <span class="sale-product-icon">{{$item->discount}}</span>
+                                <span class="sale-product-icon">{{$item->discount}} %</span>
                             </div>
                             @endif
 

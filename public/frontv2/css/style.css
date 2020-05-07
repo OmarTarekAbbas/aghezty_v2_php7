@@ -421,15 +421,6 @@ body {
   border-top-color: #ff4765;
   margin-left: 0px;
 }
-.product_view .product_view_type .product_desc a .product-label .sale-product-icon::after {
-  content: "%";
-  display: block;
-  line-height: 1;
-  position: relative;
-  top: -12px;
-  font-size: 12px;
-  text-align: center;
-}
 .product_view .product_view_type .product_desc .full_desc {
   text-align: left !important;
   font-weight: bold;
@@ -730,15 +721,6 @@ body {
   border-top-color: #ff4765;
   margin-left: 0px;
 }
-.main .content_view .product-label .sale-product-icon::after {
-  content: "%";
-  display: block;
-  line-height: 1;
-  position: relative;
-  top: -12px;
-  font-size: 12px;
-  text-align: center;
-}
 .main .content_view .rating_list_product {
   color: #c3c5c9;
 }
@@ -808,8 +790,8 @@ body {
   display: block;
   line-height: 1;
   position: relative;
-  top: 22px;
-  right: 11px;
+  top: 28px;
+  right: 0px;
   font-size: 12px;
   transform: rotate(270deg);
   text-align: center;
@@ -819,8 +801,8 @@ body {
   display: block;
   line-height: 1;
   position: relative;
-  top: 8px;
-  left: 12px;
+  top: -2px;
+  left: 1px;
   font-size: 12px;
   text-align: center;
   transform: rotate(270deg);
