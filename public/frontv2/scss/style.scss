@@ -551,15 +551,15 @@ body {
               margin-left: 0px;
             }
 
-            &::after {
-              content: "LE";
-              display: block;
-              line-height: 1;
-              position: relative;
-              top: -12px;
-              font-size: 12px;
-              text-align: center;
-            }
+            // &::after {
+            //   content: "%";
+            //   display: block;
+            //   line-height: 1;
+            //   position: relative;
+            //   top: -12px;
+            //   font-size: 12px;
+            //   text-align: center;
+            // }
           }
         }
       }
@@ -938,15 +938,15 @@ body {
           margin-left: 0px;
         }
 
-        &::after {
-          content: "LE";
-          display: block;
-          line-height: 1;
-          position: relative;
-          top: -12px;
-          font-size: 12px;
-          text-align: center;
-        }
+        // &::after {
+        //   content: "%";
+        //   display: block;
+        //   line-height: 1;
+        //   position: relative;
+        //   top: -12px;
+        //   font-size: 12px;
+        //   text-align: center;
+        // }
       }
     }
 
@@ -1038,8 +1038,8 @@ body {
               display: block;
               line-height: 1;
               position: relative;
-              top: 22px;
-              right: 11px;
+              top: 28px;
+              right: 0px;
               font-size: 12px;
               transform: rotate(270deg);
               text-align: center;
@@ -1047,12 +1047,12 @@ body {
           }
 
           &::after {
-            content: "LE";
+            content: "%";
             display: block;
             line-height: 1;
             position: relative;
-            top: 8px;
-            left: 12px;
+            top: -2px;
+            left: 1px;
             font-size: 12px;
             text-align: center;
             transform: rotate(270deg);
@@ -1374,6 +1374,7 @@ body {
 
           .modal-body {
             .forms {
+
               input,
               select {
 

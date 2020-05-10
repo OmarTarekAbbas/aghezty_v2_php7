@@ -443,15 +443,6 @@ body {
   border-top-color: #ff4765;
   margin-left: 0px;
 }
-.product_view .product_view_type .product_desc a .product-label .sale-product-icon::after {
-  content: "LE";
-  display: block;
-  line-height: 1;
-  position: relative;
-  top: -12px;
-  font-size: 12px;
-  text-align: center;
-}
 .product_view .product_view_type .product_desc .full_desc {
   text-align: right !important;
   font-weight: bold;
@@ -780,15 +771,6 @@ body {
   border-top-color: #ff4765;
   margin-left: 0px;
 }
-.main .content_view .product-label .sale-product-icon::after {
-  content: "LE";
-  display: block;
-  line-height: 1;
-  position: relative;
-  top: -12px;
-  font-size: 12px;
-  text-align: center;
-}
 .main .content_view .rating_list_product {
   color: #c3c5c9;
   text-align: right;
@@ -863,8 +845,8 @@ body {
   display: block;
   line-height: 1;
   position: relative;
-  top: 22px;
-  right: 11px;
+  top: 14px;
+  right: 1px;
   font-size: 12px;
   text-align: center;
   transform: rotate(90deg);
@@ -874,12 +856,12 @@ body {
   -o-transform: rotate(90deg);
 }
 .main #inner-page .price_disc_offer .product-label .sale-product-icon::after {
-  content: "LE";
+  content: "%";
   display: block;
   line-height: 1;
   position: relative;
-  top: 8px;
-  left: 12px;
+  top: 22px;
+  left: 0px;
   font-size: 12px;
   text-align: center;
   transform: rotate(90deg);
@@ -2602,7 +2584,7 @@ body {
     font-size: 11px;
   }
   .main .content_view_mobile .content_view a .product-label .sale-product-icon {
-    line-height: 22px;
+    line-height: 30px;
   }
   .main .content_view_mobile .content_view a .product-label .sale-product-icon::before {
     bottom: -35px;
@@ -2611,7 +2593,7 @@ body {
   }
   .main .content_view_mobile .content_view a .product-label .sale-product-icon::after {
     font-size: 11px;
-    line-height: 3;
+    line-height: 2;
   }
   .main .content_view_mobile .content_view a .full_desc {
     font-size: 12px;

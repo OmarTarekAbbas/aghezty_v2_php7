@@ -576,15 +576,15 @@ body {
               margin-left: 0px;
             }
 
-            &::after {
-              content: "LE";
-              display: block;
-              line-height: 1;
-              position: relative;
-              top: -12px;
-              font-size: 12px;
-              text-align: center;
-            }
+            // &::after {
+            //   content: "%";
+            //   display: block;
+            //   line-height: 1;
+            //   position: relative;
+            //   top: -12px;
+            //   font-size: 12px;
+            //   text-align: center;
+            // }
           }
         }
       }
@@ -996,15 +996,15 @@ body {
           margin-left: 0px;
         }
 
-        &::after {
-          content: "LE";
-          display: block;
-          line-height: 1;
-          position: relative;
-          top: -12px;
-          font-size: 12px;
-          text-align: center;
-        }
+        // &::after {
+        //   content: "%";
+        //   display: block;
+        //   line-height: 1;
+        //   position: relative;
+        //   top: -12px;
+        //   font-size: 12px;
+        //   text-align: center;
+        // }
       }
     }
 
@@ -1102,8 +1102,8 @@ body {
               display: block;
               line-height: 1;
               position: relative;
-              top: 22px;
-              right: 11px;
+              top: 14px;
+    right: 1px;
               font-size: 12px;
               text-align: center;
               transform: rotate(90deg);
@@ -1115,12 +1115,12 @@ body {
           }
 
           &::after {
-            content: "LE";
+            content: "%";
             display: block;
             line-height: 1;
             position: relative;
-            top: 8px;
-            left: 12px;
+            top: 22px;
+    left: 0px;
             font-size: 12px;
             text-align: center;
             transform: rotate(90deg);
@@ -3394,7 +3394,7 @@ body {
             font-size: 11px;
 
             .sale-product-icon {
-              line-height: 22px;
+              line-height: 30px;
 
               &::before {
                 bottom: -35px;
@@ -3404,7 +3404,7 @@ body {
 
               &::after {
                 font-size: 11px;
-                line-height: 3;
+                line-height: 2;
               }
             }
           }
