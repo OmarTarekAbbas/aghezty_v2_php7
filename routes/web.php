@@ -117,6 +117,10 @@ Route::prefix('clients')->group(function() {
     /*************** end ***************/
 
 });
+
+// 5123450000000008 - 05 / 21 - 100
+Route::View('test_nbe_integration',"frontv2/test_nbe_integration");
+
 Route::get('token','front\HomeController@get_token');
 Route::post('create_paymentv2','front\HomeController@create_paymentv2');
 Route::post('execute_paymentv2','front\HomeController@execute_paymentv2');
