@@ -10,7 +10,7 @@
 		<div class="status_title my-3">
 			<h4 class="text-center border-bottom border-secondary w-25 m-auto">@lang('front.choose_payment')</h4>
 		</div>
-
+    @include('errors')
 		<section class="choose-address">
 			<div class="accordionn" id="accordionExample">
 				<div class="card">
@@ -56,7 +56,7 @@
 							<div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
 								<div class="visa-cash input-group-prepend visa" for="radioThree">
 									<span class="span_input_radio ">
-										<input type="radio" name="payment" value="2" form="checkout-form" id="radioThree">
+										<input type="radio" name="payment" value="" form="checkout-form" id="radioThree">
 									</span>
 
 									<span class="span_font_icon">
@@ -79,29 +79,13 @@
                 <div id="charge-error" class="alert alert-danger" style="display:none">
                 </div>
 
-                <div class="form-row" style="direction: {{dir_ar_en()}};display:none;text-align: center;display: flow-root;">
+                <div class="form-row" onclick="document.getElementById('ahly').onclick()" style="direction: {{dir_ar_en()}};display:none !important;text-align: center;display: inline;">
                     <div class="">
-                        <div id="paypal-button" class="has paypal-button"></div>
+                        <input type="hidden" id="ahly" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
+                        <img src="{{ url('public/frontv2/images/ahly.png') }}" width="100px" height="50px" alt="">
                     </div>
                 </div>
-                    {{-- <div class="form-group" style="height:45px">
-                        <label for="cc_number">Credit Card Number</label>
-                        <!-- <input type="number" class="form-control" id="card-number"> -->
-                        <div class="form-group" id="card-number"></div>
-                    </div>
 
-                    <div class="col-6">
-                        <label for="expiry">Expiry</label>
-                        <div class="form-group" id="expiration-date"></div>
-                    </div>
-
-                    <div class="col-6">
-                        <label for="cvv">CVV</label>
-                        <div class="form-group" id="cvv"></div>
-                    </div>
-                </div>
-                <meta name="api_token" content="">
-                <input id="nonce" name="payment_method_nonce" type="hidden" /> --}}
                 <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
             </form>
 						</div>
@@ -114,6 +98,10 @@
 
 @endsection
 @section('script')
-<script src="{{asset('js/checkout.js')}}"></script>
+<script src="https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js"
+    data-error="errorCallback"
+    data-cancel="cancelCallback"
+    data-complete = "completeCallback">
+</script>
 <script src="{{asset('js/paymentv2.js')}}"></script>
 @endsection

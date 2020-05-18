@@ -1,48 +1,58 @@
 
 var submit = document.querySelector('button');
 var $form ;
+
+function errorCallback(error) {
+  console.log(JSON.stringify(error));
+}
+
+function cancelCallback() {
+  console.log('Payment cancelled');
+}
+
+function completeCallback() {
+  $('#checkout-form').submit()
+}
+
 $('#radioThree,.visa').click(function(){
     $('.form-row').show()
-    $('.btn-pay').attr('style','display:none !important');
-  if($('.has').hasClass('paypal-button')){
+    $('.btn-pay').hide()
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
         path_name = '/aghezty_v2_php7'
     }
-    paypal.Button.render({
-        env: 'sandbox', // Or 'production'
-        style: {
-          size: 'small',
-          color: 'gold',
-          shape: 'pill',
+
+    $.get(window.location.origin+path_name+'/clients/ready_nbe',{address_id : $('.add_id').val()},function(data){
+
+      completeCallback = window.location.href
+
+      Checkout.configure({
+        merchant: 'EGPTEST1',
+        order: {
+          amount: function () {
+            //Dynamic calculation of amount
+            return data.total_price
+          },
+          currency: 'EGP',
+          description: 'Ordered goods',
+          id: data.order_id
         },
-        // Set up the payment:
-        // 1. Add a payment callback
-        payment: function(data, actions) {
-          // 2. Make a request to your server
-          return actions.request.post(window.location.origin+path_name+'/create_paymentv2?address_id='+$('.add_id').val())
-            .then(function(res) {
-              // 3. Return res.id from the response
-              // console.log(res);
-              return res.id;
-            });
-        },
-        // Execute the payment:
-        // 1. Add an onAuthorize callback
-        onAuthorize: function(data, actions) {
-          // 2. Make a request to your server
-          return actions.request.post(window.location.origin+path_name+'/execute_paymentv2', {
-            paymentID: data.paymentID,
-            payerID:   data.payerID
-          })
-            .then(function(res) {
-              console.log(res);
-              $('#checkout-form').submit()
-            });
+        session: {
+              id: data.session_id
+         },
+        interaction: {
+          operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
+          merchant: {
+            name: 'NBE Test',
+            address: {
+              line1: '200 Sample St',
+              line2: '1234 Example Town'
+            }
+          }
         }
-    }, '#paypal-button');
-    $('#paypal-button').removeClass('paypal-button')
-    $('#paypal-button').removeAttr('id')
-  }
+      });
+
+    });
+
 })
 $('#radioOne,#radioTwo,.cash').click(function(){
     $('.form-row').hide()
