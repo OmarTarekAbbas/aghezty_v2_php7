@@ -10,20 +10,31 @@ function cancelCallback() {
   console.log('Payment cancelled');
 }
 
-function completeCallback() {
-  $('#checkout-form').submit()
+function completeCallback(resultIndicator) {
+  
+  $.post(window.location.origin+path_name+'/clients/createPayment',{address_id : $('.add_id').val() , 'resultIndicator' : resultIndicator},function(data){
+    if(data.status == 'success')
+    {
+      location.href = data.returnUrl
+    }
+    else
+    {
+      $('.payment_error').css('display','block')
+    }
+  });
 }
+console.log(window.location.href)
+
+// completeCallback = window.location.href
 
 $('#radioThree,.visa').click(function(){
-    $('.form-row').show()
+    $('.form-row').css('display','block')
     $('.btn-pay').hide()
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
         path_name = '/aghezty_v2_php7'
     }
 
     $.get(window.location.origin+path_name+'/clients/ready_nbe',{address_id : $('.add_id').val()},function(data){
-
-      completeCallback = window.location.href
 
       Checkout.configure({
         merchant: 'EGPTEST1',
@@ -35,6 +46,7 @@ $('#radioThree,.visa').click(function(){
           currency: 'EGP',
           description: 'Ordered goods',
           id: data.order_id
+
         },
         session: {
               id: data.session_id

@@ -1276,7 +1276,7 @@ class HomeController extends Controller
           // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
           return redirect('clients/thanksv2');
         }else{
-          return back()->with('error',"pleas enter valid payment");
+          return back()->with('error',"please enter valid payment");
         }
     }
 
@@ -1317,14 +1317,8 @@ class HomeController extends Controller
         return view('frontv2.confirm_order',compact('auth_carts','session_carts','total_price','id','city'));
     }
 
-    public function paymentv2()
+    public function paymentv2(Request $request)
     {
-      $url = $_SERVER["REQUEST_URI"];
-      $fragment = parse_url($url,PHP_URL_FRAGMENT);
-      // return [session()->get('successIndicator') , $fragment];
-      if(session()->get('successIndicator') != '' && $fragment == session()->get('successIndicator') && request()->has('address_id') && request()->get('address_id') != ''){
-        return redirect(route('front.home.checkout.thanks'));
-      }
       return view('frontv2.payment');
     }
 
@@ -1354,7 +1348,7 @@ class HomeController extends Controller
       curl_setopt($ch, CURLOPT_URL, 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56');
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=61422445f6c0f954e24c7bd8216ceedf&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=EGPTEST1&order.id=$order_id&order.amount=$total&order.currency=EGY");
+      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=61422445f6c0f954e24c7bd8216ceedf&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=EGPTEST1&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
       $headers = array();
       $headers[] = 'Content-Type: application/x-www-form-urlencoded';
@@ -1395,7 +1389,61 @@ class HomeController extends Controller
 
       session()->put('successIndicator' , $sub_id);
 
+      $actionName = "bank ahly";
+      $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
+      $parameters_arr = array(
+            'successIndicator' => $sub_id,
+            'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'session_id' => $session_id
+      );
+      $this->log($actionName, $not_URL, $parameters_arr);
+
       return  $session_id;
+    }
+
+    public function createOrderWithPayment(Request $request)
+    {
+      if($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator')!='' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator'))
+      {
+        $city = City::find($request->address_id);
+        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = 0;
+        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
+        foreach($coupons as $coupon){
+            $count_coupon += $coupon->value;
+            $coupon->used = 2;
+            $coupon->save();
+        }
+        $order = Order::create([
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address_id' =>$address->id,
+            'shipping_amount' =>$city->shipping_amount,
+            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
+            'lang' => getCode(),
+            'payment' => 2
+        ]);
+        foreach($carts as $cart){
+            $detail = OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' =>$cart->product_id,
+                'quantity' =>$cart->quantity,
+                'price' =>$cart->price,
+                'total_price' =>$cart->total_price,
+            ]);
+            $cart->delete();
+        }
+        $client = \Auth::guard('client')->user();
+        // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+        //     $m->from($client->email, __('front.order'));
+        //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+        // });
+        // $link = url('order/'.$order->id);
+        // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+        return response()->json(['status' => 'success' , 'returnUrl' => route('front.home.checkout.thanks')]);
+      }
+      return response()->json(['status' => 'error' , 'returnUrl' => '']);
     }
 
     public function thanksv2()

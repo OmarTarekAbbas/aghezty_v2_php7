@@ -11,6 +11,10 @@
 			<h4 class="text-center border-bottom border-secondary w-25 m-auto">@lang('front.choose_payment')</h4>
 		</div>
     @include('errors')
+    <div class="alert alert-danger alert-dismissible payment_error" style="display:none">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      Error In Payemnt Please Try Again  
+    </div>
 		<section class="choose-address">
 			<div class="accordionn" id="accordionExample">
 				<div class="card">
@@ -79,12 +83,13 @@
                 <div id="charge-error" class="alert alert-danger" style="display:none">
                 </div>
 
-                <div class="form-row" onclick="document.getElementById('ahly').onclick()" style="direction: {{dir_ar_en()}};display:none !important;text-align: center;display: inline;">
+                <div class="form-row" onclick="document.getElementById('ahly').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                     <div class="">
                         <input type="hidden" id="ahly" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
-                        <img src="{{ url('public/frontv2/images/ahly.png') }}" width="100px" height="50px" alt="">
+                        <img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
                     </div>
                 </div>
+
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
             </form>
