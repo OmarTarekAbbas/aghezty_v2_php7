@@ -40,7 +40,7 @@ nav.container-fluid {
       <div id="toggle_plus_minus" class="col-md-2 d-none d-md-block">
         <form id="filter_form" method="post">
           @csrf
-          @foreach (categorys() as $item)
+          @foreach (filter_categorys() as $item)
           @if(count($item->sub_cats) > 0)
           <button type="button"
             class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
@@ -50,7 +50,7 @@ nav.container-fluid {
           <div class="panel mb-3 w-100 border border-light">
             @foreach ($item->sub_cats as $category)
             <div class="z-checkbox">
-              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title))?'checked':''}}
+              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                 type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
               <label class="d-block text-capitalize"
                 for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -66,7 +66,7 @@ nav.container-fluid {
 
 
           <div class="panel mb-3 w-100 border border-light">
-            @foreach (brands() as $brand)
+            @foreach (filtter_brands() as $brand)
             <div class="z-checkbox">
               <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
                 {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} type="checkbox"
@@ -165,7 +165,7 @@ nav.container-fluid {
             </div>
 
             <div id="toggle_plus_minus" class="modal-body">
-              @foreach (categorys() as $item)
+              @foreach (filter_categorys() as $item)
               @if(count($item->sub_cats) > 0)
               <button class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
                 <i class="fas fa-minus float-right"></i>
@@ -175,7 +175,7 @@ nav.container-fluid {
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
-                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title))?'checked':''}}
+                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
@@ -190,7 +190,7 @@ nav.container-fluid {
               </button>
 
               <div class="panel mb-3 border border-secondary">
-                @foreach (brands() as $brand)
+                @foreach (filtter_brands() as $brand)
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
                     {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}}
@@ -341,10 +341,10 @@ nav.container-fluid {
               <div class="price-box">
                 <span class="regular-price">
                   <span
-                    class="price font-weight-bold">{{number_format(($product->discount > 0)?$product->price_after_discount:$product->price)}}
+                    class="price font-weight-bold">{{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
                     @lang('front.egp') </span>
                 </span>
-                @if($product->discount > 0)
+                @if($product->price_after_discount > 0)
                 <p class="old-price">
                   <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp')  </span>
                 </p>

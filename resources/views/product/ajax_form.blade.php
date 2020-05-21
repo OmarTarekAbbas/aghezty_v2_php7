@@ -99,8 +99,9 @@
     }
 
     $('.discount').keyup(function(){
-        $('.price_after').val($('.price').val() - $(this).val())
+      $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
     })
+
 
     CKEDITOR.replace( 'ckeditor1' );
     CKEDITOR.replace( 'ckeditor2' );

@@ -704,11 +704,15 @@ class HomeController extends Controller
 
     public function productsv2(Request $request)
     {
-        //return $request->all();
+        $sub_category_ids = [];
         $products = Product::query();
         if($request->has('sub_category_id') && $request->sub_category_id !=''){
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id',$request->sub_category_id);
+        }
+        if($request->has('category_id') && $request->category_id != ''){
+          $sub_category_ids = Category::where('parent_id',$request->category_id)->pluck('id')->toArray();
+          $products = $products->whereIn('category_id',$sub_category_ids);
         }
         if($request->has('brand_id') && $request->brand_id !=''){
             $request->brand_id = (array) $request->brand_id;
@@ -722,7 +726,7 @@ class HomeController extends Controller
         }
         if($request->has('from_to') && $request->from_to!=''){
           $products = $products->whereBetween('price',explode(',',$request->from_to));
-       }
+        }
         if($request->has('ifrom') && $request->ifrom !=''){
             $products = $products->whereHas('pr_value', function($q) use ($request){
               $q->join('properties','property_values.property_id','=','properties.id');
@@ -766,7 +770,7 @@ class HomeController extends Controller
         }
 
         $products = $products->where('products.active',1)->limit(get_limit_paginate())->get();
-        return view('frontv2.listproduct',compact('products'));
+        return view('frontv2.listproduct',compact('products','sub_category_ids'));
     }
 
     public function load_productsv2(Request $request)
@@ -776,6 +780,10 @@ class HomeController extends Controller
         if($request->has('sub_category_id') && $request->sub_category_id !=''){
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id',$request->sub_category_id);
+        }
+        if($request->has('category_id') && $request->category_id != ''){
+          $sub_category_ids = Category::where('parent_id',$request->category_id)->pluck('id')->toArray();
+          $products = $products->whereIn('category_id',$sub_category_ids);
         }
         if($request->has('brand_id') && $request->brand_id !=''){
             $request->brand_id = (array) $request->brand_id;

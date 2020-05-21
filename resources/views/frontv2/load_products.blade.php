@@ -28,9 +28,9 @@
 
     <div class="price-box">
       <span class="regular-price">
-        <span class="price font-weight-bold">{{number_format($product->discount?$product->price_after_discount:$product->price)}} @lang('front.egp') </span>
+        <span class="price font-weight-bold">{{number_format($product->price_after_discount?$product->price_after_discount:$product->price)}} @lang('front.egp') </span>
       </span>
-      @if($product->discount)
+      @if($product->price_after_discount)
       <p class="old-price">
           <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp')  </span>
       </p>

@@ -128,13 +128,35 @@ input:checked + .slider:before {
                                                 <div class="col-md-12">
                                                   <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                                                      {!! Form::select('column',['price' => 'Price','discount' => 'Discount','short_description' => 'Model','stock' => 'Stock','sku'=>'Sku','active' => 'active'],null,['class'=>'form-control']) !!}
+                                                      {!! Form::select('column',['price' => 'Price','discount' => 'Discount','short_description' => 'Model','stock' => 'Stock','sku'=>'Sku','active' => 'active' , 'brand_id' => 'Brands' , 'category_id' => 'Categories'],null,['class'=>'form-control edit_select']) !!}
                                                   </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 normal">
                                                   <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-smile-o"></i></span>
-                                                      {!! Form::text('value',null,['class'=>'form-control','required']) !!}
+                                                      {!! Form::text('value',null,['class'=>'form-control']) !!}
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-12 sel_category" style="display:none">
+                                                  <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-smile-o"></i></span>
+                                                    <select name="value" id="cate" class="form-control">
+                                                      @foreach (categorys() as $category)
+                                                          @if(count($category->sub_cats) > 0)
+                                                              <optgroup label="{{$category->title}}">
+                                                                  @foreach ($category->sub_cats as $sub_category)
+                                                                  <option value="{{$sub_category->id}}">{{$sub_category->title}}</option>
+                                                                  @endforeach
+                                                              </optgroup>
+                                                          @endif
+                                                      @endforeach
+                                                    </select>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-12 sel_brand" style="display:none">
+                                                  <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-smile-o"></i></span>
+                                                    {!! Form::select('value',brands()->pluck('title','id'),null,['class'=>'form-control']) !!}
                                                   </div>
                                                 </div>
                                                 <input type="text" style="display:none;" name="product_ids" class="edit_product_ids" value="">
@@ -485,5 +507,28 @@ input:checked + .slider:before {
       $('#change_column').modal('show')
     }
 </script>
+<script>
+  $('.edit_select').change(function(){
+    if($(this).val() == 'brand_id'){
+      $('.sel_brand').css('display','block')
+      $('.sel_category').css('display','none')
+      $('.normal').css('display','none')
 
+      $('.sel_brand select').prop('disabled',false)
+      $('.sel_category select').prop('disabled',true)
+    }else if($(this).val() == 'category_id'){
+      $('.sel_brand').css('display','none')
+      $('.sel_category').css('display','block')
+      $('.normal').css('display','none')
+
+      $('.sel_brand select').prop('disabled',true)
+      $('.sel_category select').prop('disabled',false)
+    }else{
+      $('.sel_brand').css('display','none')
+      $('.sel_category').css('display','none')
+      $('.normal').css('display','block')
+    }
+
+  })
+</script>
 @stop

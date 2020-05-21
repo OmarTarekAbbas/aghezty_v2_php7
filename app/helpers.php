@@ -234,18 +234,35 @@ function dynamic_routes($route_model,$found_roles)
      $categorys = \App\Category::whereNull('parent_id')->get();
      return $categorys;
  }
+
+ function filter_categorys(){
+  $categorys = \App\Category::whereNull('parent_id');
+  if(request()->has('category_id') && request()->get('category_id') != ''){
+   $categorys = $categorys->where('id',request()->get('category_id'));
+  }
+  if(request()->has('sub_category_id') && request()->get('sub_category_id') != ''){
+   $parent = \App\Category::where('id',request()->get('sub_category_id'))->first();
+   $categorys = $categorys->where('id',$parent->parent_id);
+  }
+  return $categorys->get();
+}
+
 function brands(){
     $brands = \App\Brand::all();
     return $brands;
 }
- function sub_cat_from_brand($brand_id){
-    $cats   =  \App\Category::select('categories.*')->join('products','products.category_id','=','categories.id')
-              ->join('brands','products.brand_id','=','brands.id')
-              ->where('products.brand_id',$brand_id)
-              ->groupBy('categories.id')
-              ->get();
+ function filtter_brands(){
+    $brands   =  \App\Brand::select('brands.*')->join('products','products.brand_id','=','brands.id');
 
-    return $cats;
+    if(request()->has('sub_category_id') && request()->get('sub_category_id') != ''){
+      $brands = $brands->where('products.category_id',request()->get('sub_category_id'));
+    }
+
+    if(request()->has('category_id') && request()->get('category_id') != ''){
+      $category_ids = \App\Category::where('parent_id',request()->get('category_id'))->pluck('id')->toArray();
+      $brands = $brands->whereIn('products.category_id',$category_ids);
+    }
+    return $brands->groupBy('brands.id')->get();
  }
 
  function getCode() {

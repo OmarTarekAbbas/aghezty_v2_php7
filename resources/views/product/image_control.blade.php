@@ -3,6 +3,12 @@
  @lang('messages.products')
 @stop
 @section('content')
+<style>
+  td{
+    padding:2px !important;
+    line-height: .01 !important;
+  }
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -26,22 +32,22 @@
                             <table id="myTable" class="table table-striped dt-responsive" cellspacing="0" width="100%">
                               <thead>
                               <tr>
-                                  <td>id</td>
+                                  {{-- <td>id</td> --}}
                                   <th>Image</th>
-                                  <th>Created_at</th>
+                                  {{-- <th>Created_at</th> --}}
                                   <th>@lang('messages.action')</th>
                               </tr>
                               </thead>
                               <tbody>
                                 @foreach ($images as $key=>$item)
                                   <tr id="{{$item->image}}" class="row-table">
-                                    <td>
+                                    {{-- <td>
                                       {{$key + 1}}
-                                    </td>
+                                    </td> --}}
                                     <td>
-                                      <img src="{{$item->image}}" width="300px" height="200px" alt="">
+                                      <img src="{{$item->image}}" width="200px" height="30px" alt="">
                                     </td>
-                                    <td>{{$item->created_at->format('d/m/Y')}}</td>
+                                    {{-- <td>{{$item->created_at->format('d/m/Y')}}</td> --}}
                                     <td>
                                      <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();"
                                         href="{{url("image/$item->id/delete")}}" title="@lang('messages.template.delete')"><i
@@ -91,7 +97,7 @@
       },
       success: function(data) {
         list = []
-        alert('reorder success')
+        // alert('reorder success')
       }
 		});
   });
