@@ -931,6 +931,10 @@ body {
 .main #inner-page .info .features h5 {
   font-size: 0.85rem;
 }
+.main #inner-page .info .features .more_descc {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
 .main #inner-page .info .features .modal_feature,
 .main #inner-page .info .features .desc_feature {
   line-height: 30px;
@@ -1170,6 +1174,14 @@ body {
 .main .inner_table_desc .table_desc .more_info ul {
   color: #777;
   font-size: 14px;
+}
+.main .inner_table_desc .add_new_table tbody tr .th_1 {
+  width: 25%;
+  font-size: 0.85rem;
+  border-left: 1px solid #dee2e6;
+}
+.main .inner_table_desc .add_new_table tbody tr .td_2 {
+  width: 75%;
 }
 .main .based_selection {
   text-align: right;
@@ -2738,6 +2750,12 @@ body {
 .main .inner_table_desc .table_desc table tr td {
     padding: 4px 6px !important;
   }
+  .main .inner_table_desc .add_new_table tbody tr .th_1 {
+    width: 50%;
+  }
+  .main .inner_table_desc .add_new_table tbody tr .td_2 {
+    width: 50%;
+  }
   .main .based_selection .table_desc_title h6 {
     font-size: 11.5px;
   }
@@ -3095,7 +3113,7 @@ body {
   }
 
   #return-to-top {
-    right: 4px;
+    right: 87%;
     width: 40px;
     height: 40px;
   }
@@ -3558,6 +3576,12 @@ body {
   .main .inner_table_desc .table_desc table tr th,
 .main .inner_table_desc .table_desc table tr td {
     padding: 4px 6px !important;
+  }
+  .main .inner_table_desc .add_new_table tbody tr .th_1 {
+    width: 50%;
+  }
+  .main .inner_table_desc .add_new_table tbody tr .td_2 {
+    width: 50%;
   }
   .main .based_selection .table_desc_title h6 {
     font-size: 11px;
