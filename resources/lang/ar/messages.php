@@ -435,4 +435,9 @@ return [
     'price_after_discount' => 'السعر بعد الخصم',
     'view_more' => 'المزيد',
 
+    'warranty' => 'الضمان',
+    'delivery_time' => 'وقت الوصول',
+    'cash_on_delivery' => 'الدفع عند الاستلام',
+    'return_or_refund' => 'التبديل والاسترجاع',
+    'key_feature' => 'المواصفات',
 ];

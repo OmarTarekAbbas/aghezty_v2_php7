@@ -136,9 +136,11 @@ const property = new Vue({
       $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
     })
 
-    jQuery(document).ready(function() {
+
     CKEDITOR.replace( 'ckeditor1' );
     CKEDITOR.replace( 'ckeditor2' );
-    });
+    CKEDITOR.replace( 'key_editor1' );
+    CKEDITOR.replace( 'key_editor2' );
+
 </script>
 @stop

@@ -109,7 +109,7 @@ class ProductController extends Controller
             }
         }
         $product = new Product();
-        $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id'));
+        $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
 
         foreach ($request->title as $key => $value) {
             $product->setTranslation('title', $key, $value);
@@ -119,6 +119,21 @@ class ProductController extends Controller
         }
         foreach ($request->short_description as $key => $value) {
             $product->setTranslation('short_description', $key, $value);
+        }
+        foreach ($request->warranty as $key => $value) {
+          $product->setTranslation('warranty', $key, $value);
+        }
+        foreach ($request->delivery_time as $key => $value) {
+          $product->setTranslation('delivery_time', $key, $value);
+        }
+        foreach ($request->cash_on_delivery as $key => $value) {
+          $product->setTranslation('cash_on_delivery', $key, $value);
+        }
+        foreach ($request->return_or_refund as $key => $value) {
+          $product->setTranslation('return_or_refund', $key, $value);
+        }
+        foreach ($request->key_feature as $key => $value) {
+          $product->setTranslation('key_feature', $key, $value);
         }
         $product->save();
 
@@ -227,6 +242,21 @@ class ProductController extends Controller
         foreach ($request->short_description as $key => $value) {
             $product->setTranslation('short_description', $key, $value);
         }
+        foreach ($request->warranty as $key => $value) {
+          $product->setTranslation('warranty', $key, $value);
+        }
+        foreach ($request->delivery_time as $key => $value) {
+          $product->setTranslation('delivery_time', $key, $value);
+        }
+        foreach ($request->cash_on_delivery as $key => $value) {
+          $product->setTranslation('cash_on_delivery', $key, $value);
+        }
+        foreach ($request->return_or_refund as $key => $value) {
+          $product->setTranslation('return_or_refund', $key, $value);
+        }
+        foreach ($request->key_feature as $key => $value) {
+          $product->setTranslation('key_feature', $key, $value);
+        }
         $product->save();
 
         if($request->has('property_value_id')){
@@ -234,7 +264,7 @@ class ProductController extends Controller
           $product->pr_value()->sync($property_value_id);
         }
 
-        $product->update($request->except('title','images','counter_img','description','short_description'));
+        $product->update($request->except('title','images','counter_img','description','short_description','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
         if ($request->has('images')){
             $product->images()->saveMany($images);
         }

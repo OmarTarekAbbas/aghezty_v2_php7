@@ -81,8 +81,8 @@
     content:" @lang('front.egp')"
   }
   .head_three .navbar .navbar-nav .nav-link {
-    font-size: 15px !important;
-    font-weight: bolder !important;
+    font-size: 12px !important;
+    /* font-weight: bolder !important; */
 }
   </style>
 </head>

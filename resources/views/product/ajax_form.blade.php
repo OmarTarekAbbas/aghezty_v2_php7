@@ -105,4 +105,6 @@
 
     CKEDITOR.replace( 'ckeditor1' );
     CKEDITOR.replace( 'ckeditor2' );
+    CKEDITOR.replace( 'key_editor1' );
+    CKEDITOR.replace( 'key_editor2' );
 </script>

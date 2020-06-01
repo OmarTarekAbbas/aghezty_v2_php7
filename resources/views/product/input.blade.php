@@ -154,6 +154,110 @@
   </div>
 </div>
 
+<div class="form-group">
+  <label class="col-sm-3 col-lg-2 control-label">@lang('messages.warranty') *</label>
+  <div class="col-sm-9 col-lg-10 controls" >
+      <ul id="myTab1" class="nav nav-tabs">
+              <?php $i=0;?>
+              @foreach($languages as $language)
+                  <li class="{{($i++)? '':'active'}}"><a href="#warranty{{$language->short_code}}" data-toggle="tab"> {{$language->title}}</a></li>
+              @endforeach
+      </ul>
+      <div class="tab-content">
+          <?php $i=0;?>
+          @foreach($languages as $language)
+              <div class="tab-pane fade in {{($i++)? '':'active'}}" id="warranty{{$language->short_code}}">
+                  <input class="form-control" name="warranty[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('warranty',$language->short_code)  !!}@endif" required />
+              </div>
+          @endforeach
+      </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-3 col-lg-2 control-label">@lang('messages.delivery_time') </label>
+  <div class="col-sm-9 col-lg-10 controls" >
+      <ul id="myTab1" class="nav nav-tabs">
+              <?php $i=0;?>
+              @foreach($languages as $language)
+                  <li class="{{($i++)? '':'active'}}"><a href="#delivery_time{{$language->short_code}}" data-toggle="tab"> {{$language->title}}</a></li>
+              @endforeach
+      </ul>
+      <div class="tab-content">
+          <?php $i=0;?>
+          @foreach($languages as $language)
+              <div class="tab-pane fade in {{($i++)? '':'active'}}" id="delivery_time{{$language->short_code}}">
+                  <input class="form-control" name="delivery_time[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('delivery_time',$language->short_code)  !!}@endif" required />
+              </div>
+          @endforeach
+      </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-3 col-lg-2 control-label">@lang('messages.cash_on_delivery') </label>
+  <div class="col-sm-9 col-lg-10 controls" >
+      <ul id="myTab1" class="nav nav-tabs">
+              <?php $i=0;?>
+              @foreach($languages as $language)
+                  <li class="{{($i++)? '':'active'}}"><a href="#cash_on_delivery{{$language->short_code}}" data-toggle="tab"> {{$language->title}}</a></li>
+              @endforeach
+      </ul>
+      <div class="tab-content">
+          <?php $i=0;?>
+          @foreach($languages as $language)
+              <div class="tab-pane fade in {{($i++)? '':'active'}}" id="cash_on_delivery{{$language->short_code}}">
+                  <input class="form-control" name="cash_on_delivery[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('cash_on_delivery',$language->short_code)  !!}@endif" required />
+              </div>
+          @endforeach
+      </div>
+  </div>
+</div>
+
+<div class="form-group" >
+  <label class="col-sm-3 col-lg-2 control-label">@lang('messages.return_or_refund') </label>
+  <div class="col-sm-9 col-lg-10 controls" >
+      <ul id="myTab1" class="nav nav-tabs">
+              <?php $i=0;?>
+              @foreach($languages as $language)
+                  <li class="{{($i++)? '':'active'}}"><a href="#return_or_refund{{$language->short_code}}" data-toggle="tab"> {{$language->title}}</a></li>
+              @endforeach
+      </ul>
+      <div class="tab-content">
+          <?php $i=0;?>
+          @foreach($languages as $language)
+              <div class="tab-pane fade in {{($i++)? '':'active'}}" id="return_or_refund{{$language->short_code}}">
+                  <input class="form-control" name="return_or_refund[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('return_or_refund',$language->short_code)  !!}@endif" required />
+              </div>
+          @endforeach
+      </div>
+  </div>
+</div>
+
+<div class="form-group"  id="cktextarea">
+  <label class="col-sm-3 col-lg-2 control-label">@lang('messages.key_feature') *</label>
+  <div class="col-sm-9 col-lg-10 controls" >
+      <ul id="myTab1" class="nav nav-tabs">
+              <?php $i=0;?>
+              @foreach($languages as $language)
+                  <li class="{{($i++)? '':'active'}}"><a href="#key_feature{{$language->short_code}}" data-toggle="tab"> {{$language->title}}</a></li>
+              @endforeach
+      </ul>
+      <div class="tab-content">
+          <?php $i=0;?>
+          @foreach($languages as $language)
+              <div class="tab-pane fade in {{($i++)? '':'active'}}" id="key_feature{{$language->short_code}}">
+                  <textarea class="form-control col-md-12 key_editor{{$i}}" id="key_editor{{$i}}" name="key_feature[{{$language->short_code}}]" rows="6">
+                          @if($product)
+                          {!! $product->getTranslation('key_feature',$language->short_code) !!}
+                          @endif
+                  </textarea>
+              </div>
+          @endforeach
+      </div>
+  </div>
+</div>
+
 {{-- <div class="form-group">
     <div class="col-sm-6">
         <label class="col-sm-5 col-lg-4 control-label">@lang('messages.special')  </label>

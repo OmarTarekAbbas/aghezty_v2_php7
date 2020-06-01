@@ -433,4 +433,10 @@ return [
     'view_more' => 'View More',
     'search' => 'Search...',
 
+    'warranty' => 'Warranty',
+    'delivery_time' => 'Delivery Time',
+    'cash_on_delivery' => 'Cash On Delivery',
+    'return_or_refund' => 'Return Or Refund',
+    'key_feature' => 'Key Feature',
+
 ];

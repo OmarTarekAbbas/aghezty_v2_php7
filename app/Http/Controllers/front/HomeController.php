@@ -752,7 +752,7 @@ class HomeController extends Controller
           $products = $products->whereLike(['title'],$request->search);
         }
         if($request->has('offer') && $request->offer !=''){
-          $products =  $products->orderBy('discount','desc');
+          $products =  $products->where('price_after_discount','>',0);
         }
         if($request->has('sorted') && $request->sorted!=''){
           $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
@@ -826,7 +826,7 @@ class HomeController extends Controller
           $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
         }
         if($request->has('offer') && $request->offer !=''){
-          $products =  $products->orderBy('discount','desc');
+          $products =  $products->where('price_after_discount','>',0);
         }
         if($request->has('last') && $request->last!=''){
           $products = $products->latest('created_at');
