@@ -136,9 +136,10 @@
           <h4 class="col-md-6 price text-primary font-weight-bold">
             {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
             @lang('front.egp')</h4>
-          @if($product->discount)
+          @if($product->price_after_discount > 0)
           <h4 class="col-md-6 discount text-muted font-weight-bold">{{number_format($product->price)}}
             @lang('front.egp')</h4>
+          @if($product->discount > 0)
           <style>
             .main #inner-page .price_disc_offer .product-label .sale-product-icon .testtt::before {
               content:"{{$product->discount}}"
@@ -149,6 +150,7 @@
               <span class="testtt"></span>
             </span>
           </div>
+          @endif
           @endif
         </div>
 
