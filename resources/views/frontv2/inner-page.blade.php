@@ -102,7 +102,9 @@
           <div class="features col-md-12">
             <h5 class="font-weight-bold py-2">@lang('front.inner.key_feature')</h5>
 
-            <div class="more_descc">IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 IPhone 8 plus 128 </div>
+            <div class="more_descc">
+              {!! $product->getTranslation('key_feature',getCode()) !!}
+            </div>
 
             <div class="modal_feature">
               <h5 class="font-weight-bold d-inline-block">@lang('front.inner.model'):</h5>
@@ -309,21 +311,26 @@
     </div>
 
     <table class="add_new_table table table-hover border">
-      <h5>Aghezty</h5>
+      <h5>@lang('front.title')</h5>
       <tbody>
         <tr>
-          <th class="th_1" scope="row">Delivery Time</th>
-          <td class="td_2" colspan="3">5-7 Business Days</td>
+          <th class="th_1" scope="row">@lang('messages.warranty')</th>
+          <td class="td_2" colspan="3"> {!! $product->getTranslation('warranty',getCode()) !!} </td>
         </tr>
 
         <tr>
-          <th class="th_1" scope="row">Cash On Delivery (COD)</th>
-          <td class="td_2" colspan="3">Yes</td>
+          <th class="th_1" scope="row">@lang('messages.cash_on_delivery') (COD)</th>
+          <td class="td_2" colspan="3"> {!! $product->getTranslation('cash_on_delivery',getCode()) !!} </td>
         </tr>
 
         <tr>
-          <th class="th_1" scope="row">Return Or Refund</th>
-          <td class="td_2" colspan="3">14 Days</td>
+          <th class="th_1" scope="row">@lang('messages.delivery_time')</th>
+          <td class="td_2" colspan="3"> {!! $product->getTranslation('delivery_time',getCode()) !!} </td>
+        </tr>
+
+        <tr>
+          <th class="th_1" scope="row">@lang('messages.return_or_refund')</th>
+          <td class="td_2" colspan="3"> {!! $product->getTranslation('return_or_refund',getCode()) !!} </td>
         </tr>
       </tbody>
     </table>
