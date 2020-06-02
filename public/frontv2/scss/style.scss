@@ -1115,9 +1115,15 @@ body {
           font-size: 0.85rem;
         }
 
+        .more_descc {
+          line-height: 1.5;
+          margin-bottom: 0.5rem;
+        }
+
         .modal_feature,
         .desc_feature {
           line-height: 30px;
+          margin-bottom: 0.5rem;
         }
       }
 
@@ -1436,6 +1442,22 @@ body {
         ul {
           color: #777;
           font-size: 14px;
+        }
+      }
+    }
+
+    .add_new_table {
+      tbody {
+        tr {
+          .th_1 {
+            width: 25%;
+            font-size: 0.85rem;
+            border-right: 1px solid #dee2e6;
+          }
+
+          .td_2 {
+            width: 75%;
+          }
         }
       }
     }
@@ -2670,7 +2692,7 @@ body {
 #return-to-top {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  left: 95%;
   background-color: #ffa841;
   width: 50px;
   height: 50px;
@@ -3341,6 +3363,20 @@ body {
           }
         }
       }
+
+      .add_new_table {
+        tbody {
+          tr {
+            .th_1 {
+              width: 50%;
+            }
+  
+            .td_2 {
+              width: 50%;
+            }
+          }
+        }
+      }
     }
 
     .based_selection {
@@ -3900,7 +3936,7 @@ body {
 
   // Scroll Top
   #return-to-top {
-    left: 4px;
+    left: 87%;
     width: 40px;
     height: 40px;
 
@@ -4548,6 +4584,20 @@ body {
           }
         }
       }
+
+      .add_new_table {
+        tbody {
+          tr {
+            .th_1 {
+              width: 50%;
+            }
+  
+            .td_2 {
+              width: 50%;
+            }
+          }
+        }
+      }
     }
 
     .based_selection {
@@ -5107,7 +5157,7 @@ body {
 
   // Scroll Top
   #return-to-top {
-    left: 4px;
+    left: 89%;
     width: 40px;
     height: 40px;
 

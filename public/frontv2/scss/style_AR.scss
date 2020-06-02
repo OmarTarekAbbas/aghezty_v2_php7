@@ -1051,8 +1051,8 @@ body {
 .main {
   #inner-page {
     .price_disc_offer {
-      // margin-top: 15%;
 
+      // margin-top: 15%;
       .product-label {
         position: absolute;
         top: 51%;
@@ -1103,7 +1103,7 @@ body {
               line-height: 1;
               position: relative;
               top: 14px;
-    right: 1px;
+              right: 1px;
               font-size: 12px;
               text-align: center;
               transform: rotate(90deg);
@@ -1120,7 +1120,7 @@ body {
             line-height: 1;
             position: relative;
             top: 22px;
-    left: 0px;
+            left: 0px;
             font-size: 12px;
             text-align: center;
             transform: rotate(90deg);
@@ -1195,6 +1195,11 @@ body {
 
         h5 {
           font-size: 0.85rem;
+        }
+
+        .more_descc {
+          line-height: 1.5;
+          margin-bottom: 0.5rem;
         }
 
         .modal_feature,
@@ -1527,6 +1532,22 @@ body {
         ul {
           color: #777;
           font-size: 14px;
+        }
+      }
+    }
+
+    .add_new_table {
+      tbody {
+        tr {
+          .th_1 {
+            width: 25%;
+            font-size: 0.85rem;
+            border-left: 1px solid #dee2e6;
+          }
+
+          .td_2 {
+            width: 75%;
+          }
         }
       }
     }
@@ -3611,6 +3632,20 @@ body {
           }
         }
       }
+
+      .add_new_table {
+        tbody {
+          tr {
+            .th_1 {
+              width: 50%;
+            }
+  
+            .td_2 {
+              width: 50%;
+            }
+          }
+        }
+      }
     }
 
     .based_selection {
@@ -4192,7 +4227,7 @@ body {
 
   // Scroll Top
   #return-to-top {
-    right: 4px;
+    right: 87%;
     width: 40px;
     height: 40px;
 
@@ -4862,6 +4897,20 @@ body {
             th,
             td {
               padding: 4px 6px !important;
+            }
+          }
+        }
+      }
+
+      .add_new_table {
+        tbody {
+          tr {
+            .th_1 {
+              width: 50%;
+            }
+  
+            .td_2 {
+              width: 50%;
             }
           }
         }
