@@ -1245,43 +1245,47 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        $city = City::find($request->address_id);
-        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $count_coupon = 0;
-        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-        foreach($coupons as $coupon){
-            $count_coupon += $coupon->value;
-            $coupon->used = 2;
-            $coupon->save();
+        if($request->payment != 2){
+          $city = City::find($request->address_id);
+          $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+          $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+          $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+          $count_coupon = 0;
+          $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
+          foreach($coupons as $coupon){
+              $count_coupon += $coupon->value;
+              $coupon->used = 2;
+              $coupon->save();
+          }
+          $order = Order::create([
+              'client_id' => \Auth::guard('client')->user()->id,
+              'address_id' =>$address->id,
+              'shipping_amount' =>$city->shipping_amount,
+              'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
+              'lang' => getCode(),
+              'payment' => $request->payment
+          ]);
+          foreach($carts as $cart){
+              $detail = OrderDetail::create([
+                  'order_id' => $order->id,
+                  'product_id' =>$cart->product_id,
+                  'quantity' =>$cart->quantity,
+                  'price' =>$cart->price,
+                  'total_price' =>$cart->total_price,
+              ]);
+              $cart->delete();
+          }
+          $client = \Auth::guard('client')->user();
+          // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+          //     $m->from($client->email, __('front.order'));
+          //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+          // });
+          // $link = url('order/'.$order->id);
+          // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+          return redirect('clients/thanksv2');
+        }else{
+          return back()->with('error',"please enter valid payment");
         }
-        $order = Order::create([
-            'client_id' => \Auth::guard('client')->user()->id,
-            'address_id' =>$address->id,
-            'shipping_amount' =>$city->shipping_amount,
-            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
-            'lang' => getCode(),
-            'payment' => $request->payment
-        ]);
-        foreach($carts as $cart){
-            $detail = OrderDetail::create([
-                'order_id' => $order->id,
-                'product_id' =>$cart->product_id,
-                'quantity' =>$cart->quantity,
-                'price' =>$cart->price,
-                'total_price' =>$cart->total_price,
-            ]);
-            $cart->delete();
-        }
-        $client = \Auth::guard('client')->user();
-        Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            $m->from($client->email, __('front.order'));
-            $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-        });
-        $link = url('order/'.$order->id);
-        send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
-        return redirect('clients/thanksv2');
     }
 
     public function myorderv2($id)
@@ -1321,9 +1325,133 @@ class HomeController extends Controller
         return view('frontv2.confirm_order',compact('auth_carts','session_carts','total_price','id','city'));
     }
 
-    public function paymentv2()
+    public function paymentv2(Request $request)
     {
-        return view('frontv2.payment');
+      return view('frontv2.payment');
+    }
+
+    public function readyNbe(Request $request)
+    {
+        $city        = City::find($request->address_id);
+        $address     = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+        $carts       = Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+        $subTotal    = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $couponSum   = 0;
+        $coupons     = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
+        foreach($coupons as $coupon){
+            $couponSum += $coupon->value;
+        }
+        $order_id = rand(11111,99999);
+        $shipping_amount = $city->shipping_amount;
+        $total_price     = ($subTotal + $city->shipping_amount)-$couponSum;
+        $session_id      = $this->createSessionId($total_price,$order_id);
+        return response()->json(['total_price' => $total_price , 'session_id' => $session_id , 'order_id' => $order_id]);
+    }
+
+    public function createSessionId($total,$order_id)
+    {
+
+      $ch = curl_init();
+
+      curl_setopt($ch, CURLOPT_URL, 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_POST, 1);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=61422445f6c0f954e24c7bd8216ceedf&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=EGPTEST1&order.id=$order_id&order.amount=$total&order.currency=EGP");
+
+      $headers = array();
+      $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+      $headers[] = 'Accept: application/json';
+
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+      $response = curl_exec($ch);
+
+      $result     = explode('&',$response);
+      $sub_id     = explode('=',array_reverse($result)[0])[1];
+      $session_id = explode('=',$result[2])[1];
+
+      // $curl = curl_init();
+
+      // curl_setopt_array($curl, array(
+      //   CURLOPT_URL => "https://test-nbe.gateway.mastercard.com/api/rest/version/56/merchant/EGPTEST1/session",
+      //   CURLOPT_RETURNTRANSFER => true,
+      //   CURLOPT_ENCODING => "",
+      //   CURLOPT_MAXREDIRS => 10,
+      //   CURLOPT_TIMEOUT => 0,
+      //   CURLOPT_FOLLOWLOCATION => true,
+      //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      //   CURLOPT_CUSTOMREQUEST => "POST",
+      //   CURLOPT_HTTPHEADER => array(
+      //     "Accept: application/json",
+      //     "Content-Type: application/json",
+      //     "Authorization: Basic bWVyY2hhbnQuRUdQVEVTVDE6NjE0MjI0NDVmNmMwZjk1NGUyNGM3YmQ4MjE2Y2VlZGY=",
+      //     "Cookie: TS0183aa3c=01772feb4bbad78180282345abfd6a199727ca0c704ae9899c3331f65d08dc9ede999e96d5d7249211f43665574cb69ab835af2287"
+      //   ),
+      // ));
+
+      // $response = curl_exec($curl);
+
+      // $result   = json_decode($response) ;
+
+      curl_close($ch);
+
+      session()->put('successIndicator' , $sub_id);
+
+      $actionName = "bank ahly";
+      $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
+      $parameters_arr = array(
+            'successIndicator' => $sub_id,
+            'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
+            'session_id' => $session_id
+      );
+      $this->log($actionName, $not_URL, $parameters_arr);
+
+      return  $session_id;
+    }
+
+    public function createOrderWithPayment(Request $request)
+    {
+      if($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator')!='' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator'))
+      {
+        $city = City::find($request->address_id);
+        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
+        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = 0;
+        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
+        foreach($coupons as $coupon){
+            $count_coupon += $coupon->value;
+            $coupon->used = 2;
+            $coupon->save();
+        }
+        $order = Order::create([
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address_id' =>$address->id,
+            'shipping_amount' =>$city->shipping_amount,
+            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
+            'lang' => getCode(),
+            'payment' => 2
+        ]);
+        foreach($carts as $cart){
+            $detail = OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' =>$cart->product_id,
+                'quantity' =>$cart->quantity,
+                'price' =>$cart->price,
+                'total_price' =>$cart->total_price,
+            ]);
+            $cart->delete();
+        }
+        $client = \Auth::guard('client')->user();
+        // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+        //     $m->from($client->email, __('front.order'));
+        //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+        // });
+        // $link = url('order/'.$order->id);
+        // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+        return response()->json(['status' => 'success' , 'returnUrl' => route('front.home.checkout.thanks')]);
+      }
+      return response()->json(['status' => 'error' , 'returnUrl' => '']);
     }
 
     public function thanksv2()
@@ -1383,5 +1511,63 @@ class HomeController extends Controller
 
     }
     /*********************************************************** end design v2 *******/
+
+    // encrypt and descrypt
+    function encrypt ($pure_string, $encryption_key)
+    {
+      $cipher     = 'AES-256-CBC';
+      $options    = OPENSSL_RAW_DATA;
+      $hash_algo  = 'sha256';
+      $sha2len    = 32;
+      $ivlen = openssl_cipher_iv_length($cipher);
+      $iv = openssl_random_pseudo_bytes($ivlen);
+      $ciphertext_raw = openssl_encrypt($pure_string, $cipher, $encryption_key, $options, $iv);
+      $hmac = hash_hmac($hash_algo, $ciphertext_raw, $encryption_key, true);
+      return $iv.$hmac.$ciphertext_raw;
+    }
+    function decrypt ($encrypted_string, $encryption_key)
+    {
+      $cipher     = 'AES-256-CBC';
+      $options    = OPENSSL_RAW_DATA;
+      $hash_algo  = 'sha256';
+      $sha2len    = 32;
+      $ivlen = openssl_cipher_iv_length($cipher);
+      $iv = substr($encrypted_string, 0, $ivlen);
+      $hmac = substr($encrypted_string, $ivlen, $sha2len);
+      $ciphertext_raw = substr($encrypted_string, $ivlen+$sha2len);
+      $original_plaintext = openssl_decrypt($ciphertext_raw, $cipher, $encryption_key, $options, $iv);
+      $calcmac = hash_hmac($hash_algo, $ciphertext_raw, $encryption_key, true);
+      if(function_exists('hash_equals')) {
+          if (hash_equals($hmac, $calcmac)) return $original_plaintext;
+      } else {
+          if ($this->hash_equals_custom($hmac, $calcmac)) return $original_plaintext;
+      }
+    }
+   /**
+   * (Optional)
+   * hash_equals() function polyfilling.
+   * PHP 5.6+ timing attack safe comparison
+   */
+    function hash_equals_custom($knownString, $userString)
+    {
+        if (function_exists('mb_strlen')) {
+            $kLen = mb_strlen($knownString, '8bit');
+            $uLen = mb_strlen($userString, '8bit');
+        } else {
+            $kLen = strlen($knownString);
+            $uLen = strlen($userString);
+        }
+        if ($kLen !== $uLen) {
+            return false;
+        }
+        $result = 0;
+        for ($i = 0; $i < $kLen; $i++) {
+            $result |= (ord($knownString[$i]) ^ ord($userString[$i]));
+        }
+        return 0 === $result;
+    }
+
+  // define('ENCRYPTION_KEY', '__^%&Q@$&*!@#$%^&*^__');
+  // $string = "This is the original string!";
 
 }

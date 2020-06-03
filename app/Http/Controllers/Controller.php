@@ -6,7 +6,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use File;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -54,5 +56,19 @@ class Controller extends BaseController
         {
             unlink($image_path) ;
         }
+    }
+
+    public function log($actionName, $URL, $parameters_arr)
+    {
+        date_default_timezone_set("Africa/Cairo");
+        $date = date("Y-m-d");
+        $log = new Logger($actionName);
+        // to create new folder with current date  // if folder is not found create new one
+        if (!File::exists(storage_path('logs/' . $date . '/' . $actionName))) {
+            File::makeDirectory(storage_path('logs/' . $date . '/' . $actionName), 0775, true, true);
+        }
+
+        $log->pushHandler(new StreamHandler(storage_path('logs/' . $date . '/' . $actionName . '/logFile.log', Logger::INFO)));
+        $log->addInfo($URL, $parameters_arr);
     }
 }
