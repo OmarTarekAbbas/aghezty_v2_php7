@@ -76,8 +76,10 @@
                 @endif
                 <a class="btn btn-sm show-tooltip edit-ajax" data-href="{{url("product/$value->id/edit")}}"
                    title="@lang('messages.edit')"><i class="fa fa-edit"></i></a>
-                   <a class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}"
+                @if(setting('edit_without_ajax'))
+                <a class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}"
                     title="@lang('messages.edit')"><i class="fa fa-pencil"></i></a>
+                @endif
                 <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();"
                    href="{{url("product/$value->id/delete")}}" title="@lang('messages.template.delete')"><i
                         class="fa fa-trash"></i></a>
