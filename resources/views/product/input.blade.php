@@ -167,7 +167,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="warranty{{$language->short_code}}">
-                  <input class="form-control" name="warranty[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('warranty',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="warranty[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('warranty',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
@@ -187,7 +187,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="delivery_time{{$language->short_code}}">
-                  <input class="form-control" name="delivery_time[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('delivery_time',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="delivery_time[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('delivery_time',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
@@ -207,7 +207,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="cash_on_delivery{{$language->short_code}}">
-                  <input class="form-control" name="cash_on_delivery[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('cash_on_delivery',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="cash_on_delivery[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('cash_on_delivery',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
@@ -227,7 +227,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="return_or_refund{{$language->short_code}}">
-                  <input class="form-control" name="return_or_refund[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('return_or_refund',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="return_or_refund[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('return_or_refund',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
