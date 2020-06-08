@@ -59,7 +59,7 @@
     <div class="row w-100">
       <div class="col-lg-6 col-12">
         <div class="row">
-          <div class="col-md-3 d-none d-sm-block">
+          <div class="col-md-3 d-none d-sm-block" style="overflow-y: scroll;height: 26rem;">
             @foreach ($product->images as $key=>$image)
             <div class="c-slide hvr-outline-in border btn bg-white my-1">
               <p data-target="#carouselExampleControls" data-slide-to="{{$key}}" class="active">
