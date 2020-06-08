@@ -1066,6 +1066,16 @@ body {
       }
     }
 
+    .slide {
+      .carousel-inner {
+        .carousel-item {
+          .easyzoom {
+            height: 25.125rem;
+          }
+        }
+      }
+    }
+
     .product-title {
       font-size: 1.3rem;
     }
@@ -3370,7 +3380,7 @@ body {
             .th_1 {
               width: 50%;
             }
-  
+
             .td_2 {
               width: 50%;
             }
@@ -4591,7 +4601,7 @@ body {
             .th_1 {
               width: 50%;
             }
-  
+
             .td_2 {
               width: 50%;
             }
