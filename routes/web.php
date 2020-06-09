@@ -93,6 +93,10 @@ Route::prefix('clients')->group(function() {
         Route::get('confirm_order/{id}','front\HomeController@confirm_order')->name('front.home.confirm');
         Route::get('ready_nbe/','front\HomeController@readyNbe')->name('front.home.ready.nbe');
         Route::post('createPayment/','front\HomeController@createOrderWithPayment')->name('front.home.payment.submit');
+
+        //cib
+        Route::get('ready_cib/','front\HomeController@readyCIB')->name('front.home.ready.nbe');
+        Route::post('createPaymentCIB/','front\HomeController@createOrderWithPaymentCIB')->name('front.home.payment.submit');
         /*************** End****/
    });
 

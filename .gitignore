@@ -6,11 +6,9 @@
 /.idea
 /.vscode
 /.vagrant
-/.index
 /.history
 /uploads
 /storage
-index.php
 Homestead.json
 Homestead.yaml
 npm-debug.log

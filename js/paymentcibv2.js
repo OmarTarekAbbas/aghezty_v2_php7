@@ -1,0 +1,74 @@
+
+var submit = document.querySelector('button');
+var $form ;
+
+function errorCallback(error) {
+  console.log(JSON.stringify(error));
+}
+
+function cancelCallback() {
+  console.log('Payment cancelled');
+}
+
+function completeCallback(resultIndicator) {
+  
+  $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{address_id : $('.add_id').val() , 'resultIndicator' : resultIndicator},function(data){
+    if(data.status == 'success')
+    {
+      location.href = data.returnUrl
+    }
+    else
+    {
+      $('.payment_error').css('display','block')
+    }
+  });
+}
+console.log(window.location.href)
+
+// completeCallback = window.location.href
+
+$('#radioThree,.visa').click(function(){
+    $('.form-row').css('display','block')
+    $('.btn-pay').hide()
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+        path_name = '/aghezty_v2_php7'
+    }
+
+    $.get(window.location.origin+path_name+'/clients/ready_cib',{address_id : $('.add_id').val()},function(data){
+
+      Checkout.configure({
+        merchant: 'TESTCIB700926',
+        order: {
+          amount: function () {
+            //Dynamic calculation of amount
+            return data.total_price
+          },
+          currency: 'EGP',
+          description: 'Ordered goods',
+          id: data.order_id
+
+        },
+        session: {
+              id: data.session_id
+         },
+        interaction: {
+          operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
+          merchant: {
+            name: 'Aghezty',
+            address: {
+              line1: '200 Sample St',
+              line2: '1234 Example Town'
+            }
+          }
+        }
+      });
+
+    });
+
+})
+$('#radioOne,#radioTwo,.cash').click(function(){
+    $('.form-row').hide()
+    $('.btn-pay').show()
+})
+
+

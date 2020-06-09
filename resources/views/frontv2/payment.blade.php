@@ -90,6 +90,13 @@
                     </div>
                 </div>
 
+                <div class="form-row" onclick="document.getElementById('cib').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+                    <div class="">
+                        <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
+                        <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
+                    </div>
+                </div>
+
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
             </form>
@@ -109,4 +116,12 @@
     data-complete = "completeCallback">
 </script>
 <script src="{{asset('js/paymentv2.js')}}"></script>
+
+{{-- cib integ --}}
+<script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
+		data-error="errorCallback"
+		data-cancel="cancelCallback">
+</script>
+<script src="{{asset('js/paymentcibv2.js')}}"></script>
+
 @endsection
