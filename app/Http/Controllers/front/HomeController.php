@@ -18,6 +18,7 @@ use App\Category;
 use App\Order;
 use App\Coupon;
 use App\Http\Resources\PropertyResource;
+use App\Http\Resources\CategoryResource;
 use Storage;
 use App\OrderDetail;
 use App\Property;
@@ -1380,6 +1381,17 @@ class HomeController extends Controller
       }
       $propertys = $propertys->get();
       return (PropertyResource::collection($propertys));
+
+    }
+
+    public function getChild(Request $request)
+    {
+      $childrens = Category::has('sub_cats');
+      if($request->has('category_id')){
+        $childrens = $childrens->whereIn('id',(array)$request->category_id);
+      }
+      $childrens = $childrens->get();
+      return  (CategoryResource::collection($childrens));
 
     }
     /*********************************************************** end design v2 *******/

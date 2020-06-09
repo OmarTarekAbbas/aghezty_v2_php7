@@ -53,7 +53,7 @@ class ProductController extends Controller
     public function create()
     {
        $product   = Null;
-       $categorys = Category::all();
+       $categorys = Category::whereNotNull('parent_id')->get();
        $brands    = Brand::all();
        $languages = Language::all();
        return view('product.form',compact('product','categorys','brands','languages'));
@@ -181,7 +181,7 @@ class ProductController extends Controller
     public function edit(Request $request,$id)
     {
         $product   = Product::find($id);
-        $categorys = Category::all();
+        $categorys = Category::whereNotNull('parent_id')->get();
         $brands    = Brand::all();
         $languages = Language::all();
         if ($request->ajax()) {

@@ -12,14 +12,10 @@
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.category')<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
         <select name="category_id" id="cate" class="form-control chosen-rtl" required>
-            @foreach ($categorys as $category)
-                @if(count($category->sub_cats) > 0)
-                    <optgroup label="{{$category->title}}">
-                        @foreach ($category->sub_cats as $sub_category)
-                        <option value="{{$sub_category->id}}" @if($product&&$sub_category->id==$product->category_id) selected  @endif>{{$sub_category->title}}</option>
-                        @endforeach
-                    </optgroup>
-                @endif
+            @foreach ($categorys as $sub_category)
+
+              <option value="{{$sub_category->id}}" @if($product&&$sub_category->id==$product->category_id) selected  @endif>{{$sub_category->title}}</option>
+
             @endforeach
         </select>
     </div>
