@@ -1069,9 +1069,12 @@ body {
     .slide {
       .carousel-inner {
         height: 26.5rem;
+
         .carousel-item {
           .easyzoom {
-
+            img {
+              min-height: 26.5rem;
+            }
           }
         }
       }
