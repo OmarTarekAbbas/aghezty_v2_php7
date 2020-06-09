@@ -814,6 +814,9 @@ body {
 .main #inner-page .slide .carousel-inner {
   height: 26.5rem;
 }
+.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+  height: auto;
+}
 .main #inner-page .product-title {
   font-size: 1.3rem;
 }
