@@ -1476,25 +1476,12 @@ class HomeController extends Controller
     public function createSessionIdCib($total,$order_id)
     {
 
-        // curl https://cibpaynow.gateway.mastercard.com/api/nvp/version/56 \
-        // -d "apiOperation=CREATE_CHECKOUT_SESSION" \
-        // -d "apiPassword=m1234567" \
-        // -d "interaction.returnUrl=https://www.aghezty.com/clients/homev2" \
-        // -d "apiUsername=Aghezty" \
-        // -d "merchant=TESTCIB700926" \
-        // -d "order.id=5" \
-        // -d "order.amount=100.00" \
-        // -d "order.currency=EGP"
-
-        // print_r($curl);die;
-
-
       $ch = curl_init();
 
       curl_setopt($ch, CURLOPT_URL, 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56');
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=m1234567&apiUsername=Aghezty&interaction.operation=PURCHASE&merchant=Aghezty&order.id=1&order.amount=100.00&order.currency=EGP");
+      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=1&order.amount=100.00&order.currency=EGP");
 
       $headers = array();
       $headers[] = 'Content-Type: application/x-www-form-urlencoded';
@@ -1503,8 +1490,6 @@ class HomeController extends Controller
       curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
       $response = curl_exec($ch);
-
-      print_r($response); die;
 
       $result     = explode('&',$response);
       $sub_id     = explode('=',array_reverse($result)[0])[1];
@@ -1546,7 +1531,7 @@ class HomeController extends Controller
       );
       $this->log($actionName, $not_URL, $parameters_arr);
 
-      return  $response;
+      return  $session_id;
     }
 
     public function createOrderWithPaymentCIB(Request $request)
