@@ -1481,7 +1481,7 @@ class HomeController extends Controller
       curl_setopt($ch, CURLOPT_URL, 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56');
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=1&order.amount=100.00&order.currency=EGP");
+      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
       $headers = array();
       $headers[] = 'Content-Type: application/x-www-form-urlencoded';
