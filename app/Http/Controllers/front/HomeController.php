@@ -2,106 +2,103 @@
 
 namespace App\Http\Controllers\front;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cookie;
-use App\Product;
 use App\Advertisement;
-use App\Contact;
+use App\Cart;
+use App\Category;
+use App\City;
 use App\Client;
 use App\ClientAddress;
 use App\ClientRate;
-use App\Governorate;
-use App\City;
-use App\Cart;
-use App\Category;
-use App\Order;
+use App\Contact;
 use App\Coupon;
+use App\Governorate;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\PropertyResource;
-use Storage;
+use App\Order;
 use App\OrderDetail;
+use App\Product;
 use App\Property;
-use App\Language;
-use Validator;
+use Illuminate\Http\Request;
 use Mail;
-//use Braintree_Gateway;
-use PayPal\Api\Item;
-use PayPal\Api\Payer;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
-use PayPal\Api\Payment;
-use PayPal\Api\ItemList;
-use PayPal\Api\WebProfile;
+//use Braintree_Gateway;
 use PayPal\Api\InputFields;
-use PayPal\Api\Transaction;
-use PayPal\Api\RedirectUrls;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
+use PayPal\Api\Payer;
+use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\Transaction;
+use PayPal\Api\WebProfile;
+use Validator;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::where('special',1)->inRandomOrder()->take(10)->get();
-        return view('front.home',compact('products'));
+        $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
+        return view('front.home', compact('products'));
     }
 
     public function products(Request $request)
     {
 
         $products = Product::latest('products.created_at');
-        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+        if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
-            $products = $products->whereIn('category_id',$request->sub_category_id);
+            $products = $products->whereIn('category_id', $request->sub_category_id);
         }
-        if($request->has('offer') && $request->offer !=''){
-            $products =  $products->where('discount','>',0);
+        if ($request->has('offer') && $request->offer != '') {
+            $products = $products->where('discount', '>', 0);
         }
-        if($request->has('brand_id') && $request->brand_id !=''){
+        if ($request->has('brand_id') && $request->brand_id != '') {
             $request->brand_id = (array) $request->brand_id;
-            $products = $products->whereIn('brand_id',$request->brand_id);
+            $products = $products->whereIn('brand_id', $request->brand_id);
         }
-        if($request->has('from') && $request->from !=''){
-            $products = $products->where('price','>=',$request->from);
+        if ($request->has('from') && $request->from != '') {
+            $products = $products->where('price', '>=', $request->from);
         }
-        if($request->has('to') && $request->to!=''){
-            $products = $products->where('price','<',$request->to);
+        if ($request->has('to') && $request->to != '') {
+            $products = $products->where('price', '<', $request->to);
         }
-        if($request->has('ifrom') && $request->ifrom !=''){
-            $products = $products->where('inch','>=',$request->ifrom);
+        if ($request->has('ifrom') && $request->ifrom != '') {
+            $products = $products->where('inch', '>=', $request->ifrom);
         }
-        if($request->has('ito') && $request->ito!=''){
-            $products = $products->where('inch','<',$request->ito);
+        if ($request->has('ito') && $request->ito != '') {
+            $products = $products->where('inch', '<', $request->ito);
         }
-
 
         $products = $products->limit(get_limit_paginate())->get();
-        return view('front.products',compact('products'));
+        return view('front.products', compact('products'));
     }
 
     public function load_products(Request $request)
     {
         $products = Product::latest('created_at');
-        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+        if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
-            $products = $products->whereIn('category_id',$request->sub_category_id);
+            $products = $products->whereIn('category_id', $request->sub_category_id);
         }
-        if($request->has('offer') && $request->offer !=''){
-            $products =  $products->where('discount','>',0);
+        if ($request->has('offer') && $request->offer != '') {
+            $products = $products->where('discount', '>', 0);
         }
-        if($request->has('brand_id') && $request->brand_id !=''){
+        if ($request->has('brand_id') && $request->brand_id != '') {
             $request->brand_id = (array) $request->brand_id;
-            $products = $products->whereIn('brand_id',$request->brand_id);
+            $products = $products->whereIn('brand_id', $request->brand_id);
         }
-        if($request->has('from') && $request->from !=''){
-            $products = $products->where('price','>=',$request->from);
+        if ($request->has('from') && $request->from != '') {
+            $products = $products->where('price', '>=', $request->from);
         }
-        if($request->has('to') && $request->to!=''){
-            $products = $products->where('price','<',$request->to);
+        if ($request->has('to') && $request->to != '') {
+            $products = $products->where('price', '<', $request->to);
         }
-        if($request->has('ifrom') && $request->ifrom !=''){
-            $products = $products->where('inch','>=',$request->from);
+        if ($request->has('ifrom') && $request->ifrom != '') {
+            $products = $products->where('inch', '>=', $request->from);
         }
-        if($request->has('ito') && $request->ito!=''){
-            $products = $products->where('inch','<',$request->to);
+        if ($request->has('ito') && $request->ito != '') {
+            $products = $products->where('inch', '<', $request->to);
         }
 
         $products = $products->offset($request->start)->limit(get_limit_paginate())->get();
@@ -112,18 +109,17 @@ class HomeController extends Controller
     public function inner_product($id)
     {
         $product = Product::latest('created_at')->whereId($id)->first();
-        return view('front.inner_product',compact('product'));
+        return view('front.inner_product', compact('product'));
     }
 
     public function list_sub(Request $request)
     {
-        if($request->has('parent_id') && $request->parent_id!=''){
+        if ($request->has('parent_id') && $request->parent_id != '') {
             $categorys = Category::whereId($request->parent_id)->get();
-        }
-        else{
+        } else {
             $categorys = Category::whereNull('parent_id')->get();
         }
-        return view("front.sub_category",compact('categorys'));
+        return view("front.sub_category", compact('categorys'));
     }
 
     public function list_brands(Request $request)
@@ -134,13 +130,13 @@ class HomeController extends Controller
     public function profile()
     {
         $countrys = Governorate::all();
-        $citys    = City::all();
-        return view('front.profile',compact('countrys','citys'));
+        $citys = City::all();
+        return view('front.profile', compact('countrys', 'citys'));
     }
 
     public function contact_index(Request $request)
     {
-        if($request->has('lang')){
+        if ($request->has('lang')) {
             \App::setLocale($request->lang);
             \Session::put('applocale', $request->lang);
 
@@ -168,19 +164,19 @@ class HomeController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:clients,id,'.\Auth::guard('client')->user()->id,
+            'email' => 'required|email|unique:clients,id,' . \Auth::guard('client')->user()->id,
             'name' => 'required',
             'phone' => '',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
-        if($request->image){
+        if ($request->image) {
             $this->delete_image_if_exists(\Auth::guard('client')->user()->image);
         }
         $client = Client::find(\Auth::guard('client')->user()->id);
         $client->update($request->all());
-        return response()->json(['success' =>  __('front.client_success_message') , 'status' => 'success']);
+        return response()->json(['success' => __('front.client_success_message'), 'status' => 'success']);
     }
 
     public function updated_password(Request $request)
@@ -191,19 +187,19 @@ class HomeController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
 
-        if(!\Hash::check($request->old_password, \Auth::guard('client')->user()->password)){
+        if (!\Hash::check($request->old_password, \Auth::guard('client')->user()->password)) {
 
-            return response()->json(['error' => ['error' => __('front.password_error_message')] , 'status' => 'error']);
+            return response()->json(['error' => ['error' => __('front.password_error_message')], 'status' => 'error']);
         }
 
         \Auth::guard('client')->user()->update([
-            'password' => \Hash::make($request->password)
+            'password' => \Hash::make($request->password),
         ]);
 
-        return response()->json(['success' => __('front.password_success_message')  , 'status' => 'success']);
+        return response()->json(['success' => __('front.password_success_message'), 'status' => 'success']);
 
     }
 
@@ -215,41 +211,41 @@ class HomeController extends Controller
             'address' => 'required',
         ]);
         if ($validator->fails()) {
-            if($request->has('type')){
+            if ($request->has('type')) {
                 \Session::flash('error', 'Erorr In Data');
                 return back()->withErrors($validator)->withInput();
             }
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
 
-        $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => \Auth::guard('client')->user()->id, 'address'=> $request->address]);
+        $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => \Auth::guard('client')->user()->id, 'address' => $request->address]);
 
-        if($request->has('type')){
-            return redirect('clients/cart?address_id='.$request->city_id);
+        if ($request->has('type')) {
+            return redirect('clients/cart?address_id=' . $request->city_id);
         }
-        return response()->json(['success' => __('front.address_success_message') , 'status' => 'success']);
+        return response()->json(['success' => __('front.address_success_message'), 'status' => 'success']);
     }
 
-    public function updated_address(Request $request,$id)
+    public function updated_address(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'city_id_'.$request->form_number => 'required',
-            'governorate_id_'.$request->form_number => 'required',
-            'address_'.$request->form_number => 'required',
-        ],['address_'.$request->form_number.'.required' => 'يجب ادخال العنوان بالتفصيل']);
+            'city_id_' . $request->form_number => 'required',
+            'governorate_id_' . $request->form_number => 'required',
+            'address_' . $request->form_number => 'required',
+        ], ['address_' . $request->form_number . '.required' => 'يجب ادخال العنوان بالتفصيل']);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
-        $city = 'city_id_'.$request->form_number;
-        $address = 'address_'.$request->form_number;
+        $city = 'city_id_' . $request->form_number;
+        $address = 'address_' . $request->form_number;
         $client_address = ClientAddress::find($id)->update([
             'city_id' => $request[$city],
             'client_id' => \Auth::guard('client')->user()->id,
-            'address'=> $request[$address]
+            'address' => $request[$address],
         ]);
 
-        return response()->json(['success' => __('front.address_update_success_message') , 'status' => 'success']);
+        return response()->json(['success' => __('front.address_update_success_message'), 'status' => 'success']);
     }
 
     public function delete_address($id)
@@ -257,39 +253,39 @@ class HomeController extends Controller
         $address = ClientAddress::find($id);
         $address->delete();
         //\Session::flash('success', __('front.address_delete_success_message'));
-        return response()->json(['success' => __('front.address_delete_success_message') , 'status' => 'success']);
+        return response()->json(['success' => __('front.address_delete_success_message'), 'status' => 'success']);
     }
 
     public function get_city($governorate_id)
     {
-        $citys = City::select('cities.city_'.getcode().' as city' , 'cities.id')->where('governorate_id',$governorate_id)->get();
+        $citys = City::select('cities.city_' . getcode() . ' as city', 'cities.id')->where('governorate_id', $governorate_id)->get();
         return $citys;
     }
 
     public function my_cart(Request $request)
     {
         $auth_carts = [];
-        $session_carts =[];
-        $total_price =0;
-        $city = Null;
-        if($request->has('address_id')){
+        $session_carts = [];
+        $total_price = 0;
+        $city = null;
+        if ($request->has('address_id')) {
             $city = City::whereId($request->address_id)->first();
         }
-        if(\Auth::guard('client')->check()){
+        if (\Auth::guard('client')->check()) {
             $auth_carts = \Auth::guard('client')->user()->carts;
-            $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-            if(!$city){
+            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+            if (!$city) {
                 $city = \Auth::guard('client')->user()->cities[0];
                 $city = City::whereId($city->pivot->city_id)->first();
             }
         }
-        if(isset($_COOKIE['carts'])){
+        if (isset($_COOKIE['carts'])) {
             $session_carts = unserialize($_COOKIE['carts']);
-            for ($i=0; $i < count($session_carts) ; $i++) {
-                $total_price  += $session_carts[$i]['total_price'];
+            for ($i = 0; $i < count($session_carts); $i++) {
+                $total_price += $session_carts[$i]['total_price'];
             }
         }
-        return view('front.cart',compact('auth_carts','session_carts','total_price','city'));
+        return view('front.cart', compact('auth_carts', 'session_carts', 'total_price', 'city'));
     }
 
     public function store_cart(Request $request)
@@ -297,72 +293,71 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'product_id' => 'required',
             'counter' => '',
-            'price' =>  'required'
-      ]);
+            'price' => 'required',
+        ]);
         $request->request->add(['counter' => 1]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
-        if(\Auth::guard('client')->check()){
-            $product = Cart::where('client_id',\Auth::guard('client')->user()->id)->where('product_id',$request->product_id)->first();
-            if($product){
+        if (\Auth::guard('client')->check()) {
+            $product = Cart::where('client_id', \Auth::guard('client')->user()->id)->where('product_id', $request->product_id)->first();
+            if ($product) {
                 return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
             }
             $cart = Cart::create([
                 'product_id' => $request->product_id,
                 'client_id' => \Auth::guard('client')->user()->id,
-                'quantity'=> $request->counter,
-                'price'  => $request->price,
-                'total_price' => $request->price * $request->counter
+                'quantity' => $request->counter,
+                'price' => $request->price,
+                'total_price' => $request->price * $request->counter,
             ]);
-        }
-        else{
+        } else {
             $arr = isset($_COOKIE['carts']) ? unserialize($_COOKIE['carts']) : [];
-            for($i=0;$i<count($arr);$i++){
-                if($arr[$i]['product_id'] == $request->product_id){
+            for ($i = 0; $i < count($arr); $i++) {
+                if ($arr[$i]['product_id'] == $request->product_id) {
                     return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
                 }
             }
             $data['product_id'] = $request->product_id;
-            $data['quantity']   = $request->counter;
-            $data['price']      = $request->price;
-            $data['total_price']= $request->price * $request->counter;
-            array_push($arr,$data);
-            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+            $data['quantity'] = $request->counter;
+            $data['price'] = $request->price;
+            $data['total_price'] = $request->price * $request->counter;
+            array_push($arr, $data);
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
-        return response()->json(['success' => 'Added To Cart Successfully' , 'status' => 'success']);
+        return response()->json(['success' => 'Added To Cart Successfully', 'status' => 'success']);
     }
 
     public function update_cart(Request $request)
     {
-        if($request->type == "cookie"){
+        if ($request->type == "cookie") {
             $arr = unserialize($_COOKIE['carts']);
             $arr[$request->cart_id]['quantity'] = $request->value;
             $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
-            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
-        if($request->type == "auth"){
+        if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
             $cart->quantity = $request->value;
             $cart->total_price = $request->value * $cart->price;
             $cart->save();
         }
-        return response()->json(['status' => 'success' , 'data' => 'update will']);
+        return response()->json(['status' => 'success', 'data' => 'update will']);
     }
 
     public function delete_cart(Request $request)
     {
-        if($request->type == "cookie"){
+        if ($request->type == "cookie") {
             $arr = unserialize($_COOKIE['carts']);
             unset($arr[$request->cart_id]);
             $arr = array_values($arr);
-            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
-        if($request->type == "auth"){
+        if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
             $cart->delete();
         }
-        return response()->json(['status' => 'success' , 'data' => 'delete will']);
+        return response()->json(['status' => 'success', 'data' => 'delete will']);
     }
 
     public function check_coupon(Request $request)
@@ -371,29 +366,29 @@ class HomeController extends Controller
             'coupon' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
-        $found_coupon = Coupon::where('coupon',$request->coupon)->first();
-        if(!$found_coupon){
-            return response()->json(['error' => ['coupon' => __('front.coupon.not_correct')] , 'status' => 'error']);
+        $found_coupon = Coupon::where('coupon', $request->coupon)->first();
+        if (!$found_coupon) {
+            return response()->json(['error' => ['coupon' => __('front.coupon.not_correct')], 'status' => 'error']);
         }
-        $used_coupon = Coupon::where('coupon',$request->coupon)->where(function($q){
-            $q->where('used',1);
-            $q->orWhere('used',2);
+        $used_coupon = Coupon::where('coupon', $request->coupon)->where(function ($q) {
+            $q->where('used', 1);
+            $q->orWhere('used', 2);
         })->first();
-        if($used_coupon){
-            return response()->json(['error' => ['coupon' => __('front.coupon.used_befor')] , 'status' => 'error']);
+        if ($used_coupon) {
+            return response()->json(['error' => ['coupon' => __('front.coupon.used_befor')], 'status' => 'error']);
         }
-        $coupon = Coupon::where('coupon',$request->coupon)->first();
+        $coupon = Coupon::where('coupon', $request->coupon)->first();
         $coupon->client_id = \Auth::guard('client')->user()->id;
-        $coupon->used      = 1;
+        $coupon->used = 1;
         $coupon->save();
-        return response()->json(['value' => $coupon->value , 'status' => 'success' , 'success' => __('front.coupon.add_success')]);
+        return response()->json(['value' => $coupon->value, 'status' => 'success', 'success' => __('front.coupon.add_success')]);
     }
 
     public function choose_address()
     {
-       return view('front.address');
+        return view('front.address');
     }
 
     public function payment()
@@ -407,7 +402,7 @@ class HomeController extends Controller
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
             'publicKey' => config('services.braintree.publicKey'),
-            'privateKey' => config('services.braintree.privateKey')
+            'privateKey' => config('services.braintree.privateKey'),
         ]);
 
         $token = $gateway->ClientToken()->generate();
@@ -419,36 +414,36 @@ class HomeController extends Controller
     {
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'AW-e1NvkRoUaHz5CujWzPFNW4NufX1Laf9qkviuJhGBJ2ezRCPtidMOpYPsmdV10_gC4boRYQSTaqTEE',     // ClientID
-                'EO9_yYqG7w2ILNZOWuFtqeth0Wr24MdrBeO51EL-srlE2jDHR0Q6MzLFl9EuI-IRLdk6YFXIzZW897DF'      // ClientSecret
+                'AW-e1NvkRoUaHz5CujWzPFNW4NufX1Laf9qkviuJhGBJ2ezRCPtidMOpYPsmdV10_gC4boRYQSTaqTEE', // ClientID
+                'EO9_yYqG7w2ILNZOWuFtqeth0Wr24MdrBeO51EL-srlE2jDHR0Q6MzLFl9EuI-IRLdk6YFXIzZW897DF' // ClientSecret
             )
         );
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
         $city = City::find(1);
-        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $count_coupon = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->sum('value');
+        $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+        $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->sum('value');
         $items = [];
-        foreach($carts as $cart){
+        foreach ($carts as $cart) {
             $item = new Item();
             $item->setName(Product::whereId($cart->product_id)->first()->title_en)
                 ->setCurrency('USD')
                 ->setQuantity($cart->quantity)
                 ->setSku($cart->product_id) // Similar to `item_number` in Classic API
                 ->setPrice($cart->price);
-            array_push($items,$item);
+            array_push($items, $item);
         }
         $itemList = new ItemList();
         $itemList->setItems($items);
         $details = new Details();
         $details->setShipping($city->shipping_amount)
             ->setTax(0.0)
-            ->setSubtotal($total_price -$count_coupon);
+            ->setSubtotal($total_price - $count_coupon);
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal(($total_price + $city->shipping_amount)-$count_coupon)
+            ->setTotal(($total_price + $city->shipping_amount) - $count_coupon)
             ->setDetails($details);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
@@ -482,8 +477,8 @@ class HomeController extends Controller
     {
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'AW-e1NvkRoUaHz5CujWzPFNW4NufX1Laf9qkviuJhGBJ2ezRCPtidMOpYPsmdV10_gC4boRYQSTaqTEE',     // ClientID
-                'EO9_yYqG7w2ILNZOWuFtqeth0Wr24MdrBeO51EL-srlE2jDHR0Q6MzLFl9EuI-IRLdk6YFXIzZW897DF'      // ClientSecret
+                'AW-e1NvkRoUaHz5CujWzPFNW4NufX1Laf9qkviuJhGBJ2ezRCPtidMOpYPsmdV10_gC4boRYQSTaqTEE', // ClientID
+                'EO9_yYqG7w2ILNZOWuFtqeth0Wr24MdrBeO51EL-srlE2jDHR0Q6MzLFl9EuI-IRLdk6YFXIzZW897DF' // ClientSecret
             )
         );
         $paymentId = $request->paymentID;
@@ -509,46 +504,46 @@ class HomeController extends Controller
             return back()->withErrors($validator)->withInput();
         }
         $city = City::find($request->address_id);
-        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
+        $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+        $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
         $count_coupon = 0;
-        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-        foreach($coupons as $coupon){
+        $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
+        foreach ($coupons as $coupon) {
             $count_coupon += $coupon->value;
             $coupon->used = 2;
             $coupon->save();
         }
         $order = Order::create([
             'client_id' => \Auth::guard('client')->user()->id,
-            'address_id' =>$address->id,
-            'shipping_amount' =>$city->shipping_amount,
-            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
+            'address_id' => $address->id,
+            'shipping_amount' => $city->shipping_amount,
+            'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
             'lang' => getCode(),
-            'payment' => $request->payment
+            'payment' => $request->payment,
         ]);
-        foreach($carts as $cart){
+        foreach ($carts as $cart) {
             $detail = OrderDetail::create([
                 'order_id' => $order->id,
-                'product_id' =>$cart->product_id,
-                'quantity' =>$cart->quantity,
-                'price' =>$cart->price,
-                'total_price' =>$cart->total_price,
+                'product_id' => $cart->product_id,
+                'quantity' => $cart->quantity,
+                'price' => $cart->price,
+                'total_price' => $cart->total_price,
             ]);
             $cart->delete();
         }
         $check = $request->payment;
-        if($check == 2){
+        if ($check == 2) {
             $gateway = new Braintree_Gateway([
                 'environment' => config('services.braintree.environment'),
                 'merchantId' => config('services.braintree.merchantId'),
                 'publicKey' => config('services.braintree.publicKey'),
-                'privateKey' => config('services.braintree.privateKey')
+                'privateKey' => config('services.braintree.privateKey'),
             ]);
 
             $nonce = $request->payment_method_nonce;
             $result = $gateway->transaction()->sale([
-                'amount' => ($total_price + $city->shipping_amount)-$count_coupon,
+                'amount' => ($total_price + $city->shipping_amount) - $count_coupon,
                 'paymentMethodNonce' => $nonce,
                 'customer' => [
                     'firstName' => \Auth::guard('client')->user()->name,
@@ -556,17 +551,17 @@ class HomeController extends Controller
                     'email' => \Auth::guard('client')->user()->email,
                 ],
                 'options' => [
-                    'submitForSettlement' => true
-                ]
+                    'submitForSettlement' => true,
+                ],
             ]);
         }
         $client = \Auth::guard('client')->user();
-        Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+        Mail::send('front.mail', ['order' => $order, 'client' => $client], function ($m) use ($client) {
             $m->from($client->email, __('front.order'));
             $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
         });
-        $link = url('order/'.$order->id);
-        send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+        $link = url('order/' . $order->id);
+        send_notification(' Make New order  #' . $order->id . ' ', \Auth::guard('client')->user()->id, $link);
         return redirect('clients/thanks');
     }
 
@@ -579,7 +574,7 @@ class HomeController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
 
         $client_rate = ClientRate::create([
@@ -587,21 +582,21 @@ class HomeController extends Controller
             'client_id' => \Auth::guard('client')->user()->id,
             'rate' => $request->rate,
             'publish' => 0,
-            'comment'=> $request->comment
+            'comment' => $request->comment,
 
         ]);
-        return response()->json(['success' => __('front.rate_add_success_message') , 'status' => 'success']);
+        return response()->json(['success' => __('front.rate_add_success_message'), 'status' => 'success']);
     }
 
     public function is_available(Request $request)
     {
-      //dd($request->all());
+        //dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'governorate_id' => 'required',
-            'city_id' => 'required'
+            'city_id' => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
@@ -609,13 +604,13 @@ class HomeController extends Controller
         $contact = Contact::create([
             'email' => $request->email,
             'phone' => $request->phone,
-            'name'  => $request->name ,
+            'name' => $request->name,
             'product_id' => $request->product_id,
-            'city_id' =>$request->city_id,
-            'lang' => getCode()
+            'city_id' => $request->city_id,
+            'lang' => getCode(),
         ]);
         $products = Product::whereId($request->product_id)->get();
-        Mail::send('front.mail2', ['products' => $products , 'client' => $contact , 'subject' => __('front.new_request_for_this_product')], function ($m) use ($request) {
+        Mail::send('front.mail2', ['products' => $products, 'client' => $contact, 'subject' => __('front.new_request_for_this_product')], function ($m) use ($request) {
             $m->from($request->email, __('front.order'));
             $m->to(setting('super_mail'), __('front.title'))->subject(__('front.product'));
         });
@@ -623,7 +618,7 @@ class HomeController extends Controller
         // if(\Auth::guard('client')->check()){
         //     send_notification('Request For Order #'.$request->product_id.' ',\Auth::guard('client')->user()->id,$link);
         // }
-        \Session::flash('success', __('front.client_success_message') );
+        \Session::flash('success', __('front.client_success_message'));
         return back();
 
     }
@@ -655,19 +650,19 @@ class HomeController extends Controller
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
 
-        if(count($recently_added) != 6){
+        if (count($recently_added) != 6) {
             $limit = 6 - count($recently_added);
             $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
             $recently_added = $recently_added->toBase()->merge($recently_addedR);
         }
 
-        if(count($selected_for_you) != 6){
+        if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
             $selected_for_youR = Product::all()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
 
-        if(count($homepage_cat) != 6){
+        if (count($homepage_cat) != 6) {
             $limit = 6 - count($homepage_cat);
             $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
             $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
@@ -693,7 +688,7 @@ class HomeController extends Controller
 
     public function contactusv2(Request $request)
     {
-          if($request->has('lang')){
+        if ($request->has('lang')) {
             \App::setLocale($request->lang);
             \Session::put('applocale', $request->lang);
 
@@ -706,150 +701,150 @@ class HomeController extends Controller
     {
         $sub_category_ids = [];
         $products = Product::query();
-        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+        if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
-            $products = $products->whereIn('category_id',$request->sub_category_id);
+            $products = $products->whereIn('category_id', $request->sub_category_id);
         }
-        if($request->has('category_id') && $request->category_id != ''){
-          $sub_category_ids = Category::where('parent_id',$request->category_id)->pluck('id')->toArray();
-          $products = $products->whereIn('category_id',$sub_category_ids);
+        if ($request->has('category_id') && $request->category_id != '') {
+            $sub_category_ids = Category::where('parent_id', $request->category_id)->pluck('id')->toArray();
+            $products = $products->whereIn('category_id', $sub_category_ids);
         }
-        if($request->has('brand_id') && $request->brand_id !=''){
+        if ($request->has('brand_id') && $request->brand_id != '') {
             $request->brand_id = (array) $request->brand_id;
-            $products = $products->whereIn('brand_id',$request->brand_id);
+            $products = $products->whereIn('brand_id', $request->brand_id);
         }
-        if($request->has('from') && $request->from !=''){
-            $products = $products->where('price','>=',$request->from);
+        if ($request->has('from') && $request->from != '') {
+            $products = $products->where('price', '>=', $request->from);
         }
-        if($request->has('to') && $request->to!=''){
-            $products = $products->where('price','<',$request->to);
+        if ($request->has('to') && $request->to != '') {
+            $products = $products->where('price', '<', $request->to);
         }
-        if($request->has('from_to') && $request->from_to!=''){
-          $products = $products->whereBetween('price',explode(',',$request->from_to));
+        if ($request->has('from_to') && $request->from_to != '') {
+            $products = $products->whereBetween('price', explode(',', $request->from_to));
         }
-        if($request->has('ifrom') && $request->ifrom !=''){
-            $products = $products->whereHas('pr_value', function($q) use ($request){
-              $q->join('properties','property_values.property_id','=','properties.id');
-              $q->where('properties.title','LIKE' ,'%inch%');
-              $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'>=',$request->ifrom);
+        if ($request->has('ifrom') && $request->ifrom != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), '>=', $request->ifrom);
             });
         }
-        if($request->has('ito') && $request->ito!=''){
-            $products = $products->whereHas('pr_value', function($q) use ($request){
-              $q->join('properties','property_values.property_id','=','properties.id');
-              $q->where('properties.title','LIKE' ,'%inch%');
-              $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'=',$request->ito);
+        if ($request->has('ito') && $request->ito != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), '=', $request->ito);
             });
         }
-        if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
-          $products = $products->whereHas('pr_value', function($q) use ($request){
-            $q->join('properties','property_values.property_id','=','properties.id');
-            $q->where('properties.title','LIKE' ,'%inch%');
-            $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),explode(',',$request->ifrom_ito));
-          });
-       }
-        if($request->has('search') && $request->search!=''){
-          $products = $products->whereLike(['title'],$request->search);
+        if ($request->has('ifrom_ito') && $request->ifrom_ito != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), explode(',', $request->ifrom_ito));
+            });
         }
-        if($request->has('offer') && $request->offer !=''){
-          $products =  $products->where('price_after_discount','>',0);
+        if ($request->has('search') && $request->search != '') {
+            $products = $products->whereLike(['title'], $request->search);
         }
-        if($request->has('sorted') && $request->sorted!=''){
-          $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
+        if ($request->has('offer') && $request->offer != '') {
+            $products = $products->where('price_after_discount', '>', 0);
         }
-        if($request->has('last') && $request->last!=''){
-          $products = $products->latest('created_at');
+        if ($request->has('sorted') && $request->sorted != '') {
+            $products = $products->orderBy(explode(',', $request->sorted)[0], explode(',', $request->sorted)[1]);
         }
-        if($request->has('random') && $request->random!=''){
-          $products = $products->inRandomOrder();
+        if ($request->has('last') && $request->last != '') {
+            $products = $products->latest('created_at');
         }
-        if($request->has('property_value_id')){
-          $products = $products->whereHas('pr_value', function($q) use ($request){
-            $q->whereIn('property_values.id', $request->property_value_id);
-          });
+        if ($request->has('random') && $request->random != '') {
+            $products = $products->inRandomOrder();
+        }
+        if ($request->has('property_value_id')) {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->whereIn('property_values.id', $request->property_value_id);
+            });
         }
 
-        $products = $products->where('products.active',1)->limit(get_limit_paginate())->get();
-        return view('frontv2.listproduct',compact('products','sub_category_ids'));
+        $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+        return view('frontv2.listproduct', compact('products', 'sub_category_ids'));
     }
 
     public function load_productsv2(Request $request)
     {
         //return $request->all();
         $products = Product::query();
-        if($request->has('sub_category_id') && $request->sub_category_id !=''){
+        if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
-            $products = $products->whereIn('category_id',$request->sub_category_id);
+            $products = $products->whereIn('category_id', $request->sub_category_id);
         }
-        if($request->has('category_id') && $request->category_id != ''){
-          $sub_category_ids = Category::where('parent_id',$request->category_id)->pluck('id')->toArray();
-          $products = $products->whereIn('category_id',$sub_category_ids);
+        if ($request->has('category_id') && $request->category_id != '') {
+            $sub_category_ids = Category::where('parent_id', $request->category_id)->pluck('id')->toArray();
+            $products = $products->whereIn('category_id', $sub_category_ids);
         }
-        if($request->has('brand_id') && $request->brand_id !=''){
+        if ($request->has('brand_id') && $request->brand_id != '') {
             $request->brand_id = (array) $request->brand_id;
-            $products = $products->whereIn('brand_id',$request->brand_id);
+            $products = $products->whereIn('brand_id', $request->brand_id);
         }
-        if($request->has('from') && $request->from !=''){
-            $products = $products->where('price','>=',$request->from);
+        if ($request->has('from') && $request->from != '') {
+            $products = $products->where('price', '>=', $request->from);
         }
-        if($request->has('to') && $request->to!=''){
-            $products = $products->where('price','<',$request->to);
+        if ($request->has('to') && $request->to != '') {
+            $products = $products->where('price', '<', $request->to);
         }
-        if($request->has('from_to') && $request->from_to!=''){
-          $products = $products->whereBetween('price',explode(',',$request->from_to));
-       }
-       if($request->has('ifrom') && $request->ifrom !=''){
-        $products = $products->whereHas('pr_value', function($q) use ($request){
-          $q->join('properties','property_values.property_id','=','properties.id');
-          $q->where('properties.title','LIKE' ,'%inch%');
-          $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'>=',$request->ifrom);
-        });
+        if ($request->has('from_to') && $request->from_to != '') {
+            $products = $products->whereBetween('price', explode(',', $request->from_to));
         }
-        if($request->has('ito') && $request->ito!=''){
-            $products = $products->whereHas('pr_value', function($q) use ($request){
-            $q->join('properties','property_values.property_id','=','properties.id');
-            $q->where('properties.title','LIKE' ,'%inch%');
-            $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),'=',$request->ito);
+        if ($request->has('ifrom') && $request->ifrom != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), '>=', $request->ifrom);
             });
         }
-        if($request->has('ifrom_ito') && $request->ifrom_ito!=''){
-        $products = $products->whereHas('pr_value', function($q) use ($request){
-            $q->join('properties','property_values.property_id','=','properties.id');
-            $q->where('properties.title','LIKE' ,'%inch%');
-            $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"),explode(',',$request->ifrom_ito));
-        });
+        if ($request->has('ito') && $request->ito != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), '=', $request->ito);
+            });
         }
-        if($request->has('search') && $request->search!=''){
-          $products = $products->whereLike(['title'],$request->search);
+        if ($request->has('ifrom_ito') && $request->ifrom_ito != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), explode(',', $request->ifrom_ito));
+            });
         }
-        if($request->has('sorted') && $request->sorted!=''){
-          $products = $products->orderBy(explode(',',$request->sorted) [0],explode(',',$request->sorted) [1]);
+        if ($request->has('search') && $request->search != '') {
+            $products = $products->whereLike(['title'], $request->search);
         }
-        if($request->has('offer') && $request->offer !=''){
-          $products =  $products->where('price_after_discount','>',0);
+        if ($request->has('sorted') && $request->sorted != '') {
+            $products = $products->orderBy(explode(',', $request->sorted)[0], explode(',', $request->sorted)[1]);
         }
-        if($request->has('last') && $request->last!=''){
-          $products = $products->latest('created_at');
+        if ($request->has('offer') && $request->offer != '') {
+            $products = $products->where('price_after_discount', '>', 0);
         }
-        if($request->has('random') && $request->random!=''){
-          $products = $products->inRandomOrder();
+        if ($request->has('last') && $request->last != '') {
+            $products = $products->latest('created_at');
         }
-        if($request->has('property_value_id')){
-          $products = $products->whereHas('pr_value', function($q) use ($request){
-            $q->whereIn('property_values.id', $request->property_value_id);
-          });
+        if ($request->has('random') && $request->random != '') {
+            $products = $products->inRandomOrder();
+        }
+        if ($request->has('property_value_id')) {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->whereIn('property_values.id', $request->property_value_id);
+            });
         }
 
-        $products = $products->where('products.active',1)->offset($request->start)->limit(get_limit_paginate())->get();
+        $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())->get();
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
     }
 
     public function inner_productv2($id)
     {
-        $product = Product::latest('created_at')->whereId($id)->where('products.active',1)->first();
-        $items   = Product::where('category_id',$product->category->id)->whereNotIn('id',[$id])->where('products.active',1)->inRandomOrder()->take(6)->get();
-        return view('frontv2.inner-page',compact('product','items'));
+        $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
+        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(6)->get();
+        return view('frontv2.inner-page', compact('product', 'items'));
     }
 
     public function add_ratev2(Request $request)
@@ -869,41 +864,41 @@ class HomeController extends Controller
             'client_id' => \Auth::guard('client')->user()->id,
             'rate' => $request->rate,
             'publish' => 0,
-            'comment'=> $request->comment
+            'comment' => $request->comment,
 
         ]);
-        \Session::flash('success',__('front.rate_add_success_message'));
+        \Session::flash('success', __('front.rate_add_success_message'));
         return back();
     }
 
     public function profilev2()
     {
         $countrys = Governorate::all();
-        $citys    = City::all();
-        return view('frontv2.profile',compact('countrys','citys'));
+        $citys = City::all();
+        return view('frontv2.profile', compact('countrys', 'citys'));
     }
 
     public function updatev2(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:clients,email,'.\Auth::guard('client')->user()->id,
+            'email' => 'required|email|unique:clients,email,' . \Auth::guard('client')->user()->id,
             'name' => 'required',
-            'phone' => 'required|unique:clients,phone,'.\Auth::guard('client')->user()->id,
+            'phone' => 'required|unique:clients,phone,' . \Auth::guard('client')->user()->id,
         ]);
         if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
         }
-        if($request->image){
+        if ($request->image) {
             $this->delete_image_if_exists(\Auth::guard('client')->user()->image);
         }
         $client = Client::find(\Auth::guard('client')->user()->id);
         $client->update($request->all());
-        \Session::flash('success',__('front.client_success_message'));
+        \Session::flash('success', __('front.client_success_message'));
         return back();
     }
     public function get_passwordv2(Request $request)
     {
-      return view('frontv2.password');
+        return view('frontv2.password');
     }
 
     public function updated_passwordv2(Request $request)
@@ -914,27 +909,27 @@ class HomeController extends Controller
         ]);
 
         if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
         }
 
-        if(!\Hash::check($request->old_password, \Auth::guard('client')->user()->password)){
-          return back()->with('fail', __('front.password_error_message'));
+        if (!\Hash::check($request->old_password, \Auth::guard('client')->user()->password)) {
+            return back()->with('fail', __('front.password_error_message'));
         }
 
         \Auth::guard('client')->user()->update([
-            'password' => \Hash::make($request->password)
+            'password' => \Hash::make($request->password),
         ]);
 
-        \Session::flash('success',__('front.client_success_message'));
+        \Session::flash('success', __('front.client_success_message'));
         return back();
 
     }
 
     public function get_addressv2(Request $request)
     {
-      $countrys = Governorate::all();
-      $citys    = City::all();
-      return view('frontv2.address',compact('countrys','citys'));
+        $countrys = Governorate::all();
+        $citys = City::all();
+        return view('frontv2.address', compact('countrys', 'citys'));
     }
 
     public function add_addressv2(Request $request)
@@ -948,33 +943,33 @@ class HomeController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => \Auth::guard('client')->user()->id, 'address'=> $request->address]);
+        $address = ClientAddress::create(['city_id' => $request->city_id, 'client_id' => \Auth::guard('client')->user()->id, 'address' => $request->address]);
 
-        if($request->has('type')){
-            return redirect('clients/cartv2?address_id='.$request->city_id);
+        if ($request->has('type')) {
+            return redirect('clients/cartv2?address_id=' . $request->city_id);
         }
-        \Session::flash('success',__('front.address_success_message'));
+        \Session::flash('success', __('front.address_success_message'));
         return back();
     }
 
-    public function updated_addressv2(Request $request,$id)
+    public function updated_addressv2(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-          'city_id' => 'required',
-          'governorate_id' => 'required',
-          'address' => 'required',
-        ],['address.required' => 'يجب ادخال العنوان بالتفصيل']);
+            'city_id' => 'required',
+            'governorate_id' => 'required',
+            'address' => 'required',
+        ], ['address.required' => 'يجب ادخال العنوان بالتفصيل']);
 
         if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
         }
         $client_address = ClientAddress::find($id)->update([
             'city_id' => $request->city_id,
             'client_id' => \Auth::guard('client')->user()->id,
-            'address'=> $request->address
+            'address' => $request->address,
         ]);
 
-        \Session::flash('success',__('front.address_success_message'));
+        \Session::flash('success', __('front.address_success_message'));
         return back();
     }
 
@@ -988,54 +983,53 @@ class HomeController extends Controller
 
     public function get_ordersv2(Request $request)
     {
-      return view('frontv2.orders');
+        return view('frontv2.orders');
     }
 
     public function my_cartv2(Request $request)
     {
         $auth_carts = [];
-        $session_carts =[];
-        $total_price =0;
-        $city = Null;
-        if($request->has('address_id')){
+        $session_carts = [];
+        $total_price = 0;
+        $city = null;
+        if ($request->has('address_id')) {
             $city = City::whereId($request->address_id)->first();
         }
-        if(\Auth::guard('client')->check()){
+        if (\Auth::guard('client')->check()) {
             $auth_carts = \Auth::guard('client')->user()->carts;
-            $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-            if(!$city){
+            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+            if (!$city) {
                 $city = \Auth::guard('client')->user()->cities[0];
                 $city = City::whereId($city->pivot->city_id)->first();
             }
         }
-        if(isset($_COOKIE['carts'])){
+        if (isset($_COOKIE['carts'])) {
             $session_carts = unserialize($_COOKIE['carts']);
-            for ($i=0; $i < count($session_carts) ; $i++) {
-                $total_price  += $session_carts[$i]['total_price'];
+            for ($i = 0; $i < count($session_carts); $i++) {
+                $total_price += $session_carts[$i]['total_price'];
             }
         }
 
-        if($request->has('success_pr'))
-        {
-          \Session::flash('success_pr',Product::find($request->product_id));
+        if ($request->has('success_pr')) {
+            \Session::flash('success_pr', Product::find($request->product_id));
         }
 
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->inRandomOrder()->first();
 
-        if(count($selected_for_you) != 6){
-          $limit = 6 - count($selected_for_you);
-          $selected_for_youR = Product::all()->random($limit);
-          $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
-      }
+        if (count($selected_for_you) != 6) {
+            $limit = 6 - count($selected_for_you);
+            $selected_for_youR = Product::all()->random($limit);
+            $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+        }
 
-      if(count($homepage_cat) != 6){
-          $limit = 6 - count($homepage_cat);
-          $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
-          $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
-      }
-        return view('frontv2.cart',compact('auth_carts','session_carts','total_price','city', 'selected_for_you', 'homepage_cat','ads'));
+        if (count($homepage_cat) != 6) {
+            $limit = 6 - count($homepage_cat);
+            $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+            $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
+        }
+        return view('frontv2.cart', compact('auth_carts', 'session_carts', 'total_price', 'city', 'selected_for_you', 'homepage_cat', 'ads'));
     }
 
     public function store_cartv2(Request $request)
@@ -1043,40 +1037,39 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'product_id' => 'required',
             'counter' => '',
-            'price' =>  'required'
-      ]);
+            'price' => 'required',
+        ]);
         //$request->request->add(['counter' => 1]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors() , 'status' => 'error']);
+            return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
-        if(\Auth::guard('client')->check()){
-            $product = Cart::where('client_id',\Auth::guard('client')->user()->id)->where('product_id',$request->product_id)->first();
-            if($product){
+        if (\Auth::guard('client')->check()) {
+            $product = Cart::where('client_id', \Auth::guard('client')->user()->id)->where('product_id', $request->product_id)->first();
+            if ($product) {
                 return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
             }
             $cart = Cart::create([
                 'product_id' => $request->product_id,
                 'client_id' => \Auth::guard('client')->user()->id,
-                'quantity'=> $request->counter,
-                'price'  => $request->price,
-                'total_price' => $request->price * $request->counter
+                'quantity' => $request->counter,
+                'price' => $request->price,
+                'total_price' => $request->price * $request->counter,
             ]);
-        }
-        else{
+        } else {
             $arr = isset($_COOKIE['carts']) ? unserialize($_COOKIE['carts']) : [];
-            for($i=0;$i<count($arr);$i++){
-                if($arr[$i]['product_id'] == $request->product_id){
+            for ($i = 0; $i < count($arr); $i++) {
+                if ($arr[$i]['product_id'] == $request->product_id) {
                     return response()->json(['error' => ['Is Added Befor'], 'status' => 'error']);
                 }
             }
             $data['product_id'] = $request->product_id;
-            $data['quantity']   = $request->counter;
-            $data['price']      = $request->price;
-            $data['total_price']= $request->price * $request->counter;
-            array_push($arr,$data);
-            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+            $data['quantity'] = $request->counter;
+            $data['price'] = $request->price;
+            $data['total_price'] = $request->price * $request->counter;
+            array_push($arr, $data);
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
-        return response()->json(['success' => 'Added To Cart Successfully' , 'status' => 'success']);
+        return response()->json(['success' => 'Added To Cart Successfully', 'status' => 'success']);
     }
 
     public function check_couponv2(Request $request)
@@ -1085,71 +1078,69 @@ class HomeController extends Controller
             'coupon' => 'required',
         ]);
         if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
         }
-        $found_coupon = Coupon::where('coupon',$request->coupon)->first();
-        if(!$found_coupon){
-            \Session::flash('fail' , __('front.coupon.not_correct'));
+        $found_coupon = Coupon::where('coupon', $request->coupon)->first();
+        if (!$found_coupon) {
+            \Session::flash('fail', __('front.coupon.not_correct'));
             return back();
         }
-        $used_coupon = Coupon::where('coupon',$request->coupon)->where(function($q){
-            $q->where('used',1);
-            $q->orWhere('used',2);
+        $used_coupon = Coupon::where('coupon', $request->coupon)->where(function ($q) {
+            $q->where('used', 1);
+            $q->orWhere('used', 2);
         })->first();
-        if($used_coupon){
-          \Session::flash('fail' , __('front.coupon.used_befor'));
-          return back();
+        if ($used_coupon) {
+            \Session::flash('fail', __('front.coupon.used_befor'));
+            return back();
         }
-        $coupon = Coupon::where('coupon',$request->coupon)->first();
+        $coupon = Coupon::where('coupon', $request->coupon)->first();
         $coupon->client_id = \Auth::guard('client')->user()->id;
-        $coupon->used      = 1;
+        $coupon->used = 1;
         $coupon->save();
-        \Session::flash('success',__('front.coupon.add_success'));
+        \Session::flash('success', __('front.coupon.add_success'));
         return back();
     }
 
     public function delete_cartv2(Request $request)
     {
-        if($request->type == "cookie"){
-          if($request->has('cart_id')){
-            $arr = unserialize($_COOKIE['carts']);
-            unset($arr[$request->cart_id]);
-            $arr = array_values($arr);
-            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
-          }
-          else{
-            unset($_COOKIE['carts']);
-            setcookie('carts','', time() - 3600);
-          }
+        if ($request->type == "cookie") {
+            if ($request->has('cart_id')) {
+                $arr = unserialize($_COOKIE['carts']);
+                unset($arr[$request->cart_id]);
+                $arr = array_values($arr);
+                setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+            } else {
+                unset($_COOKIE['carts']);
+                setcookie('carts', '', time() - 3600);
+            }
         }
-        if($request->type == "auth"){
-          if($request->has('cart_id')){
-            $cart = Cart::find($request->cart_id);
-            $cart->delete();
-          }
-          else{
-            Cart::where('client_id',\Auth::guard('client')->user()->id)->delete();
-          }
+        if ($request->type == "auth") {
+            if ($request->has('cart_id')) {
+                $cart = Cart::find($request->cart_id);
+                $cart->delete();
+            } else {
+                Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            }
         }
-        \Session::flash('success','delete will');
+        \Session::flash('success', 'delete will');
         return back();
     }
 
     public function update_cartv2(Request $request)
     {
-        if($request->type == "cookie"){
+        if ($request->type == "cookie") {
             $arr = unserialize($_COOKIE['carts']);
             $arr[$request->cart_id]['quantity'] = $request->value;
             $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
-            setcookie('carts',serialize($arr), time()+(86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
-        if($request->type == "auth"){
+        if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
             $cart->quantity = $request->value;
             $cart->total_price = $request->value * $cart->price;
             $cart->save();
         }
-        return response()->json(['status' => 'success' , 'data' => 'update will']);
+        return response()->json(['status' => 'success', 'data' => 'update will']);
     }
 
     public function create_paymentv2(Request $request)
@@ -1162,30 +1153,30 @@ class HomeController extends Controller
         );
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
-        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $count_coupon = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->sum('value');
+        $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+        $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+        $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+        $count_coupon = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->sum('value');
         $items = [];
-        foreach($carts as $cart){
+        foreach ($carts as $cart) {
             $item = new Item();
             $product = Product::whereId($cart->product_id)->first();
-            $item->setName($product->getTranslation('title',getCode()))
+            $item->setName($product->getTranslation('title', getCode()))
                 ->setCurrency('USD')
                 ->setQuantity($cart->quantity)
                 ->setSku($cart->product_id) // Similar to `item_number` in Classic API
                 ->setPrice($cart->price);
-            array_push($items,$item);
+            array_push($items, $item);
         }
         $itemList = new ItemList();
         $itemList->setItems($items);
         $details = new Details();
-        $details->setShipping($address->city->shipping_amount  - $count_coupon)
+        $details->setShipping($address->city->shipping_amount - $count_coupon)
             ->setTax(0.0)
             ->setSubtotal($total_price);
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal($total_price + ($address->city->shipping_amount  - $count_coupon))
+            ->setTotal($total_price + ($address->city->shipping_amount - $count_coupon))
             ->setDetails($details);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
@@ -1219,8 +1210,8 @@ class HomeController extends Controller
     {
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-              env('client_id'),
-              env('client_secret')
+                env('client_id'),
+                env('client_secret')
             )
         );
         $paymentId = $request->paymentID;
@@ -1245,338 +1236,347 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        if($request->payment != 2){
-          $city = City::find($request->address_id);
-          $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-          $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-          $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-          $count_coupon = 0;
-          $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-          foreach($coupons as $coupon){
-              $count_coupon += $coupon->value;
-              $coupon->used = 2;
-              $coupon->save();
-          }
-          $order = Order::create([
-              'client_id' => \Auth::guard('client')->user()->id,
-              'address_id' =>$address->id,
-              'shipping_amount' =>$city->shipping_amount,
-              'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
-              'lang' => getCode(),
-              'payment' => $request->payment
-          ]);
-          foreach($carts as $cart){
-              $detail = OrderDetail::create([
-                  'order_id' => $order->id,
-                  'product_id' =>$cart->product_id,
-                  'quantity' =>$cart->quantity,
-                  'price' =>$cart->price,
-                  'total_price' =>$cart->total_price,
-              ]);
-              $cart->delete();
-          }
-          $client = \Auth::guard('client')->user();
-          // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-          //     $m->from($client->email, __('front.order'));
-          //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-          // });
-          // $link = url('order/'.$order->id);
-          // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
-          return redirect('clients/thanksv2');
-        }else{
-          return back()->with('error',"please enter valid payment");
+        if ($request->payment != 2) {
+            $city = City::find($request->address_id);
+            $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+            $count_coupon = 0;
+            $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
+            foreach ($coupons as $coupon) {
+                $count_coupon += $coupon->value;
+                $coupon->used = 2;
+                $coupon->save();
+            }
+            $order = Order::create([
+                'client_id' => \Auth::guard('client')->user()->id,
+                'address_id' => $address->id,
+                'shipping_amount' => $city->shipping_amount,
+                'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
+                'lang' => getCode(),
+                'payment' => $request->payment,
+            ]);
+            foreach ($carts as $cart) {
+                $detail = OrderDetail::create([
+                    'order_id' => $order->id,
+                    'product_id' => $cart->product_id,
+                    'quantity' => $cart->quantity,
+                    'price' => $cart->price,
+                    'total_price' => $cart->total_price,
+                ]);
+                $cart->delete();
+            }
+            $client = \Auth::guard('client')->user();
+            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+            //     $m->from($client->email, __('front.order'));
+            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            // });
+            // $link = url('order/'.$order->id);
+            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            return redirect('clients/thanksv2');
+        } else {
+            return back()->with('error', "please enter valid payment");
         }
     }
 
     public function myorderv2($id)
     {
-      $order = Order::find($id);
-      $recently_added = Product::where('recently_added', 1)->get();
-      return view('frontv2.myorder',compact('order','recently_added'));
+        $order = Order::find($id);
+        $recently_added = Product::where('recently_added', 1)->get();
+        return view('frontv2.myorder', compact('order', 'recently_added'));
     }
 
     public function choose_addressv2()
     {
-      $countrys = Governorate::all();
-      $citys    = City::all();
-       return view('frontv2.order_address',compact('countrys','citys'));
+        $countrys = Governorate::all();
+        $citys = City::all();
+        return view('frontv2.order_address', compact('countrys', 'citys'));
     }
 
     public function confirm_order($id)
     {
         $auth_carts = [];
-        $session_carts =[];
-        $total_price =0;
+        $session_carts = [];
+        $total_price = 0;
         $city = City::whereId($id)->first();
-        if(\Auth::guard('client')->check()){
+        if (\Auth::guard('client')->check()) {
             $auth_carts = \Auth::guard('client')->user()->carts;
-            $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-            if(!$city){
+            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+            if (!$city) {
                 $city = \Auth::guard('client')->user()->cities[0];
                 $city = City::whereId($city->pivot->city_id)->first();
             }
         }
-        if(isset($_COOKIE['carts'])){
+        if (isset($_COOKIE['carts'])) {
             $session_carts = unserialize($_COOKIE['carts']);
-            for ($i=0; $i < count($session_carts) ; $i++) {
-                $total_price  += $session_carts[$i]['total_price'];
+            for ($i = 0; $i < count($session_carts); $i++) {
+                $total_price += $session_carts[$i]['total_price'];
             }
         }
-        return view('frontv2.confirm_order',compact('auth_carts','session_carts','total_price','id','city'));
+        return view('frontv2.confirm_order', compact('auth_carts', 'session_carts', 'total_price', 'id', 'city'));
     }
 
     public function paymentv2(Request $request)
     {
-      return view('frontv2.payment');
+        return view('frontv2.payment');
     }
 
     public function readyNbe(Request $request)
     {
-        $city        = City::find($request->address_id);
-        $address     = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts       = Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $subTotal    = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $couponSum   = 0;
-        $coupons     = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-        foreach($coupons as $coupon){
+        $city = City::find($request->address_id);
+        $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+        $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+        $subTotal = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+        $couponSum = 0;
+        $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
+        foreach ($coupons as $coupon) {
             $couponSum += $coupon->value;
         }
-        $order_id = rand(11111,99999);
+        $order_id = rand(11111, 99999);
         $shipping_amount = $city->shipping_amount;
-        $total_price     = ($subTotal + $city->shipping_amount)-$couponSum;
-        $session_id      = $this->createSessionId($total_price,$order_id);
-        return response()->json(['total_price' => $total_price , 'session_id' => $session_id , 'order_id' => $order_id]);
+        $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
+        $session_id = $this->createSessionId($total_price, $order_id);
+        return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id]);
     }
 
-    public function createSessionId($total,$order_id)
+    public function createSessionId($total, $order_id)
     {
 
-      $ch = curl_init();
+        $ch = curl_init();
 
-      curl_setopt($ch, CURLOPT_URL, 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56');
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=61422445f6c0f954e24c7bd8216ceedf&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=EGPTEST1&order.id=$order_id&order.amount=$total&order.currency=EGP");
+        curl_setopt($ch, CURLOPT_URL, 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=61422445f6c0f954e24c7bd8216ceedf&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=EGPTEST1&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
-      $headers = array();
-      $headers[] = 'Content-Type: application/x-www-form-urlencoded';
-      $headers[] = 'Accept: application/json';
+        $headers = array();
+        $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+        $headers[] = 'Accept: application/json';
 
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-      $response = curl_exec($ch);
+        $response = curl_exec($ch);
 
-      $result     = explode('&',$response);
-      $sub_id     = explode('=',array_reverse($result)[0])[1];
-      $session_id = explode('=',$result[2])[1];
+        $result = explode('&', $response);
+        $sub_id = explode('=', array_reverse($result)[0])[1];
+        $session_id = explode('=', $result[2])[1];
 
-      // $curl = curl_init();
+        // $curl = curl_init();
 
-      // curl_setopt_array($curl, array(
-      //   CURLOPT_URL => "https://test-nbe.gateway.mastercard.com/api/rest/version/56/merchant/EGPTEST1/session",
-      //   CURLOPT_RETURNTRANSFER => true,
-      //   CURLOPT_ENCODING => "",
-      //   CURLOPT_MAXREDIRS => 10,
-      //   CURLOPT_TIMEOUT => 0,
-      //   CURLOPT_FOLLOWLOCATION => true,
-      //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      //   CURLOPT_CUSTOMREQUEST => "POST",
-      //   CURLOPT_HTTPHEADER => array(
-      //     "Accept: application/json",
-      //     "Content-Type: application/json",
-      //     "Authorization: Basic bWVyY2hhbnQuRUdQVEVTVDE6NjE0MjI0NDVmNmMwZjk1NGUyNGM3YmQ4MjE2Y2VlZGY=",
-      //     "Cookie: TS0183aa3c=01772feb4bbad78180282345abfd6a199727ca0c704ae9899c3331f65d08dc9ede999e96d5d7249211f43665574cb69ab835af2287"
-      //   ),
-      // ));
+        // curl_setopt_array($curl, array(
+        //   CURLOPT_URL => "https://test-nbe.gateway.mastercard.com/api/rest/version/56/merchant/EGPTEST1/session",
+        //   CURLOPT_RETURNTRANSFER => true,
+        //   CURLOPT_ENCODING => "",
+        //   CURLOPT_MAXREDIRS => 10,
+        //   CURLOPT_TIMEOUT => 0,
+        //   CURLOPT_FOLLOWLOCATION => true,
+        //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //   CURLOPT_CUSTOMREQUEST => "POST",
+        //   CURLOPT_HTTPHEADER => array(
+        //     "Accept: application/json",
+        //     "Content-Type: application/json",
+        //     "Authorization: Basic bWVyY2hhbnQuRUdQVEVTVDE6NjE0MjI0NDVmNmMwZjk1NGUyNGM3YmQ4MjE2Y2VlZGY=",
+        //     "Cookie: TS0183aa3c=01772feb4bbad78180282345abfd6a199727ca0c704ae9899c3331f65d08dc9ede999e96d5d7249211f43665574cb69ab835af2287"
+        //   ),
+        // ));
 
-      // $response = curl_exec($curl);
+        // $response = curl_exec($curl);
 
-      // $result   = json_decode($response) ;
+        // $result   = json_decode($response) ;
 
-      curl_close($ch);
+        curl_close($ch);
 
-      session()->put('successIndicator' , $sub_id);
+        session()->put('successIndicator', $sub_id);
 
-      $actionName = "bank ahly";
-      $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
-      $parameters_arr = array(
+        $actionName = "bank ahly";
+        $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
+        $parameters_arr = array(
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'session_id' => $session_id
-      );
-      $this->log($actionName, $not_URL, $parameters_arr);
+            'session_id' => $session_id,
+        );
+        $this->log($actionName, $not_URL, $parameters_arr);
 
-      return  $session_id;
+        return $session_id;
     }
 
     public function createOrderWithPayment(Request $request)
     {
-      if($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator')!='' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator'))
-      {
-        $city = City::find($request->address_id);
-        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $count_coupon = 0;
-        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-        foreach($coupons as $coupon){
-            $count_coupon += $coupon->value;
-            $coupon->used = 2;
-            $coupon->save();
-        }
-        $order = Order::create([
-            'client_id' => \Auth::guard('client')->user()->id,
-            'address_id' =>$address->id,
-            'shipping_amount' =>$city->shipping_amount,
-            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
-            'lang' => getCode(),
-            'payment' => 2
-        ]);
-        foreach($carts as $cart){
-            $detail = OrderDetail::create([
-                'order_id' => $order->id,
-                'product_id' =>$cart->product_id,
-                'quantity' =>$cart->quantity,
-                'price' =>$cart->price,
-                'total_price' =>$cart->total_price,
+
+        if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
+            $city = City::find($request->address_id);
+            $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+            $count_coupon = 0;
+            $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
+            foreach ($coupons as $coupon) {
+                $count_coupon += $coupon->value;
+                $coupon->used = 2;
+                $coupon->save();
+            }
+            $order = Order::create([
+                'client_id' => \Auth::guard('client')->user()->id,
+                'address_id' => $address->id,
+                'shipping_amount' => $city->shipping_amount,
+                'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
+                'lang' => getCode(),
+                'payment' => 2,
             ]);
-            $cart->delete();
+            foreach ($carts as $cart) {
+                $detail = OrderDetail::create([
+                    'order_id' => $order->id,
+                    'product_id' => $cart->product_id,
+                    'quantity' => $cart->quantity,
+                    'price' => $cart->price,
+                    'total_price' => $cart->total_price,
+                ]);
+                $cart->delete();
+            }
+            $client = \Auth::guard('client')->user();
+            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+            //     $m->from($client->email, __('front.order'));
+            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            // });
+            // $link = url('order/'.$order->id);
+            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
-        $client = \Auth::guard('client')->user();
-        // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-        //     $m->from($client->email, __('front.order'));
-        //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-        // });
-        // $link = url('order/'.$order->id);
-        // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
-        return response()->json(['status' => 'success' , 'returnUrl' => route('front.home.checkout.thanks')]);
-      }
-      return response()->json(['status' => 'error' , 'returnUrl' => '']);
+        return response()->json(['status' => 'error', 'returnUrl' => '']);
     }
 
     //cib integration
     public function readyCIB(Request $request)
     {
-        $city        = City::find($request->address_id);
-        $address     = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts       = Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $subTotal    = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $couponSum   = 0;
-        $coupons     = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-        foreach($coupons as $coupon){
+        $city = City::find($request->address_id);
+        $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+        $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+        $subTotal = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+        $couponSum = 0;
+        $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
+        foreach ($coupons as $coupon) {
             $couponSum += $coupon->value;
         }
-        $order_id = rand(11111,99999);
+        $order_id = rand(11111, 99999);
         $shipping_amount = $city->shipping_amount;
-        $total_price     = ($subTotal + $city->shipping_amount)-$couponSum;
-        $session_id      = $this->createSessionIdCib($total_price,$order_id);
-        return response()->json(['total_price' => $total_price , 'session_id' => $session_id , 'order_id' => $order_id]);
+        $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
+        $session_id = $this->createSessionIdCib($total_price, $order_id);
+        return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id]);
     }
 
-    public function createSessionIdCib($total,$order_id)
+    public function createSessionIdCib($total, $order_id)
     {
 
-      $ch = curl_init();
+        $ch = curl_init();
 
-      curl_setopt($ch, CURLOPT_URL, 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56');
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
+        curl_setopt($ch, CURLOPT_URL, 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
-      $headers = array();
-      $headers[] = 'Content-Type: application/x-www-form-urlencoded';
-      $headers[] = 'Accept: application/json';
+        $headers = array();
+        $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+        $headers[] = 'Accept: application/json';
 
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-      $response = curl_exec($ch);
+        $response = curl_exec($ch);
 
-      $result     = explode('&',$response);
-      $sub_id     = explode('=',array_reverse($result)[0])[1];
-      $session_id = explode('=',$result[2])[1];
+        $result = explode('&', $response);
+        $sub_id = explode('=', array_reverse($result)[0])[1];
+        $session_id = explode('=', $result[2])[1];
 
-      // $curl = curl_init();
+        // $curl = curl_init();
 
-      // curl_setopt_array($curl, array(
-      //   CURLOPT_URL => "https://test-nbe.gateway.mastercard.com/api/rest/version/56/merchant/EGPTEST1/session",
-      //   CURLOPT_RETURNTRANSFER => true,
-      //   CURLOPT_ENCODING => "",
-      //   CURLOPT_MAXREDIRS => 10,
-      //   CURLOPT_TIMEOUT => 0,
-      //   CURLOPT_FOLLOWLOCATION => true,
-      //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      //   CURLOPT_CUSTOMREQUEST => "POST",
-      //   CURLOPT_HTTPHEADER => array(
-      //     "Accept: application/json",
-      //     "Content-Type: application/json",
-      //     "Authorization: Basic bWVyY2hhbnQuRUdQVEVTVDE6NjE0MjI0NDVmNmMwZjk1NGUyNGM3YmQ4MjE2Y2VlZGY=",
-      //     "Cookie: TS0183aa3c=01772feb4bbad78180282345abfd6a199727ca0c704ae9899c3331f65d08dc9ede999e96d5d7249211f43665574cb69ab835af2287"
-      //   ),
-      // ));
+        // curl_setopt_array($curl, array(
+        //   CURLOPT_URL => "https://test-nbe.gateway.mastercard.com/api/rest/version/56/merchant/EGPTEST1/session",
+        //   CURLOPT_RETURNTRANSFER => true,
+        //   CURLOPT_ENCODING => "",
+        //   CURLOPT_MAXREDIRS => 10,
+        //   CURLOPT_TIMEOUT => 0,
+        //   CURLOPT_FOLLOWLOCATION => true,
+        //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //   CURLOPT_CUSTOMREQUEST => "POST",
+        //   CURLOPT_HTTPHEADER => array(
+        //     "Accept: application/json",
+        //     "Content-Type: application/json",
+        //     "Authorization: Basic bWVyY2hhbnQuRUdQVEVTVDE6NjE0MjI0NDVmNmMwZjk1NGUyNGM3YmQ4MjE2Y2VlZGY=",
+        //     "Cookie: TS0183aa3c=01772feb4bbad78180282345abfd6a199727ca0c704ae9899c3331f65d08dc9ede999e96d5d7249211f43665574cb69ab835af2287"
+        //   ),
+        // ));
 
-      // $response = curl_exec($curl);
+        // $response = curl_exec($curl);
 
-      // $result   = json_decode($response) ;
+        // $result   = json_decode($response) ;
 
-      curl_close($ch);
+        curl_close($ch);
 
-      session()->put('successIndicator' , $sub_id);
+        session()->put('successIndicator', $sub_id);
 
-      $actionName = "bank ahly";
-      $not_URL = 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56';
-      $parameters_arr = array(
+        $actionName = "bank ahly";
+        $not_URL = 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56';
+        $parameters_arr = array(
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-            'session_id' => $session_id
-      );
-      $this->log($actionName, $not_URL, $parameters_arr);
+            'session_id' => $session_id,
+        );
+        $this->log($actionName, $not_URL, $parameters_arr);
 
-      return  $session_id;
+        return $session_id;
+    }
+
+    public function nbe_click_script(){
+        session()->put('nbe_click_script', true);
+        session()->forget('cib_click_script');
+    }
+    
+    public function cib_click_script(){
+        session()->put('cib_click_script', true);
+        session()->forget('nbe_click_script');
     }
 
     public function createOrderWithPaymentCIB(Request $request)
     {
-      if($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator')!='' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator'))
-      {
-        $city = City::find($request->address_id);
-        $address = ClientAddress::where('client_id',\Auth::guard('client')->user()->id)->where('city_id',$request->address_id)->first();
-        $carts =  Cart::where('client_id',\Auth::guard('client')->user()->id)->get();
-        $total_price = Cart::where('client_id',\Auth::guard('client')->user()->id)->sum('total_price');
-        $count_coupon = 0;
-        $coupons = \App\Coupon::where('client_id',\Auth::guard('client')->user()->id)->where('used',1)->get();
-        foreach($coupons as $coupon){
-            $count_coupon += $coupon->value;
-            $coupon->used = 2;
-            $coupon->save();
-        }
-        $order = Order::create([
-            'client_id' => \Auth::guard('client')->user()->id,
-            'address_id' =>$address->id,
-            'shipping_amount' =>$city->shipping_amount,
-            'total_price' =>  ($total_price + $city->shipping_amount)-$count_coupon,
-            'lang' => getCode(),
-            'payment' => 2
-        ]);
-        foreach($carts as $cart){
-            $detail = OrderDetail::create([
-                'order_id' => $order->id,
-                'product_id' =>$cart->product_id,
-                'quantity' =>$cart->quantity,
-                'price' =>$cart->price,
-                'total_price' =>$cart->total_price,
+        if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
+            $city = City::find($request->address_id);
+            $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
+            $count_coupon = 0;
+            $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
+            foreach ($coupons as $coupon) {
+                $count_coupon += $coupon->value;
+                $coupon->used = 2;
+                $coupon->save();
+            }
+            $order = Order::create([
+                'client_id' => \Auth::guard('client')->user()->id,
+                'address_id' => $address->id,
+                'shipping_amount' => $city->shipping_amount,
+                'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
+                'lang' => getCode(),
+                'payment' => 2,
             ]);
-            $cart->delete();
+            foreach ($carts as $cart) {
+                $detail = OrderDetail::create([
+                    'order_id' => $order->id,
+                    'product_id' => $cart->product_id,
+                    'quantity' => $cart->quantity,
+                    'price' => $cart->price,
+                    'total_price' => $cart->total_price,
+                ]);
+                $cart->delete();
+            }
+            $client = \Auth::guard('client')->user();
+            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+            //     $m->from($client->email, __('front.order'));
+            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            // });
+            // $link = url('order/'.$order->id);
+            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
-        $client = \Auth::guard('client')->user();
-        // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-        //     $m->from($client->email, __('front.order'));
-        //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-        // });
-        // $link = url('order/'.$order->id);
-        // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
-        return response()->json(['status' => 'success' , 'returnUrl' => route('front.home.checkout.thanks')]);
-      }
-      return response()->json(['status' => 'error' , 'returnUrl' => '']);
+        return response()->json(['status' => 'error', 'returnUrl' => '']);
     }
     //end cib
     public function thanksv2()
@@ -1591,7 +1591,7 @@ class HomeController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'governorate_id' => 'required',
-            'city_id' => 'required'
+            'city_id' => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
@@ -1599,21 +1599,21 @@ class HomeController extends Controller
         $contact = Contact::create([
             'email' => $request->email,
             'phone' => $request->phone,
-            'name'  => $request->name ,
+            'name' => $request->name,
             'product_id' => $request->product_id,
-            'city_id' =>$request->city_id,
-            'lang' => getCode()
+            'city_id' => $request->city_id,
+            'lang' => getCode(),
         ]);
         $products = Product::whereId($request->product_id)->get();
-        Mail::send('front.mail2', ['products' => $products , 'client' => $contact , 'subject' => __('front.new_request_for_this_product')], function ($m) use ($request) {
+        Mail::send('front.mail2', ['products' => $products, 'client' => $contact, 'subject' => __('front.new_request_for_this_product')], function ($m) use ($request) {
             $m->from($request->email, __('front.order'));
             $m->to(setting('super_mail'), __('front.title'))->subject(__('front.product'));
         });
         $link = url('unavailable');
-        if(\Auth::guard('client')->check()){
-            send_notification('Request For unavailable Product #'.$request->product_id.' ',\Auth::guard('client')->user()->id,$link);
+        if (\Auth::guard('client')->check()) {
+            send_notification('Request For unavailable Product #' . $request->product_id . ' ', \Auth::guard('client')->user()->id, $link);
         }
-        \Session::flash('success', __('front.client_success_message') );
+        \Session::flash('success', __('front.client_success_message'));
         return back();
 
     }
@@ -1627,53 +1627,59 @@ class HomeController extends Controller
     //helper function api
     public function getProperty(Request $request)
     {
-      $propertys = Property::with(['pvalue']);
-      if($request->has('category_id')){
-        $propertys = $propertys->whereIn('category_id',(array)$request->category_id);
-      }
-      $propertys = $propertys->get();
-      return (PropertyResource::collection($propertys));
+        $propertys = Property::with(['pvalue']);
+        if ($request->has('category_id')) {
+            $propertys = $propertys->whereIn('category_id', (array) $request->category_id);
+        }
+        $propertys = $propertys->get();
+        return (PropertyResource::collection($propertys));
 
     }
     /*********************************************************** end design v2 *******/
 
     // encrypt and descrypt
-    function encrypt ($pure_string, $encryption_key)
+    public function encrypt($pure_string, $encryption_key)
     {
-      $cipher     = 'AES-256-CBC';
-      $options    = OPENSSL_RAW_DATA;
-      $hash_algo  = 'sha256';
-      $sha2len    = 32;
-      $ivlen = openssl_cipher_iv_length($cipher);
-      $iv = openssl_random_pseudo_bytes($ivlen);
-      $ciphertext_raw = openssl_encrypt($pure_string, $cipher, $encryption_key, $options, $iv);
-      $hmac = hash_hmac($hash_algo, $ciphertext_raw, $encryption_key, true);
-      return $iv.$hmac.$ciphertext_raw;
+        $cipher = 'AES-256-CBC';
+        $options = OPENSSL_RAW_DATA;
+        $hash_algo = 'sha256';
+        $sha2len = 32;
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $iv = openssl_random_pseudo_bytes($ivlen);
+        $ciphertext_raw = openssl_encrypt($pure_string, $cipher, $encryption_key, $options, $iv);
+        $hmac = hash_hmac($hash_algo, $ciphertext_raw, $encryption_key, true);
+        return $iv . $hmac . $ciphertext_raw;
     }
-    function decrypt ($encrypted_string, $encryption_key)
+    public function decrypt($encrypted_string, $encryption_key)
     {
-      $cipher     = 'AES-256-CBC';
-      $options    = OPENSSL_RAW_DATA;
-      $hash_algo  = 'sha256';
-      $sha2len    = 32;
-      $ivlen = openssl_cipher_iv_length($cipher);
-      $iv = substr($encrypted_string, 0, $ivlen);
-      $hmac = substr($encrypted_string, $ivlen, $sha2len);
-      $ciphertext_raw = substr($encrypted_string, $ivlen+$sha2len);
-      $original_plaintext = openssl_decrypt($ciphertext_raw, $cipher, $encryption_key, $options, $iv);
-      $calcmac = hash_hmac($hash_algo, $ciphertext_raw, $encryption_key, true);
-      if(function_exists('hash_equals')) {
-          if (hash_equals($hmac, $calcmac)) return $original_plaintext;
-      } else {
-          if ($this->hash_equals_custom($hmac, $calcmac)) return $original_plaintext;
-      }
+        $cipher = 'AES-256-CBC';
+        $options = OPENSSL_RAW_DATA;
+        $hash_algo = 'sha256';
+        $sha2len = 32;
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $iv = substr($encrypted_string, 0, $ivlen);
+        $hmac = substr($encrypted_string, $ivlen, $sha2len);
+        $ciphertext_raw = substr($encrypted_string, $ivlen + $sha2len);
+        $original_plaintext = openssl_decrypt($ciphertext_raw, $cipher, $encryption_key, $options, $iv);
+        $calcmac = hash_hmac($hash_algo, $ciphertext_raw, $encryption_key, true);
+        if (function_exists('hash_equals')) {
+            if (hash_equals($hmac, $calcmac)) {
+                return $original_plaintext;
+            }
+
+        } else {
+            if ($this->hash_equals_custom($hmac, $calcmac)) {
+                return $original_plaintext;
+            }
+
+        }
     }
-   /**
-   * (Optional)
-   * hash_equals() function polyfilling.
-   * PHP 5.6+ timing attack safe comparison
-   */
-    function hash_equals_custom($knownString, $userString)
+    /**
+     * (Optional)
+     * hash_equals() function polyfilling.
+     * PHP 5.6+ timing attack safe comparison
+     */
+    public function hash_equals_custom($knownString, $userString)
     {
         if (function_exists('mb_strlen')) {
             $kLen = mb_strlen($knownString, '8bit');
@@ -1692,7 +1698,7 @@ class HomeController extends Controller
         return 0 === $result;
     }
 
-  // define('ENCRYPTION_KEY', '__^%&Q@$&*!@#$%^&*^__');
-  // $string = "This is the original string!";
+    // define('ENCRYPTION_KEY', '__^%&Q@$&*!@#$%^&*^__');
+    // $string = "This is the original string!";
 
 }

@@ -2,15 +2,15 @@
 var submit = document.querySelector('button');
 var $form ;
 
-function errorCallback(error) {
+function errorCallbackcib(error) {
   console.log(JSON.stringify(error));
 }
 
-function cancelCallback() {
+function cancelCallbackcib() {
   console.log('Payment cancelled');
 }
 
-function completeCallback(resultIndicator) {
+function completeCallbackcib(resultIndicator) {
   
   $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{address_id : $('.add_id').val() , 'resultIndicator' : resultIndicator},function(data){
     if(data.status == 'success')
@@ -26,8 +26,7 @@ function completeCallback(resultIndicator) {
 console.log(window.location.href)
 
 // completeCallback = window.location.href
-
-$('#radioThree,.visa').click(function(){
+$(document).ready(function () {
     $('.form-row').css('display','block')
     $('.btn-pay').hide()
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
@@ -64,11 +63,18 @@ $('#radioThree,.visa').click(function(){
       });
 
     });
-
-})
+});
 $('#radioOne,#radioTwo,.cash').click(function(){
     $('.form-row').hide()
     $('.btn-pay').show()
 })
 
+window.onload = function(){
+  setTimeout(loadAfterTime, 2000)
+};
 
+
+function loadAfterTime() { 
+// code you need to execute goes here. 
+Checkout.showLightbox();
+}

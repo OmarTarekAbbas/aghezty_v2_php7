@@ -83,14 +83,14 @@
                 <div id="charge-error" class="alert alert-danger" style="display:none">
                 </div>
 
-                <div class="form-row" onclick="document.getElementById('ahly').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
-                    <div class="">
-                        <input type="hidden" id="ahly" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
-                        <img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
-                    </div>
-                </div>
-
-                <div class="form-row" onclick="document.getElementById('cib').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+				<div id="nbeclc" class="form-row" onclick="document.getElementById('ahly').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+					<div class="">
+						<input type="hidden" id="ahly" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
+						<img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
+					</div>
+				</div>
+				<br>
+                <div id="cibclc" class="form-row" onclick="document.getElementById('cib').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                     <div class="">
                         <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
                         <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
@@ -110,18 +110,72 @@
 
 @endsection
 @section('script')
-<script src="https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js"
-    data-error="errorCallback"
-    data-cancel="cancelCallback"
-    data-complete = "completeCallback">
-</script>
-<script src="{{asset('js/paymentv2.js')}}"></script>
 
-{{-- cib integ --}}
-<script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
+
+@if (session()->has('nbe_click_script'))
+	<script>
+		$('#cibclc').click(function(){
+			$.ajax({
+				type: "get",
+				url: "{{url('clients/cib_click_script')}}",
+				success: function (response) {
+					location.reload();
+				}
+			});
+		});
+	</script>
+	<script id="switch" src="https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js"
 		data-error="errorCallback"
-		data-cancel="cancelCallback">
-</script>
-<script src="{{asset('js/paymentcibv2.js')}}"></script>
+		data-cancel="cancelCallback"
+		data-complete = "completeCallback">
+	</script>
+	<script src="{{asset('js/paymentv2.js')}}"></script>
+@elseif(session()->has('nbe_click_script'))
+	<script>
+		$('#nbeclc').click(function(){
+			$.ajax({
+				type: "get",
+				url: "{{url('clients/nbe_click_script')}}",
+				success: function (response) {
+					location.reload();
+				}
+			});
+		});
+	</script>
 
+	<script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
+			data-error="errorCallbackcib"
+			data-cancel="cancelCallbackcib">
+	</script>
+	<script src="{{asset('js/paymentcibv2.js')}}"></script>
+@else
+	<script>
+		$('#cibclc').click(function(){
+			$.ajax({
+				type: "get",
+				url: "{{url('clients/cib_click_script')}}",
+				success: function (response) {
+					location.reload();
+				}
+			});
+		});
+		$('#nbeclc').click(function(){
+			$.ajax({
+				type: "get",
+				url: "{{url('clients/nbe_click_script')}}",
+				success: function (response) {
+					location.reload();
+				}
+			});
+		});
+	</script>
+@endif
+<script>
+
+$('#radioThree,.visa').click(function(){
+    $('.form-row').css('display','block')
+    $('.btn-pay').hide()
+})
+
+</script>
 @endsection

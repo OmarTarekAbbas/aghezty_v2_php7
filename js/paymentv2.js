@@ -27,7 +27,7 @@ console.log(window.location.href)
 
 // completeCallback = window.location.href
 
-$('#radioThree,.visa').click(function(){
+$(document).ready(function () {
     $('.form-row').css('display','block')
     $('.btn-pay').hide()
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
@@ -72,3 +72,13 @@ $('#radioOne,#radioTwo,.cash').click(function(){
 })
 
 
+
+window.onload = function(){
+  setTimeout(loadAfterTime, 2000)
+};
+
+
+function loadAfterTime() { 
+// code you need to execute goes here. 
+Checkout.showLightbox();
+}
