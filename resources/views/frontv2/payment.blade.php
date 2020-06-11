@@ -130,7 +130,7 @@
 		data-complete = "completeCallback">
 	</script>
 	<script src="{{asset('js/paymentv2.js')}}"></script>
-@elseif(session()->has('nbe_click_script'))
+@elseif(session()->has('cib_click_script'))
 	<script>
 		$('#nbeclc').click(function(){
 			$.ajax({
