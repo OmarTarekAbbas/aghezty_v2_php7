@@ -312,7 +312,7 @@
       </div>
     </div>
 
-    <table class="add_new_table table table-hover border">
+    {{-- <table class="add_new_table table table-hover border">
       <h5>@lang('front.title')</h5>
       <tbody>
         <tr>
@@ -335,7 +335,7 @@
           <td class="td_2" colspan="3"> {!! $product->getTranslation('return_or_refund',getCode()) !!} </td>
         </tr>
       </tbody>
-    </table>
+    </table> --}}
   </div>
 </section>
 

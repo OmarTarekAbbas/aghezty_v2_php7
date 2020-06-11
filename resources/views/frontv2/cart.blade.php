@@ -236,7 +236,7 @@
       <div class="row no_margin">
 
         {{-- --}}
-        @foreach ($homepage_cat as $item)
+        {{-- @foreach ($homepage_cat as $item)
 
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
@@ -250,7 +250,7 @@
           </div>
         </div>
 
-        @endforeach
+        @endforeach --}}
         {{-- --}}
 
       </div>
