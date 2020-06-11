@@ -133,3 +133,4 @@ Route::get('token','front\HomeController@get_token');
 Route::post('create_paymentv2','front\HomeController@create_paymentv2');
 Route::post('execute_paymentv2','front\HomeController@execute_paymentv2');
 Route::get('getProperty','front\HomeController@getProperty');
+Route::get('getChild','front\HomeController@getChild');

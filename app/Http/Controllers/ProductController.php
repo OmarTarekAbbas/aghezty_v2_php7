@@ -53,7 +53,7 @@ class ProductController extends Controller
     public function create()
     {
        $product   = Null;
-       $categorys = Category::all();
+       $categorys = Category::whereNotNull('parent_id')->get();
        $brands    = Brand::all();
        $languages = Language::all();
        return view('product.form',compact('product','categorys','brands','languages'));
@@ -121,19 +121,29 @@ class ProductController extends Controller
             $product->setTranslation('short_description', $key, $value);
         }
         foreach ($request->warranty as $key => $value) {
-          $product->setTranslation('warranty', $key, $value);
+          if($value){
+            $product->setTranslation('warranty', $key, $value);
+          }
         }
         foreach ($request->delivery_time as $key => $value) {
-          $product->setTranslation('delivery_time', $key, $value);
+          if($value){
+            $product->setTranslation('delivery_time', $key, $value);
+          }
         }
         foreach ($request->cash_on_delivery as $key => $value) {
-          $product->setTranslation('cash_on_delivery', $key, $value);
+          if($value){
+            $product->setTranslation('cash_on_delivery', $key, $value);
+          }
         }
         foreach ($request->return_or_refund as $key => $value) {
-          $product->setTranslation('return_or_refund', $key, $value);
+          if($value){
+            $product->setTranslation('return_or_refund', $key, $value);
+          }
         }
         foreach ($request->key_feature as $key => $value) {
-          $product->setTranslation('key_feature', $key, $value);
+          if($value){
+            $product->setTranslation('key_feature', $key, $value);
+          }
         }
         $product->save();
 
@@ -147,7 +157,7 @@ class ProductController extends Controller
         }
         // broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productv2/'.$product->id)))->toOthers();
         \Session::flash('success', 'Product Created Successfully');
-        return redirect('category/'.$request->category_id);
+        return redirect(route("admin.image.index",['product_id'=>$product->id]));
         //return redirect('product');
     }
 
@@ -171,7 +181,7 @@ class ProductController extends Controller
     public function edit(Request $request,$id)
     {
         $product   = Product::find($id);
-        $categorys = Category::all();
+        $categorys = Category::whereNotNull('parent_id')->get();
         $brands    = Brand::all();
         $languages = Language::all();
         if ($request->ajax()) {
@@ -243,19 +253,29 @@ class ProductController extends Controller
             $product->setTranslation('short_description', $key, $value);
         }
         foreach ($request->warranty as $key => $value) {
-          $product->setTranslation('warranty', $key, $value);
+          if($value){
+            $product->setTranslation('warranty', $key, $value);
+          }
         }
         foreach ($request->delivery_time as $key => $value) {
-          $product->setTranslation('delivery_time', $key, $value);
+          if($value){
+            $product->setTranslation('delivery_time', $key, $value);
+          }
         }
         foreach ($request->cash_on_delivery as $key => $value) {
-          $product->setTranslation('cash_on_delivery', $key, $value);
+          if($value){
+            $product->setTranslation('cash_on_delivery', $key, $value);
+          }
         }
         foreach ($request->return_or_refund as $key => $value) {
-          $product->setTranslation('return_or_refund', $key, $value);
+          if($value){
+            $product->setTranslation('return_or_refund', $key, $value);
+          }
         }
         foreach ($request->key_feature as $key => $value) {
-          $product->setTranslation('key_feature', $key, $value);
+          if($value){
+            $product->setTranslation('key_feature', $key, $value);
+          }
         }
         $product->save();
 
@@ -417,7 +437,7 @@ class ProductController extends Controller
     public function delete_all_product(Request $request)
     {
       $products = Product::whereIn('id',explode(',',$request->product_ids))->delete();
-      return back()->with('success','Delete All Product SuccessFully');
+      return back()->with('success','Download All Product SuccessFully');
     }
 
     public function update_all_product(Request $request)
@@ -426,12 +446,17 @@ class ProductController extends Controller
       $col = $request->column;
       $products = Product::whereIn('id',explode(',',$request->product_ids))->get();
       foreach ($products as $key => $value) {
-        $value[$request->column] = $request->value;
+        if($request->column != 'minus'){
+          $value[$request->column] = $request->value;
+        }
         if($request->column == 'discount'){
           $value->price_after_discount = $value->price - (($value->price * $request->value)/100);
         }
+        if($request->column == 'minus'){
+          $value->price_after_discount = $value->price - $request->value;
+        }
         $value->save();
       }
-      return back()->with('success','Delete All Product SuccessFully');
+      return back()->with('success','Update All Product SuccessFully');
     }
 }

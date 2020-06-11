@@ -12,14 +12,10 @@
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.category')<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
         <select name="category_id" id="cate" class="form-control chosen-rtl" required>
-            @foreach ($categorys as $category)
-                @if(count($category->sub_cats) > 0)
-                    <optgroup label="{{$category->title}}">
-                        @foreach ($category->sub_cats as $sub_category)
-                        <option value="{{$sub_category->id}}" @if($product&&$sub_category->id==$product->category_id) selected  @endif>{{$sub_category->title}}</option>
-                        @endforeach
-                    </optgroup>
-                @endif
+            @foreach ($categorys as $sub_category)
+
+              <option value="{{$sub_category->id}}" @if($product&&$sub_category->id==$product->category_id) selected  @endif>{{$sub_category->title}}</option>
+
             @endforeach
         </select>
     </div>
@@ -167,7 +163,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="warranty{{$language->short_code}}">
-                  <input class="form-control" name="warranty[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('warranty',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="warranty[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('warranty',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
@@ -187,7 +183,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="delivery_time{{$language->short_code}}">
-                  <input class="form-control" name="delivery_time[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('delivery_time',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="delivery_time[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('delivery_time',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
@@ -207,7 +203,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="cash_on_delivery{{$language->short_code}}">
-                  <input class="form-control" name="cash_on_delivery[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('cash_on_delivery',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="cash_on_delivery[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('cash_on_delivery',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>
@@ -227,7 +223,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="return_or_refund{{$language->short_code}}">
-                  <input class="form-control" name="return_or_refund[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('return_or_refund',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="return_or_refund[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('return_or_refund',$language->short_code)  !!}@endif" />
               </div>
           @endforeach
       </div>

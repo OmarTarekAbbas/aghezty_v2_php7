@@ -60,6 +60,23 @@ nav.container-fluid {
           @endif
           @endforeach
 
+          {{-- third child from  category --}}
+          <div id="child_category">
+            <template v-for="(child,i) in childrens">
+              <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{child.title}}
+                <i class="fas fa-minus float-right"></i>
+              </button>
+
+              <div class="panel w-100 border border-light">
+                <div class="z-checkbox" v-for="sub_cat in child.sub_cats">
+                  <input :id="'panel_category_'+sub_cat.id" class="mb-2 sub_cat_id"    type="checkbox" name="sub_category_id[]" :value="sub_cat.id">
+                  <label class="d-block text-capitalize" :for="'panel_category_'+sub_cat.id">@{{sub_cat.title}} </label>
+                </div>
+              </div>
+            </template>
+          </div>
+          {{-- end thired child from category --}}
+
           <button type="button" class="accordion active w-100 border border-light text-uppercase">@lang('front.brands')
             <i class="fas fa-minus float-right"></i>
           </button>
@@ -184,6 +201,23 @@ nav.container-fluid {
               </div>
               @endif
               @endforeach
+
+              {{-- third child from  category --}}
+                <div id="child_category_mobile">
+                  <template v-for="(child,i) in childrens">
+                    <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{child.title}}
+                      <i class="fas fa-minus float-right"></i>
+                    </button>
+
+                    <div class="panel w-100 border border-light">
+                      <div class="z-checkbox" v-for="sub_cat in child.sub_cats">
+                        <input :id="'panel_category_'+sub_cat.id+'_mobile'" class="mb-2 sub_cat_id"    type="checkbox" name="sub_category_id[]" :value="sub_cat.id">
+                        <label class="d-block text-capitalize" :for="'panel_category_'+sub_cat.id+'_mobile'">@{{sub_cat.title}} </label>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+            {{-- end thired child from category --}}
 
               <button class="accordion active w-100 border border-light">@lang('front.brands')
                 <i class="fas fa-minus float-right"></i>
@@ -552,6 +586,52 @@ nav.container-fluid {
       @endif
     }
   })
+
+
+  /************************** child category vue *************************/
+  const child_category = new Vue({
+    el:'#child_category',
+    data:{
+      category_id : [],
+      childrens : [],
+    },
+    watch: {
+      category_id:function(val){
+        var _this = this
+        if(val.length  > 0){
+          $.ajax({
+            type: "get",
+            data: {category_id:val},
+            url: "{{url('getChild')}}",
+            success: function(data,status){
+              _this.childrens = data.data
+          }
+        });
+        }
+        else{
+          this.childrens = []
+        }
+      }
+    },
+    created() {
+      var _this = this
+      $('.sub_cat_id').each(function(i, obj) {
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+          return false;
+        }
+      });
+      $('.sub_cat_id').change(function(){
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+        }
+        else{
+          _this.category_id.pop($(this).val())
+        }
+      })
+    }
+  })
+  /************************** child category vue *************************/
 </script>
 <script>
   const propertys_mobile = new Vue({
@@ -617,5 +697,50 @@ nav.container-fluid {
       @endif
     }
   })
+
+  /************************** child category vue *************************/
+  const child_category_mobile = new Vue({
+    el:'#child_category_mobile',
+    data:{
+      category_id : [],
+      childrens : [],
+    },
+    watch: {
+      category_id:function(val){
+        var _this = this
+        if(val.length  > 0){
+          $.ajax({
+            type: "get",
+            data: {category_id:val},
+            url: "{{url('getChild')}}",
+            success: function(data,status){
+              _this.childrens = data.data
+          }
+        });
+        }
+        else{
+          this.childrens = []
+        }
+      }
+    },
+    created() {
+      var _this = this
+      $('.sub_cat_id').each(function(i, obj) {
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+          return false;
+        }
+      });
+      $('.sub_cat_id').change(function(){
+        if($(this).prop("checked") == true){
+          _this.category_id.push($(this).val())
+        }
+        else{
+          _this.category_id.pop($(this).val())
+        }
+      })
+    }
+  })
+  /************************** child category vue *************************/
 </script>
 @endsection

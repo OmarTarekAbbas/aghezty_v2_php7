@@ -811,6 +811,12 @@ body {
 .main #inner-page .price_disc_offer .discount {
   line-height: 4;
 }
+.main #inner-page .slide .carousel-inner {
+  min-height: 26.5rem;
+}
+.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+  min-height: 26.5rem;
+}
 .main #inner-page .product-title {
   font-size: 1.3rem;
 }
