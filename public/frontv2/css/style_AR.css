@@ -109,9 +109,9 @@ body {
   -o-transform: translate(-50%, -50%);
 }
 .head_two .search-container {
+  width: 100%;
   display: block;
-  margin: 1% auto;
-  padding-left: 2.5rem;
+  margin-top: 2.6%;
 }
 .head_two .search-container #search-bar {
   width: 100%;
@@ -167,6 +167,16 @@ body {
 .head_two .search-container input#search-bar:focus:-ms-placeholder {
   transition: opacity 0.45s ease;
   opacity: 0;
+}
+.head_two .new_head {
+  margin-top: 10%;
+}
+.head_two .new_head a {
+  color: #FFF;
+  padding: 0 1rem;
+}
+.head_two .new_head a.active_menu {
+  border-bottom: 5px solid #0566b4;
 }
 .head_two .shopping_cart {
   position: relative;
@@ -3999,9 +4009,6 @@ body {
 @media (min-width: 992px) and (max-width: 1600px) {
   .head_two .img_logo img {
     width: 100%;
-  }
-  .head_two .search-container {
-    margin: 1.8% auto !important;
   }
   .head_two .shopping_cart button .shopping_cart_num {
     left: 46px;

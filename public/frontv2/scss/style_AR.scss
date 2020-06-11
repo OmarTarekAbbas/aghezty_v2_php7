@@ -139,9 +139,10 @@ body {
   }
 
   .search-container {
+    width: 100%;
     display: block;
-    margin: 1% auto;
-    padding-left: 2.5rem;
+    margin-top: 2.6%;
+    // padding-left: 2.5rem;
 
     #search-bar {
       width: 100%;
@@ -204,6 +205,19 @@ body {
     input#search-bar:focus:-ms-placeholder {
       transition: opacity 0.45s ease;
       opacity: 0;
+    }
+  }
+
+  .new_head {
+    margin-top: 10%;
+
+    a {
+      color: $white_color;
+      padding: 0 1rem;
+
+      &.active_menu {
+        border-bottom: 5px solid $blue_color;
+      }
     }
   }
 
@@ -5605,9 +5619,9 @@ body {
       }
     }
 
-    .search-container {
-      margin: 1.8% auto !important;
-    }
+    // .search-container {
+    //   margin: 1.8% auto !important;
+    // }
 
     .shopping_cart {
       button {
