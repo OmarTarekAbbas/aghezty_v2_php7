@@ -112,6 +112,7 @@ return [
       'reviews' => 'التعليقات',
       'model' => 'الموديل',
       'avialable' => 'التوفر',
+      'Installments' => 'الاقساط المتاحة',
       'key_feature' => 'معلومات عن المنتح',
       'in_stock' => 'فى المخزون',
       'not_stock' => 'غير متوفر حاليا',

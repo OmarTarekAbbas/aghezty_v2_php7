@@ -132,6 +132,27 @@
         </div>
         @endif --}}
 
+        @php
+            if($product){
+                if($product->Installments != null){
+                    $Installments = json_decode($product->Installments, true);
+                }else{
+                    $Installments = false;
+                }
+            }else{
+                $Installments = false;
+            }
+        @endphp
+
+        <div class="installments">
+          <h6>@lang('front.inner.Installments')</h6>
+          <div class="row">
+            @foreach ($Installments as $key => $value)
+          <div class="col-6 text-center"><div class="m-1 p-2 alert-secondary"> {{$key}} @lang('messages.Months') / {{$value}} @lang('front.pound')</div></div>
+            @endforeach
+          </div>
+        </div>
+
         <div class="row price_disc_offer">
           <h4 class="col-md-6 price text-primary font-weight-bold">
             {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}

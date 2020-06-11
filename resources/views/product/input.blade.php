@@ -142,6 +142,44 @@
             {!! Form::number('stock',null,['placeholder'=>__('messages.stock_number'),'class'=>'form-control' , 'min' => 0 , 'required' => true]) !!}
     </div>
 </div>
+@php
+    if($product){
+        if($product->Installments != null){
+            $Installments = json_decode($product->Installments, true);
+        }else{
+            $Installments = false;
+        }
+    }else{
+        $Installments = false;
+    }
+@endphp
+<div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 6 @lang('messages.Months')<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+            {!! Form::number('Installments[6]',($Installments)? $Installments[6] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 12 @lang('messages.Months')<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+            {!! Form::number('Installments[12]',($Installments)? $Installments[12] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 18 @lang('messages.Months')<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+            {!! Form::number('Installments[18]',($Installments)? $Installments[18] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 24 @lang('messages.Months')<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+            {!! Form::number('Installments[24]',($Installments)? $Installments[24] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+</div>
 
 <div class="form-group">
   <label for="textfield5" class="col-sm-3 col-lg-2 control-label">sku</label>

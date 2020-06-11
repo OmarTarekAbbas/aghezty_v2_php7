@@ -112,6 +112,7 @@ return [
       'add_your_review' => 'Add Your Review',
       'reviews' => 'Reviews',
       'model' => 'Model',
+      'Installments' => 'Available Installments',
       'avialable' => 'Availability',
       'key_feature' => 'Key Feature',
       'in_stock' => 'In Stock',

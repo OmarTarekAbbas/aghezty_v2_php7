@@ -108,9 +108,15 @@ class ProductController extends Controller
                 $images[] = new ProductImage(['image' => $image]);
             }
         }
+
+        if($request->has('Installments')){
+          $Installments = json_encode($request->Installments);
+        }
+
         $product = new Product();
         $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
-
+        
+        $product->Installments = $Installments;
         foreach ($request->title as $key => $value) {
             $product->setTranslation('title', $key, $value);
         }
@@ -222,6 +228,13 @@ class ProductController extends Controller
         $request->special = ($request->special) ? 1:0;
         $request->active = ($request->active) ? 1:0;
         $product = Product::find($id);
+
+        
+        if($request->has('Installments')){
+          $Installments = json_encode($request->Installments);
+        }
+        $product->Installments = $Installments;
+        
         if($request->has('main_image'))
         {
             $file = $request->main_image;

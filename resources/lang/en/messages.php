@@ -389,6 +389,8 @@ return [
     'model' => 'Model',
     'discount' => 'Discount',
     'stock_number' => 'Stock Number',
+    'Installments' => 'Installment',
+    'Months' => 'Months',
     'inch_number' => 'Inch',
     'special' => 'Special',
     'active' => 'Active',

@@ -388,6 +388,8 @@ return [
     'model' => 'نموذج',
     'discount' => 'خصم',
     'stock_number' => 'عدد القطع',
+    'Installments' => 'القسط',
+    'Months' => 'اشهر',
     'inch_number' => 'بوصة',
     'special' => 'خاص',
     'active' => 'نشط',
