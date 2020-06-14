@@ -45,7 +45,7 @@
                                       {{$key + 1}}
                                     </td> --}}
                                     <td>
-                                      <img src="{{$item->image}}" width="200px" height="200px" alt="">
+                                      <img src="{{$item->image}}" width="120px" height="120px" alt="">
                                     </td>
                                     {{-- <td>{{$item->created_at->format('d/m/Y')}}</td> --}}
                                     <td>
