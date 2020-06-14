@@ -47,7 +47,9 @@ class ImageController extends Controller
       $images = ProductImage::where('product_id',$id)->get();
 
       foreach ($images as $key => $value) {
-        $value->image = parse_url($request->list[$key], PHP_URL_PATH);
+        // $value->image = parse_url($request->list[$key], PHP_URL_PATH);
+        $value->image = $request->list[$key];
+        // dd($request->list[$key]);
         $value->save();
       }
 

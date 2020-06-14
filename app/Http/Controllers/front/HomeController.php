@@ -1423,7 +1423,7 @@ class HomeController extends Controller
                 'shipping_amount' => $city->shipping_amount,
                 'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
                 'lang' => getCode(),
-                'payment' => 2,
+                'payment' => 5,
             ]);
             foreach ($carts as $cart) {
                 $detail = OrderDetail::create([
@@ -1557,7 +1557,7 @@ class HomeController extends Controller
                 'shipping_amount' => $city->shipping_amount,
                 'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
                 'lang' => getCode(),
-                'payment' => 2,
+                'payment' => 4,
             ]);
             foreach ($carts as $cart) {
                 $detail = OrderDetail::create([

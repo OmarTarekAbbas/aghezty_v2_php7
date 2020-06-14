@@ -36,6 +36,12 @@ class Order extends Model
         if($value == 3){
             $value = __('front.visa_after_deliver');
         }
+        if($value == 4){
+            $value = 'CIB VISA';
+        }
+        if($value == 5){
+            $value = 'NBE VISA';
+        }
         return $value;
     }
 

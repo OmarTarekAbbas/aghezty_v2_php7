@@ -145,7 +145,8 @@
 
 	<script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
 			data-error="errorCallbackcib"
-			data-cancel="cancelCallbackcib">
+			data-cancel="cancelCallbackcib"
+			data-complete = "completeCallbackcib">
 	</script>
 	<script src="{{asset('js/paymentcibv2.js')}}"></script>
 @else
