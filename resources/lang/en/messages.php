@@ -197,6 +197,7 @@ return [
           'add' => 'Add new template',
           'message' => 'Template message',
           'delete' => 'Delete',
+          'dublicate' => 'Dublicate ',
           'edit' => 'Edit',
           'delete_many' => 'Delete Selected'
         ],

@@ -337,6 +337,39 @@ class ProductController extends Controller
         return "Delete Successful";
     }
 
+    public function dublicate_product($id)
+    {
+        $product = Product::find($id);
+        $newProd = $product->replicate();
+        
+        $title = $product->getTranslation('title','ar');
+        $newProd->setTranslation('title', 'ar', $title);
+        
+        $description = $product->getTranslation('description','ar');
+        $newProd->setTranslation('description', 'ar', $description);
+        
+        $short_description = $product->getTranslation('short_description','ar');
+        $newProd->setTranslation('short_description', 'ar', $short_description);
+        
+        $warranty = $product->getTranslation('warranty','ar');
+        $newProd->setTranslation('warranty', 'ar', $warranty);
+        
+        $delivery_time = $product->getTranslation('delivery_time','ar');
+        $newProd->setTranslation('delivery_time', 'ar', $delivery_time);
+        
+        $cash_on_delivery = $product->getTranslation('cash_on_delivery','ar');
+        $newProd->setTranslation('cash_on_delivery', 'ar', $cash_on_delivery);
+        
+        $return_or_refund = $product->getTranslation('return_or_refund','ar');
+        $newProd->setTranslation('return_or_refund', 'ar', $return_or_refund);
+        
+        $key_feature = $product->getTranslation('key_feature','ar');
+        $newProd->setTranslation('key_feature', 'ar', $key_feature);
+
+        $newProd->save();
+
+        return redirect('product/'.$newProd->id.'/edit');
+    }
 
     public function get_excel()
     {
