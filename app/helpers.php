@@ -243,9 +243,19 @@ function dynamic_routes($route_model,$found_roles)
   }
   
   if(request()->has('brand_id') && request()->get('brand_id') != ''){
-   $categorys = \App\Category::join('products','products.category_id','=','categories.id')
-                            ->join('brands','brands.id','=','products.brand_id')
-                            ->where('products.brand_id', request()->get('brand_id'));
+   $categorys = \App\Category::join('categories AS t2','categories.parent_id', 't2.id')
+                ->join('products','products.category_id','=','categories.id')
+                ->join('brands','brands.id','=','products.brand_id')
+                ->where('products.brand_id', request()->get('brand_id'))
+                ->select('t2.*', 't2.id AS parID')
+                ->groupBy('parID');
+        //         ->get();
+                    
+        // foreach($categorys as $category){
+        //     echo $category->id;
+        //     echo '<br>';
+        // }
+        // die;
   
   }
   if(request()->has('sub_category_id') && request()->get('sub_category_id') != ''){

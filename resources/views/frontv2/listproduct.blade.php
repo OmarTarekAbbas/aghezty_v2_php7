@@ -48,14 +48,42 @@ nav.container-fluid {
           </button>
 
           <div class="panel mb-3 w-100 border border-light">
-            @foreach ($item->sub_cats as $category)
-            <div class="z-checkbox">
-              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
-                type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
-              <label class="d-block text-capitalize"
-                for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
-            </div>
-            @endforeach
+            @if (request()->has('brand_id'))
+
+              @php
+              $subs = \App\Category::join('products','products.category_id','=','categories.id')
+                      ->join('brands','brands.id','=','products.brand_id')
+                      ->where('products.brand_id', request()->get('brand_id'))
+                      ->select('categories.*')
+                      ->groupBy('categories.id')
+                      ->get();
+              $subsid = [];
+              foreach($subs as $category){
+                  array_push($subsid ,$category->id);
+              }
+              @endphp
+
+              @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
+              <div class="z-checkbox">
+                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                  type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                <label class="d-block text-capitalize"
+                  for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+              </div>
+              @endforeach
+              
+            @else
+
+              @foreach ($item->sub_cats as $category)
+              <div class="z-checkbox">
+                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                  type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                <label class="d-block text-capitalize"
+                  for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+              </div>
+              @endforeach
+                
+            @endif
           </div>
           @endif
           @endforeach
