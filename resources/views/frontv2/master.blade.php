@@ -111,6 +111,7 @@
           </a>
         </form>
       </div>
+      @if(!Auth::guard('client')->user())
 
       <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="new_head">
@@ -123,6 +124,26 @@
           </a>
         </div>
       </div>
+
+{{--  --}}
+      @else
+<!-- Start My Account-->
+
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="new_head">
+            <a class="text-uppercase" href="{{route('front.home.profile')}}" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.profile')</a>
+
+            <a class="text-uppercase" href="{{route('front.home.order')}}" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.order')</a>
+            
+            <a class="text-uppercase" id="navbarDropdownMenuLink112" href="{{url('lang')}}/{{Session::get('applocale') == 'en'? "ar" : "en"}}">
+              <img src="{{url('public/frontv2/images/lang/'.(Session::get('applocale') == 'ar'? 'en' : 'ar').'.webp')}}" alt="{{\Session::get('applocale') == 'ar'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'ar'? " English" : " العربية"}}
+            </a>
+          </div>
+      </div>
+<!-- End My Account-->
+@endif
+
+{{--  --}}
 
       <div class="col-md-3 col-lg-3 col-xl-1">
         <div class="shopping_cart">
