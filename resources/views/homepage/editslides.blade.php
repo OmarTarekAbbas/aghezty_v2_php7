@@ -114,7 +114,7 @@ input:checked + .slider:before {
 				<div class="form-group">
 				    <label class="col-sm-3 col-lg-2 control-label"> @lang('messages.url') <span class="text-danger">*</span></label>
 				    <div class="col-sm-9 col-lg-10 controls">
-					   {!! Form::text('slide_url',null,['placeholder'=>'url','class'=>'form-control input-lg','value' => '{{$slide->ads_url}}']) !!}
+					   {!! Form::text('slide_url',$slide->ads_url?$slide->ads_url:'',['placeholder'=>'url','class'=>'form-control input-lg','value' => '{{$slide->ads_url}}']) !!}
 				    </div>
 				</div>
 				<br>			
