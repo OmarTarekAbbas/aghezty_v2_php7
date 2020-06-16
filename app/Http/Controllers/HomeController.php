@@ -78,26 +78,31 @@ class HomeController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'file' => 'required',
+            'file' => '',
+            'slide_url' => '',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-
         $slide = Advertisement::findorfail($request->id);
+        if($request->has('file')){
+            $imgExtensions = array("png","jpeg","jpg");
 
-        $imgExtensions = array("png","jpeg","jpg");
+            $img = $request->file;
 
-        $img = $request->file;
-
-        if(! in_array($img->getClientOriginalExtension(),$imgExtensions))
-        {
-            \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
-            return back();
+            if(! in_array($img->getClientOriginalExtension(),$imgExtensions))
+            {
+                \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+                return back();
+            }
+            $slide->image = $img;
+        }
+        
+        if($request->has('slide_url')){
+            $slide->ads_url = $request->slide_url;
         }
 
-        $slide->image = $img;
         $slide->save();
 
         \Session::flash('success', 'Updated Successfully');
