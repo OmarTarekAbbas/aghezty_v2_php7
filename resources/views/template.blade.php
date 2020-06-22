@@ -569,7 +569,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
 
-                    <ul class="nav nav-list">
+                   {{-- <ul class="nav nav-list">
                         <li id="post">
                             <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-file"></i>
@@ -583,7 +583,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <li id="post_create"><a href="{{url('post/create')}}">@lang('messages.create_post')</a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul>--}}
 
                     <ul class="nav nav-list">
                             <li id="coupon">
@@ -616,7 +616,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </li>
                         </ul>
 
-                        <ul class="nav nav-list">
+                        {{--<ul class="nav nav-list">
                             <li id="advertisement">
                                 <a href="#" class="dropdown-toggle">
                                     <i class="glyphicon glyphicon-folder-open"></i>
@@ -630,7 +630,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                     <li id="advertisement_create"><a href="{{url('advertisement/create')}}">@lang('messages.create_advertisement')</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul>--}}
 
                         <ul class="nav nav-list">
                             <li id="homepage">
