@@ -9,7 +9,6 @@ use App\OrderDetail;
 use App\Product;
 use Mail;
 use App\Client;
-use Datatables;
 
 class OrderController extends Controller
 {
@@ -32,7 +31,7 @@ class OrderController extends Controller
     }
     $orders = $orders->get();
 
-    return Datatables::of($orders)
+    return \DataTables::of($orders)
       ->addColumn('index', function (Order $order) {
         return '<input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$order->id}}" class="roles" onclick="collect_selected(this)">';
       })
