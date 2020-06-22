@@ -43,7 +43,7 @@
                     <th>@lang('messages.price_after_shipping')</th>
                     <th>@lang('messages.address')</th>
                     <th>@lang('messages.scheduled.status')</th>
-
+                    <th>Action</th>
                   </tr>
                   </thead>
 
@@ -80,6 +80,7 @@
         },
         columns: [
           {data: 'index', searchable: false, orderable: false},
+          {data: 'id'},
           {data: 'client_name', name: 'client_name'},
           {data: 'total_price', name: 'total_price'},
           {data: 'shipping_amount', name: 'shipping_amount'},

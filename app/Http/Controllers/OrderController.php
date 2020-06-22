@@ -36,6 +36,9 @@ class OrderController extends Controller
       ->addColumn('index', function (Order $order) {
         return '<input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$order->id}}" class="roles" onclick="collect_selected(this)">';
       })
+      ->addColumn('id', function (Order $order) {
+          return $order->id;
+      })
       ->addColumn('client_name', function (Order $order) {
         if ($order->client && isset($order->client))
           return $order->client->name;
