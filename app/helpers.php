@@ -73,6 +73,7 @@ Route::get('/test','DashboardController@test');
         Route::get('get_controller_methods','RouteController@get_methods_for_selected_controller') ;
         Route::post('routes/store_v2','RouteController@store_v2') ;
         Route::get('get_notify/{id}','OrderController@load_notify');
+        Route::get('order/allData', 'OrderController@allData');
 
         Route::get('ldap','DashboardController@ldap') ;
         Route::get('export_DB','DashboardController@export_DB_backup') ;
@@ -241,7 +242,7 @@ function dynamic_routes($route_model,$found_roles)
   if(request()->has('category_id') && request()->get('category_id') != ''){
    $categorys = $categorys->where('id',request()->get('category_id'));
   }
-  
+
   if(request()->has('brand_id') && request()->get('brand_id') != ''){
    $categorys = \App\Category::join('categories AS t2','categories.parent_id', 't2.id')
                 ->join('products','products.category_id','=','categories.id')
@@ -250,13 +251,13 @@ function dynamic_routes($route_model,$found_roles)
                 ->select('t2.*', 't2.id AS parID')
                 ->groupBy('parID');
         //         ->get();
-                    
+
         // foreach($categorys as $category){
         //     echo $category->id;
         //     echo '<br>';
         // }
         // die;
-  
+
   }
   if(request()->has('sub_category_id') && request()->get('sub_category_id') != ''){
    $parent = \App\Category::where('id',request()->get('sub_category_id'))->first();

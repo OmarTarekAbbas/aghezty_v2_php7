@@ -26,7 +26,7 @@
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-user"></i></div>
 									</div>
-									<input type="text" class="form-control text-center" name="name" id="inlineFormInputGroupNameReg" placeholder="@lang('front.auth.name')">
+									<input type="text" class="form-control text-center" name="name" value="{{old('name')}}" id="inlineFormInputGroupNameReg" placeholder="@lang('front.auth.name')">
 								</div>
 							</div>
 
@@ -38,7 +38,7 @@
 											<i class="fas fa-at"></i>
 										</div>
 									</div>
-									<input type="text" class="form-control text-center" id="inlineFormInputGroupEmailReg" name="email" placeholder="@lang('front.auth.email')">
+									<input type="text" class="form-control text-center" id="inlineFormInputGroupEmailReg" name="email" value="{{old('email')}}" placeholder="@lang('front.auth.email')">
 								</div>
 							</div>
 
@@ -48,7 +48,7 @@
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="fas fa-phone"></i></div>
 									</div>
-									<input type="text" class="form-control text-center" name="phone" id="inlineFormInputGroupPhoneReg" placeholder="@lang('front.auth.phone')">
+									<input type="text" class="form-control text-center" name="phone" id="inlineFormInputGroupPhoneReg" value="{{old('phone')}}" placeholder="@lang('front.auth.phone')">
 								</div>
 							</div>
 
