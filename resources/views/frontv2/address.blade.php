@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                          <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.send')</button>
+                          <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.save')</button>
                         </div>
                       </div>
                     </form>
@@ -130,7 +130,7 @@
                         </div>
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                          <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.send')</button>
+                          <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.save')</button>
                         </div>
                       </div>
                     </form>

@@ -1,13 +1,14 @@
 <?php
 return [
-  'about_mev2' => 'Who We Are',
-
+    'about_mev2' => 'Who We Are',
+    'continue' => 'Continue',
     'title' => 'Aghezty',
     'search_title' => 'Search With Details',
     'close' => 'Close',
     'search' => 'Search',
     'offer' => 'Offers',
     'contact' => 'Contact Us',
+    'summary' => 'Summary',
     'sign_out' => 'Log Out',
     'price' => 'Price',
     'home' => 'Home',
@@ -38,11 +39,11 @@ return [
     'save' => 'Save',
     'old_password' => 'Old Password',
     'new_password' => 'New Password',
-    'confirm_password' =>  'Confirm Password',
+    'confirm_password' => 'Confirm Password',
     'my_profile' => 'Profile',
     'my_address' => 'Addresses',
     'my_order' => 'Orders',
-    'change_password' =>'Password',
+    'change_password' => 'Password',
     'lang_en' => 'English',
     'lang_ar' => 'العربية',
     'buy_now' => 'Buy Now',
@@ -79,7 +80,7 @@ return [
     'no_product' => 'There Is No Product Now',
     'service_center' => 'Service Center',
     'total_price_after_coupon' => 'Total Price After Coupon',
-    'contact_success_message' => 'Your Message Send Successfuly , We will Response You Later' ,
+    'contact_success_message' => 'Your Message Send Successfuly , We will Response You Later',
     'client_success_message' => 'Your Data Is Updated Successfuly',
     'password_error_message' => 'The Old Password Is Error',
     'password_success_message' => 'Your New Password Set Successfuly',
@@ -89,8 +90,8 @@ return [
     'notify_me_when_available' => 'Notify me when available',
     'new_request_for_this_product' => 'New Request For This Product',
     'you_already_take_this_product_in_your_cart' => 'You already take this product in your cart',
-    'from'=> 'From',
-    'to' => 'To' ,
+    'from' => 'From',
+    'to' => 'To',
     'shop_by_category' => 'Shop By Category',
     'shop_by_brand' => 'Shop By Brand',
     'important_links' => 'Important Links',
@@ -109,21 +110,21 @@ return [
     'clear' => 'Clear',
     'cont_shop' => 'continue Shopping',
     'inner' => [
-      'add_your_review' => 'Add Your Review',
-      'reviews' => 'Reviews',
-      'model' => 'Model',
-      'Installments' => 'Available Installments',
-      'avialable' => 'Availability',
-      'key_feature' => 'Key Feature',
-      'in_stock' => 'In Stock',
-      'not_stock' => 'Not Available',
-      'based_on_your_select'=>'BASED ON YOUR SELECTION YOU MAY ALSO LIKE',
-      'review_by' => 'Review by',
-      'no_rate' => 'Not Rated Yet',
-      'only' => 'Only',
-      'reset' => 'Left',
+        'add_your_review' => 'Add Your Review',
+        'reviews' => 'Reviews',
+        'model' => 'Model',
+        'Installments' => 'Available Installments',
+        'avialable' => 'Availability',
+        'key_feature' => 'Key Feature',
+        'in_stock' => 'In Stock',
+        'not_stock' => 'Not Available',
+        'based_on_your_select' => 'BASED ON YOUR SELECTION YOU MAY ALSO LIKE',
+        'review_by' => 'Review by',
+        'no_rate' => 'Not Rated Yet',
+        'only' => 'Only',
+        'reset' => 'Left',
     ],
-    'auth'=>[
+    'auth' => [
         'login' => 'Login',
         'register' => 'Register',
         'name' => 'Name',
@@ -134,11 +135,11 @@ return [
         'password' => 'Password',
         'confirm_password' => 'Confirm Password',
         'remember' => 'Remember',
-        'info' => 'Personal Information'
+        'info' => 'Personal Information',
     ],
     'coupon' => [
         'not_correct' => 'This Coupon Not Correct',
-        'used_befor' =>  'This Coupon Used Befor' ,
+        'used_befor' => 'This Coupon Used Befor',
         'add_success' => 'Your Coupon Added Suucessfully',
         'do_you_have_another_coupon' => 'Do You Have Another Coupon?',
         'do_you_have_coupon' => 'Do You Have Coupon?',
@@ -149,24 +150,24 @@ return [
     'admin_status' => [
         'pending' => 'Pending',
         'under_shipping' => 'Under Shipping',
-        'finished' => 'Finished'
+        'finished' => 'Finished',
     ],
-    'mail'=> [
+    'mail' => [
         'thanks' => 'Thanks For Using',
         'contact' => 'You Can Contact Us With This',
         'link' => 'Link',
-        'info' => 'Info About Your Order'
+        'info' => 'Info About Your Order',
     ],
 
     'admin' => [
-      'property' => [
-        'title' => 'Property Title',
-        'propertys' => 'Propertys',
-        'category' => 'Category'
-      ],
-      'property_value' => [
-          'value' => 'Property Value',
-          'property_values' => 'Property Values'
-      ]
+        'property' => [
+            'title' => 'Property Title',
+            'propertys' => 'Propertys',
+            'category' => 'Category',
+        ],
+        'property_value' => [
+            'value' => 'Property Value',
+            'property_values' => 'Property Values',
+        ],
     ],
 ];

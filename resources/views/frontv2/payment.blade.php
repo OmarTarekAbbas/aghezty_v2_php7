@@ -177,6 +177,9 @@ $('#radioThree,.visa').click(function(){
     $('.form-row').css('display','block')
     $('.btn-pay').hide()
 })
-
+$('#radioOne,#radioTwo,.cash').click(function(){
+    $('.form-row').hide()
+    $('.btn-pay').show()
+})
 </script>
 @endsection

@@ -1442,6 +1442,7 @@ class HomeController extends Controller
             // });
             // $link = url('order/'.$order->id);
             // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            session()->forget('nbe_click_script');
             return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
         return response()->json(['status' => 'error', 'returnUrl' => '']);
@@ -1576,6 +1577,7 @@ class HomeController extends Controller
             // });
             // $link = url('order/'.$order->id);
             // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            session()->forget('cib_click_script');
             return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
         return response()->json(['status' => 'error', 'returnUrl' => '']);

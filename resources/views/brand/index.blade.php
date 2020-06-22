@@ -62,7 +62,9 @@
                                                 <a class="btn btn-sm show-tooltip" title="@lang('messages.show_product')" href="{{url("brand/$value->id")}}" data-original-title="show Product"><i class="fa fa-step-forward"></i></a>
                                                 @endif
                                                 <a class="btn btn-sm show-tooltip" href="{{url("brand/$value->id/edit")}}" title="@lang('messages.edit')"><i class="fa fa-edit"></i></a>
+                                                @if (setting('enable_delete'))
                                                 <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("brand/$value->id/delete")}}" title="@lang('messages.template.delete')"><i class="fa fa-trash"></i></a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>

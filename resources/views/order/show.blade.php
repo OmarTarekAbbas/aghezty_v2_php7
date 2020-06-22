@@ -23,13 +23,16 @@
                     <div class="row">
                         <div class="col-md-6 company-info">
                             <h4>{{$order->client->name}}</h4>
-                            <p>{{$order->address->address}},<br>{{$order->address->city->city_ar}},{{$order->address->city->governorate->title_ar}}</p>
+                            <p>{{$order->address->address}},<br>{{$order->address->city->city_ar}},{{$order->address->city->governorate->title_ar}}
+                            </p>
                             <p><i class="fa fa-phone"></i>{{$order->client->phone}}</p>
                             <p><i class="fa fa-envelope"></i> {{$order->client->email}}</p>
                         </div>
                         <div class="col-md-6 company-info">
                             <div class="alert alert-info">
-                                <h4 class="text-center">Send Mail To Client With Order Status <span><strong>{{ ($order->lang == 'ar') ? 'In Arabic' : 'In English'}}</strong></span></h4><br>
+                                <h4 class="text-center">Send Mail To Client With Order Status
+                                    <span><strong>{{ ($order->lang == 'ar') ? 'In Arabic' : 'In English'}}</strong></span>
+                                </h4><br>
                                 @if($order->status !="Finshed")
                                 <div class="row text-center">
                                     <form action="{{url('orders/update_status')}}" method="post">
@@ -49,13 +52,16 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <textarea type="text" name="message" style="width:100%;text-align:{{ ($order->lang == 'ar') ? 'right' : 'left'}}" cols="70" rows="9" class="form-control" required placeholder="{{ ($order->lang == 'ar') ? ' الرساله' : 'Your Message'}}"></textarea>
+                                            <textarea type="text" name="message"
+                                                style="width:100%;text-align:{{ ($order->lang == 'ar') ? 'right' : 'left'}}"
+                                                cols="70" rows="9" class="form-control" required
+                                                placeholder="{{ ($order->lang == 'ar') ? ' الرساله' : 'Your Message'}}"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-lg">Send</button>
                                     </form>
                                 </div>
                                 @else
-                                    <div class="text-center"> <strong>Order Is Finished Now</strong> </div>
+                                <div class="text-center"> <strong>Order Is Finished Now</strong> </div>
 
                                 @endif
                             </div>
@@ -83,26 +89,34 @@
                                 <tr>
                                     <td class="center">{{($key+1)}}</td>
                                     <td>
-                                        <img class=" img-circle" width="100px" height="100px" src="{{$value->product->main_image}}"/>
+                                        <img class=" img-circle" width="100px" height="100px"
+                                            src="{{$value->product->main_image}}" />
                                     </td>
                                     <td>
                                         @foreach($languages as $language)
-                                        <li> <b>{{$language->title}} :</b> {{$value->product->getTranslation('title',$language->short_code)}}</li>
+                                        <li> <b>{{$language->title}} :</b>
+                                            {{$value->product->getTranslation('title',$language->short_code)}}</li>
                                         @endforeach
                                     </td>
                                     <td>{{$value->price}}</td>
                                     <td>{{$value->quantity}}</td>
                                     <td>{{$value->total_price}}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-success show-tooltip" title="Show Product" href="{{route("front.home.inner",['id'=>$value->product->id])}}" data-original-title="Show Product"><i class="fa fa-forward"></i></a>
-                                        {{-- <i class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></i> --}}
-                                        {{-- <i class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("delete_order?product_id=".$value->id."&order_id=".$order->id)}}" title="Delete"><i class="fa fa-trash"></i></i> --}}
+                                        <a class="btn btn-sm btn-success show-tooltip" title="Show Product"
+                                            href="{{route("front.home.inner",['id'=>$value->product->id])}}"
+                                            data-original-title="Show Product"><i class="fa fa-forward"></i></a>
+                                        {{-- <i class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}"
+                                        title="Edit"><i class="fa fa-edit"></i></i> --}}
+                                        {{-- <i class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("delete_order?product_id=".$value->id."&order_id=".$order->id)}}"
+                                        title="Delete"><i class="fa fa-trash"></i></i> --}}
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <p class="text-left"><strong style="font-weight:bolder;font-size:21px">@lang('front.payment'):</strong> <span class="blue" style="font-weight:bolder;font-size:20px">{{$order->payment}}</span></p>
+                        <p class="text-left"><strong
+                                style="font-weight:bolder;font-size:21px">@lang('front.payment'):</strong> <span
+                                class="blue" style="font-weight:bolder;font-size:20px">{{$order->payment}}</span></p>
                     </div>
 
                     <div class="row">
@@ -117,11 +131,15 @@
                         </div> --}}
                         <div class="col-md-12 invoice-amount">
                             <p><strong>@lang('messages.total_price'):</strong> <span>{{$order->sum()}}</span></p>
-                            <p><strong>@lang('messages.shipping_amount'):</strong> <span>{{(int)$order->shipping_amount}}</span></p>
-                            <p><strong>@lang('messages.price_after_shipping') :</strong> <span>{{$order->sum() + $order->shipping_amount}}</span></p>
+                            <p><strong>@lang('messages.shipping_amount'):</strong>
+                                <span>{{(int)$order->shipping_amount}}</span></p>
+                            <p><strong>@lang('messages.price_after_shipping') :</strong>
+                                <span>{{$order->sum() + $order->shipping_amount}}</span></p>
                             @if((($order->sum() + $order->shipping_amount)-$order->total_price) > 0)
-                            <p><strong>@lang('front.coupon.discount'):</strong> <span>{{($order->sum() + $order->shipping_amount) - $order->total_price}}</span></p>
-                            <p><strong>@lang('front.total_price_after_coupon'):</strong> <span class="green"><strong>{{$order->total_price}}</strong></span></p>
+                            <p><strong>@lang('front.coupon.discount'):</strong>
+                                <span>{{($order->sum() + $order->shipping_amount) - $order->total_price}}</span></p>
+                            <p><strong>@lang('front.total_price_after_coupon'):</strong> <span
+                                    class="green"><strong>{{$order->total_price}}</strong></span></p>
                             @endif
 
                         </div>

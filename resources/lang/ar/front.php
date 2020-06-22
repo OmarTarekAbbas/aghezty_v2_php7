@@ -2,7 +2,7 @@
 return [
     'title' => 'اجهزتى',
     'about_mev2' => 'من نحن',
-
+    'continue' => 'استمرار',
     'search_title' => 'بحث مفصل',
     'close' => 'اغلاق',
     'search' => 'بحث',
@@ -58,6 +58,7 @@ return [
     'your_comment' => 'تعليقك',
     'invoice' => 'الفاتورة',
     'continue_buy' => 'ادفع الان',
+    'summary' => 'ملخص',
     'choose_address' => 'اختر عنوان الشحن',
     'befor_address' => 'عنوانك السابق',
     'payment' => 'طرق الدفع',

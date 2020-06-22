@@ -147,7 +147,9 @@ input:checked + .slider:before {
                                                 <a class="btn btn-sm show-tooltip" title="Show Product" href="{{url("category/$value->id")}}" data-original-title="show Product"><i class="fa fa-step-forward"></i></a>
                                                 @endif
                                                 <a class="btn btn-sm show-tooltip" href="{{url("sub_category/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></a>
+                                                @if (setting('enable_delete'))
                                                 <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("sub_category/$value->id/delete")}}" title="Delete"><i class="fa fa-trash"></i></a>
+                                                @endif
                                                 <a class="btn btn-sm btn-warning show-primary" title="Add Property" href="{{url("property/create?category_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Property"><i class="fa fa-plus"></i></a>
                                                 @if(count($value->property) > 0)
                                                 <a class="btn btn-sm show-tooltip btn-primary" title="Show Property" href="{{url("property?category_id=$value->id")}}" data-original-title="show Property"><i class="fa fa-step-forward"></i></a>
