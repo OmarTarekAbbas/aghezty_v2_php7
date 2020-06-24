@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe4301c85bcef7102f1c3f37e4d537cb",
+    "content-hash": "f71dcfff01df2f2ecc365666a9ee49b6",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -5413,16 +5413,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.0.0",
+            "version": "v6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "e56a526d53e7dd907edc736d68c65319a632663e"
+                "reference": "66186a1275156b922e5968a4d65bbc5966bbee5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/e56a526d53e7dd907edc736d68c65319a632663e",
-                "reference": "e56a526d53e7dd907edc736d68c65319a632663e",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/66186a1275156b922e5968a4d65bbc5966bbee5d",
+                "reference": "66186a1275156b922e5968a4d65bbc5966bbee5d",
                 "shasum": ""
             },
             "require": {
@@ -5440,6 +5440,9 @@
             "require-dev": {
                 "mockery/mockery": "~0.9",
                 "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "barryvdh/laravel-snappy": "Allows exporting of dataTable to PDF using the print view."
             },
             "type": "library",
             "autoload": {
@@ -5466,7 +5469,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2015-12-18T05:27:52+00:00"
+            "time": "2016-08-10T00:31:22+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
