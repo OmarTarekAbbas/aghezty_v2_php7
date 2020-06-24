@@ -173,6 +173,11 @@ body {
 }
 .head_two .new_head {
   margin-top: 10%;
+  margin-right: 16%;
+}
+.head_two .new_head .dropdown .dropdown-toggle {
+  margin-right: 2%;
+  padding: 0 6%;
 }
 .head_two .new_head .dropdown .dropdown-menu.show {
   transform: translate3d(0px, 80px, 0px) !important;
@@ -183,10 +188,14 @@ body {
 }
 .head_two .new_head a {
   color: #FFF;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
+  text-align: right;
 }
 .head_two .new_head a.active_menu {
   border-bottom: 5px solid #ffeb00;
+}
+.head_two .new_head a:hover {
+  background: transparent;
 }
 .head_two .shopping_cart {
   position: relative;

@@ -136,8 +136,7 @@
         <div class="new_head">
           <span class="dropdown">
             <span class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <a class="text-uppercase" href="" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">my profile</a>
-              <!-- <a class="text-uppercase" href="" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">{{\Auth::guard('client')->user()->name}}</a> -->
+              <a class="text-uppercase" href="" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">{{\Auth::guard('client')->user()->name}}</a>
             </span>
 
             <span class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
