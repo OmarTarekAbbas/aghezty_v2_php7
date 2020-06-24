@@ -24,7 +24,7 @@
         "spatie/laravel-permission": "^1.12",
         "stripe/stripe-php": "^7.2",
         "thiagoalessio/tesseract_ocr": "^2.7",
-        " yajra/laravel-datatables-oracle": "~6.0"
+        "yajra/laravel-datatables-oracle": "~6.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
