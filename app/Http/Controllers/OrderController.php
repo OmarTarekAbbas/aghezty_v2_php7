@@ -14,12 +14,8 @@ class OrderController extends Controller
 {
   public function index(Request $request)
   {
-    $orders = Order::latest('created_at');
-    if ($request->has('client_id')) {
-      $orders = $orders->where('client_id', $request->client_id);
-    }
-    $orders = $orders->get();
-    return view('order.index', compact('orders'));
+
+    return view('order.index');
   }
 
   public function allData(Request $request)

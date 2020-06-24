@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
-        return view('front.home', compact('products'));
+        return view('front.home', compact('products')); 
     }
 
     public function products(Request $request)
@@ -1532,7 +1532,7 @@ class HomeController extends Controller
         session()->put('nbe_click_script', true);
         session()->forget('cib_click_script');
     }
-    
+
     public function cib_click_script(){
         session()->put('cib_click_script', true);
         session()->forget('nbe_click_script');
