@@ -688,6 +688,13 @@ class HomeController extends Controller
 
     }
 
+    public function terms_conv2()
+    {
+
+        return view('frontv2.termsv2');
+
+    }
+
     public function contactusv2(Request $request)
     {
         if ($request->has('lang')) {

@@ -1,6 +1,7 @@
 <?php
 return [
     'title' => 'اجهزتى',
+    'terms_conv2' => 'شروط و احكام الاسترجاع',
     'about_mev2' => 'من نحن',
     'continue' => 'استمرار',
     'search_title' => 'بحث مفصل',
