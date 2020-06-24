@@ -71,7 +71,7 @@ nav.container-fluid {
                   for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
               </div>
               @endforeach
-              
+
             @else
 
               @foreach ($item->sub_cats as $category)
@@ -82,7 +82,7 @@ nav.container-fluid {
                   for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
               </div>
               @endforeach
-                
+
             @endif
           </div>
           @endif

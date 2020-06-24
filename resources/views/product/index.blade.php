@@ -191,8 +191,7 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
                     <div class="col-md-3">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Search.." name="search"
-                          placeholder="Email">
+                        <input type="text" id="formCode" class="form-control" placeholder="Search.." name="search">
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -349,7 +348,6 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
 
 
   }
-
 </script>
 
 {{-- edit product with ajax --}}
@@ -549,4 +547,12 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
   })
 
 </script>
+  <script>
+    $('#formCode').keypress(function (e) {
+      if (e.which == 13) {
+        $(Search()).click();
+        return false;
+      }
+    });
+  </script>
 @stop

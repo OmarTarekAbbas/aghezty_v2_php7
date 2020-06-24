@@ -745,9 +745,22 @@ class HomeController extends Controller
                 $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), explode(',', $request->ifrom_ito));
             });
         }
-        if ($request->has('search') && $request->search != '') {
-            $products = $products->whereLike(['title'], $request->search);
-        }
+
+
+
+
+      if ($request->has('search') && $request->search != '') {
+        $products = $products->join('translatables','translatables.record_id','=','products.id')
+          ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+          ->where('translatables.table_name','products')
+          ->where('translatables.column_name','title')
+          ->where(function($q) use ($request){
+            $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
+          });
+      }
+
+
         if ($request->has('offer') && $request->offer != '') {
             $products = $products->where('price_after_discount', '>', 0);
         }
@@ -816,9 +829,19 @@ class HomeController extends Controller
                 $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), explode(',', $request->ifrom_ito));
             });
         }
-        if ($request->has('search') && $request->search != '') {
-            $products = $products->whereLike(['title'], $request->search);
-        }
+
+
+      if ($request->has('search') && $request->search != '') {
+                $products = $products->join('translatables','translatables.record_id','=','products.id')
+          ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+          ->where('translatables.table_name','products')
+          ->where('translatables.column_name','title')
+          ->where(function($q) use ($request){
+            $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
+          });
+      }
+
         if ($request->has('sorted') && $request->sorted != '') {
             $products = $products->orderBy(explode(',', $request->sorted)[0], explode(',', $request->sorted)[1]);
         }
@@ -837,7 +860,10 @@ class HomeController extends Controller
             });
         }
 
-        $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())->get();
+        $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
+          ->select('products.*','products.id As id')
+          ->get();
+
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
     }
