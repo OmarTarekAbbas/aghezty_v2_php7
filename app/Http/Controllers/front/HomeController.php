@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
-        return view('front.home', compact('products')); 
+        return view('front.home', compact('products'));
     }
 
     public function products(Request $request)
