@@ -231,7 +231,7 @@ body {
 
 .head_three {
   width: 100%;
-  z-index: -999999;
+  z-index: 999999;
   position: fixed;
   top: 12.87%;
 }
@@ -1987,7 +1987,7 @@ body {
   color: #FFF;
 }
 .footer_footer .footer_content .block .block_content .ul_links li {
-  font-size: 12px;
+  font-size: 11px;
 }
 .footer_footer .footer_content .block .block_content .ul_links li a {
   color: #FFF;

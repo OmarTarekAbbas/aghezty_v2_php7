@@ -2192,6 +2192,7 @@ body {
 }
 .footer_footer .footer_content .block .block_content .ul_links {
   text-align: right;
+  padding-right: 1.5rem;
 }
 .footer_footer .footer_content .block .block_content .ul_links li {
   font-size: 12px;

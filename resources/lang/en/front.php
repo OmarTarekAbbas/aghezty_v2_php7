@@ -15,6 +15,7 @@ return [
     'home' => 'Home',
     'more' => 'More',
     'brands' => 'Brands',
+    'my_order_content' => 'There Is No Order Yet',
     'categorys' => 'Categorys',
     'found' => 'How Found Us',
     'success' => 'Success Message',
