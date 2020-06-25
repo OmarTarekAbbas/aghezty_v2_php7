@@ -10,8 +10,8 @@
     <div class="row">
       <div class="col-md-12 col-lg-12 col-xl-12 col-12">
         <div class="shopping_cart_title mt-3">
-          <h2 class="text-center text-uppercase h2 text-primary font-weight-bold">
-            <marquee class="marquee_cart" behavior="scroll">@lang('front.shopping_cart')</marquee>
+          <h2 class="text-center text-uppercase h2 text-primary font-weight-bold">@lang('front.shopping_cart')
+            <!-- <marquee class="marquee_cart" behavior="scroll">@lang('front.shopping_cart')</marquee> -->
           </h2>
         </div>
       </div>

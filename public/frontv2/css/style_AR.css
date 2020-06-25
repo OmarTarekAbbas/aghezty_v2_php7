@@ -1982,9 +1982,6 @@ body {
 .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .final-value {
   text-align: left !important;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:hover, .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:focus {
-  font-size: 1.5rem;
-}
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:focus,
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:hover,
 .my_profile .my_profile_bg .profile_accordion .input-group textarea:focus,
@@ -2195,7 +2192,7 @@ body {
   padding-right: 1.5rem;
 }
 .footer_footer .footer_content .block .block_content .ul_links li {
-  font-size: 12px;
+  font-size: 15px;
 }
 .footer_footer .footer_content .block .block_content .ul_links li a {
   color: #FFF;

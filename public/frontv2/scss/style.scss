@@ -2377,10 +2377,10 @@ body {
                   }
                 }
 
-                &:hover,
-                &:focus {
-                  font-size: 1.5rem;
-                }
+                // &:hover,
+                // &:focus {
+                //   font-size: 1.5rem;
+                // }
               }
             }
           }
@@ -2609,8 +2609,9 @@ body {
 
       .block_content {
         .ul_links {
+          padding-left: 1.5rem;
           li {
-            font-size: 11px;
+            font-size: 12px;
 
             a {
               color: $white_color;
