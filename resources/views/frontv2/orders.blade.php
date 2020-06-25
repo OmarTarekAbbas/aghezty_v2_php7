@@ -22,7 +22,7 @@
                 @lang('front.my_order')
               </h5>
               @if(count(Auth::guard('client')->user()->orders) == 0)
-              <h6>There Is No Order Yet</h6>
+              <h6 class="mt-4 text-white">There Is No Order Yet</h6>
               @endif
             </div>
           </div>

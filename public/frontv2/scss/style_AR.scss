@@ -213,13 +213,36 @@ body {
 
   .new_head {
     margin-top: 10%;
+    margin-right: 16%;
+
+    .dropdown {
+      .dropdown-toggle {
+        margin-right: 2%;
+        padding: 0 6%;
+      }
+
+      .dropdown-menu {
+        &.show {
+          transform: translate3d(0px, 80px, 0px) !important;
+          -webkit-transform: translate3d(0px, 80px, 0px) !important;
+          -moz-transform: translate3d(0px, 80px, 0px) !important;
+          -ms-transform: translate3d(0px, 80px, 0px) !important;
+          -o-transform: translate3d(0px, 80px, 0px) !important;
+        }
+      }
+    }
 
     a {
       color: $white_color;
-      padding: 0 1rem;
+      padding: 0 0.5rem;
+      text-align: right;
 
       &.active_menu {
-        border-bottom: 5px solid $blue_color;
+        border-bottom: 5px solid $yellow_color;
+      }
+
+      &:hover {
+        background: transparent;
       }
     }
   }
@@ -276,6 +299,7 @@ body {
   z-index: 999999;
   position: fixed;
   top: 12.87%;
+
   .navbar {
     text-align: center;
     padding: 0;
@@ -3026,6 +3050,7 @@ body {
 
   .head_three {
     top: 0;
+
     .navbar-nav {
       padding: 0;
 
@@ -3087,6 +3112,7 @@ body {
 
   .search_mobile {
     padding-top: 20%;
+
     .search-container {
       display: block;
       margin: 3% auto 12% auto;
@@ -4360,6 +4386,7 @@ body {
 
   .search_mobile {
     padding-top: 20%;
+
     .search-container {
       display: block;
       margin: 3% auto 12% auto;
@@ -4479,6 +4506,7 @@ body {
   // Home Page
   .main {
     padding-top: 0;
+
     .ads {
       .bottom_banner {
         margin-top: 0 !important;
