@@ -1,6 +1,7 @@
 <?php
 return [
     'about_mev2' => 'Who We Are',
+    'terms_conv2' => 'Terms and Conditions',
     'continue' => 'Continue',
     'title' => 'Aghezty',
     'search_title' => 'Search With Details',
