@@ -36,10 +36,6 @@
   .footer_footer {
     font-weight: bold;
   }
-
-  .footer_footer .footer_content .block .block_content .ul_links li {
-    font-size: 16px !important;
-  }
 </style>
 @yield('style')
 
@@ -509,7 +505,7 @@
 
                       @foreach ($categorys as $category)
                       @if($category->sub_cats->count() > 0)
-                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                      <div class="col-md-3 col-xl-3 col-6 p-0 no_padding_mobile">
                         <ul class="list-unstyled ul_links">
                           <a href="{{url('clients/productsv2?random=random&category_id='.$category->id)}}">
                             <strong class="font-weight-bold border-bottom">{{$category->getTranslation('title',getCode())}}</strong>
@@ -526,7 +522,7 @@
                         </ul>
                       </div>
 
-                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                      <div class="col-md-3 col-xl-3 col-6 p-0 no_padding_mobile">
                         <ul class="list-unstyled ul_links">
                           <a href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}">
                             <strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
@@ -561,7 +557,7 @@
 
                   <div class="block_content">
                     <div class="row">
-                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                      <div class="col-md-3 col-xl-4 col-6 p-0 no_padding_mobile">
                         <ul class="list-unstyled ul_links">
                           <a href="#0">
                             <strong class="font-weight-bold border-bottom">@lang('front.brands')</strong>
@@ -578,7 +574,7 @@
                         </ul>
                       </div>
 
-                      <div class="col-md-3 col-xl-3 col-6 pr-0 no_padding_mobile">
+                      <div class="col-md-3 col-xl-4 col-6 p-0 no_padding_mobile">
                         <ul class="list-unstyled ul_links">
                           <a href="#0">
                             <strong class="font-weight-bold border-bottom invisible">@lang('front.brands')</strong>
@@ -603,7 +599,7 @@
 
                   <div class="block_content">
                     <div class="row">
-                      <div class="col-xl-12 col-12">
+                      <div class="col-xl-12 col-12 p-0">
                         <ul class="list-unstyled ul_links">
                           <li>
                             <a class="text-capitalize hvr-icon-forward" href="{{url('clients/contactv2')}}" title="Contact Us">@lang('front.contact')</a>
@@ -630,19 +626,19 @@
 
                         <div class="block_content">
                           <div class="row">
-                            <div class="col-xl-6 col-6">
+                            <div class="col-xl-6 col-6 p-0">
                               <a class="app-icon" href="{{setting('android_link')}}" title="Google Play">
                                 <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/google-play.svg')}}" alt="Google Play">
                               </a>
                             </div>
 
-                            <div class="col-xl-6 col-6">
+                            <div class="col-xl-6 col-6 p-0">
                               <a class="app-icon" href="{{setting('ios_link')}}" title="Google Play">
                                 <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/app-store.svg')}}" alt="App Store">
                               </a>
                             </div>
 
-                            <div class="col-sm-12 col-lg-12 col-xl-12">
+                            <div class="col-sm-12 col-lg-12 col-xl-12 p-0">
                               <div class="rounded-social-buttons text-center my-3">
                                 <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">
                                   <i class="fab fa-facebook-f facebook_icon"></i>
@@ -666,13 +662,13 @@
                               </div>
                             </div>
 
-                            <div class="col-sm-12 col-lg-12 col-xl-12">
+                            <div class="col-sm-12 col-lg-12 col-xl-12 p-0">
                               <div class="payment_methods text-center">
                                 <img class="w-50" src="{{url('public/frontv2/images/payment-icons.png')}}" alt="Visa">
                               </div>
                             </div>
 
-                            <div class="col-sm-12 col-xl-12">
+                            <div class="col-sm-12 col-xl-12 p-0">
                               <div class="hotline mt-2 text-center">
                                 <strong>@lang('front.auth.phone')</strong>
                                 <a class="d-block" href="tel:{{setting('phone')}}" title="Phone number">

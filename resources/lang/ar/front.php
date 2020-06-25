@@ -16,6 +16,7 @@ return [
     'shipping_amount' => 'سعر الشحن',
     'home' => 'الصفحة الرئيسية',
     'more' => 'المزيد',
+    'my_order_content' => 'لا يوجد طلبات',
     'brands' => 'العلامات التجارية',
     'categorys' => 'الاقسام',
     'found' => 'اين تجدنا',

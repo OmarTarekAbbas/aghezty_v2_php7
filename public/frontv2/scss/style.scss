@@ -289,7 +289,7 @@ body {
 
 .head_three {
   width: 100%;
-  z-index: -999999;
+  z-index: 999999;
   position: fixed;
   top: 12.87%;
 
@@ -2610,7 +2610,7 @@ body {
       .block_content {
         .ul_links {
           li {
-            font-size: 12px;
+            font-size: 11px;
 
             a {
               color: $white_color;
