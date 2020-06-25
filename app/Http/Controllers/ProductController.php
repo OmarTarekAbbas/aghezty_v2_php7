@@ -21,10 +21,20 @@ class ProductController extends Controller
     public function index(Request $request)
     {
       //return $request->all();
-        $products = Product::latest('created_at');
-        if($request->has('search') && $request->search != ''){
-            $products = $products->whereLike(['title','id','price','stock','sku'],$request->search);
-        }
+
+      $products = Product::query();
+      if ($request->has('search') && $request->search != '') {
+        $products = $products->join('translatables','translatables.record_id','=','products.id')
+          ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+          ->where('translatables.table_name','products')
+          ->where('translatables.column_name','title')
+          ->latest('products.created_at')
+          ->where(function($q) use ($request){
+            $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
+          });
+      }
+
         if($request->has('category_id') && $request->category_id != ''){
           $products = $products->whereIn('category_id',$request->category_id);
         }
@@ -115,7 +125,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
-        
+
         $product->Installments = $Installments;
         foreach ($request->title as $key => $value) {
             $product->setTranslation('title', $key, $value);
@@ -229,12 +239,12 @@ class ProductController extends Controller
         $request->active = ($request->active) ? 1:0;
         $product = Product::find($id);
 
-        
+
         if($request->has('Installments')){
           $Installments = json_encode($request->Installments);
         }
         $product->Installments = $Installments;
-        
+
         if($request->has('main_image'))
         {
             $file = $request->main_image;
@@ -341,28 +351,28 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $newProd = $product->replicate();
-        
+
         $title = $product->getTranslation('title','ar');
         $newProd->setTranslation('title', 'ar', $title);
-        
+
         $description = $product->getTranslation('description','ar');
         $newProd->setTranslation('description', 'ar', $description);
-        
+
         $short_description = $product->getTranslation('short_description','ar');
         $newProd->setTranslation('short_description', 'ar', $short_description);
-        
+
         $warranty = $product->getTranslation('warranty','ar');
         $newProd->setTranslation('warranty', 'ar', $warranty);
-        
+
         $delivery_time = $product->getTranslation('delivery_time','ar');
         $newProd->setTranslation('delivery_time', 'ar', $delivery_time);
-        
+
         $cash_on_delivery = $product->getTranslation('cash_on_delivery','ar');
         $newProd->setTranslation('cash_on_delivery', 'ar', $cash_on_delivery);
-        
+
         $return_or_refund = $product->getTranslation('return_or_refund','ar');
         $newProd->setTranslation('return_or_refund', 'ar', $return_or_refund);
-        
+
         $key_feature = $product->getTranslation('key_feature','ar');
         $newProd->setTranslation('key_feature', 'ar', $key_feature);
 
