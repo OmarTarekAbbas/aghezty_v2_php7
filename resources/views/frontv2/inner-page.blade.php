@@ -28,7 +28,6 @@
         <a href="{{route('front.home.list',['sub_category_id' => $product->category->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
       </li>
 
-      <li class="breadcrumb-item active" aria-current="page">{{$product->getTranslation('title',getCode())}}</li>
     </ol>
   </nav>
 
