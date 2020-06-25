@@ -6,9 +6,9 @@
 	<div class="mobile_views">
 		<section class="service_center mt-3">
 			@if (\Session::get('applocale') == 'ar')
-			{!! setting('about_me') !!}
+			{!! setting('terms_conditions') !!}
 			@else
-			{!! setting('about_us_en') !!}
+			{!! setting('terms_conditions_en') !!}
 			@endif
 		</section>
 	</div>

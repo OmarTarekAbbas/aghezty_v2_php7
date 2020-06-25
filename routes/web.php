@@ -106,6 +106,7 @@ Route::prefix('clients')->group(function() {
     Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('about_mev2', 'front\HomeController@about_mev2');
+    Route::get('terms_conv2', 'front\HomeController@terms_conv2');
     Route::get('contactv2', 'front\HomeController@contactusv2');
     Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
     Route::any('loadproductsv2', 'front\HomeController@load_productsv2');

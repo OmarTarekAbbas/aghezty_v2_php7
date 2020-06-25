@@ -616,6 +616,10 @@
                           <li>
                             <a class="text-capitalize hvr-icon-forward" href="{{url('clients/about_mev2')}}" title="Maintenance">@lang('front.about_mev2')</a>
                           </li>
+                          <li>
+                            <a class="text-capitalize hvr-icon-forward" href="{{url('clients/terms_conv2')}}"
+                              title="Maintenance">@lang('front.terms_conv2')</a>
+                          </li>
                         </ul>
                       </div>
 
