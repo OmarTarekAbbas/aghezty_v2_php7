@@ -57,6 +57,7 @@
       $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : '{{ request()->get("order_id") }}' },function(data){
         console.log(data);
       })
+      location.href = location.href + '/cancle';
     }
 
     completeCallback = "{{ url()->current() }}"

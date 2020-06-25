@@ -1024,6 +1024,8 @@ class HomeController extends Controller
 
     public function my_cartv2(Request $request)
     {
+        session()->forget('nbe_click_script');
+        session()->forget('cib_click_script');
         $auth_carts = [];
         $session_carts = [];
         $total_price = 0;
