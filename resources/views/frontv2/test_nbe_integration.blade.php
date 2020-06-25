@@ -47,10 +47,16 @@
   <script type="text/javascript">
     function errorCallback(error) {
       console.log(JSON.stringify(error));
+      $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : '{{ request()->get("order_id") }}' },function(data){
+        console.log(data);
+      })
     }
 
     function cancelCallback() {
       console.log('Payment cancelled');
+      $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : '{{ request()->get("order_id") }}' },function(data){
+        console.log(data);
+      })
     }
 
     completeCallback = "{{ url()->current() }}"
@@ -64,7 +70,7 @@
         },
         currency: 'EGP',
         description: 'Ordered goods',
-        id: '{{ rand(1111,9999) }}'
+        id: '{{ request()->get("order_id") }}'
       },
       session: {
             id: "{{ $session_id }}"
