@@ -47,7 +47,7 @@ class Order extends Model
     }
 
     public function getPaymentStatusAttribute($value){
-        return PaymentStatus::getLabel($vaule);
+        return PaymentStatus::getLabel($value);
     }
 
     public function products()

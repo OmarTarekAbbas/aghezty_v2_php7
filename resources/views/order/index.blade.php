@@ -42,7 +42,7 @@
                     <th>@lang('messages.shipping_amount')</th>
                     <th>@lang('messages.price_after_shipping')</th>
                     <th>@lang('messages.address')</th>
-                    <th>@lang('messages.payment_status')</th>
+                    <th>{{trans('payment_status')}}</th>
                     <th>@lang('messages.scheduled.status')</th>
                     <th>Action</th>
                   </tr>
