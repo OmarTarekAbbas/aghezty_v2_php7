@@ -72,7 +72,7 @@ return [
     'paid_now' => 'Paid Now',
     'thanks_for_your_request' => 'Thanks For Your Order',
     'ready_order' => 'We work In Your Order',
-    'order' => 'Order',
+    'order' => 'My Orders',
     'product' => 'Product Name',
     'product_image' => 'Product Image',
     'quantity' => 'Quantity',

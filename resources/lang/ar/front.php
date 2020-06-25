@@ -71,7 +71,7 @@ return [
     'paid_now' => 'ادفع الان',
     'thanks_for_your_request' => 'شكرا على طلبك',
     'ready_order' => 'جارى العمل على طلبك',
-    'order' => 'طلب',
+    'order' => 'طلباتي',
     'product' => 'المنتج',
     'product_image' => 'صورة المنتج',
     'quantity' => 'كمية',
