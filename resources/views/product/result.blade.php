@@ -74,8 +74,10 @@
                        href="{{url("rate?product_id=$value->id")}}" data-original-title="show Rate"><i
                             class="fa fa-step-forward"></i></a>
                 @endif
+                @if(!setting('edit_without_ajax'))
                 <a class="btn btn-sm show-tooltip edit-ajax" data-href="{{url("product/$value->id/edit")}}"
                    title="@lang('messages.edit')"><i class="fa fa-edit"></i></a>
+                @endif
                 @if(setting('edit_without_ajax'))
                 <a class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}"
                     title="@lang('messages.edit')"><i class="fa fa-pencil"></i></a>
