@@ -42,6 +42,7 @@
                     <th>@lang('messages.shipping_amount')</th>
                     <th>@lang('messages.price_after_shipping')</th>
                     <th>@lang('messages.address')</th>
+                    <th>@lang('messages.payment_status')</th>
                     <th>@lang('messages.scheduled.status')</th>
                     <th>Action</th>
                   </tr>
@@ -86,6 +87,7 @@
           {data: 'shipping_amount', name: 'shipping_amount'},
           {data: 'price_after_shipping', name: 'price_after_shipping'},
           {data: 'address', name: 'address'},
+          {data: 'payment_status', name: 'payment_status'},
           {data: 'status', name: 'status'},
           {data: 'action', searchable: false}
         ]

@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Constants\PaymentStatus;
 
 class Order extends Model
 {
     protected $fillable = [
-        'client_id' , 'address_id' , 'shipping_amount' , 'status' , 'total_price','lang','payment'
+        'client_id' , 'address_id' , 'shipping_amount' , 'status' , 'total_price','lang','payment','payment_status'
     ];
 
     public function getTotalPriceAttribute($value){
@@ -43,6 +44,10 @@ class Order extends Model
             $value = 'NBE VISA';
         }
         return $value;
+    }
+
+    public function getPaymentStatusAttribute($value){
+        return PaymentStatus::getLabel($vaule);
     }
 
     public function products()
