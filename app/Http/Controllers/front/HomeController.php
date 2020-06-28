@@ -682,6 +682,10 @@ class HomeController extends Controller
 
     }
 
+    public function error404() {
+        return view('frontv2.error404');
+    }
+
     public function about_mev2()
     {
 

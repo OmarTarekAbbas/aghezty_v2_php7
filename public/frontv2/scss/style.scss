@@ -289,9 +289,9 @@ body {
 
 .head_three {
   width: 100%;
-  z-index: -999999;
+  z-index: 999999;
   position: fixed;
-  top: 12.87%;
+  top: 12.87% !important;
 
   .navbar {
     text-align: center;
@@ -2377,10 +2377,10 @@ body {
                   }
                 }
 
-                &:hover,
-                &:focus {
-                  font-size: 1.5rem;
-                }
+                // &:hover,
+                // &:focus {
+                //   font-size: 1.5rem;
+                // }
               }
             }
           }
@@ -2609,6 +2609,7 @@ body {
 
       .block_content {
         .ul_links {
+          padding-left: 1.5rem;
           li {
             font-size: 12px;
 
@@ -5255,7 +5256,9 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
+.head_three {
+  top: 0;
+}
   // Header NavBar
   .navbar {
     padding: 19px !important;
@@ -5323,7 +5326,7 @@ body {
   }
 }
 
-@media (min-width: 992px) and (max-width: 1600px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   .head_two {
     .img_logo {
       img {
@@ -5351,6 +5354,7 @@ body {
   }
 
   .head_three {
+    top: 5.8% !important;
     .navbar {
       .navbar-nav {
         .nav-item {

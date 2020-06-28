@@ -2585,10 +2585,10 @@ body {
                   text-align: left !important;
                 }
 
-                &:hover,
-                &:focus {
-                  font-size: 1.5rem;
-                }
+                // &:hover,
+                // &:focus {
+                //   font-size: 1.5rem;
+                // }
               }
             }
           }
@@ -2834,9 +2834,10 @@ body {
       .block_content {
         .ul_links {
           text-align: right;
+          padding-right: 1.5rem;
 
           li {
-            font-size: 12px;
+            font-size: 15px;
 
             a {
               color: $white_color;

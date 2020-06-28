@@ -231,9 +231,9 @@ body {
 
 .head_three {
   width: 100%;
-  z-index: -999999;
+  z-index: 999999;
   position: fixed;
-  top: 12.87%;
+  top: 12.87% !important;
 }
 .head_three .navbar {
   text-align: center;
@@ -1794,9 +1794,6 @@ body {
 .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-value::after {
   content: " LE";
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:hover, .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal:focus {
-  font-size: 1.5rem;
-}
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:focus,
 .my_profile .my_profile_bg .profile_accordion .input-group .form-control:hover,
 .my_profile .my_profile_bg .profile_accordion .input-group textarea:focus,
@@ -1985,6 +1982,9 @@ body {
 .footer_footer .footer_content .block .block_title {
   font-size: 22px;
   color: #FFF;
+}
+.footer_footer .footer_content .block .block_content .ul_links {
+  padding-left: 1.5rem;
 }
 .footer_footer .footer_content .block .block_content .ul_links li {
   font-size: 12px;
@@ -3753,6 +3753,10 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
+  .head_three {
+    top: 0;
+  }
+
   .navbar {
     padding: 19px !important;
   }
@@ -3788,7 +3792,7 @@ body {
     padding-right: 15px !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1600px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   .head_two .img_logo img {
     width: 100%;
   }
@@ -3801,6 +3805,9 @@ body {
     left: 40px;
   }
 
+  .head_three {
+    top: 5.8% !important;
+  }
   .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
     min-width: 55%;
   }

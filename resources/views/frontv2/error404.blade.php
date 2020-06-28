@@ -1,0 +1,74 @@
+@extends('frontv2.master')
+
+@section('content')
+<style>
+  .main,
+  .footer_footer {
+    background: #fe9901;
+  }
+
+  .error_page {
+    margin-top: 4%;
+  }
+
+  .error_page .error {
+    letter-spacing: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+  .error_page h1 .borderBottom {
+    border-bottom: 3px solid #FFF;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .back_home {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .back_home button {
+    color: #fe9901;
+    background: #fff;
+    font-size: 1.5rem !important;
+  }
+
+  .back_home button:focus {
+    box-shadow: 0 0 0 0.2rem rgb(52, 58, 64);
+  }
+
+  @media (min-width: 320px) and (max-width: 415px) {
+    .error_page h1 .borderBottom {
+      width: 100%;
+    }
+
+    .error_page .error2 {
+      font-size:2rem !important;
+    }
+
+    .error_page h5 {
+      font-size: 1.25rem !important;
+    }
+  }
+</style>
+
+<div class="main">
+
+  <div class="error_page">
+    <div class="mobile_views">
+      <h1 class="error text-center text-white font-weight-bold" style="font-size: 4.5rem;">404
+        <div class="borderBottom"></div>
+      </h1>
+
+      <h1 class="error error2 text-center text-white text-uppercase font-weight-bold" style="font-size:3.5rem;">the page</h1>
+      <h5 class="text-center text-white text-uppercase" style="letter-spacing: 5px; font-size:1.8rem;">was not found</h5>
+
+      <form class="back_home" action="{{url('clients/homev2')}}">
+        <button class="btn text-capitalize m-auto d-block">go to home</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+@endsection
