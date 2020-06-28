@@ -3753,6 +3753,10 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
+  .head_three {
+    top: 0;
+  }
+
   .navbar {
     padding: 19px !important;
   }
@@ -3801,6 +3805,9 @@ body {
     left: 40px;
   }
 
+  .head_three {
+    top: 5.8%;
+  }
   .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
     min-width: 55%;
   }

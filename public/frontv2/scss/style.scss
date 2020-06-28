@@ -5256,7 +5256,9 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
+.head_three {
+  top: 0;
+}
   // Header NavBar
   .navbar {
     padding: 19px !important;
@@ -5352,6 +5354,7 @@ body {
   }
 
   .head_three {
+    top: 5.8%;
     .navbar {
       .navbar-nav {
         .nav-item {
