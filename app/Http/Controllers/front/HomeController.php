@@ -879,6 +879,9 @@ class HomeController extends Controller
     public function inner_productv2($id)
     {
         $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
+        if(!$product){
+          return abort(404);
+        }
         $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(6)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
@@ -1387,7 +1390,7 @@ class HomeController extends Controller
                 'quantity' => $cart->quantity,
                 'price' => $cart->price,
                 'total_price' => $cart->total_price,
-            ]);     
+            ]);
         }
         $order_id = $order->id;
         $shipping_amount = $city->shipping_amount;
@@ -1505,7 +1508,7 @@ class HomeController extends Controller
                 'quantity' => $cart->quantity,
                 'price' => $cart->price,
                 'total_price' => $cart->total_price,
-            ]);     
+            ]);
         }
         $order_id = $order->id;
         $shipping_amount = $city->shipping_amount;
