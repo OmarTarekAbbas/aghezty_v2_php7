@@ -92,7 +92,7 @@
 <body>
   <header class="head_two d-none d-sm-block d-md-none d-none d-md-none d-lg-block">
     <div class="row mx-0">
-      <div class="col-md-3 col-lg-3 col-xl-1">
+      <div class="col-md-3 col-lg-2 col-xl-1">
         <div class="img_logo">
           <a href="{{url('clients/homev2')}}">
             <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-6 col-xl-7">
+      <div class="col-md-6 col-lg-4 col-xl-7">
         <form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
           <input type="text" id="search-bar" name="search" placeholder="@lang('messages.search')">
           <a onclick="document.getElementById('form_search').submit()" href="#">
@@ -112,7 +112,7 @@
       </div>
       @if(!Auth::guard('client')->user())
 
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-4 col-xl-3">
         <div class="new_head">
           <a class="text-uppercase" href="{{route('front.client.register')}}" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.auth.register')</a>
 
@@ -128,7 +128,7 @@
       @else
       <!-- Start My Account-->
 
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-4 col-xl-3">
         <div class="new_head">
           <span class="dropdown">
             <span class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -154,7 +154,7 @@
 
       {{-- --}}
 
-      <div class="col-md-3 col-lg-3 col-xl-1">
+      <div class="col-md-3 col-lg-2 col-xl-1">
         <div class="shopping_cart">
           <button type="button" onclick="location.href = '{{route('front.home.cart')}}'">
             <!-- <i class="fas fa-shopping-cart fa-3x"></i> -->

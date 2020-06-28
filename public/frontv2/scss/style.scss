@@ -5330,13 +5330,13 @@ body {
   .head_two {
     .img_logo {
       img {
-        width: 100%;
+        width: 70%;
       }
     }
 
-    // .search-container {
-    //   margin: 1.8% auto !important;
-    // }
+    .search-container {
+      margin: 5.6% auto !important;
+    }
 
     .shopping_cart {
       button {
@@ -5346,7 +5346,7 @@ body {
         }
 
         .shopping_cart_img {
-          width: 72%;
+          width: 42%;
           left: 40px;
         }
       }
@@ -5420,6 +5420,7 @@ body {
   }
 
   .main {
+    padding-top: 12%;
     .choose_category {
       .choose_category_background {
         .choose_category_form {
