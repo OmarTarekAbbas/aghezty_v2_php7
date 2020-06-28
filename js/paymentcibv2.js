@@ -18,7 +18,7 @@ function cancelCallbackcib() {
 }
 
 function completeCallbackcib(resultIndicator) {
-  
+
   $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{order_id : order_id, 'resultIndicator' : resultIndicator},function(data){
     if(data.status == 'success')
     {
@@ -71,6 +71,8 @@ $(document).ready(function () {
         }
       });
 
+      document.getElementById('cib').onclick()"
+
     });
 });
 $('#radioOne,#radioTwo,.cash').click(function(){
@@ -78,12 +80,12 @@ $('#radioOne,#radioTwo,.cash').click(function(){
     $('.btn-pay').show()
 })
 
-window.onload = function(){
-  setTimeout(loadAfterTime, 2000)
-};
+// window.onload = function(){
+//   setTimeout(loadAfterTime, 2000)
+// };
 
 
-function loadAfterTime() { 
-// code you need to execute goes here. 
-Checkout.showLightbox();
-}
+// function loadAfterTime() {
+// // code you need to execute goes here.
+// Checkout.showLightbox();
+// }

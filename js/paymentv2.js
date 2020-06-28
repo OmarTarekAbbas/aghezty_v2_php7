@@ -17,7 +17,7 @@ function cancelCallback() {
 }
 
 function completeCallback(resultIndicator) {
-  
+
   $.post(window.location.origin+path_name+'/clients/createPayment',{order_id : order_id , 'resultIndicator' : resultIndicator},function(data){
     if(data.status == 'success')
     {
@@ -71,6 +71,8 @@ $(document).ready(function () {
         }
       });
 
+      document.getElementById('ahly').onclick()
+
     });
 
 })
@@ -81,12 +83,12 @@ $('#radioOne,#radioTwo,.cash').click(function(){
 
 
 
-window.onload = function(){
-  setTimeout(loadAfterTime, 2000)
-};
+// window.onload = function(){
+//   setTimeout(loadAfterTime, 2000)
+// };
 
 
-function loadAfterTime() { 
-// code you need to execute goes here. 
-Checkout.showLightbox();
-}
+// function loadAfterTime() {
+// // code you need to execute goes here.
+// Checkout.showLightbox();
+// }
