@@ -233,7 +233,7 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
-  top: 12.87%;
+  top: 12.87% !important;
 }
 .head_three .navbar {
   text-align: center;
@@ -3792,7 +3792,7 @@ body {
     padding-right: 15px !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1600px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   .head_two .img_logo img {
     width: 100%;
   }
@@ -3806,7 +3806,7 @@ body {
   }
 
   .head_three {
-    top: 5.8%;
+    top: 5.8% !important;
   }
   .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
     min-width: 55%;
