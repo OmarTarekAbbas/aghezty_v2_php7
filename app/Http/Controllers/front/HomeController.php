@@ -1392,6 +1392,11 @@ class HomeController extends Controller
 
         $response = curl_exec($ch);
 
+        /*
+        dd($response ) ; die;
+        "merchant=EGPTEST1&result=SUCCESS&session.id=SESSION0002606191681G2576961F67&session.updateStatus=SUCCESS&session.version=4e391d3301&successIndicator=67a3193450dc495f"
+        */
+
         $result = explode('&', $response);
         $sub_id = explode('=', array_reverse($result)[0])[1];
         $session_id = explode('=', $result[2])[1];
@@ -1429,6 +1434,7 @@ class HomeController extends Controller
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'session_id' => $session_id,
+            'response'=>$response
         );
         $this->log($actionName, $not_URL, $parameters_arr);
 

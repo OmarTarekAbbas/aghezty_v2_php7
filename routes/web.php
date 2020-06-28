@@ -94,7 +94,7 @@ Route::prefix('clients')->group(function() {
         Route::get('ready_nbe/','front\HomeController@readyNbe')->name('front.home.ready.nbe');
         Route::post('createPayment/','front\HomeController@createOrderWithPayment')->name('front.home.payment.submit');
         Route::get('nbe_click_script','front\HomeController@nbe_click_script');
-        
+
         //cib
         Route::get('cib_click_script','front\HomeController@cib_click_script');
         Route::get('ready_cib/','front\HomeController@readyCIB');

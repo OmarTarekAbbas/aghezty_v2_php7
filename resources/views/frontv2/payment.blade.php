@@ -13,7 +13,7 @@
     @include('errors')
     <div class="alert alert-danger alert-dismissible payment_error" style="display:none">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      Error In Payemnt Please Try Again  
+      Error In Payemnt Please Try Again
     </div>
 		<section class="choose-address">
 			<div class="accordionn" id="accordionExample">
