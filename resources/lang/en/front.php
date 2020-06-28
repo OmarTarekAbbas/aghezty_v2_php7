@@ -111,6 +111,8 @@ return [
     'shopping_cart' => 'Shopping Cart',
     'clear' => 'Clear',
     'cont_shop' => 'continue Shopping',
+    'was_not_found' => 'Was Not Found',
+    'page'  => 'the page',
     'inner' => [
         'add_your_review' => 'Add Your Review',
         'reviews' => 'Reviews',
