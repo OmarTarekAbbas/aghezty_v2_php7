@@ -163,6 +163,7 @@
     @endforeach
   </div>
 </div>
+ <br><br><br><br><br><br>
 @endif
 
 <div class="row price_disc_offer">
