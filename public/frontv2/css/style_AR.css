@@ -328,7 +328,7 @@ body {
 .carsoul_ads .owl-one .owl-nav .owl-next {
   font-size: 5rem;
   position: absolute;
-  bottom: 7rem;
+  bottom: 1rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -351,7 +351,7 @@ body {
   display: none;
 }
 .carsoul_ads .top_banner a img {
-  height: 230px;
+  height: 139px;
 }
 .carsoul_ads .full_banner img {
   height: 175px;
