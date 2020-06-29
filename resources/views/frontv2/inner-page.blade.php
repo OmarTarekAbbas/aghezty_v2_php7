@@ -158,7 +158,7 @@
   <div class="row">
     @foreach ($Installments as $key => $value)
     @if ($value != null)
-    <div class="col-6 text-center"><div class="m-1 p-2 alert-secondary"> {{$key}} @lang('messages.Months') / {{$value}} @lang('front.pound')</div></div>
+    <div class="col-6 text-center" style="line-height: 16px;"><div class="m-1 p-2 alert-secondary"> {{$key}} @lang('messages.Months') / {{$value}} @lang('front.pound')</div></div>
     @endif
     @endforeach
   </div>
