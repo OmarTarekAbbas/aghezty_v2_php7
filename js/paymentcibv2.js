@@ -1,18 +1,25 @@
 
 var submit = document.querySelector('button');
 var $form ;
+var order_id = '';
 
 function errorCallbackcib(error) {
   console.log(JSON.stringify(error));
+  $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : order_id },function(data){
+    console.log(data);
+  })
 }
 
 function cancelCallbackcib() {
   console.log('Payment cancelled');
+  $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : order_id },function(data){
+    console.log(data);
+  })
 }
 
 function completeCallbackcib(resultIndicator) {
-  
-  $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{address_id : $('.add_id').val() , 'resultIndicator' : resultIndicator},function(data){
+
+  $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{order_id : order_id, 'resultIndicator' : resultIndicator},function(data){
     if(data.status == 'success')
     {
       location.href = data.returnUrl
@@ -34,6 +41,8 @@ $(document).ready(function () {
     }
 
     $.get(window.location.origin+path_name+'/clients/ready_cib',{address_id : $('.add_id').val()},function(data){
+
+      order_id = data.order_id
 
       Checkout.configure({
         merchant: 'TESTCIB700926',
@@ -62,6 +71,8 @@ $(document).ready(function () {
         }
       });
 
+      document.getElementById('cib').onclick()"
+
     });
 });
 $('#radioOne,#radioTwo,.cash').click(function(){
@@ -69,12 +80,12 @@ $('#radioOne,#radioTwo,.cash').click(function(){
     $('.btn-pay').show()
 })
 
-window.onload = function(){
-  setTimeout(loadAfterTime, 2000)
-};
+// window.onload = function(){
+//   setTimeout(loadAfterTime, 2000)
+// };
 
 
-function loadAfterTime() { 
-// code you need to execute goes here. 
-Checkout.showLightbox();
-}
+// function loadAfterTime() {
+// // code you need to execute goes here.
+// Checkout.showLightbox();
+// }

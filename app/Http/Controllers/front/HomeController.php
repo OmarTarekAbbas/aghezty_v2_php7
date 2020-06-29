@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Constants\PaymentStatus;
 use App\Advertisement;
 use App\Cart;
 use App\Category;
@@ -681,6 +682,10 @@ class HomeController extends Controller
 
     }
 
+    public function error404() {
+        return view('frontv2.error404');
+    }
+
     public function about_mev2()
     {
 
@@ -878,6 +883,9 @@ class HomeController extends Controller
     public function inner_productv2($id)
     {
         $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
+        if(!$product){
+          return view('frontv2.error404');
+        }
         $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(6)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
@@ -1023,6 +1031,8 @@ class HomeController extends Controller
 
     public function my_cartv2(Request $request)
     {
+        session()->forget('nbe_click_script');
+        session()->forget('cib_click_script');
         $auth_carts = [];
         $session_carts = [];
         $total_price = 0;
@@ -1366,8 +1376,27 @@ class HomeController extends Controller
         $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
         foreach ($coupons as $coupon) {
             $couponSum += $coupon->value;
+            $coupon->used = 2;
+            $coupon->save();
         }
-        $order_id = rand(11111, 99999);
+        $order = Order::create([
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address_id' => $address->id,
+            'shipping_amount' => $city->shipping_amount,
+            'total_price' => ($subTotal + $city->shipping_amount) - $couponSum,
+            'lang' => getCode(),
+            'payment' => 5,
+        ]);
+        foreach ($carts as $cart) {
+            $detail = OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $cart->product_id,
+                'quantity' => $cart->quantity,
+                'price' => $cart->price,
+                'total_price' => $cart->total_price,
+            ]);
+        }
+        $order_id = $order->id;
         $shipping_amount = $city->shipping_amount;
         $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
         $session_id = $this->createSessionId($total_price, $order_id);
@@ -1445,35 +1474,8 @@ class HomeController extends Controller
     {
 
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
-            $city = City::find($request->address_id);
-            $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
-            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
-            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
-            $count_coupon = 0;
-            $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
-            foreach ($coupons as $coupon) {
-                $count_coupon += $coupon->value;
-                $coupon->used = 2;
-                $coupon->save();
-            }
-            $order = Order::create([
-                'client_id' => \Auth::guard('client')->user()->id,
-                'address_id' => $address->id,
-                'shipping_amount' => $city->shipping_amount,
-                'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
-                'lang' => getCode(),
-                'payment' => 5,
-            ]);
-            foreach ($carts as $cart) {
-                $detail = OrderDetail::create([
-                    'order_id' => $order->id,
-                    'product_id' => $cart->product_id,
-                    'quantity' => $cart->quantity,
-                    'price' => $cart->price,
-                    'total_price' => $cart->total_price,
-                ]);
-                $cart->delete();
-            }
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success]);
             $client = \Auth::guard('client')->user();
             // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
             //     $m->from($client->email, __('front.order'));
@@ -1498,8 +1500,27 @@ class HomeController extends Controller
         $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
         foreach ($coupons as $coupon) {
             $couponSum += $coupon->value;
+            $coupon->used = 2;
+            $coupon->save();
         }
-        $order_id = rand(11111, 99999);
+        $order = Order::create([
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address_id' => $address->id,
+            'shipping_amount' => $city->shipping_amount,
+            'total_price' => ($subTotal + $city->shipping_amount) - $couponSum,
+            'lang' => getCode(),
+            'payment' => 4,
+        ]);
+        foreach ($carts as $cart) {
+            $detail = OrderDetail::create([
+                'order_id' => $order->id,
+                'product_id' => $cart->product_id,
+                'quantity' => $cart->quantity,
+                'price' => $cart->price,
+                'total_price' => $cart->total_price,
+            ]);
+        }
+        $order_id = $order->id;
         $shipping_amount = $city->shipping_amount;
         $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
         $session_id = $this->createSessionIdCib($total_price, $order_id);
@@ -1580,35 +1601,8 @@ class HomeController extends Controller
     public function createOrderWithPaymentCIB(Request $request)
     {
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
-            $city = City::find($request->address_id);
-            $address = ClientAddress::where('client_id', \Auth::guard('client')->user()->id)->where('city_id', $request->address_id)->first();
-            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
-            $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
-            $count_coupon = 0;
-            $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->get();
-            foreach ($coupons as $coupon) {
-                $count_coupon += $coupon->value;
-                $coupon->used = 2;
-                $coupon->save();
-            }
-            $order = Order::create([
-                'client_id' => \Auth::guard('client')->user()->id,
-                'address_id' => $address->id,
-                'shipping_amount' => $city->shipping_amount,
-                'total_price' => ($total_price + $city->shipping_amount) - $count_coupon,
-                'lang' => getCode(),
-                'payment' => 4,
-            ]);
-            foreach ($carts as $cart) {
-                $detail = OrderDetail::create([
-                    'order_id' => $order->id,
-                    'product_id' => $cart->product_id,
-                    'quantity' => $cart->quantity,
-                    'price' => $cart->price,
-                    'total_price' => $cart->total_price,
-                ]);
-                $cart->delete();
-            }
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success]);
             $client = \Auth::guard('client')->user();
             // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
             //     $m->from($client->email, __('front.order'));
@@ -1688,6 +1682,18 @@ class HomeController extends Controller
       $childrens = $childrens->get();
       return  (CategoryResource::collection($childrens));
 
+    }
+
+    public function canclePayment(Request $request)
+    {
+        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Cancle]);
+        return 'yes';
+    }
+
+    public function failPayment(Request $request)
+    {
+        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Fail]);
+        return 'yes';
     }
     /*********************************************************** end design v2 *******/
 

@@ -111,6 +111,15 @@
               </p>
             </div>
 
+
+            @foreach ($product->pr_value as $item)
+            <div class="modal_feature">
+              <h5 class="font-weight-bold d-inline-block">{{$item->property->getTranslation('title',getCode())}}:</h5>
+              <p class="d-inline-block px-1">{{$item->getTranslation('value',getCode())}}
+              </p>
+            </div>
+            @endforeach
+
             {{-- <div class="desc_feature">
                             <h5 class="font-weight-bold d-inline-block">@lang('front.product'):</h6>
                                 <p class="d-inline-block px-1">{{$product->getTranslation('title',getCode())}}</p>

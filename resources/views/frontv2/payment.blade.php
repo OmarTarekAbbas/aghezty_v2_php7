@@ -83,14 +83,14 @@
                 <div id="charge-error" class="alert alert-danger" style="display:none">
                 </div>
 
-				<div id="nbeclc" class="form-row" onclick="document.getElementById('ahly').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+				<div id="nbeclc" class="form-row" onclick="nbe_script();" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
 					<div class="">
 						<input type="hidden" id="ahly" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
 						<img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
 					</div>
 				</div>
 				<br>
-                <div id="cibclc" class="form-row" onclick="document.getElementById('cib').onclick()" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+                <div id="cibclc" class="form-row" onclick="cib_script();" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                     <div class="">
                         <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
                         <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
@@ -110,67 +110,56 @@
 
 @endsection
 @section('script')
-
-
-@if (session()->has('nbe_click_script'))
-	<script>
-		$('#cibclc').click(function(){
-			$.ajax({
-				type: "get",
-				url: "{{url('clients/cib_click_script')}}",
-				success: function (response) {
-					location.reload();
-				}
-			});
-		});
-	</script>
-	<script id="switch" src="https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js"
+	{{-- <script id="switch" src="https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js"
 		data-error="errorCallback"
 		data-cancel="cancelCallback"
 		data-complete = "completeCallback">
-	</script>
-	<script src="{{asset('js/paymentv2.js')}}"></script>
-@elseif(session()->has('cib_click_script'))
-	<script>
-		$('#nbeclc').click(function(){
-			$.ajax({
-				type: "get",
-				url: "{{url('clients/nbe_click_script')}}",
-				success: function (response) {
-					location.reload();
-				}
-			});
-		});
-	</script>
+  </script> --}}
+  {{-- <script src="{{asset('js/paymentv2.js')}}"></script> --}}
+  <script>
+    function nbe_script(){
+      var script1 = document.createElement("script");
+      script1.type = "text/javascript";
+      script1.src = "https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js";
+      script1.setAttribute('data-error',"errorCallback");
+      script1.setAttribute('data-cancle',"cancelCallback");
+      script1.setAttribute('data-complete',"completeCallback");
+      document.getElementsByTagName("body")[0].appendChild(script1);
 
-	<script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "{{asset('js/paymentv2.js')}}";
+      document.getElementsByTagName("body")[0].appendChild(script);
+
+      return false;
+    }
+  </script>
+
+
+	{{-- <script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
 			data-error="errorCallbackcib"
 			data-cancel="cancelCallbackcib"
 			data-complete = "completeCallbackcib">
-	</script>
-	<script src="{{asset('js/paymentcibv2.js')}}"></script>
-@else
-	<script>
-		$('#cibclc').click(function(){
-			$.ajax({
-				type: "get",
-				url: "{{url('clients/cib_click_script')}}",
-				success: function (response) {
-					location.reload();
-				}
-			});
-		});
-		$('#nbeclc').click(function(){
-			$.ajax({
-				type: "get",
-				url: "{{url('clients/nbe_click_script')}}",
-				success: function (response) {
-					location.reload();
-				}
-			});
-		});
-	</script>
-@endif
+  </script> --}}
+  {{-- <script src="{{asset('js/paymentcibv2.js')}}"></script> --}}
+   <script>
+    function cib_script(){
+      var script1 = document.createElement("script");
+      script1.type = "text/javascript";
+      script1.src = "https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js";
+      script1.setAttribute('data-error',"errorCallback");
+      script1.setAttribute('data-cancle',"cancelCallback");
+      script1.setAttribute('data-complete',"completeCallback");
+      document.getElementsByTagName("body")[0].appendChild(script1);
+
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "{{asset('js/paymentcibv2.js')}}";
+      document.getElementsByTagName("body")[0].appendChild(script);
+      return false;
+    }
+  </script>
+
 <script>
 
 $('#radioThree,.visa').click(function(){

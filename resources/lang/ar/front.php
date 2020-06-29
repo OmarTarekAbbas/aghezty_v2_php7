@@ -110,6 +110,8 @@ return [
     'shopping_cart' => 'عربة الطلبات',
     'clear' => 'مسح',
     'cont_shop' => 'متابعة الشراء',
+    'was_not_found' => 'غير موجودة',
+    'page'  => 'هذه الصفحة',
     'inner' => [
       'add_your_review' => 'اضف تعليقك',
       'reviews' => 'التعليقات',

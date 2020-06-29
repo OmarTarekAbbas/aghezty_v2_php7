@@ -39,6 +39,7 @@ Route::prefix('clients')->group(function() {
     Route::get('delete_cart','front\HomeController@delete_cart');
     Route::get('service_center','front\HomeController@service_center');
     /*************** designv2 routes ****/
+    Route::get('error404', 'front\HomeController@error404')->name('front.home.error404');
     Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('contactv2', 'front\HomeController@contactusv2');
@@ -91,6 +92,8 @@ Route::prefix('clients')->group(function() {
         Route::get('order_addressv2','front\HomeController@choose_addressv2')->name('front.home.checkout.address');
         Route::get('myorderv2/{id}','front\HomeController@myorderv2')->name('front.home.inner.order');
         Route::get('confirm_order/{id}','front\HomeController@confirm_order')->name('front.home.confirm');
+
+        //nbe
         Route::get('ready_nbe/','front\HomeController@readyNbe')->name('front.home.ready.nbe');
         Route::post('createPayment/','front\HomeController@createOrderWithPayment')->name('front.home.payment.submit');
         Route::get('nbe_click_script','front\HomeController@nbe_click_script');
@@ -99,6 +102,10 @@ Route::prefix('clients')->group(function() {
         Route::get('cib_click_script','front\HomeController@cib_click_script');
         Route::get('ready_cib/','front\HomeController@readyCIB');
         Route::post('createPaymentCIB/','front\HomeController@createOrderWithPaymentCIB');
+
+        //payment_status
+        Route::post('canclePayment','front\HomeController@canclePayment');
+        Route::post('failPayment','front\HomeController@failPayment');
         /*************** End****/
    });
 

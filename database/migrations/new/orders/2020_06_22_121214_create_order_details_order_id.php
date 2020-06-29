@@ -14,7 +14,7 @@ class CreateOrderDetailsOrderId extends Migration
     public function up()
     {
         Schema::table('order_details', function (Blueprint $table) {
-            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('CASCADE')->onDelete('CASCADE');
+            // $table->foreign('order_id')->references('id')->on('orders')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
