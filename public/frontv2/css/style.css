@@ -783,9 +783,8 @@ body {
 /*----------------------------------------- End List Product Page -----------------------------------------*/
 /***************************************** start inner-page ********************************************/
 .main #inner-page .price_disc_offer .product-label {
-  position: absolute;
-  top: 42%;
-  right: 1rem;
+  float: right;
+  margin-top: 13%;
   font-size: 14px;
   color: #FFF;
   z-index: 3;

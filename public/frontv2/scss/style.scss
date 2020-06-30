@@ -1046,9 +1046,11 @@ body {
   #inner-page {
     .price_disc_offer {
       .product-label {
-        position: absolute;
-        top: 42%;
-        right: 1rem;
+        // position: absolute;
+        // top: 57%;
+        // right: 1rem;
+        float: right;
+        margin-top: 13%;
         font-size: 14px;
         color: $white_color;
         z-index: 3;
