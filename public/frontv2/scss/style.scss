@@ -763,12 +763,22 @@ body {
 
   .modal.open_left .modal-body,
   .modal.open_right .modal-body {
-    padding: 15px 15px 80px;
+    padding: 15px 15px 0;
   }
 
   /* right */
   .modal.open_right.fade.in .modal-dialog {
     right: 0;
+  }
+
+  #propertys_mobile {
+    .filter_close {
+      background-color: #fe9901;
+      color: $white_color;
+      margin: 8% auto;
+      display: block;
+      width: 50%;
+    }
   }
 
   nav {
@@ -1290,7 +1300,7 @@ body {
           transform: rotate(360deg);
           -moz-transform: rotate(360deg);
           -o-transform: rotate(360deg);
-}
+        }
 
         &.facebook_link {
           background: #3b5998;
@@ -3363,16 +3373,21 @@ body {
             margin-top: 0;
 
             .price {
-              font-size: 18px;
+              font-size: 16px;
               margin: 0;
+              line-height: 1;
+              margin-top: 2rem;
+              text-align: center;
             }
 
             .discount {
-              position: absolute;
+              // position: absolute;
+              // right: 83px;
+              line-height: 1;
               text-align: right;
-              right: 83px;
-              font-size: 18px;
+              font-size: 16px;
               margin: 0;
+              margin-top: 2rem;
             }
 
             .product-label {
@@ -3382,6 +3397,8 @@ body {
           }
 
           .contact_us {
+            margin-top: 2rem;
+
             .rounded-social-buttons {
               margin-left: 6rem;
               margin-top: -10% !important;
@@ -4591,16 +4608,21 @@ body {
             margin-top: 0;
 
             .price {
-              font-size: 18px;
+              text-align: center;
+              font-size: 16px;
               margin: 0;
+              margin-top: 2rem;
+              line-height: 1;
             }
 
             .discount {
-              position: absolute;
+              // position: absolute;
+              // right: 100px;
               text-align: right;
-              right: 100px;
-              font-size: 18px;
+              font-size: 16px;
               margin: 0;
+              margin-top: 2rem;
+              line-height: 1;
             }
 
             .product-label {
@@ -4610,8 +4632,10 @@ body {
           }
 
           .contact_us {
+            margin-top: 1rem;
+
             .rounded-social-buttons {
-              margin-left: 4.5rem;
+              margin-left: 5.5rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 

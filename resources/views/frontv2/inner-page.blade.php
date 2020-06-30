@@ -168,15 +168,15 @@
         @endif
 
         <div class="row price_disc_offer">
-          <div class="col-md-4">
-            <h4 class=" price text-primary font-weight-bold">
+          <div class="col-md-4 col-4 p-0">
+            <h4 class="price text-primary font-weight-bold">
               {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
               @lang('front.egp')</h4>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 col-4 p-0">
             @if($product->price_after_discount > 0)
-            <h4 class=" discount text-muted font-weight-bold">{{number_format($product->price)}}
+            <h4 class="discount text-muted font-weight-bold">{{number_format($product->price)}}
               @lang('front.egp')</h4>
             @if($product->discount > 0)
           </div>
@@ -186,7 +186,7 @@
               content:"{{$product->discount}}"
             }
           </style>
-          <div class="col-md-4">
+          <div class="col-md-4 col-4 p-0">
             <div class="product-label text-center font-weight-bold">
               <span class="sale-product-icon">
                 <span class="testtt"></span>
@@ -217,9 +217,9 @@
               <i class="fab fa-facebook-messenger messenger_icon"></i>
             </a>
 
-            <a class="social-button sms_link" title="Messege" href="sms:{{setting('phone')}}">
+            {{-- <a class="social-button sms_link" title="Messege" href="sms:{{setting('phone')}}">
               <i class="far fa-comment sms_icon"></i>
-            </a>
+            </a> --}}
           </div>
         </div>
 
