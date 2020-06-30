@@ -64,9 +64,11 @@ $(document).ready(function() {
                                 line1: '200 Sample St',
                                 line2: '1234 Example Town'
                             }
-                        });
+                        }
 
-                    document.getElementById('ahly').onclick()
+                    }
+
+                    //  document.getElementById('ahly').onclick()
 
                 });
 
