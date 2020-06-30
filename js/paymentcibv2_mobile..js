@@ -71,7 +71,7 @@ $(document).ready(function () {
         }
       });
 
-      document.getElementById('cib').onclick();
+      document.getElementById('cib').onclick()
 
     });
 });

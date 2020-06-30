@@ -14,7 +14,7 @@ final class PaymentStatus
     public static function getList()
     {
         return [
-            self::Success  => trans('pending'),
+            self::Pending  => trans('pending'),
             self::Success  => trans('success'),
             self::Cancle   => trans('cancle'),
             self::Fail     => trans('fail'),
