@@ -76,6 +76,7 @@ $(document).ready(function () {
 
       document.getElementById('ahly').onclick()
 
+      $('.nbe_loading').hide()
     });
 
 })

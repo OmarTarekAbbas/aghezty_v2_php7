@@ -74,6 +74,8 @@ $(document).ready(function () {
 
       document.getElementById('cib').onclick();
 
+      $('.cib_loading').hide()
+
     });
 });
 $('#radioOne,#radioTwo,.cash').click(function(){

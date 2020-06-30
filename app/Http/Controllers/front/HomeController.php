@@ -1400,11 +1400,11 @@ class HomeController extends Controller
         $tran_id  = time();
         $shipping_amount = $city->shipping_amount;
         $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
-        $session_id = $this->createSessionId($total_price, $order_id);
+        $session_id = $this->createSessionId($total_price, $order_id,$tran_id);
         return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id , 'tran_id' => $tran_id]);
     }
 
-    public function createSessionId($total, $order_id)
+    public function createSessionId($total, $order_id,$tran_id)
     {
 
         $ch = curl_init();
@@ -1453,12 +1453,14 @@ class HomeController extends Controller
 
         session()->put('successIndicator', $sub_id);
 
-        $actionName = "bank ahly";
+        $actionName = "NBE Integration";
         $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
         $parameters_arr = array(
+            'response' => $response,
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'session_id' => $session_id,
+            'tran_id' => $tran_id
         );
         $this->log($actionName, $not_URL, $parameters_arr);
 
@@ -1519,11 +1521,11 @@ class HomeController extends Controller
         $tran_id  = time();
         $shipping_amount = $city->shipping_amount;
         $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
-        $session_id = $this->createSessionIdCib($total_price, $order_id);
+        $session_id = $this->createSessionIdCib($total_price, $order_id,$tran_id);
         return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id , 'tran_id' => $tran_id]);
     }
 
-    public function createSessionIdCib($total, $order_id)
+    public function createSessionIdCib($total, $order_id,$tran_id)
     {
 
         $ch = curl_init();
@@ -1572,12 +1574,14 @@ class HomeController extends Controller
 
         session()->put('successIndicator', $sub_id);
 
-        $actionName = "bank ahly";
+        $actionName = "CiB Integration";
         $not_URL = 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56';
         $parameters_arr = array(
+            'response' => $response,
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'session_id' => $session_id,
+            'tran_id' => $tran_id
         );
         $this->log($actionName, $not_URL, $parameters_arr);
 
