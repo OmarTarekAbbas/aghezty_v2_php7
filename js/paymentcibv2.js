@@ -2,24 +2,25 @@
 var submit = document.querySelector('button');
 var $form ;
 var order_id = '';
+var tran_id = '';
 
 function errorCallbackcib(error) {
   console.log(JSON.stringify(error));
-  $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : order_id },function(data){
+  $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : order_id ,tran_id : tran_id},function(data){
     console.log(data);
   })
 }
 
 function cancelCallbackcib() {
   console.log('Payment cancelled');
-  $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : order_id },function(data){
+  $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : order_id ,tran_id : tran_id},function(data){
     console.log(data);
   })
 }
 
 function completeCallbackcib(resultIndicator) {
 
-  $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{order_id : order_id, 'resultIndicator' : resultIndicator},function(data){
+  $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{order_id : order_id ,tran_id : tran_id , 'resultIndicator' : resultIndicator},function(data){
     if(data.status == 'success')
     {
       location.href = data.returnUrl
@@ -43,7 +44,7 @@ $(document).ready(function () {
     $.get(window.location.origin+path_name+'/clients/ready_cib',{address_id : $('.add_id').val()},function(data){
 
       order_id = data.order_id
-
+      tran_id  = data.tran_id 
       Checkout.configure({
         merchant: 'TESTCIB700926',
         order: {
@@ -53,7 +54,7 @@ $(document).ready(function () {
           },
           currency: 'EGP',
           description: 'Ordered goods',
-          id: data.order_id
+          id: data.tran_id
 
         },
         session: {
