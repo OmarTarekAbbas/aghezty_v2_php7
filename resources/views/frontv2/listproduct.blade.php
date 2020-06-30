@@ -325,6 +325,8 @@ nav.container-fluid {
                     </div>
                   </div>
                 </template>
+
+                <a href="#0" class="btn filter_close">Filter</a>
               </div>
 
             </div>

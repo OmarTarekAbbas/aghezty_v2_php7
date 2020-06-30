@@ -571,10 +571,17 @@ body {
 }
 .main .modal.open_left .modal-body,
 .main .modal.open_right .modal-body {
-  padding: 15px 15px 80px;
+  padding: 15px 15px 0;
 }
 .main .modal.open_right.fade.in .modal-dialog {
   right: 0;
+}
+.main #propertys_mobile .filter_close {
+  background-color: #fe9901;
+  color: #FFF;
+  margin: 8% auto;
+  display: block;
+  width: 50%;
 }
 .main nav .breadcrumb {
   background-color: #eee;
@@ -2492,19 +2499,25 @@ body {
     margin-top: 0;
   }
   .main #inner-page .info .features .price_disc_offer .price {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    line-height: 1;
+    margin-top: 2rem;
+    text-align: center;
   }
   .main #inner-page .info .features .price_disc_offer .discount {
-    position: absolute;
+    line-height: 1;
     text-align: right;
-    right: 83px;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    margin-top: 2rem;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
     top: 9px;
     right: 6px;
+  }
+  .main #inner-page .info .features .contact_us {
+    margin-top: 2rem;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
     margin-left: 6rem;
@@ -3306,22 +3319,28 @@ body {
     margin-top: 0;
   }
   .main #inner-page .info .features .price_disc_offer .price {
-    font-size: 18px;
+    text-align: center;
+    font-size: 16px;
     margin: 0;
+    margin-top: 2rem;
+    line-height: 1;
   }
   .main #inner-page .info .features .price_disc_offer .discount {
-    position: absolute;
     text-align: right;
-    right: 100px;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    margin-top: 2rem;
+    line-height: 1;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
     top: 9px;
     right: 27px;
   }
+  .main #inner-page .info .features .contact_us {
+    margin-top: 1rem;
+  }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
-    margin-left: 4.5rem;
+    margin-left: 5.5rem;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
