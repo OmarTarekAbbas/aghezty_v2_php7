@@ -839,8 +839,8 @@ body {
 /***************************************** start inner-page ********************************************/
 .main #inner-page .price_disc_offer .product-label {
   position: absolute;
-  top: 51%;
-  left: 6rem;
+  top: 41%;
+  left: 1rem;
   font-size: 14px;
   color: #FFF;
   z-index: 3;
@@ -980,7 +980,7 @@ body {
 }
 .main #inner-page .info .quantity {
   border-bottom: 1px dashed #08c;
-  width: 14%;
+  width: 21%;
   text-align: center;
   line-height: 17px;
   font-size: 15px;
@@ -2238,7 +2238,7 @@ body {
   line-height: 3rem;
   border-radius: 1.6875rem;
   transition: all 0.5s ease;
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
   margin-bottom: 0.25rem;
 }
 .footer_footer .rounded-social-buttons .social-button:hover, .footer_footer .rounded-social-buttons .social-button:focus {
