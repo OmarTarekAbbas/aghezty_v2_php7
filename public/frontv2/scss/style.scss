@@ -2141,7 +2141,7 @@ body {
     position: relative;
     margin: 1.25rem auto;
     padding-top: 4.5em;
-    color: #fe9901;
+    color: $black_color;
 
     &::before {
       content: "";
@@ -2152,7 +2152,7 @@ body {
       height: 4em;
       width: 4em;
       margin-left: -2em;
-      border: .375em solid currentColor;
+      border: .375em solid $yellow_color;
       border-right-style: double;
       border-radius: 50%;
       animation: rotation .8s linear infinite;

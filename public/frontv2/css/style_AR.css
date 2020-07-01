@@ -1770,7 +1770,7 @@ body {
   position: relative;
   margin: 1.25rem auto;
   padding-top: 4.5em;
-  color: #fe9901;
+  color: #000;
 }
 .choose-address .nbe_loading::before,
 .choose-address .cib_loading::before {
@@ -1782,7 +1782,7 @@ body {
   height: 4em;
   width: 4em;
   margin-left: -2em;
-  border: 0.375em solid currentColor;
+  border: 0.375em solid #ffeb00;
   border-right-style: double;
   border-radius: 50%;
   animation: rotation 0.8s linear infinite;

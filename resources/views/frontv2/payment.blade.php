@@ -90,7 +90,7 @@
                   </div>
                 </div>
 
-                <p class="nbe_loading text-center text-uppercase" style="display:none">loading</p>
+                <p class="nbe_loading text-center text-uppercase font-weight-bold" style="display:none">loading</p>
                 <br>
                 <div id="cibclc" class="form-row" onclick="cib_script();" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                   <div class="">
@@ -98,7 +98,7 @@
                     <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
-                <p class="cib_loading text-center text-uppercase" style="display:none">loading</p>
+                <p class="cib_loading text-center text-uppercase font-weight-bold" style="display:none">loading</p>
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
               </form>
