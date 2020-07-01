@@ -1397,13 +1397,14 @@ class HomeController extends Controller
             ]);
         }
         $order_id = $order->id;
+        $tran_id  = time();
         $shipping_amount = $city->shipping_amount;
         $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
-        $session_id = $this->createSessionId($total_price, $order_id);
-        return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id]);
+        $session_id = $this->createSessionId($total_price, $order_id,$tran_id);
+        return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id , 'tran_id' => $tran_id]);
     }
 
-    public function createSessionId($total, $order_id)
+    public function createSessionId($total, $order_id,$tran_id)
     {
 
         $ch = curl_init();
@@ -1457,13 +1458,14 @@ class HomeController extends Controller
 
         session()->put('successIndicator', $sub_id);
 
-        $actionName = "bank ahly";
+        $actionName = "NBE Integration";
         $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
         $parameters_arr = array(
+            'response' => $response,
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'session_id' => $session_id,
-            'response'=>$response
+            'tran_id' => $tran_id
         );
         $this->log($actionName, $not_URL, $parameters_arr);
 
@@ -1475,7 +1477,7 @@ class HomeController extends Controller
 
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
-            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success]);
+            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
             $client = \Auth::guard('client')->user();
             // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
             //     $m->from($client->email, __('front.order'));
@@ -1521,13 +1523,14 @@ class HomeController extends Controller
             ]);
         }
         $order_id = $order->id;
+        $tran_id  = time();
         $shipping_amount = $city->shipping_amount;
         $total_price = ($subTotal + $city->shipping_amount) - $couponSum;
-        $session_id = $this->createSessionIdCib($total_price, $order_id);
-        return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id]);
+        $session_id = $this->createSessionIdCib($total_price, $order_id,$tran_id);
+        return response()->json(['total_price' => $total_price, 'session_id' => $session_id, 'order_id' => $order_id , 'tran_id' => $tran_id]);
     }
 
-    public function createSessionIdCib($total, $order_id)
+    public function createSessionIdCib($total, $order_id,$tran_id)
     {
 
         $ch = curl_init();
@@ -1576,12 +1579,14 @@ class HomeController extends Controller
 
         session()->put('successIndicator', $sub_id);
 
-        $actionName = "bank ahly";
+        $actionName = "CiB Integration";
         $not_URL = 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56';
         $parameters_arr = array(
+            'response' => $response,
             'successIndicator' => $sub_id,
             'date' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
             'session_id' => $session_id,
+            'tran_id' => $tran_id
         );
         $this->log($actionName, $not_URL, $parameters_arr);
 
@@ -1602,7 +1607,7 @@ class HomeController extends Controller
     {
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
-            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success]);
+            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
             $client = \Auth::guard('client')->user();
             // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
             //     $m->from($client->email, __('front.order'));
@@ -1686,13 +1691,13 @@ class HomeController extends Controller
 
     public function canclePayment(Request $request)
     {
-        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Cancle]);
+        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Cancle , 'transaction_id' =>$request->tran_id]);
         return 'yes';
     }
 
     public function failPayment(Request $request)
     {
-        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Fail]);
+        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Fail, 'transaction_id' =>$request->tran_id]);
         return 'yes';
     }
     /*********************************************************** end design v2 *******/

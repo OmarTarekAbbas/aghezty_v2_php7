@@ -2,25 +2,23 @@
 var submit = document.querySelector('button');
 var $form ;
 var order_id = '';
-var tran_id = '';
-
-function errorCallbackcib(error) {
+function errorCallback(error) {
   console.log(JSON.stringify(error));
-  $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : order_id ,tran_id : tran_id},function(data){
+  $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : order_id },function(data){
     console.log(data);
   })
 }
 
-function cancelCallbackcib() {
+function cancelCallback() {
   console.log('Payment cancelled');
-  $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : order_id ,tran_id : tran_id},function(data){
+  $.post(window.location.origin+path_name+'/clients/canclePayment',{order_id : order_id },function(data){
     console.log(data);
   })
 }
 
-function completeCallbackcib(resultIndicator) {
+function completeCallback(resultIndicator) {
 
-  $.post(window.location.origin+path_name+'/clients/createPaymentCIB',{order_id : order_id ,tran_id : tran_id , 'resultIndicator' : resultIndicator},function(data){
+  $.post(window.location.origin+path_name+'/clients/createPayment',{order_id : order_id , 'resultIndicator' : resultIndicator},function(data){
     if(data.status == 'success')
     {
       location.href = data.returnUrl
@@ -28,12 +26,13 @@ function completeCallbackcib(resultIndicator) {
     else
     {
       $('.payment_error').css('display','block')
+      $.post(window.location.origin+path_name+'/clients/failPayment',{order_id : order_id },function(data){
+        console.log(data);
+      })
     }
   });
 }
-console.log(window.location.href)
 
-// completeCallback = window.location.href
 $(document).ready(function () {
     $('.form-row').css('display','block')
     $('.btn-pay').hide()
@@ -41,12 +40,12 @@ $(document).ready(function () {
         path_name = '/aghezty_v2_php7'
     }
 
-    $.get(window.location.origin+path_name+'/clients/ready_cib',{address_id : $('.add_id').val()},function(data){
+    $.get(window.location.origin+path_name+'/clients/ready_nbe',{address_id : $('.add_id').val()},function(data){
 
       order_id = data.order_id
-      tran_id  = data.tran_id 
+
       Checkout.configure({
-        merchant: 'TESTCIB700926',
+        merchant: 'EGPTEST1',
         order: {
           amount: function () {
             //Dynamic calculation of amount
@@ -54,7 +53,7 @@ $(document).ready(function () {
           },
           currency: 'EGP',
           description: 'Ordered goods',
-          id: data.tran_id
+          id: data.order_id
 
         },
         session: {
@@ -63,7 +62,7 @@ $(document).ready(function () {
         interaction: {
           operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
           merchant: {
-            name: 'Aghezty',
+            name: 'NBE Test',
             address: {
               line1: '200 Sample St',
               line2: '1234 Example Town'
@@ -72,16 +71,17 @@ $(document).ready(function () {
         }
       });
 
-      document.getElementById('cib').onclick();
-
-      $('.cib_loading').hide()
+      document.getElementById('ahly').onclick()
 
     });
-});
+
+})
 $('#radioOne,#radioTwo,.cash').click(function(){
     $('.form-row').hide()
     $('.btn-pay').show()
 })
+
+
 
 // window.onload = function(){
 //   setTimeout(loadAfterTime, 2000)

@@ -98,7 +98,7 @@ class HomeController extends Controller
             }
             $slide->image = $img;
         }
-        
+
         if($request->has('slide_url')){
             $slide->ads_url = $request->slide_url;
         }
