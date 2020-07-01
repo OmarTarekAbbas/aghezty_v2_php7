@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Constants\PaymentStatus;
 use App\Cart;
 use App\Client;
 use App\ClientAddress;
@@ -556,6 +557,25 @@ class HomeController extends Controller
         $client = Auth::user();
         $order = OrderResource::collection(Order::where('client_id', $client->id)->get());
         return response()->json(['status' => 'success', 'data' => $order, 'message' => 'Get All order'], 200);
+    }
+
+    // integration fnction
+    public function createPayment(Request $request)
+    {
+      $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id , 'payment' => $request->type]);
+      return "yes";
+
+    }
+    public function canclePayment(Request $request)
+    {
+        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Cancle , 'transaction_id' =>$request->tran_id]);
+        return 'yes';
+    }
+
+    public function failPayment(Request $request)
+    {
+        $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Fail, 'transaction_id' =>$request->tran_id]);
+        return 'yes';
     }
 
 }

@@ -12,6 +12,10 @@ Route::post('contact', 'HomeController@contact');
 Route::get('governorate', 'HomeController@governorate');
 Route::get('city', 'HomeController@city');
 
+Route::post('createPayment','HomeController@createPayment');
+Route::post('canclePayment','HomeController@canclePayment');
+Route::post('failPayment','HomeController@failPayment');
+
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/edit_profile', 'HomeController@edit_profile');
     Route::post('updated_password','HomeController@updated_password');

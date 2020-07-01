@@ -130,7 +130,7 @@
     script1.type = "text/javascript";
     script1.src = "https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js";
     script1.setAttribute('data-error', "errorCallback");
-    script1.setAttribute('data-cancle', "cancelCallback");
+    script1.setAttribute('data-cancel', "cancelCallback");
     script1.setAttribute('data-complete', "completeCallback");
     document.getElementsByTagName("body")[0].appendChild(script1);
 
@@ -138,7 +138,7 @@
     script.type = "text/javascript";
     script.src = "{{asset('js/paymentv2.js')}}";
     document.getElementsByTagName("body")[0].appendChild(script);
-    
+
     return false;
   }
 
@@ -158,7 +158,7 @@
     script1.type = "text/javascript";
     script1.src = "https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js";
     script1.setAttribute('data-error', "errorCallbackcib");
-    script1.setAttribute('data-cancle', "cancelCallbackcib");
+    script1.setAttribute('data-cancel', "cancelCallbackcib");
     script1.setAttribute('data-complete', "completeCallbackcib");
     document.getElementsByTagName("body")[0].appendChild(script1);
 
