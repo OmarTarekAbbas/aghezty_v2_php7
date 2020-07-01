@@ -19,8 +19,7 @@
       <div class="accordionn" id="accordionExample">
         <div class="card">
           <div class="card-header" id="headingThree">
-            <button class="btn btn-link collapsed" id="collapsed_pay" type="button" data-toggle="collapse"
-              data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <button class="btn btn-link collapsed" id="collapsed_pay" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
               Select Payment Method</button>
           </div>
 
@@ -79,33 +78,29 @@
                 @if(isset($_REQUEST['address_id']))
                 <input type="hidden" name="address_id" class="add_id" value="{{$_REQUEST['address_id']}}">
                 @else
-                <input type="hidden" name="address_id" class="add_id"
-                  value="{{Auth::guard('client')->user()->cities[0]->id}}">
+                <input type="hidden" name="address_id" class="add_id" value="{{Auth::guard('client')->user()->cities[0]->id}}">
                 @endif
                 <div id="charge-error" class="alert alert-danger" style="display:none">
                 </div>
 
-                <div id="nbeclc" class="form-row" onclick="nbe_script();"
-                  style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+                <div id="nbeclc" class="form-row" onclick="nbe_script();" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                   <div class="">
                     <input type="hidden" id="ahly" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
                     <img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
-                <p class="nbe_loading text-center" style="display:none">..... loading here</p>
+
+                <p class="nbe_loading text-center text-uppercase" style="display:none">loading</p>
                 <br>
-                <div id="cibclc" class="form-row" onclick="cib_script();"
-                  style="direction: {{dir_ar_en()}};display:none;text-align: center;">
+                <div id="cibclc" class="form-row" onclick="cib_script();" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                   <div class="">
                     <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
                     <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
-                <p class="cib_loading text-center" style="display:none">..... loading here</p>
+                <p class="cib_loading text-center text-uppercase" style="display:none">loading</p>
 
-                <button type="submit"
-                  class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay"
-                  style="display:none!important">@lang('front.paid_now')</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
               </form>
             </div>
           </div>
@@ -141,7 +136,6 @@
 
     return false;
   }
-
 </script>
 
 
@@ -168,18 +162,16 @@
     document.getElementsByTagName("body")[0].appendChild(script);
     return false;
   }
-
 </script>
 
 <script>
-  $('#radioThree,.visa').click(function () {
+  $('#radioThree,.visa').click(function() {
     $('.form-row').css('display', 'block')
     $('.btn-pay').hide()
   })
-  $('#radioOne,#radioTwo,.cash').click(function () {
+  $('#radioOne,#radioTwo,.cash').click(function() {
     $('.form-row').hide()
     $('.btn-pay').show()
   })
-
 </script>
 @endsection
