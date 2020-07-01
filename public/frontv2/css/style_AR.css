@@ -1755,6 +1755,38 @@ body {
 .choose-address .card-body form .form-group {
   text-align: right;
 }
+@keyframes rotation {
+  to {
+    transform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    -moz-transform: rotate(1turn);
+    -ms-transform: rotate(1turn);
+    -o-transform: rotate(1turn);
+  }
+}
+.choose-address .nbe_loading,
+.choose-address .cib_loading {
+  display: block;
+  position: relative;
+  margin: 1.25rem auto;
+  padding-top: 4.5em;
+  color: #fe9901;
+}
+.choose-address .nbe_loading::before,
+.choose-address .cib_loading::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 4em;
+  width: 4em;
+  margin-left: -2em;
+  border: 0.375em solid currentColor;
+  border-right-style: double;
+  border-radius: 50%;
+  animation: rotation 0.8s linear infinite;
+}
 
 /*----------------------------------------- End Status Page -----------------------------------------*/
 /*----------------------------------------- Strat Profile page -----------------------------------------*/

@@ -2318,6 +2318,40 @@ body {
       }
     }
   }
+
+  @keyframes rotation {
+    to {
+      transform: rotate(1turn);
+      -webkit-transform: rotate(1turn);
+      -moz-transform: rotate(1turn);
+      -ms-transform: rotate(1turn);
+      -o-transform: rotate(1turn);
+    }
+  }
+
+  .nbe_loading,
+  .cib_loading {
+    display: block;
+    position: relative;
+    margin: 1.25rem auto;
+    padding-top: 4.5em;
+    color: #fe9901;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 4em;
+      width: 4em;
+      margin-left: -2em;
+      border: .375em solid currentColor;
+      border-right-style: double;
+      border-radius: 50%;
+      animation: rotation .8s linear infinite;
+    }
+  }
 }
 
 
