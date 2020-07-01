@@ -1,25 +1,29 @@
 /* general */
+
 $blue_color: #0566b4;
 $blueTitle_color: #0f6ab2;
-
 $greyTitle_color: #666;
 $grey_color: #e6e6e6;
-
 $white_color: #FFF;
 $black_color: #000;
 $yellow_color: #ffeb00;
 
 /* width */
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
+
 /* Track */
+
 ::-webkit-scrollbar-track {
   background: #Fff;
 }
 
+
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
   background: #fe9901;
   border-top-left-radius: 0;
@@ -33,14 +37,16 @@ $yellow_color: #ffeb00;
   -o-border-radius: 4px; */
 }
 
+
 /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
 
 .active_menu {
-  // background-color: $white_color;
 
+  // background-color: $white_color;
   a {
     color: $blue_color !important;
     text-decoration: underline !important;
@@ -54,7 +60,6 @@ a {
   cursor: pointer;
 }
 
-
 .container-fluid {
   padding-right: 100px !important;
   padding-left: 100px !important;
@@ -64,7 +69,6 @@ a {
 // 	font-family: myFont;
 // 	src: url('../font/HSN_sadiyah.ttf');
 // }
-
 html {
   scroll-behavior: smooth;
 }
@@ -115,7 +119,9 @@ body {
   }
 }
 
+
 /*----------------------------------------- Start Header -----------------------------------------*/
+
 .head_two {
   background-color: $greyTitle_color;
   width: 100%;
@@ -145,8 +151,8 @@ body {
     width: 100%;
     display: block;
     margin-top: 2.6%;
-    // padding-left: 2.5rem;
 
+    // padding-left: 2.5rem;
     #search-bar {
       width: 100%;
       height: 45px;
@@ -286,7 +292,6 @@ body {
 // .dropdown:hover .dropdown-menu {
 // 	display: block;
 // }
-
 .dropdown-item.active {
   color: #007bff !important;
   background: none !important;
@@ -386,9 +391,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Header -----------------------------------------*/
 
+
 /*----------------------------------------- Start Home Page -----------------------------------------*/
+
 .carsoul_ads {
   .owl-one {
     direction: ltr;
@@ -410,7 +418,7 @@ body {
       .owl-next {
         font-size: 5rem;
         position: absolute;
-        bottom: 7rem;
+        bottom: 1rem;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -439,7 +447,7 @@ body {
   .top_banner {
     a {
       img {
-        height: 230px;
+        height: 139px;
       }
     }
   }
@@ -469,12 +477,12 @@ body {
           width: 75%;
           height: 12rem;
           position: relative;
+
           // transition: all 1.1s linear;
           // -webkit-transition: all 1.1s linear;
           // -moz-transition: all 1.1s linear;
           // -ms-transition: all 1.1s linear;
           // -o-transition: all 1.1s linear;
-
           // &:hover,
           // &:focus {
           //   transform: rotate(360deg);
@@ -485,7 +493,6 @@ body {
           //   width: 85%;
           //   height: 13.5rem;
           // }
-
           &.diamond_bg_1 {
             background-color: #4c4c4c;
           }
@@ -551,7 +558,6 @@ body {
     }
   }
 }
-
 
 .product_view {
   .product_view_type {
@@ -673,9 +679,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Home Page -----------------------------------------*/
 
+
 /*----------------------------------------- Start List Product Page -----------------------------------------*/
+
 .main {
   #button_jq {
     position: fixed;
@@ -729,7 +738,6 @@ body {
             -moz-transition: all 1.1s linear;
             -ms-transition: all 1.1s linear;
             -o-transition: all 1.1s linear;
-
             /* &:hover,
             &:focus {
               width: 75% !important;
@@ -740,7 +748,6 @@ body {
           .full_desc {
             text-align: center !important;
           }
-
         }
 
         .rating_list_product,
@@ -788,12 +795,23 @@ body {
 
   .modal.open_left .modal-body,
   .modal.open_right .modal-body {
-    padding: 15px 15px 80px;
+    padding: 15px 15px;
   }
 
   /* right */
   .modal.open_right.fade.in .modal-dialog {
     right: 0;
+  }
+
+  #propertys_mobile {
+    .filter_close {
+      background-color: #fe9901;
+      color: $white_color;
+      margin: 8% auto;
+      display: block;
+      width: 50%;
+      position: unset;
+    }
   }
 
   #toggle_plus_minus {
@@ -925,7 +943,6 @@ body {
       }
     }
 
-
     .selsort {
       color: #777;
       font-size: 13px;
@@ -980,7 +997,6 @@ body {
         -moz-transition: all 1.1s linear;
         -ms-transition: all 1.1s linear;
         -o-transition: all 1.1s linear;
-
         /* &:hover,
         &:focus {
           width: 100% !important;
@@ -1091,9 +1107,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End List Product Page -----------------------------------------*/
 
+
 /***************************************** start inner-page ********************************************/
+
 .main {
   #inner-page {
     .price_disc_offer {
@@ -1101,8 +1120,8 @@ body {
       // margin-top: 15%;
       .product-label {
         position: absolute;
-        top: 51%;
-        left: 6rem;
+        top: 41%;
+        left: 1rem;
         font-size: 14px;
         color: $white_color;
         z-index: 3;
@@ -1260,7 +1279,7 @@ body {
 
       .quantity {
         border-bottom: 1px dashed #08c;
-        width: 14%;
+        width: 21%;
         text-align: center;
         line-height: 17px;
         font-size: 15px;
@@ -1311,7 +1330,6 @@ body {
         margin-bottom: 1rem;
         margin-left: 6.5rem;
         width: 87%;
-
 
         &:hover,
         &:focus {
@@ -1562,8 +1580,8 @@ body {
     text-align: right;
 
     .table_desc {
-      // padding-left: 6%;
 
+      // padding-left: 6%;
       .table {
         border: 1px solid #dcdcdc;
 
@@ -1636,7 +1654,6 @@ body {
           color: #222;
         }
       }
-
 
       .review-area-title {
         font-size: 15px;
@@ -1747,9 +1764,12 @@ body {
   color: #ffc600;
 }
 
+
 /***************************************** end inner-page ********************************************/
 
+
 /*----------------------------------------- Start Cart Page -----------------------------------------*/
+
 .main {
   .alert_msg {
     font-size: 0.8rem;
@@ -2090,9 +2110,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Cart Page -----------------------------------------*/
 
+
 /*----------------------------------------- Start Login Page -----------------------------------------*/
+
 .log_in {
   .log_in_bg {
     background-color: #343a40;
@@ -2155,9 +2178,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Login Page -----------------------------------------*/
 
+
 /*----------------------------------------- Start MyOrder Page -----------------------------------------*/
+
 .order_one,
 .order_two {
   .date_order {
@@ -2259,9 +2285,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End MyOrder Page -----------------------------------------*/
 
+
 /*----------------------------------------- Start Status Page -----------------------------------------*/
+
 .choose-address {
   .card-header {
     #collapsed_pay {
@@ -2289,11 +2318,48 @@ body {
       }
     }
   }
+
+  @keyframes rotation {
+    to {
+      transform: rotate(1turn);
+      -webkit-transform: rotate(1turn);
+      -moz-transform: rotate(1turn);
+      -ms-transform: rotate(1turn);
+      -o-transform: rotate(1turn);
+    }
+  }
+
+  .nbe_loading,
+  .cib_loading {
+    display: block;
+    position: relative;
+    margin: 1.25rem auto;
+    padding-top: 4.5em;
+    color: #fe9901;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 4em;
+      width: 4em;
+      margin-left: -2em;
+      border: .375em solid currentColor;
+      border-right-style: double;
+      border-radius: 50%;
+      animation: rotation .8s linear infinite;
+    }
+  }
 }
+
 
 /*----------------------------------------- End Status Page -----------------------------------------*/
 
+
 /*----------------------------------------- Strat Profile page -----------------------------------------*/
+
 .my_profile {
   .my_profile_bg {
     background-color: #343a40;
@@ -2616,8 +2682,6 @@ body {
           border-bottom-right-radius: 0;
         }
 
-
-
         .form-control:not(:first-child) {
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
@@ -2641,9 +2705,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Profile page -----------------------------------------*/
 
+
 /*----------------------------------------- Start contact us  -----------------------------------------*/
+
 .call-center {
   background-color: $black_color;
   border-radius: 12px;
@@ -2722,9 +2789,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End contact us  -----------------------------------------*/
 
+
 /*----------------------------------------- Start Service Center  -----------------------------------------*/
+
 .service_center {
   .service_center_tabel {
     tbody {
@@ -2752,9 +2822,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Service Center  -----------------------------------------*/
 
+
 /*----------------------------------------- Start Upload Img Section Include -----------------------------------------*/
+
 .profile_img {
   position: relative;
 
@@ -2802,9 +2875,12 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
 
+
 /*----------------------------------------- Start Footer -----------------------------------------*/
+
 .footer_footer {
   &::before {
     content: "";
@@ -2900,7 +2976,7 @@ body {
       line-height: 3rem;
       border-radius: 1.6875rem;
       transition: all 0.5s ease;
-      margin-right: 1.5rem;
+      margin-right: 0.5rem;
       margin-bottom: 0.25rem;
 
       &:hover,
@@ -2976,7 +3052,9 @@ body {
   }
 }
 
+
 /* Start Scroll Top */
+
 #return-to-top {
   position: fixed;
   bottom: 20px;
@@ -3015,11 +3093,18 @@ body {
   }
 }
 
+
 /* End Scroll Top */
+
+
 /*----------------------------------------- End Footer -----------------------------------------*/
 
+
 /*----------------------------------------- Start Media Query -----------------------------------------*/
+
+
 /* Start Media Query Mobile */
+
 @media (min-width: 320px) and (max-width: 375px) {
 
   .alert-success,
@@ -3378,7 +3463,6 @@ body {
       }
     }
 
-
     .grid_list {
       margin-left: 21px;
     }
@@ -3571,16 +3655,21 @@ body {
             margin-top: 0;
 
             .price {
-              font-size: 18px;
+              font-size: 16px;
               margin: 0;
+              line-height: 1;
+              margin-top: 2rem;
+              text-align: center;
             }
 
             .discount {
-              position: absolute;
+              // position: absolute;
+              // right: 83px;
+              line-height: 1;
               text-align: left;
-              left: 87px;
-              font-size: 18px;
+              font-size: 16px;
               margin: 0;
+              margin-top: 2rem;
             }
 
             .product-label {
@@ -3590,6 +3679,7 @@ body {
           }
 
           .contact_us {
+            margin-top: 2rem;
             .rounded-social-buttons {
               margin-right: 4.5rem;
               margin-top: -10% !important;
@@ -3824,7 +3914,6 @@ body {
                 margin-top: 0.9rem;
                 line-height: 2;
               }
-
             }
 
             td {
@@ -4120,7 +4209,6 @@ body {
                     width: 1.75rem !important;
                     height: 1.75rem !important;
                     left: 0.5rem !important;
-
                   }
 
                   &:after {
@@ -4320,6 +4408,7 @@ body {
   }
 
   .head_three {
+    top: 0;
     .navbar {
       padding: 5px 0;
 
@@ -4370,8 +4459,6 @@ body {
           }
         }
       }
-
-
     }
 
     #mobile_nav {
@@ -4727,7 +4814,6 @@ body {
         }
       }
 
-
       .content_view {
         border: 1px solid #CCC;
 
@@ -4844,16 +4930,21 @@ body {
             margin-top: 0;
 
             .price {
-              font-size: 18px;
+              text-align: center;
+              font-size: 16px;
               margin: 0;
+              margin-top: 2rem;
+              line-height: 1;
             }
 
             .discount {
-              position: absolute;
+              // position: absolute;
+              // right: 100px;
               text-align: left;
-              left: 87px;
-              font-size: 18px;
+              font-size: 16px;
               margin: 0;
+              margin-top: 2rem;
+              line-height: 1;
             }
 
             .product-label {
@@ -4863,8 +4954,10 @@ body {
           }
 
           .contact_us {
+            margin-top: 1rem;
+
             .rounded-social-buttons {
-              margin-right: 4.5rem;
+              margin-right: 5.5rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 
@@ -5400,7 +5493,6 @@ body {
                     width: 1.75rem !important;
                     height: 1.75rem !important;
                     left: 0.5rem !important;
-
                   }
 
                   &:after {
@@ -5570,6 +5662,7 @@ body {
   }
 }
 
+
 /* End Media Query Mobile */
 
 @media only screen and (min-width: 0) and (max-width: 600px) {
@@ -5577,7 +5670,6 @@ body {
     width: 100%;
     outline: 0 !important;
   }
-
 
   .grid_list {
     // float: right;
@@ -5635,7 +5727,6 @@ body {
           }
         }
       }
-
     }
   }
 
@@ -5682,6 +5773,7 @@ body {
 
   .head_three {
     top: 5.8% !important;
+
     .navbar {
       .navbar-nav {
         .nav-item {
@@ -5748,6 +5840,7 @@ body {
 
   .main {
     padding-top: 12%;
+
     .choose_category {
       .choose_category_background {
         .choose_category_form {
@@ -5862,7 +5955,6 @@ body {
             img {
               width: 65% !important;
               height: 292px;
-
               /* &:hover,
               &:focus {
                 width: 60% !important;
@@ -5879,7 +5971,6 @@ body {
         img {
           height: 202px;
           width: 100% !important;
-
           /* &:hover,
           &:focus {
             width: 100% !important;
@@ -5966,7 +6057,6 @@ body {
               }
             }
           }
-
         }
       }
 
@@ -6037,7 +6127,9 @@ body {
   }
 }
 
+
 /*----------------------------------------- End Media Query -----------------------------------------*/
+
 
 /* Start Animation & Key Frame For Modal */
 
@@ -6082,9 +6174,12 @@ body {
   }
 }
 
+
 /* End Animation & Key Frame For Modal */
 
+
 /* Start Animation */
+
 @-webkit-keyframes hvr-bob {
   0% {
     -webkit-transform: translateY(-8px);
@@ -6163,7 +6258,9 @@ body {
   animation-direction: normal, alternate;
 }
 
+
 /* Icon Forward */
+
 .hvr-icon-forward {
   display: block;
   vertical-align: middle;
@@ -6181,7 +6278,9 @@ body {
   transform: translateX(-12px);
 }
 
+
 /* Wobble To Bottom Right */
+
 @-webkit-keyframes hvr-wobble-to-bottom-right {
   16.65% {
     -webkit-transform: translate(8px, 8px);
@@ -6267,7 +6366,9 @@ body {
   animation-iteration-count: 1;
 }
 
+
 /* Outline In */
+
 .hvr-outline-in {
   display: inline-block;
   vertical-align: middle;
@@ -6302,7 +6403,9 @@ body {
   opacity: 1;
 }
 
+
 /* Float */
+
 .hvr-float {
   // display: inline-block;
   vertical-align: middle;
@@ -6324,7 +6427,9 @@ body {
   transform: translateY(-10px);
 }
 
+
 /* Sweep To Bottom */
+
 .hvr-sweep-to-bottom {
   display: inline-block;
   vertical-align: middle;
@@ -6372,7 +6477,9 @@ body {
   transform: scaleY(1);
 }
 
+
 /* Pulse */
+
 @-webkit-keyframes hvr-pulse {
   25% {
     -webkit-transform: scale(1.1);
@@ -6418,7 +6525,9 @@ body {
   animation-iteration-count: 1;
 }
 
+
 /* Start Animation For Flash Alert */
+
 .bounce-in-bottom {
   animation: bounce-in-bottom 1.1s ease-in-out 0.5s alternate both;
   -webkit-animation: bounce-in-bottom 1.1s ease-in-out 0.5s alternate both;
@@ -6544,5 +6653,8 @@ body {
   }
 }
 
+
 /* End Animation For Flash Alert */
+
+
 /* End Animation */

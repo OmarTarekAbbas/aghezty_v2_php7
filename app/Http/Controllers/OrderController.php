@@ -25,7 +25,7 @@ class OrderController extends Controller
     if ($request->has('client_id') && $request->client_id != '') {
       $orders = $orders->where('client_id', $request->client_id);
     }
-    $orders = $orders->get();
+    $orders = $orders->latest('created_at')->get();
 
     return \DataTables::of($orders)
       ->addColumn('index', function (Order $order) {
@@ -53,6 +53,9 @@ class OrderController extends Controller
       })
       ->addColumn('payment_status', function (Order $order) {
         return $order->payment_status;
+      })
+      ->addColumn('payment', function (Order $order) {
+        return $order->payment;
       })
       ->addColumn('status', function (Order $order) {
         return $order->status;

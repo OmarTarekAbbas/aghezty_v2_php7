@@ -166,7 +166,7 @@ class UserController extends Controller
         {
             $user->profile_image = 'profile_images/avatar.png' ;
         }
-        return view('userprofile.profile',compact('user','role'));
+        return view('userprofile.profile',compact('user'));
     }
 
 

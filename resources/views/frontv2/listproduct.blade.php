@@ -325,6 +325,8 @@ nav.container-fluid {
                     </div>
                   </div>
                 </template>
+
+                <a href="#0" class="btn filter_close" id="" data-toggle="modal"data-target="#exampleModal">@lang('front.filter')</a>
               </div>
 
             </div>

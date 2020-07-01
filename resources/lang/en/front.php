@@ -113,6 +113,8 @@ return [
     'cont_shop' => 'continue Shopping',
     'was_not_found' => 'Was Not Found',
     'page'  => 'the page',
+    'loading'=> 'Loading',
+    'filter' => 'Filter',
     'inner' => [
         'add_your_review' => 'Add Your Review',
         'reviews' => 'Reviews',

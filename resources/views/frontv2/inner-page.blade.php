@@ -141,50 +141,61 @@
         @endif --}}
 
         @php
-            if($product){
-                if($product->Installments != null){
-                    $Installments = json_decode($product->Installments, true);
-                }else{
-                    $Installments = false;
-                }
-            }else{
-                $Installments = false;
-            }
+        if($product){
+        if($product->Installments != null){
+        $Installments = json_decode($product->Installments, true);
+        }else{
+        $Installments = false;
+        }
+        }else{
+        $Installments = false;
+        }
         @endphp
 
-@if ($Installments)
-<div class="installments">
-  <h6>@lang('front.inner.Installments')</h6>
-  <div class="row">
-    @foreach ($Installments as $key => $value)
-    @if ($value != null)
-    <div class="col-6 text-center"><div class="m-1 p-2 alert-secondary"> {{$key}} @lang('messages.Months') / {{$value}} @lang('front.pound')</div></div>
-    @endif
-    @endforeach
-  </div>
-</div>
-@endif
+        @if ($Installments)
+        <div class="installments">
+          <h6>@lang('front.inner.Installments')</h6>
+          <div class="row">
+            @foreach ($Installments as $key => $value)
+            @if ($value != null)
+            <div class="col-6 text-center" style="line-height: 16px;">
+              <div class="m-1 p-2 alert-secondary"> {{$key}} @lang('messages.Months') / {{$value}} @lang('front.pound')</div>
+            </div>
+            @endif
+            @endforeach
+          </div>
+        </div>
+        @endif
 
-<div class="row price_disc_offer">
-          <h4 class="col-md-6 price text-primary font-weight-bold">
-            {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
-            @lang('front.egp')</h4>
-          @if($product->price_after_discount > 0)
-          <h4 class="col-md-6 discount text-muted font-weight-bold">{{number_format($product->price)}}
-            @lang('front.egp')</h4>
-          @if($product->discount > 0)
+        <div class="row price_disc_offer">
+          <div class="col-md-4 col-4 p-0">
+            <h4 class="price text-primary font-weight-bold">
+              {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
+              @lang('front.egp')</h4>
+          </div>
+
+          <div class="col-md-4 col-4 p-0">
+            @if($product->price_after_discount > 0)
+            <h4 class="discount text-muted font-weight-bold">{{number_format($product->price)}}
+              @lang('front.egp')</h4>
+            @if($product->discount > 0)
+          </div>
+
           <style>
             .main #inner-page .price_disc_offer .product-label .sale-product-icon .testtt::before {
               content:"{{$product->discount}}"
             }
           </style>
-          <div class="product-label text-center font-weight-bold">
-            <span class="sale-product-icon">
-              <span class="testtt"></span>
-            </span>
+          <div class="col-md-4 col-4 p-0">
+            <div class="product-label text-center font-weight-bold">
+              <span class="sale-product-icon">
+                <span class="testtt"></span>
+              </span>
+            </div>
+            @endif
+            @endif
           </div>
-          @endif
-          @endif
+
         </div>
 
         <div class="contact_us w-100 text-left mb-3">
@@ -206,9 +217,9 @@
               <i class="fab fa-facebook-messenger messenger_icon"></i>
             </a>
 
-            <a class="social-button sms_link" title="Messege" href="sms:{{setting('phone')}}">
+            {{-- <a class="social-button sms_link" title="Messege" href="sms:{{setting('phone')}}">
               <i class="far fa-comment sms_icon"></i>
-            </a>
+            </a> --}}
           </div>
         </div>
 
@@ -554,7 +565,8 @@
 
       },
     });
-  })
+  });
+
   $('#gover_add').change(function() {
     $.ajax({
       url: "{{url('clients/city')}}/" + $(this).val(),
@@ -567,7 +579,8 @@
         }
       },
     });
-  })
+  });
+
   $(document).ready(function() {
     $.ajax({
       url: "{{url('clients/city')}}/" + $('#gover_add').val(),
@@ -582,6 +595,7 @@
     });
   });
 </script>
+
 <script>
   var based_selection_typed = new Typed('#based_selection_typed', {
     strings: ['@lang("front.inner.based_on_your_select")'],
@@ -600,6 +614,7 @@
     smartBackspace: true, // this is a default
     loop: true
   });
+
   @if(is_buy($product -> id) && is_not_rate($product -> id))
   var review_title3_title_typed = new Typed('#review_title3_title_typed', {
     strings: ['@lang("front.rate_product")'],

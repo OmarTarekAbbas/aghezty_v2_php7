@@ -328,7 +328,7 @@ body {
 .carsoul_ads .owl-one .owl-nav .owl-next {
   font-size: 5rem;
   position: absolute;
-  bottom: 7rem;
+  bottom: 1rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -351,7 +351,7 @@ body {
   display: none;
 }
 .carsoul_ads .top_banner a img {
-  height: 230px;
+  height: 139px;
 }
 .carsoul_ads .full_banner img {
   height: 175px;
@@ -601,10 +601,18 @@ body {
 }
 .main .modal.open_left .modal-body,
 .main .modal.open_right .modal-body {
-  padding: 15px 15px 80px;
+  padding: 15px 15px;
 }
 .main .modal.open_right.fade.in .modal-dialog {
   right: 0;
+}
+.main #propertys_mobile .filter_close {
+  background-color: #fe9901;
+  color: #FFF;
+  margin: 8% auto;
+  display: block;
+  width: 50%;
+  position: unset;
 }
 .main #toggle_plus_minus .accordion i {
   float: left !important;
@@ -839,8 +847,8 @@ body {
 /***************************************** start inner-page ********************************************/
 .main #inner-page .price_disc_offer .product-label {
   position: absolute;
-  top: 51%;
-  left: 6rem;
+  top: 41%;
+  left: 1rem;
   font-size: 14px;
   color: #FFF;
   z-index: 3;
@@ -980,7 +988,7 @@ body {
 }
 .main #inner-page .info .quantity {
   border-bottom: 1px dashed #08c;
-  width: 14%;
+  width: 21%;
   text-align: center;
   line-height: 17px;
   font-size: 15px;
@@ -1747,6 +1755,38 @@ body {
 .choose-address .card-body form .form-group {
   text-align: right;
 }
+@keyframes rotation {
+  to {
+    transform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    -moz-transform: rotate(1turn);
+    -ms-transform: rotate(1turn);
+    -o-transform: rotate(1turn);
+  }
+}
+.choose-address .nbe_loading,
+.choose-address .cib_loading {
+  display: block;
+  position: relative;
+  margin: 1.25rem auto;
+  padding-top: 4.5em;
+  color: #fe9901;
+}
+.choose-address .nbe_loading::before,
+.choose-address .cib_loading::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 4em;
+  width: 4em;
+  margin-left: -2em;
+  border: 0.375em solid currentColor;
+  border-right-style: double;
+  border-radius: 50%;
+  animation: rotation 0.8s linear infinite;
+}
 
 /*----------------------------------------- End Status Page -----------------------------------------*/
 /*----------------------------------------- Strat Profile page -----------------------------------------*/
@@ -2238,7 +2278,7 @@ body {
   line-height: 3rem;
   border-radius: 1.6875rem;
   transition: all 0.5s ease;
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
   margin-bottom: 0.25rem;
 }
 .footer_footer .rounded-social-buttons .social-button:hover, .footer_footer .rounded-social-buttons .social-button:focus {
@@ -2716,19 +2756,25 @@ body {
     margin-top: 0;
   }
   .main #inner-page .info .features .price_disc_offer .price {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    line-height: 1;
+    margin-top: 2rem;
+    text-align: center;
   }
   .main #inner-page .info .features .price_disc_offer .discount {
-    position: absolute;
+    line-height: 1;
     text-align: left;
-    left: 87px;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    margin-top: 2rem;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
     top: 9px;
     left: 9px;
+  }
+  .main #inner-page .info .features .contact_us {
+    margin-top: 2rem;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
     margin-right: 4.5rem;
@@ -3191,6 +3237,9 @@ body {
     margin-top: 0;
   }
 
+  .head_three {
+    top: 0;
+  }
   .head_three .navbar {
     padding: 5px 0;
   }
@@ -3549,22 +3598,28 @@ body {
     margin-top: 0;
   }
   .main #inner-page .info .features .price_disc_offer .price {
-    font-size: 18px;
+    text-align: center;
+    font-size: 16px;
     margin: 0;
+    margin-top: 2rem;
+    line-height: 1;
   }
   .main #inner-page .info .features .price_disc_offer .discount {
-    position: absolute;
     text-align: left;
-    left: 87px;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    margin-top: 2rem;
+    line-height: 1;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
     top: 9px;
     left: 17px;
   }
+  .main #inner-page .info .features .contact_us {
+    margin-top: 1rem;
+  }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
-    margin-right: 4.5rem;
+    margin-right: 5.5rem;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
