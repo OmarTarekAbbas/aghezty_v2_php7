@@ -18,6 +18,12 @@ document.getElementById("nbeclc").addEventListener("click", function (evt) {
     spinner.hide();
   }, 3000);
 });
+document.getElementById("cibclc").addEventListener("click", function (evt) {
+  spinner.show();
+  setTimeout(function () {
+    spinner.hide();
+  }, 3000);
+});
 
 
 
