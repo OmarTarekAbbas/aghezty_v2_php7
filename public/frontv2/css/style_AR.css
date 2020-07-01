@@ -612,6 +612,7 @@ body {
   margin: 8% auto;
   display: block;
   width: 50%;
+  position: unset;
 }
 .main #toggle_plus_minus .accordion i {
   float: left !important;
