@@ -97,7 +97,7 @@
   </div>
 
   <script>
-    function loadScript(url,payment, callback) {
+      function loadScript(url,payment, callback) {
       var script = document.createElement("script")
       script.type = "text/javascript";
       script.setAttribute('data-error', "errorCallback"+payment);
@@ -119,16 +119,18 @@
       script.src = url;
       document.getElementsByTagName("head")[0].appendChild(script);
     }
+  </script>
 
+  <script>
     function nbe_script() {
 
       loadScript("https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js","NBE", function() {
           Checkout.configure({
-          merchant: 'TESTCIB700926',
+          merchant: 'EGPTEST1',
           order: {
             amount: function () {
               //Dynamic calculation of amount
-              return "{{$order->total_price}}"
+              return {{$order->total_price}}
             },
             currency: 'EGP',
             description: 'Ordered goods',
@@ -136,7 +138,7 @@
 
           },
           session: {
-            id: parseInt('{{$nbe_session_id}}')
+            id: '{{$nbe_session_id}}'
           },
           interaction: {
             operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
@@ -157,47 +159,6 @@
       return false;
     }
 
-  </script>
-
-  <script>
-    function cib_script() {
-
-      loadScript("https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js","CIB", function() {
-        Checkout.configure({
-          merchant: 'EGPTEST1',
-          order: {
-            amount: function () {
-              //Dynamic calculation of amount
-              return "{{$order->total_price}}"
-            },
-            currency: 'EGP',
-            description: 'Ordered goods',
-            id: "{{$order->id}}"
-
-          },
-          session: {
-            id: "{{$cib_session_id}}"
-          },
-          interaction: {
-            operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
-            merchant: {
-              name: 'NBE Test',
-              address: {
-                line1: '200 Sample St',
-                line2: '1234 Example Town'
-              }
-            }
-          }
-        })
-        document.getElementById('cib').onclick()
-      })
-
-      return false;
-    }
-
-  </script>
-
-  <script>
     function errorCallbackNBE(error) {
       console.log(JSON.stringify(error));
       $.post(window.location.origin + path_name + '/clients/failPayment', {
@@ -235,9 +196,45 @@
       });
     }
 
+
   </script>
 
   <script>
+    function cib_script() {
+
+      loadScript("https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js","CIB", function() {
+        Checkout.configure({
+          merchant: 'TESTCIB700926',
+          order: {
+            amount: function () {
+              //Dynamic calculation of amount
+              return {{$order->total_price}}
+            },
+            currency: 'EGP',
+            description: 'Ordered goods',
+            id: "{{$order->id}}"
+
+          },
+          session: {
+            id: "{{$cib_session_id}}"
+          },
+          interaction: {
+            operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
+            merchant: {
+              name: 'Aghezty',
+              address: {
+                line1: '200 Sample St',
+                line2: '1234 Example Town'
+              }
+            }
+          }
+        })
+        document.getElementById('cib').onclick()
+      })
+
+      return false;
+    }
+
     function errorCallbackCIB(error) {
       console.log(JSON.stringify(error));
       $.post(window.location.origin + path_name + '/clients/failPayment', {
@@ -270,7 +267,9 @@
       });
     }
 
+
   </script>
+
 </body>
 
 </html>

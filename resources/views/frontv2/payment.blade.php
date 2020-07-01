@@ -92,6 +92,7 @@
                     <img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
+                <p class="nbe_loading text-center" style="display:none">..... loading here</p>
                 <br>
                 <div id="cibclc" class="form-row" onclick="cib_script();"
                   style="direction: {{dir_ar_en()}};display:none;text-align: center;">
@@ -100,7 +101,7 @@
                     <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
-
+                <p class="cib_loading text-center" style="display:none">..... loading here</p>
 
                 <button type="submit"
                   class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay"
@@ -124,6 +125,7 @@
 {{-- <script src="{{asset('js/paymentv2.js')}}"></script> --}}
 <script>
   function nbe_script() {
+    $('.nbe_loading').show()
     var script1 = document.createElement("script");
     script1.type = "text/javascript";
     script1.src = "https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js";
@@ -151,12 +153,13 @@
 {{-- <script src="{{asset('js/paymentcibv2.js')}}"></script> --}}
 <script>
   function cib_script() {
+    $('.cib_loading').show()
     var script1 = document.createElement("script");
     script1.type = "text/javascript";
     script1.src = "https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js";
-    script1.setAttribute('data-error', "errorCallback");
-    script1.setAttribute('data-cancle', "cancelCallback");
-    script1.setAttribute('data-complete', "completeCallback");
+    script1.setAttribute('data-error', "errorCallbackcib");
+    script1.setAttribute('data-cancle', "cancelCallbackcib");
+    script1.setAttribute('data-complete', "completeCallbackcib");
     document.getElementsByTagName("body")[0].appendChild(script1);
 
     var script = document.createElement("script");

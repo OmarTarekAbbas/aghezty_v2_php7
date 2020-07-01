@@ -8,7 +8,7 @@ use App\Constants\PaymentStatus;
 class Order extends Model
 {
     protected $fillable = [
-        'client_id' , 'address_id' , 'shipping_amount' , 'status' , 'total_price','lang','payment','payment_status'
+        'client_id' , 'address_id' , 'shipping_amount' , 'status' , 'total_price','lang','payment','payment_status','transaction_id'
     ];
 
     public function getTotalPriceAttribute($value){
