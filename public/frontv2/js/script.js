@@ -16,7 +16,7 @@ document.getElementById("nbeclc").addEventListener("click", function (evt) {
   spinner.show();
   setTimeout(function () {
     spinner.hide();
-  }, 2000);
+  }, 3000);
 });
 
 

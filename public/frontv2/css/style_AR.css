@@ -4315,6 +4315,14 @@ body {
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/
+.jquery-spinner-wrap {
+  position: fixed;
+  left: 0;
+}
+.jquery-spinner-wrap .jquery-spinner-circle {
+  display: none !important;
+}
+
 /* Start Animation & Key Frame For Modal */
 @keyframes slide-right {
   0% {
