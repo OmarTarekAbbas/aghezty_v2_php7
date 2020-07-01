@@ -5,7 +5,7 @@
 
 <!-- End Owl Carsoul -->
 
-<div class="main">
+<div class="main" id="visa_fade">
   <div class="mobile_views">
     <div class="status_title my-3">
       <h4 class="text-center border-bottom border-secondary w-25 m-auto">@lang('front.choose_payment')</h4>
@@ -137,8 +137,6 @@
     return false;
   }
 </script>
-
-
 {{-- <script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
 			data-error="errorCallbackcib"
 			data-cancel="cancelCallbackcib"

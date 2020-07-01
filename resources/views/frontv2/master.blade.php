@@ -59,6 +59,7 @@
   <!-- owl carousel -->
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
+  <link rel="stylesheet" href="{{url('public/frontv2/css/jquery-spinner.min.css')}}">
   <!-- hover -->
   <!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
   <link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
@@ -725,6 +726,7 @@
   <!-- typed JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.js"></script>
   <!-- Script JS -->
+  <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
   <script src="{{url('public/frontv2/js/script.js')}}"></script>
   <script src="{{url('js/vue.min.js')}}"></script>
   @foreach ($categorys as $category)
