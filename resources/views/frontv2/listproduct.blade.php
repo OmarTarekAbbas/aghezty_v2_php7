@@ -326,7 +326,7 @@ nav.container-fluid {
                   </div>
                 </template>
 
-                <a href="#0" class="btn filter_close">Filter</a>
+                <a href="#0" class="btn filter_close" id="" data-toggle="modal"data-target="#exampleModal">Filter</a>
               </div>
 
             </div>
