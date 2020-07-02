@@ -751,8 +751,6 @@ body {
   padding: 0.65rem 0;
 }
 .main .content_view a img {
-  width: 100% !important;
-  height: 319px;
   margin: 0 auto;
   display: block;
   transition: all 1.1s linear;
