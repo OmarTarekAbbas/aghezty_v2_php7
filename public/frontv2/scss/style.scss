@@ -2141,7 +2141,7 @@ body {
     position: relative;
     margin: 1.25rem auto;
     padding-top: 4.5em;
-    color: #fe9901;
+    color: $black_color;
 
     &::before {
       content: "";
@@ -2152,7 +2152,7 @@ body {
       height: 4em;
       width: 4em;
       margin-left: -2em;
-      border: .375em solid currentColor;
+      border: .375em solid $yellow_color;
       border-right-style: double;
       border-radius: 50%;
       animation: rotation .8s linear infinite;
@@ -5797,14 +5797,25 @@ body {
 
 
 /*----------------------------------------- End Media Query -----------------------------------------*/
+.jquery-spinner-wrap {
+  position: fixed;
+  left: 0;
 
+  .jquery-spinner-circle {
+    display: none !important;
+  }
+}
 
 /* Start Animation & Key Frame For Modal */
 
 @keyframes slide-right {
   0% {
     transform: translateX(0);
-  }
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+}
 
   100% {
     transform: translateX(100px);

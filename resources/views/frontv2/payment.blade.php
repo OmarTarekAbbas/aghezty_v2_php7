@@ -5,7 +5,7 @@
 
 <!-- End Owl Carsoul -->
 
-<div class="main">
+<div class="main" id="visa_fade">
   <div class="mobile_views">
     <div class="status_title my-3">
       <h4 class="text-center border-bottom border-secondary w-25 m-auto">@lang('front.choose_payment')</h4>
@@ -90,7 +90,7 @@
                   </div>
                 </div>
 
-                <p class="nbe_loading text-center text-uppercase" style="display:none">@lang('front.loading')</p>
+                <p class="nbe_loading text-center text-uppercase font-weight-bold" style="display:none">@lang('front.loading')</p>
                 <br>
                 <div id="cibclc" class="form-row" onclick="cib_script();" style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                   <div class="">
@@ -98,7 +98,7 @@
                     <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
-                <p class="cib_loading text-center text-uppercase" style="display:none">@lang('front.loading')</p>
+                <p class="cib_loading text-center text-uppercase font-weight-bold" style="display:none">@lang('front.loading')</p>
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay" style="display:none!important">@lang('front.paid_now')</button>
               </form>
@@ -137,8 +137,6 @@
     return false;
   }
 </script>
-
-
 {{-- <script src="https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js"
 			data-error="errorCallbackcib"
 			data-cancel="cancelCallbackcib"
