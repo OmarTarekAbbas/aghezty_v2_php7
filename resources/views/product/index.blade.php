@@ -191,20 +191,20 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
                     <div class="col-md-3">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" id="formCode" class="form-control" placeholder="Search.." name="search">
+                        <input type="text" class="form-control formCode" placeholder="Search.." name="search">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input name="search_model" type="text" class="form-control"
+                        <input name="search_model" type="text" class="form-control formCode"
                           placeholder="Search For Multiple Model">
                       </div>
                     </div>
                     <div class="col-md-5">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input name="sku" type="text" class="form-control" placeholder="Search For Multiple sku">
+                        <input name="sku" type="text" class="form-control formCode" placeholder="Search For Multiple sku">
                       </div>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
                     <div class="col-md-4">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                        <select name="category_id[]" class="form-control chosen-rtl" multiple>
+                        <select name="category_id[]" class="form-control SelectFormCode chosen-rtl" multiple>
                           @foreach (categorys() as $category)
                           @if(count($category->sub_cats) > 0)
                           <optgroup label="{{$category->title}}">
@@ -230,14 +230,14 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-book"></i></span>
                         {!! Form::select('brand_id[]',brands()->pluck('title','id'),null,['class'=>'form-control
-                        chosen-rtl','required' , 'multiple']) !!}
+                        chosen-rtl SelectFormCode','required' , 'multiple']) !!}
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-book"></i></span>
                         {!! Form::select('limit',array_combine(range(10,500,10),
-                        range(10,500,10)),null,['class'=>'form-control chosen-rtl','required']) !!}
+                        range(10,500,10)),null,['class'=>'form-control SelectFormCode chosen-rtl','required']) !!}
                       </div>
                     </div>
                     <div class="col-md-1">
@@ -548,11 +548,15 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
 
 </script>
   <script>
-    $('#formCode').keypress(function (e) {
+    $('.formCode').keypress(function (e) {
       if (e.which == 13) {
-        $(Search()).click();
+        Search();
         return false;
       }
+    });
+
+    $('.SelectFormCode').change(function (e) {
+        Search()
     });
   </script>
 @stop
