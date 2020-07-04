@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
       //return $request->all();
 
-      $products = Product::query();
+      $products = Product::select('products.*','products.id as product_id');
       if ($request->has('search') && $request->search != '') {
         $products = $products->join('translatables','translatables.record_id','=','products.id')
           ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
