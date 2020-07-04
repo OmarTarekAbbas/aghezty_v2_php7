@@ -5,6 +5,11 @@
 
 <!-- End Owl Carsoul -->
 
+<style>
+.head_two,
+/* .head_three {z-index: unset;} */
+</style>
+
 <div class="main" id="visa_fade">
   <div class="mobile_views">
     <div class="status_title my-3">
@@ -118,6 +123,31 @@
 
 @endsection
 @section('script')
+
+
+
+<script>
+  var spinner = new jQuerySpinner({
+    parentId: 'visa_fade'
+  });
+  document.getElementById("nbeclc").addEventListener("click", function(evt) {
+    spinner.show();
+    setTimeout(function() {
+      spinner.hide();
+    }, 3000);
+  });
+  document.getElementById("cibclc").addEventListener("click", function(evt) {
+    spinner.show();
+    setTimeout(function() {
+      spinner.hide();
+    }, 3000);
+  });
+
+</script>
+
+
+
+
 <script>
   var order_id = '';
   var tran_id = '';

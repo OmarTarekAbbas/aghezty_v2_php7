@@ -376,7 +376,7 @@ nav.container-fluid {
           <div class="col-md-3 col-6 mb-3 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->id]) }}">
-                <img class="lazy" src="{{$product->main_image}}" alt="Product" width="202px" height="202px" class="w-75 d-block m-auto">
+                <img class="lazy" src="{{$product->main_image}}" alt="Product" width="202" height="202" class="w-75 d-block m-auto">
 
                 @if($product->discount > 0)
                 <div class="product-label text-center font-weight-bold">

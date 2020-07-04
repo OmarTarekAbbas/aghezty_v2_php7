@@ -11,11 +11,13 @@
   <meta name="token" content="{{ csrf_token() }}">
 
   <title>Bank Al Ahely</title>
+  <link rel="stylesheet" href="{{url('public/frontv2/css/jquery-spinner.min.css')}}">
 
   <!-- jQuery JS -->
   <script src="{{url('public/frontv2/js/jquery-3.3.1.min.js')}}"></script>
   <!-- Bootstrap Popper JS -->
   <script src="{{url('public/frontv2/js/popper.min.js')}}"></script>
+  <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
 
   {{-- <script type="text/javascript" src="https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js"
   data-error="errorCallbackNBE"
@@ -87,7 +89,61 @@
 
 </head>
 
-<body>
+<style>
+  @keyframes rotation {
+    to {
+      transform: rotate(1turn);
+      -webkit-transform: rotate(1turn);
+      -moz-transform: rotate(1turn);
+      -ms-transform: rotate(1turn);
+      -o-transform: rotate(1turn);
+    }
+  }
+
+  .nbe_loading,
+  .cib_loading {
+    display: block;
+    position: relative;
+    margin: 1.25rem auto;
+    padding-top: 5.5em;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .nbe_loading::before,
+  .cib_loading::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 4em;
+    width: 4em;
+    margin-left: -2em;
+    border: .375em solid #ffeb00;
+    border-right-style: double;
+    border-radius: 50%;
+    animation: rotation .8s linear infinite;
+  }
+
+  #nbeclc img,
+  #cibclc img {
+    cursor: pointer;
+  }
+
+  .jquery-spinner-wrap {
+    position: fixed;
+    left: 0;
+  }
+
+  .jquery-spinner-wrap .jquery-spinner-circle {
+    display: none !important;
+  }
+</style>
+
+<body id="visa_fade">
   <br><br><br><br><br><br><br><br>
   <div id="nbeclc" class="form-row" onclick="nbe_script();" style="text-align: center;">
     <div class="">
@@ -95,15 +151,40 @@
       <img src="{{ url('public/frontv2/images/ahly.png') }}" width="170px" height="50px" alt="">
     </div>
   </div>
-  <p class="nbe_loading text-center" style="display:none">..... loading here</p>
+
+  <p class="nbe_loading" style="display:none">loading</p>
+
   <br>
+
   <div id="cibclc" class="form-row" onclick="cib_script();" style="text-align: center;">
     <div class="">
       <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
       <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
     </div>
   </div>
-  <p class="cib_loading text-center" style="display:none">..... loading here</p>
+
+  <p class="cib_loading" style="display:none">loading</p>
+
+  <script>
+    var spinner = new jQuerySpinner({
+      parentId: 'visa_fade'
+    });
+
+    document.getElementById("nbeclc").addEventListener("click", function(evt) {
+      spinner.show();
+      setTimeout(function() {
+        spinner.hide();
+      }, 4000);
+    });
+
+    document.getElementById("cibclc").addEventListener("click", function(evt) {
+      spinner.show();
+      setTimeout(function() {
+        spinner.hide();
+      }, 4000);
+    });
+  </script>
+
   <script>
     $.ajaxSetup({
       headers: {
@@ -111,24 +192,25 @@
       }
     });
     var path_name = ''
-    if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
-        path_name = '/aghezty_v2_php7'
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+      path_name = '/aghezty_v2_php7'
     }
-    function loadScript(url,payment, callback) {
+
+    function loadScript(url, payment, callback) {
       var script = document.createElement("script")
       script.type = "text/javascript";
-      script.setAttribute('data-error', "errorCallback"+payment);
-      script.setAttribute('data-cancel', "cancelCallback"+payment);
-      script.setAttribute('data-complete', "completeCallback"+payment);
+      script.setAttribute('data-error', "errorCallback" + payment);
+      script.setAttribute('data-cancel', "cancelCallback" + payment);
+      script.setAttribute('data-complete', "completeCallback" + payment);
       if (script.readyState) { // only required for IE <9
-        script.onreadystatechange = function () {
+        script.onreadystatechange = function() {
           if (script.readyState === "loaded" || script.readyState === "complete") {
             script.onreadystatechange = null;
             callback();
           }
         };
       } else { //Others
-        script.onload = function () {
+        script.onload = function() {
           callback();
         };
       }
@@ -141,13 +223,13 @@
   <script>
     function nbe_script() {
       $('.nbe_loading').show()
-      loadScript("https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js","NBE", function() {
-          Checkout.configure({
+      loadScript("https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js", "NBE", function() {
+        Checkout.configure({
           merchant: 'EGPTEST1',
           order: {
-            amount: function () {
+            amount: function() {
               //Dynamic calculation of amount
-              return {{$order->total_price}}
+              return {{$order -> total_price}}
             },
             currency: 'EGP',
             description: 'Ordered goods',
@@ -169,9 +251,9 @@
           }
         })
 
-       document.getElementById('ahly').onclick()
+        document.getElementById('ahly').onclick()
 
-       $('.nbe_loading').hide()
+        $('.nbe_loading').hide()
 
       });
 
@@ -181,8 +263,9 @@
     function errorCallbackNBE(error) {
       console.log(JSON.stringify(error));
       $.post(window.location.origin + path_name + '/api/failPayment', {
-        order_id: "{{$order->id}}" , tran_id : "{{$tran_id}}"
-      }, function (data) {
+        order_id: "{{$order->id}}",
+        tran_id: "{{$tran_id}}"
+      }, function(data) {
         console.log(data);
       })
     }
@@ -190,36 +273,37 @@
     function cancelCallbackNBE() {
       console.log('Payment cancelled');
       $.post(window.location.origin + path_name + '/api/canclePayment', {
-        order_id: "{{$order->id}}" , tran_id : "{{$tran_id}}"
-      }, function (data) {
+        order_id: "{{$order->id}}",
+        tran_id: "{{$tran_id}}"
+      }, function(data) {
         console.log(data);
       })
     }
 
     function completeCallbackNBE(resultIndicator) {
-      if(resultIndicator == "{{$nbe_sub_id}}"){
+      if (resultIndicator == "{{$nbe_sub_id}}") {
         console.log('ok');
       }
       $.post(window.location.origin + path_name + '/api/createPayment', {
-        order_id: "{{$order->id}}" , tran_id : "{{$tran_id}}", type : 5
-      }, function (data) {
-          location.href = location.href + "/success"
+        order_id: "{{$order->id}}",
+        tran_id: "{{$tran_id}}",
+        type: 5
+      }, function(data) {
+        location.href = location.href + "/success"
       });
     }
-
-
   </script>
 
   <script>
     function cib_script() {
       $('.cib_loading').show()
-      loadScript("https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js","CIB", function() {
+      loadScript("https://cibpaynow.gateway.mastercard.com/checkout/version/56/checkout.js", "CIB", function() {
         Checkout.configure({
           merchant: 'TESTCIB700926',
           order: {
-            amount: function () {
+            amount: function() {
               //Dynamic calculation of amount
-              return {{$order->total_price}}
+              return {{$order -> total_price}}
             },
             currency: 'EGP',
             description: 'Ordered goods',
@@ -250,8 +334,9 @@
     function errorCallbackCIB(error) {
       console.log(JSON.stringify(error));
       $.post(window.location.origin + path_name + '/api/failPayment', {
-        order_id: "{{$order->id}}" , tran_id : "{{$tran_id}}"
-      }, function (data) {
+        order_id: "{{$order->id}}",
+        tran_id: "{{$tran_id}}"
+      }, function(data) {
         console.log(data);
       })
     }
@@ -259,24 +344,25 @@
     function cancelCallbackCIB() {
       console.log('Payment cancelled');
       $.post(window.location.origin + path_name + '/api/canclePayment', {
-        order_id: "{{$order->id}}" , tran_id : "{{$tran_id}}"
-      }, function (data) {
+        order_id: "{{$order->id}}",
+        tran_id: "{{$tran_id}}"
+      }, function(data) {
         console.log(data);
       })
     }
 
     function completeCallbackCIB(resultIndicator) {
-      if(resultIndicator == "{{$cib_sub_id}}"){
+      if (resultIndicator == "{{$cib_sub_id}}") {
         console.log('ok');
       }
       $.post(window.location.origin + path_name + '/api/createPayment', {
-        order_id: "{{$order->id}}" , tran_id : "{{$tran_id}}", type  : 4
-      }, function (data) {
+        order_id: "{{$order->id}}",
+        tran_id: "{{$tran_id}}",
+        type: 4
+      }, function(data) {
         location.href = location.href + "/success"
       });
     }
-
-
   </script>
 
 </body>

@@ -7,27 +7,6 @@ $(window).scroll(function () {
   }
 });
 
-
-
-var spinner = new jQuerySpinner({
-  parentId: 'visa_fade'
-});
-document.getElementById("nbeclc").addEventListener("click", function (evt) {
-  spinner.show();
-  setTimeout(function () {
-    spinner.hide();
-  }, 3000);
-});
-document.getElementById("cibclc").addEventListener("click", function (evt) {
-  spinner.show();
-  setTimeout(function () {
-    spinner.hide();
-  }, 3000);
-});
-
-
-
-
 $('#return-to-top').click(function () { // When arrow is clicked
   $('body,html').animate({
     scrollTop: 0 // Scroll to top of body

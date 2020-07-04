@@ -37,7 +37,6 @@ $yellow_color: #ffeb00;
   -o-border-radius: 4px;*/
 }
 
-
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
@@ -933,8 +932,8 @@ body {
 
     a {
       img {
-        width: 100% !important;
-        height: 319px;
+        // width: 100% !important;
+        // height: 319px;
         margin: 0 auto;
         display: block;
         transition: all 1.1s linear;
