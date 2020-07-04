@@ -134,13 +134,13 @@
     spinner.show();
     setTimeout(function() {
       spinner.hide();
-    }, 3000);
+    }, 6000);
   });
   document.getElementById("cibclc").addEventListener("click", function(evt) {
     spinner.show();
     setTimeout(function() {
       spinner.hide();
-    }, 3000);
+    }, 12000);
   });
 
 </script>
