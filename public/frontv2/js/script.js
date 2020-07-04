@@ -15,14 +15,14 @@ $('#return-to-top').click(function () { // When arrow is clicked
 /* ===== End Scroll to Top ==== */
 
 /* ===== Start List Product Accordion (Open & Close)  ==== */
-$(document).on("click",'.accordion',function(){
-    $(this).toggleClass("active");
-    var panel = $(this).next();
-    if ($(this).next().css('display') == 'none') {
-      $(this).next().css('display','block')
-    } else {
-      $(this).next().css('display','none')
-    }
+$(document).on("click", '.accordion', function () {
+  $(this).toggleClass("active");
+  var panel = $(this).next();
+  if ($(this).next().css('display') == 'none') {
+    $(this).next().css('display', 'block')
+  } else {
+    $(this).next().css('display', 'none')
+  }
 })
 /* ===== End List Product Accordion (Open & Close)  ==== */
 
@@ -61,14 +61,14 @@ $(document).ready(function () {
 
 // changes from plus to minus In PC View
 $(document).ready(function () {
-  $(document).on('click','#toggle_plus_minus button',function () {
+  $(document).on('click', '#toggle_plus_minus button', function () {
     $(this).children().toggleClass("fa-minus");
   });
 });
 
 // changes from plus to minus In Mobile View
 $(document).ready(function () {
-  $(document).on('click','#toggle_plus_minus button',function () {
+  $(document).on('click', '#toggle_plus_minus button', function () {
     $(this).children().toggleClass("fa-plus");
   });
 });

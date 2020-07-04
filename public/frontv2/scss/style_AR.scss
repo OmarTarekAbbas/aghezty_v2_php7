@@ -988,8 +988,8 @@ body {
 
     a {
       img {
-        width: 100% !important;
-        height: 319px;
+        // width: 100% !important;
+        // height: 319px;
         margin: 0 auto;
         display: block;
         transition: all 1.1s linear;
@@ -2335,7 +2335,7 @@ body {
     position: relative;
     margin: 1.25rem auto;
     padding-top: 4.5em;
-    color: #fe9901;
+    color: $black_color;
 
     &::before {
       content: "";
@@ -2346,7 +2346,7 @@ body {
       height: 4em;
       width: 4em;
       margin-left: -2em;
-      border: .375em solid currentColor;
+      border: .375em solid $yellow_color;
       border-right-style: double;
       border-radius: 50%;
       animation: rotation .8s linear infinite;
@@ -6129,7 +6129,14 @@ body {
 
 
 /*----------------------------------------- End Media Query -----------------------------------------*/
+.jquery-spinner-wrap {
+  position: fixed;
+  left: 0;
 
+  .jquery-spinner-circle {
+    display: none !important;
+  }
+}
 
 /* Start Animation & Key Frame For Modal */
 

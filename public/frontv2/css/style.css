@@ -702,8 +702,6 @@ body {
   padding: 0.65rem 0;
 }
 .main .content_view a img {
-  width: 100% !important;
-  height: 319px;
   margin: 0 auto;
   display: block;
   transition: all 1.1s linear;
@@ -1594,7 +1592,7 @@ body {
   position: relative;
   margin: 1.25rem auto;
   padding-top: 4.5em;
-  color: #fe9901;
+  color: #000;
 }
 .choose-address .nbe_loading::before,
 .choose-address .cib_loading::before {
@@ -1606,7 +1604,7 @@ body {
   height: 4em;
   width: 4em;
   margin-left: -2em;
-  border: 0.375em solid currentColor;
+  border: 0.375em solid #ffeb00;
   border-right-style: double;
   border-radius: 50%;
   animation: rotation 0.8s linear infinite;
@@ -4051,10 +4049,22 @@ body {
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/
+.jquery-spinner-wrap {
+  position: fixed;
+  left: 0;
+}
+.jquery-spinner-wrap .jquery-spinner-circle {
+  display: none !important;
+}
+
 /* Start Animation & Key Frame For Modal */
 @keyframes slide-right {
   0% {
     transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
   }
   100% {
     transform: translateX(100px);

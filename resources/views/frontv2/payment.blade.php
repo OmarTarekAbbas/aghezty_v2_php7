@@ -5,7 +5,12 @@
 
 <!-- End Owl Carsoul -->
 
-<div class="main">
+<style>
+.head_two,
+/* .head_three {z-index: unset;} */
+</style>
+
+<div class="main" id="visa_fade">
   <div class="mobile_views">
     <div class="status_title my-3">
       <h4 class="text-center border-bottom border-secondary w-25 m-auto">@lang('front.choose_payment')</h4>
@@ -93,7 +98,7 @@
                   </div>
                 </div>
 
-                <p class="nbe_loading text-center text-uppercase" style="display:none">@lang('front.loading')</p>
+                <p class="nbe_loading text-center text-uppercase font-weight-bold" style="display:none">@lang('front.loading')</p>
                 <br>
                 <div id="cibclc" class="form-row" onclick="cib_script();"
                   style="direction: {{dir_ar_en()}};display:none;text-align: center;">
@@ -102,7 +107,7 @@
                     <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
                   </div>
                 </div>
-                <p class="cib_loading text-center text-uppercase" style="display:none">@lang('front.loading')</p>
+                <p class="cib_loading text-center text-uppercase font-weight-bold" style="display:none">@lang('front.loading')</p>
 
                 <button type="submit"
                   class="btn btn-primary btn-lg btn-block w-75 m-auto d-block hvr-wobble-to-bottom-right btn-pay"
@@ -118,6 +123,31 @@
 
 @endsection
 @section('script')
+
+
+
+<script>
+  var spinner = new jQuerySpinner({
+    parentId: 'visa_fade'
+  });
+  document.getElementById("nbeclc").addEventListener("click", function(evt) {
+    spinner.show();
+    setTimeout(function() {
+      spinner.hide();
+    }, 6000);
+  });
+  document.getElementById("cibclc").addEventListener("click", function(evt) {
+    spinner.show();
+    setTimeout(function() {
+      spinner.hide();
+    }, 12000);
+  });
+
+</script>
+
+
+
+
 <script>
   var order_id = '';
   var tran_id = '';
