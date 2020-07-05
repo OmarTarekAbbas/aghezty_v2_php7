@@ -218,7 +218,7 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
                           @if(count($category->sub_cats) > 0)
                           <optgroup label="{{$category->title}}">
                             @foreach ($category->sub_cats as $sub_category)
-                            <option value="{{$sub_category->id}}">{{$sub_category->title}}</option>
+                            <option value="{{$sub_category->id}}" {{ request()->has('category_id') && request()->get('category_id') == $sub_category->id ? 'selected' : ''}}>{{$sub_category->title}}</option>
                             @endforeach
                           </optgroup>
                           @endif
@@ -229,7 +229,7 @@ $append=isset($category)?'?category_id='.$category->id."&title=".$category->titl
                     <div class="col-md-4">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                        {!! Form::select('brand_id[]',brands()->pluck('title','id'),null,['class'=>'form-control
+                        {!! Form::select('brand_id[]',brands()->pluck('title','id'),request()->get('brand_id'),['class'=>'form-control
                         chosen-rtl SelectFormCode','required' , 'multiple']) !!}
                       </div>
                     </div>
