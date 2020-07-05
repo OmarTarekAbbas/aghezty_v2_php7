@@ -18,18 +18,19 @@
 </style>
 
 <div class="main">
-  <nav class="mobile_views nav_breadcrumb" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="{{route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
-      </li>
+  <div class="mobile_views">
+      <nav class="nav_breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
+          </li>
 
-      <li class="breadcrumb-item">
-        <a href="{{route('front.home.list',['sub_category_id' => $product->category->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
-      </li>
-
-    </ol>
-  </nav>
+          <li class="breadcrumb-item">
+            <a href="{{route('front.home.list',['sub_category_id' => $product->category->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
+          </li>
+        </ol>
+      </nav>
+    </div>
 
   <section id="inner-page" class="mobile_views">
     <div class="">
@@ -55,7 +56,7 @@
       </a>
     </div>
 
-    <div class="row w-100">
+    <div class="row w-100 m-0">
       <div class="col-lg-6 col-12">
         <div class="row">
           <div class="col-md-3 d-none d-sm-block" style="overflow-y: scroll;height: 26rem;">
@@ -69,7 +70,7 @@
           </div>
 
           <div class="col-md-9 col-12">
-            <div id="carouselExampleControls" class="carousel slide w-75" data-ride="carousel" style="border: 1px solid #dcdcdc;">
+            <div id="carouselExampleControls" class="carousel slide w-75 m-auto" data-ride="carousel" style="border: 1px solid #dcdcdc;">
               <div class="carousel-inner">
                 @foreach ($product->images as $key=>$image)
                 <div class="carousel-item {{$key == 0 ?'active' : ''}}">
@@ -83,11 +84,11 @@
               </div>
 
               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <i class="fas fa-chevron-left fa-3x left_slider"></i>
+                <i class="fas fa-chevron-left fa-2x left_slider"></i>
               </a>
 
               <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <i class="fas fa-chevron-right fa-3x right_slider"></i>
+                <i class="fas fa-chevron-right fa-2x right_slider"></i>
                 <span class="sr-only">Next</span>
               </a>
             </div>

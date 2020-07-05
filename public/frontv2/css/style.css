@@ -346,7 +346,7 @@ body {
 
 .main {
   padding-bottom: 1%;
-  padding-top: 9%;
+  padding-top: 7%;
 }
 .main .choose_category .choose_category_background {
   background-color: #eaeaea;
@@ -552,13 +552,17 @@ body {
 .main #grid_two .col-md-6 .content_view:hover, .main #grid_two .col-md-6 .content_view:focus {
   width: 100% !important;
 }
+.main .modal.open_left,
+.main .modal.open_right {
+  z-index: 100000000000000020;
+}
 .main .modal.open_left .modal-dialog,
 .main .modal.open_right .modal-dialog {
   position: fixed;
   margin: auto;
   width: 95%;
   height: 100%;
-  right: 52px;
+  right: 66px;
   -webkit-transform: translate3d(0%, 0, 0);
   -ms-transform: translate3d(0%, 0, 0);
   -o-transform: translate3d(0%, 0, 0);
@@ -700,6 +704,7 @@ body {
 .main .content_view {
   box-shadow: 0 0 1px #ccc;
   padding: 0.65rem 0;
+  width: 100%;
 }
 .main .content_view a img {
   margin: 0 auto;
@@ -889,13 +894,13 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -0.25rem;
+  left: -2.25rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -2.15rem;
+  right: -3.5rem;
 }
 .main #inner-page .info .features {
   line-height: 0.5rem;
@@ -1696,8 +1701,12 @@ body {
   display: none;
   appearance: none;
 }
+.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+  left: 96rem;
+}
 .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
   transform: scale(1) rotate(0deg);
+  left: 96rem;
 }
 .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label {
   position: relative;
@@ -2306,7 +2315,7 @@ body {
     right: -0.8rem;
   }
   .carsoul_ads .top_banner a img {
-    height: 139px;
+    height: 75px;
   }
   .carsoul_ads .full_banner img {
     height: 175px;
@@ -2509,13 +2518,13 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-    left: 0;
+    left: -1.5rem;
   }
   .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-    right: -1.25rem;
+    right: -2.75rem;
   }
   .main #inner-page .info .features .modal_feature,
 .main #inner-page .info .features .desc_feature {
@@ -3122,7 +3131,7 @@ body {
     right: -0.8rem;
   }
   .carsoul_ads .top_banner a img {
-    height: 130px;
+    height: 80px;
   }
   .carsoul_ads .full_banner img {
     height: 175px;
@@ -3804,8 +3813,32 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
+  .main {
+    padding-top: 16%;
+  }
+  .main .carsoul_ads .owl-one .item a img {
+    height: 200px;
+  }
+  .main .carsoul_ads .owl-one .owl-nav .owl-prev,
+.main .carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: -1.5rem;
+  }
+  .main .carsoul_ads .top_banner a img {
+    height: 95px;
+  }
+
   .head_three {
     top: 0;
+  }
+  .head_three .navbar .navbar-nav {
+    margin-top: 2%;
+  }
+  .head_three .navbar .shopping_cart_img {
+    margin-top: -4%;
+  }
+  .head_three .navbar .shopping_cart_img .shopping_cart_num {
+    top: 2.25rem;
+    right: 3.5rem;
   }
 
   .navbar {
@@ -3838,12 +3871,23 @@ body {
     font-size: 15px;
   }
 
+  .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+    left: 34rem;
+  }
+  .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
+    left: 34rem;
+  }
+
   .footer_footer .footer_content .block_brand_content .block_content .no_padding_mobile {
     padding-left: 15px !important;
     padding-right: 15px !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 992px) and (max-width: 1024px) {
+  .head_two .new_head {
+    margin-top: 11%;
+    margin-right: -1.5rem;
+  }
   .head_two .img_logo img {
     width: 70%;
   }
@@ -3894,7 +3938,7 @@ body {
   }
 
   .main {
-    padding-top: 12%;
+    padding-top: 12% !important;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
     width: 100% !important;
@@ -3929,6 +3973,9 @@ body {
   .main .product_view .product_view_type .product_desc a .img_size {
     height: 110px !important;
   }
+  .main .product_view .product_view_type .margin_bottom_mob {
+    margin-top: 1rem;
+  }
   .main .list_cover img {
     height: 220px;
   }
@@ -3962,6 +4009,25 @@ body {
       width: 100% !important;
       height: 200px !important;
     } */
+  }
+  .main #inner-page .carousel-control-next .left_slider,
+.main #inner-page .carousel-control-next .right_slider,
+.main #inner-page .carousel-control-prev .left_slider,
+.main #inner-page .carousel-control-prev .right_slider {
+    top: 12.5rem;
+    font-size: 2rem;
+  }
+  .main #inner-page .carousel-control-next .left_slider.left_slider,
+.main #inner-page .carousel-control-next .right_slider.left_slider,
+.main #inner-page .carousel-control-prev .left_slider.left_slider,
+.main #inner-page .carousel-control-prev .right_slider.left_slider {
+    left: -1.5rem;
+  }
+  .main #inner-page .carousel-control-next .left_slider.right_slider,
+.main #inner-page .carousel-control-next .right_slider.right_slider,
+.main #inner-page .carousel-control-prev .left_slider.right_slider,
+.main #inner-page .carousel-control-prev .right_slider.right_slider {
+    right: -2.75rem;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
     right: 3rem;
@@ -4034,6 +4100,12 @@ body {
     top: 4rem;
     right: 31%;
   }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+    left: 48rem;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
+    left: 48rem;
+  }
 
   .footer_footer .footer_content .rounded-social-buttons .social-button {
     width: 2.125rem;
@@ -4046,6 +4118,40 @@ body {
 .footer_footer .footer_content .rounded-social-buttons .social-button .sms_icon,
 .footer_footer .footer_content .rounded-social-buttons .social-button .mail_icon {
     font-size: 20px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1400px) {
+  .head_three {
+    top: 12.87%;
+  }
+
+  .head_two .new_head {
+    margin-top: 9%;
+    margin-left: 9%;
+  }
+  .head_two .search-container {
+    margin-top: 2.5%;
+  }
+
+  .carsoul_ads .top_banner a img {
+    height: 151px;
+  }
+  .carsoul_ads .owl-one .owl-nav .owl-prev,
+.carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: 2.5rem;
+  }
+
+  .main {
+    padding-top: 10%;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
+    width: 100%;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+    left: 63rem;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
+    left: 63rem;
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/
