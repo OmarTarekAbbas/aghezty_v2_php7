@@ -144,7 +144,7 @@ input:checked + .slider:before {
                                             <div class="btn-group">
                                                 <a class="btn btn-sm btn-success show-tooltip" title="Add Product" href="{{url("product/create?category_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Product"><i class="fa fa-plus"></i></a>
                                                 @if(count($value->products) > 0)
-                                                <a class="btn btn-sm show-tooltip" title="Show Product" href="{{url("category/$value->id")}}" data-original-title="show Product"><i class="fa fa-step-forward"></i></a>
+                                                <a class="btn btn-sm show-tooltip" title="Show Product" href="{{url("product?category_id=$value->id")}}" data-original-title="show Product"><i class="fa fa-step-forward"></i></a>
                                                 @endif
                                                 <a class="btn btn-sm show-tooltip" href="{{url("sub_category/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></a>
                                                 @if (setting('enable_delete'))

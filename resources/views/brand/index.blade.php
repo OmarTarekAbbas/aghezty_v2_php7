@@ -59,7 +59,7 @@
                                             <div class="btn-group">
                                                 <a class="btn btn-sm btn-success show-tooltip" title="@lang('messages.add_product')" href="{{url("product/create?brand_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Product"><i class="fa fa-plus"></i></a>
                                                 @if(count($value->products) > 0)
-                                                <a class="btn btn-sm show-tooltip" title="@lang('messages.show_product')" href="{{url("brand/$value->id")}}" data-original-title="show Product"><i class="fa fa-step-forward"></i></a>
+                                                <a class="btn btn-sm show-tooltip" title="@lang('messages.show_product')" href="{{url("product?brand_id=$value->id")}}" data-original-title="show Product"><i class="fa fa-step-forward"></i></a>
                                                 @endif
                                                 <a class="btn btn-sm show-tooltip" href="{{url("brand/$value->id/edit")}}" title="@lang('messages.edit')"><i class="fa fa-edit"></i></a>
                                                 @if (setting('enable_delete'))

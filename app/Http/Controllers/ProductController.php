@@ -36,10 +36,10 @@ class ProductController extends Controller
       }
 
         if($request->has('category_id') && $request->category_id != ''){
-          $products = $products->whereIn('category_id',$request->category_id);
+          $products = $products->whereIn('category_id',(array)$request->category_id);
         }
         if($request->has('brand_id') && $request->brand_id != ''){
-          $products = $products->whereIn('brand_id',$request->brand_id);
+          $products = $products->whereIn('brand_id',(array)$request->brand_id);
         }
         if($request->has('search_model') && $request->search_model != ''){
           $products = $products->whereIn('short_description',explode(',',$request->search_model));
@@ -315,7 +315,7 @@ class ProductController extends Controller
             return response()->json(['status' => 'success' , 'id' => $id]);
         }
         \Session::flash('success', 'Product Update Successfully');
-        return redirect('category/'.$request->category_id);
+        return redirect('product?category_id='.$request->category_id);
     }
 
     /**
