@@ -91,6 +91,7 @@
 
 @php
 $append=isset($category)?'?category_id='.$category->id."&title=".$category->title:'';
+session()->put('redirect_edit_url',url()->full())
 @endphp
 <div class="row">
   <div class="col-md-12">

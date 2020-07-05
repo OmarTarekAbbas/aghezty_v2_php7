@@ -315,7 +315,7 @@ class ProductController extends Controller
             return response()->json(['status' => 'success' , 'id' => $id]);
         }
         \Session::flash('success', 'Product Update Successfully');
-        return redirect('product?category_id='.$request->category_id);
+        return redirect(session()->has('redirect_edit_url') ? session()->get('redirect_edit_url') : 'product?category_id='.$request->category_id);
     }
 
     /**
