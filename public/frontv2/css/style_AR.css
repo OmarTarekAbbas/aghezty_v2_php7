@@ -114,7 +114,7 @@ body {
 .head_two .search-container {
   width: 100%;
   display: block;
-  margin-top: 2.6%;
+  margin-top: 2%;
 }
 .head_two .search-container #search-bar {
   width: 100%;
@@ -172,8 +172,8 @@ body {
   opacity: 0;
 }
 .head_two .new_head {
-  margin-top: 10%;
-  margin-right: 16%;
+  margin-top: 7%;
+  margin-left: 12%;
 }
 .head_two .new_head .dropdown .dropdown-toggle {
   margin-right: 2%;
@@ -239,7 +239,7 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
-  top: 12.87%;
+  top: 8.59%;
 }
 .head_three .navbar {
   text-align: center;
@@ -328,7 +328,7 @@ body {
 .carsoul_ads .owl-one .owl-nav .owl-next {
   font-size: 5rem;
   position: absolute;
-  bottom: 1rem;
+  bottom: 6.5rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -351,15 +351,15 @@ body {
   display: none;
 }
 .carsoul_ads .top_banner a img {
-  height: 139px;
+  height: 228.5px;
 }
 .carsoul_ads .full_banner img {
   height: 175px;
 }
 
 .main {
-  padding-top: 9%;
   padding-bottom: 1%;
+  padding-top: 7%;
 }
 .main .choose_category .choose_category_background {
   background-color: #eaeaea;
@@ -578,6 +578,10 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+.main .modal.open_left,
+.main .modal.open_right {
+  z-index: 100000000000000020;
+}
 .main .modal.open_left .modal-dialog,
 .main .modal.open_right .modal-dialog {
   position: fixed;
@@ -749,6 +753,7 @@ body {
 .main .content_view {
   box-shadow: 0 0 1px #ccc;
   padding: 0.65rem 0;
+  width: 100%;
 }
 .main .content_view a img {
   margin: 0 auto;
@@ -943,7 +948,7 @@ body {
 .main #inner-page .carousel-control-prev .right_slider {
   height: 0;
   position: relative;
-  top: 10.5rem;
+  top: 13.5rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -954,13 +959,22 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -0.25rem;
+  left: -2.75rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -2.15rem;
+  right: -3.85rem;
+}
+.main #inner-page .slide#carouselExampleControls {
+  width: 90%;
+}
+.main #inner-page .slide .carousel-inner {
+  height: 30rem;
+}
+.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+  min-height: 30rem;
 }
 .main #inner-page .info {
   text-align: right;
@@ -1872,8 +1886,12 @@ body {
   display: none;
   appearance: none;
 }
+.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+  left: 2rem;
+}
 .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
   transform: scale(1) rotate(0deg);
+  left: 2rem;
 }
 .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label {
   position: relative;
@@ -2462,7 +2480,7 @@ body {
     background-color: #ffeb00;
     cursor: pointer;
     width: 65px;
-    height: 44.5px;
+    height: 44.6px;
     padding: 5px 17px;
     position: absolute;
     top: 46%;
@@ -2714,6 +2732,7 @@ body {
   }
   .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
     margin: 0 auto;
+    min-height: 26.5rem;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
@@ -2733,13 +2752,13 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-    left: 0;
+    left: -1.5rem;
   }
   .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-    right: -1.25rem;
+    right: -2.75rem;
   }
   .main #inner-page .info .features .modal_feature,
 .main #inner-page .info .features .desc_feature {
@@ -3557,6 +3576,10 @@ body {
     border: 2px solid #ccc !important;
     width: 100% !important;
   }
+  .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
+    margin: 0 auto;
+    min-height: 26.5rem;
+  }
   .main #inner-page .product-title {
     font-size: 1rem;
   }
@@ -4063,6 +4086,20 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
+  .head_three {
+    top: 0;
+  }
+  .head_three .navbar .navbar-nav {
+    margin-top: 2%;
+  }
+  .head_three .navbar .shopping_cart_img {
+    margin-top: -4%;
+  }
+  .head_three .navbar .shopping_cart_img .shopping_cart_num {
+    top: 2.25rem;
+    left: 3.5rem;
+  }
+
   .navbar {
     padding: 19px !important;
   }
@@ -4074,6 +4111,30 @@ body {
   }
   .navbar #mobile_nav {
     z-index: 99;
+  }
+
+  .main {
+    padding-top: 16%;
+  }
+  .main .carsoul_ads .owl-one .item a img {
+    height: 200px;
+  }
+  .main .carsoul_ads .owl-one .owl-nav .owl-prev,
+.main .carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: -1.5rem;
+  }
+  .main .carsoul_ads .top_banner a img {
+    height: 95px;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
+    width: 100% !important;
+    height: 11rem !important;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
+    font-size: 1rem;
+  }
+  .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
+    min-height: 26.5rem;
   }
 
   .product_view .product_view_type .margin_bottom_mob {
@@ -4098,7 +4159,11 @@ body {
     padding-right: 15px !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 992px) and (max-width: 1024px) {
+  .head_two .new_head {
+    margin-top: 11%;
+    margin-left: -1.5rem;
+  }
   .head_two .img_logo img {
     width: 70%;
   }
@@ -4149,7 +4214,7 @@ body {
   }
 
   .main {
-    padding-top: 12%;
+    padding-top: 12% !important;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
     width: 100% !important;
@@ -4183,6 +4248,9 @@ body {
   }
   .main .product_view .product_view_type .product_desc a .img_size {
     height: 110px !important;
+  }
+  .main .product_view .product_view_type .margin_bottom_mob {
+    margin-top: 1rem;
   }
   .main .nav_breadcrumb .breadcrumb-item::before {
     padding-left: 0.5rem !important;
@@ -4220,6 +4288,25 @@ body {
       width: 100% !important;
       height: 200px !important;
     } */
+  }
+  .main #inner-page .carousel-control-next .left_slider,
+.main #inner-page .carousel-control-next .right_slider,
+.main #inner-page .carousel-control-prev .left_slider,
+.main #inner-page .carousel-control-prev .right_slider {
+    top: 12.5rem;
+    font-size: 2rem;
+  }
+  .main #inner-page .carousel-control-next .left_slider.left_slider,
+.main #inner-page .carousel-control-next .right_slider.left_slider,
+.main #inner-page .carousel-control-prev .left_slider.left_slider,
+.main #inner-page .carousel-control-prev .right_slider.left_slider {
+    left: -1.5rem;
+  }
+  .main #inner-page .carousel-control-next .left_slider.right_slider,
+.main #inner-page .carousel-control-next .right_slider.right_slider,
+.main #inner-page .carousel-control-prev .left_slider.right_slider,
+.main #inner-page .carousel-control-prev .right_slider.right_slider {
+    right: -2.75rem;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
     left: 3rem;
@@ -4310,6 +4397,34 @@ body {
 .footer_footer .footer_content .rounded-social-buttons .social-button .sms_icon,
 .footer_footer .footer_content .rounded-social-buttons .social-button .mail_icon {
     font-size: 20px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1400px) {
+  .head_three {
+    top: 12.87%;
+  }
+
+  .head_two .new_head {
+    margin-top: 9%;
+    margin-left: 9%;
+  }
+  .head_two .search-container {
+    margin-top: 2.5%;
+  }
+
+  .carsoul_ads .top_banner a img {
+    height: 151px;
+  }
+  .carsoul_ads .owl-one .owl-nav .owl-prev,
+.carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: 2.5rem;
+  }
+
+  .main {
+    padding-top: 10%;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
+    width: 100%;
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/

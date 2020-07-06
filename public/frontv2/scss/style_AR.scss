@@ -150,7 +150,7 @@ body {
   .search-container {
     width: 100%;
     display: block;
-    margin-top: 2.6%;
+    margin-top: 2%;
 
     // padding-left: 2.5rem;
     #search-bar {
@@ -218,8 +218,8 @@ body {
   }
 
   .new_head {
-    margin-top: 10%;
-    margin-right: 16%;
+    margin-top: 7%;
+    margin-left: 12%;
 
     .dropdown {
       .dropdown-toggle {
@@ -303,7 +303,7 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
-  top: 12.87%;
+  top: 8.59%;
 
   .navbar {
     text-align: center;
@@ -418,7 +418,7 @@ body {
       .owl-next {
         font-size: 5rem;
         position: absolute;
-        bottom: 1rem;
+        bottom: 6.5rem;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -447,7 +447,7 @@ body {
   .top_banner {
     a {
       img {
-        height: 139px;
+        height: 228.5px;
       }
     }
   }
@@ -460,8 +460,8 @@ body {
 }
 
 .main {
-  padding-top: 9%;
   padding-bottom: 1%;
+  padding-top: 7%;
 
   .choose_category {
     .choose_category_background {
@@ -769,6 +769,11 @@ body {
     }
   }
 
+  .modal.open_left,
+  .modal.open_right {
+    z-index: 99999999999999999;
+  }
+
   .modal.open_left .modal-dialog,
   .modal.open_right .modal-dialog {
     position: fixed;
@@ -985,6 +990,7 @@ body {
   .content_view {
     box-shadow: 0 0 1px #ccc;
     padding: 0.65rem 0;
+    width: 100%;
 
     a {
       img {
@@ -1233,7 +1239,7 @@ body {
       .right_slider {
         height: 0;
         position: relative;
-        top: 10.5rem;
+        top: 13.5rem;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -1241,11 +1247,26 @@ body {
         -o-transform: translate(-50%, -50%);
 
         &.left_slider {
-          left: -0.25rem;
+          left: -2.75rem;
         }
 
         &.right_slider {
-          right: -2.15rem;
+          right: -3.85rem;
+        }
+      }
+    }
+
+    .slide {
+      &#carouselExampleControls {width: 90%;}
+      .carousel-inner {
+        height: 30rem;
+
+        .carousel-item {
+          .easyzoom {
+            img {
+              min-height: 30rem;
+            }
+          }
         }
       }
     }
@@ -2465,8 +2486,13 @@ body {
               appearance: none;
 
               &:checked+label {
+                &:before {
+                  left: 2rem;
+                }
+
                 &:after {
                   transform: scale(1) rotate(0deg);
+                  left: 2rem;
                 }
               }
             }
@@ -3226,7 +3252,7 @@ body {
           background-color: $yellow_color;
           cursor: pointer;
           width: 65px;
-          height: 44.5px;
+          height: 44.6px;
           padding: 5px 17px;
           position: absolute;
           top: 46%;
@@ -3604,6 +3630,7 @@ body {
               .zoom_image {
                 img {
                   margin: 0 auto;
+                  min-height: 26.5rem;
                 }
               }
             }
@@ -3629,11 +3656,11 @@ body {
           font-size: 2rem;
 
           &.left_slider {
-            left: 0;
+            left: -1.5rem;
           }
 
           &.right_slider {
-            right: -1.25rem;
+            right: -2.75rem;
           }
         }
       }
@@ -3680,6 +3707,7 @@ body {
 
           .contact_us {
             margin-top: 2rem;
+
             .rounded-social-buttons {
               margin-right: 4.5rem;
               margin-top: -10% !important;
@@ -4409,6 +4437,7 @@ body {
 
   .head_three {
     top: 0;
+
     .navbar {
       padding: 5px 0;
 
@@ -4884,6 +4913,19 @@ body {
       #carouselExampleControls {
         border: 2px solid #ccc !important;
         width: 100% !important;
+
+        .carousel-inner {
+          .carousel-item {
+            .easyzoom {
+              .zoom_image {
+                img {
+                  margin: 0 auto;
+                  min-height: 26.5rem;
+                }
+              }
+            }
+          }
+        }
       }
 
       .product-title {
@@ -5677,6 +5719,24 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .head_three {
+    top: 0;
+
+    .navbar {
+      .navbar-nav {
+        margin-top: 2%;
+      }
+
+      .shopping_cart_img {
+        margin-top: -4%;
+
+        .shopping_cart_num {
+          top: 2.25rem;
+          left: 3.5rem;
+        }
+      }
+    }
+  }
 
   // Header NavBar
   .navbar {
@@ -5692,6 +5752,66 @@ body {
 
     #mobile_nav {
       z-index: 99;
+    }
+  }
+
+  .main {
+    padding-top: 16%;
+
+    .carsoul_ads {
+      .owl-one {
+        .item {
+          a {
+            img {
+              height: 200px;
+            }
+          }
+        }
+
+        .owl-nav .owl-prev,
+        .owl-nav .owl-next {
+          bottom: -1.5rem;
+        }
+      }
+
+      .top_banner {
+        a {
+          img {
+            height: 95px;
+          }
+        }
+      }
+    }
+
+    .choose_category {
+      .choose_category_background {
+        .choose_category_form {
+          .diamond_sample {
+            width: 100% !important;
+            height: 11rem !important;
+
+            .diamond_sample_title {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    #inner-page {
+      #carouselExampleControls {
+        .carousel-inner {
+          .carousel-item {
+            .easyzoom {
+              .zoom_image {
+                img {
+                  min-height: 26.5rem;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 
@@ -5744,8 +5864,13 @@ body {
   }
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 992px) and (max-width: 1024px) {
   .head_two {
+    .new_head {
+      margin-top: 11%;
+      margin-left: -1.5rem;
+    }
+
     .img_logo {
       img {
         width: 70%;
@@ -5839,7 +5964,7 @@ body {
   }
 
   .main {
-    padding-top: 12%;
+    padding-top: 12% !important;
 
     .choose_category {
       .choose_category_background {
@@ -5913,6 +6038,10 @@ body {
             }
           }
         }
+
+        .margin_bottom_mob {
+          margin-top: 1rem;
+        }
       }
     }
 
@@ -5981,6 +6110,24 @@ body {
     }
 
     #inner-page {
+      .carousel-control-next,
+      .carousel-control-prev {
+
+        .left_slider,
+        .right_slider {
+          top: 12.5rem;
+          font-size: 2rem;
+
+          &.left_slider {
+            left: -1.5rem;
+          }
+
+          &.right_slider {
+            right: -2.75rem;
+          }
+        }
+      }
+
       .info {
         .features {
           .price_disc_offer {
@@ -6127,6 +6274,50 @@ body {
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1400px) {
+  .head_three {
+    top: 12.87%;
+  }
+
+  .head_two {
+    .new_head {
+      margin-top: 9%;
+      margin-left: 9%;
+    }
+
+    .search-container {
+      margin-top: 2.5%;
+    }
+  }
+
+  .carsoul_ads {
+    .top_banner {
+      a {
+        img {
+          height: 151px;
+        }
+      }
+    }
+
+    .owl-one .owl-nav .owl-prev,
+    .owl-one .owl-nav .owl-next {
+      bottom: 2.5rem;
+    }
+  }
+
+  .main {
+    padding-top: 10%;
+    .choose_category {
+      .choose_category_background {
+        .choose_category_form {
+          .diamond_sample {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
 
 /*----------------------------------------- End Media Query -----------------------------------------*/
 .jquery-spinner-wrap {
