@@ -228,7 +228,7 @@ function filter_categorys()
 {
   $categorys = \App\Category::whereNull('parent_id');
   if (request()->has('category_id') && request()->get('category_id') != '') {
-    $categorys = $categorys->where('id', request()->get('category_id'));
+    $categorys = $categorys->where('categories.id', request()->get('category_id'));
   }
 
   if (request()->has('brand_id') && request()->get('brand_id') != '') {
@@ -249,7 +249,7 @@ function filter_categorys()
   }
   if (request()->has('sub_category_id') && request()->get('sub_category_id') != '') {
     $parent = \App\Category::where('id', request()->get('sub_category_id'))->first();
-    $categorys = $categorys->where('id', $parent->parent_id);
+    $categorys = $categorys->where('categories.id', $parent->parent_id);
   }
   return $categorys->get();
 }

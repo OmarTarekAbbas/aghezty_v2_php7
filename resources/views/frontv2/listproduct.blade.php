@@ -537,6 +537,7 @@ nav.container-fluid {
       $('body').removeClass('modal-open')
     }
   })
+  @if(!request()->has('sorted'))
   $( document ).ready(function(){
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?start=0',
@@ -555,6 +556,7 @@ nav.container-fluid {
     });
     // history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
+  @endif
 </script>
 <script>
   const property = new Vue({

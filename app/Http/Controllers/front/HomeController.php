@@ -717,6 +717,7 @@ class HomeController extends Controller
         $products = Product::query();
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
+            $sub_category_ids  =  $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
         }
         if ($request->has('category_id') && $request->category_id != '') {
