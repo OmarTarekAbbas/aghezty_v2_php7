@@ -276,7 +276,7 @@
 
 
 @if ($Installments)
-<section class="inner_table_desc" style="margin-top: -5rem">
+<section class="inner_table_desc" style="margin-top: -4rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
   @endif
