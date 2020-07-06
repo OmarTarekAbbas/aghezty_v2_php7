@@ -275,7 +275,7 @@
 </div>
 
 
-@if ($Installments)
+@if($product->Installments != null){
 <section class="inner_table_desc" style="margin-top: -4rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
