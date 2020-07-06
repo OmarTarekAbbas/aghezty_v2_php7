@@ -1239,7 +1239,7 @@ body {
       .right_slider {
         height: 0;
         position: relative;
-        top: 10.5rem;
+        top: 13.5rem;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -1247,23 +1247,24 @@ body {
         -o-transform: translate(-50%, -50%);
 
         &.left_slider {
-          left: -2.25rem;
+          left: -2.75rem;
         }
 
         &.right_slider {
-          right: -3.5rem;
+          right: -3.85rem;
         }
       }
     }
 
     .slide {
+      &#carouselExampleControls {width: 90%;}
       .carousel-inner {
-        height: 26.5rem;
+        height: 30rem;
 
         .carousel-item {
           .easyzoom {
             img {
-              min-height: 26.5rem;
+              min-height: 30rem;
             }
           }
         }
@@ -3251,7 +3252,7 @@ body {
           background-color: $yellow_color;
           cursor: pointer;
           width: 65px;
-          height: 44.5px;
+          height: 44.6px;
           padding: 5px 17px;
           position: absolute;
           top: 46%;

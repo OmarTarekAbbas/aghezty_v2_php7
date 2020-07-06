@@ -948,7 +948,7 @@ body {
 .main #inner-page .carousel-control-prev .right_slider {
   height: 0;
   position: relative;
-  top: 10.5rem;
+  top: 13.5rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -959,19 +959,22 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -2.25rem;
+  left: -2.75rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -3.5rem;
+  right: -3.85rem;
+}
+.main #inner-page .slide#carouselExampleControls {
+  width: 90%;
 }
 .main #inner-page .slide .carousel-inner {
-  height: 26.5rem;
+  height: 30rem;
 }
 .main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
-  min-height: 26.5rem;
+  min-height: 30rem;
 }
 .main #inner-page .info {
   text-align: right;
@@ -2477,7 +2480,7 @@ body {
     background-color: #ffeb00;
     cursor: pointer;
     width: 65px;
-    height: 44.5px;
+    height: 44.6px;
     padding: 5px 17px;
     position: absolute;
     top: 46%;
