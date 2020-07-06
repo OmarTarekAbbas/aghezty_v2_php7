@@ -274,7 +274,12 @@
 </div>
 </div>
 
-<section class="inner_table_desc">
+
+@if ($Installments)
+<section class="inner_table_desc" style="margin-top: -5rem">
+@else
+<section class="inner_table_desc" style="margin-top: 0">
+  @endif
   <div class="table_desc pt-3">
     <h3 style="text-decoration:underline">@lang('front.product_info')</h3>
     <div style="max-width: 100%; overflow:hidden;">
