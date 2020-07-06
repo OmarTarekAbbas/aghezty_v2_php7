@@ -115,6 +115,7 @@ return [
     'page'  => 'the page',
     'loading'=> 'Loading',
     'filter' => 'Filter',
+    'visa_terms' => 'Visa Terms',
     'inner' => [
         'add_your_review' => 'Add Your Review',
         'reviews' => 'Reviews',

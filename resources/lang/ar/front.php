@@ -114,6 +114,7 @@ return [
     'loading'=> 'تحميل',
     'filter' => 'بحث',
     'page'  => 'هذه الصفحة',
+    'visa_terms' => 'احكام وشروط الدفع الالكترونى',
     'inner' => [
       'add_your_review' => 'اضف تعليقك',
       'reviews' => 'التعليقات',

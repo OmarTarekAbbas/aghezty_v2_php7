@@ -155,29 +155,41 @@
 @endphp
 <div class="form-group">
     <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 6 @lang('messages.Months')</label>
-    <div class="col-sm-9 col-lg-10 controls">
-            {!! Form::number('Installments[6]',($Installments)? $Installments[6] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    <div class="col-sm-8 col-lg-9 controls">
+            {!! Form::number('Installments[6]',($Installments)? $Installments[6] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control in_6' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+    <div class="col-sm-1 col-lg-1 remove_stm controls">
+      <i class="fa fa-close fa-2x"></i>
     </div>
 </div>
 
 <div class="form-group">
     <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 12 @lang('messages.Months')</label>
-    <div class="col-sm-9 col-lg-10 controls">
-            {!! Form::number('Installments[12]',($Installments)? $Installments[12] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    <div class="col-sm-8 col-lg-9 controls">
+            {!! Form::number('Installments[12]',($Installments)? $Installments[12] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control in_12' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+    <div class="col-sm-1 col-lg-1 remove_stm controls">
+      <i class="fa fa-close fa-2x"></i>
     </div>
 </div>
 
 <div class="form-group">
     <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 18 @lang('messages.Months')</label>
-    <div class="col-sm-9 col-lg-10 controls">
-            {!! Form::number('Installments[18]',($Installments)? $Installments[18] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    <div class="col-sm-8 col-lg-9 controls">
+            {!! Form::number('Installments[18]',($Installments)? $Installments[18] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control in_18' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+    <div class="col-sm-1 col-lg-1 remove_stm controls">
+      <i class="fa fa-close fa-2x"></i>
     </div>
 </div>
 
 <div class="form-group">
     <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.Installments') 24 @lang('messages.Months')</label>
-    <div class="col-sm-9 col-lg-10 controls">
-            {!! Form::number('Installments[24]',($Installments)? $Installments[24] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control' , 'min' => 0 , 'required' => false]) !!}
+    <div class="col-sm-8 col-lg-9 remove_stm controls">
+            {!! Form::number('Installments[24]',($Installments)? $Installments[24] : '',['placeholder'=>__('messages.Installments'),'class'=>'form-control in_24' , 'min' => 0 , 'required' => false]) !!}
+    </div>
+    <div class="col-sm-1 col-lg-1 remove_stm controls">
+      <i class="fa fa-close fa-2x"></i>
     </div>
 </div>
 
@@ -188,7 +200,7 @@
   </div>
 </div>
 
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="col-sm-3 col-lg-2 control-label">@lang('messages.warranty') </label>
   <div class="col-sm-9 col-lg-10 controls" >
       <ul id="myTab1" class="nav nav-tabs">
@@ -266,7 +278,7 @@
           @endforeach
       </div>
   </div>
-</div>
+</div> !-->
 
 <div class="form-group"  id="cktextarea">
   <label class="col-sm-3 col-lg-2 control-label">@lang('messages.key_feature') *</label>

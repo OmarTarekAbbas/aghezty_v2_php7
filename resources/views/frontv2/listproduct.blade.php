@@ -497,6 +497,7 @@ nav.container-fluid {
         $('.load').hide();
       },
     });
+    // history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
   $(document).on('change','.property',function() {
     $('.load').show();
@@ -524,6 +525,7 @@ nav.container-fluid {
         $('.load').hide();
       },
     });
+    // history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
   $('#button_jq , .fa-sliders-h').click(function(){
     //$(this).prop('disabled',true)
@@ -551,6 +553,7 @@ nav.container-fluid {
         $('.load').hide();
       },
     });
+    // history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
 </script>
 <script>

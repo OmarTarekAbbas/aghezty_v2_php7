@@ -136,6 +136,18 @@ const property = new Vue({
       $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
     })
 
+    $('.price').keyup(function(){
+      $('.in_6').val(parseInt($('.price').val() / 6))
+      $('.in_12').val(parseInt($('.price').val() / 12))
+      $('.in_18').val(parseInt($('.price').val() / 18))
+      $('.in_24').val(parseInt($('.price').val() / 24))
+    })
+
+    $('.remove_stm').click(function(){
+      console.log($(this).parent().find('input'));
+      $(this).parent().find('input').val(0);
+    })
+
 
     CKEDITOR.replace( 'ckeditor1' );
     CKEDITOR.replace( 'ckeditor2' );
