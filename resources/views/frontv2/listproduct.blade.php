@@ -2,42 +2,43 @@
 @section('content')
 
 <style>
-nav.container-fluid {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
+  nav.container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
 </style>
 
 <link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
 
 <!-- start container -->
 <div class="main">
-  <nav class="mobile_views nav_breadcrumb" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="{{ route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
-      </li>
-      @if(isset($_REQUEST['sub_category_id']) && isset($products[0]))
-      <li class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</li>
-      @elseif(isset($_REQUEST['brand_id']) && isset($products[0]))
-      <li class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</li>
-      @else
-      <li class="breadcrumb-item active" aria-current="page">@lang('front.products')</li>
-      @endif
-    </ol>
-  </nav>
+  <div class="mobile_views">
+    <nav class="nav_breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{{ route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
+        </li>
+        @if(isset($_REQUEST['sub_category_id']) && isset($products[0]))
+        <li class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</li>
+        @elseif(isset($_REQUEST['brand_id']) && isset($products[0]))
+        <li class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</li>
+        @else
+        <li class="breadcrumb-item active" aria-current="page">@lang('front.products')</li>
+        @endif
+      </ol>
+    </nav>
+  </div>
 
   <div class="mobile_views">
     <!-- start row -->
     <div class="row">
       <!-- start col-md-2 -->
-      <button type="button" id="button_jq" class="btn btn-dark d-md-none" data-toggle="modal"
-        data-target="#exampleModal">
+      <button type="button" id="button_jq" class="btn btn-dark d-md-block d-lg-block d-xl-none" data-toggle="modal" data-target="#exampleModal">
         <i class="fas fa-sliders-h" data-toggle="modal" data-target="#exampleModal"></i>
       </button>
 
       <!-- Start Filter Search -->
-      <div id="toggle_plus_minus" class="col-md-2 d-none d-md-block">
+      <div id="toggle_plus_minus" class="col-md-2 d-none d-md-none d-lg-block d-xl-block col-lg-2 col-xl-2">
         <form id="filter_form" method="post">
           @csrf
           @foreach (filter_categorys() as $item)
@@ -97,7 +98,7 @@ nav.container-fluid {
 
               <div class="panel w-100 border border-light">
                 <div class="z-checkbox" v-for="sub_cat in child.sub_cats">
-                  <input :id="'panel_category_'+sub_cat.id" class="mb-2 sub_cat_id"    type="checkbox" name="sub_category_id[]" :value="sub_cat.id">
+                  <input :id="'panel_category_'+sub_cat.id" class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" :value="sub_cat.id">
                   <label class="d-block text-capitalize" :for="'panel_category_'+sub_cat.id">@{{sub_cat.title}} </label>
                 </div>
               </div>
@@ -128,36 +129,28 @@ nav.container-fluid {
 
           <div class="panel mb-3 w-100 border border-light">
             <div class="z-checkbox">
-              <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to"
-                value="1000">
-              <label class="d-block text-capitalize" for="panel_34">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
+              <input id="panel_34" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
+              <label class="d-block text-capitalize" for="panel_34">@lang('front.less') @lang('front.from') - 1000 @lang('front.egp') </label>
             </div>
 
             <div class="z-checkbox">
-              <input id="panel_35" class="mb-2 price"
-                {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox"
-                name="from_to" value="1000,3000">
-              <label class="d-block text-capitalize" for="panel_35">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
+              <input id="panel_35" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox" name="from_to" value="1000,3000">
+              <label class="d-block text-capitalize" for="panel_35">1000 @lang('front.egp') - 3000 @lang('front.egp') </label>
             </div>
 
             <div class="z-checkbox">
-              <input id="panel_36" class="mb-2 price"
-                {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox"
-                name="from_to" value="3000,6000">
-              <label class="d-block text-capitalize" for="panel_36">3000 @lang('front.egp')  - 6000 @lang('front.egp') </label>
+              <input id="panel_36" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox" name="from_to" value="3000,6000">
+              <label class="d-block text-capitalize" for="panel_36">3000 @lang('front.egp') - 6000 @lang('front.egp') </label>
             </div>
 
             <div class="z-checkbox">
-              <input id="panel_37" class="mb-2 price"
-                {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox"
-                name="from_to" value="6000,10000">
-              <label class="d-block text-capitalize" for="panel_37">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
+              <input id="panel_37" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox" name="from_to" value="6000,10000">
+              <label class="d-block text-capitalize" for="panel_37">6000 @lang('front.egp') - 10,000 @lang('front.egp') </label>
             </div>
 
             <div class="z-checkbox">
-              <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
-                name="from" value="10000">
-              <label class="d-block text-capitalize" for="panel_38">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>
+              <input id="panel_38" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox" name="from" value="10000">
+              <label class="d-block text-capitalize" for="panel_38">10,000 @lang('front.egp') - @lang('front.more') @lang('front.from') </label>
             </div>
           </div>
 
@@ -191,15 +184,14 @@ nav.container-fluid {
 
           <input type="hidden" id="search_in" name="search" value="{{isset($_REQUEST['search'])?$_REQUEST['search']:''}}">
           <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
-          <input type="hidden" id="ifrom_in"  name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
+          <input type="hidden" id="ifrom_in" name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
           <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
         </form>
       </div>
       <!-- End Filter Search -->
 
       <!-- Modal -->
-      <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="false">
+      <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -255,21 +247,21 @@ nav.container-fluid {
               @endforeach
 
               {{-- third child from  category --}}
-                <div id="child_category_mobile">
-                  <template v-for="(child,i) in childrens">
-                    <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{child.title}}
-                      <i class="fas fa-minus float-right"></i>
-                    </button>
+              <div id="child_category_mobile">
+                <template v-for="(child,i) in childrens">
+                  <button type="button" class="accordion active  w-100 border border-light text-uppercase">@{{child.title}}
+                    <i class="fas fa-minus float-right"></i>
+                  </button>
 
-                    <div class="panel w-100 border border-light">
-                      <div class="z-checkbox" v-for="sub_cat in child.sub_cats">
-                        <input :id="'panel_category_'+sub_cat.id+'_mobile'" class="mb-2 sub_cat_id"    type="checkbox" name="sub_category_id[]" :value="sub_cat.id">
-                        <label class="d-block text-capitalize" :for="'panel_category_'+sub_cat.id+'_mobile'">@{{sub_cat.title}} </label>
-                      </div>
+                  <div class="panel w-100 border border-light">
+                    <div class="z-checkbox" v-for="sub_cat in child.sub_cats">
+                      <input :id="'panel_category_'+sub_cat.id+'_mobile'" class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" :value="sub_cat.id">
+                      <label class="d-block text-capitalize" :for="'panel_category_'+sub_cat.id+'_mobile'">@{{sub_cat.title}} </label>
                     </div>
-                  </template>
-                </div>
-            {{-- end thired child from category --}}
+                  </div>
+                </template>
+              </div>
+              {{-- end thired child from category --}}
 
               <button class="accordion active w-100 border border-light">@lang('front.brands')
                 <i class="fas fa-minus float-right"></i>
@@ -294,34 +286,27 @@ nav.container-fluid {
               <div class="panel mb-3 border border-secondary">
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_34_mobile" class="mb-2 price" {{isset($_REQUEST['to'])?'checked':''}} type="checkbox" name="to" value="1000">
-                  <label class="d-block text-capitalize" for="panel_34_mobile">@lang('front.less')  @lang('front.from')  - 1000 @lang('front.egp') </label>
+                  <label class="d-block text-capitalize" for="panel_34_mobile">@lang('front.less') @lang('front.from') - 1000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_35_mobile" class="mb-2 price"
-                    {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}}
-                    type="checkbox" name="from_to" value="1000,3000">
-                  <label class="d-block text-capitalize" for="panel_35_mobile">1000 @lang('front.egp')  - 3000 @lang('front.egp') </label>
+                  <input form="filter_form" id="panel_35_mobile" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '1000,3000')?'checked':''}} type="checkbox" name="from_to" value="1000,3000">
+                  <label class="d-block text-capitalize" for="panel_35_mobile">1000 @lang('front.egp') - 3000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_36_mobile" class="mb-2 price"
-                    {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}}
-                    type="checkbox" name="from_to" value="3000,6000">
-                  <label class="d-block text-capitalize" for="panel_mobile_36">3000 @lang('front.egp')  - 6000 @lang('front.egp') </label>
+                  <input form="filter_form" id="panel_36_mobile" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '3000,6000')?'checked':''}} type="checkbox" name="from_to" value="3000,6000">
+                  <label class="d-block text-capitalize" for="panel_mobile_36">3000 @lang('front.egp') - 6000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_37_mobile" class="mb-2 price"
-                    {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}}
-                    type="checkbox" name="from_to" value="6000,10000">
-                  <label class="d-block text-capitalize" for="panel_37_mobile">6000 @lang('front.egp')  - 10,000 @lang('front.egp') </label>
+                  <input form="filter_form" id="panel_37_mobile" class="mb-2 price" {{(isset($_REQUEST['from_to']) && $_REQUEST['from_to'] == '6000,10000')?'checked':''}} type="checkbox" name="from_to" value="6000,10000">
+                  <label class="d-block text-capitalize" for="panel_37_mobile">6000 @lang('front.egp') - 10,000 @lang('front.egp') </label>
                 </div>
 
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_38_mobile" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox"
-                    name="from" value="10000">
-                  <label class="d-block text-capitalize" for="panel_38_mobile">10,000 @lang('front.egp')  - @lang('front.more') @lang('front.from') </label>
+                  <input form="filter_form" id="panel_38_mobile" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox" name="from" value="10000">
+                  <label class="d-block text-capitalize" for="panel_38_mobile">10,000 @lang('front.egp') - @lang('front.more') @lang('front.from') </label>
                 </div>
               </div>
 
@@ -350,7 +335,7 @@ nav.container-fluid {
                   </div>
                 </template>
 
-                <a href="#0" class="btn filter_close" id="" data-toggle="modal"data-target="#exampleModal">@lang('front.filter')</a>
+                <a href="#0" class="btn filter_close" id="" data-toggle="modal" data-target="#exampleModal">@lang('front.filter')</a>
               </div>
 
             </div>
@@ -361,7 +346,7 @@ nav.container-fluid {
 
       <!-- Start Grid & List View -->
       <!-- Start Image Cover -->
-      <div class="col-md-10">
+      <div class="col-md-12 col-lg-10 col-xl-10">
         <div class="list_cover">
           <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple">
         </div>
@@ -397,7 +382,7 @@ nav.container-fluid {
 
           @foreach ($products as $product)
 
-          <div class="col-md-3 col-6 mb-3 content_view_mobile_col6">
+          <div class="col-md-4 col-lg-4 col-xl-3 col-6 mb-3 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->id]) }}">
                 <img class="lazy" src="{{$product->main_image}}" alt="Product" width="202" height="202" class="w-75 d-block m-auto">
@@ -413,14 +398,13 @@ nav.container-fluid {
               </a>
 
               <div class="rating_list_product">
-                  @for ($i = 1; $i <= 5; $i++)
-                    @if(round($product->rate() - .25) >= $i)
-                      <i class="fas fa-star colorstar"></i>
-                    @elseif(round($product->rate() + .25) >= $i)
-                     <i class="fas fa-star-half-alt colorstar"></i>
-                    @else
-                     <i class="far fa-star"></i>
-                    @endif
+                @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
+                  <i class="fas fa-star colorstar"></i>
+                  @elseif(round($product->rate() + .25) >= $i)
+                  <i class="fas fa-star-half-alt colorstar"></i>
+                  @else
+                  <i class="far fa-star"></i>
+                  @endif
                   @endfor
               </div>
 
@@ -428,13 +412,12 @@ nav.container-fluid {
 
               <div class="price-box">
                 <span class="regular-price">
-                  <span
-                    class="price font-weight-bold">{{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
+                  <span class="price font-weight-bold">{{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
                     @lang('front.egp') </span>
                 </span>
                 @if($product->price_after_discount > 0)
                 <p class="old-price">
-                  <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp')  </span>
+                  <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp') </span>
                 </p>
                 @endif
               </div>
@@ -465,22 +448,22 @@ nav.container-fluid {
     if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
       $('.load').show();
       action = 'active';
-      start = start + {{ get_limit_paginate() }};
+      start = start + {{get_limit_paginate()}};
       setTimeout(function() {
         load_content_data(start);
       }, 500);
     }
-    })
+  })
 
-    $('.price').click(function(){
-      $('.price').not(this).each(function(){
-          $(this).prop('checked',false)
-      });
-    })
+  $('.price').click(function() {
+    $('.price').not(this).each(function() {
+      $(this).prop('checked', false)
+    });
+  })
 
   function load_content_data(start) {
     $.ajax({
-      url: '{{url("clients/loadproductsv2")}}?'+ '&start=' + start,
+      url: '{{url("clients/loadproductsv2")}}?' + '&start=' + start,
       type: "post",
       data: $('#filter_form').serialize(),
       success: function(data) {
@@ -495,15 +478,15 @@ nav.container-fluid {
     });
 
   }
-  $(document).on('change','.sub_cat_id , .brand_id , .price , .offer , #sorted',function() {
+  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
     $('.load').show();
     console.log($(this).val());
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
-    if($(this).prop('checked')==false){
+    if ($(this).prop('checked') == false) {
       str = $(this).attr('id')
       $(this).removeAttr('checked')
-      $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
-      $('#'+str.split('_mobile')[0]).removeAttr('checked')
+      $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
+      $('#' + str.split('_mobile')[0]).removeAttr('checked')
     }
     start = 0
     $.ajax({
@@ -523,15 +506,15 @@ nav.container-fluid {
     });
     history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
-  $(document).on('change','.property',function() {
+  $(document).on('change', '.property', function() {
     $('.load').show();
     console.log($(this).val());
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
-    if($(this).prop('checked')==false){
+    if ($(this).prop('checked') == false) {
       str = $(this).attr('id')
       $(this).removeAttr('checked')
-      $('#'+$(this).attr('id')+'_mobile').removeAttr('checked')
-      $('#'+str.split('_mobile')[0]).removeAttr('checked')
+      $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
+      $('#' + str.split('_mobile')[0]).removeAttr('checked')
     }
     start = 0
     $.ajax({
@@ -551,13 +534,13 @@ nav.container-fluid {
     });
     history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
-  $('#button_jq , .fa-sliders-h').click(function(){
+  $('#button_jq , .fa-sliders-h').click(function() {
     //$(this).prop('disabled',true)
-    if($('#exampleModal').hasClass('show')){
+    if ($('#exampleModal').hasClass('show')) {
       $('.modal-backdrop').remove();
       $('#SL_balloon_obj').remove();
-      $('#exampleModal').attr('aria-hidden',true)
-      $('#exampleModal').css('display','none')
+      $('#exampleModal').attr('aria-hidden', true)
+      $('#exampleModal').css('display', 'none')
       $('body').removeClass('modal-open')
     }
   })
@@ -592,19 +575,20 @@ nav.container-fluid {
       checked_val :{'num1' : 0, 'num2':0}
     },
     watch: {
-      category_id:function(val){
+      category_id: function(val) {
         var _this = this
-        if(val.length  > 0){
+        if (val.length > 0) {
           $.ajax({
             type: "get",
-            data: {category_id:val},
+            data: {
+              category_id: val
+            },
             url: "{{url('getProperty')}}",
-            success: function(data,status){
+            success: function(data, status) {
               _this.properties_data = data.data
-          }
-        });
-        }
-        else{
+            }
+          });
+        } else {
           this.properties_data = []
         }
       }
@@ -612,16 +596,15 @@ nav.container-fluid {
     created() {
       var _this = this
       $('.sub_cat_id').each(function(i, obj) {
-        if($(this).prop("checked") == true){
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
           return false;
         }
       });
-      $('.sub_cat_id').change(function(){
-        if($(this).prop("checked") == true){
+      $('.sub_cat_id').change(function() {
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
-        }
-        else{
+        } else {
           _this.category_id.pop($(this).val())
         }
       })
@@ -632,17 +615,15 @@ nav.container-fluid {
       
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
-      number = str.substring(str.indexOf("=") + 1,str.indexOf("&"));
-      if(number.indexOf('%2C') != -1){
+      number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+      if (number.indexOf('%2C') != -1) {
         this.checked_val.num1 = number.split('%2C')[0]
         this.checked_val.num2 = number.split('%2C')[1]
-      }
-      else{
-        if(str.indexOf('ifrom=') != -1){
+      } else {
+        if (str.indexOf('ifrom=') != -1) {
           this.checked_val.num1 = number
-          this.checked_val.num2 =  500
-        }
-        else{
+          this.checked_val.num2 = 500
+        } else {
           this.checked_val.num1 = 0
           this.checked_val.num2 = number
         }
@@ -655,25 +636,26 @@ nav.container-fluid {
 
   /************************** child category vue *************************/
   const child_category = new Vue({
-    el:'#child_category',
-    data:{
-      category_id : [],
-      childrens : [],
+    el: '#child_category',
+    data: {
+      category_id: [],
+      childrens: [],
     },
     watch: {
-      category_id:function(val){
+      category_id: function(val) {
         var _this = this
-        if(val.length  > 0){
+        if (val.length > 0) {
           $.ajax({
             type: "get",
-            data: {category_id:val},
+            data: {
+              category_id: val
+            },
             url: "{{url('getChild')}}",
-            success: function(data,status){
+            success: function(data, status) {
               _this.childrens = data.data
-          }
-        });
-        }
-        else{
+            }
+          });
+        } else {
           this.childrens = []
         }
       }
@@ -681,16 +663,15 @@ nav.container-fluid {
     created() {
       var _this = this
       $('.sub_cat_id').each(function(i, obj) {
-        if($(this).prop("checked") == true){
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
           return false;
         }
       });
-      $('.sub_cat_id').change(function(){
-        if($(this).prop("checked") == true){
+      $('.sub_cat_id').change(function() {
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
-        }
-        else{
+        } else {
           _this.category_id.pop($(this).val())
         }
       })
@@ -708,19 +689,20 @@ nav.container-fluid {
       checked_val :{'num1' : '', 'num2':''}
     },
     watch: {
-      category_id:function(val){
+      category_id: function(val) {
         var _this = this
-        if(val.length  > 0){
+        if (val.length > 0) {
           $.ajax({
             type: "get",
-            data: {category_id:val},
+            data: {
+              category_id: val
+            },
             url: "{{url('getProperty')}}",
-            success: function(data,status){
+            success: function(data, status) {
               _this.properties_data = data.data
-          }
-        });
-        }
-        else{
+            }
+          });
+        } else {
           this.properties_data = []
         }
       }
@@ -728,17 +710,16 @@ nav.container-fluid {
     created() {
       var _this = this
       $('.sub_cat_id').each(function(i, obj) {
-        if($(this).prop("checked") == true){
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
           return false;
         }
       });
 
-      $('.sub_cat_id').change(function(){
-        if($(this).prop("checked") == true){
+      $('.sub_cat_id').change(function() {
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
-        }
-        else{
+        } else {
           _this.category_id.pop($(this).val())
         }
       })
@@ -748,17 +729,15 @@ nav.container-fluid {
       }) : []
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
-      number = str.substring(str.indexOf("=") + 1,str.indexOf("&"));
-      if(number.indexOf('%2C') != -1){
+      number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+      if (number.indexOf('%2C') != -1) {
         this.checked_val.num1 = number.split('%2C')[0]
         this.checked_val.num2 = number.split('%2C')[1]
-      }
-      else{
-        if(str.indexOf('ifrom=') != -1){
+      } else {
+        if (str.indexOf('ifrom=') != -1) {
           this.checked_val.num1 = 0
           this.checked_val.num2 = number
-        }
-        else{
+        } else {
           this.checked_val.num1 = number
           this.checked_val.num2 = 0
         }
@@ -770,25 +749,26 @@ nav.container-fluid {
 
   /************************** child category vue *************************/
   const child_category_mobile = new Vue({
-    el:'#child_category_mobile',
-    data:{
-      category_id : [],
-      childrens : [],
+    el: '#child_category_mobile',
+    data: {
+      category_id: [],
+      childrens: [],
     },
     watch: {
-      category_id:function(val){
+      category_id: function(val) {
         var _this = this
-        if(val.length  > 0){
+        if (val.length > 0) {
           $.ajax({
             type: "get",
-            data: {category_id:val},
+            data: {
+              category_id: val
+            },
             url: "{{url('getChild')}}",
-            success: function(data,status){
+            success: function(data, status) {
               _this.childrens = data.data
-          }
-        });
-        }
-        else{
+            }
+          });
+        } else {
           this.childrens = []
         }
       }
@@ -796,16 +776,15 @@ nav.container-fluid {
     created() {
       var _this = this
       $('.sub_cat_id').each(function(i, obj) {
-        if($(this).prop("checked") == true){
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
           return false;
         }
       });
-      $('.sub_cat_id').change(function(){
-        if($(this).prop("checked") == true){
+      $('.sub_cat_id').change(function() {
+        if ($(this).prop("checked") == true) {
           _this.category_id.push($(this).val())
-        }
-        else{
+        } else {
           _this.category_id.pop($(this).val())
         }
       })

@@ -136,26 +136,26 @@ class ProductController extends Controller
         foreach ($request->short_description as $key => $value) {
             $product->setTranslation('short_description', $key, $value);
         }
-        foreach ($request->warranty as $key => $value) {
-          if($value){
-            $product->setTranslation('warranty', $key, $value);
-          }
-        }
-        foreach ($request->delivery_time as $key => $value) {
-          if($value){
-            $product->setTranslation('delivery_time', $key, $value);
-          }
-        }
-        foreach ($request->cash_on_delivery as $key => $value) {
-          if($value){
-            $product->setTranslation('cash_on_delivery', $key, $value);
-          }
-        }
-        foreach ($request->return_or_refund as $key => $value) {
-          if($value){
-            $product->setTranslation('return_or_refund', $key, $value);
-          }
-        }
+        // foreach ($request->warranty as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('warranty', $key, $value);
+        //   }
+        // }
+        // foreach ($request->delivery_time as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('delivery_time', $key, $value);
+        //   }
+        // }
+        // foreach ($request->cash_on_delivery as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('cash_on_delivery', $key, $value);
+        //   }
+        // }
+        // foreach ($request->return_or_refund as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('return_or_refund', $key, $value);
+        //   }
+        // }
         foreach ($request->key_feature as $key => $value) {
           if($value){
             $product->setTranslation('key_feature', $key, $value);
@@ -275,26 +275,26 @@ class ProductController extends Controller
         foreach ($request->short_description as $key => $value) {
             $product->setTranslation('short_description', $key, $value);
         }
-        foreach ($request->warranty as $key => $value) {
-          if($value){
-            $product->setTranslation('warranty', $key, $value);
-          }
-        }
-        foreach ($request->delivery_time as $key => $value) {
-          if($value){
-            $product->setTranslation('delivery_time', $key, $value);
-          }
-        }
-        foreach ($request->cash_on_delivery as $key => $value) {
-          if($value){
-            $product->setTranslation('cash_on_delivery', $key, $value);
-          }
-        }
-        foreach ($request->return_or_refund as $key => $value) {
-          if($value){
-            $product->setTranslation('return_or_refund', $key, $value);
-          }
-        }
+        // foreach ($request->warranty as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('warranty', $key, $value);
+        //   }
+        // }
+        // foreach ($request->delivery_time as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('delivery_time', $key, $value);
+        //   }
+        // }
+        // foreach ($request->cash_on_delivery as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('cash_on_delivery', $key, $value);
+        //   }
+        // }
+        // foreach ($request->return_or_refund as $key => $value) {
+        //   if($value){
+        //     $product->setTranslation('return_or_refund', $key, $value);
+        //   }
+        // }
         foreach ($request->key_feature as $key => $value) {
           if($value){
             $product->setTranslation('key_feature', $key, $value);

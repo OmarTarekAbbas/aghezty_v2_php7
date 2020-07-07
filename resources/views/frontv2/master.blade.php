@@ -349,19 +349,19 @@
           <!-- End Contact Us -->
           @if(!Auth::guard('client')->user())
           <!-- Start Register-->
-          <li class="nav-item d-block d-sm-none d-md-none d-lg-none d-xl-none">
+          <li class="nav-item d-block d-sm-none d-md-block d-lg-none d-xl-none">
             <a class="nav-link nav_link2 text-uppercase" href="{{route('front.client.register')}}" id="navbarDropdownMenuLink9" aria-haspopup="true" aria-expanded="false">@lang('front.auth.register')</a>
           </li>
           <!-- End Register -->
 
           <!-- Start Log In-->
-          <li class="nav-item d-block d-sm-none d-md-none d-lg-none d-xl-none">
+          <li class="nav-item d-block d-sm-none d-md-block d-lg-none d-xl-none">
             <a class="nav-link nav_link2 text-uppercase" href="{{route('front.client.login')}}" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.auth.login')</a>
           </li>
           <!-- End Log In -->
           @else
           <!-- Start My Account-->
-          <li class="nav-item dropdown mega-dropdown d-block d-sm-none d-md-none d-lg-none d-xl-none">
+          <li class="nav-item dropdown mega-dropdown d-block d-sm-none d-md-block d-lg-none d-xl-none">
             <a class="nav-link dropdown-toggle text-uppercase slide_toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::guard('client')->user()->name}}</a>
 
             <div id="my_account" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink11" style="">
@@ -410,7 +410,7 @@
           <!-- End My Account-->
           @endif
           <!-- Start Languages-->
-          <li class="nav-item d-block d-sm-none d-md-none d-lg-none d-xl-none">
+          <li class="nav-item d-block d-sm-none d-md-block d-lg-none d-xl-none">
             <a class="nav-link text-uppercase slide_toggle" id="navbarDropdownMenuLink112" href="{{url('lang')}}/{{Session::get('applocale') == 'en'? "ar" : "en"}}">
               <img src="{{url('public/frontv2/images/lang/'.(Session::get('applocale') == 'ar'? 'en' : 'ar').'.webp')}}" alt="{{\Session::get('applocale') == 'ar'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'ar'? " English" : " العربية"}}
             </a>
