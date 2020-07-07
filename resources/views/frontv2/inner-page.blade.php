@@ -151,6 +151,7 @@
         }else{
         $Installments = false;
         }
+        $counter = 0;
         @endphp
 
         @if ($Installments)
@@ -159,6 +160,7 @@
           <div class="row">
             @foreach ($Installments as $key => $value)
             @if ($value != null)
+            <?php $counter++ ?>
             <div class="col-6 text-center" style="line-height: 16px;">
               <div class="m-1 p-2 alert-secondary"> {{$key}} @lang('messages.Months') / {{$value}} @lang('front.pound')</div>
             </div>
@@ -275,7 +277,7 @@
 </div>
 
 
-@if($product->Installments != null){
+@if($counter){
 <section class="inner_table_desc" style="margin-top: -4rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
