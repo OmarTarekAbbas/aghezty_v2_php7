@@ -277,7 +277,7 @@
 </div>
 
 
-@if($counter){
+@if($counter)
 <section class="inner_table_desc" style="margin-top: -4rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
