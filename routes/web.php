@@ -114,6 +114,7 @@ Route::prefix('clients')->group(function() {
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('about_mev2', 'front\HomeController@about_mev2');
     Route::get('terms_conv2', 'front\HomeController@terms_conv2');
+    Route::View('visa_terms', 'frontv2/visa_terms');
     Route::get('contactv2', 'front\HomeController@contactusv2');
     Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
     Route::any('loadproductsv2', 'front\HomeController@load_productsv2');

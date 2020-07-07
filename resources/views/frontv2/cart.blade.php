@@ -221,9 +221,9 @@
             </div>
             <!-- End Cart Totals -->
 
-            <div class="ads_img">
+            {{-- <div class="ads_img">
               <img class="rounded w-100" style="height:14rem" src="{{$ads->image}}" alt="Ads">
-            </div>
+            </div> --}}
           </div>
         </div>
         @endif

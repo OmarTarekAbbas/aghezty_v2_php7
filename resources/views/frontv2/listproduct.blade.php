@@ -43,44 +43,49 @@
           @csrf
           @foreach (filter_categorys() as $item)
           @if(count($item->sub_cats) > 0)
-          <button type="button" class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
-            <i class="fas fa-minus float-right"></i>
-          </button>
+            <button type="button"
+              class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
+              <i class="fas fa-minus float-right"></i>
+            </button>
 
-          <div class="panel mb-3 w-100 border border-light">
-            @if (request()->has('brand_id'))
+            <div class="panel mb-3 w-100 border border-light">
+              @if (request()->has('brand_id') && !request()->has('sub_category_id'))
 
-            @php
-            $subs = \App\Category::join('products','products.category_id','=','categories.id')
-            ->join('brands','brands.id','=','products.brand_id')
-            ->where('products.brand_id', request()->get('brand_id'))
-            ->select('categories.*')
-            ->groupBy('categories.id')
-            ->get();
-            $subsid = [];
-            foreach($subs as $category){
-            array_push($subsid ,$category->id);
-            }
-            @endphp
+                @php
+                $subs = \App\Category::join('products','products.category_id','=','categories.id')
+                        ->join('brands','brands.id','=','products.brand_id')
+                        ->where('products.brand_id', request()->get('brand_id'))
+                        ->select('categories.*')
+                        ->groupBy('categories.id')
+                        ->get();
+                $subsid = [];
+                foreach($subs as $category){
+                    array_push($subsid ,$category->id);
+                }
+                @endphp
 
-            @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
-            <div class="z-checkbox">
-              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}} type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
-              <label class="d-block text-capitalize" for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
+                <div class="z-checkbox">
+                  <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                    type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
+
+              @else
+
+                @foreach ($item->sub_cats as $category)
+                <div class="z-checkbox">
+                  <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                    type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
+
+              @endif
             </div>
-            @endforeach
-
-            @else
-
-            @foreach ($item->sub_cats as $category)
-            <div class="z-checkbox">
-              <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}} type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
-              <label class="d-block text-capitalize" for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
-            </div>
-            @endforeach
-
-            @endif
-          </div>
           @endif
           @endforeach
 
@@ -109,8 +114,11 @@
           <div class="panel mb-3 w-100 border border-light">
             @foreach (filtter_brands() as $brand)
             <div class="z-checkbox">
-              <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id" {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} type="checkbox" name="brand_id[]" value="{{$brand->id}}">
-              <label class="d-block text-capitalize" for="panel_brand_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
+              <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
+                {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"
+                name="brand_id[]" value="{{$brand->id}}">
+              <label class="d-block text-capitalize"
+                for="panel_brand_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
             </div>
             @endforeach
           </div>
@@ -167,7 +175,7 @@
 
               <div class="panel w-100 border border-light">
                 <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" :checked='property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)' type="checkbox" name="property_value_id[]" :value="property_value.id">
+                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'   type="checkbox" name="property_value_id[]" :value="property_value.id">
                   <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id">@{{property_value.value}} </label>
                 </div>
               </div>
@@ -201,12 +209,39 @@
               </button>
 
               <div class="panel mb-3 border border-secondary">
-                @foreach ($item->sub_cats as $category)
+              @if (request()->has('brand_id') && !request()->has('sub_category_id'))
+                @php
+                $subs = \App\Category::join('products','products.category_id','=','categories.id')
+                        ->join('brands','brands.id','=','products.brand_id')
+                        ->where('products.brand_id', request()->get('brand_id'))
+                        ->select('categories.*')
+                        ->groupBy('categories.id')
+                        ->get();
+                $subsid = [];
+                foreach($subs as $category){
+                    array_push($subsid ,$category->id);
+                }
+                @endphp
+                @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}} class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
-                  <label class="d-block text-capitalize" for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                    class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
+              @else
+                @foreach ($item->sub_cats as $category)
+                <div class="z-checkbox">
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                    class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
+              @endif
               </div>
               @endif
               @endforeach
@@ -235,8 +270,11 @@
               <div class="panel mb-3 border border-secondary">
                 @foreach (filtter_brands() as $brand)
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile" {{(isset($_REQUEST['brand_id']) && $brand->id == $_REQUEST['brand_id'])?'checked':''}} class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
-                  <label class="d-block text-capitalize" for="panel_brand_{{$brand->id}}_mobile">{{$brand->getTranslation('title',getCode())}}</label>
+                  <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
+                  {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}}
+                    class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_brand_{{$brand->id}}_mobile">{{$brand->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
               </div>
@@ -291,7 +329,7 @@
 
                   <div class="panel w-100 border border-light">
                     <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" :checked='property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)' name="property_value_id[]" :value="property_value.id">
+                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'  name="property_value_id[]" :value="property_value.id">
                       <label class="d-block text-capitalize" :for="'panel_prm'+property_value.id">@{{property_value.value}} </label>
                     </div>
                   </div>
@@ -466,6 +504,7 @@
         $('.load').hide();
       },
     });
+    history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
   $(document).on('change', '.property', function() {
     $('.load').show();
@@ -493,6 +532,7 @@
         $('.load').hide();
       },
     });
+    history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
   $('#button_jq , .fa-sliders-h').click(function() {
     //$(this).prop('disabled',true)
@@ -504,7 +544,8 @@
       $('body').removeClass('modal-open')
     }
   })
-  $(document).ready(function() {
+  @if(!request()->has('sorted'))
+  $( document ).ready(function(){
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?start=0',
       type: "post",
@@ -520,18 +561,18 @@
         $('.load').hide();
       },
     });
+    // history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
+  @endif
 </script>
 <script>
   const property = new Vue({
-    el: '#propertys',
-    data: {
-      category_id: [],
-      properties_data: [],
-      checked_val: {
-        'num1': 0,
-        'num2': 0
-      }
+    el:'#propertys',
+    data:{
+      category_id : [],
+      properties_data : [],
+      pr_values:[],
+      checked_val :{'num1' : 0, 'num2':0}
     },
     watch: {
       category_id: function(val) {
@@ -567,6 +608,11 @@
           _this.category_id.pop($(this).val())
         }
       })
+      this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
+      this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
+        return parseInt(x);
+      }) : []
+
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
       number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
@@ -635,14 +681,12 @@
 </script>
 <script>
   const propertys_mobile = new Vue({
-    el: '#propertys_mobile',
-    data: {
-      category_id: [],
-      properties_data: [],
-      checked_val: {
-        'num1': '',
-        'num2': ''
-      }
+    el:'#propertys_mobile',
+    data:{
+      category_id : [],
+      properties_data : [],
+      pr_values : [],
+      checked_val :{'num1' : '', 'num2':''}
     },
     watch: {
       category_id: function(val) {
@@ -679,6 +723,10 @@
           _this.category_id.pop($(this).val())
         }
       })
+      this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
+      this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
+        return parseInt(x);
+      }) : []
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
       number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));

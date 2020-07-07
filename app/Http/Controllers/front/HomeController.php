@@ -714,9 +714,11 @@ class HomeController extends Controller
     public function productsv2(Request $request)
     {
         $sub_category_ids = [];
+        $brand_ids = [];
         $products = Product::query();
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
+            $sub_category_ids  =  $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
         }
         if ($request->has('category_id') && $request->category_id != '') {
@@ -725,6 +727,7 @@ class HomeController extends Controller
         }
         if ($request->has('brand_id') && $request->brand_id != '') {
             $request->brand_id = (array) $request->brand_id;
+            $brand_ids  =  $request->brand_id;
             $products = $products->whereIn('brand_id', $request->brand_id);
         }
         if ($request->has('from') && $request->from != '') {
@@ -792,7 +795,7 @@ class HomeController extends Controller
         }
 
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
-        return view('frontv2.listproduct', compact('products', 'sub_category_ids'));
+        return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
     public function load_productsv2(Request $request)
