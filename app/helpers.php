@@ -231,25 +231,18 @@ function filter_categorys()
     $categorys = $categorys->where('categories.id', request()->get('category_id'));
   }
 
-  if (request()->has('brand_id') && request()->get('brand_id') != '') {
+  if (request()->has('brand_id') && request()->get('brand_id') != '' && !request()->has('sub_category_id')) {
     $categorys = \App\Category::join('categories AS t2', 'categories.parent_id', 't2.id')
       ->join('products', 'products.category_id', '=', 'categories.id')
       ->join('brands', 'brands.id', '=', 'products.brand_id')
       ->where('products.brand_id', request()->get('brand_id'))
       ->select('t2.*', 't2.id AS parID')
       ->groupBy('parID');
-    //         ->get();
-
-    // foreach($categorys as $category){
-    //     echo $category->id;
-    //     echo '<br>';
-    // }
-    // die;
-
   }
   if (request()->has('sub_category_id') && request()->get('sub_category_id') != '') {
-    $parent = \App\Category::where('id', request()->get('sub_category_id'))->first();
-    $categorys = $categorys->where('categories.id', $parent->parent_id);
+    $parent_ids = \App\Category::whereIn('id', (array) request()->get('sub_category_id'))->pluck('parent_id')->toArray();
+    $parent_ids = array_unique($parent_ids);
+    $categorys = $categorys->whereIn('categories.id', $parent_ids);
   }
   return $categorys->get();
 }
