@@ -626,10 +626,9 @@ nav.container-fluid {
         }
       })
       this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
-      this.pr_values = this.pr_values.map(function (x) { 
+      this.pr_values = this.pr_values ? this.pr_values.map(function (x) { 
         return parseInt(x); 
-      });
-      console.log( this.pr_values );
+      }) : []
       
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
@@ -744,9 +743,9 @@ nav.container-fluid {
         }
       })
       this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
-      this.pr_values = this.pr_values.map(function (x) { 
+      this.pr_values = this.pr_values ? this.pr_values.map(function (x) { 
         return parseInt(x); 
-      });
+      }) : []
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
       number = str.substring(str.indexOf("=") + 1,str.indexOf("&"));
