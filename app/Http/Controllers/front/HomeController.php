@@ -1412,10 +1412,10 @@ class HomeController extends Controller
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56');
+        curl_setopt($ch, CURLOPT_URL, 'https://nbe.gateway.mastercard.com/api/nvp/version/56');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=47a358008ed382e73fc720a5b90aed5f&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=AGHEZTY&order.id=$order_id&order.amount=$total&order.currency=EGP");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=47a358008ed382e73fc720a5b90aed5f&apiUsername=merchant.AGHEZTY&interaction.operation=PURCHASE&merchant=AGHEZTY&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
         $headers = array();
         $headers[] = 'Content-Type: application/x-www-form-urlencoded';
@@ -1462,7 +1462,7 @@ class HomeController extends Controller
         session()->put('successIndicator', $sub_id);
 
         $actionName = "NBE Integration";
-        $not_URL = 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56';
+        $not_URL = 'https://nbe.gateway.mastercard.com/api/nvp/version/56';
         $parameters_arr = array(
             'response' => $response,
             'successIndicator' => $sub_id,

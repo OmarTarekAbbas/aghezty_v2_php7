@@ -185,7 +185,7 @@
   function nbe_script() {
     $('.nbe_loading').show()
 
-    loadScript("https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js", "", function () {
+    loadScript("https://nbe.gateway.mastercard.com/checkout/version/56/checkout.js", "", function () {
       $.get(window.location.origin + path_name + '/clients/ready_nbe', {
         address_id: $('.add_id').val()
       }, function (data) {
