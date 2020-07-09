@@ -194,7 +194,7 @@
         tran_id = data.tran_id
 
         Checkout.configure({
-          merchant: 'EGPTEST1',
+          merchant: 'AGHEZTY',
           order: {
             amount: function () {
               //Dynamic calculation of amount
@@ -211,7 +211,7 @@
           interaction: {
             operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
             merchant: {
-              name: 'NBE Test',
+              name: 'Aghezty',
               address: {
                 line1: '200 Sample St',
                 line2: '1234 Example Town'

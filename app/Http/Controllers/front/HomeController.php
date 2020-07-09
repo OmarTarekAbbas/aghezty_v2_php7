@@ -1415,7 +1415,7 @@ class HomeController extends Controller
         curl_setopt($ch, CURLOPT_URL, 'https://test-nbe.gateway.mastercard.com/api/nvp/version/56');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=61422445f6c0f954e24c7bd8216ceedf&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=EGPTEST1&order.id=$order_id&order.amount=$total&order.currency=EGP");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=47a358008ed382e73fc720a5b90aed5f&apiUsername=merchant.EGPTEST1&interaction.operation=PURCHASE&merchant=AGHEZTY&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
         $headers = array();
         $headers[] = 'Content-Type: application/x-www-form-urlencoded';
