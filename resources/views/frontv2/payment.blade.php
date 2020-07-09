@@ -185,7 +185,7 @@
   function nbe_script() {
     $('.nbe_loading').show()
 
-    loadScript("https://test-nbe.gateway.mastercard.com/checkout/version/56/checkout.js", "", function () {
+    loadScript("https://nbe.gateway.mastercard.com/checkout/version/56/checkout.js", "", function () {
       $.get(window.location.origin + path_name + '/clients/ready_nbe', {
         address_id: $('.add_id').val()
       }, function (data) {
@@ -194,7 +194,7 @@
         tran_id = data.tran_id
 
         Checkout.configure({
-          merchant: 'EGPTEST1',
+          merchant: 'AGHEZTY',
           order: {
             amount: function () {
               //Dynamic calculation of amount
@@ -211,7 +211,7 @@
           interaction: {
             operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
             merchant: {
-              name: 'NBE Test',
+              name: 'Aghezty',
               address: {
                 line1: '200 Sample St',
                 line2: '1234 Example Town'
