@@ -1315,12 +1315,12 @@ class HomeController extends Controller
                 $cart->delete();
             }
             $client = \Auth::guard('client')->user();
-            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            //     $m->from($client->email, __('front.order'));
-            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-            // });
-            // $link = url('order/'.$order->id);
-            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+                $m->from($client->email, __('front.order'));
+                $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            });
+            $link = url('order/'.$order->id);
+            send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             return redirect('clients/thanksv2');
         } else {
             return back()->with('error', "please enter valid payment");
