@@ -796,6 +796,7 @@ body {
 .main #inner-page .price_disc_offer .product-label {
   float: right;
   margin-top: 13%;
+  margin-right: -2rem;
   font-size: 14px;
   color: #FFF;
   z-index: 3;
@@ -855,16 +856,14 @@ body {
 }
 .main #inner-page .price_disc_offer .price,
 .main #inner-page .price_disc_offer .discount {
-  line-height: 4;
+  line-height: 3;
+  font-size: 1.25rem;
 }
 .main #inner-page .slide#carouselExampleControls {
   width: 90%;
 }
 .main #inner-page .slide .carousel-inner {
-  height: 30rem;
-}
-.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
-  min-height: 30rem;
+  max-height: 30rem;
 }
 .main #inner-page .product-title {
   font-size: 1.3rem;
@@ -922,12 +921,17 @@ body {
   line-height: 30px;
   margin-bottom: 0.5rem;
 }
+.main #inner-page .info .features .modal_feature h5, .main #inner-page .info .features .modal_feature p,
+.main #inner-page .info .features .desc_feature h5,
+.main #inner-page .info .features .desc_feature p {
+  margin-bottom: 0;
+}
 .main #inner-page .info .discount {
   text-decoration: line-through;
 }
 .main #inner-page .info .quantity {
   border-bottom: 1px dashed #08c;
-  width: 21%;
+  width: 35%;
   text-align: center;
   line-height: 17px;
   font-size: 15px;
@@ -1060,7 +1064,7 @@ body {
 }
 .main #inner-page .contact_us .rounded-social-buttons .social-button {
   margin-bottom: 5%;
-  left: 69%;
+  left: 2%;
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1rem;
