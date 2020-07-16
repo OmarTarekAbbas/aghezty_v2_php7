@@ -863,10 +863,7 @@ body {
   width: 90%;
 }
 .main #inner-page .slide .carousel-inner {
-  height: 30rem;
-}
-.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
-  min-height: 30rem;
+  max-height: 30rem;
 }
 .main #inner-page .product-title {
   font-size: 1.3rem;
@@ -923,6 +920,11 @@ body {
 .main #inner-page .info .features .desc_feature {
   line-height: 30px;
   margin-bottom: 0.5rem;
+}
+.main #inner-page .info .features .modal_feature h5, .main #inner-page .info .features .modal_feature p,
+.main #inner-page .info .features .desc_feature h5,
+.main #inner-page .info .features .desc_feature p {
+  margin-bottom: 0;
 }
 .main #inner-page .info .discount {
   text-decoration: line-through;

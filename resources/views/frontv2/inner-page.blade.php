@@ -98,7 +98,6 @@
 
       <div class="info col-lg-4 w-100 p-0">
         <div class="row m-0">
-
           <div class="features col-md-12">
             <h5 class="font-weight-bold py-2">@lang('front.inner.key_feature')</h5>
 
@@ -108,8 +107,7 @@
 
             <div class="modal_feature">
               <h5 class="font-weight-bold d-inline-block">@lang('front.inner.model'):</h5>
-              <p class="d-inline-block px-1">{{$product->getTranslation('short_description',getCode())}}
-              </p>
+              <p class="d-inline-block px-1">{{$product->getTranslation('short_description',getCode())}}</p>
             </div>
 
             @foreach ($product->pr_value as $item)

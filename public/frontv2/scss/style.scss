@@ -1145,12 +1145,13 @@ body {
     .slide {
       &#carouselExampleControls {width: 90%;}
       .carousel-inner {
-        height: 30rem;
+        // height: 30rem;
+        max-height: 30rem;
 
         .carousel-item {
           .easyzoom {
             img {
-              min-height: 30rem;
+              // min-height: 30rem;
             }
           }
         }
@@ -1215,6 +1216,10 @@ body {
         .desc_feature {
           line-height: 30px;
           margin-bottom: 0.5rem;
+
+          h5, p {
+            margin-bottom: 0;
+          }
         }
       }
 
