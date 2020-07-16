@@ -1063,10 +1063,11 @@ body {
     .price_disc_offer {
       .product-label {
         // position: absolute;
-        // top: 57%;
-        // right: 1rem;
+        // top: 22%;
+        // right: -2.5rem;
         float: right;
         margin-top: 13%;
+        margin-right: -2rem;
         font-size: 14px;
         color: $white_color;
         z-index: 3;
@@ -1136,7 +1137,8 @@ body {
 
       .price,
       .discount {
-        line-height: 4;
+        line-height: 3;
+        font-size: 1.25rem
       }
     }
 
@@ -1222,7 +1224,7 @@ body {
 
       .quantity {
         border-bottom: 1px dashed #08c;
-        width: 21%;
+        width: 35%;
         text-align: center;
         line-height: 17px;
         font-size: 15px;
@@ -1392,7 +1394,7 @@ body {
 
         .social-button {
           margin-bottom: 5%;
-          left: 69%;
+          left: 2%;
           width: 2.5rem;
           height: 2.5rem;
           font-size: 1rem;
