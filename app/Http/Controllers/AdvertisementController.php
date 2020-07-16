@@ -17,6 +17,7 @@ class AdvertisementController extends Controller
         $advertisements = Advertisement::all();
         return view('advertisement.index',compact('advertisements'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
