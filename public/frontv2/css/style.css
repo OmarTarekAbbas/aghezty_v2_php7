@@ -280,6 +280,9 @@ body {
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
   left: 0;
   min-width: 40%;
+  max-height: 29rem;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu .sub-title {
   color: #0f6ab2;
@@ -796,6 +799,7 @@ body {
 .main #inner-page .price_disc_offer .product-label {
   float: right;
   margin-top: 13%;
+  margin-right: -2rem;
   font-size: 14px;
   color: #FFF;
   z-index: 3;
@@ -855,16 +859,14 @@ body {
 }
 .main #inner-page .price_disc_offer .price,
 .main #inner-page .price_disc_offer .discount {
-  line-height: 4;
+  line-height: 3;
+  font-size: 1.25rem;
 }
 .main #inner-page .slide#carouselExampleControls {
   width: 90%;
 }
 .main #inner-page .slide .carousel-inner {
-  height: 30rem;
-}
-.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
-  min-height: 30rem;
+  max-height: 30rem;
 }
 .main #inner-page .product-title {
   font-size: 1.3rem;
@@ -886,7 +888,7 @@ body {
 .main #inner-page .carousel-control-prev .right_slider {
   height: 0;
   position: relative;
-  top: 13.5rem;
+  top: 13rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -897,13 +899,13 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -2.75rem;
+  left: -3.75rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -3.85rem;
+  right: -5rem;
 }
 .main #inner-page .info .features {
   line-height: 0.5rem;
@@ -922,12 +924,18 @@ body {
   line-height: 30px;
   margin-bottom: 0.5rem;
 }
+.main #inner-page .info .features .modal_feature h5,
+.main #inner-page .info .features .modal_feature p,
+.main #inner-page .info .features .desc_feature h5,
+.main #inner-page .info .features .desc_feature p {
+  margin-bottom: 0;
+}
 .main #inner-page .info .discount {
   text-decoration: line-through;
 }
 .main #inner-page .info .quantity {
   border-bottom: 1px dashed #08c;
-  width: 21%;
+  width: 35%;
   text-align: center;
   line-height: 17px;
   font-size: 15px;
@@ -1060,7 +1068,7 @@ body {
 }
 .main #inner-page .contact_us .rounded-social-buttons .social-button {
   margin-bottom: 5%;
-  left: 69%;
+  left: 2%;
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1rem;
@@ -1253,7 +1261,7 @@ body {
 }
 .main .based_selection .content_view a .based_selection_img {
   width: 100% !important;
-  height: 246px !important;
+  height: 389px !important;
 }
 
 .colorstar {
@@ -2502,7 +2510,6 @@ body {
   }
   .main #inner-page #carouselExampleControls {
     border: 2px solid #ccc !important;
-    width: 100% !important;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
@@ -2514,7 +2521,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    bottom: 2rem;
+    top: 5rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -2542,7 +2549,7 @@ body {
     margin-top: 0;
   }
   .main #inner-page .info .features .price_disc_offer .price {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     line-height: 1;
     margin-top: 2rem;
@@ -2551,24 +2558,33 @@ body {
   .main #inner-page .info .features .price_disc_offer .discount {
     line-height: 1;
     text-align: right;
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     margin-top: 2rem;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
-    top: 9px;
-    right: 6px;
+    margin-top: 50%;
+    margin-right: -1rem;
+    width: 35px;
+    height: 35px;
+  }
+  .main #inner-page .info .features .price_disc_offer .product-label .sale-product-icon::before {
+    bottom: -36px;
+    width: 35px;
+    height: 35px;
+    border: 18px solid transparent;
+    border-top-color: #ff4765;
   }
   .main #inner-page .info .features .contact_us {
     margin-top: 2rem;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
-    margin-left: 6rem;
+    margin-left: 0;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
-    left: 0;
+    left: 55%;
   }
   .main #inner-page .info .features .quantity {
     width: 40%;
@@ -2995,6 +3011,11 @@ body {
     top: 9px;
   }
 }
+@media (min-width: 375px) and (max-width: 415px) {
+  .info .features .contact_us .rounded-social-buttons .social-button {
+    left: 0% !important;
+  }
+}
 @media (min-width: 376px) and (max-width: 415px) {
   .alert-success.msg_success_min, .alert-success.msg_danger_min,
 .alert-danger.msg_success_min,
@@ -3322,7 +3343,6 @@ body {
   }
   .main #inner-page #carouselExampleControls {
     border: 2px solid #ccc !important;
-    width: 100% !important;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
@@ -3334,20 +3354,20 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    bottom: 2rem;
+    top: 6rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-    left: -0.25rem;
+    left: -1.8rem;
   }
   .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-    right: -1.6rem;
+    right: -3rem;
   }
   .main #inner-page .info .features .modal_feature,
 .main #inner-page .info .features .desc_feature {
@@ -3376,8 +3396,17 @@ body {
     line-height: 1;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
-    top: 9px;
-    right: 27px;
+    margin-top: 40%;
+    margin-right: -0.5rem;
+    width: 35px;
+    height: 35px;
+  }
+  .main #inner-page .info .features .price_disc_offer .product-label .sale-product-icon::before {
+    bottom: -36px;
+    width: 35px;
+    height: 35px;
+    border: 18px solid transparent;
+    border-top-color: #ff4765;
   }
   .main #inner-page .info .features .contact_us {
     margin-top: 1rem;

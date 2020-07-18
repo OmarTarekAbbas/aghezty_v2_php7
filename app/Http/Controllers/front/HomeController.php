@@ -890,7 +890,7 @@ class HomeController extends Controller
         if(!$product){
           return view('frontv2.error404');
         }
-        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(6)->get();
+        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
 
@@ -1316,12 +1316,12 @@ class HomeController extends Controller
                 $cart->delete();
             }
             $client = \Auth::guard('client')->user();
-            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            //     $m->from($client->email, __('front.order'));
-            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-            // });
-            // $link = url('order/'.$order->id);
-            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+                $m->from($client->email, __('front.order'));
+                $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            });
+            $link = url('order/'.$order->id);
+            send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             return redirect('clients/thanksv2');
         } else {
             return back()->with('error', "please enter valid payment");

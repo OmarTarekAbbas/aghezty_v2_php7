@@ -150,7 +150,7 @@ class BrandController extends Controller
             \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
             return back();
         }
-        $this->delete_image_if_exists(base_path('/uploads/brand/'.basename($brand->image)));
+          // $this->delete_image_if_exists(base_path('/uploads/brand/'.basename($brand->image)));
       }
 
       $brand->update($request->except('title'));

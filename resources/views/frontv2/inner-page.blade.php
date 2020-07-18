@@ -57,7 +57,7 @@
     </div>
 
     <div class="row w-100 m-0">
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-8 col-12 p-0">
         <div class="row">
           <div class="col-md-3 d-none d-sm-block" style="overflow-y: scroll;height: 30rem;">
             @foreach ($product->images as $key=>$image)
@@ -96,9 +96,8 @@
         </div>
       </div>
 
-      <div class="info col-lg-6 w-100">
-        <div class="row">
-
+      <div class="info col-lg-4 w-100 p-0">
+        <div class="row m-0">
           <div class="features col-md-12">
             <h5 class="font-weight-bold py-2">@lang('front.inner.key_feature')</h5>
 
@@ -108,10 +107,8 @@
 
             <div class="modal_feature">
               <h5 class="font-weight-bold d-inline-block">@lang('front.inner.model'):</h5>
-              <p class="d-inline-block px-1">{{$product->getTranslation('short_description',getCode())}}
-              </p>
+              <p class="d-inline-block px-1">{{$product->getTranslation('short_description',getCode())}}</p>
             </div>
-
 
             @foreach ($product->pr_value as $item)
             <div class="modal_feature">
@@ -170,14 +167,14 @@
         </div>
         @endif
 
-        <div class="row price_disc_offer">
-          <div class="col-md-4 col-4 p-0">
+        <div class="row price_disc_offer m-0">
+          <div class="col-md-5 col-5 p-0">
             <h4 class="price text-primary font-weight-bold">
               {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
               @lang('front.egp')</h4>
           </div>
 
-          <div class="col-md-4 col-4 p-0">
+          <div class="col-md-5 col-5 p-0">
             @if($product->price_after_discount > 0)
             <h4 class="discount text-muted font-weight-bold">{{number_format($product->price)}}
               @lang('front.egp')</h4>
@@ -189,7 +186,7 @@
               content:"{{$product->discount}}"
             }
           </style>
-          <div class="col-md-4 col-4 p-0">
+          <div class="col-md-2 col-2 p-0">
             <div class="product-label text-center font-weight-bold">
               <span class="sale-product-icon">
                 <span class="testtt"></span>
@@ -277,7 +274,7 @@
 </div>
 
 
-@if($counter){
+@if($counter)
 <section class="inner_table_desc" style="margin-top: -4rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
@@ -399,7 +396,7 @@
 
     <div class="row mt-3">
       @foreach ($items as $item)
-      <div class="col-md-2 col-6 mb-3">
+      <div class="col-md-3 col-6 mb-3">
         <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id])}}">
             <img src="{{url($item->main_image)}}" alt="Product" class="w-100 based_selection_img">
