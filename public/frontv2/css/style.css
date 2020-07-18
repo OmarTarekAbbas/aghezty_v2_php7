@@ -280,6 +280,9 @@ body {
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
   left: 0;
   min-width: 40%;
+  max-height: 29rem;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu .sub-title {
   color: #0f6ab2;
@@ -885,7 +888,7 @@ body {
 .main #inner-page .carousel-control-prev .right_slider {
   height: 0;
   position: relative;
-  top: 10rem;
+  top: 13rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -896,13 +899,13 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -2.75rem;
+  left: -3.75rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -3.85rem;
+  right: -5rem;
 }
 .main #inner-page .info .features {
   line-height: 0.5rem;
@@ -1258,7 +1261,7 @@ body {
 }
 .main .based_selection .content_view a .based_selection_img {
   width: 100% !important;
-  height: 246px !important;
+  height: 389px !important;
 }
 
 .colorstar {
@@ -2581,7 +2584,7 @@ body {
     margin-bottom: 0 !important;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
-    left: 0%;
+    left: 55%;
   }
   .main #inner-page .info .features .quantity {
     width: 40%;
@@ -3006,6 +3009,11 @@ body {
   #return-to-top i {
     left: 10px;
     top: 9px;
+  }
+}
+@media (min-width: 375px) and (max-width: 415px) {
+  .info .features .contact_us .rounded-social-buttons .social-button {
+    left: 0% !important;
   }
 }
 @media (min-width: 376px) and (max-width: 415px) {

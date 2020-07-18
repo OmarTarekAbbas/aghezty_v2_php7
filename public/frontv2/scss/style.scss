@@ -348,6 +348,9 @@ body {
         .dropdown-menu {
           left: 0;
           min-width: 40%;
+          max-height: 29rem;
+          overflow: hidden;
+          overflow-y: scroll;
 
           .sub-title {
             color: $blueTitle_color;
@@ -1183,7 +1186,7 @@ body {
       .right_slider {
         height: 0;
         position: relative;
-        top: 10rem;
+        top: 13rem;
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -1191,11 +1194,11 @@ body {
         -o-transform: translate(-50%, -50%);
 
         &.left_slider {
-          left: -2.75rem;
+          left: -3.75rem;
         }
 
         &.right_slider {
-          right: -3.85rem;
+          right: -5rem;
         }
       }
     }
@@ -1693,7 +1696,7 @@ body {
       a {
         .based_selection_img {
           width: 100% !important;
-          height: 246px !important;
+          height: 389px !important;
         }
       }
     }
@@ -3453,7 +3456,7 @@ body {
               width: 35px;
               height: 35px;
 
-              .sale-product-icon{
+              .sale-product-icon {
                 &::before {
                   bottom: -36px;
                   width: 35px;
@@ -3474,7 +3477,7 @@ body {
               margin-bottom: 0 !important;
 
               .social-button {
-                left: 0%;
+                left: 55%;
               }
             }
           }
@@ -4148,6 +4151,21 @@ body {
   }
 }
 
+@media (min-width: 375px) and (max-width: 415px) {
+  .info {
+    .features {
+      .contact_us {
+        .rounded-social-buttons {
+          .social-button {
+            left: 0% !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 @media (min-width: 376px) and (max-width: 415px) {
 
   .alert-success,
@@ -4700,7 +4718,7 @@ body {
               width: 35px;
               height: 35px;
 
-              .sale-product-icon{
+              .sale-product-icon {
                 &::before {
                   bottom: -36px;
                   width: 35px;

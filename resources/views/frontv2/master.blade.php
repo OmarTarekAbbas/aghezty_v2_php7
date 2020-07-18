@@ -550,7 +550,7 @@
               $brands = brands();
               @endphp
 
-              <div class="col-md-6 col-xl-3 col-12">
+              <!-- <div class="col-md-6 col-xl-3 col-12">
                 <div class="block block_brand_content">
                   <div class="block_title mb-3">
                     <strong>@lang('front.shop_by_brand')</strong>
@@ -590,17 +590,17 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="mobile_center col-md-6 col-xl-3 col-12">
+              <div class="mobile_center col-md-6 col-xl-6 col-12">
                 <div class="block">
-                  <div class="block_title mb-2">
-                    <strong>@lang('front.important_links')</strong>
-                  </div>
-
                   <div class="block_content">
                     <div class="row">
-                      <div class="col-xl-12 col-12 p-0">
+                      <div class="col-xl-6 col-12">
+                        <div class="block_title mb-2">
+                          <strong>@lang('front.important_links')</strong>
+                        </div>
+
                         <ul class="list-unstyled ul_links">
                           <li>
                             <a class="text-capitalize hvr-icon-forward" href="{{url('clients/contactv2')}}" title="Contact Us">@lang('front.contact')</a>
@@ -624,7 +624,7 @@
                         </ul>
                       </div>
 
-                      <div class="col-xl-12 col-12">
+                      <div class="col-xl-6 col-12">
                         <div class="block_title mb-3">
                           <strong>@lang('front.find_us')</strong>
                         </div>

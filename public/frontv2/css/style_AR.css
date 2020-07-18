@@ -162,6 +162,10 @@ body {
 .head_two .search-container input#search-bar:focus::-webkit-input-placeholder {
   transition: opacity 0.45s ease;
   opacity: 0;
+  -webkit-transition: opacity 0.45s ease;
+  -moz-transition: opacity 0.45s ease;
+  -ms-transition: opacity 0.45s ease;
+  -o-transition: opacity 0.45s ease;
 }
 .head_two .search-container input#search-bar:focus::-moz-placeholder {
   transition: opacity 0.45s ease;
@@ -288,6 +292,9 @@ body {
   right: 0;
   text-align: right;
   min-width: 40%;
+  max-height: 29rem;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu .sub-title {
   color: #0f6ab2;
@@ -947,7 +954,7 @@ body {
 .main #inner-page .carousel-control-prev .right_slider {
   height: 0;
   position: relative;
-  top: 10rem;
+  top: 13rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -958,13 +965,13 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -2.75rem;
+  left: -3.75rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -3.85rem;
+  right: -5rem;
 }
 .main #inner-page .slide#carouselExampleControls {
   width: 90%;
@@ -1245,7 +1252,7 @@ body {
 }
 .main .based_selection .content_view a .based_selection_img {
   width: 100% !important;
-  height: 246px !important;
+  height: 389px !important;
 }
 .main .based_selection .content_view a h6 {
   text-align: right !important;
