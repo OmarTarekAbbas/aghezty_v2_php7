@@ -53,6 +53,11 @@ class BrandController extends Controller
 
         $brand = new Brand();
         $brand->fill($request->except('title'));
+        if($request->has('Installments')){
+          $Installments = json_encode($request->Installments);
+        }
+        $brand->Installments = $Installments;
+        $limitPrice = request('limit_price',0);
         foreach ($request->title as $key => $value)
         {
             $brand->setTranslation('title', $key, $value);
@@ -70,6 +75,9 @@ class BrandController extends Controller
        }
 
       $brand->save();
+
+      //calculate Installments price
+      $this->calculateProductInstallmentsPrice($brand->id,$Installments,$limitPrice);
 
       \Session::flash('success', 'Brand Created Successfully');
       return redirect('/brand');
@@ -125,6 +133,11 @@ class BrandController extends Controller
           return back()->withErrors($validator)->withInput();
       }
       $brand = Brand::findOrFail($id);
+      if($request->has('Installments')){
+        $Installments = json_encode($request->Installments);
+      }
+      $brand->Installments = $Installments;
+      $limitPrice = request('limit_price',0);
       foreach ($request->title as $key => $value)
       {
         $brand->setTranslation('title', $key, $value);
@@ -141,6 +154,9 @@ class BrandController extends Controller
       }
 
       $brand->update($request->except('title'));
+
+      //calculate Installments price
+      $this->calculateProductInstallmentsPrice($id,$Installments,$limitPrice);
 
       \Session::flash('success', 'Brand Updated Successfully');
       return redirect('/brand');
@@ -163,5 +179,39 @@ class BrandController extends Controller
 
       \Session::flash('success', 'Brand Delete Successfully');
       return back();
+    }
+
+    public function calculateProductInstallmentsPrice($brand_id , $installments,$limitPrice)
+    {
+      $products = Product::where('brand_id',$brand_id)->where(function($q) use ($limitPrice){
+        $q->where('price','>=',$limitPrice);
+        $q->orWhere('price_after_discount','>=',$limitPrice);
+      })->get();
+
+      $installments = json_decode($installments,true);
+
+      $product_installments[6]  = null;
+      $product_installments[12] = null;
+      $product_installments[18] = null;
+      $product_installments[24] = null;
+
+      foreach ($products as $key => $product) {
+        $price = $product->price;
+        if($product->price_after_discount){
+          $price = $product->price_after_discount;
+        }
+        if($installments[6])
+          $product_installments[6]  = ceil(($price / 6 )  + (($price)*($installments[6]/100) / 6));
+        if($installments[12])
+          $product_installments[12] = ceil(($price / 12 ) + (($price)*($installments[12]/100) / 12));
+        if($installments[18])
+          $product_installments[18] = ceil(($price / 18 ) + (($price)*($installments[18]/100) / 18));
+        if($installments[24])
+          $product_installments[24] = ceil(($price / 24 ) + (($price)*($installments[24]/100) / 24));
+
+        $product->installments = json_encode($product_installments);
+        $product->save();
+      }
+
     }
 }
