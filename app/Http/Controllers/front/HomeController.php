@@ -889,7 +889,7 @@ class HomeController extends Controller
         if(!$product){
           return view('frontv2.error404');
         }
-        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(6)->get();
+        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
 
