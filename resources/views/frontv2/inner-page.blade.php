@@ -275,7 +275,7 @@
 
 
 @if($counter)
-<section class="inner_table_desc" style="margin-top: -4rem">
+<section class="inner_table_desc" style="margin-top: -1rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
   @endif
@@ -396,10 +396,10 @@
 
     <div class="row mt-3">
       @foreach ($items as $item)
-      <div class="col-md-3 col-6 mb-3">
+      <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id])}}">
-            <img src="{{url($item->main_image)}}" alt="Product" class="w-100 based_selection_img">
+            <img src="{{url($item->main_image)}}" width="202" height="190" alt="Product" class="based_selection_img">
 
             @if($item->discount > 0)
             <div class="product-label text-center font-weight-bold">

@@ -1259,11 +1259,6 @@ body {
 .main .review_comment form em {
   color: #eb340a;
 }
-.main .based_selection .content_view a .based_selection_img {
-  width: 100% !important;
-  height: 389px !important;
-}
-
 .colorstar {
   color: #ffc600;
 }
@@ -2521,7 +2516,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 5rem;
+    top: 8rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -2663,9 +2658,6 @@ body {
   .main .based_selection .row .col-6 {
     padding-left: 2px !important;
     padding-right: 2px !important;
-  }
-  .main .based_selection .content_view a .based_selection_img {
-    height: 150px !important;
   }
   .main .based_selection .content_view a .product-label {
     right: 4px;
@@ -3354,7 +3346,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 6rem;
+    top: 9rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -3489,9 +3481,6 @@ body {
   .main .based_selection .row .col-6 {
     padding-left: 2px !important;
     padding-right: 2px !important;
-  }
-  .main .based_selection .content_view a .based_selection_img {
-    height: 170px !important;
   }
   .main .based_selection .content_view a .product-label {
     right: 4px;
@@ -3901,6 +3890,25 @@ body {
   }
   .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .old-price .price {
     font-size: 15px;
+  }
+
+  #inner-page #carouselExampleControls .carousel-control-next .left_slider,
+#inner-page #carouselExampleControls .carousel-control-next .right_slider,
+#inner-page #carouselExampleControls .carousel-control-prev .left_slider,
+#inner-page #carouselExampleControls .carousel-control-prev .right_slider {
+    top: 13rem;
+  }
+  #inner-page #carouselExampleControls .carousel-control-next .left_slider.left_slider,
+#inner-page #carouselExampleControls .carousel-control-next .right_slider.left_slider,
+#inner-page #carouselExampleControls .carousel-control-prev .left_slider.left_slider,
+#inner-page #carouselExampleControls .carousel-control-prev .right_slider.left_slider {
+    left: -2.25rem;
+  }
+  #inner-page #carouselExampleControls .carousel-control-next .left_slider.right_slider,
+#inner-page #carouselExampleControls .carousel-control-next .right_slider.right_slider,
+#inner-page #carouselExampleControls .carousel-control-prev .left_slider.right_slider,
+#inner-page #carouselExampleControls .carousel-control-prev .right_slider.right_slider {
+    right: -3.5rem;
   }
 
   .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {

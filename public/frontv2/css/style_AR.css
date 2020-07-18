@@ -998,7 +998,8 @@ body {
 .main #inner-page .info .features .desc_feature {
   line-height: 30px;
 }
-.main #inner-page .info .features .modal_feature h5, .main #inner-page .info .features .modal_feature p,
+.main #inner-page .info .features .modal_feature h5,
+.main #inner-page .info .features .modal_feature p,
 .main #inner-page .info .features .desc_feature h5,
 .main #inner-page .info .features .desc_feature p {
   margin-bottom: 0;
@@ -1249,10 +1250,6 @@ body {
 }
 .main .based_selection {
   text-align: right;
-}
-.main .based_selection .content_view a .based_selection_img {
-  width: 100% !important;
-  height: 389px !important;
 }
 .main .based_selection .content_view a h6 {
   text-align: right !important;
@@ -2751,7 +2748,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 5rem;
+    top: 8rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -2887,9 +2884,6 @@ body {
   .main .based_selection .row .col-6 {
     padding-left: 2px !important;
     padding-right: 2px !important;
-  }
-  .main .based_selection .content_view a .based_selection_img {
-    height: 150px !important;
   }
   .main .based_selection .content_view a .product-label {
     left: 4px;
@@ -3604,7 +3598,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 6rem;
+    top: 9rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -3740,9 +3734,6 @@ body {
   .main .based_selection .row .col-6 {
     padding-left: 2px !important;
     padding-right: 2px !important;
-  }
-  .main .based_selection .content_view a .based_selection_img {
-    height: 170px !important;
   }
   .main .based_selection .content_view a .product-label {
     left: 4px;
@@ -4157,6 +4148,24 @@ body {
   }
   .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
     min-height: 26.5rem;
+  }
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider {
+    top: 13rem;
+  }
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.left_slider {
+    left: -2.25rem;
+  }
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.right_slider {
+    right: -3.5rem;
   }
 
   .product_view .product_view_type .margin_bottom_mob {
