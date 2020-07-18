@@ -271,7 +271,7 @@
                 @foreach (filtter_brands() as $brand)
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
-                  {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} 
+                  {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}}
                     class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_brand_{{$brand->id}}_mobile">{{$brand->getTranslation('title',getCode())}}</label>
@@ -384,7 +384,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-3 col-6 mb-3 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
-              <a href="{{route('front.home.inner',['id' => $product->id]) }}">
+              <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
                 <img class="lazy" src="{{$product->main_image}}" alt="Product" width="202" height="202" class="w-75 d-block m-auto">
 
                 @if($product->discount > 0)
@@ -609,10 +609,10 @@
         }
       })
       this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
-      this.pr_values = this.pr_values ? this.pr_values.map(function (x) { 
-        return parseInt(x); 
+      this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
+        return parseInt(x);
       }) : []
-      
+
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;
       number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
@@ -724,8 +724,8 @@
         }
       })
       this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
-      this.pr_values = this.pr_values ? this.pr_values.map(function (x) { 
-        return parseInt(x); 
+      this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
+        return parseInt(x);
       }) : []
       @if(isset($_REQUEST['search']) == 'TV')
       str = location.search;

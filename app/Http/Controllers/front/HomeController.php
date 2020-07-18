@@ -715,7 +715,7 @@ class HomeController extends Controller
     {
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::query();
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -771,6 +771,7 @@ class HomeController extends Controller
           ->where('translatables.column_name','title')
           ->where(function($q) use ($request){
             $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
       }
@@ -801,7 +802,7 @@ class HomeController extends Controller
     public function load_productsv2(Request $request)
     {
         //return $request->all();
-        $products = Product::query();
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
@@ -853,6 +854,7 @@ class HomeController extends Controller
           ->where('translatables.column_name','title')
           ->where(function($q) use ($request){
             $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
       }
@@ -876,8 +878,7 @@ class HomeController extends Controller
         }
 
         $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
-          ->select('products.*','products.id As id')
-          ->get();
+                    ->get();
 
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
