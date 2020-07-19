@@ -1483,12 +1483,12 @@ class HomeController extends Controller
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
             $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
             $client = \Auth::guard('client')->user();
-            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            //     $m->from($client->email, __('front.order'));
-            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-            // });
-            // $link = url('order/'.$order->id);
-            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+                $m->from($client->email, __('front.order'));
+                $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            });
+            $link = url('order/'.$order->id);
+            send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             session()->forget('nbe_click_script');
             return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
@@ -1613,12 +1613,12 @@ class HomeController extends Controller
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
             $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
             $client = \Auth::guard('client')->user();
-            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            //     $m->from($client->email, __('front.order'));
-            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-            // });
-            // $link = url('order/'.$order->id);
-            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+                $m->from($client->email, __('front.order'));
+                $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            });
+            $link = url('order/'.$order->id);
+            send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             session()->forget('cib_click_script');
             return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
