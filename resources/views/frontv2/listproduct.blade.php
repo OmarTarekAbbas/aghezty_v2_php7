@@ -111,7 +111,7 @@
           </button>
 
 
-          <div class="panel mb-3 w-100 border border-light">
+          <div class="panel brand_panel_change mb-3 w-100 border border-light">
             @foreach (filtter_brands() as $brand)
             <div class="z-checkbox">
               <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
@@ -267,7 +267,7 @@
                 <i class="fas fa-minus float-right"></i>
               </button>
 
-              <div class="panel mb-3 border border-secondary">
+              <div class="panel brand_panel_change_mobile mb-3 border border-secondary">
                 @foreach (filtter_brands() as $brand)
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
@@ -362,7 +362,7 @@
             <option value="">@lang('messages.users.select')</option>
             <option value="title,asc">@lang('messages.scheduled.name')</option>
             <option value="price,desc">@lang('front.price') @lang('front.desc')</option>
-            <option value="price,asc">@lang('front.price') @lang('front.asc')</option>
+            <option value="price,asc" selected="selected">@lang('front.price') @lang('front.asc')</option>
           </select>
 
           <strong class="grid_list float-right">
@@ -461,6 +461,47 @@
     });
   })
 
+  $('.sub_cat_id').change(function() {
+      var cats = ''
+      $('.sub_cat_id').each(function(i, obj) {
+        if ($(this).prop("checked") == true) {
+          cats += $(this).val()+','
+        }
+      });
+
+      $.ajax({
+        url: '{{url("clients/brands")}}',
+        type: "get",
+        data: {category_ids : cats},
+        success: function(data) {
+          var html        = ''
+          var html_mobile = ''
+          var brands = data.data
+          if(brands.length){
+            for (let i = 0; i < brands.length; i++) {
+              html += '<div class="z-checkbox">\
+                              <input id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+                                type="checkbox"\
+                                name="brand_id[]" value="'+brands[i].id+'">\
+                              <label class="d-block text-capitalize"\
+                                for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
+                            </div>';
+              html_mobile += '<div class="z-checkbox">\
+                                <input id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
+                                  type="checkbox"\
+                                  name="brand_id[]" value="'+brands[i].id+'">\
+                                <label class="d-block text-capitalize"\
+                                  for="panel_brand_'+brands[i].id+'_mobile">'+brands[i].title+'</label>\
+                              </div>';
+            }
+            $('.brand_panel_change').html(html)
+            $('.brand_panel_change_mobile').html(html_mobile)
+          }
+        },
+      });
+
+  })
+
   function load_content_data(start) {
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?' + '&start=' + start,
@@ -544,6 +585,45 @@
       $('body').removeClass('modal-open')
     }
   })
+  $( document ).ready(function(){
+    var cats = ''
+    $('.sub_cat_id').each(function(i, obj) {
+      if ($(this).prop("checked") == true) {
+        cats += $(this).val()+','
+      }
+    });
+
+    $.ajax({
+      url: '{{url("clients/brands")}}',
+      type: "get",
+      data: {category_ids : cats},
+      success: function(data) {
+        var html        = ''
+        var html_mobile = ''
+        var brands = data.data
+        if(brands.length){
+          for (let i = 0; i < brands.length; i++) {
+            html += '<div class="z-checkbox">\
+                            <input id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+                              type="checkbox"\
+                              name="brand_id[]" value="'+brands[i].id+'">\
+                            <label class="d-block text-capitalize"\
+                              for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
+                          </div>';
+            html_mobile += '<div class="z-checkbox">\
+                              <input id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
+                                type="checkbox"\
+                                name="brand_id[]" value="'+brands[i].id+'">\
+                              <label class="d-block text-capitalize"\
+                                for="panel_brand_'+brands[i].id+'_mobile">'+brands[i].title+'</label>\
+                            </div>';
+          }
+          $('.brand_panel_change').html(html)
+          $('.brand_panel_change_mobile').html(html_mobile)
+        }
+      },
+    });
+  })
   @if(!request()->has('sorted'))
   $( document ).ready(function(){
     $.ajax({
@@ -561,7 +641,7 @@
         $('.load').hide();
       },
     });
-    // history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
+
   })
   @endif
 </script>
