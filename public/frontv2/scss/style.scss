@@ -277,7 +277,11 @@ body {
         top: 38px;
         left: 53px;
         transform: translate(-50%, -50%);
-      }
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+}
     }
   }
 }
@@ -296,7 +300,7 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
-  top: 8.59%;
+  // top: 8.59%;
 
   .navbar {
     text-align: center;
@@ -2943,7 +2947,7 @@ body {
   }
 
   .head_three {
-    top: 0;
+    // top: 0;
 
     .navbar {
       padding: 5px 0;
@@ -4196,7 +4200,7 @@ body {
   }
 
   .head_three {
-    top: 0;
+    // top: 0;
 
     .navbar {
       padding: 5px 0;
@@ -5454,7 +5458,7 @@ body {
   }
 
   .head_three {
-    top: 0;
+    // top: 0;
 
     .navbar {
       .navbar-nav {
@@ -5616,7 +5620,7 @@ body {
   }
 
   .head_three {
-    top: 5.8% !important;
+    // top: 5.8% !important;
 
     .navbar {
       .navbar-nav {
@@ -6002,7 +6006,7 @@ body {
 
 @media (min-width: 1024px) and (max-width: 1400px) {
   .head_three {
-    top: 12.87%;
+    // top: 12.87%;
   }
 
   .head_two {
