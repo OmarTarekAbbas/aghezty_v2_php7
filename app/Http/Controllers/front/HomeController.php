@@ -887,6 +887,7 @@ class HomeController extends Controller
 
     public function inner_productv2($id)
     {
+
         $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
         if(!$product){
           return view('frontv2.error404');
