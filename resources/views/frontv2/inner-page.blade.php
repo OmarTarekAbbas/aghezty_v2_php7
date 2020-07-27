@@ -57,7 +57,7 @@
     </div>
 
     <div class="row w-100 m-0">
-      <div class="col-lg-8 col-12 p-0">
+      <div class="col-lg-6 col-12 p-0">
         <div class="row">
           <div class="col-md-3 d-none d-sm-block" style="overflow-y: scroll;height: 30rem;">
             @foreach ($product->images as $key=>$image)
@@ -96,7 +96,7 @@
         </div>
       </div>
 
-      <div class="info col-lg-4 w-100 p-0">
+      <div class="info col-lg-6 w-100 p-0">
         <div class="row m-0">
           <div class="features col-md-12">
             <h5 class="font-weight-bold py-2">@lang('front.inner.key_feature')</h5>
