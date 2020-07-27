@@ -1,3 +1,13 @@
+$(document).ready(function() {
+  var header_header = $('.head_two').innerHeight();
+  var header_display = $('.head_two').css('display');
+
+  if (header_display !== 'none') {
+    $('.head_three').css('top', header_header);
+  }
+  // console.log(msg);
+});
+
 /* ===== Start Scroll to Top ==== */
 $(window).scroll(function () {
   if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
