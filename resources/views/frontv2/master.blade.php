@@ -631,39 +631,53 @@
 
                         <div class="block_content">
                           <div class="row">
+                            @if(setting('android_link') && setting('android_link')!= '')
                             <div class="col-xl-6 col-6 p-0">
                               <a class="app-icon" href="{{setting('android_link')}}" title="Google Play">
                                 <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/google-play.svg')}}" alt="Google Play">
                               </a>
                             </div>
+                            @endif
 
+                            @if(setting('ios_link') && setting('ios_link')!= '')
                             <div class="col-xl-6 col-6 p-0">
                               <a class="app-icon" href="{{setting('ios_link')}}" title="Google Play">
                                 <img class="border border-white rounded hvr-icon-forward" src="{{url('public/frontv2/images/app-store.svg')}}" alt="App Store">
                               </a>
                             </div>
+                            @endif
 
                             <div class="col-sm-12 col-lg-12 col-xl-12 p-0">
                               <div class="rounded-social-buttons text-center my-3">
+                                @if(setting('facebook') && setting('facebook')!= '')
                                 <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">
                                   <i class="fab fa-facebook-f facebook_icon"></i>
                                 </a>
+                                @endif
 
+                                @if(setting('phone') && setting('phone')!= '')
                                 <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?phone={{setting('phone')}}">
                                   <i class="fab fa-whatsapp whatsapp_icon"></i>
                                 </a>
+                                @endif
 
+                                @if(setting('phone') && setting('phone')!= '')
                                 <a class="social-button phone_link" title="Phone Number" href="tel:{{setting('phone')}}">
                                   <i class="fas fa-phone phone_icon"></i>
                                 </a>
+                                @endif
 
+                                @if(setting('sms') && setting('sms')!= '')
                                 <a class="social-button sms_link" title="Messege" href="sms:{{setting('sms')}}">
                                   <i class="far fa-comment sms_icon"></i>
                                 </a>
+                                @endif
 
+                                @if(setting('mail') && setting('mail')!= '')
                                 <a class="social-button mail_link" title="Email" href="{{setting('mail')}}">
                                   <i class="fas fa-envelope mail_icon"></i>
                                 </a>
+                                @endif
                               </div>
                             </div>
 
