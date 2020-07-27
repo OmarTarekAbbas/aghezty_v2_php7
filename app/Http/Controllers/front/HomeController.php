@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PropertyResource;
 use App\Order;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\BrandResource;
 use Storage;
 use App\OrderDetail;
 use App\Product;
@@ -1680,6 +1681,17 @@ class HomeController extends Controller
         $propertys = $propertys->get();
         return (PropertyResource::collection($propertys));
 
+    }
+
+    function getBrand(Request $request)
+    {
+      $brands = \App\Brand::select('brands.*')
+      ->join('products', 'products.brand_id', '=', 'brands.id')
+      ->whereIn('products.category_id', explode(',',$request->category_ids))
+      ->groupBy('brands.id')
+      ->get();
+
+     return BrandResource::collection($brands);
     }
 
     public function getChild(Request $request)
