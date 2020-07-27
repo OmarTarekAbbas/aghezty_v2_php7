@@ -385,7 +385,7 @@
           <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
-                <img class="lazy" src="{{$product->main_image}}" alt="Product" width="202" height="202" class="w-75 d-block m-auto">
+                <img class="lazy" src="{{$product->main_image}}" alt="Product" width="{{$product->category->id == 34 ? 260:202}}" height="202" class="w-75 d-block m-auto">
 
                 @if($product->discount > 0)
                 <div class="product-label text-center font-weight-bold">
@@ -480,14 +480,14 @@
           if(brands.length){
             for (let i = 0; i < brands.length; i++) {
               html += '<div class="z-checkbox">\
-                              <input id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+                              <input form="filter_form" id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
                                 type="checkbox"\
                                 name="brand_id[]" value="'+brands[i].id+'">\
                               <label class="d-block text-capitalize"\
                                 for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
                             </div>';
               html_mobile += '<div class="z-checkbox">\
-                                <input id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
+                                <input form="filter_form" id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
                                   type="checkbox"\
                                   name="brand_id[]" value="'+brands[i].id+'">\
                                 <label class="d-block text-capitalize"\
@@ -604,14 +604,14 @@
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
             html += '<div class="z-checkbox">\
-                            <input id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+                            <input form="filter_form" id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
                               type="checkbox"\
                               name="brand_id[]" value="'+brands[i].id+'">\
                             <label class="d-block text-capitalize"\
                               for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
                           </div>';
             html_mobile += '<div class="z-checkbox">\
-                              <input id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
+                              <input form="filter_form" id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
                                 type="checkbox"\
                                 name="brand_id[]" value="'+brands[i].id+'">\
                               <label class="d-block text-capitalize"\

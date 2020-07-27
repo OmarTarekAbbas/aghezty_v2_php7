@@ -224,6 +224,12 @@ function categorys()
   return $categorys;
 }
 
+function categoryInFooter()
+{
+  $categorys = \App\Category::whereNull('parent_id')->withCount('sub_cats')->orderBy('sub_cats_count','asc')->get();
+  return $categorys;
+}
+
 function filter_categorys()
 {
   $categorys = \App\Category::whereNull('parent_id');

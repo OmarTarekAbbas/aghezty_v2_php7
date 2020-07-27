@@ -504,7 +504,7 @@
                   <div class="block_content">
                     <div class="row">
 
-                      @foreach ($categorys as $category)
+                      @foreach (categoryInFooter() as $category)
                       @if($category->sub_cats->count() > 0)
                       <div class="col-md-3 col-xl-3 col-6 p-0 no_padding_mobile">
                         <ul class="list-unstyled ul_links">
