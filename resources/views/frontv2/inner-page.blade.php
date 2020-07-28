@@ -104,7 +104,7 @@
                 <div class="carousel-item {{$key == 0 ?'active' : ''}}">
                   <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
                     <a class="zoom_image" href="{{url($image->image)}}">
-                      <img class="m-auto d-block text-center w-100"  height="{{$product->category->id == 17 ? '600px' : '400px'}}" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
+                      <img class="w-100 m-auto d-block text-center" height="{{$product->category->id == 17 ? '600px' : '400px'}}" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
                     </a>
                   </div>
                 </div>
