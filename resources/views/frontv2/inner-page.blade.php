@@ -19,7 +19,7 @@
   @media (min-width: 320px) and (max-width: 375px) {
     #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
       width: 100% !important;
-      height: 100% !important;
+      height: 80% !important;
     }
   }
 
