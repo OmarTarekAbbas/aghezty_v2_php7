@@ -973,10 +973,12 @@ body {
   right: -5rem;
 }
 .main #inner-page .slide#carouselExampleControls {
-  width: 75%;
+  width: 80%;
 }
 .main #inner-page .slide .carousel-inner {
-  max-height: 620px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 .main #inner-page .info {
   text-align: right;
