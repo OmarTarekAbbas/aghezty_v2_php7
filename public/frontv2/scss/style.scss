@@ -1156,7 +1156,7 @@ body {
 
       .carousel-inner {
         // height: 30rem;
-        max-height: 30rem;
+        max-height: 620px;
 
         .carousel-item {
           .easyzoom {
@@ -2918,7 +2918,6 @@ body {
 /* Start Media Query Mobile */
 
 @media (min-width: 320px) and (max-width: 375px) {
-
   .alert-success,
   .alert-danger {
 
@@ -4168,7 +4167,6 @@ body {
     }
   }
 }
-
 
 @media (min-width: 376px) and (max-width: 415px) {
 

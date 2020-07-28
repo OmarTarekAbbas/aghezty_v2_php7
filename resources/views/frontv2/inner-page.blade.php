@@ -15,6 +15,34 @@
     top: 0px;
     height: 48px;
   }
+
+  @media (min-width: 320px) and (max-width: 375px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (min-width: 376px) and (max-width: 415px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1024px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 </style>
 
 <div class="main">

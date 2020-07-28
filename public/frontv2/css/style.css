@@ -869,7 +869,7 @@ body {
   width: 90%;
 }
 .main #inner-page .slide .carousel-inner {
-  max-height: 30rem;
+  max-height: 620px;
 }
 .main #inner-page .product-title {
   font-size: 1.3rem;
