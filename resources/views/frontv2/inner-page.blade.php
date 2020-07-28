@@ -76,7 +76,7 @@
                 <div class="carousel-item {{$key == 0 ?'active' : ''}}">
                   <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
                     <a class="zoom_image" href="{{url($image->image)}}">
-                      <img class="w-100" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
+                      <img width="500px" height="{{$product->category->id == 17 ? '700px' : '600px'}}" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
                     </a>
                   </div>
                 </div>
