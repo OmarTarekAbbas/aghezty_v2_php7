@@ -866,7 +866,7 @@ body {
   font-size: 1.25rem;
 }
 .main #inner-page .slide#carouselExampleControls {
-  width: 90%;
+  width: 75%;
 }
 .main #inner-page .slide .carousel-inner {
   max-height: 620px;
