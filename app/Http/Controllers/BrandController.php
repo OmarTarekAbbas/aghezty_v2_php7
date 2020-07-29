@@ -190,11 +190,17 @@ class BrandController extends Controller
     {
       $this->emptyProductInstallment($brand_id , $installments, $limitPrice, $request);
 
-      $products = Product::where('brand_id',$brand_id)->whereIn('category_id',$request->category_ids)
+      $products = Product::where('brand_id',$brand_id)
       ->where(function($q) use ($limitPrice){
         $q->where('price','>=',$limitPrice);
         $q->orWhere('price_after_discount','>=',$limitPrice);
-      })->get();
+      });
+
+      if($request->has('category_ids')){
+        $products = $products->whereIn('category_id',$request->category_ids);
+      }
+
+      $products = $products->get();
 
       $installments = json_decode($installments,true);
 
