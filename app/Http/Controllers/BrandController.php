@@ -111,7 +111,14 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         $languages = Language::all();
-        return view('brand.form',compact('brand','languages'));
+        $categories = \App\Category::select('categories.*')
+        ->join('categories AS t2', 'categories.parent_id', 't2.id')
+        ->join('products', 'products.category_id', '=', 'categories.id')
+        ->join('brands', 'brands.id', '=', 'products.brand_id')
+        ->where('products.brand_id', $id)
+        ->groupBy('categories.id')
+        ->get();
+        return view('brand.form',compact('brand','languages','categories'));
     }
 
     /**
@@ -156,7 +163,7 @@ class BrandController extends Controller
       $brand->update($request->except('title'));
 
       //calculate Installments price
-      $this->calculateProductInstallmentsPrice($id,$Installments,$limitPrice);
+      $this->calculateProductInstallmentsPrice($id,$Installments,$limitPrice,$request);
 
       \Session::flash('success', 'Brand Updated Successfully');
       return redirect('/brand');
@@ -181,9 +188,10 @@ class BrandController extends Controller
       return back();
     }
 
-    public function calculateProductInstallmentsPrice($brand_id , $installments,$limitPrice)
+    public function calculateProductInstallmentsPrice($brand_id , $installments,$limitPrice,$request)
     {
-      $products = Product::where('brand_id',$brand_id)->where(function($q) use ($limitPrice){
+      $products = Product::where('brand_id',$brand_id)->whereIn('category_id',$request->category_ids)
+      ->where(function($q) use ($limitPrice){
         $q->where('price','>=',$limitPrice);
         $q->orWhere('price_after_discount','>=',$limitPrice);
       })->get();

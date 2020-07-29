@@ -17,6 +17,14 @@
             </div>
         </div>
 </div>
+@if($brand)
+<div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.category')</label>
+    <div class="col-sm-9 col-lg-10 controls">
+      {!! Form::select('category_ids[]',$categories->pluck('title','id'),null,['class'=>'form-control chosen-rtl', 'multiple']) !!}
+    </div>
+</div>
+@endif
 @php
     if($brand){
         if($brand->Installments != null){

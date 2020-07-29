@@ -174,6 +174,14 @@
                                 {{$order->total_price}} @lang('front.pound')</div>
                         </div>
                         @endif
+                        <div class="summary-subtotal"
+                            style="border-bottom:1px solid #ccc; border-top:1px solid #ccc; clear:both; margin:1rem 0; overflow:hidden; padding:0.5rem 0">
+                            <div class="subtotal-title" style="color:#111;font-weight:bold;float:{{$lang1}}; text-align:{{$lang1}}; width:50%"
+                                align="right" width="50%"> @lang('front.payment')</div>
+                            <div class="subtotal-value final-value" id="basket-subtotal"
+                                style="color:#111; float:{{$lang1}}; text-align:{{$lang2}}; width:50%" align="left" width="50%">
+                                {{$order->payment}}</div>
+                        </div>
                     </div>
                 </aside>
             </main>
