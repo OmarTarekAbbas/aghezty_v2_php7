@@ -76,8 +76,6 @@ class BrandController extends Controller
 
       $brand->save();
 
-      //calculate Installments price
-      $this->calculateProductInstallmentsPrice($brand->id,$Installments,$limitPrice);
 
       \Session::flash('success', 'Brand Created Successfully');
       return redirect('/brand');
@@ -188,8 +186,10 @@ class BrandController extends Controller
       return back();
     }
 
-    public function calculateProductInstallmentsPrice($brand_id , $installments,$limitPrice,$request)
+    public function calculateProductInstallmentsPrice($brand_id , $installments, $limitPrice, $request)
     {
+      $this->emptyProductInstallment($brand_id , $installments, $limitPrice, $request);
+
       $products = Product::where('brand_id',$brand_id)->whereIn('category_id',$request->category_ids)
       ->where(function($q) use ($limitPrice){
         $q->where('price','>=',$limitPrice);
@@ -221,5 +221,10 @@ class BrandController extends Controller
         $product->save();
       }
 
+    }
+
+    protected function emptyProductInstallment($brand_id , $installments, $limitPrice, $request)
+    {
+      $products = Product::where('brand_id',$brand_id)->update(['installments' => null]);
     }
 }
