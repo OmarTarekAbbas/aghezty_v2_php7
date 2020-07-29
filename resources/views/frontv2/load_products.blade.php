@@ -3,7 +3,7 @@
 <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
   <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
     <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
-      <img class="lazy" src="{{$product->main_image}}" width="{{($product->category->id == 34 && $product->brand_id == 6) ? 260:260}}" height="220" alt="Product" class="w-75 d-block m-auto">
+      <img class="lazy" src="{{$product->main_image}}" width="100%" height="" alt="Product" class="w-75 d-block m-auto">
       @if($product->discount)
         <div class="product-label text-center font-weight-bold">
             <span class="sale-product-icon">{{$product->discount}} %</span>
