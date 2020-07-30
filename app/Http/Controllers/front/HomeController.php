@@ -1539,12 +1539,38 @@ class HomeController extends Controller
     public function createSessionIdCib($total, $order_id,$tran_id)
     {
 
+
+      /*
+
+      // ======= test for Cib :  =================//
+      Merchant Name                                     : Aghezty
+      Merchant ID                                          : TESTCIB700926
+      Settlement CCY                                     : EGP
+      Integration Authentication Password        : c9f7bfa67d53ad74fd59b5e18a1c4ce0
+
+
+      Operator ID & password for Merchanthttps://cibpaynow.gateway.mastercard.com/ma/login.s
+
+      Operator ID  :  Merchant
+      Password      : m1234567
+
+    // ======= live for Cib :  =================//
+
+    Merchant Name                                     : Aghezty
+    Merchant ID                                        : CIB700926
+    Settlement CCY                                     : EGP
+    Integration Authentication Password               : 4aef315b907775be5bc05e384d734686
+
+
+
+      */
+
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=4aef315b907775be5bc05e384d734686&apiUsername=merchant.CIB700926&interaction.operation=PURCHASE&merchant=CIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
         $headers = array();
         $headers[] = 'Content-Type: application/x-www-form-urlencoded';
