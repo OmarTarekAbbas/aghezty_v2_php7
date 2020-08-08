@@ -8,7 +8,7 @@ class Brand extends Model
 {
     use  Translatable;
     protected $table = 'brands';
-    protected $fillable = ['title','image' ];
+    protected $fillable = ['title', 'image', 'limit_price','category_ids'];
     ///////////////////set image///////////////////////////////
     public function setImageAttribute($value){
         if(is_file($value)){
@@ -20,6 +20,14 @@ class Brand extends Model
         else{
             $this->attributes['image']= $value ;
         }
+    }
+
+    public function setCategoryIdsAttribute($value){
+      $this->attributes['category_ids'] = is_array($value) ? implode(",", $value) : '';
+    }
+
+    public function setLimitPriceAttribute($value){
+      $this->attributes['limit_price'] = $value ? $value : 0;
     }
 
     public function getImageAttribute($value)

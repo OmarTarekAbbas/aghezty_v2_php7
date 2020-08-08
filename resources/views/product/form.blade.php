@@ -133,7 +133,7 @@ const property = new Vue({
     }
 
     $('.discount').keyup(function(){
-      $('.price_after').val($('.price').val() - (($(this).val()/100) * $('.price').val()))
+      $('.price_after').val(Math.ceil( $('.price').val() - (($(this).val()/100) * $('.price').val()) ))
     })
 
     $('.price').keyup(function(){
@@ -145,7 +145,7 @@ const property = new Vue({
 
     $('.remove_stm').click(function(){
       console.log($(this).parent().find('input'));
-      $(this).parent().find('input').val(0);
+      $(this).parent().find('input').val('');
     })
 
 

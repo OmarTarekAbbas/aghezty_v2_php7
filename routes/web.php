@@ -58,6 +58,7 @@ Route::prefix('clients')->group(function() {
     Route::post('check_couponv2','front\HomeController@check_couponv2')->name('front.home.coupon');
     Route::get('update_cartv2','front\HomeController@update_cartv2')->name('front.home.cart.update');
     Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
+    Route::get('brands','front\HomeController@getBrand')->name('front.home.cart.delete');
     /*************** end ***************/
 
 

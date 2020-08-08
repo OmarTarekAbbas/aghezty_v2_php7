@@ -283,7 +283,7 @@
         order_id = data.order_id
         tran_id = data.tran_id
         Checkout.configure({
-          merchant: 'TESTCIB700926',
+          merchant: 'CIB700926',
           order: {
             amount: function () {
               //Dynamic calculation of amount

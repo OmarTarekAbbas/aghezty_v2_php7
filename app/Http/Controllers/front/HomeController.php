@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PropertyResource;
 use App\Order;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\BrandResource;
 use Storage;
 use App\OrderDetail;
 use App\Product;
@@ -715,7 +716,7 @@ class HomeController extends Controller
     {
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::query();
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -771,6 +772,7 @@ class HomeController extends Controller
           ->where('translatables.column_name','title')
           ->where(function($q) use ($request){
             $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
       }
@@ -801,7 +803,7 @@ class HomeController extends Controller
     public function load_productsv2(Request $request)
     {
         //return $request->all();
-        $products = Product::query();
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
@@ -853,6 +855,7 @@ class HomeController extends Controller
           ->where('translatables.column_name','title')
           ->where(function($q) use ($request){
             $q->where('products.title', 'like', '%' . $request->search . '%');
+            $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
       }
@@ -876,8 +879,7 @@ class HomeController extends Controller
         }
 
         $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
-          ->select('products.*','products.id As id')
-          ->get();
+                    ->get();
 
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
@@ -885,11 +887,12 @@ class HomeController extends Controller
 
     public function inner_productv2($id)
     {
+
         $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
         if(!$product){
           return view('frontv2.error404');
         }
-        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(6)->get();
+        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
 
@@ -1482,12 +1485,12 @@ class HomeController extends Controller
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
             $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
             $client = \Auth::guard('client')->user();
-            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            //     $m->from($client->email, __('front.order'));
-            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-            // });
-            // $link = url('order/'.$order->id);
-            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+                $m->from($client->email, __('front.order'));
+                $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            });
+            $link = url('order/'.$order->id);
+            send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             session()->forget('nbe_click_script');
             return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
@@ -1536,12 +1539,38 @@ class HomeController extends Controller
     public function createSessionIdCib($total, $order_id,$tran_id)
     {
 
+
+      /*
+
+      // ======= test for Cib :  =================//
+      Merchant Name                                     : Aghezty
+      Merchant ID                                          : TESTCIB700926
+      Settlement CCY                                     : EGP
+      Integration Authentication Password        : c9f7bfa67d53ad74fd59b5e18a1c4ce0
+
+
+      Operator ID & password for Merchanthttps://cibpaynow.gateway.mastercard.com/ma/login.s
+
+      Operator ID  :  Merchant
+      Password      : m1234567
+
+    // ======= live for Cib :  =================//
+
+    Merchant Name                                     : Aghezty
+    Merchant ID                                        : CIB700926
+    Settlement CCY                                     : EGP
+    Integration Authentication Password               : 4aef315b907775be5bc05e384d734686
+
+
+
+      */
+
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, 'https://cibpaynow.gateway.mastercard.com/api/nvp/version/56');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=c9f7bfa67d53ad74fd59b5e18a1c4ce0&apiUsername=merchant.TESTCIB700926&interaction.operation=PURCHASE&merchant=TESTCIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "apiOperation=CREATE_CHECKOUT_SESSION&apiPassword=4aef315b907775be5bc05e384d734686&apiUsername=merchant.CIB700926&interaction.operation=PURCHASE&merchant=CIB700926&order.id=$order_id&order.amount=$total&order.currency=EGP");
 
         $headers = array();
         $headers[] = 'Content-Type: application/x-www-form-urlencoded';
@@ -1612,12 +1641,12 @@ class HomeController extends Controller
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
             $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
             $client = \Auth::guard('client')->user();
-            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
-            //     $m->from($client->email, __('front.order'));
-            //     $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
-            // });
-            // $link = url('order/'.$order->id);
-            // send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
+            Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+                $m->from($client->email, __('front.order'));
+                $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
+            });
+            $link = url('order/'.$order->id);
+            send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             session()->forget('cib_click_script');
             return response()->json(['status' => 'success', 'returnUrl' => route('front.home.checkout.thanks')]);
         }
@@ -1679,6 +1708,17 @@ class HomeController extends Controller
         $propertys = $propertys->get();
         return (PropertyResource::collection($propertys));
 
+    }
+
+    function getBrand(Request $request)
+    {
+      $brands = \App\Brand::select('brands.*')
+      ->join('products', 'products.brand_id', '=', 'brands.id')
+      ->whereIn('products.category_id', explode(',',$request->category_ids))
+      ->groupBy('brands.id')
+      ->get();
+
+     return BrandResource::collection($brands);
     }
 
     public function getChild(Request $request)

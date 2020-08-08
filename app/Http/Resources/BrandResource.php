@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Models\Language;
+use App\Language;
 
 class BrandResource extends JsonResource
 {

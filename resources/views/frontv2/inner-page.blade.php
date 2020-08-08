@@ -15,6 +15,34 @@
     top: 0px;
     height: 48px;
   }
+
+  @media (min-width: 320px) and (max-width: 375px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 80% !important;
+    }
+  }
+
+  @media (min-width: 376px) and (max-width: 415px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1024px) {
+    #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 </style>
 
 <div class="main">
@@ -57,7 +85,7 @@
     </div>
 
     <div class="row w-100 m-0">
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-6 col-12 p-0">
         <div class="row">
           <div class="col-md-3 d-none d-sm-block" style="overflow-y: scroll;height: 30rem;">
             @foreach ($product->images as $key=>$image)
@@ -76,7 +104,7 @@
                 <div class="carousel-item {{$key == 0 ?'active' : ''}}">
                   <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
                     <a class="zoom_image" href="{{url($image->image)}}">
-                      <img class="w-100" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
+                      <img class="w-100 m-auto d-block text-center" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
                     </a>
                   </div>
                 </div>
@@ -96,9 +124,8 @@
         </div>
       </div>
 
-      <div class="info col-lg-6 w-100">
-        <div class="row">
-
+      <div class="info col-lg-6 w-100 p-0">
+        <div class="row m-0">
           <div class="features col-md-12">
             <h5 class="font-weight-bold py-2">@lang('front.inner.key_feature')</h5>
 
@@ -108,10 +135,8 @@
 
             <div class="modal_feature">
               <h5 class="font-weight-bold d-inline-block">@lang('front.inner.model'):</h5>
-              <p class="d-inline-block px-1">{{$product->getTranslation('short_description',getCode())}}
-              </p>
+              <p class="d-inline-block px-1">{{$product->getTranslation('short_description',getCode())}}</p>
             </div>
-
 
             @foreach ($product->pr_value as $item)
             <div class="modal_feature">
@@ -170,14 +195,14 @@
         </div>
         @endif
 
-        <div class="row price_disc_offer">
-          <div class="col-md-4 col-4 p-0">
+        <div class="row price_disc_offer m-0">
+          <div class="col-md-5 col-5 p-0">
             <h4 class="price text-primary font-weight-bold">
               {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
               @lang('front.egp')</h4>
           </div>
 
-          <div class="col-md-4 col-4 p-0">
+          <div class="col-md-5 col-5 p-0">
             @if($product->price_after_discount > 0)
             <h4 class="discount text-muted font-weight-bold">{{number_format($product->price)}}
               @lang('front.egp')</h4>
@@ -189,7 +214,7 @@
               content:"{{$product->discount}}"
             }
           </style>
-          <div class="col-md-4 col-4 p-0">
+          <div class="col-md-2 col-2 p-0">
             <div class="product-label text-center font-weight-bold">
               <span class="sale-product-icon">
                 <span class="testtt"></span>
@@ -278,7 +303,7 @@
 
 
 @if($counter)
-<section class="inner_table_desc" style="margin-top: -4rem">
+<section class="inner_table_desc" style="margin-top: -1rem">
 @else
 <section class="inner_table_desc" style="margin-top: 0">
   @endif
@@ -399,10 +424,10 @@
 
     <div class="row mt-3">
       @foreach ($items as $item)
-      <div class="col-md-2 col-6 mb-3">
+      <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id])}}">
-            <img src="{{url($item->main_image)}}" alt="Product" class="w-100 based_selection_img">
+            <img src="{{url($item->main_image)}}" style="max-height: 205px;"alt="Product" class="w-100 h-100 based_selection_img">
 
             @if($item->discount > 0)
             <div class="product-label text-center font-weight-bold">

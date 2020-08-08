@@ -92,7 +92,7 @@ return [
     'notify_me_when_available' => 'Notify me when available',
     'new_request_for_this_product' => 'New Request For This Product',
     'you_already_take_this_product_in_your_cart' => 'You already take this product in your cart',
-    'from' => 'From',
+    'from' => 'Than',
     'to' => 'To',
     'shop_by_category' => 'Shop By Category',
     'shop_by_brand' => 'Shop By Brand',

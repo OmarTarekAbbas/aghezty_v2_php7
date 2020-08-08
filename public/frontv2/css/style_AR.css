@@ -162,6 +162,10 @@ body {
 .head_two .search-container input#search-bar:focus::-webkit-input-placeholder {
   transition: opacity 0.45s ease;
   opacity: 0;
+  -webkit-transition: opacity 0.45s ease;
+  -moz-transition: opacity 0.45s ease;
+  -ms-transition: opacity 0.45s ease;
+  -o-transition: opacity 0.45s ease;
 }
 .head_two .search-container input#search-bar:focus::-moz-placeholder {
   transition: opacity 0.45s ease;
@@ -239,7 +243,6 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
-  top: 8.59%;
 }
 .head_three .navbar {
   text-align: center;
@@ -288,6 +291,9 @@ body {
   right: 0;
   text-align: right;
   min-width: 40%;
+  max-height: 29rem;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu .sub-title {
   color: #0f6ab2;
@@ -849,9 +855,8 @@ body {
 /*----------------------------------------- End List Product Page -----------------------------------------*/
 /***************************************** start inner-page ********************************************/
 .main #inner-page .price_disc_offer .product-label {
-  position: absolute;
-  top: 41%;
-  left: 1rem;
+  margin-top: 38%;
+  margin-right: 2rem;
   font-size: 14px;
   color: #FFF;
   z-index: 3;
@@ -948,7 +953,7 @@ body {
 .main #inner-page .carousel-control-prev .right_slider {
   height: 0;
   position: relative;
-  top: 13.5rem;
+  top: 13rem;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -959,22 +964,21 @@ body {
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-  left: -2.75rem;
+  left: -3.75rem;
 }
 .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-  right: -3.85rem;
+  right: -5rem;
 }
 .main #inner-page .slide#carouselExampleControls {
-  width: 90%;
+  width: 80%;
 }
 .main #inner-page .slide .carousel-inner {
-  height: 30rem;
-}
-.main #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
-  min-height: 30rem;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 .main #inner-page .info {
   text-align: right;
@@ -995,12 +999,18 @@ body {
 .main #inner-page .info .features .desc_feature {
   line-height: 30px;
 }
+.main #inner-page .info .features .modal_feature h5,
+.main #inner-page .info .features .modal_feature p,
+.main #inner-page .info .features .desc_feature h5,
+.main #inner-page .info .features .desc_feature p {
+  margin-bottom: 0;
+}
 .main #inner-page .info .discount {
   text-decoration: line-through;
 }
 .main #inner-page .info .quantity {
   border-bottom: 1px dashed #08c;
-  width: 21%;
+  width: 35%;
   text-align: center;
   line-height: 17px;
   font-size: 15px;
@@ -1135,7 +1145,7 @@ body {
 }
 .main #inner-page .contact_us .rounded-social-buttons .social-button {
   margin-bottom: 5%;
-  right: 83%;
+  right: 2%;
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1rem;
@@ -1241,10 +1251,6 @@ body {
 }
 .main .based_selection {
   text-align: right;
-}
-.main .based_selection .content_view a .based_selection_img {
-  width: 100% !important;
-  height: 246px !important;
 }
 .main .based_selection .content_view a h6 {
   text-align: right !important;
@@ -2416,9 +2422,6 @@ body {
     margin-top: 0;
   }
 
-  .head_three {
-    top: 0;
-  }
   .head_three .navbar-nav {
     padding: 0;
   }
@@ -2728,11 +2731,9 @@ body {
   }
   .main #inner-page #carouselExampleControls {
     border: 2px solid #ccc !important;
-    width: 100% !important;
   }
   .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
     margin: 0 auto;
-    min-height: 26.5rem;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
@@ -2745,7 +2746,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    bottom: 2rem;
+    top: 8rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -2773,7 +2774,7 @@ body {
     margin-top: 0;
   }
   .main #inner-page .info .features .price_disc_offer .price {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     line-height: 1;
     margin-top: 2rem;
@@ -2782,24 +2783,33 @@ body {
   .main #inner-page .info .features .price_disc_offer .discount {
     line-height: 1;
     text-align: left;
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     margin-top: 2rem;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
-    top: 9px;
-    left: 9px;
+    margin-top: 50%;
+    margin-right: 1.25rem;
+    width: 35px;
+    height: 35px;
+  }
+  .main #inner-page .info .features .price_disc_offer .product-label .sale-product-icon::before {
+    bottom: -36px;
+    width: 35px;
+    height: 35px;
+    border: 18px solid transparent;
+    border-top-color: #ff4765;
   }
   .main #inner-page .info .features .contact_us {
     margin-top: 2rem;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
-    margin-right: 4.5rem;
+    margin-right: 0;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
-    right: 0;
+    right: 0%;
   }
   .main #inner-page .info .features .quantity {
     width: 40%;
@@ -2872,9 +2882,6 @@ body {
   .main .based_selection .row .col-6 {
     padding-left: 2px !important;
     padding-right: 2px !important;
-  }
-  .main .based_selection .content_view a .based_selection_img {
-    height: 150px !important;
   }
   .main .based_selection .content_view a .product-label {
     left: 4px;
@@ -3254,9 +3261,6 @@ body {
     margin-top: 0;
   }
 
-  .head_three {
-    top: 0;
-  }
   .head_three .navbar {
     padding: 5px 0;
   }
@@ -3574,11 +3578,9 @@ body {
   }
   .main #inner-page #carouselExampleControls {
     border: 2px solid #ccc !important;
-    width: 100% !important;
   }
   .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
     margin: 0 auto;
-    min-height: 26.5rem;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
@@ -3591,20 +3593,20 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    bottom: 2rem;
+    top: 9rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
 .main #inner-page .carousel-control-next .right_slider.left_slider,
 .main #inner-page .carousel-control-prev .left_slider.left_slider,
 .main #inner-page .carousel-control-prev .right_slider.left_slider {
-    left: -0.25rem;
+    left: -1.8rem;
   }
   .main #inner-page .carousel-control-next .left_slider.right_slider,
 .main #inner-page .carousel-control-next .right_slider.right_slider,
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
-    right: -1.6rem;
+    right: -3rem;
   }
   .main #inner-page .info .features .modal_feature,
 .main #inner-page .info .features .desc_feature {
@@ -3633,8 +3635,17 @@ body {
     line-height: 1;
   }
   .main #inner-page .info .features .price_disc_offer .product-label {
-    top: 9px;
-    left: 17px;
+    margin-top: 40%;
+    margin-right: 2rem;
+    width: 35px;
+    height: 35px;
+  }
+  .main #inner-page .info .features .price_disc_offer .product-label .sale-product-icon::before {
+    bottom: -36px;
+    width: 35px;
+    height: 35px;
+    border: 18px solid transparent;
+    border-top-color: #ff4765;
   }
   .main #inner-page .info .features .contact_us {
     margin-top: 1rem;
@@ -3718,9 +3729,6 @@ body {
   .main .based_selection .row .col-6 {
     padding-left: 2px !important;
     padding-right: 2px !important;
-  }
-  .main .based_selection .content_view a .based_selection_img {
-    height: 170px !important;
   }
   .main .based_selection .content_view a .product-label {
     left: 4px;
@@ -4086,9 +4094,6 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .head_three {
-    top: 0;
-  }
   .head_three .navbar .navbar-nav {
     margin-top: 2%;
   }
@@ -4136,6 +4141,24 @@ body {
   .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
     min-height: 26.5rem;
   }
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider {
+    top: 13rem;
+  }
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.left_slider {
+    left: -2.25rem;
+  }
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.right_slider {
+    right: -3.5rem;
+  }
 
   .product_view .product_view_type .margin_bottom_mob {
     margin-bottom: 10px;
@@ -4179,9 +4202,6 @@ body {
     left: 40px;
   }
 
-  .head_three {
-    top: 5.8% !important;
-  }
   .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
     min-width: 55%;
   }
@@ -4400,10 +4420,6 @@ body {
   }
 }
 @media (min-width: 1024px) and (max-width: 1400px) {
-  .head_three {
-    top: 12.87%;
-  }
-
   .head_two .new_head {
     margin-top: 9%;
     margin-left: 9%;
