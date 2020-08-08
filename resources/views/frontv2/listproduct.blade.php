@@ -306,7 +306,7 @@
 
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_38_mobile" class="mb-2 price" {{isset($_REQUEST['from'])?'checked':''}} type="checkbox" name="from" value="10000">
-                  <label class="d-block text-capitalize" for="panel_38_mobile">10,000 @lang('front.egp') - @lang('front.more') @lang('front.from') </label>
+                  <label class="d-block text-capitalize" for="panel_38_mobile">@lang('front.more') @lang('front.from') - 10,000 @lang('front.egp')</label>
                 </div>
               </div>
 
