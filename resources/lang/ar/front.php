@@ -15,7 +15,7 @@ return [
     'total_price_after_shipping' => 'الاجمالى بعد الشحن',
     'shipping_amount' => 'سعر الشحن',
     'home' => 'الصفحة الرئيسية',
-    'more' => 'المزيد',
+    'more' => 'اكثر',
     'my_order_content' => 'لا يوجد طلبات',
     'brands' => 'العلامات التجارية',
     'categorys' => 'الاقسام',
