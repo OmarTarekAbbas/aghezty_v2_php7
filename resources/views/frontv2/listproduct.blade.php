@@ -601,17 +601,20 @@
         var html        = ''
         var html_mobile = ''
         var brands = data.data
+        var old_brand = "{{ json_encode(request()->get('brand_id')??[]) }}"
+        old_brand = old_brand.replace(/&quot;/g, '\"');
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
+            checked=old_brand.includes(brands[i].id) ? 'checked':''
             html += '<div class="z-checkbox">\
-                            <input form="filter_form" id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+                            <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
                               type="checkbox"\
                               name="brand_id[]" value="'+brands[i].id+'">\
                             <label class="d-block text-capitalize"\
                               for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
                           </div>';
             html_mobile += '<div class="z-checkbox">\
-                              <input form="filter_form" id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
+                              <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
                                 type="checkbox"\
                                 name="brand_id[]" value="'+brands[i].id+'">\
                               <label class="d-block text-capitalize"\
