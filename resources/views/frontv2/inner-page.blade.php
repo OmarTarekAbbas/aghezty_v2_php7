@@ -19,7 +19,7 @@
   @media (min-width: 320px) and (max-width: 375px) {
     #inner-page .slide .carousel-inner .carousel-item .easyzoom img {
       width: 100% !important;
-      height: 100% !important;
+      height: 80% !important;
     }
   }
 
@@ -104,7 +104,7 @@
                 <div class="carousel-item {{$key == 0 ?'active' : ''}}">
                   <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
                     <a class="zoom_image" href="{{url($image->image)}}">
-                      <img class="m-auto d-block text-center w-100"  height="{{$product->category->id == 17 ? '600px' : '400px'}}" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
+                      <img class="w-100 m-auto d-block text-center" src="{{url($image->image)}}" alt="{{$product->getTranslation('title',getCode())}}" />
                     </a>
                   </div>
                 </div>
@@ -427,7 +427,7 @@
       <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 h-100 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id])}}">
-            <img src="{{url($item->main_image)}}" width="{{($product->category->id == 34 && $product->brand_id == 6) ? 260:202}}" height="202" alt="Product" class="based_selection_img">
+            <img src="{{url($item->main_image)}}" style="max-height: 205px;"alt="Product" class="w-100 h-100 based_selection_img">
 
             @if($item->discount > 0)
             <div class="product-label text-center font-weight-bold">
