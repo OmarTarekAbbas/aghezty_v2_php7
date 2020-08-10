@@ -1564,8 +1564,6 @@ class HomeController extends Controller
     Settlement CCY                                     : EGP
     Integration Authentication Password               : 4aef315b907775be5bc05e384d734686
 
-
-
       */
 
         $ch = curl_init();
