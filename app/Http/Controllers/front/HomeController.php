@@ -1483,7 +1483,10 @@ class HomeController extends Controller
 
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
-            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
+            $order = Order::find($request->order_id);
+            $order = tap($order , function($order)  use ($request){
+                $order->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
+            });
             $client = \Auth::guard('client')->user();
             Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
                 $m->from($client->email, __('front.order'));
@@ -1639,7 +1642,10 @@ class HomeController extends Controller
     {
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
-            $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
+            $order = Order::find($request->order_id);
+            $order = tap($order , function($order) use ($request){
+                $order->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
+            });
             $client = \Auth::guard('client')->user();
             Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
                 $m->from($client->email, __('front.order'));
