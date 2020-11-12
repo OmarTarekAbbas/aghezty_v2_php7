@@ -156,6 +156,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -219,6 +220,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'DataTables' => Yajra\Datatables\Facades\Datatables::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
 
     ],
