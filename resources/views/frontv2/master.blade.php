@@ -60,6 +60,8 @@
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
   <link rel="stylesheet" href="{{url('public/frontv2/css/jquery-spinner.min.css')}}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
   <!-- hover -->
   <!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
   <link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
@@ -84,8 +86,9 @@
     }
 
     .head_three .navbar .navbar-nav .nav-link {
-      font-size: 12px !important;
-      /* font-weight: bolder !important; */
+      font-size: 16px !important;
+      font-family: 'Tajawal', sans-serif;
+
     }
   </style>
 </head>

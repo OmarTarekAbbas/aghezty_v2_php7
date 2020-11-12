@@ -38,7 +38,7 @@ class ClientRegisterController extends Controller
      */
     protected function redirectTo()
     {
-        return url('clients/cartv2');
+        return url('/');
     }
 
     /**
@@ -95,7 +95,7 @@ class ClientRegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'phone' => 'unique:clients',
             'image' => '',
-            "address" => "required"
+            // "address" => "required"
         ]);
     }
 
@@ -120,7 +120,7 @@ class ClientRegisterController extends Controller
         return Client::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
+            'phone' => $data['phone'] ?? null,
             'password' => Hash::make($data['password']),
             'image' =>  $img_name
         ]);

@@ -1049,10 +1049,10 @@ class HomeController extends Controller
         if (\Auth::guard('client')->check()) {
             $auth_carts = \Auth::guard('client')->user()->carts;
             $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
-            if (!$city) {
-                $city = \Auth::guard('client')->user()->cities[0];
-                $city = City::whereId($city->pivot->city_id)->first();
-            }
+            // if (!$city) {
+            //     $city = \Auth::guard('client')->user()->cities[0];
+            //     $city = City::whereId($city->pivot->city_id)->first();
+            // }
         }
         if (isset($_COOKIE['carts'])) {
             $session_carts = unserialize($_COOKIE['carts']);
