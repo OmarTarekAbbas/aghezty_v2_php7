@@ -283,7 +283,8 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong>
+                <!-- <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong> -->
+                <strong class="" style="font-size: 19px;">@lang('messages.recently_added')</strong>
               </div>
             </div>
 
@@ -379,7 +380,8 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong>
+                <!-- <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong> -->
+                <strong class="" style="font-size: 19px;">@lang('messages.selected_for_you')</strong>
               </div>
             </div>
 

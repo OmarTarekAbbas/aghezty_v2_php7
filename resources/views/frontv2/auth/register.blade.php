@@ -1,12 +1,11 @@
 @extends('frontv2.master')
 @section('content')
 
-
 <!-- main content -->
 <div class="main mt-2">
 	<section class="log_in justify-content-center">
 		<div class="mobile_views">
-			<div class="log_in_bg rounded">
+			<div class="log_in_bg rounded log_in_bg_home" style="background-color: #343a4026;color: #00000096;">
         @include('errors')
         <form action="{{route('front.client.register.submit')}}" method="POST" enctype="multipart/form-data">
           @csrf
@@ -125,6 +124,7 @@
 </div>
 
 @endsection
+
 @section('script')
 <script>
   $('#gover_add').change(function(){
