@@ -350,7 +350,7 @@ body {
         font-weight: bold;
 
         .dropdown-menu {
-          left: 0;
+          left: inherit;
           min-width: 40%;
           max-height: 29rem;
           overflow: hidden;

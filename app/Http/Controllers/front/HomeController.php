@@ -650,10 +650,10 @@ class HomeController extends Controller
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
+        //  dd($ads);
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
-
         if (count($recently_added) != 6) {
             $limit = 6 - count($recently_added);
             $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
