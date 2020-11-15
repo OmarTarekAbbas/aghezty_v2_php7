@@ -13,8 +13,8 @@ class ReportIpController extends Controller
      */
     public function index()
     {
-        $report_ips = IpAddress::all();
-        return view('report_ip.index',compact('report_ips'));
+        // $report_ips = IpAddress::all();
+        return view('report_ip.index');
     }
 
     /**
