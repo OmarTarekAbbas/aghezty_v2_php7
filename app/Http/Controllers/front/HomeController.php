@@ -22,6 +22,7 @@ use Storage;
 use App\OrderDetail;
 use App\Product;
 use App\Property;
+use App\IpAddress;
 use Illuminate\Http\Request;
 use Mail;
 use PayPal\Api\Amount;
@@ -42,6 +43,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+     
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
         return view('front.home', compact('products'));
     }
@@ -647,6 +649,20 @@ class HomeController extends Controller
 
     public function indexv2()
     {
+      if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        // $ip = "41.33.167.4";
+        $get_ip_address = IpAddress::where("ip",$ip)->first();
+        if ($get_ip_address == null) {
+          $ips = new IpAddress();
+          $ips->ip = $ip;
+          $ips->save();
+        }
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
@@ -1812,5 +1828,7 @@ class HomeController extends Controller
 
     // define('ENCRYPTION_KEY', '__^%&Q@$&*!@#$%^&*^__');
     // $string = "This is the original string!";
+
+    
 
 }

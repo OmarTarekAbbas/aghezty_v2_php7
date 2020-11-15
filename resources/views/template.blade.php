@@ -653,6 +653,20 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                       </ul>
                                   </li>
                               </ul>
+                              <ul class="nav nav-list">
+                                  <li id="report">
+                                      <a href="#" class="dropdown-toggle">
+                                          <i class="glyphicon glyphicon-home"></i>
+                                          <span>@lang('messages.reports')</span>
+                                          <b class="arrow fa fa-angle-right"></b>
+                                      </a>
+
+                                      <!-- BEGIN Submenu -->
+                                      <ul class="submenu">
+                                          <li id="report_count"><a href="{{url('reports')}}">@lang('messages.reports')</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
                               @endif
                           {{--@endif--}}
 
