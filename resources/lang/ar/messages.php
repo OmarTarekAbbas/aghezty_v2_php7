@@ -176,6 +176,11 @@ return [
      'notification' => 'اشعار' ,
 
     'reports' => 'تقارير' ,
+    'number_of_visitors' => 'عدد الزوار',
+    'most_sold_product' => 'المنتج الأكثر بيعا',
+    'number_of_purchases' => 'عدد المشتريات',
+    'cash' => 'نقدية',
+    'Visa_After_Deliver' => 'الدفع عند التسليم',
     'direct-message' => 'رسالة سريعة'
     ,
     'template' => [

@@ -663,7 +663,9 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
                                       <!-- BEGIN Submenu -->
                                       <ul class="submenu">
-                                          <li id="report_count"><a href="{{url('reports')}}">@lang('messages.reports')</a></li>
+                                          <li id="report_count"><a href="{{url('reports')}}">@lang('messages.number_of_visitors')</a></li>
+                                          <li id="most_sold_product"><a href="{{url('most_sold_product')}}">@lang('messages.most_sold_product')</a></li>
+                                          <li id="number_of_purchases"><a href="{{url('number_of_purchases')}}">@lang('messages.number_of_purchases')</a></li>
                                       </ul>
                                   </li>
                               </ul>

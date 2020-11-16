@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\DeleteAll;
 use App\Events\Notifications;
 use App\RouteModel;
+use App\Product;
 use App\Notification;
 use App\Advertisement;
 

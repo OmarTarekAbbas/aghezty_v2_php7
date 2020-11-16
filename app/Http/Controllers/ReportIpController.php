@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\OrderDetail;
 use Illuminate\Http\Request;
-use App\IpAddress;
+
 class ReportIpController extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -14,7 +16,29 @@ class ReportIpController extends Controller
     public function index()
     {
         // $report_ips = IpAddress::all();
-        return view('report_ip.index');
+        return view('report.ip_address');
+    }
+
+    public function most_sold_product()
+    {
+        $products = OrderDetail::select('*')
+            ->join('products', 'products.id', '=', 'order_details.product_id')
+            ->groupBy('products.id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(100)
+            ->get();
+        return view('report.most_sold_product', compact('products'));
+    }
+
+    public function number_of_purchases()
+    {
+        $count_orders = Order::count();
+        $order_cash = Order::where('payment',1)->count();
+        $order_visa_after_deliver = Order::where('payment',3)->count();
+        $order_CIB_VISA = Order::where('payment',4)->count();
+        $order_NBE_VISA = Order::where('payment',5)->count();
+        //  dd($orders);
+        return view('report.number_of_purchases', compact('count_orders','order_cash','order_visa_after_deliver','order_CIB_VISA','order_NBE_VISA'));
     }
 
     /**
@@ -24,7 +48,7 @@ class ReportIpController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -35,7 +59,7 @@ class ReportIpController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -57,7 +81,7 @@ class ReportIpController extends Controller
      */
     public function edit($id)
     {
-       
+
     }
 
     /**
@@ -69,7 +93,7 @@ class ReportIpController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
     }
 
     /**
@@ -80,6 +104,6 @@ class ReportIpController extends Controller
      */
     public function delete($id)
     {
-      
+
     }
 }
