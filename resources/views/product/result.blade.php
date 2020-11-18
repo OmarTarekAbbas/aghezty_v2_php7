@@ -82,11 +82,11 @@
                 <a class="btn btn-sm show-tooltip" href="{{url("product/$value->product_id/edit")}}"
                     title="@lang('messages.edit')"><i class="fa fa-pencil"></i></a>
                 @endif
-                @if (setting('enable_delete'))
+
                 <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();"
                    href="{{url("product/$value->product_id/delete")}}" title="@lang('messages.template.delete')"><i
                         class="fa fa-trash"></i></a>
-                  @endif
+                  
                 <a class="btn btn-sm show-tooltip btn-warning"
                    href="{{url("product/$value->product_id/dublicate")}}" title="@lang('messages.template.dublicate')"><i
                         class="fa fa-copy"></i></a>
