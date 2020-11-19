@@ -15,7 +15,7 @@ class CreateIPAddressTable extends Migration
     {
         Schema::create('ip_address', function (Blueprint $table) {
             $table->increments('id');
-            $table->index('ip');
+            $table->string('ip',200);
             $table->timestamps();
         });
         DB::statement("INSERT INTO `routes` (`id`, `method`, `route`, `controller_name`, `created_at`, `updated_at`, `function_name`) VALUES (NULL, 'get', 'reports', 'ReportIpController', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'index')");
