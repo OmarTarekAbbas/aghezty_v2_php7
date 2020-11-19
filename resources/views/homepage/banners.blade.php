@@ -66,7 +66,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 </style>
-    
+
 @endsection
 @section('page_title')
     @lang('messages.slides')
@@ -93,7 +93,8 @@ input:checked + .slider:before {
 							<tr>
 								<th>#</th>
 								<th>@lang('messages.image')</th>
-								<th>@lang('messages.url')</th>
+                <th>@lang('messages.url')</th>
+                <th>@lang('messages.order')</th>
 								<th>@lang('messages.active')</th>
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
 							</tr>
@@ -103,7 +104,8 @@ input:checked + .slider:before {
 							<tr id="item-{{$slide->id}}" class="table-flag-blue">
 							<td>{{$slide->order}}</td>
 							<td><img width="300px" src="{{url($slide->image)}}" alt="{{$slide->ads_url}}"></td>
-							<td>{{$slide->ads_url}}</td>
+              <td>{{$slide->ads_url}}</td>
+              <td>{{$slide->order}}</td>
 							<td>
 								<label class="switch">
 									<input id="{{$slide->id}}" type="checkbox" name="switch" {{$slide->active? 'checked':''}}>

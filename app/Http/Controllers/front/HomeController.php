@@ -43,7 +43,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-     
+
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
         return view('front.home', compact('products'));
     }
@@ -1829,6 +1829,6 @@ class HomeController extends Controller
     // define('ENCRYPTION_KEY', '__^%&Q@$&*!@#$%^&*^__');
     // $string = "This is the original string!";
 
-    
+
 
 }

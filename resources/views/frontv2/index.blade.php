@@ -231,8 +231,26 @@
 
       <div class="row ml-0">
 
-        @if (count($ads) == 5)
-        @if(advertisements(5))
+
+
+
+          @if(advertisements(5) && advertisements(6))
+          <div class="col-md-6 col-xl-6 pl-0 ">
+          <div class="left-img mt-3">
+              <a href="{{advertisements(5)->ads_url}}">
+                <img class="w-100 rounded" src="{{advertisements(5)->image}}" alt="{{advertisements(5)->ads_url}}">
+              </a>
+          </div>
+          </div>
+
+          <div class="col-md-6 col-xl-6 pl-0">
+          <div class="left-img mt-3">
+              <a href="{{advertisements(6)->ads_url}}">
+                <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
+              </a>
+          </div>
+          </div>
+        @elseif(advertisements(5))
         <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
             <a href="{{advertisements(5)->ads_url}}">
@@ -240,7 +258,8 @@
             </a>
           </div>
         </div>
-        @else
+
+        @elseif(advertisements(6))
         <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
           <a href="{{advertisements(6)->ads_url}}">
@@ -250,25 +269,6 @@
         </div>
         @endif
 
-        @elseif (count($ads) > 5)
-
-        <div class="col-md-6 col-xl-6 pl-0 ">
-        <div class="left-img mt-3">
-            <a href="{{advertisements(5)->ads_url}}">
-              <img class="w-100 rounded" src="{{advertisements(5)->image}}" alt="{{advertisements(5)->ads_url}}">
-            </a>
-        </div>
-        </div>
-
-        <div class="col-md-6 col-xl-6 pl-0">
-        <div class="left-img mt-3">
-            <a href="{{advertisements(6)->ads_url}}">
-              <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
-            </a>
-        </div>
-        </div>
-
-        @endif
 
       </div>
 
