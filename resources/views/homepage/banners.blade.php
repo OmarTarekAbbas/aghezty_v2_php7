@@ -94,7 +94,7 @@ input:checked + .slider:before {
 								<th>#</th>
 								<th>@lang('messages.image')</th>
                 <th>@lang('messages.url')</th>
-                <th>@lang('messages.order')</th>
+                <th>@lang('messages.orders')</th>
 								<th>@lang('messages.active')</th>
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
 							</tr>

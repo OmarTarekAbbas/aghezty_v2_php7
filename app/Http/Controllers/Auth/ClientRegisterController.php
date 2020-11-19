@@ -122,7 +122,7 @@ class ClientRegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'] ?? null,
             'password' => Hash::make($data['password']),
-            'image' =>  $img_name
+            // 'image' =>  $img_name
         ]);
     }
 }

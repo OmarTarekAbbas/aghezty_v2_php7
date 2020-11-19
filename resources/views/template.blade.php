@@ -653,7 +653,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                       </ul>
                                   </li>
                               </ul>
-                             {{--  <ul class="nav nav-list">
+                              <ul class="nav nav-list">
                                   <li id="report">
                                       <a href="#" class="dropdown-toggle">
                                           <i class="glyphicon glyphicon-home"></i>
@@ -668,7 +668,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                           <li id="number_of_purchases"><a href="{{url('number_of_purchases')}}">@lang('messages.number_of_purchases')</a></li>
                                       </ul>
                                   </li>
-                              </ul>  --}}
+                              </ul>  
                               @endif
                           {{--@endif--}}
 

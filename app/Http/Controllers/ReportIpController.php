@@ -27,6 +27,14 @@ class ReportIpController extends Controller
             ->orderByRaw('COUNT(*) DESC')
             ->limit(100)
             ->get();
+            // $products_count = OrderDetail::select('*')
+            // ->join('products', 'products.id', '=', 'order_details.product_id')
+            // ->groupBy('products.id')
+            // ->sum('products.id');
+            // // ->orderByRaw('COUNT(*) DESC')
+            // // ->limit(100)
+            // // ->get();
+            // dd($products_count);
         return view('report.most_sold_product', compact('products'));
     }
 

@@ -190,7 +190,7 @@ return [
 
       'reports' => 'Reports' ,
       'number_of_visitors' => 'Number Of Visitors',
-      'most_sold_product' => 'Most Sold Product',
+      'most_sold_product' => 'Most Sold Products',
       'number_of_purchases' => 'Number Of Purchases',
       'cash' => 'Cash',
       'Visa_After_Deliver' => 'Visa After Deliver',
