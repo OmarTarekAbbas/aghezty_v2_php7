@@ -40,7 +40,7 @@
 @yield('style')
 
 <head>
-  <title>Aghezty V2</title>
+  <title>Aghezty</title>
   <meta charset="utf-8">
   <!--IE Compatibility Meta-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
