@@ -240,184 +240,185 @@ if (Config::get('languages')[App::getLocale()] == "English") {
             <div id="sidebar" class="navbar-collapse collapse">
                 <!-- BEGIN Navlist -->
                     @if(Auth::user()->hasRole('super_admin'))
-                      <ul class="nav nav-list">
-                          <li id="user">
-                              <a href="#" class="dropdown-toggle">
-                                  <i class="glyphicon glyphicon-user"></i>
-                                  <span>@lang('messages.users.users')</span>
-                                  <b class="arrow fa fa-angle-right"></b>
-                              </a>
+                      @if(Auth::user()->id == 1)
+                        <ul class="nav nav-list">
+                            <li id="user">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <span>@lang('messages.users.users')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
 
-                              <!-- BEGIN Submenu -->
-                              <ul class="submenu">
-                                  <li id="user-create"><a href="{{url('users/new')}}">@lang('messages.users.add_user')</a></li>
-                                  <li id="user-index"><a href="{{url('users')}}">@lang('messages.users.users')</a></li>
-                              </ul>
-                              <!-- END Submenu -->
-                          </li>
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li id="user-create"><a href="{{url('users/new')}}">@lang('messages.users.add_user')</a></li>
+                                    <li id="user-index"><a href="{{url('users')}}">@lang('messages.users.users')</a></li>
+                                </ul>
+                                <!-- END Submenu -->
+                            </li>
 
-                          <li id="role">
-                              <a href="#" class="dropdown-toggle">
-                                  <i class="glyphicon glyphicon-road"></i>
-                                  <span>@lang('messages.role')</span>
-                                  <b class="arrow fa fa-angle-right"></b>
-                              </a>
+                            <li id="role">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="glyphicon glyphicon-road"></i>
+                                    <span>@lang('messages.role')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
 
-                              <!-- BEGIN Submenu -->
-                              <ul class="submenu">
-                                  <li id="role-create"><a href="{{url('roles/new')}}">@lang('messages.create-role')</a></li>
-                                  <li id="role-index"><a href="{{url('roles')}}">@lang('messages.role')</a></li>
-                                  <li id="route-index"><a href="{{url('all_routes')}}">@lang('messages.routes')</a></li>
-                                  <li id="route-v2-index"><a href="{{url('routes/index_v2')}}">@lang('messages.routes_V2')</a></li>
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li id="role-create"><a href="{{url('roles/new')}}">@lang('messages.create-role')</a></li>
+                                    <li id="role-index"><a href="{{url('roles')}}">@lang('messages.role')</a></li>
+                                    <li id="route-index"><a href="{{url('all_routes')}}">@lang('messages.routes')</a></li>
+                                    <li id="route-v2-index"><a href="{{url('routes/index_v2')}}">@lang('messages.routes_V2')</a></li>
 
-                              </ul>
-                              <!-- END Submenu -->
-                          </li>
+                                </ul>
+                                <!-- END Submenu -->
+                            </li>
 
-                          <li id="setting">
-                              <a href="#" class="dropdown-toggle">
-                                  <i class="fa fa-gears"></i>
-                                  <span>@lang('messages.setting')</span>
-                                  <b class="arrow fa fa-angle-right"></b>
-                              </a>
+                            <li id="setting">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="fa fa-gears"></i>
+                                    <span>@lang('messages.setting')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
 
-                              <!-- BEGIN Submenu -->
-                              <ul class="submenu">
-                                  <li id="setting-create"><a href="{{url('setting/new')}}">@lang('messages.add_settings')</a></li>
-                                  <li id="setting-index"><a href="{{url('setting')}}">@lang('messages.settings')</a></li>
-                                  <li id="setting-import-DB"><a href="{{url('database_backups')}}">@lang('messages.database_backups')</a></li>
-                                  <li id="setting-index"><a href="{{url('clear-cache')}}">@lang('messages.clear_cache')</a></li>
-                                  <li id="setting-seed"><a href="{{url('admin/seed_manager')}}">@lang('messages.create_seed_files')</a></li>
-                                  <li id="setting-migrate"><a href="{{url('admin/migrate_manager')}}">@lang('messages.create_migrate_files')</a></li>
-                              </ul>
-                              <!-- END Submenu -->
-                          </li>
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li id="setting-create"><a href="{{url('setting/new')}}">@lang('messages.add_settings')</a></li>
+                                    <li id="setting-index"><a href="{{url('setting')}}">@lang('messages.settings')</a></li>
+                                    <li id="setting-import-DB"><a href="{{url('database_backups')}}">@lang('messages.database_backups')</a></li>
+                                    <li id="setting-index"><a href="{{url('clear-cache')}}">@lang('messages.clear_cache')</a></li>
+                                    <li id="setting-seed"><a href="{{url('admin/seed_manager')}}">@lang('messages.create_seed_files')</a></li>
+                                    <li id="setting-migrate"><a href="{{url('admin/migrate_manager')}}">@lang('messages.create_migrate_files')</a></li>
+                                </ul>
+                                <!-- END Submenu -->
+                            </li>
 
-                          <ul class="nav nav-list">
-                              <li id="type">
-                                  <a href="#" class="dropdown-toggle">
-                                      <i class="glyphicon glyphicon-tag"></i>
-                                      <span>@lang('messages.setting_types')</span>
-                                      <b class="arrow fa fa-angle-right"></b>
-                                  </a>
-                                  <ul class="submenu">
-                                      <li id="type-create"><a href="{{url('types/create')}}">@lang('messages.add_type')</a></li>
-                                      <li id="type-index"><a href="{{url('types/index')}}">@lang('messages.list_types')</a></li>
-                                  </ul>
-                              </li>
-                          </ul>
-                          <li id="file_manager">
-                              <a href="#" class="dropdown-toggle">
-                                  <i class="fa fa-file"></i>
-                                  <span>@lang('messages.file_manager')</span>
-                                  <b class="arrow fa fa-angle-right"></b>
-                              </a>
+                            <ul class="nav nav-list">
+                                <li id="type">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="glyphicon glyphicon-tag"></i>
+                                        <span>@lang('messages.setting_types')</span>
+                                        <b class="arrow fa fa-angle-right"></b>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li id="type-create"><a href="{{url('types/create')}}">@lang('messages.add_type')</a></li>
+                                        <li id="type-index"><a href="{{url('types/index')}}">@lang('messages.list_types')</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <li id="file_manager">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="fa fa-file"></i>
+                                    <span>@lang('messages.file_manager')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
 
-                              <!-- BEGIN Submenu -->
-                              <ul class="submenu">
-                                  <!--<li id="elfinder"><a href="{{url('file_manager')}}">UI File Manager</a></li>-->
-                                  <li id="file_elfinder"><a href="{{url('admin/elfinder')}}">@lang('messages.ui_file_manager')</a></li>
-                                  <li id="uploader"><a href="{{url('upload_items')}}">@lang('messages.file_uploader')</a></li>
-                              </ul>
-                              <!-- END Submenu -->
-                          </li>
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <!--<li id="elfinder"><a href="{{url('file_manager')}}">UI File Manager</a></li>-->
+                                    <li id="file_elfinder"><a href="{{url('admin/elfinder')}}">@lang('messages.ui_file_manager')</a></li>
+                                    <li id="uploader"><a href="{{url('upload_items')}}">@lang('messages.file_uploader')</a></li>
+                                </ul>
+                                <!-- END Submenu -->
+                            </li>
 
-                          <li id="images">
-                              <a href="#" class="dropdown-toggle">
-                                  <i class="glyphicon glyphicon-fullscreen"></i>
-                                  <span>@lang('messages.images')</span>
-                                  <b class="arrow fa fa-angle-right"></b>
-                              </a>
+                            <li id="images">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="glyphicon glyphicon-fullscreen"></i>
+                                    <span>@lang('messages.images')</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
 
-                              <!-- BEGIN Submenu -->
-                              <ul class="submenu">
-                                  <li id="upload_resize"><a href="{{url('upload_resize')}}">@lang('messages.upload_/_resize_image')</a></li>
-                                  <li id="upload_resize_v2"><a href="{{url('upload_resize_v2')}}">@lang('messages.upload_/_resize_image_v2')</a></li>
-                              </ul>
-                              <!-- END Submenu -->
-                          </li>
-                          <ul class="nav nav-list">
-                              <li id="static">
-                                  <a href="#" class="dropdown-toggle">
-                                      <i class="glyphicon glyphicon-cog"></i>
-                                      <span>@lang('messages.static_translations')</span>
-                                      <b class="arrow fa fa-angle-right"></b>
-                                  </a>
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li id="upload_resize"><a href="{{url('upload_resize')}}">@lang('messages.upload_/_resize_image')</a></li>
+                                    <li id="upload_resize_v2"><a href="{{url('upload_resize_v2')}}">@lang('messages.upload_/_resize_image_v2')</a></li>
+                                </ul>
+                                <!-- END Submenu -->
+                            </li>
+                            <ul class="nav nav-list">
+                                <li id="static">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="glyphicon glyphicon-cog"></i>
+                                        <span>@lang('messages.static_translations')</span>
+                                        <b class="arrow fa fa-angle-right"></b>
+                                    </a>
 
-                                  <!-- BEGIN Submenu -->
-                                  <ul class="submenu">
-                                      <li id="static-create"><a href="{{url('static_translation/create')}}">@lang('messages.add_static_translations')</a></li>
-                                      <li id="static-index"><a href="{{url('static_translation')}}">@lang('messages.static_translations')</a></li>
-                                  </ul>
-                                  <!-- END Submenu -->
-                              </li>
-                          </ul>
+                                    <!-- BEGIN Submenu -->
+                                    <ul class="submenu">
+                                        <li id="static-create"><a href="{{url('static_translation/create')}}">@lang('messages.add_static_translations')</a></li>
+                                        <li id="static-index"><a href="{{url('static_translation')}}">@lang('messages.static_translations')</a></li>
+                                    </ul>
+                                    <!-- END Submenu -->
+                                </li>
+                            </ul>
 
-                          <ul class="nav nav-list">
-                              <li id="language">
-                                  <a href="#" class="dropdown-toggle">
-                                      <i class="glyphicon glyphicon-cloud"></i>
-                                      <span>@lang('messages.languages')</span>
-                                      <b class="arrow fa fa-angle-right"></b>
-                                  </a>
+                            <ul class="nav nav-list">
+                                <li id="language">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="glyphicon glyphicon-cloud"></i>
+                                        <span>@lang('messages.languages')</span>
+                                        <b class="arrow fa fa-angle-right"></b>
+                                    </a>
 
-                                  <!-- BEGIN Submenu -->
-                                  <ul class="submenu">
-                                      <li id="language-create"><a href="{{url('language/create')}}">@lang('messages.add_language')</a></li>
-                                      <li id="language-index"><a href="{{url('language')}}">@lang('messages.languages')</a></li>
-                                  </ul>
-                                  <!-- END Submenu -->
-                              </li>
-                          </ul>
+                                    <!-- BEGIN Submenu -->
+                                    <ul class="submenu">
+                                        <li id="language-create"><a href="{{url('language/create')}}">@lang('messages.add_language')</a></li>
+                                        <li id="language-index"><a href="{{url('language')}}">@lang('messages.languages')</a></li>
+                                    </ul>
+                                    <!-- END Submenu -->
+                                </li>
+                            </ul>
 
-                          <ul class="nav nav-list">
-                              <li id="delete-all">
-                                  <a href="#" class="dropdown-toggle">
-                                      <i class="glyphicon glyphicon-trash"></i>
-                                      <span>@lang('messages.delete_all_flags')</span>
-                                      <b class="arrow fa fa-angle-right"></b>
-                                  </a>
+                            <ul class="nav nav-list">
+                                <li id="delete-all">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span>@lang('messages.delete_all_flags')</span>
+                                        <b class="arrow fa fa-angle-right"></b>
+                                    </a>
 
-                                  <!-- BEGIN Submenu -->
-                                  <ul class="submenu">
-                                      <li id="delete-all-index"><a href="{{url('delete_all')}}">@lang('messages.all_flags')</a></li>
-                                  </ul>
-                                  <!-- END Submenu -->
-                              </li>
-                          </ul>
+                                    <!-- BEGIN Submenu -->
+                                    <ul class="submenu">
+                                        <li id="delete-all-index"><a href="{{url('delete_all')}}">@lang('messages.all_flags')</a></li>
+                                    </ul>
+                                    <!-- END Submenu -->
+                                </li>
+                            </ul>
 
-                          <ul class="nav nav-list">
-                              <li id="country">
-                                  <a href="#" class="dropdown-toggle">
-                                      <i class="glyphicon glyphicon-globe"></i>
-                                      <span>@lang('messages.countries')</span>
-                                      <b class="arrow fa fa-angle-right"></b>
-                                  </a>
+                            <ul class="nav nav-list">
+                                <li id="country">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="glyphicon glyphicon-globe"></i>
+                                        <span>@lang('messages.countries')</span>
+                                        <b class="arrow fa fa-angle-right"></b>
+                                    </a>
 
-                                  <!-- BEGIN Submenu -->
-                                  <ul class="submenu">
-                                      <li id="country_index"><a href="{{url('country')}}">@lang('messages.list_countries')</a></li>
-                                      <li id="country_create"><a href="{{url('country/create')}}">@lang('messages.add_country')</a></li>
-                                  </ul>
-                              </li>
-                          </ul>
+                                    <!-- BEGIN Submenu -->
+                                    <ul class="submenu">
+                                        <li id="country_index"><a href="{{url('country')}}">@lang('messages.list_countries')</a></li>
+                                        <li id="country_create"><a href="{{url('country/create')}}">@lang('messages.add_country')</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
 
-                          <ul class="nav nav-list">
-                              <li id="operator">
-                                  <a href="#" class="dropdown-toggle">
-                                      <i class="glyphicon glyphicon-user"></i>
-                                      <span>@lang('messages.operator')</span>
-                                      <b class="arrow fa fa-angle-right"></b>
-                                  </a>
+                            <ul class="nav nav-list">
+                                <li id="operator">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        <span>@lang('messages.operator')</span>
+                                        <b class="arrow fa fa-angle-right"></b>
+                                    </a>
 
-                                  <!-- BEGIN Submenu -->
-                                  <ul class="submenu">
-                                      <li id="operator_index"><a href="{{url('operator')}}">@lang('messages.list_operator')</a></li>
-                                      <li id="operator_create"><a href="{{url('operator/create')}}">@lang('messages.create_operator')</a></li>
-                                  </ul>
-                              </li>
-                          </ul>
-
+                                    <!-- BEGIN Submenu -->
+                                    <ul class="submenu">
+                                        <li id="operator_index"><a href="{{url('operator')}}">@lang('messages.list_operator')</a></li>
+                                        <li id="operator_create"><a href="{{url('operator/create')}}">@lang('messages.create_operator')</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                          @endif
 
 
 
@@ -668,7 +669,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                           <li id="number_of_purchases"><a href="{{url('number_of_purchases')}}">@lang('messages.number_of_purchases')</a></li>
                                       </ul>
                                   </li>
-                              </ul>  
+                              </ul>
                               @endif
                           {{--@endif--}}
 

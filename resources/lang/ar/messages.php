@@ -448,4 +448,5 @@ return [
     'cash_on_delivery' => 'الدفع عند الاستلام',
     'return_or_refund' => 'التبديل والاسترجاع',
     'key_feature' => 'المواصفات',
+    'sold_times' => 'مرات البيع',
 ];

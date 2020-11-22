@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="row">
+                @if(Auth::user()->id == 1)
                     <div class="col-md-6">
                         <a class="tile tile-pink" data-stop="500" href="{{url('users')}}">
                             <div class="img img-center">
@@ -14,6 +15,7 @@
                             </div>
                         </a>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
