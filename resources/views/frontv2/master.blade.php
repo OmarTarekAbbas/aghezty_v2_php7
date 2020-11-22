@@ -86,7 +86,7 @@
     }
 
     .head_three .navbar .navbar-nav .nav-link {
-      font-size: 16px !important;
+      font-size: 13px !important;
       font-family: 'Tajawal', sans-serif;
 
     }
