@@ -47,7 +47,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'role' => 'required',
-            'phone' => 'numeric|unique:users,phone'
+            //'phone' => 'numeric|unique:users,phone'
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
@@ -92,7 +92,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'role' => 'required',
-            'phone' => 'numeric|unique:users,phone,'.$id
+            //'phone' => 'numeric|unique:users,phone,'.$id
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
