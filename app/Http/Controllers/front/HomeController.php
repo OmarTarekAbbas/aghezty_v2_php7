@@ -730,6 +730,7 @@ class HomeController extends Controller
 
     public function productsv2(Request $request)
     {
+
         $sub_category_ids = [];
         $brand_ids = [];
         $products = Product::select('products.*','products.id as product_id');
@@ -818,6 +819,7 @@ class HomeController extends Controller
 
     public function load_productsv2(Request $request)
     {
+
         //return $request->all();
         $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
@@ -1721,6 +1723,7 @@ class HomeController extends Controller
     //helper function api
     public function getProperty(Request $request)
     {
+
         $propertys = Property::with(['pvalue']);
         if ($request->has('category_id')) {
             $propertys = $propertys->whereIn('category_id', (array) $request->category_id);
