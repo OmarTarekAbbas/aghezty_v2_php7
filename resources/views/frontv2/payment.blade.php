@@ -107,7 +107,7 @@
                   style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                   <div class="">
                     <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
-                    <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
+                    <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="100px" alt="">
                   </div>
                 </div>
                 <p class="cib_loading text-center text-uppercase font-weight-bold" style="display:none">@lang('front.loading')</p>
