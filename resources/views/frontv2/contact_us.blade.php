@@ -93,6 +93,10 @@
           </div>
 
           <div class="col-12">
+            {!! app('captcha')->display() !!}
+          </div>
+
+          <div class="col-12">
             <button class="btn btn-secondary w-100 my-2 hvr-wobble-to-bottom-right">@lang('front.send')</button>
           </div>
         </div>

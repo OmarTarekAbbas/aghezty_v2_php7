@@ -88,6 +88,7 @@
       /* font-weight: bolder !important; */
     }
   </style>
+  <script src="//www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
