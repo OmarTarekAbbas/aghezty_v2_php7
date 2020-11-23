@@ -22,33 +22,6 @@ class Client extends Authenticatable
      */
     protected $hidden = ['password', 'remember_token'];
 
-    ///////////////////set image///////////////////////////////
-    public function setImageAttribute($value)
-    {
-        $path     = '/uploads/clients/'.date('Y-m-d').'/';
-        if(is_file($value))
-        {
-        $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
-        $value->move(base_path($path),$img_name);
-        $this->attributes['image']= $path.$img_name ;
-        }
-        else{
-        $this->attributes['image']= $path.$value ;
-        }
-
-    }
-
-    public function getImageAttribute($value)
-    {
-        if(isset($value)){
-            return url($value);
-        }
-        else{
-            return $value;
-        }
-
-    }
-
     public function cities()
     {
         return $this->belongsToMany('App\City','client_addresses','client_id','city_id')
@@ -81,6 +54,11 @@ class Client extends Authenticatable
     public function coupons()
     {
         return $this->hasMany('App\Coupon','client_id','id')->where('used',1);
+    }
+
+    public function facebook()
+    {
+        return $this->belongsTo(SocialFacebookAccount::class, 'id', 'user_id');
     }
 
 }
