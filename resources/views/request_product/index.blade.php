@@ -35,6 +35,7 @@
                                 <th>@lang('front.product')</th>
                                 <th>@lang('messages.users.address')</th>
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
+                
 							</tr>
 							</thead>
 							<tbody>
@@ -46,13 +47,17 @@
 										<td>{{$contact->phone}}</td>
                                         <td>{{$contact->product->getTranslation('title',getCode())}}</td>
                                         <td>{{$contact->city['city_'.getcode()]}},{{$contact->city->governorate['title_'.getcode()]}}</td>
-										<td class="visible-md visible-lg">
-											<div class="btn-group">
-                                                <a class="btn btn-sm btn-default show-tooltip send_message" title="Send Message" data-lang="{{$contact->lang}}" data-con_id="{{$contact->id}}" data-product_id="{{$contact->product_id}}" data-toggle="modal" data-target="#myModal" data-original-title="Send Message"><i class="fa fa-envelope"></i></a>
-                                                <a class="btn btn-sm btn-info show-tooltip" title="Show Product" href="{{url("product/".$contact->product_id."/edit")}}" data-original-title="Show Product"><i class="fa fa-forward"></i></a>
-												<a class="btn btn-sm btn-danger show-tooltip" title="" onclick="return confirm('Are you sure you want to delete this ?');" href="{{url('contact/'.$contact->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
-											</div>
-										</td>
+                                          <td class="visible-md visible-lg">
+                                            <div class="btn-group">
+                                                                      <a class="btn btn-sm btn-default show-tooltip send_message" title="Send Message" data-lang="{{$contact->lang}}" data-con_id="{{$contact->id}}" data-product_id="{{$contact->product_id}}" data-toggle="modal" data-target="#myModal" data-original-title="Send Message"><i class="fa fa-envelope"></i></a>
+                                                                      <a class="btn btn-sm btn-info show-tooltip" title="Show Product" href="{{url("product/".$contact->product_id."/edit")}}" data-original-title="Show Product" target="_blank"><i class="fa fa-forward"></i></a>
+                                                                      @if(Auth::user()->hasRole('super_admin'))
+
+                                              <a class="btn btn-sm btn-danger show-tooltip" title="" onclick="return confirm('Are you sure you want to delete this ?');" href="{{url('contact/'.$contact->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+                                              @endif
+                                            </div>
+                                          </td>
+
 									</tr>
 							@endforeach
 							</tbody>
@@ -91,8 +96,8 @@
 
 @section('script')
 	<script>
-		$('#contact').addClass('active');
-		$('#contact-index').addClass('active');
+		$('#request_product').addClass('active');
+		$('#request_product_index').addClass('active');
 
         $('.send_message').click(function(){
             p_id = $(this).data('product_id')

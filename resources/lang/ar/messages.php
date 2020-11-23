@@ -176,6 +176,11 @@ return [
      'notification' => 'اشعار' ,
 
     'reports' => 'تقارير' ,
+    'number_of_visitors' => 'عدد الزوار',
+    'most_sold_product' => 'المنتج الأكثر بيعا',
+    'number_of_purchases' => 'عدد المشتريات',
+    'cash' => 'نقدية',
+    'Visa_After_Deliver' => 'الدفع عند التسليم',
     'direct-message' => 'رسالة سريعة'
     ,
     'template' => [
@@ -443,4 +448,5 @@ return [
     'cash_on_delivery' => 'الدفع عند الاستلام',
     'return_or_refund' => 'التبديل والاسترجاع',
     'key_feature' => 'المواصفات',
+    'sold_times' => 'مرات البيع',
 ];

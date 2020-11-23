@@ -76,10 +76,10 @@ class HomeController extends Controller
 
     public function adsUpdatev2(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'file' => '',
             'slide_url' => '',
+            'order' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -102,6 +102,7 @@ class HomeController extends Controller
         if($request->has('slide_url')){
             $slide->ads_url = $request->slide_url;
         }
+        $slide->order = $request->order;
 
         $slide->save();
 

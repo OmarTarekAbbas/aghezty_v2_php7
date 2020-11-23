@@ -189,6 +189,11 @@ return [
      'notification' => 'Notifications' ,
 
       'reports' => 'Reports' ,
+      'number_of_visitors' => 'Number Of Visitors',
+      'most_sold_product' => 'Most Sold Products',
+      'number_of_purchases' => 'Number Of Purchases',
+      'cash' => 'Cash',
+      'Visa_After_Deliver' => 'Visa After Deliver',
       'direct-message' => 'Direct Message' ,
       'template' => [
           'template' => 'Template',
@@ -441,5 +446,6 @@ return [
     'cash_on_delivery' => 'Cash On Delivery',
     'return_or_refund' => 'Return Or Refund',
     'key_feature' => 'Key Feature',
+    'sold_times' => 'Sold Times',
 
 ];

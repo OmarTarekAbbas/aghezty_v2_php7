@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Route;
 use App\DeleteAll;
 use App\Events\Notifications;
 use App\RouteModel;
+use App\Product;
 use App\Notification;
+use App\Advertisement;
+use App\OrderDetail;
 
 function delete_multiselect(Request $request) // select many contract from index table and delete them
 {
@@ -414,4 +417,17 @@ function last_price($price)
 {
   $coupons = \App\Coupon::where('client_id', \Auth::guard('client')->user()->id)->where('used', 1)->sum('value');
   return $price - $coupons;
+}
+
+function advertisements($order)
+{
+  $ads = Advertisement::where('type', 'homeads')->where('active', 1)->where('order', $order)->first();
+  // dd($ads);
+  return $ads;
+}
+
+function count_product($id)
+{
+  $count_product = OrderDetail::where('product_id', $id)->count();
+  return $count_product;
 }

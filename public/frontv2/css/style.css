@@ -281,7 +281,7 @@ body {
   font-weight: bold;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu {
-  left: 0;
+  left: inherit;
   min-width: 40%;
   max-height: 29rem;
   overflow: hidden;
@@ -1502,6 +1502,20 @@ body {
 .log_in .log_in_bg .all_forms .btn_save:focus {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
+}
+.log_in .log_in_bg .all_forms .btn_log_fb {
+  margin-top: 3% !important;
+  background-color: #3b5999;
+  color: #FFF;
+}
+.log_in .log_in_bg .all_forms .btn_log_fb:hover, .log_in .log_in_bg .all_forms .btn_log_fb:focus {
+  background-color: #FFF;
+  color: #3b5999;
+  box-shadow: 0 0 0 0.2rem #3b5999;
+}
+.log_in .log_in_bg .all_forms .btn_log_fb i {
+  font-size: 1.5rem;
+  padding-right: 1rem;
 }
 
 /*----------------------------------------- End Login Page -----------------------------------------*/

@@ -69,7 +69,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 </style>
-    
+
 @endsection
 
 @section('page_title')
@@ -89,8 +89,8 @@ input:checked + .slider:before {
                 </div>
                 <div class="box-content">
 				 {!! Form::open(["url"=>url('slides/'.$slide->id.'/edit'),"class"=>"form-horizontal","method"=>"post","files"=>"True"]) !!}
-				<br>			
-				<br>			
+				<br>
+				<br>
 				<br>
 				<div class="form-group">
 				    <label class="col-sm-3 col-lg-2 control-label"> @lang('messages.image') <span class="text-danger">*</span></label>
@@ -98,18 +98,18 @@ input:checked + .slider:before {
 					   {!! Form::file('file',null,['placeholder'=>'120.00','class'=>'form-control input-lg']) !!}
 				    </div>
 				</div>
-				<br>			
-				<br>			
-				<br>			
+				<br>
+				<br>
+				<br>
 				<div class="form-group">
 					<label class="col-sm-3 col-lg-2 control-label"></label>
 					<div class="col-sm-9 col-lg-10 controls">
 						<img width="300px" src="{{$slide->image}}" alt="{{$slide->ads_url}}">
 					</div>
 				</div>
-				<br>			
-				<br>			
-				<br>			
+				<br>
+				<br>
+				<br>
 
 				<div class="form-group">
 				    <label class="col-sm-3 col-lg-2 control-label"> @lang('messages.url') <span class="text-danger">*</span></label>
@@ -117,9 +117,19 @@ input:checked + .slider:before {
 					   {!! Form::text('slide_url',$slide->ads_url?$slide->ads_url:'',['placeholder'=>'url','class'=>'form-control input-lg','value' => '{{$slide->ads_url}}']) !!}
 				    </div>
 				</div>
-				<br>			
-				<br>			
-				<br>			
+				<br>
+				<br>
+				<br>
+
+        <div class="form-group">
+				    <label class="col-sm-3 col-lg-2 control-label"> @lang('messages.orders') <span class="text-danger">*</span></label>
+				    <div class="col-sm-9 col-lg-10 controls">
+					   {!! Form::number('order',$slide->order?$slide->order:'',['placeholder'=>'order','class'=>'form-control input-lg','value' => '{{$slide->order}}']) !!}
+				    </div>
+				</div>
+				<br>
+				<br>
+				<br>
 
 				<div class="form-group">
 					<label class="col-sm-3 col-lg-2 control-label switch"> @lang('messages.active') <span class="text-danger">*</span></label>
@@ -130,20 +140,20 @@ input:checked + .slider:before {
 						</label>
 					</div>
 				</div>
-				<br>			
-				<br>			
-				<br>			
+				<br>
+				<br>
+				<br>
 
 				<div class="form-group text-center">
 				    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
 					   {!! Form::submit('edit',['class'=>'btn btn-primary']) !!}
 				    </div>
 				</div>
-				<br>			
-				<br>			
-				<br>			
-				<br>			
-				<br>			
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
                     {!! Form::close() !!}
 			</div>
             </div>

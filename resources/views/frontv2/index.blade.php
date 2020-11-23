@@ -8,13 +8,15 @@
   <section class="carsoul_ads d-none d-sm-block">
     <div class="mobile_views ">
       <div class="row">
+        @if(advertisements(3))
         <div class="col-md-12 col-xl-12">
-          <a href="{{$ads[2]->ads_url}}">
+          <a href="{{advertisements(3)->ads_url}}">
             <div class="full_banner">
-              <img class="rounded w-100" src="{{$ads[2]->image}}" alt="{{$ads[2]->ads_url}}">
+              <img class="rounded w-100" src="{{advertisements(3)->image}}" alt="{{advertisements(3)->ads_url}}">
             </div>
           </a>
         </div>
+        @endif
       </div>
     </div>
   </section>
@@ -113,18 +115,18 @@
         </div>
       </div>
 
-      @if(count($ads) > 3)
 
+      @if(advertisements(4))
       <div class="row d-none d-sm-block">
         <div class="col-md-12 col-xl-12 col-12">
-          <a href="{{$ads[3]->ads_url}}">
+          <a href="{{advertisements(4)->ads_url}}">
             <div class="full_banner mt-3">
-              <img class="rounded w-100" src="{{$ads[3]->image}}" alt="{{$ads[3]->ads_url}}">
+              <img class="rounded w-100" src="{{advertisements(4)->image}}" alt="{{advertisements(4)->ads_url}}">
             </div>
           </a>
         </div>
       </div>
-
+      @endif
     </div>
   </section>
 
@@ -229,39 +231,48 @@
 
       <div class="row ml-0">
 
-        @if (count($ads) == 5)
 
+
+
+          @if(advertisements(5) && advertisements(6))
+          <div class="col-md-6 col-xl-6 pl-0 ">
+          <div class="left-img mt-3">
+              <a href="{{advertisements(5)->ads_url}}">
+                <img class="w-100 rounded" src="{{advertisements(5)->image}}" alt="{{advertisements(5)->ads_url}}">
+              </a>
+          </div>
+          </div>
+
+          <div class="col-md-6 col-xl-6 pl-0">
+          <div class="left-img mt-3">
+              <a href="{{advertisements(6)->ads_url}}">
+                <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
+              </a>
+          </div>
+          </div>
+        @elseif(advertisements(5))
         <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
-            <a href="{{$ads[4]->ads_url}}">
-              <img class="w-100 rounded" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
+            <a href="{{advertisements(5)->ads_url}}">
+              <img class="w-100 rounded" src="{{advertisements(5)->image}}" alt="{{advertisements(5)->ads_url}}">
             </a>
           </div>
         </div>
 
-        @elseif (count($ads) > 5)
-
-        <div class="col-md-6 col-xl-6 pl-0 ">
+        @elseif(advertisements(6))
+        <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
-            <a href="{{$ads[4]->ads_url}}">
-              <img class="w-100 rounded" src="{{$ads[4]->image}}" alt="{{$ads[4]->ads_url}}">
+          <a href="{{advertisements(6)->ads_url}}">
+              <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
             </a>
           </div>
         </div>
-
-        <div class="col-md-6 col-xl-6 pl-0">
-          <div class="left-img mt-3">
-            <a href="{{$ads[5]->ads_url}}">
-              <img class="w-100 rounded" src="{{$ads[5]->image}}" alt="{{$ads[5]->ads_url}}">
-            </a>
-          </div>
-        </div>
-
         @endif
+
 
       </div>
 
-      @endif
+
     </div>
   </section>
 
@@ -272,7 +283,8 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong>
+                <!-- <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong> -->
+                <strong class="" style="font-size: 19px;">@lang('messages.recently_added')</strong>
               </div>
             </div>
 
@@ -368,7 +380,8 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong>
+                <!-- <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong> -->
+                <strong class="" style="font-size: 19px;">@lang('messages.selected_for_you')</strong>
               </div>
             </div>
 

@@ -33,7 +33,9 @@
 								<th>@lang('messages.users.phone')</th>
 								<th>@lang('messages.template.message')</th>
 								<th>@lang('messages.group.created')</th>
+                @if(Auth::user()->hasRole('super_admin'))
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
+                @endif
 							</tr>
 							</thead>
 							<tbody>
@@ -44,11 +46,13 @@
 										<td>{{$contact->phone}}</td>
 										<td>{{$contact->message}}</td>
 										<td>{{$contact->created_at}}</td>
+                    @if(Auth::user()->hasRole('super_admin'))
 										<td class="visible-md visible-lg">
 											<div class="btn-group">
 												<a class="btn btn-sm btn-danger show-tooltip" title="" onclick="return confirm('Are you sure you want to delete this ?');" href="{{url('contact/'.$contact->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
 											</div>
 										</td>
+                    @endif
 									</tr>
 							@endforeach
 							</tbody>

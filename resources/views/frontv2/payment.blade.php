@@ -8,6 +8,9 @@
 <style>
 .head_two,
 /* .head_three {z-index: unset;} */
+.active_lable{
+  border: 2px solid #195ffb80;
+}
 </style>
 
 <div class="main" id="visa_fade">
@@ -31,8 +34,8 @@
 
           <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-              <div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
-                <div class="visa-cash input-group-prepend cash" for="radioOne">
+              <div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right" id="lable_one" for="radioOne">
+                <label class="visa-cash input-group-prepend cash" for="radioOne">
                   <span class="span_input_radio">
                     <input type="radio" name="payment" value="1" form="checkout-form" id="radioOne">
                   </span>
@@ -44,11 +47,11 @@
                   <span class="span_label_cash">
                     <label for="radioOne">@lang('front.cash')</label>
                   </span>
-                </div>
+                </label>
               </div>
 
-              <div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
-                <div class="visa-cash input-group-prepend cash" for="radioTwo">
+              <div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right" id="lable_two" for="radioTwo">
+                <label class="visa-cash input-group-prepend cash" for="radioTwo">
                   <span class="span_input_radio">
                     <input type="radio" name="payment" value="3" form="checkout-form" id="radioTwo">
                   </span>
@@ -60,11 +63,11 @@
                   <span class="span_label_cash">
                     <label for="radioTwo">@lang('front.visa_after_deliver')</label>
                   </span>
-                </div>
+                </label>
               </div>
 
-              <div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right">
-                <div class="visa-cash input-group-prepend visa" for="radioThree">
+              <div class="choose-visa input-group w-75 m-auto d-block rounded px-2 py-1 hvr-wobble-to-bottom-right" id="lable_three" for="radioThree">
+                <label class="visa-cash input-group-prepend visa" for="radioThree">
                   <span class="span_input_radio ">
                     <input type="radio" name="payment" value="" form="checkout-form" id="radioThree">
                   </span>
@@ -76,7 +79,7 @@
                   <span class="span_label_cash">
                     <label for="radioThree">@lang('front.visa')</label>
                   </span>
-                </div>
+                </label>
               </div>
 
               <form action="{{route('front.home.checkout.submit')}}" id="checkout-form" method="POST">
@@ -104,7 +107,7 @@
                   style="direction: {{dir_ar_en()}};display:none;text-align: center;">
                   <div class="">
                     <input type="hidden" id="cib" value="Pay with Payment Page" onclick="Checkout.showLightbox();">
-                    <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="50px" alt="">
+                    <img src="{{ url('public/frontv2/images/cib.png') }}" width="170px" height="100px" alt="">
                   </div>
                 </div>
                 <p class="cib_loading text-center text-uppercase font-weight-bold" style="display:none">@lang('front.loading')</p>
@@ -366,5 +369,20 @@
     $('.btn-pay').show()
   })
 
+  $("#lable_one").click(function(){
+  $("#lable_one").addClass("active_lable");
+  $("#lable_two").removeClass("active_lable");
+  $("#lable_three").removeClass("active_lable");
+});
+$("#lable_two").click(function(){
+  $("#lable_two").addClass("active_lable");
+  $("#lable_one").removeClass("active_lable");
+  $("#lable_three").removeClass("active_lable");
+});
+$("#lable_three").click(function(){
+  $("#lable_three").addClass("active_lable");
+  $("#lable_one").removeClass("active_lable");
+  $("#lable_two").removeClass("active_lable");
+});
 </script>
 @endsection

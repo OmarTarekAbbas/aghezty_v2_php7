@@ -175,7 +175,7 @@
             <!-- End Discount Codes -->
 
             <!-- Start Cart Totals -->
-            <div class="card my-3">
+            <div class="card">
               <div class="card-header w-100" role="tab" id="headingTwo2">
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                   <h5 class="mb-0 text-uppercase text-dark">

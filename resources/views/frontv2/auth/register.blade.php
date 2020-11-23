@@ -1,12 +1,11 @@
 @extends('frontv2.master')
 @section('content')
 
-
 <!-- main content -->
 <div class="main mt-2">
 	<section class="log_in justify-content-center">
 		<div class="mobile_views">
-			<div class="log_in_bg rounded">
+			<div class="log_in_bg rounded log_in_bg_home" style="background-color: #343a4026;color: #00000096;">
         @include('errors')
         <form action="{{route('front.client.register.submit')}}" method="POST" enctype="multipart/form-data">
           @csrf
@@ -16,7 +15,7 @@
 						</div>
 
 						<!-- Start Upload Image -->
-						@include('frontv2.upload_img')
+						<!-- @include('frontv2.upload_img') -->
 						<!-- End Upload Image -->
 
 						<div class="all_forms my-5">
@@ -42,7 +41,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
+							<!-- <div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupPhoneReg">@lang('front.auth.phone')</label>
 								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
@@ -50,7 +49,7 @@
 									</div>
 									<input type="text" class="form-control text-center" name="phone" id="inlineFormInputGroupPhoneReg" value="{{old('phone')}}" placeholder="@lang('front.auth.phone')">
 								</div>
-							</div>
+							</div> -->
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupPasswordReg">@lang('front.auth.password')</label>
@@ -73,7 +72,7 @@
 							</div>
 
 
-							<div class="reg-title text-center mb-4">
+							<!-- <div class="reg-title text-center mb-4">
 								<h5 class="text-capitalize m-auto w-75 border-bottom border-secondary">@lang('front.auth.address')</h5>
 							</div>
 
@@ -102,7 +101,7 @@
 										<textarea class="w-100" name="address" placeholder="@lang('front.address')" cols="97" rows="5"></textarea>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="authentication-info d-flex justify-content-center">
 								<div class="col-md-12 col-lg-12 col-xl-12 col-auto">
@@ -125,6 +124,7 @@
 </div>
 
 @endsection
+
 @section('script')
 <script>
   $('#gover_add').change(function(){

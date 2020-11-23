@@ -22,6 +22,7 @@ use Storage;
 use App\OrderDetail;
 use App\Product;
 use App\Property;
+use App\IpAddress;
 use Illuminate\Http\Request;
 use Mail;
 use PayPal\Api\Amount;
@@ -42,6 +43,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
         return view('front.home', compact('products'));
     }
@@ -648,13 +650,27 @@ class HomeController extends Controller
 
     public function indexv2()
     {
+      if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        // $ip = "41.33.167.4";
+        $get_ip_address = IpAddress::where("ip",$ip)->first();
+        if ($get_ip_address == null) {
+          $ips = new IpAddress();
+          $ips->ip = $ip;
+          $ips->save();
+        }
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
+        //  dd($ads);
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
-
         if (count($recently_added) != 6) {
             $limit = 6 - count($recently_added);
             $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
@@ -715,6 +731,7 @@ class HomeController extends Controller
 
     public function productsv2(Request $request)
     {
+
         $sub_category_ids = [];
         $brand_ids = [];
         $products = Product::select('products.*','products.id as product_id');
@@ -803,6 +820,7 @@ class HomeController extends Controller
 
     public function load_productsv2(Request $request)
     {
+
         //return $request->all();
         $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
@@ -1050,10 +1068,10 @@ class HomeController extends Controller
         if (\Auth::guard('client')->check()) {
             $auth_carts = \Auth::guard('client')->user()->carts;
             $total_price = Cart::where('client_id', \Auth::guard('client')->user()->id)->sum('total_price');
-            if (!$city) {
-                $city = \Auth::guard('client')->user()->cities[0];
-                $city = City::whereId($city->pivot->city_id)->first();
-            }
+            // if (!$city) {
+            //     $city = \Auth::guard('client')->user()->cities[0];
+            //     $city = City::whereId($city->pivot->city_id)->first();
+            // }
         }
         if (isset($_COOKIE['carts'])) {
             $session_carts = unserialize($_COOKIE['carts']);
@@ -1706,6 +1724,7 @@ class HomeController extends Controller
     //helper function api
     public function getProperty(Request $request)
     {
+
         $propertys = Property::with(['pvalue']);
         if ($request->has('category_id')) {
             $propertys = $propertys->whereIn('category_id', (array) $request->category_id);
@@ -1813,5 +1832,7 @@ class HomeController extends Controller
 
     // define('ENCRYPTION_KEY', '__^%&Q@$&*!@#$%^&*^__');
     // $string = "This is the original string!";
+
+
 
 }
