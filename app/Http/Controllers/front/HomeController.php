@@ -1723,7 +1723,7 @@ class HomeController extends Controller
     //helper function api
     public function getProperty(Request $request)
     {
-
+        // dd("omar");
         $propertys = Property::with(['pvalue']);
         if ($request->has('category_id')) {
             $propertys = $propertys->whereIn('category_id', (array) $request->category_id);
