@@ -123,12 +123,6 @@
 
           <a class="text-uppercase" href="{{route('front.client.login')}}" id="navbarDropdownMenuLink10" aria-haspopup="true" aria-expanded="false">@lang('front.auth.login')</a>
 
-          <div class="form-group">
-              <div class="col-md-8 col-md-offset-4">
-                <a href="{{url('/facebook_redirect')}}" class="btn btn-primary">F</a>
-              </div>
-          </div>
-
           <a class="text-uppercase" id="navbarDropdownMenuLink112" href="{{url('lang')}}/{{Session::get('applocale') == 'en'? "ar" : "en"}}">
             <img src="{{url('public/frontv2/images/lang/'.(Session::get('applocale') == 'ar'? 'en' : 'ar').'.webp')}}" alt="{{\Session::get('applocale') == 'ar'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'ar'? " English" : " العربية"}}
           </a>
