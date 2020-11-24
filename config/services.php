@@ -1,7 +1,4 @@
 <?php
-define('FACEBOOK_APP_ID', '369439917462069');
-define('FACEBOOK_APP_SECRET', 'ab125d93345776019d9e53010ab87948');
-define('FACEBOOK_REDIRECT', url('facebook_callback'));
 
 return [
 
@@ -46,9 +43,9 @@ return [
     ],
 
     'facebook' => [
-      'client_id' => FACEBOOK_APP_ID,
-      'client_secret' => FACEBOOK_APP_SECRET,
-      'redirect' => FACEBOOK_REDIRECT,
+      'client_id' => env('FACEBOOK_APP_ID'),
+      'client_secret' => env('FACEBOOK_APP_SECRET'),
+      'redirect' => env('FACEBOOK_REDIRECT'),
     ],
 
 ];

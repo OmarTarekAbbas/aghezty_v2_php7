@@ -54,7 +54,7 @@
 
 
                 <div class="col-md-12 col-lg-12 col-xl-12 col-auto py-3">
-                  <a target="_blank" href="{{url('/facebook_redirect')}}" class="btn_log_fb btn btn-primary w-50 m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> Continue with Facebook</a>
+                  <a href="{{url('/facebook_redirect')}}" class="btn_log_fb btn btn-primary w-50 m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> Continue with Facebook</a>
                 </div>
               </div>
 						</div>
