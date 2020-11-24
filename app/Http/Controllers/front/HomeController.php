@@ -156,6 +156,7 @@ class HomeController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required',
         ]);
 
         if ($validator->fails()) {

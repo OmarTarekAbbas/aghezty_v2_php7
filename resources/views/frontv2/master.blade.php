@@ -91,6 +91,7 @@
 
     }
   </style>
+  <script src="//www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
@@ -142,7 +143,9 @@
             <span class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{{route('front.home.profile')}}">@lang('front.profile')</a>
               <a class="dropdown-item" href="{{route('front.home.address')}}">@lang('front.address')</a>
+              @if (!Auth::guard('client')->user()->facebook)
               <a class="dropdown-item" href="{{route('front.home.password')}}">@lang('front.auth.password')</a>
+              @endif
               <a class="dropdown-item" href="{{route('front.home.order')}}">@lang('front.order')</a>
               <a class="dropdown-item" href="{{route('front.home.logout')}}">@lang('front.sign_out')</a>
             </span>

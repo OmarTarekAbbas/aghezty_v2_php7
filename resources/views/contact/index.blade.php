@@ -32,6 +32,7 @@
 								<th>@lang('messages.users.email')</th>
 								<th>@lang('messages.users.phone')</th>
 								<th>@lang('messages.template.message')</th>
+								<th>@lang('messages.group.created')</th>
                 @if(Auth::user()->hasRole('super_admin'))
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
                 @endif
@@ -44,6 +45,7 @@
 										<td>{{$contact->email}}</td>
 										<td>{{$contact->phone}}</td>
 										<td>{{$contact->message}}</td>
+										<td>{{$contact->created_at}}</td>
                     @if(Auth::user()->hasRole('super_admin'))
 										<td class="visible-md visible-lg">
 											<div class="btn-group">
