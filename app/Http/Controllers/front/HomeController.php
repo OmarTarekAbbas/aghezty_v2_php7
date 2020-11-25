@@ -891,10 +891,11 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
+        // dd($request->has('property_value_id'));
         if ($request->has('property_value_id')) {
-            $products = $products->whereHas('pr_value', function ($q) use ($request) {
-                $q->whereIn('property_values.id', $request->property_value_id);
-            });
+          $products = $products->whereHas('pr_value', function ($q) use ($request) {
+            $q->whereIn('property_values.id', $request->property_value_id);
+          });
         }
 
         $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
