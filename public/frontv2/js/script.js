@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var header_header = $('.head_two').innerHeight();
   var header_display = $('.head_two').css('display');
 
