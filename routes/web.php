@@ -60,8 +60,11 @@ Route::prefix('clients')->group(function() {
     Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
     Route::get('brands','front\HomeController@getBrand');
     /*************** end ***************/
+ /*************** test baher ***************/
+ Route::get('productsv2_test', 'front\HomeController@productsv2_test')->name('front.home.list');
+ Route::any('loadproductsv2_test', 'front\HomeController@loadproductsv2_test');
 
-
+ /*************** end  baher***************/
     Route::group(['middleware' => 'auth:client'], function () {
         Route::get('profile','front\HomeController@profile');
         Route::post('updated','front\HomeController@update');
