@@ -711,20 +711,18 @@ body {
   box-shadow: 0 0 1px #ccc;
   padding: 0.65rem 0;
   width: 100%;
+  height: 500px;
 }
 .main .content_view a img {
-  margin: 0 auto;
-  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 292px;
+  margin: 10px auto;
   transition: all 1.1s linear;
   -webkit-transition: all 1.1s linear;
   -moz-transition: all 1.1s linear;
   -ms-transition: all 1.1s linear;
   -o-transition: all 1.1s linear;
-  /* &:hover,
-  &:focus {
-    width: 100% !important;
-    height: 318px;
-  } */
 }
 .main .content_view a .full_desc {
   font-weight: bold;
@@ -1502,6 +1500,20 @@ body {
 .log_in .log_in_bg .all_forms .btn_save:focus {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
+}
+.log_in .log_in_bg .all_forms .btn_log_fb {
+  margin-top: 3% !important;
+  background-color: #3b5999;
+  color: #FFF;
+}
+.log_in .log_in_bg .all_forms .btn_log_fb:hover, .log_in .log_in_bg .all_forms .btn_log_fb:focus {
+  background-color: #FFF;
+  color: #3b5999;
+  box-shadow: 0 0 0 0.2rem #3b5999;
+}
+.log_in .log_in_bg .all_forms .btn_log_fb i {
+  font-size: 1.5rem;
+  padding-right: 1rem;
 }
 
 /*----------------------------------------- End Login Page -----------------------------------------*/

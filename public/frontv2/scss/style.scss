@@ -281,7 +281,7 @@ body {
         -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         -o-transform: translate(-50%, -50%);
-}
+      }
     }
   }
 }
@@ -942,23 +942,19 @@ body {
     box-shadow: 0 0 1px #ccc;
     padding: 0.65rem 0;
     width: 100%;
+    height:500px;
 
     a {
       img {
-        // width: 100% !important;
-        // height: 319px;
-        margin: 0 auto;
-        display: block;
+        width: auto;
+        max-width: 100%;
+        height: 292px;
+        margin: 10px auto;
         transition: all 1.1s linear;
         -webkit-transition: all 1.1s linear;
         -moz-transition: all 1.1s linear;
         -ms-transition: all 1.1s linear;
         -o-transition: all 1.1s linear;
-        /* &:hover,
-        &:focus {
-          width: 100% !important;
-          height: 318px;
-        } */
       }
 
       .full_desc {
@@ -1161,8 +1157,7 @@ body {
 
         .carousel-item {
           .easyzoom {
-            img {
-            }
+            img {}
           }
         }
       }
@@ -2029,6 +2024,24 @@ body {
       .btn_save:focus {
         box-shadow: 0 0 0 0.2rem rgb(255, 255, 255) !important;
         border-color: #343a40 !important;
+      }
+
+      .btn_log_fb {
+        margin-top: 3% !important;
+        background-color: #3b5999;
+        color: $white_color;
+
+        &:hover,
+        &:focus {
+          background-color: $white_color;
+          color: #3b5999;
+          box-shadow: 0 0 0 0.2rem #3b5999;
+        }
+
+        i {
+          font-size: 1.5rem;
+          padding-right: 1rem;
+        }
       }
     }
   }
@@ -2918,6 +2931,7 @@ body {
 /* Start Media Query Mobile */
 
 @media (min-width: 320px) and (max-width: 375px) {
+
   .alert-success,
   .alert-danger {
 
@@ -5528,22 +5542,23 @@ body {
 
   #inner-page {
     #carouselExampleControls {
+
       .carousel-control-next,
-        .carousel-control-prev {
+      .carousel-control-prev {
 
-          .left_slider,
-          .right_slider {
-            top: 13rem;
+        .left_slider,
+        .right_slider {
+          top: 13rem;
 
-            &.left_slider {
-              left: -2.25rem;
-            }
+          &.left_slider {
+            left: -2.25rem;
+          }
 
-            &.right_slider {
-              right: -3.5rem;
-            }
+          &.right_slider {
+            right: -3.5rem;
           }
         }
+      }
     }
   }
 

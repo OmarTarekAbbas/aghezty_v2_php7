@@ -12,7 +12,7 @@
 
 <!-- start container -->
 <div class="main">
-  <div class="mobile_views">
+  <!-- <div class="mobile_views">
     <nav class="nav_breadcrumb" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -27,18 +27,18 @@
         @endif
       </ol>
     </nav>
-  </div>
+  </div> -->
 
   <div class="mobile_views">
     <!-- start row -->
     <div class="row">
       <!-- start col-md-2 -->
-      <button type="button" id="button_jq" class="btn btn-dark d-md-block d-lg-block d-xl-none" data-toggle="modal" data-target="#exampleModal">
+      <!-- <button type="button" id="button_jq" class="btn btn-dark d-md-block d-lg-block d-xl-none" data-toggle="modal" data-target="#exampleModal">
         <i class="fas fa-sliders-h" data-toggle="modal" data-target="#exampleModal"></i>
-      </button>
+      </button> -->
 
       <!-- Start Filter Search -->
-      <div id="toggle_plus_minus" class="col-md-2 d-none d-md-none d-lg-block d-xl-block col-lg-2 col-xl-2">
+      <!-- <div id="toggle_plus_minus" class="col-md-2 d-none d-md-none d-lg-block d-xl-block col-lg-2 col-xl-2">
         <form id="filter_form" method="post">
           @csrf
           @foreach (filter_categorys() as $item)
@@ -187,11 +187,11 @@
           <input type="hidden" id="ifrom_in" name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
           <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
         </form>
-      </div>
+      </div> -->
       <!-- End Filter Search -->
 
       <!-- Modal -->
-      <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+      <!-- <div class="modal open_right fade w3-center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -342,18 +342,18 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Start Grid & List View -->
       <!-- Start Image Cover -->
       <div class="col-md-12 col-lg-10 col-xl-10">
-        <div class="list_cover">
+        <!-- <div class="list_cover">
           <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
-        </div>
+        </div> -->
         <!-- End Image Cover -->
 
         <!-- Start Toolbar -->
-        <div class="toolbar mt-3 p-2 border bg-white">
+        <!-- <div class="toolbar mt-3 p-2 border bg-white">
           <div class="sort-by mr-3 float-left">
             <label class="labelclass m-auto font-weight-normal">@lang('front.sort_by'):</label>
           </div>
@@ -374,52 +374,54 @@
               <i class="fas fa-list list_view border"></i>
             </a>
           </strong>
-        </div>
+        </div> -->
         <!-- End Toolbar -->
 
         <!-- start row product -->
-        <div id="grid_two" class="row mt-3 content_view_mobile">
+        <div id="" class="row mt-3 content_view_mobile">
 
           @foreach ($products as $product)
-
           <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
-            <div class="content_view hvr-bob px-2 bg-white rounded">
-              <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
-                <img class="lazy text-center d-block" src="{{$product->main_image}}" alt="Product">
+            <div class="card-group">
+              <div class="card" style='height:500px'>
+                <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
+                  <img class="lazy card-img-top" style="width: auto; height: 292px; text-align:center; margin: 10px auto; display:block;" src="{{$product->main_image}}" alt="Product" class="d-block m-auto">
+                  <!-- @if($product->discount > 0)
+                  <div class="product-label text-center font-weight-bold">
+                    <span class="sale-product-icon">{{$product->discount}} %</span>
+                  </div>
+                  @endif -->
+                  <div class="card-body">
+                    <p class="card-text text-dark text-left text-capitalize">{{$product->getTranslation('title',getCode())}}</p>
+                  </div>
+                </a>
 
-                @if($product->discount > 0)
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">{{$product->discount}} %</span>
+                <div class="card-footer">
+                  <div class="rating_list_product">
+                    @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
+                      <i class="fas fa-star colorstar"></i>
+                      @elseif(round($product->rate() + .25) >= $i)
+                      <i class="fas fa-star-half-alt colorstar"></i>
+                      @else
+                      <i class="far fa-star"></i>
+                      @endif
+                      @endfor
+                  </div>
+
+                  <div class="price-description text-uppercase">Cash Price</div>
+
+                  <div class="price-box">
+                    <span class="regular-price">
+                      <span class="price font-weight-bold">{{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
+                        @lang('front.egp') </span>
+                    </span>
+                    @if($product->price_after_discount > 0)
+                    <span class="old-price">
+                      <span class="price font-weight-bold float-right">{{number_format($product->price)}} @lang('front.egp') </span>
+                    </span>
+                    @endif
+                  </div>
                 </div>
-                @endif
-
-                <h6 class="full_desc text-dark text-left text-capitalize">
-                  {{$product->getTranslation('title',getCode())}}</h6>
-              </a>
-
-              <div class="rating_list_product">
-                @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
-                  <i class="fas fa-star colorstar"></i>
-                  @elseif(round($product->rate() + .25) >= $i)
-                  <i class="fas fa-star-half-alt colorstar"></i>
-                  @else
-                  <i class="far fa-star"></i>
-                  @endif
-                  @endfor
-              </div>
-
-              <div class="price-description text-uppercase">Cash Price</div>
-
-              <div class="price-box">
-                <span class="regular-price">
-                  <span class="price font-weight-bold">{{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
-                    @lang('front.egp') </span>
-                </span>
-                @if($product->price_after_discount > 0)
-                <p class="old-price">
-                  <span class="price font-weight-bold">{{number_format($product->price)}} @lang('front.egp') </span>
-                </p>
-                @endif
               </div>
             </div>
           </div>
@@ -504,7 +506,7 @@
 
   function load_content_data(start) {
     $.ajax({
-      url: '{{url("clients/loadproductsv2")}}?' + '&start=' + start,
+      url: '{{url("clients/loadproductsv2_test")}}?' + '&start=' + start,
       type: "post",
       data: $('#filter_form').serialize(),
       success: function(data) {

@@ -10,6 +10,7 @@ use App\RouteModel;
 use App\Product;
 use App\Notification;
 use App\Advertisement;
+use App\OrderDetail;
 
 function delete_multiselect(Request $request) // select many contract from index table and delete them
 {
@@ -423,4 +424,10 @@ function advertisements($order)
   $ads = Advertisement::where('type', 'homeads')->where('active', 1)->where('order', $order)->first();
   // dd($ads);
   return $ads;
+}
+
+function count_product($id)
+{
+  $count_product = OrderDetail::where('product_id', $id)->count();
+  return $count_product;
 }
