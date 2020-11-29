@@ -445,6 +445,19 @@ body {
   background: #FFF;
   box-shadow: 0 0 1px #ccc;
   height: 100%;
+  height: 500px;
+  width: 100%;
+}
+.product_view .product_view_type .product_desc a img {
+  width: auto;
+  max-width: 100%;
+  height: 292px;
+  margin: 10px auto;
+  transition: all 1.1s linear;
+  -webkit-transition: all 1.1s linear;
+  -moz-transition: all 1.1s linear;
+  -ms-transition: all 1.1s linear;
+  -o-transition: all 1.1s linear;
 }
 .product_view .product_view_type .product_desc a .product-label {
   position: absolute;
@@ -759,20 +772,18 @@ body {
   box-shadow: 0 0 1px #ccc;
   padding: 0.65rem 0;
   width: 100%;
+  height: 500px;
 }
 .main .content_view a img {
-  margin: 0 auto;
-  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 292px;
+  margin: 10px auto;
   transition: all 1.1s linear;
   -webkit-transition: all 1.1s linear;
   -moz-transition: all 1.1s linear;
   -ms-transition: all 1.1s linear;
   -o-transition: all 1.1s linear;
-  /* &:hover,
-  &:focus {
-    width: 100% !important;
-    height: 318px;
-  } */
 }
 .main .content_view a .full_desc {
   text-align: right !important;
@@ -1604,12 +1615,6 @@ body {
 .main .choose_category .choose_category_form .hoverabley img {
   height: 262px;
 }
-.main .product_view .product_view_type .product_desc a img {
-  height: 240px;
-}
-.main .product_view .product_view_type .product_desc a .img_size {
-  height: 180px !important;
-}
 
 /*----------------------------------------- End Cart Page -----------------------------------------*/
 /*----------------------------------------- Start Login Page -----------------------------------------*/
@@ -2359,7 +2364,7 @@ body {
 #return-to-top {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
   background-color: #ffa841;
   width: 50px;
   height: 50px;
@@ -2657,7 +2662,6 @@ body {
   }
   .main .content_view_mobile .col-6.content_view_mobile_col6 .content_view .price-box .old-price {
     float: inherit;
-    display: inline;
   }
   .main .content_view_mobile .col-12 {
     margin-bottom: 10px;
@@ -2684,10 +2688,11 @@ body {
   }
   .main .content_view_mobile .content_view {
     border: 1px solid #CCC;
+    height: 300px;
   }
   .main .content_view_mobile .content_view a img {
-    width: 100% !important;
     height: 150px;
+    margin: 0 auto;
   }
   .main .content_view_mobile .content_view a .product-label {
     top: 3px;
@@ -3225,7 +3230,7 @@ body {
   }
 
   #return-to-top {
-    right: 87%;
+    left: 4px;
     width: 40px;
     height: 40px;
   }
@@ -3502,7 +3507,6 @@ body {
   }
   .main .content_view_mobile .col-6.content_view_mobile_col6 .content_view .price-box .old-price {
     float: inherit;
-    display: inline;
   }
   .main .content_view_mobile .col-12 {
     margin-bottom: 10px;
@@ -3529,10 +3533,11 @@ body {
   }
   .main .content_view_mobile .content_view {
     border: 1px solid #CCC;
+    height: 300px;
   }
   .main .content_view_mobile .content_view a img {
-    width: 100% !important;
-    height: 169px;
+    height: 150px;
+    margin: 0 auto;
   }
   .main .content_view_mobile .content_view a .product-label {
     top: 3px;
@@ -4076,7 +4081,7 @@ body {
   }
 
   #return-to-top {
-    right: 4px;
+    left: 4px;
     width: 40px;
     height: 40px;
   }
@@ -4136,6 +4141,12 @@ body {
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
     font-size: 1rem;
+  }
+  .main .content_view {
+    height: 350px !important;
+  }
+  .main .content_view a img {
+    height: 175px !important;
   }
   .main #inner-page #carouselExampleControls .carousel-inner .carousel-item .easyzoom .zoom_image img {
     min-height: 26.5rem;
@@ -4299,14 +4310,11 @@ body {
       height: 270px !important;
     } */
   }
+  .main .content_view {
+    height: 350px;
+  }
   .main .content_view a img {
-    height: 202px;
-    width: 100% !important;
-    /* &:hover,
-    &:focus {
-      width: 100% !important;
-      height: 200px !important;
-    } */
+    height: 175px;
   }
   .main #inner-page .carousel-control-next .left_slider,
 .main #inner-page .carousel-control-next .right_slider,

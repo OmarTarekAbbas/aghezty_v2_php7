@@ -566,9 +566,26 @@ body {
     .product_desc {
       background: $white_color;
       box-shadow: 0 0 1px #ccc;
-      height: 100%;
+      height: 500px;
+      width: 100%;
 
       a {
+        img {
+          width: auto;
+          max-width: 100%;
+          height: 292px;
+          margin: 10px auto;
+          transition: all 1.1s linear;
+          -webkit-transition: all 1.1s linear;
+          -moz-transition: all 1.1s linear;
+          -ms-transition: all 1.1s linear;
+          -o-transition: all 1.1s linear;
+        }
+
+        .img_size {
+          // height: 180px !important;
+        }
+
         .product-label {
           position: absolute;
           top: 1px;
@@ -942,7 +959,7 @@ body {
     box-shadow: 0 0 1px #ccc;
     padding: 0.65rem 0;
     width: 100%;
-    height:500px;
+    height: 500px;
 
     a {
       img {
@@ -1971,21 +1988,6 @@ body {
     }
   }
 
-  .product_view {
-    .product_view_type {
-      .product_desc {
-        a {
-          img {
-            height: 240px;
-          }
-
-          .img_size {
-            height: 180px !important;
-          }
-        }
-      }
-    }
-  }
 }
 
 
@@ -2931,10 +2933,8 @@ body {
 /* Start Media Query Mobile */
 
 @media (min-width: 320px) and (max-width: 375px) {
-
   .alert-success,
   .alert-danger {
-
     &.msg_success_min,
     &.msg_danger_min {
       text-align: left;
@@ -3306,7 +3306,7 @@ body {
 
               .old-price {
                 float: inherit;
-                display: inline;
+                // display: inline;
               }
             }
           }
@@ -3349,11 +3349,12 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
+        height: 300px;
 
         a {
           img {
-            width: 100% !important;
             height: 150px;
+            margin: 0 auto;
           }
 
           .product-label {
@@ -4183,10 +4184,8 @@ body {
 }
 
 @media (min-width: 376px) and (max-width: 415px) {
-
   .alert-success,
   .alert-danger {
-
     &.msg_success_min,
     &.msg_danger_min {
       text-align: left;
@@ -4560,7 +4559,7 @@ body {
 
               .old-price {
                 float: inherit;
-                display: inline;
+                // display: inline;
               }
             }
           }
@@ -4603,11 +4602,12 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
+        height: 300px;
 
         a {
           img {
-            width: 100% !important;
-            height: 169px;
+            height: 150px;
+            margin: 0 auto;
           }
 
           .product-label {
@@ -5540,6 +5540,16 @@ body {
     }
   }
 
+  .content_view {
+    height: 350px !important;
+
+    a {
+      img {
+        height: 175px !important;
+      }
+    }
+  }
+
   #inner-page {
     #carouselExampleControls {
 
@@ -5597,6 +5607,10 @@ body {
         }
       }
     }
+  }
+
+  #return-to-top {
+    left: 92%;
   }
 }
 
@@ -5824,15 +5838,10 @@ body {
     }
 
     .content_view {
+      height: 350px;
       a {
         img {
-          height: 202px;
-          width: 100% !important;
-          /* &:hover,
-          &:focus {
-            width: 100% !important;
-            height: 200px !important;
-          } */
+          height: 175px;
         }
       }
     }

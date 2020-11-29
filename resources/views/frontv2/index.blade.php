@@ -1,5 +1,4 @@
 @extends('frontv2.master')
-
 @section('content')
 
 <div class="main">
@@ -305,7 +304,7 @@
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
-                  class="w-100 rounded d-block m-auto">
+                  class="text-center d-block">
 
                 @if($item->discount > 0)
                 <div class="product-label text-center font-weight-bold">
@@ -402,7 +401,7 @@
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
-                  class="img_size w-75 d-block m-auto">
+                  class="img_size d-block">
 
                 @if($item->discount > 0)
                 <div class="product-label text-center font-weight-bold">

@@ -38,7 +38,7 @@
       </button>
 
       <!-- Start Filter Search -->
-      <div id="toggle_plus_minus" class="col-md-2 d-none d-md-none d-lg-block d-xl-block col-lg-2 col-xl-2">
+      <div id="toggle_plus_minus" class="col-md-2 col-lg-2 col-xl-2 d-none d-md-none d-lg-none d-xl-block">
         <form id="filter_form" method="post">
           @csrf
           @foreach (filter_categorys() as $item)
@@ -346,7 +346,7 @@
 
       <!-- Start Grid & List View -->
       <!-- Start Image Cover -->
-      <div class="col-md-12 col-lg-10 col-xl-10">
+      <div class="col-md-12 col-lg-12 col-xl-10">
         <div class="list_cover">
           <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
         </div>
