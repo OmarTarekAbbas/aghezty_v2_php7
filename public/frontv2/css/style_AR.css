@@ -2893,6 +2893,13 @@ body {
     padding-left: 2px !important;
     padding-right: 2px !important;
   }
+  .main .based_selection .content_view {
+    height: 340px;
+  }
+  .main .based_selection .content_view a .based_selection_img {
+    height: 170px;
+    margin: 0 auto;
+  }
   .main .based_selection .content_view a .product-label {
     left: 4px;
   }
@@ -3750,6 +3757,13 @@ body {
     padding-left: 2px !important;
     padding-right: 2px !important;
   }
+  .main .based_selection .content_view {
+    height: 340px;
+  }
+  .main .based_selection .content_view a .based_selection_img {
+    height: 170px;
+    margin: 0 auto;
+  }
   .main .based_selection .content_view a .product-label {
     left: 4px;
   }
@@ -4186,6 +4200,14 @@ body {
     right: -3.5rem;
   }
 
+  .based_selection .content_view {
+    height: 350px !important;
+  }
+  .based_selection .content_view a .based_selection_img {
+    height: 170px !important;
+    margin: 0 auto;
+  }
+
   .product_view .product_view_type .margin_bottom_mob {
     margin-bottom: 10px;
   }
@@ -4381,9 +4403,12 @@ body {
   .main #inner-page #carouselExampleControls {
     width: 100% !important;
   }
+  .main .based_selection .content_view {
+    height: 350px !important;
+  }
   .main .based_selection .content_view a .based_selection_img {
-    width: 100% !important;
-    height: 153px !important;
+    height: 170px !important;
+    margin: 0 auto;
   }
   .main .based_selection .content_view a h6 {
     line-height: 1.35rem;
