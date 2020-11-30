@@ -41,7 +41,7 @@
 								</div>
 							</div>
 
-							<!-- <div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
+							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupPhoneReg">@lang('front.auth.phone')</label>
 								<div class="input-group mb-2 m-auto w-75 hvr-float">
 									<div class="input-group-prepend">
@@ -49,7 +49,7 @@
 									</div>
 									<input type="text" class="form-control text-center" name="phone" id="inlineFormInputGroupPhoneReg" value="{{old('phone')}}" placeholder="@lang('front.auth.phone')">
 								</div>
-							</div> -->
+							</div>
 
 							<div class="col-md-12 col-lg-12 col-xl-12 col-auto mb-4">
 								<label class="sr-only" for="inlineFormInputGroupPasswordReg">@lang('front.auth.password')</label>
