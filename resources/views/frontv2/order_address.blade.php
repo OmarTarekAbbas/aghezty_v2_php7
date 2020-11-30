@@ -94,7 +94,7 @@
                         @endif
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                          <button id="checkphone" type="button" onclick="location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
+                        <button id="checkphone" type="button" onclick="if($('#phone').val() != ''){location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'}" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
                         </div>
                       </div>
                     </form>

@@ -1134,11 +1134,13 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
+        $clientStore = $request->all();
         if ($request->image) {
             $this->delete_image_if_exists(\Auth::guard('client')->user()->image);
+            $clientStore['image'] = 'uploads/' . Storage::disk('uploads')->put('client_images', $request->image);
         }
         $client = Client::find(\Auth::guard('client')->user()->id);
-        $client->update($request->all());
+        $client->update($clientStore);
         \Session::flash('success', __('front.client_success_message'));
         return back();
     }
