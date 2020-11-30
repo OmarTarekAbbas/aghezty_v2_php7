@@ -2112,11 +2112,11 @@ body {
           opacity: 0;
           position: absolute;
           background-color: black;
-          height: 16rem;
+          height: 17rem;
           width: 100%;
           align-self: center;
           text-align: center;
-          top: -7rem;
+          top: -8rem;
           left: 0;
           color: #fff;
           transition: all 1s ease-in-out;
@@ -2160,7 +2160,6 @@ body {
     form {
       .all_forms {
         .input-group {
-          border: 0;
 
           .form-control:not(:first-child) {
             border-top-right-radius: 0;
@@ -2207,6 +2206,24 @@ body {
         .btn_save:focus {
           box-shadow: 0 0 0 0.2rem rgb(255, 255, 255) !important;
           border-color: #343a40 !important;
+        }
+
+        .btn_log_fb {
+          margin-top: 3% !important;
+          background-color: #3b5999;
+          color: $white_color;
+
+          &:hover,
+          &:focus {
+            background-color: $white_color;
+            color: #3b5999;
+            box-shadow: 0 0 0 0.2rem #3b5999;
+          }
+
+          i {
+            font-size: 1.5rem;
+            padding-right: 1rem;
+          }
         }
       }
     }

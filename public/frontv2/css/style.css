@@ -1454,11 +1454,11 @@ body {
   opacity: 0;
   position: absolute;
   background-color: black;
-  height: 16rem;
+  height: 17rem;
   width: 100%;
   align-self: center;
   text-align: center;
-  top: -7rem;
+  top: -8rem;
   left: 0;
   color: #fff;
   transition: all 1s ease-in-out;
