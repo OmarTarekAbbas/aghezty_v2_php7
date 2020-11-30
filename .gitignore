@@ -8,6 +8,7 @@
 /.vagrant
 /.history
 /uploads
+/uploads_old
 /storage
 Homestead.json
 Homestead.yaml

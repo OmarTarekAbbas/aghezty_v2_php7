@@ -53,9 +53,9 @@
                 </div>
 
 
-                <div class="col-md-18 col-lg-8 col-xl-8 col-auto m-auto">
+                {{-- <div class="col-md-18 col-lg-8 col-xl-8 col-auto m-auto">
                   <button type="submit" class="btn_log_fb btn m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
-                </div>
+                </div> --}}
               </div>
 						</div>
 					</div>
