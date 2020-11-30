@@ -20,4 +20,8 @@ class Cart extends Model
     public function getPriceAttribute($value){
       return (int) $value;
     }
+    public function product()
+    {
+        return $this->belongsTo('App\Product', 'product_id', 'id');
+    }
 }

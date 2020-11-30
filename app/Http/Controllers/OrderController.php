@@ -105,7 +105,7 @@ class OrderController extends Controller
     $order = Order::find($request->order_id);
     $order->status = $request->status;
     $order->save();
-    if ($request->status == 3) {
+    if ($request->status == 3) { // admin make finish
       $carts = OrderDetail::where('order_id', $request->order_id)->get();
       foreach ($carts as $key => $cart) {
         $product = Product::find($cart->product_id);

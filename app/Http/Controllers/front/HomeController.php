@@ -1518,6 +1518,9 @@ class HomeController extends Controller
                 $m->from($client->email, __('front.order'));
                 $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
             });
+            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+            //     $m->to(setting('front.order'), __('front.title'))->subject(__('front.order'));
+            // });
             $link = url('order/'.$order->id);
             send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             return redirect('clients/thanksv2');
@@ -1678,7 +1681,13 @@ class HomeController extends Controller
     {
 
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
-            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            //update product stock after nbe success 
+            foreach ($carts as $cart) {
+                $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->save();
+                $cart->delete();
+            }
             $order = Order::find($request->order_id);
             $order = tap($order , function($order)  use ($request){
                 $order->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
@@ -1835,7 +1844,13 @@ class HomeController extends Controller
     public function createOrderWithPaymentCIB(Request $request)
     {
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
-            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            //update product stock after cib success 
+            foreach ($carts as $cart) {
+                $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->save();
+                $cart->delete();
+            }
             $order = Order::find($request->order_id);
             $order = tap($order , function($order) use ($request){
                 $order->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
