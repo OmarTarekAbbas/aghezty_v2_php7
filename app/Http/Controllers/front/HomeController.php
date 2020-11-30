@@ -2,42 +2,43 @@
 
 namespace App\Http\Controllers\front;
 
-use App\Constants\PaymentStatus;
-use App\Advertisement;
-use App\Cart;
-use App\Category;
-use App\City;
-use App\Client;
-use App\ClientAddress;
-use App\ClientRate;
-use App\Contact;
-use App\Coupon;
-use App\Governorate;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\PropertyResource;
-use App\Order;
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\BrandResource;
+use Mail;
 use Storage;
-use App\OrderDetail;
+use App\Cart;
+use App\City;
+use App\Order;
+use Validator;
+use App\Client;
+use App\Coupon;
+use App\Contact;
 use App\Product;
+use App\Category;
 use App\Property;
 use App\IpAddress;
-use Illuminate\Http\Request;
-use Mail;
+use App\ClientRate;
+use App\Governorate;
+use App\OrderDetail;
+use PayPal\Api\Item;
+use PayPal\Api\Payer;
+use App\Advertisement;
+use App\ClientAddress;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
+use PayPal\Api\Payment;
+use PayPal\Api\ItemList;
+use PayPal\Api\WebProfile;
 //use Braintree_Gateway;
 use PayPal\Api\InputFields;
-use PayPal\Api\Item;
-use PayPal\Api\ItemList;
-use PayPal\Api\Payer;
-use PayPal\Api\Payment;
-use PayPal\Api\PaymentExecution;
-use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
-use PayPal\Api\WebProfile;
-use Validator;
+use Illuminate\Http\Request;
+use PayPal\Api\RedirectUrls;
+use App\Constants\PaymentStatus;
+use PayPal\Api\PaymentExecution;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\BrandResource;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\PropertyResource;
 
 class HomeController extends Controller
 {
@@ -1203,11 +1204,13 @@ class HomeController extends Controller
             'city_id' => 'required',
             'governorate_id' => 'required',
             'address' => 'required',
+            'phone' => 'required',
         ], ['address.required' => 'يجب ادخال العنوان بالتفصيل']);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
+
         $client_address = ClientAddress::find($id)->update([
             'city_id' => $request->city_id,
             'client_id' => \Auth::guard('client')->user()->id,
@@ -1216,6 +1219,12 @@ class HomeController extends Controller
 
         \Session::flash('success', __('front.address_success_message'));
         return back();
+    }
+
+    public function phoneStoreAjax(Request $request)
+    {
+        Auth::guard('client')->user()->phone = $request->phone;
+        Auth::guard('client')->user()->save();
     }
 
     public function delete_addressv2($id)

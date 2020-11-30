@@ -80,8 +80,21 @@
                           </div>
                         </div>
 
+                        @if (!Auth::guard('client')->user()->phone)
+                            
+                        <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
+                          <div class="input-group mb-2 w-75 m-auto hvr-float">
+                            <div class="input-group-prepend w-100">
+                              <div class="input-group-text"><i class="fas fa-phone"></i></div>
+                              <input id="phone" class="form-control w-100" placeholder="Please Enter Your Phone" name="phone" required>
+                            </div>
+                          </div>
+                        </div>
+
+                        @endif
+
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                          <button type="button" onclick="location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
+                          <button id="checkphone" type="button" onclick="location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
                         </div>
                       </div>
                     </form>
@@ -210,5 +223,19 @@
       }
     })
   })
+</script>
+<script>
+  $('#phone').change(function (e) { 
+    e.preventDefault();
+    $.ajax({
+      type: "post",
+      url: "{{url('clients/phoneStoreAjax')}}",
+      data: {phone : $('#phone').val()},
+      success: function (response) {
+        console.log(response);
+      }
+    });
+  });
+  
 </script>
 @endsection
