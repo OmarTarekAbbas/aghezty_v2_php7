@@ -93,7 +93,7 @@ class ClientRegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:clients',
             'password' => 'required|string|min:6|confirmed',
-            'phone' => 'unique:clients',
+            'phone' => 'required|unique:clients',
             'image' => '',
             // "address" => "required"
         ]);
@@ -120,9 +120,9 @@ class ClientRegisterController extends Controller
         return Client::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'] ?? null,
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            // 'image' =>  $img_name
+            'image' =>  $img_name
         ]);
     }
 }
