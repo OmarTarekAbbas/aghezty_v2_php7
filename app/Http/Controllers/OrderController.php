@@ -51,6 +51,9 @@ class OrderController extends Controller
         if ($order->address && isset($order->address))
           return $order->address->address . "," . $order->address->city->city_ar . " - " . $order->address->city->governorate->title_ar;
       })
+      ->addColumn('created_at', function (Order $order) {
+          return $order->created_at;
+      })
       ->addColumn('payment_status', function (Order $order) {
         return $order->payment_status;
       })
