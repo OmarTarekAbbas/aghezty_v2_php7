@@ -1662,6 +1662,7 @@ body {
   margin-top: 3% !important;
   background-color: #3b5999;
   color: #FFF;
+  width: 30%;
 }
 .log_in .log_in_bg form .all_forms .btn_log_fb:hover, .log_in .log_in_bg form .all_forms .btn_log_fb:focus {
   background-color: #FFF;
@@ -1670,7 +1671,7 @@ body {
 }
 .log_in .log_in_bg form .all_forms .btn_log_fb i {
   font-size: 1.5rem;
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 /*----------------------------------------- End Login Page -----------------------------------------*/
@@ -3081,6 +3082,9 @@ body {
   .main .log_in .log_in_bg form .all_forms .form-check .form-check-input_register {
     right: -1.5rem;
   }
+  .main .log_in .log_in_bg form .all_forms .btn_log_fb {
+    width: 100%;
+  }
   .main .order_one {
     margin-top: 10px;
   }
@@ -3945,6 +3949,9 @@ body {
   .main .log_in .log_in_bg form .all_forms .form-check .form-check-input_login {
     right: 5.5rem;
   }
+  .main .log_in .log_in_bg form .all_forms .btn_log_fb {
+    width: 100%;
+  }
   .main .order_one {
     margin-top: 10px;
   }
@@ -4248,6 +4255,10 @@ body {
     font-size: 15px;
   }
 
+  .log_in .all_forms .btn_log_fb {
+    width: 50% !important;
+  }
+
   .footer_footer .footer_content .block_brand_content .block_content .no_padding_mobile {
     padding-left: 15px !important;
     padding-right: 15px !important;
@@ -4476,6 +4487,12 @@ body {
 .main .log_in .my_profile_bg form .all_forms .form-check .form-check-input_login,
 .main .log_in .log_in_bg form .all_forms .form-check .form-check-input_login {
     right: 42%;
+  }
+  .main .my_profile .my_profile_bg form .all_forms .btn_log_fb,
+.main .my_profile .log_in_bg form .all_forms .btn_log_fb,
+.main .log_in .my_profile_bg form .all_forms .btn_log_fb,
+.main .log_in .log_in_bg form .all_forms .btn_log_fb {
+    width: 50% !important;
   }
 
   .footer_footer .footer_content .rounded-social-buttons .social-button {

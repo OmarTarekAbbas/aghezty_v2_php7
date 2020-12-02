@@ -301,7 +301,7 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
-  // top: 8.59%;
+  top: 0;
 
   .navbar {
     text-align: center;
@@ -2033,6 +2033,7 @@ body {
         margin-top: 3% !important;
         background-color: #3b5999;
         color: $white_color;
+        width: 30%;
 
         &:hover,
         &:focus {
@@ -3877,6 +3878,12 @@ body {
           }
         }
       }
+
+      .all_forms {
+        .btn_log_fb {
+          width: 100%;
+        }
+      }
     }
 
     // My Order page
@@ -5141,6 +5148,12 @@ body {
           }
         }
       }
+
+      .all_forms {
+        .btn_log_fb {
+          width: 100%;
+        }
+      }
     }
 
     // My Order page
@@ -5654,6 +5667,14 @@ body {
     }
   }
 
+    .log_in {
+      .all_forms {
+        .btn_log_fb {
+          width: 50% !important;
+        }
+      }
+    }
+
   .footer_footer {
     .footer_content {
       .block_brand_content {
@@ -6040,6 +6061,12 @@ body {
             top: 4rem;
             right: 31%;
           }
+        }
+      }
+
+      .all_forms {
+        .btn_log_fb {
+          width: 50%;
         }
       }
     }
