@@ -2213,6 +2213,7 @@ body {
           margin-top: 3% !important;
           background-color: #3b5999;
           color: $white_color;
+          width: 30%;
 
           &:hover,
           &:focus {
@@ -2223,7 +2224,7 @@ body {
 
           i {
             font-size: 1.5rem;
-            padding-right: 1rem;
+            padding-left: 1rem;
           }
         }
       }
@@ -4141,6 +4142,10 @@ body {
                 right: -1.5rem;
               }
             }
+
+            .btn_log_fb {
+              width: 100%;
+            }
           }
         }
       }
@@ -4458,7 +4463,6 @@ body {
 }
 
 @media (min-width: 376px) and (max-width: 415px) {
-
   .alert-success,
   .alert-danger {
 
@@ -5449,6 +5453,10 @@ body {
                 right: 5.5rem;
               }
             }
+
+            .btn_log_fb {
+              width: 100%;
+            }
           }
         }
       }
@@ -5989,6 +5997,14 @@ body {
     }
   }
 
+  .log_in {
+    .all_forms {
+      .btn_log_fb {
+        width: 50% !important;
+      }
+    }
+  }
+
   .footer_footer {
     .footer_content {
       .block_brand_content {
@@ -6387,6 +6403,10 @@ body {
               .form-check-input_login {
                 right: 42%;
               }
+            }
+
+            .btn_log_fb {
+              width: 50% !important;
             }
           }
         }

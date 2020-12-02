@@ -116,8 +116,8 @@
                 <button type="submit" class="btn_save btn btn-secondary text-white mb-1 m-auto d-block w-50 text-capitalize hvr-wobble-to-bottom-right">@lang('front.auth.register')</button>
               </div>
 
-              <div class="col-md-12 col-lg-12 col-xl-12 col-auto py-3">
-                <a href="{{url('/facebook_redirect')}}" class="btn_log_fb btn btn-primary w-50 m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> @lang('front.auth.facebook')</a>
+              <div class="col-md-12 col-lg-12 col-xl-12 col-auto">
+                <a href="{{url('/facebook_redirect')}}" class="btn_log_fb btn m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> @lang('front.auth.facebook')</a>
               </div>
           </div>
           </div>

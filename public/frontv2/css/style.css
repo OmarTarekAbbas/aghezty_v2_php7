@@ -237,6 +237,7 @@ body {
   width: 100%;
   z-index: 999999;
   position: fixed;
+  top: 0;
 }
 .head_three .navbar {
   text-align: center;
@@ -1511,6 +1512,7 @@ body {
   margin-top: 3% !important;
   background-color: #3b5999;
   color: #FFF;
+  width: 30%;
 }
 .log_in .log_in_bg .all_forms .btn_log_fb:hover, .log_in .log_in_bg .all_forms .btn_log_fb:focus {
   background-color: #FFF;
@@ -2863,6 +2865,9 @@ body {
     width: 100% !important;
     margin-bottom: 1rem !important;
   }
+  .main .log_in .all_forms .btn_log_fb {
+    width: 100%;
+  }
   .main .order_one {
     margin-top: 10px;
   }
@@ -3697,6 +3702,9 @@ body {
     width: 100% !important;
     margin-bottom: 1rem !important;
   }
+  .main .log_in .all_forms .btn_log_fb {
+    width: 100%;
+  }
   .main .order_one {
     margin-top: 10px;
   }
@@ -3984,6 +3992,10 @@ body {
     left: 34rem;
   }
 
+  .log_in .all_forms .btn_log_fb {
+    width: 50% !important;
+  }
+
   .footer_footer .footer_content .block_brand_content .block_content .no_padding_mobile {
     padding-left: 15px !important;
     padding-right: 15px !important;
@@ -4207,6 +4219,10 @@ body {
     font-size: 2rem;
     top: 4rem;
     right: 31%;
+  }
+  .main .my_profile .all_forms .btn_log_fb,
+.main .log_in .all_forms .btn_log_fb {
+    width: 50%;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 48rem;
