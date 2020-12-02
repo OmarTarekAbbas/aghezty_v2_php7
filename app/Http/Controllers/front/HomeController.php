@@ -156,6 +156,7 @@ class HomeController extends Controller
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -1066,10 +1067,11 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
+        // dd($request->has('property_value_id'));
         if ($request->has('property_value_id')) {
-            $products = $products->whereHas('pr_value', function ($q) use ($request) {
-                $q->whereIn('property_values.id', $request->property_value_id);
-            });
+          $products = $products->whereHas('pr_value', function ($q) use ($request) {
+            $q->whereIn('property_values.id', $request->property_value_id);
+          });
         }
 
         $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
@@ -1516,6 +1518,9 @@ class HomeController extends Controller
                 $m->from($client->email, __('front.order'));
                 $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
             });
+            // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+            //     $m->to(setting('front.order'), __('front.title'))->subject(__('front.order'));
+            // });
             $link = url('order/'.$order->id);
             send_notification(' Make New order  #'.$order->id.' ',\Auth::guard('client')->user()->id,$link);
             return redirect('clients/thanksv2');
@@ -1676,7 +1681,13 @@ class HomeController extends Controller
     {
 
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
-            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            //update product stock after nbe success 
+            foreach ($carts as $cart) {
+                $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->save();
+                $cart->delete();
+            }
             $order = Order::find($request->order_id);
             $order = tap($order , function($order)  use ($request){
                 $order->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
@@ -1833,7 +1844,13 @@ class HomeController extends Controller
     public function createOrderWithPaymentCIB(Request $request)
     {
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
-            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
+            $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
+            //update product stock after cib success 
+            foreach ($carts as $cart) {
+                $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->save();
+                $cart->delete();
+            }
             $order = Order::find($request->order_id);
             $order = tap($order , function($order) use ($request){
                 $order->update(['payment_status' => PaymentStatus::Success, 'transaction_id' =>$request->tran_id]);
@@ -1899,7 +1916,7 @@ class HomeController extends Controller
     //helper function api
     public function getProperty(Request $request)
     {
-
+        // dd("omar");
         $propertys = Property::with(['pvalue']);
         if ($request->has('category_id')) {
             $propertys = $propertys->whereIn('category_id', (array) $request->category_id);

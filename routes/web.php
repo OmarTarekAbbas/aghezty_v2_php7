@@ -157,3 +157,5 @@ Route::get('getProperty','front\HomeController@getProperty');
 Route::get('getChild','front\HomeController@getChild');
 
 
+Route::get('/facebook_redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/facebook_callback', 'SocialAuthFacebookController@callback');

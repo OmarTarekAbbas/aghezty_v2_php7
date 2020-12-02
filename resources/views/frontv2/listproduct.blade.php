@@ -329,8 +329,8 @@
 
                   <div class="panel w-100 border border-light">
                     <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                      <input :id="'panel_prm'+property_value.id" class="mb-2 property" type="checkbox" :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'  name="property_value_id[]" :value="property_value.id">
-                      <label class="d-block text-capitalize" :for="'panel_prm'+property_value.id">@{{property_value.value}} </label>
+                      <input :id="'m_panel_pr'+property_value.id" class="mb-2 property" type="checkbox"    :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'  name="property_value_id[]" :value="property_value.id"  form="filter_form">
+                      <label class="d-block text-capitalize" :for="'m_panel_pr'+property_value.id">@{{property_value.value}} </label>
                     </div>
                   </div>
                 </template>
@@ -521,7 +521,6 @@
   }
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
     $('.load').show();
-    console.log($(this).val());
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
       str = $(this).attr('id')
@@ -548,15 +547,20 @@
     history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
   })
   $(document).on('change', '.property', function() {
+
     $('.load').show();
-    console.log($(this).val());
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
       str = $(this).attr('id')
-      $(this).removeAttr('checked')
+      $(this).removeAttr('checked') // remove this
       $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
       $('#' + str.split('_mobile')[0]).removeAttr('checked')
+      $(this).attr('id').checked = false;
+    }else{
+      str = $(this).attr('id')
+      $(this).attr('id').checked = true;
     }
+
     start = 0
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?start=0',
@@ -711,7 +715,6 @@
           this.checked_val.num2 = number
         }
       }
-      console.log(this.checked_val);
       @endif
     }
   })
@@ -825,7 +828,6 @@
           this.checked_val.num2 = 0
         }
       }
-      console.log(this.checked_val);
       @endif
     }
   })

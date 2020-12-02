@@ -143,6 +143,7 @@ return [
         'confirm_password' => 'Confirm Password',
         'remember' => 'Remember',
         'info' => 'Personal Information',
+        'facebook' => 'Continue with Facebook',
     ],
     'coupon' => [
         'not_correct' => 'This Coupon Not Correct',

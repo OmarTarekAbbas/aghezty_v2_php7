@@ -1,6 +1,13 @@
 @extends('frontv2.master')
 @section('content')
 
+<style>
+  .btn_log_fb{
+  margin-top: 3% !important;
+    background-color: #3b5999;
+    color: #FFF;
+  }
+</style>
 <!-- main content -->
 <div class="main mt-2">
 	<section class="log_in justify-content-center">
@@ -53,9 +60,9 @@
                 </div>
 
 
-                {{-- <div class="col-md-18 col-lg-8 col-xl-8 col-auto m-auto">
-                  <button type="submit" class="btn_log_fb btn m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
-                </div> --}}
+                <div class="col-md-8 col-lg-8 col-xl-8 col-auto m-auto">
+                  <a href="{{url('/facebook_redirect')}}" class="btn_log_fb btn m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> @lang('front.auth.facebook')</a>
+                </div>
               </div>
 						</div>
 					</div>
