@@ -116,7 +116,7 @@
 
 
       @if(advertisements(4))
-      <div class="row d-none d-sm-block">
+      <div class="row d-sm-block">
         <div class="col-md-12 col-xl-12 col-12">
           <a href="{{advertisements(4)->ads_url}}">
             <div class="full_banner mt-3">
