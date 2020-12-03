@@ -583,7 +583,7 @@
         'success_pr': 'success_pr',
         'product_id': '{{$product->id}}',
         'counter': $('.quantity-input').val(),
-        'price': '{{($product->discount)?$product->price_after_discount:$product->price}}'
+        'price': '{{($product->price_after_discount && $product->price_after_discount != 0)?$product->price_after_discount:$product->price}}'
       },
       success: function(data) {
         if (data.status == 'success') {
