@@ -108,7 +108,7 @@ class ClientRegisterController extends Controller
     protected function create(array $data)
     {
         $path='image';
-        $img_name= 'png';
+        $img_name= null;
         if(isset($data['image']) && is_file($data['image']))
         {
           $value    = $data['image'];
