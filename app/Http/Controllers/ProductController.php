@@ -306,8 +306,10 @@ class ProductController extends Controller
         }
         if ($request->discount == null) {
           $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
+        }else{
+          $product->discount = $request->discount;
         }
-        
+        // dd($product->discount);
         $product->save();
 
         if($request->has('property_value_id')){

@@ -136,6 +136,9 @@ const property = new Vue({
       $('.price_after').val(Math.ceil( $('.price').val() - (($(this).val()/100) * $('.price').val()) ))
     })
 
+    // $('.price_after').keyup(function(){
+    //   $('.discount').val(Math.ceil(($('.price').val() - ($('.price_after').val()) *100) / $('.price').val() ))
+    // })
     $('.price').keyup(function(){
       $('.in_6').val(parseInt($('.price').val() / 6))
       $('.in_12').val(parseInt($('.price').val() / 12))
