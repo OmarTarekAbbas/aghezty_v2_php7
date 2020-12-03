@@ -60,9 +60,10 @@
                 </div>
 
 
-                {{--  <div class="col-md-12 col-lg-12 col-xl-12 col-auto m-auto">
+                  {{--  <div class="col-md-12 col-lg-12 col-xl-12 col-auto m-auto">
                   <a href="{{url('/facebook_redirect')}}" class="btn_log_fb btn m-auto d-block text-capitalize"><i class="fab fa-facebook-f"></i> @lang('front.auth.facebook')</a>
                 </div>  --}}
+
               </div>
 						</div>
 					</div>
