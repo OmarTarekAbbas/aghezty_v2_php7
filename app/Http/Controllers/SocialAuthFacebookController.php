@@ -25,6 +25,8 @@ class SocialAuthFacebookController extends Controller
     {
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
         Auth::guard('client')->login($user);
+        if(session('newuser'))
+            return redirect()->to('clients/profilev2')->with('success', 'Please update your phone!');
         return redirect()->to('clients/homev2');
     }
 }
