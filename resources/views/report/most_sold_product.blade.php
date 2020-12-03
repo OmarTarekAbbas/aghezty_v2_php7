@@ -42,7 +42,11 @@
                                 @foreach($products as $key=>$product)
 
                                     <tr class="table-flag-blue">
+                                    @if(Auth::user()->hasRole('super_admin'))
+                                    <td>{{$product->id}}</td>
+                                    @else
                                     <td>{{$key+1}}</td>
+                                    @endif
                                         <td><img src="{{url($product->main_image)}}" alt="{{$product->title}}" style="width: 25%;"></td>
                                         <td> <h4>{{$product->title}} </h4></td>
                                         <td> <h4>{{count_product($product->id)}} </h4></td>
