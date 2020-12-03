@@ -161,6 +161,10 @@ class ProductController extends Controller
             $product->setTranslation('key_feature', $key, $value);
           }
         }
+        if ($request->discount == null) {
+          $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
+        }
+        //dd($product);
         $product->save();
 
         if($request->has('property_value_id')){
@@ -300,6 +304,10 @@ class ProductController extends Controller
             $product->setTranslation('key_feature', $key, $value);
           }
         }
+        if ($request->discount == null) {
+          $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
+        }
+        
         $product->save();
 
         if($request->has('property_value_id')){
@@ -307,7 +315,7 @@ class ProductController extends Controller
           $product->pr_value()->sync($property_value_id);
         }
 
-        $product->update($request->except('title','images','counter_img','description','short_description','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
+        $product->update($request->except('title','images','counter_img','description','short_description','discount','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
         if ($request->has('images')){
             $product->images()->saveMany($images);
         }
