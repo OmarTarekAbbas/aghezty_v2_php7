@@ -431,3 +431,9 @@ function count_product($id)
   $count_product = OrderDetail::where('product_id', $id)->count();
   return $count_product;
 }
+
+function count_quantities($id)
+{
+  $count_quantities = OrderDetail::where('product_id', $id)->sum('quantity');
+  return $count_quantities;
+}

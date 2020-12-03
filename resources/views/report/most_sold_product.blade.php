@@ -33,6 +33,7 @@
                                         <th>@lang('messages.image')</th>
                                         <th>@lang('messages.campain.title')</th>
                                         <th>@lang('messages.sold_times')</th>
+                                        <th>@lang('front.quantity')</th>
                                         <th class="visible-md visible-lg" style="width:130px">@lang('messages.action')
                                         </th>
                                     </tr>
@@ -45,6 +46,7 @@
                                         <td><img src="{{url($product->main_image)}}" alt="{{$product->title}}" style="width: 25%;"></td>
                                         <td> <h4>{{$product->title}} </h4></td>
                                         <td> <h4>{{count_product($product->id)}} </h4></td>
+                                        <td> <h4>{{count_quantities($product->id)}} </h4></td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
                                             <a href="{{url('clients/productv2/'.$product->id)}}" class="btn btn-primary" target="_blank">Show Product</a>
