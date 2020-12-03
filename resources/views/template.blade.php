@@ -539,7 +539,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                           </ul>
 
 
-                          @if(Auth::user()->id == 1)
                           <ul class="nav nav-list">
                               <li id="order">
                                   <a href="#" class="dropdown-toggle">
@@ -554,7 +553,6 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                   </ul>
                               </li>
                           </ul>
-                          @endif
 
                         {{-- <ul class="nav nav-list">
                               <li id="post">
