@@ -28,7 +28,7 @@ class SocialFacebookAccountService
                     'image' => $providerUser->getAvatar(),
                     'password' => Hash::make('123456'),
                 ]);
-                session()->put('newuser', 'newuser');
+                session()->flash('newuser', 'newuser');
             }
             $account->user()->associate($user);
             $account->save();
