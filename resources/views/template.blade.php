@@ -588,7 +588,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
 
 
-                              {{--<ul class="nav nav-list">
+                              {{-- <ul class="nav nav-list">
                                   <li id="advertisement">
                                       <a href="#" class="dropdown-toggle">
                                           <i class="glyphicon glyphicon-folder-open"></i>
@@ -602,7 +602,9 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                           <li id="advertisement_create"><a href="{{url('advertisement/create')}}">@lang('messages.create_advertisement')</a></li>
                                       </ul>
                                   </li>
-                              </ul>--}}
+                              </ul> --}}
+
+
                               @endif
                               @if(Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('content'))
                                 <ul class="nav nav-list">
@@ -654,7 +656,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                       </ul>
                                   </li>
                               </ul>
-                              {{-- <ul class="nav nav-list">
+                               <ul class="nav nav-list">
                                   <li id="report">
                                       <a href="#" class="dropdown-toggle">
                                           <i class="glyphicon glyphicon-home"></i>
@@ -669,9 +671,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                           <li id="number_of_purchases"><a href="{{url('number_of_purchases')}}">@lang('messages.number_of_purchases')</a></li>
                                       </ul>
                                   </li>
-                              </ul>   --}}
+                              </ul>
                               @endif
-                          {{--@endif--}}
 
                         </ul>
 
