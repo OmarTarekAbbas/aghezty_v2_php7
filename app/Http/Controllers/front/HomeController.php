@@ -153,12 +153,21 @@ class HomeController extends Controller
 
     public function contact_store(Request $request)
     {
+        $lang = session()->get('applocale');
+        if($lang == 'ar'){
+            $capcha = 'برجاء انهاء تحقيق الهوية اولا!';
+        }else{
+            $capcha = 'please complete the human check!';
+        }
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'phone' => 'required',
             'message' => 'required',
             'g-recaptcha-response' => 'required',
-        ]);
+        ],
+        ['g-recaptcha-response.required' => $capcha]
+    );
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();

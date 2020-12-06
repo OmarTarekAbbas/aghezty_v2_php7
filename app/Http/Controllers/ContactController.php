@@ -32,7 +32,7 @@ class ContactController extends Controller
             $m->from(setting('super_mail'), __('front.order'));
             $m->to($contact->email, __('front.title'))->subject(__('front.product'));
         });
-        \Session::flash('success', 'Send MEssage Successfully');
+        \Session::flash('success', 'Send Message Successfully');
         return back();
     }
 }
