@@ -1,5 +1,5 @@
 <section class="profile_img text-center mb-4">
-  <a class="upload_img" href="#0" onclick="_upload()">
+  <a class="upload_img" onclick="_upload()">
     @if (Auth::guard('client')->user())
 
       @if (Auth::guard('client')->user()->facebook)
