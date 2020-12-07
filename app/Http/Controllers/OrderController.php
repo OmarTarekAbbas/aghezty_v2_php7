@@ -81,6 +81,7 @@ class OrderController extends Controller
   public function delete($id)
   {
     $order = Order::find($id);
+    $order->products()->delete();
     $order->delete();
     \Session::flash('success', 'Delete Order successful');
     return back();
