@@ -9,6 +9,7 @@ use App\OrderDetail;
 use App\Product;
 use Mail;
 use App\Client;
+use App\OrderReplay;
 
 class OrderController extends Controller
 {
@@ -122,6 +123,7 @@ class OrderController extends Controller
       $m->from(setting('super_mail'), __('front.title'));
       $m->to($client->email, $client->name)->subject(__('front.order'));
     });
+    $this->savedOrderReply($order, $request);
     \Session::flash('success', 'Email Is Send With Order Status');
     return back();
   }
@@ -132,5 +134,24 @@ class OrderController extends Controller
     //return $notify_ids;
     $notifys = \App\Notification::with('send_user')->where('notified_id', \Auth::id())->whereNotIn('id', $notify_ids)->latest()->take(2)->get();
     return $notifys;
+  }
+
+  /**
+   * Method savedOrderReply
+   *
+   * @param Order $order
+   * @param Request $request
+   *
+   * @return void
+   */
+  public function savedOrderReply($order, $request)
+  {
+    $data['status']    = $request->status;
+    $data['order_id']  = $order->id;
+    $data['client_id'] = $request->client_id;
+    $data['admin_id']  = auth()->id();
+    $data['message']   = $request->message;
+
+    OrderReplay::create($data);
   }
 }
