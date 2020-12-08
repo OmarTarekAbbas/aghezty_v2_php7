@@ -121,6 +121,7 @@ class OrderController extends Controller
     $admin = \Auth::user();
     Mail::send('front.mail', ['order' => $order, 'client' => $client, 'subject' => $request->message], function ($m) use ($client) {
       $m->from(setting('super_mail'), __('front.title'));
+      $m->cc(setting('super_mail'));
       $m->to($client->email, $client->name)->subject(__('front.order'));
     });
     $this->savedOrderReply($order, $request);
