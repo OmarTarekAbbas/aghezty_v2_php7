@@ -50,11 +50,11 @@
                                     @endif
                                         <td><img src="{{url($product->main_image)}}" alt="{{$product->title}}" style="width: 25%;"></td>
                                         <td> <h4>{{$product->title}} </h4></td>
-                                        <td> <h4>{{count_product($product->id)}} </h4></td>
+                                        <td> <h4>{{count_product($product->product_id)}} </h4></td>
                                         {{-- <td> <h4>{{count_quantities($product->id)}} </h4></td> --}}
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
-                                            <a href="{{url('clients/productv2/'.$product->id)}}" class="btn btn-primary" target="_blank">Show Product</a>
+                                            <a href="{{url('clients/productv2/'.$product->product_id)}}" class="btn btn-primary" target="_blank">Show Product</a>
                                             </div>
                                         </td>
                                     </tr>

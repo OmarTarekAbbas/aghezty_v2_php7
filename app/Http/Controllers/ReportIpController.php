@@ -21,18 +21,23 @@ class ReportIpController extends Controller
 
     public function most_sold_product()
     {
-        $products = OrderDetail::select('*')
-            ->join('products', 'products.id', '=', 'order_details.product_id')
-            ->groupBy('products.id')
-            ->orderByRaw('COUNT(*) DESC')
-            ->limit(100)
-            ->get();
-            // $products_count = OrderDetail::select('*')
-            // ->groupBy('product_id')
-            // ->limit(100)
-            // ->havingRaw('count(*) > 1')
-            // ->get();
-            //  dd($products_count);
+      $products = OrderDetail::select(
+      'order_details.id as order_details_id',
+      'order_details.quantity as quantity',
+      'order_details.order_id as order_id',
+      'order_details.product_id as product_id',
+      'products.title as title',
+      'products.main_image as main_image',
+      'orders.status as status',
+      )
+          ->join('products', 'products.id', '=', 'order_details.product_id')
+          ->join('orders', 'orders.id', '=', 'order_details.order_id')
+          ->where('orders.status','=', 3)
+          ->groupBy('products.id')
+          ->orderByRaw('COUNT(*) DESC')
+          ->limit(100)
+          ->get();
+          //dd($products);
         return view('report.most_sold_product', compact('products'));
     }
 

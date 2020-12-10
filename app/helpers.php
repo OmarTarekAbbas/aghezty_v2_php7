@@ -428,8 +428,17 @@ function advertisements($order)
 
 function count_product($id)
 {
-  $count_product = OrderDetail::where('product_id', $id)->count();
+  // dd($id);
+  // $count_product = OrderDetail::where('product_id', $id)->count();
+  $count_product = OrderDetail::select('*')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->where('orders.status','=', 3)
+            ->where('order_details.product_id','=', $id)
+            ->count();
   return $count_product;
+
+
+
 }
 
 function count_quantities($id)
