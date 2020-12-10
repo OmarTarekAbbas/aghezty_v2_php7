@@ -1702,7 +1702,7 @@ class HomeController extends Controller
 
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
-            //update product stock after nbe success 
+            //update product stock after nbe success
             foreach ($carts as $cart) {
                 $cart->product->stock = $cart->product->stock - $cart->quantity;
                 $cart->product->save();
@@ -1865,7 +1865,7 @@ class HomeController extends Controller
     {
         if ($request->has('resultIndicator') && session()->has('successIndicator') && session()->get('successIndicator') != '' && $request->resultIndicator != '' && $request->resultIndicator == session()->get('successIndicator')) {
             $carts = Cart::where('client_id', \Auth::guard('client')->user()->id)->get();
-            //update product stock after cib success 
+            //update product stock after cib success
             foreach ($carts as $cart) {
                 $cart->product->stock = $cart->product->stock - $cart->quantity;
                 $cart->product->save();

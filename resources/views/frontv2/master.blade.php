@@ -756,7 +756,18 @@
   @foreach ($categorys as $category)
   @if($category->sub_cats->count() > 0)
 
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HPJ7G3QJS"></script>
   <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8HPJ7G3QJS');
+  </script>
+  <script>
+
     $(document).ready(function() {
 
       var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
