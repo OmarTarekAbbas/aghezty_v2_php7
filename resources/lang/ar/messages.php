@@ -449,4 +449,5 @@ return [
     'return_or_refund' => 'التبديل والاسترجاع',
     'key_feature' => 'المواصفات',
     'sold_times' => 'مرات البيع',
+    'offer_image' => 'صور اوفر',
 ];

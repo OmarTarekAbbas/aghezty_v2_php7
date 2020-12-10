@@ -8,7 +8,7 @@ class Category extends Model
 {
   use  Translatable;
   protected $table = 'categories';
-  protected $fillable = ['title','image', 'coding' ,'parent_id'];
+  protected $fillable = ['title','image', 'offer_image','coding' ,'parent_id'];
   ///////////////////set image///////////////////////////////
   public function setImageAttribute($value){
     if(is_file($value)){

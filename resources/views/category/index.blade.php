@@ -40,6 +40,7 @@
                                         <th>@lang('messages.campain.title')</th>
                                         <th>@lang('messages.coding')</th>
                                         <th>@lang('messages.image')</th>
+                                        <th>@lang('messages.offer_image')</th>
                                         <th >@lang('messages.action')</th>
                                     </tr>
                                 </thead>
@@ -56,6 +57,9 @@
                                         <td>{{$value->coding}}</td>
                                         <td>
                                             <img class="" width="100px" height="100px" src="{{$value->image}}"/>
+                                        </td>
+                                        <td>
+                                            <img class="" width="100px" height="100px" src="{{url("$value->offer_image")}}"/>
                                         </td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">

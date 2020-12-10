@@ -51,7 +51,7 @@ class CategoryController extends Controller
                   'title' => 'required|array',
                   'title.*' => 'required|string',
                   'coding' => 'required',
-                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
       ]);
 
@@ -75,6 +75,20 @@ class CategoryController extends Controller
               return back();
           }
         }
+
+        if ($request->hasFile('offer_image')) {
+          if ($request->file('offer_image')->isValid()) {
+              try {
+                  $imgName = time() . '.' . $request->offer_image->getClientOriginalExtension();
+                  $request->offer_image->move('uploads/offer_image', $imgName);
+                  $category->offer_image = 'uploads/offer_image/'.$imgName;
+              } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+
+              }
+          }
+        }
+
+       // dd($request->category);
         $category->save();
         \Session::flash('success', 'Category Created Successfully');
         return redirect('/category');
@@ -135,6 +149,9 @@ class CategoryController extends Controller
       foreach ($request->title as $key => $value) {
         $category->setTranslation('title', $key, $value);
     }
+
+
+    $category->fill($request->except('title'));
       if($request->image){
         $imgExtensions = array("png","jpeg","jpg");
         $file = $request->image;
@@ -145,9 +162,20 @@ class CategoryController extends Controller
        }
         $this->delete_image_if_exists(base_path('/uploads/category/'.basename($category->image)));
       }
+      if ($request->hasFile('offer_image')) {
+        if ($request->file('offer_image')->isValid()) {
+          try {
+            $imgName = time() . '.' . $request->offer_image->getClientOriginalExtension();
+            $request->offer_image->move('uploads/offer_image', $imgName);
+            $category->offer_image = 'uploads/offer_image/'.$imgName;
+          } catch (Illuminate\Filesystem\FileNotFoundException $e) {
 
-      $category->update($request->except('title'));
+          }
+        }
+      }
 
+      //dd($category->offer_image);
+      $category->save();
       \Session::flash('success', 'Category Updated Successfully');
       return redirect('/category');
     }
