@@ -330,16 +330,6 @@
 
 @section('script')
 <script>
-  var cart_selected_typed = new Typed('#cart_selected_typed', {
-    strings: ['Selected For You'],
-    typeSpeed: 150,
-    backSpeed: 0,
-    fadeOut: true,
-    smartBackspace: true, // this is a default
-    loop: true
-  });
-</script>
-<script>
   $(document).on('click','.table_qty_inc',function () {
       var x = parseInt($(this).parent().children('.qty').val()) + 1;
       $(this).parent().children('.qty').val(x);
