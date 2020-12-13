@@ -23,6 +23,17 @@
 <!-- main content -->
 <div class="main p-0">
   <div class="mobile_views">
+    <!-- Start Image Cover -->
+      <div style="margin-top: 7%;">
+            <div class="list_cover">
+              @if(setting('contact_offer'))
+              <img class="w-100 rounded" src="{{url(setting('contact_offer'))}}" alt="Cover" title="Apple" style="height: auto !important">
+              @else
+              <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
+              @endif
+            </div>
+      </div>
+    <!-- End Image Cover -->
     <h2 class="text-center mt-4">Contact Us</h2>
     <div class="call-center w-100 m-auto p-3 hvr-wobble-to-bottom-right">
       <a href="tel:{{ setting('phone') }}">

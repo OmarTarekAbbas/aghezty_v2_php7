@@ -70,6 +70,17 @@ class SubCategoryController extends Controller
               return back();
          }
         }
+        if ($request->hasFile('offer_image')) {
+          if ($request->file('offer_image')->isValid()) {
+              try {
+                  $imgName = time() . '.' . $request->offer_image->getClientOriginalExtension();
+                  $request->offer_image->move('uploads/offer_image', $imgName);
+                  $category->offer_image = 'uploads/offer_image/'.$imgName;
+              } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+
+              }
+          }
+        }
         $category->save();
       \Session::flash('success', 'Sub Category Created Successfully');
       return redirect('sub_category/'.$request->parent_id);
@@ -130,7 +141,7 @@ class SubCategoryController extends Controller
         {
           $category->setTranslation('title', $key, $value);
         }
-
+        $category->fill($request->except('title'));
         if($request->image)
         {
           $imgExtensions = array("png","jpeg","jpg");
@@ -143,8 +154,18 @@ class SubCategoryController extends Controller
           $this->delete_image_if_exists(base_path('/uploads/category/'.basename($category->image)));
         }
 
-        $category->update($request->except('title'));
+        if ($request->hasFile('offer_image')) {
+          if ($request->file('offer_image')->isValid()) {
+            try {
+              $imgName = time() . '.' . $request->offer_image->getClientOriginalExtension();
+              $request->offer_image->move('uploads/offer_image', $imgName);
+              $category->offer_image = 'uploads/offer_image/'.$imgName;
+            } catch (Illuminate\Filesystem\FileNotFoundException $e) {
 
+            }
+          }
+        }
+        $category->save();
       \Session::flash('success', 'Sub Category Updated Successfully');
       return redirect('sub_category/'.$request->parent_id);
     }

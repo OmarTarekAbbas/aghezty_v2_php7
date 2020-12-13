@@ -39,6 +39,7 @@
                                       <th>@lang('messages.campain.title')</th>
                                     <th>@lang('messages.coding')</th>
                                     <th>@lang('messages.image')</th>
+                                    <th>@lang('messages.offer_image')</th>
                                     <th >@lang('messages.action')</th>
                                   </tr>
                               </thead>
@@ -56,6 +57,9 @@
                                       <td>
                                           <img  width="100px" height="100px" src="{{$value->image}}"/>
                                       </td>
+                                      <td>
+                                            <img class="" width="100px" height="100px" src="{{url("$value->offer_image")}}"/>
+                                        </td>
                                       <td class="visible-md visible-lg">
                                           <div class="btn-group">
                                               <a class="btn btn-sm btn-success show-tooltip" title="Add Product" href="{{url("product/create?category_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Product"><i class="fa fa-plus"></i></a>

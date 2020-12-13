@@ -343,12 +343,33 @@
           </div>
         </div>
       </div>
-
       <!-- Start Grid & List View -->
       <!-- Start Image Cover -->
+
       <div class="col-md-12 col-lg-12 col-xl-10">
         <div class="list_cover">
+          @if(app('request')->input('offer'))
+            @if(setting('offer_image'))
+            <img class="w-100 rounded" src="{{url(setting('offer_image'))}}" alt="Cover" title="Apple" style="height: auto !important">
+            @else
+            <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
+            @endif
+          @elseif(app('request')->input('brand_id'))
+            @if(setting('brands_image'))
+              <img class="w-100 rounded" src="{{url(setting('brands_image'))}}" alt="Cover" title="Apple" style="height: auto !important">
+              @else
+              <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
+              @endif
+          @elseif(app('request')->input('sub_category_id'))
+            <?php  $categories= DB::table('categories')->where('id',app('request')->input('sub_category_id'))->first()?>
+              @if($categories->offer_image)
+              <img class="w-100 rounded" src="{{url($categories->offer_image)}}" alt="Cover" title="Apple" style="height: auto !important">
+              @else
+              <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
+              @endif
+          @else
           <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
+          @endif
         </div>
         <!-- End Image Cover -->
 
