@@ -77,6 +77,7 @@ function get_static_routes()
     Route::post('routes/store_v2', 'RouteController@store_v2');
     Route::get('get_notify/{id}', 'OrderController@load_notify');
     Route::get('order/allData', 'OrderController@allData');
+    Route::get('offer_image/{id}/delete', 'CategoryController@offer_image_delete');
 
     Route::get('ldap', 'DashboardController@ldap');
     Route::get('export_DB', 'DashboardController@export_DB_backup');

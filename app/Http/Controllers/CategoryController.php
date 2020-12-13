@@ -201,4 +201,13 @@ class CategoryController extends Controller
       \Session::flash('success', 'Category Delete Successfully');
       return back();
     }
+
+    public function offer_image_delete($id)
+    {
+      $category = Category::findOrFail($id);
+      $category->offer_image = null;
+      $category->save();
+      \Session::flash('success', 'Category Delete Successfully');
+      return back();
+    }
 }

@@ -361,9 +361,9 @@
               <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif
           @elseif(app('request')->input('sub_category_id'))
-            <?php  $categories= DB::table('categories')->where('id',app('request')->input('sub_category_id'))->first()?>
-              @if($categories->offer_image)
-              <img class="w-100 rounded" src="{{url($categories->offer_image)}}" alt="Cover" title="Apple" style="height: auto !important">
+            <?php  $sub_category= \App\Category::where('id',app('request')->input('sub_category_id'))->first()?>
+              @if($sub_category->cat->offer_image)
+              <img class="w-100 rounded" src="{{url($sub_category->cat->offer_image)}}" alt="Cover" title="Apple" style="height: auto !important">
               @else
               <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif
