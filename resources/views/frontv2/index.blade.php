@@ -114,7 +114,16 @@
         </div>
       </div>
 
-
+      <!-- <div class="row">
+          @foreach($home_brands as $homeBrand)
+          <div class="col-md-2">
+            <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
+                <img class="img-responsive w-100" src="{{ url($homeBrand->image) }}"  alt="{{ $homeBrand->title }}">
+            </a>
+          </div>
+          @endforeach
+      </div> -->
+      
       @if(advertisements(4))
       <div class="row d-sm-block">
         <div class="col-md-12 col-xl-12 col-12">

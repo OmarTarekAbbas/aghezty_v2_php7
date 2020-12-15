@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use Mail;
 use Storage;
+use App\Brand;
 use App\Cart;
 use App\City;
 use App\Order;
@@ -677,7 +678,7 @@ class HomeController extends Controller
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
-        //  dd($ads);
+        $home_brands = Brand::where('home', 1)->get();
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
@@ -699,7 +700,7 @@ class HomeController extends Controller
             $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
         }
 
-        return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat'));
+        return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat', 'home_brands'));
 
     }
 
@@ -983,7 +984,12 @@ class HomeController extends Controller
 
 
         if ($request->has('offer') && $request->offer != '') {
-            $products = $products->where('offer', 1);
+            // $products = $products->where('offer', 1);
+            $products = $products->where(function($q) {
+              // $q->where("offer", 1);
+              $q->where("price_after_discount", '>', 0);
+              // $q->orderBy('offer');
+            });
         }
         if ($request->has('sorted') && $request->sorted != '') {
             $products = $products->orderBy(explode(',', $request->sorted)[0], explode(',', $request->sorted)[1]);

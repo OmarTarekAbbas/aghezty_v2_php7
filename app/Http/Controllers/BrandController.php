@@ -233,4 +233,20 @@ class BrandController extends Controller
     {
       $products = Product::where('brand_id',$brand_id)->update(['installments' => null]);
     }
+
+    public function updateBrandHomeFlag(Request $request)
+    {
+      $id = $request->id;
+      $home = $request->switch;
+
+      $brand = Brand::findorfail($id);
+
+      if($home == 'true'){
+        $brand->home = 1;
+      }else{
+          $brand->home = 0;
+      }
+      $brand->save();
+      return 'yes';
+    }
 }
