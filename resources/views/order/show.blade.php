@@ -149,5 +149,32 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+      <h4 class="text-danger"> Order Replay </h4>
+      <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+              <thead>
+                  <tr>
+                      <th>@lang('front.auth.name')</th>
+                      <th>@lang('front.auth.email')</th>
+                      <th>{{ trans('admin') }}</th>
+                      <th>@lang('front.status')</th>
+                      <th> {{ trans('message') }} </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach ($order->replaies as $key => $replay)
+                  <tr>
+                      <td> {{  $order->client->name }} </td>
+                      <td> {{  $order->client->email }} </td>
+                      <td> {{  $replay->admin->name }} </td>
+                      <td> {{  $replay->status }} </td>
+                      <td> {{  $replay->message }} </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+      </div>
+    </div>
 </div>
 @stop

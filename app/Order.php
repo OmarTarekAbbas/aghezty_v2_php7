@@ -62,6 +62,10 @@ class Order extends Model
     {
       return $this->belongsTo('App\ClientAddress','address_id');
     }
+    public function replaies()
+    {
+      return $this->hasMany('App\OrderReplay','order_id');
+    }
 
     public function sum()
     {
