@@ -753,11 +753,48 @@
   <script src="{{url('js/vue.min.js')}}"></script>
   @foreach ($categorys as $category)
   @if($category->sub_cats->count() > 0)
+  <script>
+
+    $(document).ready(function() {
+
+      var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
+        strings: [$('.type_anime{{$category->id}}').parent().parent().parent().siblings('a').html()],
+        typeSpeed: 150,
+        backSpeed: 0,
+        fadeOut: true,
+        smartBackspace: true, // this is a default
+        loop: true
+      });
+
+
+      var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
+        strings: ['@lang("front.shop_by_price")'],
+        typeSpeed: 150,
+        backSpeed: 0,
+        fadeOut: true,
+        smartBackspace: true, // this is a default
+        loop: true
+      });
+
+
+
+    });
+  </script>
 
   @endif
   @endforeach
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HPJ7G3QJS"></script>
   <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8HPJ7G3QJS');
+  </script>
+  <script>
+
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')

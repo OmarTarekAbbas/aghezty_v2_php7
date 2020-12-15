@@ -222,6 +222,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'DataTables' => Yajra\Datatables\Facades\Datatables::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'GAMP'  => Irazasyed\LaravelGAMP\Facades\GAMP::class
 
 
     ],
