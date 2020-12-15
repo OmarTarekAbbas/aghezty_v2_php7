@@ -111,6 +111,7 @@ function get_static_routes()
     Route::get('homepage/recently_addedv', 'HomeController@Recently_Addedv');
     Route::get('homepage/selected_for_youv', 'HomeController@selected_for_youv');
     Route::get('homepage/selected_HPcat', 'HomeController@selected_HPcat');
+    Route::get('homepage/offer', 'HomeController@makeOffer');
     /*****************************end */
   });
 

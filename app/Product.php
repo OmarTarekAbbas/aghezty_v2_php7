@@ -11,7 +11,7 @@ class Product extends Model
   //use ForceDeletes;
   protected $fillable = ['title','main_image','price','discount','price_after_discount',
                         'special','active','description','short_description','category_id','brand_id','stock', 'inch','sku',
-                        'key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'];
+                        'key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer'];
   public function getPriceAttribute($value){
     return (int) $value;
   }

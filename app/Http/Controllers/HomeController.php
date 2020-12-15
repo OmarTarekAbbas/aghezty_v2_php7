@@ -174,6 +174,23 @@ class HomeController extends Controller
         return 'yes';
 
     }
+    public function makeOffer(Request $request)
+    {
+
+        $id = $request->id;
+        $offer = $request->switch;
+
+        $product = Product::findorfail($id);
+
+        if($offer == 'true'){
+          $product->offer = 1;
+        }else{
+            $product->offer = 0;
+        }
+        $product->save();
+        return 'yes';
+
+    }
 
     public function homepage_category(Request $request)
     {

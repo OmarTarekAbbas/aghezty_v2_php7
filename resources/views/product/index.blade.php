@@ -492,6 +492,25 @@ session()->put('redirect_edit_url',url()->full())
 
 </script>
 
+<script>
+  $(document).on('change', '.offer .switch input', function () {
+    var x = $(this).siblings();
+    $.ajax({
+      type: 'GET',
+      url: '{{url("homepage/offer")}}',
+      headers: '_token = {{ csrf_token() }}',
+      data: {
+        switch: $(this).is(':checked'),
+        id: $(this).attr('id')
+      },
+      success: function (data) {
+          // alert('Product Offer Done');
+        }
+    });
+  })
+
+</script>
+
 <script type="text/javascript" src="{{ asset('js/check-all.umd.js') }}"></script>
 <script type="text/javascript">
   var x = checkAll.default(document.querySelector('[data-check-all-container]'))

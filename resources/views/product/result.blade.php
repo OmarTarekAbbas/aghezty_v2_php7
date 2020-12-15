@@ -15,6 +15,7 @@
         <th>sku</th>
         <th>@lang('messages.recently_added')</th>
         <th>@lang('messages.selected_for_you')</th>
+        <th>@lang('front.offer')</th>
         <th>@lang('messages.action')</th>
     </tr>
     </thead>
@@ -62,6 +63,12 @@
                     <span class="slider round"></span>
                 </label>
             </td>
+            <td class="offer">
+                <label class="switch">
+                    <input id="{{$value->product_id}}" type="checkbox" name="switch" {{$value->offer? 'checked':''}}>
+                    <span class="slider round"></span>
+                </label>
+            </td>
             <td>
                 <a class="btn btn-sm btn-info show-tooltip" title="Show Product"
                    href="{{route("front.home.inner",['id'=>$value->product_id])}}" data-original-title="Show Product"><i
@@ -86,7 +93,7 @@
                 <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();"
                    href="{{url("product/$value->product_id/delete")}}" title="@lang('messages.template.delete')"><i
                         class="fa fa-trash"></i></a>
-                  
+
                 <a class="btn btn-sm show-tooltip btn-warning"
                    href="{{url("product/$value->product_id/dublicate")}}" title="@lang('messages.template.dublicate')"><i
                         class="fa fa-copy"></i></a>
