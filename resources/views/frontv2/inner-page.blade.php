@@ -417,7 +417,7 @@
 <section class="based_selection">
   <div class="mobile_views mt-5">
     <div class="table_desc_title">
-      <h6 class="font-weight-bold d-inline-block text-uppercase" id="based_selection_typed"></h6>
+      <h6 class="font-weight-bold d-inline-block text-uppercase">@lang("front.inner.based_on_your_select")</h6>
     </div>
 
     <div class="border-bottom w-100"></div>
@@ -477,8 +477,7 @@
       @if(count($product->client_rates) > 0)
       <div class="col-md-6">
         <div class="review_title">
-          <h4 class="text-capitalize d-inline-block" id="review_comment_title_typed">
-            @lang('front.inner.reviews')</h4>
+          <h4 class="text-capitalize d-inline-block">@lang('front.inner.reviews')</h4>
         </div>
         @foreach ($product->client_rates as $review)
         <div class="review-area my-3">
@@ -505,7 +504,7 @@
       @if(is_buy($product->id) && is_not_rate($product->id))
       <div class="col-md-6" id="review">
         <div class="review_title">
-          <h4 class="text-capitalize d-inline-block" id="review_title3_title_typed"></h4>
+          <h4 class="text-capitalize d-inline-block">@lang("front.rate_product")</h4>
         </div>
 
         <p style="color: #777;">@lang('front.rate_product'){{Session::get('applocale') =='en' ? '?' : '؟'}}
@@ -625,36 +624,5 @@
       },
     });
   });
-</script>
-
-<script>
-  var based_selection_typed = new Typed('#based_selection_typed', {
-    strings: ['@lang("front.inner.based_on_your_select")'],
-    typeSpeed: 150,
-    backSpeed: 0,
-    fadeOut: true,
-    smartBackspace: true, // this is a default
-    loop: true
-  });
-
-  var review_comment_title_typed = new Typed('#review_comment_title_typed', {
-    strings: ['@lang("front.inner.reviews")'],
-    typeSpeed: 150,
-    backSpeed: 0,
-    fadeOut: true,
-    smartBackspace: true, // this is a default
-    loop: true
-  });
-
-  @if(is_buy($product -> id) && is_not_rate($product -> id))
-  var review_title3_title_typed = new Typed('#review_title3_title_typed', {
-    strings: ['@lang("front.rate_product")'],
-    typeSpeed: 150,
-    backSpeed: 0,
-    fadeOut: true,
-    smartBackspace: true, // this is a default
-    loop: true
-  });
-  @endif
 </script>
 @endsection

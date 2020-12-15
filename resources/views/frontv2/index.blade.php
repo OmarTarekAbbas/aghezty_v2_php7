@@ -282,8 +282,7 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <!-- <strong class="recently_added_funnyTexty">@lang('messages.recently_added')</strong> -->
-                <strong class="" style="font-size: 19px;">@lang('messages.recently_added')</strong>
+                <strong style="font-size: 19px;">@lang('messages.recently_added')</strong>
               </div>
             </div>
 
@@ -379,8 +378,7 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <!-- <strong class="selected_fYou_funnyTexty">@lang('messages.selected_for_you')</strong> -->
-                <strong class="" style="font-size: 19px;">@lang('messages.selected_for_you')</strong>
+                <strong style="font-size: 19px;">@lang('messages.selected_for_you')</strong>
               </div>
             </div>
 
@@ -444,30 +442,4 @@
     </div>
   </section>
 </div>
-@endsection
-
-@section('script')
-
-<script>
-  $(document).ready(function () {
-    var recently_added_funnyTexty = new Typed(".recently_added_funnyTexty", {
-      strings: [$('.recently_added_funnyTexty').html()],
-      typeSpeed: 150,
-      backSpeed: 0,
-      fadeOut: true,
-      smartBackspace: true, // this is a default
-      loop: true
-    });
-
-    var selected_fYou_funnyTexty = new Typed(".selected_fYou_funnyTexty", {
-      strings: [$('.selected_fYou_funnyTexty').html()],
-      typeSpeed: 150,
-      backSpeed: 0,
-      fadeOut: true,
-      smartBackspace: true, // this is a default
-      loop: true
-    });
-  });
-
-</script>
 @endsection

@@ -188,20 +188,4 @@
     </div>
   </section>
 </div>
-
-@endsection
-@section('script')
-
-<script>
-  $(document).ready(function() {
-    var recently_added_funnyTexty = new Typed(".recently_added_funnyTexty", {
-      strings: [$('.recently_added_funnyTexty').html()],
-      typeSpeed: 150,
-      backSpeed: 0,
-      fadeOut: true,
-      smartBackspace: true, // this is a default
-      loop: true
-    });
-  });
-</script>
 @endsection

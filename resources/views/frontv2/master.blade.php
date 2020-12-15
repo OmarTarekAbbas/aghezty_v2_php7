@@ -208,7 +208,7 @@
 
               <div class="row">
                 <div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
-                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block type_anime{{$category->id}}" id="heavy_machines_title_typed"></h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">{{$category->title}}</h6>
                   <ul class="list-unstyled">
                     @php
                     $count = $category->sub_cats->count();
@@ -238,7 +238,7 @@
                 </div>
 
                 <div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
-                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_title{{$category->id}}_typed"></h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" >@lang("front.shop_by_price")</h6>
 
                   <ul class="list-unstyled">
 
@@ -281,7 +281,7 @@
             <div id="brands" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink4">
               <div class="row">
                 <div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
-                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="brands_title_typed"></h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">@lang('front.brands')</h6>
                   <ul class="list-unstyled">
                     @php
                     $count = $brands->count();
@@ -307,7 +307,7 @@
                 </div>
 
                 <div class="col-md-4 col-xl-4 col-12 sub-menu mb-0">
-                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block" id="shop_titleb_typed"></h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">@lang("front.shop_by_price")</h6>
 
                   <ul class="list-unstyled">
                     <li>
@@ -746,8 +746,6 @@
   <!-- owl carousel JS -->
   <script src="{{url('public/frontv2/js/owl.carousel.min.js')}}"></script>
   <!-- typed JS -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-  <!-- typed JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.js"></script>
   <!-- Script JS -->
   <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
@@ -756,55 +754,10 @@
   @foreach ($categorys as $category)
   @if($category->sub_cats->count() > 0)
 
-  <script>
-    $(document).ready(function() {
-
-      var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
-        strings: [$('.type_anime{{$category->id}}').parent().parent().parent().siblings('a').html()],
-        typeSpeed: 150,
-        backSpeed: 0,
-        fadeOut: true,
-        smartBackspace: true, // this is a default
-        loop: true
-      });
-
-
-      var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
-        strings: ['@lang("front.shop_by_price")'],
-        typeSpeed: 150,
-        backSpeed: 0,
-        fadeOut: true,
-        smartBackspace: true, // this is a default
-        loop: true
-      });
-
-
-
-    });
-  </script>
-
   @endif
   @endforeach
 
   <script>
-    var heavy_machines_title_typed = new Typed("#brands_title_typed", {
-      strings: [$('#brands_title_typed').parent().parent().parent().siblings('a').html()],
-      typeSpeed: 150,
-      backSpeed: 0,
-      fadeOut: true,
-      smartBackspace: true, // this is a default
-      loop: true
-    });
-
-    var shop_titleb_typed = new Typed('#shop_titleb_typed', {
-      strings: ['@lang("front.shop_by_price")'],
-      typeSpeed: 150,
-      backSpeed: 0,
-      fadeOut: true,
-      smartBackspace: true, // this is a default
-      loop: true
-    });
-
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
