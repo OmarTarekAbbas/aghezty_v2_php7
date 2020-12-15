@@ -753,7 +753,7 @@
   <script src="{{url('js/vue.min.js')}}"></script>
   @foreach ($categorys as $category)
   @if($category->sub_cats->count() > 0)
-  <script>
+  <!-- <script>
 
     $(document).ready(function() {
 
@@ -779,7 +779,7 @@
 
 
     });
-  </script>
+  </script> -->
 
   @endif
   @endforeach
