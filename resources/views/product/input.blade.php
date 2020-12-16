@@ -392,9 +392,30 @@
     </div>
   </div>
 </div>
+
+
+<div >
+  <div class="form-group">
+    <div class="col-sm-6">
+      <label class="col-sm-5 col-lg-4 control-label">@lang('front.offer')</label>
+      <div class="col-sm-7 col-lg-8 controls">
+      <div class="offer">
+      <label class="switch">
+        <input type="checkbox" name="offer" @if($product && $product->offer == 1) checked @endif>
+          <span class="slider round"></span>
+      </label>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <input type="hidden" id="counter_image" name="counter_img">
 <div class="form-group">
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
         {!! Form::submit($buttonAction,['class'=>'btn btn-primary']) !!}
     </div>
 </div>
+
+
