@@ -77,7 +77,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-      //return $request->all();
+
         $validator = Validator::make($request->all(), [
             'title' => '',
             'main_image' => 'required',
@@ -124,7 +124,7 @@ class ProductController extends Controller
         }
 
         $product = new Product();
-        $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
+        $product->fill($request->except('title','images','counter_img','description','short_description','property_value_id','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer'));
 
         $product->Installments = $Installments;
         foreach ($request->title as $key => $value) {
@@ -165,6 +165,11 @@ class ProductController extends Controller
           $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
         }
         //dd($product);
+        if($request->offer == null){
+          $product->offer = 0;
+        }else{
+          $product->offer = 1;
+        }
         $product->save();
 
         if($request->has('property_value_id')){
@@ -220,6 +225,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $validator = Validator::make($request->all(), [
             'title' => '',
             'main_image' => '',
@@ -227,6 +233,7 @@ class ProductController extends Controller
             'stock' => 'required',
             'inch' => '',
             'discount' => '',
+            'offer' => '',
             'special'  => '',
             'active'    => '',
             'description.*'  => 'required',
@@ -241,6 +248,8 @@ class ProductController extends Controller
         $imgExtensions = array("png","jpeg","jpg");
         $request->special = ($request->special) ? 1:0;
         $request->active = ($request->active) ? 1:0;
+        //$request->offer = ($request->offer) ? 1:0;
+
         $product = Product::find($id);
 
 
@@ -309,7 +318,11 @@ class ProductController extends Controller
         }else{
           $product->discount = $request->discount;
         }
-        // dd($product->discount);
+        if($request->offer == "on"){
+          $product->offer = 1;
+        }else{
+          $product->offer = 0;
+        }
         $product->save();
 
         if($request->has('property_value_id')){
@@ -317,7 +330,7 @@ class ProductController extends Controller
           $product->pr_value()->sync($property_value_id);
         }
 
-        $product->update($request->except('title','images','counter_img','description','short_description','discount','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund'));
+        $product->update($request->except('title','images','counter_img','description','short_description','discount','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer'));
         if ($request->has('images')){
             $product->images()->saveMany($images);
         }
