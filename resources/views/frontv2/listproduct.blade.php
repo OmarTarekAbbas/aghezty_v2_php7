@@ -721,7 +721,7 @@
         return parseInt(x);
       }) : []
 
-      @if(isset($_REQUEST['search']) == 'TV')
+      @if((request()->filled("search") && request('search') == 'TV'))
       str = location.search;
       number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
       if (number.indexOf('%2C') != -1) {
@@ -834,7 +834,7 @@
       this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
         return parseInt(x);
       }) : []
-      @if(isset($_REQUEST['search']) == 'TV')
+      @if((request()->filled("search") && request('search') == 'TV'))
       str = location.search;
       number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
       if (number.indexOf('%2C') != -1) {
