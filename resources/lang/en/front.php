@@ -20,6 +20,7 @@ return [
     'found' => 'How Found Us',
     'success' => 'Success Message',
     'send' => 'Send',
+    'visa_online' => 'How to purchase through Aghezty',
     'product_info' => 'Product Specifications',
     'add_to_cart' => 'Added Success',
     'add_message' => 'The Product was Added to Cart',
