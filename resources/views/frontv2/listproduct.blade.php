@@ -491,35 +491,39 @@
       });
 
       $.ajax({
-        url: '{{url("clients/brands")}}',
-        type: "get",
-        data: {category_ids : cats},
-        success: function(data) {
-          var html        = ''
-          var html_mobile = ''
-          var brands = data.data
-          if(brands.length){
-            for (let i = 0; i < brands.length; i++) {
-              html += '<div class="z-checkbox">\
-                              <input form="filter_form" id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+      url: '{{url("clients/brands")}}',
+      type: "get",
+      data: {category_ids : cats},
+      success: function(data) {
+        var html        = ''
+        var html_mobile = ''
+        var brands = data.data
+        var old_brand = "{{ json_encode(request()->get('brand_id')??[]) }}"
+        old_brand = old_brand.replace(/&quot;/g, '\"');
+        if(brands.length){
+          for (let i = 0; i < brands.length; i++) {
+            //console.log("old_brand"+old_brand+" for brand_id "+ brands[i].id);
+            checked=old_brand.filter(brands[i].id) ? 'checked':''
+            html += '<div class="z-checkbox">\
+                            <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
+                              type="checkbox"\
+                              name="brand_id[]" value="'+brands[i].id+'">\
+                            <label class="d-block text-capitalize"\
+                              for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
+                          </div>';
+            html_mobile += '<div class="z-checkbox">\
+                              <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
                                 type="checkbox"\
                                 name="brand_id[]" value="'+brands[i].id+'">\
                               <label class="d-block text-capitalize"\
-                                for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
+                                for="panel_brand_'+brands[i].id+'_mobile">'+brands[i].title+'</label>\
                             </div>';
-              html_mobile += '<div class="z-checkbox">\
-                                <input form="filter_form" id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
-                                  type="checkbox"\
-                                  name="brand_id[]" value="'+brands[i].id+'">\
-                                <label class="d-block text-capitalize"\
-                                  for="panel_brand_'+brands[i].id+'_mobile">'+brands[i].title+'</label>\
-                              </div>';
-            }
-            $('.brand_panel_change').html(html)
-            $('.brand_panel_change_mobile').html(html_mobile)
           }
-        },
-      });
+          $('.brand_panel_change').html(html)
+          $('.brand_panel_change_mobile').html(html_mobile)
+        }
+      },
+    });
 
   })
 
@@ -541,6 +545,7 @@
 
   }
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
+    // console.log("omartarek");
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
@@ -630,7 +635,7 @@
         old_brand = old_brand.replace(/&quot;/g, '\"');
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            checked=old_brand.includes(brands[i].id) ? 'checked':''
+            checked=old_brand.filter(brands[i].id) ? 'checked':''
             html += '<div class="z-checkbox">\
                             <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
                               type="checkbox"\

@@ -918,7 +918,7 @@ class HomeController extends Controller
 
     public function productsv2(Request $request)
     {
-
+       //dd($request->brand_id);
         $sub_category_ids = [];
         $brand_ids = [];
         $products = Product::select('products.*','products.id as product_id');
@@ -928,10 +928,12 @@ class HomeController extends Controller
             $products = $products->whereIn('category_id', $request->sub_category_id);
         }
         if ($request->has('category_id') && $request->category_id != '') {
+          //dd("cat");
             $sub_category_ids = Category::where('parent_id', $request->category_id)->pluck('id')->toArray();
             $products = $products->whereIn('category_id', $sub_category_ids);
         }
         if ($request->has('brand_id') && $request->brand_id != '') {
+          //dd("brand");
             $request->brand_id = (array) $request->brand_id;
             $brand_ids  =  $request->brand_id;
             $products = $products->whereIn('brand_id', $request->brand_id);
