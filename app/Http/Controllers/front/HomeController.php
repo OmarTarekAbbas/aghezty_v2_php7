@@ -678,7 +678,7 @@ class HomeController extends Controller
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
-        $home_brands = Brand::where('home', 1)->get();
+        $home_brands = Brand::all();
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();

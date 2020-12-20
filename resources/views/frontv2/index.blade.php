@@ -114,7 +114,7 @@
         </div>
       </div>
 
-      <!-- <div class="row">
+       {{-- <div class="row">
           @foreach($home_brands as $homeBrand)
           <div class="col-md-2">
             <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
@@ -122,10 +122,10 @@
             </a>
           </div>
           @endforeach
-      </div> -->
-      
+      </div> --}}
+
       @if(advertisements(4))
-      <div class="row d-sm-block">
+      {{-- <div class="row d-sm-block">
         <div class="col-md-12 col-xl-12 col-12">
           <a href="{{advertisements(4)->ads_url}}">
             <div class="full_banner mt-3">
@@ -133,7 +133,7 @@
             </div>
           </a>
         </div>
-      </div>
+      </div> --}}
       @endif
     </div>
   </section>
