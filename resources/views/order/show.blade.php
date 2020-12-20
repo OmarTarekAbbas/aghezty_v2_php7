@@ -149,6 +149,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="col-md-12">
       <h4 class="text-danger"> Order Replay </h4>
       <div class="table-responsive">
@@ -157,9 +159,10 @@
                   <tr>
                       <th>@lang('front.auth.name')</th>
                       <th>@lang('front.auth.email')</th>
-                      <th>{{ trans('admin') }}</th>
+                      <th>@lang('front.admin_reply')</th>
                       <th>@lang('front.status')</th>
-                      <th> {{ trans('message') }} </th>
+                      <th>  @lang('front.message') </th>
+                      <th> @lang('front.date')</th>
                   </tr>
               </thead>
               <tbody>
@@ -170,6 +173,7 @@
                       <td> {{  $replay->admin->name }} </td>
                       <td> {{  $replay->status }} </td>
                       <td> {{  $replay->message }} </td>
+                      <td> {{  $replay->created_at }} </td>
                   </tr>
                   @endforeach
               </tbody>

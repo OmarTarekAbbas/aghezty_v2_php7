@@ -18,7 +18,7 @@ class CreateOrderReplaysTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('order_id');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->comment("1-pending 2-under_shipping 3-Finshed");;
             $table->longText('message')->nullable();
             $table->timestamps();
         });
