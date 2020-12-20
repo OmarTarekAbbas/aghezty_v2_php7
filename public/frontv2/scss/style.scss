@@ -537,6 +537,53 @@ body {
       }
     }
 
+    .logo_brands {
+      margin-top: 1%;
+
+      .owl_brands {
+        .item {
+          .brands_img {
+            img {
+              width: 60%;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+
+      .owl-theme {
+        .owl-nav {
+          margin-top: 0;
+          position: relative;
+
+          button {
+            font-size: 2.5rem;
+            position: absolute;
+            bottom: -2rem;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+
+            &.owl-prev {
+              right: -2%;
+            }
+
+            &.owl-next {
+              left: -1%;
+            }
+
+            &:hover,
+            &:focus {
+              background: transparent;
+              color: $black_color;
+            }
+          }
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 203px;
@@ -3192,6 +3239,41 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.5rem;
+
+              &.owl-prev {
+                right: -6%;
+              }
+
+              &.owl-next {
+                left: -3%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .product_view {
@@ -4456,6 +4538,41 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.5rem;
+
+              &.owl-prev {
+                right: -6%;
+              }
+
+              &.owl-next {
+                left: -3%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .product_view {
@@ -5497,6 +5614,43 @@ body {
         }
       }
     }
+
+    .choose_category {
+      .logo_brands {
+        margin-top: 2.5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 60%;
+                margin: unset;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              bottom: -2rem;
+
+              &.owl-prev {
+                right: -3.5%;
+              }
+
+              &.owl-next {
+                left: -2%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
+    }
   }
 
   .head_three {
@@ -5852,6 +6006,41 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.75rem;
+
+              &.owl-prev {
+                right: -7.5%;
+              }
+
+              &.owl-next {
+                left: -4%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .product_view {
@@ -6159,6 +6348,43 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 2%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 60%;
+                margin: unset;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-size: 3rem;
+              font-weight: bold;
+              bottom: -2.5rem;
+              
+
+              &.owl-prev {
+                right: -3.5%;
+              }
+
+              &.owl-next {
+                left: -2%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .my_profile {
@@ -6293,6 +6519,41 @@ body {
       .full_banner {
         img {
           height: 150px;
+        }
+      }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.5rem;
+
+              &.owl-prev {
+                right: -2.5%;
+              }
+
+              &.owl-next {
+                left: -1.5%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
         }
       }
     }
@@ -6435,6 +6696,41 @@ body {
       .full_banner {
         img {
           height: 150px;
+        }
+      }
+
+      .logo_brands {
+        margin-top: 2%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+                margin: unset;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              bottom: -2rem;
+
+              &.owl-prev {
+                right: -2.5%;
+              }
+
+              &.owl-next {
+                left: -1.5%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
         }
       }
     }
