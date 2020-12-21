@@ -114,21 +114,27 @@
         </div>
       </div>
 
-       {{-- <div class="row">
+      <div class="logo_brands">
+        <div class="owl_brands owl-carousel owl-theme">
           @foreach($home_brands as $homeBrand)
-          <div class="col-md-2">
-            <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
-                <img class="img-responsive w-100" src="{{ url($homeBrand->image) }}"  alt="{{ $homeBrand->title }}">
-            </a>
+          <div class="item">
+              <div class="brands_img">
+              <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
+                  <img  src="{{ url($homeBrand->image) }}"  alt="{{ $homeBrand->title }}">
+              </a>
+            </div>
           </div>
           @endforeach
-      </div> --}}
+        </div>
+      </div>
 
-      <div class="logo_brands">
+      <!-- <div class="logo_brands">
         <div class="owl_brands owl-carousel owl-theme">
           <div class="item">
             <div class="brands_img">
+            <a href="#0">
               <img src="{{url('public/frontv2/images/logo_brands/Apple.png')}}" alt="">
+              </a>
             </div>
           </div>
 
@@ -258,7 +264,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       @if(advertisements(4))
       {{-- <div class="row d-sm-block">

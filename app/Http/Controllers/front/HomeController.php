@@ -678,7 +678,7 @@ class HomeController extends Controller
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
-        $home_brands = Brand::all();
+        $home_brands = Brand::where('home', 1)->get();
         $recently_added = Product::where('recently_added', 1)->get();
         $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
@@ -1004,8 +1004,9 @@ class HomeController extends Controller
         }
         if ($request->has('property_value_id')) {
             $products = $products->whereHas('pr_value', function ($q) use ($request) {
-                $q->whereIn('property_values.id', $request->property_value_id);
+              $q->whereIn('property_values.id', $request->property_value_id);
             });
+            // dd($products->toSql());
         }
 
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();

@@ -462,6 +462,17 @@
 @endsection
 @section('script')
 <script type="text/javascript">
+  /**
+   * Method getUrlParameter
+   * get Query Parmater in url
+   * @return Array
+   */
+  function getUrlParameter(sParam) {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      return urlParams.getAll(sParam)
+  }
+
   var start = 0;
   var action = 'inactive';
   $('.load').hide();
@@ -475,13 +486,11 @@
       }, 500);
     }
   })
-
   $('.price').click(function() {
     $('.price').not(this).each(function() {
       $(this).prop('checked', false)
     });
   })
-
   $('.sub_cat_id').change(function() {
       var cats = ''
       $('.sub_cat_id').each(function(i, obj) {
@@ -498,26 +507,27 @@
         var html        = ''
         var html_mobile = ''
         var brands = data.data
-        var old_brand = "{{ json_encode(request()->get('brand_id')??[]) }}"
-        old_brand = old_brand.replace(/&quot;/g, '\"');
+        var old_brand = getUrlParameter("brand_id[]")
+        old_brand = old_brand ? old_brand.map(function (x) {
+          return parseInt(x);
+        }) : []
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            //console.log("old_brand"+old_brand+" for brand_id "+ brands[i].id);
-            checked=old_brand.filter(brands[i].id) ? 'checked':''
-            html += '<div class="z-checkbox">\
-                            <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
-                              type="checkbox"\
-                              name="brand_id[]" value="'+brands[i].id+'">\
-                            <label class="d-block text-capitalize"\
-                              for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
-                          </div>';
-            html_mobile += '<div class="z-checkbox">\
-                              <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
-                                type="checkbox"\
-                                name="brand_id[]" value="'+brands[i].id+'">\
-                              <label class="d-block text-capitalize"\
-                                for="panel_brand_'+brands[i].id+'_mobile">'+brands[i].title+'</label>\
-                            </div>';
+            checked = old_brand.includes(brands[i].id) ? 'checked':''
+            html += `<div class="z-checkbox">
+                            <input form="filter_form" ${checked} id="panel_brand_${brands[i].id}" class="mb-2 brand_id"
+                              type="checkbox"
+                              name="brand_id[]" value="${brands[i].id}">
+                            <label class="d-block text-capitalize"
+                              for="panel_brand_${brands[i].id}">${brands[i].title}</label>
+                          </div>`;
+            html_mobile += `<div class="z-checkbox">
+                            <input form="filter_form" ${checked} id="panel_brand_${brands[i].id}_mobile" class="mb-2 brand_id"
+                              type="checkbox"
+                              name="brand_id[]" value="${brands[i].id}">
+                            <label class="d-block text-capitalize"
+                              for="panel_brand_${brands[i].id}_mobile">${brands[i].title}</label>
+                          </div>`;
           }
           $('.brand_panel_change').html(html)
           $('.brand_panel_change_mobile').html(html_mobile)
@@ -526,7 +536,6 @@
     });
 
   })
-
   function load_content_data(start) {
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?' + '&start=' + start,
@@ -635,7 +644,7 @@
         old_brand = old_brand.replace(/&quot;/g, '\"');
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            checked=old_brand.filter(brands[i].id) ? 'checked':''
+            checked=old_brand.includes(brands[i].id) ? 'checked':''
             html += '<div class="z-checkbox">\
                             <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
                               type="checkbox"\
@@ -658,26 +667,27 @@
     });
   })
   @if(!request()->has('sorted'))
-  $( document ).ready(function(){
-    $.ajax({
-      url: '{{url("clients/loadproductsv2")}}?start=0',
-      type: "post",
-      data: $('#filter_form').serialize(),
-      success: function(data) {
-        if (data.html == '') {
-          action = 'active';
-          $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
-        } else {
-          $('#grid_two').html(data.html);
-          action = 'inactive';
-        }
-        $('.load').hide();
-      },
-    });
+    $( document ).ready(function(){
+      $.ajax({
+        url: '{{url("clients/loadproductsv2")}}?start=0',
+        type: "post",
+        data: $('#filter_form').serialize(),
+        success: function(data) {
+          if (data.html == '') {
+            action = 'active';
+            $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+          } else {
+            $('#grid_two').html(data.html);
+            action = 'inactive';
+          }
+          $('.load').hide();
+        },
+      });
 
-  })
+    })
   @endif
 </script>
+
 <script>
   const property = new Vue({
     el:'#propertys',
@@ -687,60 +697,65 @@
       pr_values:[],
       checked_val :{'num1' : 0, 'num2':0}
     },
-    watch: {
-      category_id: function(val) {
+    methods: {
+      tvFilter() {
+        str = location.search;
+        number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+        if (number.indexOf('%2C') != -1) {
+          this.checked_val.num1 = number.split('%2C')[0]
+          this.checked_val.num2 = number.split('%2C')[1]
+        } else {
+          if (str.indexOf('ifrom=') != -1) {
+            this.checked_val.num1 = number
+            this.checked_val.num2 = 500
+          } else {
+            this.checked_val.num1 = 0
+            this.checked_val.num2 = number
+          }
+        }
+      },
+      getOldSelectProperty() {
+        this.pr_values = getUrlParameter('property_value_id[]')
+        this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
+          return parseInt(x);
+        }) : []
+      },
+      getPropertyFromSelectCategory() {
         var _this = this
-        if (val.length > 0) {
-          $.ajax({
+        $.ajax({
             type: "get",
             data: {
-              category_id: val
+              category_id: this.category_id
             },
             url: "{{url('getProperty')}}",
             success: function(data, status) {
               _this.properties_data = data.data
+              _this.getOldSelectProperty()
             }
-          });
-        } else {
-          this.properties_data = []
-        }
+        })
+      },
+      getSelectCategory() {
+        var _this = this
+        $('.sub_cat_id').each(function(i, obj) {
+          if ($(this).prop("checked") == true) {
+            _this.category_id.push($(this).val())
+          }
+        });
       }
     },
     created() {
       var _this = this
-      $('.sub_cat_id').each(function(i, obj) {
-        if ($(this).prop("checked") == true) {
-          _this.category_id.push($(this).val())
-          return false;
-        }
-      });
+      this.getSelectCategory()
+      this.getPropertyFromSelectCategory()
+      this.getOldSelectProperty()
       $('.sub_cat_id').change(function() {
-        if ($(this).prop("checked") == true) {
-          _this.category_id.push($(this).val())
-        } else {
-          _this.category_id.pop($(this).val())
-        }
+        _this.category_id = []
+        _this.getSelectCategory()
+        _this.getPropertyFromSelectCategory()
+        _this.getOldSelectProperty()
       })
-      this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
-      this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
-        return parseInt(x);
-      }) : []
-
       @if((request()->filled("search") && request('search') == 'TV'))
-      str = location.search;
-      number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
-      if (number.indexOf('%2C') != -1) {
-        this.checked_val.num1 = number.split('%2C')[0]
-        this.checked_val.num2 = number.split('%2C')[1]
-      } else {
-        if (str.indexOf('ifrom=') != -1) {
-          this.checked_val.num1 = number
-          this.checked_val.num2 = 500
-        } else {
-          this.checked_val.num1 = 0
-          this.checked_val.num2 = number
-        }
-      }
+        this.tvFilter()
       @endif
     }
   })
@@ -791,116 +806,122 @@
   })
   /************************** child category vue *************************/
 </script>
+
 <script>
-  const propertys_mobile = new Vue({
+const propertys_mobile = new Vue({
     el:'#propertys_mobile',
     data:{
       category_id : [],
       properties_data : [],
-      pr_values : [],
-      checked_val :{'num1' : '', 'num2':''}
+      pr_values:[],
+      checked_val :{'num1' : 0, 'num2':0}
     },
-    watch: {
-      category_id: function(val) {
+    methods: {
+      tvFilter() {
+        str = location.search;
+        number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+        if (number.indexOf('%2C') != -1) {
+          this.checked_val.num1 = number.split('%2C')[0]
+          this.checked_val.num2 = number.split('%2C')[1]
+        } else {
+          if (str.indexOf('ifrom=') != -1) {
+            this.checked_val.num1 = number
+            this.checked_val.num2 = 500
+          } else {
+            this.checked_val.num1 = 0
+            this.checked_val.num2 = number
+          }
+        }
+      },
+      getOldSelectProperty() {
+        this.pr_values = getUrlParameter('property_value_id[]')
+        this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
+          return parseInt(x);
+        }) : []
+      },
+      getPropertyFromSelectCategory() {
         var _this = this
-        if (val.length > 0) {
-          $.ajax({
+        $.ajax({
             type: "get",
             data: {
-              category_id: val
+              category_id: this.category_id
             },
             url: "{{url('getProperty')}}",
             success: function(data, status) {
               _this.properties_data = data.data
+              _this.getOldSelectProperty()
             }
-          });
-        } else {
-          this.properties_data = []
-        }
+        })
+      },
+      getSelectCategory() {
+        var _this = this
+        $('.sub_cat_id').each(function(i, obj) {
+          if ($(this).prop("checked") == true) {
+            _this.category_id.push($(this).val())
+          }
+        });
       }
     },
     created() {
       var _this = this
-      $('.sub_cat_id').each(function(i, obj) {
-        if ($(this).prop("checked") == true) {
-          _this.category_id.push($(this).val())
-          return false;
-        }
-      });
-
+      this.getSelectCategory()
+      this.getPropertyFromSelectCategory()
+      this.getOldSelectProperty()
       $('.sub_cat_id').change(function() {
-        if ($(this).prop("checked") == true) {
-          _this.category_id.push($(this).val())
-        } else {
-          _this.category_id.pop($(this).val())
-        }
+        _this.category_id = []
+        _this.getSelectCategory()
+        _this.getPropertyFromSelectCategory()
+        _this.getOldSelectProperty()
       })
-      this.pr_values = JSON.parse(("{{json_encode(request()->get('property_value_id'))}}").replace(/&quot;/g,'"'))
-      this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
-        return parseInt(x);
-      }) : []
       @if((request()->filled("search") && request('search') == 'TV'))
-      str = location.search;
-      number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
-      if (number.indexOf('%2C') != -1) {
-        this.checked_val.num1 = number.split('%2C')[0]
-        this.checked_val.num2 = number.split('%2C')[1]
-      } else {
-        if (str.indexOf('ifrom=') != -1) {
-          this.checked_val.num1 = 0
-          this.checked_val.num2 = number
-        } else {
-          this.checked_val.num1 = number
-          this.checked_val.num2 = 0
-        }
-      }
+        this.tvFilter()
       @endif
     }
   })
 
   /************************** child category vue *************************/
-  const child_category_mobile = new Vue({
-    el: '#child_category_mobile',
-    data: {
-      category_id: [],
-      childrens: [],
-    },
-    watch: {
-      category_id: function(val) {
-        var _this = this
-        if (val.length > 0) {
-          $.ajax({
-            type: "get",
-            data: {
-              category_id: val
-            },
-            url: "{{url('getChild')}}",
-            success: function(data, status) {
-              _this.childrens = data.data
-            }
-          });
-        } else {
-          this.childrens = []
-        }
-      }
-    },
-    created() {
-      var _this = this
-      $('.sub_cat_id').each(function(i, obj) {
-        if ($(this).prop("checked") == true) {
-          _this.category_id.push($(this).val())
-          return false;
-        }
-      });
-      $('.sub_cat_id').change(function() {
-        if ($(this).prop("checked") == true) {
-          _this.category_id.push($(this).val())
-        } else {
-          _this.category_id.pop($(this).val())
-        }
-      })
-    }
-  })
+  // const child_category_mobile = new Vue({
+  //   el: '#child_category_mobile',
+  //   data: {
+  //     category_id: [],
+  //     childrens: [],
+  //   },
+  //   watch: {
+  //     category_id: function(val) {
+  //       var _this = this
+  //       if (val.length > 0) {
+  //         $.ajax({
+  //           type: "get",
+  //           data: {
+  //             category_id: val
+  //           },
+  //           url: "{{url('getChild')}}",
+  //           success: function(data, status) {
+  //             _this.childrens = data.data
+  //           }
+  //         });
+  //       } else {
+  //         this.childrens = []
+  //       }
+  //     }
+  //   },
+  //   created() {
+  //     var _this = this
+  //     $('.sub_cat_id').each(function(i, obj) {
+  //       if ($(this).prop("checked") == true) {
+  //         _this.category_id.push($(this).val())
+  //         return false;
+  //       }
+  //     });
+  //     $('.sub_cat_id').change(function() {
+  //       if ($(this).prop("checked") == true) {
+  //         _this.category_id.push($(this).val())
+  //       } else {
+  //         _this.category_id.pop($(this).val())
+  //       }
+  //     })
+  //   }
+  // })
   /************************** child category vue *************************/
 </script>
 @endsection
