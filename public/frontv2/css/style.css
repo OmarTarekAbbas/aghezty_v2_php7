@@ -407,6 +407,37 @@ body {
   font-size: 1.55rem;
   line-height: 33px;
 }
+.main .choose_category .logo_brands {
+  margin-top: 1%;
+}
+.main .choose_category .logo_brands .owl_brands .item .brands_img img {
+  width: 60%;
+  margin: 0 auto;
+}
+.main .choose_category .logo_brands .owl-theme .owl-nav {
+  margin-top: 0;
+  position: relative;
+}
+.main .choose_category .logo_brands .owl-theme .owl-nav button {
+  font-size: 2.5rem;
+  position: absolute;
+  bottom: -2rem;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+  right: -2%;
+}
+.main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+  left: -1%;
+}
+.main .choose_category .logo_brands .owl-theme .owl-nav button:hover, .main .choose_category .logo_brands .owl-theme .owl-nav button:focus {
+  background: transparent;
+  color: #000;
+}
 .main .choose_category .full_banner img {
   height: 203px;
 }
@@ -2387,6 +2418,23 @@ body {
   .main .choose_category .left-img a img {
     height: 115px;
   }
+  .main .choose_category .logo_brands {
+    margin-top: 5%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 90%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    font-size: 2rem;
+    bottom: -1.5rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -6%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -3%;
+  }
   .main .product_view .product_view_type .product_title {
     padding: 5px 0;
   }
@@ -3226,6 +3274,23 @@ body {
   .main .choose_category .left-img a img {
     height: 130px;
   }
+  .main .choose_category .logo_brands {
+    margin-top: 5%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 90%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    font-size: 2rem;
+    bottom: -1.5rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -6%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -3%;
+  }
   .main .product_view .product_view_type .product_title {
     padding: 5px 0;
   }
@@ -3899,7 +3964,23 @@ body {
   .main .carsoul_ads .top_banner a img {
     height: 95px;
   }
-
+  .main .choose_category .logo_brands {
+    margin-top: 2.5%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 60%;
+    margin: unset;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    bottom: -2rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -3.5%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -2%;
+  }
   .head_three .navbar .navbar-nav {
     margin-top: 2%;
   }
@@ -4086,6 +4167,23 @@ body {
     font-size: 1rem;
     letter-spacing: 0.35rem;
   }
+  .main .choose_category .logo_brands {
+    margin-top: 5%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 90%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    font-size: 2rem;
+    bottom: -1.75rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -7.5%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -4%;
+  }
   .main .product_view .product_view_type .product_desc {
     height: 350px;
   }
@@ -4267,6 +4365,24 @@ body {
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
     width: 100%;
   }
+  .main .choose_category .logo_brands {
+    margin-top: 2%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 60%;
+    margin: unset;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-size: 3rem;
+    font-weight: bold;
+    bottom: -2.5rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -3.5%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -2%;
+  }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;
   }
@@ -4327,6 +4443,23 @@ body {
   }
   .main .choose_category .full_banner img {
     height: 150px;
+  }
+  .main .choose_category .logo_brands {
+    margin-top: 5%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 90%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    font-size: 2rem;
+    bottom: -1.5rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -2.5%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -1.5%;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;
@@ -4390,6 +4523,23 @@ body {
   }
   .main .choose_category .full_banner img {
     height: 150px;
+  }
+  .main .choose_category .logo_brands {
+    margin-top: 2%;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 90%;
+    margin: unset;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    bottom: -2rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -2.5%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -1.5%;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;

@@ -114,7 +114,7 @@
         </div>
       </div>
 
-      <!-- <div class="row">
+       {{-- <div class="row">
           @foreach($home_brands as $homeBrand)
           <div class="col-md-2">
             <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
@@ -122,10 +122,146 @@
             </a>
           </div>
           @endforeach
-      </div> -->
-      
+      </div> --}}
+
+      <div class="logo_brands">
+        <div class="owl_brands owl-carousel owl-theme">
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Apple.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Ariston.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Black_Decker.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Bosch.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Braun.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/carrier.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/elba.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Franke.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Glem-Gas.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/infinix.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Kenwood.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/koldair.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/LG.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/mi-mobile.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Panasonic.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Samsung.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Sharp.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/Sony.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/tornado.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/TOSHIBA.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/white-point.png')}}" alt="">
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="brands_img">
+              <img src="{{url('public/frontv2/images/logo_brands/white-whale.png')}}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
       @if(advertisements(4))
-      <div class="row d-sm-block">
+      {{-- <div class="row d-sm-block">
         <div class="col-md-12 col-xl-12 col-12">
           <a href="{{advertisements(4)->ads_url}}">
             <div class="full_banner mt-3">
@@ -133,7 +269,7 @@
             </div>
           </a>
         </div>
-      </div>
+      </div> --}}
       @endif
     </div>
   </section>

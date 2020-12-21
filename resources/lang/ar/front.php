@@ -178,4 +178,8 @@ return [
           'property_valus' => 'قيم الخصائص'
       ]
     ],
+
+    'date' => 'التاريخ',
+    'message' => 'الرسالة',
+    'admin_reply' => 'المستخدم',
 ];

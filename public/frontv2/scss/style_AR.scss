@@ -551,6 +551,53 @@ body {
       }
     }
 
+    .logo_brands {
+      margin-top: 1%;
+
+      .owl_brands {
+        .item {
+          .brands_img {
+            img {
+              width: 60%;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+
+      .owl-theme {
+        .owl-nav {
+          margin-top: 0;
+          position: relative;
+
+          button {
+            font-size: 2.5rem;
+            position: absolute;
+            bottom: -1.75rem;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+
+            &.owl-prev {
+              right: -2%;
+            }
+
+            &.owl-next {
+              left: -1%;
+            }
+
+            &:hover,
+            &:focus {
+              background: transparent;
+              color: $black_color;
+            }
+          }
+        }
+      }
+    }
+
     .full_banner {
       img {
         height: 203px;
@@ -3432,6 +3479,41 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.75rem;
+
+              &.owl-prev {
+                right: -7%;
+              }
+
+              &.owl-next {
+                left: -4%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .product_view {
@@ -4463,6 +4545,7 @@ body {
 }
 
 @media (min-width: 376px) and (max-width: 415px) {
+
   .alert-success,
   .alert-danger {
 
@@ -4731,6 +4814,41 @@ body {
         a {
           img {
             height: 130px;
+          }
+        }
+      }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.5rem;
+
+              &.owl-prev {
+                right: -6%;
+              }
+
+              &.owl-next {
+                left: -3%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
           }
         }
       }
@@ -5874,6 +5992,41 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 2.5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 60%;
+                margin: unset;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              bottom: -2rem;
+
+              &.owl-prev {
+                right: -3.5%;
+              }
+
+              &.owl-next {
+                left: -2%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .content_view {
@@ -6178,6 +6331,41 @@ body {
           }
         }
       }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2.5rem;
+              bottom: -0.75rem;
+
+              &.owl-prev {
+                right: -3.5%;
+              }
+
+              &.owl-next {
+                left: -2%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
     }
 
     .product_view {
@@ -6435,7 +6623,7 @@ body {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1400px) {
+@media (min-width: 1024px) and (max-width: 1050px) {
   .head_three {
     // top: 12.87%;
   }
@@ -6474,6 +6662,354 @@ body {
         .choose_category_form {
           .diamond_sample {
             width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1051px) and (max-width: 1280px) {
+  .head_three {
+    // top: 12.87%;
+  }
+
+  .head_two {
+    .new_head {
+      margin-top: 9%;
+      margin-left: 9%;
+    }
+
+    .search-container {
+      margin-top: 2.5%;
+    }
+  }
+
+  .carsoul_ads {
+    .top_banner {
+      a {
+        img {
+          height: 151px;
+        }
+      }
+    }
+
+    .owl-one .owl-nav .owl-prev,
+    .owl-one .owl-nav .owl-next {
+      bottom: 2.5rem;
+    }
+  }
+
+  .main {
+    padding-top: 10%;
+
+    .carsoul_ads {
+      .owl-one {
+        .item {
+          a {
+            img {
+              height: 38vh;
+            }
+          }
+        }
+      }
+    }
+
+    .product_view {
+      .product_view_type {
+        .product_desc {
+          height: 310px;
+          padding-right: .25rem !important;
+          padding-left: .25rem !important;
+
+          a {
+            img {
+              height: 150px;
+            }
+          }
+
+          .price-box {
+            .regular-price {
+              .price {
+                font-size: 0.7rem;
+              }
+            }
+
+            .old-price {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+
+    .content_view {
+      height: 410px;
+
+      a {
+        img {
+          height: 250px;
+        }
+      }
+    }
+
+    .choose_category {
+      .choose_category_background {
+        .choose_category_form {
+          .diamond_sample {
+            width: 100%;
+            height: 10rem;
+
+            .diamond_sample_title {
+
+              &:hover,
+              &:focus {
+                font-size: 1.25rem;
+                line-height: 28px;
+              }
+            }
+          }
+        }
+      }
+
+      .full_banner {
+        img {
+          height: 150px;
+        }
+      }
+
+      .logo_brands {
+        margin-top: 5%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              font-size: 2rem;
+              bottom: -1.5rem;
+
+              &.owl-prev {
+                right: -2.5%;
+              }
+
+              &.owl-next {
+                left: -1.5%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
+    }
+
+    .my_profile {
+      .my_profile_bg {
+        .accordion_add {
+          .card {
+            .card-header {
+              .checkbox_select_address {
+                input[type="checkbox"] {
+                  &:checked+label {
+                    &:before {
+                      left: 63rem;
+                    }
+
+                    &:after {
+                      left: 63rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .head_three {
+    // top: 12.87%;
+  }
+
+  .head_two {
+    .new_head {
+      margin-top: 9%;
+      margin-left: 9%;
+    }
+
+    .search-container {
+      margin-top: 2.5%;
+    }
+  }
+
+  .main {
+    padding-top: 10%;
+
+    .carsoul_ads {
+      .owl-one {
+        .item {
+          a {
+            img {
+              height: 37vh;
+            }
+          }
+        }
+      }
+
+      .top_banner {
+        a {
+          img {
+            height: 151px;
+          }
+        }
+      }
+
+      .owl-one .owl-nav .owl-prev,
+      .owl-one .owl-nav .owl-next {
+        bottom: 2.5rem;
+      }
+    }
+
+    .product_view {
+      .product_view_type {
+        .product_desc {
+          height: 310px;
+          padding-right: .25rem !important;
+          padding-left: .25rem !important;
+
+          a {
+            img {
+              height: 150px;
+            }
+          }
+
+          .price-box {
+            .regular-price {
+              .price {
+                font-size: 0.7rem;
+              }
+            }
+
+            .old-price {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+
+    .content_view {
+      height: 410px;
+
+      a {
+        img {
+          height: 250px;
+        }
+      }
+    }
+
+    .choose_category {
+      .choose_category_background {
+        .choose_category_form {
+          .diamond_sample {
+            width: 100%;
+            height: 10rem;
+
+            .diamond_sample_title {
+
+              &:hover,
+              &:focus {
+                font-size: 1.25rem;
+                line-height: 28px;
+              }
+            }
+          }
+        }
+      }
+
+      .choose_category_form {
+        .hoverabley {
+          img {
+            height: 200px;
+          }
+        }
+      }
+
+      .full_banner {
+        img {
+          height: 150px;
+        }
+      }
+
+      .logo_brands {
+        margin-top: 2%;
+
+        .owl_brands {
+          .item {
+            .brands_img {
+              img {
+                width: 90%;
+                margin: unset;
+              }
+            }
+          }
+        }
+
+        .owl-theme {
+          .owl-nav {
+            button {
+              font-weight: bold;
+              bottom: -2rem;
+
+              &.owl-prev {
+                right: -2.5%;
+              }
+
+              &.owl-next {
+                left: -1.5%;
+              }
+
+              &:hover,
+              &:focus {}
+            }
+          }
+        }
+      }
+    }
+
+    .my_profile {
+      .my_profile_bg {
+        .accordion_add {
+          .card {
+            .card-header {
+              .checkbox_select_address {
+                input[type="checkbox"] {
+                  &:checked+label {
+                    &:before {
+                      left: 63rem;
+                    }
+
+                    &:after {
+                      left: 63rem;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

@@ -455,6 +455,35 @@ $(document).ready(function () {
   });
 });
 
+$('.owl_brands').owlCarousel({
+  rtl: true,
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 3000,
+  margin: 5,
+  nav: true,
+  dots: false,
+  center: false,
+  responsive: {
+    0: {
+      items: 3,
+      center: true,
+    },
+    600: {
+      items: 4,
+      margin: 0,
+    },
+    1200: {
+      items: 4,
+      margin: 0,
+    },
+    1201: {
+      items: 8,
+      // margin: 0,
+    }
+  }
+})
+
 // $(document).ready(function () {
 //   $(".slide_toggle").click(function () {
 //     var target = $(this).parent().children(".slideContent");
