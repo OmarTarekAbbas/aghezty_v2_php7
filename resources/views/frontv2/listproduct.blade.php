@@ -736,11 +736,13 @@
       },
       getSelectCategory() {
         var _this = this
+        _this.category_id = []
         $('.sub_cat_id').each(function(i, obj) {
           if ($(this).prop("checked") == true) {
             _this.category_id.push($(this).val())
           }
         });
+        // console.log(_this.category_id);
       }
     },
     created() {
@@ -749,7 +751,6 @@
       this.getPropertyFromSelectCategory()
       this.getOldSelectProperty()
       $('.sub_cat_id').change(function() {
-        _this.category_id = []
         _this.getSelectCategory()
         _this.getPropertyFromSelectCategory()
         _this.getOldSelectProperty()
@@ -855,6 +856,7 @@ const propertys_mobile = new Vue({
       },
       getSelectCategory() {
         var _this = this
+        _this.category_id = []
         $('.sub_cat_id').each(function(i, obj) {
           if ($(this).prop("checked") == true) {
             _this.category_id.push($(this).val())
@@ -868,7 +870,6 @@ const propertys_mobile = new Vue({
       this.getPropertyFromSelectCategory()
       this.getOldSelectProperty()
       $('.sub_cat_id').change(function() {
-        _this.category_id = []
         _this.getSelectCategory()
         _this.getPropertyFromSelectCategory()
         _this.getOldSelectProperty()

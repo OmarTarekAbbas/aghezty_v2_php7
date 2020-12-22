@@ -1002,14 +1002,19 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
-        if ($request->has('property_value_id')) {
-            $products = $products->whereHas('pr_value', function ($q) use ($request) {
-              $q->whereIn('property_values.id', $request->property_value_id);
-            });
-            // dd($products->toSql());
-        }
 
-        $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+        if ($request->has('property_value_id')) {
+          $products = $products->whereHas('pr_value', function ($q) use ($request) {
+            $q->whereIn('property_values.id', $request->property_value_id);
+          });
+          $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+
+          $category_have_current_property = $this->getCategoryThatHaveCurrentProperty($request);
+          $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
+          $products = $products->merge($product_without_property->where('products.active', 1)->limit(get_limit_paginate())->get());
+        } else {
+          $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+        }
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
@@ -1093,11 +1098,121 @@ class HomeController extends Controller
           });
         }
 
-        $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
+        if ($request->has('property_value_id')) {
+          $products = $products->whereHas('pr_value', function ($q) use ($request) {
+            $q->whereIn('property_values.id', $request->property_value_id);
+          });
+          $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
                     ->get();
+
+          $category_have_current_property = $this->getCategoryThatHaveCurrentProperty($request);
+          $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
+          $products = $products->merge($product_without_property->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())->get());
+        } else {
+          $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
+          ->get();
+        }
+
 
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
+    }
+
+    /**
+     * Method getCategoryThatHaveCurrentProperty
+     *
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function getCategoryThatHaveCurrentProperty($request) {
+      $category_ids = Product::whereHas('pr_value', function ($q) use ($request) {
+        $q->whereIn('property_values.id', $request->property_value_id);
+      })->pluck("category_id")->toArray();
+
+      return $category_ids;
+    }
+
+    /**
+     * Method redfineQueryWithoutProperty
+     *
+     * @param Request $request
+     * @param array $category_have_current_property
+     *
+     * @return QueryBuilder
+     */
+    public function redfineQueryWithoutProperty($request, $category_have_current_property)
+    {
+        $products = Product::select('products.*','products.id as product_id');
+        if ($request->has('sub_category_id') && $request->sub_category_id != '') {
+            $request->sub_category_id = (array) $request->sub_category_id;
+            $products = $products->whereIn('category_id', array_diff($request->sub_category_id, $category_have_current_property));
+        }
+        if ($request->has('brand_id') && $request->brand_id != '') {
+            $request->brand_id = (array) $request->brand_id;
+            $brand_ids  =  $request->brand_id;
+            $products = $products->whereIn('brand_id', $request->brand_id);
+        }
+        if ($request->has('from') && $request->from != '') {
+            $products = $products->where('price', '>=', $request->from);
+        }
+        if ($request->has('to') && $request->to != '') {
+            $products = $products->where('price', '<', $request->to);
+        }
+        if ($request->has('from_to') && $request->from_to != '') {
+            $products = $products->whereBetween('price', explode(',', $request->from_to));
+        }
+        if ($request->has('ifrom') && $request->ifrom != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), '>=', $request->ifrom);
+            });
+        }
+        if ($request->has('ito') && $request->ito != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->where(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), '=', $request->ito);
+            });
+        }
+        if ($request->has('ifrom_ito') && $request->ifrom_ito != '') {
+            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+                $q->join('properties', 'property_values.property_id', '=', 'properties.id');
+                $q->where('properties.title', 'LIKE', '%inch%');
+                $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), explode(',', $request->ifrom_ito));
+            });
+        }
+        if ($request->has('search') && $request->search != '') {
+          $products = $products->join('translatables','translatables.record_id','=','products.id')
+            ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+            ->where('translatables.table_name','products')
+            ->where('translatables.column_name','title')
+            ->where(function($q) use ($request){
+              $q->where('products.title', 'like', '%' . $request->search . '%');
+              $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
+              $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
+            });
+        }
+        if ($request->has('offer') && $request->offer != '') {
+            // $products = $products->where('offer', 1);
+            $products = $products->where(function($q) {
+              // $q->where("offer", 1);
+              $q->where("price_after_discount", '>', 0);
+              // $q->orderBy('offer');
+            });
+        }
+        if ($request->has('sorted') && $request->sorted != '') {
+            $products = $products->orderBy(explode(',', $request->sorted)[0], explode(',', $request->sorted)[1]);
+        }
+        if ($request->has('last') && $request->last != '') {
+            $products = $products->latest('created_at');
+        }
+        if ($request->has('random') && $request->random != '') {
+            $products = $products->inRandomOrder();
+        }
+
+        return $products;
     }
 
     public function inner_productv2($id)
