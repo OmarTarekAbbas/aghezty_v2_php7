@@ -666,26 +666,26 @@
       },
     });
   })
-  @if(!request()->has('sorted'))
-    $( document ).ready(function(){
-      $.ajax({
-        url: '{{url("clients/loadproductsv2")}}?start=0',
-        type: "post",
-        data: $('#filter_form').serialize(),
-        success: function(data) {
-          if (data.html == '') {
-            action = 'active';
-            $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
-          } else {
-            $('#grid_two').html(data.html);
-            action = 'inactive';
-          }
-          $('.load').hide();
-        },
-      });
 
+    $( document ).ready(function(){
+      @if(!request()->has('sorted'))
+        $.ajax({
+          url: '{{url("clients/loadproductsv2")}}?start=0',
+          type: "post",
+          data: $('#filter_form').serialize(),
+          success: function(data) {
+            if (data.html == '') {
+              action = 'active';
+              $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+            } else {
+              $('#grid_two').html(data.html);
+              action = 'inactive';
+            }
+            $('.load').hide();
+          },
+        });
+      @endif
     })
-  @endif
 </script>
 
 <script>
@@ -738,11 +738,10 @@
         var _this = this
         _this.category_id = []
         $('.sub_cat_id').each(function(i, obj) {
-          if ($(this).prop("checked") == true) {
+          if ($(this).prop("checked") == true && !($(this).parent().children("input").attr('id')).includes("mobile")) {
             _this.category_id.push($(this).val())
           }
         });
-        // console.log(_this.category_id);
       }
     },
     created() {
@@ -812,7 +811,7 @@
 const propertys_mobile = new Vue({
     el:'#propertys_mobile',
     data:{
-      category_id : [],
+      mobile_category_id : [],
       properties_data : [],
       pr_values:[],
       checked_val :{'num1' : 0, 'num2':0}
@@ -845,7 +844,7 @@ const propertys_mobile = new Vue({
         $.ajax({
             type: "get",
             data: {
-              category_id: this.category_id
+              category_id: this.mobile_category_id
             },
             url: "{{url('getProperty')}}",
             success: function(data, status) {
@@ -856,10 +855,10 @@ const propertys_mobile = new Vue({
       },
       getSelectCategory() {
         var _this = this
-        _this.category_id = []
+        _this.mobile_category_id = []
         $('.sub_cat_id').each(function(i, obj) {
-          if ($(this).prop("checked") == true) {
-            _this.category_id.push($(this).val())
+          if ($(this).prop("checked") == true && ($(this).parent().children("input").attr('id')).includes("mobile")) {
+            _this.mobile_category_id.push($(this).val())
           }
         });
       }

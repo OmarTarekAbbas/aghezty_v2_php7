@@ -2060,14 +2060,13 @@ class HomeController extends Controller
     //helper function api
     public function getProperty(Request $request)
     {
-        // dd("omar");
-        $propertys = Property::with(['pvalue']);
-        if ($request->has('category_id')) {
-            $propertys = $propertys->whereIn('category_id', (array) $request->category_id);
+      if ($request->filled('category_id')) {
+          $propertys = Property::with(['pvalue']);
+          $propertys = $propertys->whereIn('category_id', (array) $request->category_id);
+          $propertys = $propertys->get();
+          return (PropertyResource::collection($propertys));
         }
-        $propertys = $propertys->get();
-        return (PropertyResource::collection($propertys));
-
+        return [];
     }
 
     function getBrand(Request $request)
