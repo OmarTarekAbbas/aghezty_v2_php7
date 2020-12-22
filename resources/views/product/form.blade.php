@@ -216,19 +216,19 @@ const property = new Vue({
 
     }
 
-    $('.discount').keyup(function(){
-      $('.price_after').val(Math.ceil( $('.price').val() - (($(this).val()/100) * $('.price').val()) ))
-    })
+    // $('.discount').keyup(function(){
+    //   $('.price_after').val(Math.ceil( $('.price').val() - (($(this).val()/100) * $('.price').val()) ))
+    // })
 
     // $('.price_after').keyup(function(){
     //   $('.discount').val(Math.ceil(($('.price').val() - ($('.price_after').val()) *100) / $('.price').val() ))
     // })
-    $('.price').keyup(function(){
-      $('.in_6').val(parseInt($('.price').val() / 6))
-      $('.in_12').val(parseInt($('.price').val() / 12))
-      $('.in_18').val(parseInt($('.price').val() / 18))
-      $('.in_24').val(parseInt($('.price').val() / 24))
-    })
+    // $('.price').keyup(function(){
+    //   $('.in_6').val(parseInt($('.price').val() / 6))
+    //   $('.in_12').val(parseInt($('.price').val() / 12))
+    //   $('.in_18').val(parseInt($('.price').val() / 18))
+    //   $('.in_24').val(parseInt($('.price').val() / 24))
+    // })
 
     $('.remove_stm').click(function(){
       console.log($(this).parent().find('input'));
