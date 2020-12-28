@@ -7,10 +7,10 @@
     <!-- Start Image Cover -->
     <div>
             <div class="list_cover">
-              @if(setting('contact_offer'))
+              @if(setting('contacts_offer'))
               <img class="w-100 rounded" src="{{url(setting('service_offer'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @else
-              <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
+              {{--  <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">  --}}
               @endif
             </div>
       </div>
