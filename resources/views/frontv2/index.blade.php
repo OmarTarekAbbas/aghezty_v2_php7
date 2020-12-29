@@ -27,7 +27,7 @@
         <div class="row mr-0 ml-0">
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['search' => 'Mobile', 'offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['sub_category_id' => '49', 'offer' => 'offer'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles.jpg" alt="mobiles"> -->
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -43,7 +43,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['to' => '1000','search' => 'Mobile'])}}">
+              <a href="{{route('front.home.list',['to' => '1000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/less-1000.jpg" alt="less-1000"> -->
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -57,7 +57,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from_to' => '1000,3000','search' => 'Mobile'])}}">
+              <a href="{{route('front.home.list',['from_to' => '1000,3000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-1000-3000.jpg" alt="mobiles-1000-3000"> -->
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -71,7 +71,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from_to' => '3000,6000','search' => 'Mobile'])}}">
+              <a href="{{route('front.home.list',['from_to' => '3000,6000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-3000-6000.jpg" alt="mobiles-3000-6000"> -->
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -86,7 +86,7 @@
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a
-                href="{{route('front.home.list',['from_to' => '6000,10000','search' => 'Mobile'])}}">
+                href="{{route('front.home.list',['from_to' => '6000,10000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-6000-10000.jpg" alt="mobiles-6000-10000"> -->
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -100,7 +100,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['from' => '10000','search' => 'Mobile'])}}">
+              <a href="{{route('front.home.list',['from' => '10000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/more-10000.jpg" alt="more-10000"> -->
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -303,7 +303,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ito' => '21','search' => 'TV'])}}">
+              <a href="{{route('front.home.list',['ifrom_ito' => '22,32','search' => 'TV'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
 
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
@@ -323,8 +323,8 @@
 
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">32 @lang('front.to')</strong>
-                    <strong class="d-block"> 43 @lang('front.inch')</strong>
+                    <strong class="d-block">33 @lang('front.to')</strong>
+                    <strong class="d-block"> 42 @lang('front.inch')</strong>
                   </h5>
                 </div>
               </a>
@@ -338,8 +338,8 @@
 
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">49 @lang('front.to')</strong>
-                    <strong class="d-block"> 55 @lang('front.inch')</strong>
+                    <strong class="d-block">43 @lang('front.to')</strong>
+                    <strong class="d-block"> 54 @lang('front.inch')</strong>
                   </h5>
                 </div>
               </a>
@@ -353,8 +353,8 @@
 
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block">60 @lang('front.to')</strong>
-                    <strong class="d-block"> 75 @lang('front.inch')</strong>
+                    <strong class="d-block">55 @lang('front.to')</strong>
+                    <strong class="d-block"> 65 @lang('front.inch')</strong>
                   </h5>
                 </div>
               </a>
@@ -363,13 +363,13 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom' => '75','search' => 'TV'])}}">
+              <a href="{{route('front.home.list',['ifrom' => '66','search' => 'TV'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->
 
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
                     <strong class="d-block">@lang('front.more') @lang('front.from')</strong>
-                    <strong class="d-block"> 75 @lang('front.inch')</strong>
+                    <strong class="d-block"> 66 @lang('front.inch')</strong>
                   </h5>
                 </div>
               </a>
