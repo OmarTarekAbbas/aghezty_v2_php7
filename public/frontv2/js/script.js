@@ -5,6 +5,10 @@ $(document).ready(function () {
   if (header_display !== 'none') {
     $('.head_three').css('top', header_header);
   }
+
+  // if ($(window).width() < 1000) {
+  //   $('.head_three').css('top', 0);
+  // }
   // console.log(msg);
 });
 
@@ -468,6 +472,7 @@ $('.owl_brands').owlCarousel({
     0: {
       items: 3,
       center: true,
+      margin: 0,
     },
     600: {
       items: 4,
