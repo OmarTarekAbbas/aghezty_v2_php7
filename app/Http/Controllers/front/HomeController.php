@@ -700,7 +700,7 @@ class HomeController extends Controller
             $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
             $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
         }
-        
+
 
         return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat', 'home_brands'));
 
@@ -1010,15 +1010,19 @@ class HomeController extends Controller
           $products = $products->where(function($query) use ($property){
             foreach ($property as $property_value_id) {
               $query->whereHas('pr_value', function ($q) use ($property_value_id) {
-                    $q->whereIn('property_values.id', $property_value_id);
+                $q->whereIn('property_values.id', $property_value_id);
               });
             }
           });
           $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
-
           $category_have_current_property = $this->getCategoryThatHaveCurrentProperty($request);
-          $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
-          $products = $products->merge($product_without_property->where('products.active', 1)->limit(get_limit_paginate())->get());
+          //dd($category_have_current_property);
+          if($category_have_current_property){
+            $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
+            $products = $products->merge($product_without_property->where('products.active', 1)->limit(get_limit_paginate())->get());
+          }
+
+
         } else {
           $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
         }
@@ -1113,8 +1117,10 @@ class HomeController extends Controller
                     ->get();
 
           $category_have_current_property = $this->getCategoryThatHaveCurrentProperty($request);
-          $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
-          $products = $products->merge($product_without_property->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())->get());
+          if($category_have_current_property){
+            $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
+            $products = $products->merge($product_without_property->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())->get());
+          }
         } else {
           $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
           ->get();
