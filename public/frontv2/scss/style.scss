@@ -14,14 +14,11 @@ $yellow_color: #ffeb00;
   width: 10px;
 }
 
-
-
 /* Track */
 
 ::-webkit-scrollbar-track {
   background: #Fff;
 }
-
 
 /* Handle */
 
@@ -541,6 +538,11 @@ body {
       margin-top: 1%;
 
       .owl_brands {
+        .owl-stage-outer {
+          height: 9vh;
+          overflow: hidden;
+        }
+
         .item {
           .brands_img {
             img {
@@ -559,7 +561,7 @@ body {
           button {
             font-size: 2.5rem;
             position: absolute;
-            bottom: -2rem;
+            bottom: -1rem;
             transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             -moz-transform: translate(-50%, -50%);
@@ -3010,8 +3012,17 @@ body {
     }
   }
 
+  .head_two {
+    background-color: transparent;
+    width: 0;
+    height: 0;
+    z-index: 99999;
+    position: unset;
+    top: unset;
+}
+
   .head_three {
-    // top: 0;
+    top: 0 !important;
 
     .navbar {
       padding: 5px 0;
@@ -4311,7 +4322,7 @@ body {
   }
 
   .head_three {
-    // top: 0;
+    top: 0 !important;
 
     .navbar {
       padding: 5px 0;
@@ -5620,6 +5631,11 @@ body {
         margin-top: 2.5%;
 
         .owl_brands {
+
+          .owl-stage-outer {
+            height: 6vh;
+          }
+
           .item {
             .brands_img {
               img {
@@ -5654,7 +5670,7 @@ body {
   }
 
   .head_three {
-    // top: 0;
+    top: 0 !important;
 
     .navbar {
       .navbar-nav {
@@ -6353,6 +6369,10 @@ body {
         margin-top: 2%;
 
         .owl_brands {
+          .owl-stage-outer {
+            height: 6vh;
+          }
+
           .item {
             .brands_img {
               img {
@@ -6369,7 +6389,7 @@ body {
               font-size: 3rem;
               font-weight: bold;
               bottom: -2.5rem;
-              
+
 
               &.owl-prev {
                 right: -3.5%;
