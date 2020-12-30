@@ -559,6 +559,7 @@ body {
           height: 9vh;
           overflow: hidden;
         }
+
         .item {
           .brands_img {
             img {
@@ -6004,6 +6005,7 @@ body {
           .owl-stage-outer {
             height: 6vh;
           }
+
           .item {
             .brands_img {
               img {
@@ -6346,6 +6348,7 @@ body {
           .owl-stage-outer {
             height: 6vh;
           }
+
           .item {
             .brands_img {
               img {
@@ -6874,7 +6877,7 @@ body {
         .item {
           a {
             img {
-              height: 37vh;
+              height: 47.5vh;
             }
           }
         }
@@ -6969,10 +6972,14 @@ body {
         margin-top: 2%;
 
         .owl_brands {
+          .owl-stage-outer {
+            height: 11vh;
+          }
+
           .item {
             .brands_img {
               img {
-                width: 90%;
+                width: 80%;
                 margin: unset;
               }
             }
