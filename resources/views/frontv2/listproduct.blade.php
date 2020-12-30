@@ -363,7 +363,13 @@
           @elseif(app('request')->input('sub_category_id'))
             <?php  $sub_category= \App\Category::where('id',app('request')->input('sub_category_id'))->first()?>
               @if($sub_category->cat->offer_image)
+              @if ($sub_category->cat->offer_image_link)
+              <a href="{{$sub_category->cat->offer_image_link}}">
+                <img class="w-100 rounded" src="{{url($sub_category->cat->offer_image)}}" alt="Cover" title="Apple" style="height: auto !important">
+              </a>
+              @else
               <img class="w-100 rounded" src="{{url($sub_category->cat->offer_image)}}" alt="Cover" title="Apple" style="height: auto !important">
+              @endif
               @else
               <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif

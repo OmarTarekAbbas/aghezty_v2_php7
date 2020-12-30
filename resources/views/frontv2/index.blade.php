@@ -27,7 +27,7 @@
         <div class="row mr-0 ml-0">
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['sub_category_id' => '49', 'offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles.jpg" alt="mobiles"> -->
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -120,7 +120,7 @@
           <div class="item">
               <div class="brands_img">
               <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
-                  <img  src="{{ url($homeBrand->image) }}"  alt="{{ $homeBrand->title }}">
+                  <img  src="{{ $homeBrand->image }}"  alt="{{ $homeBrand->title }}">
               </a>
             </div>
           </div>
@@ -286,7 +286,7 @@
         <div class="row mr-0 ml-0">
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['search' => 'TV', 'offer' => 'offer'])}}">
+              <a href="{{route('front.home.list',['search' => 'TV'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/tv-offers.webp" alt="mobiles"> -->
 
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">

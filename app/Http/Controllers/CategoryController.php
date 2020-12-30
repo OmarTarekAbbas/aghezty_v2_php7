@@ -88,6 +88,10 @@ class CategoryController extends Controller
           }
         }
 
+        if ($request->offer_image_link) {
+            $category->offer_image_link = $request->offer_image_link;
+        }
+
        // dd($request->category);
         $category->save();
         \Session::flash('success', 'Category Created Successfully');
@@ -174,6 +178,7 @@ class CategoryController extends Controller
         }
       }
 
+      $category->offer_image_link = $request->offer_image_link;
       //dd($category->offer_image);
       $category->save();
       \Session::flash('success', 'Category Updated Successfully');

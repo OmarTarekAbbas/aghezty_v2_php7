@@ -1,6 +1,7 @@
 <?php
 return [
     'title' => 'ألرسائل النصيه',
+    'offer_link' => 'لينك الاوفر',
     'language' => 'english',
     'role' => 'الادوار',
     'create-role' => 'انشاء دور',

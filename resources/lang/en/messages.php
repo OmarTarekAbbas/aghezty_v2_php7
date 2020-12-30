@@ -1,6 +1,7 @@
 <?php
 return [
     'title' => 'SMS',
+    'offer_link' => 'Offer Link',
     'language' => 'عربي',
     'role' => 'Role',
     'create-role' => 'Create Role',

@@ -701,7 +701,6 @@ class HomeController extends Controller
             $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
         }
 
-
         return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat', 'home_brands'));
 
     }
