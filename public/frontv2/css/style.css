@@ -4509,7 +4509,7 @@ body {
     padding-top: 10%;
   }
   .main .carsoul_ads .owl-one .item a img {
-    height: 37vh;
+    height: 47.5vh;
   }
   .main .carsoul_ads .top_banner a img {
     height: 151px;
@@ -4555,8 +4555,11 @@ body {
   .main .choose_category .logo_brands {
     margin-top: 2%;
   }
+  .main .choose_category .logo_brands .owl_brands .owl-stage-outer {
+    height: 11vh;
+  }
   .main .choose_category .logo_brands .owl_brands .item .brands_img img {
-    width: 90%;
+    width: 80%;
     margin: unset;
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button {
