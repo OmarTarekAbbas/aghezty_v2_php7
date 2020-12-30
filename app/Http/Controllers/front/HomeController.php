@@ -963,10 +963,14 @@ class HomeController extends Controller
             });
         }
         if ($request->has('ifrom_ito') && $request->ifrom_ito != '') {
-            $products = $products->whereHas('pr_value', function ($q) use ($request) {
+          //33%2C42
+          $test_from_to =  explode(',', $request->ifrom_ito);
+          $test_from_to =  $test_from_to[1].'-'.$test_from_to[0];
+
+            $products = $products->whereHas('pr_value', function ($q) use ($test_from_to) {
                 $q->join('properties', 'property_values.property_id', '=', 'properties.id');
                 $q->where('properties.title', 'LIKE', '%inch%');
-                $q->whereBetween(\DB::raw("SUBSTRING_INDEX(`property_values`.`value`,' ',1)"), explode(',', $request->ifrom_ito));
+                $q->where('property_values.value', $test_from_to);
             });
         }
 

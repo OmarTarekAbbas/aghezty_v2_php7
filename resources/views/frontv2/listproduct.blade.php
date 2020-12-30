@@ -175,8 +175,13 @@
 
               <div class="panel w-100 border border-light">
                 <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                  <input :id="'panel_pr'+property_value.id" class="mb-2 property" :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'   type="checkbox" name="property_value_id[]" :value="property_value.id">
-                  <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id">@{{property_value.value}} </label>
+                  <input :id="'panel_pr'+property_value.id"   class="mb-2 property"
+                   :checked = '(property_value.value.replace( /^\D+/g, "") != ""
+                   && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2))
+                    || pr_values.includes(property_value.id)
+                    || ( property_value.value == checked_val.inch )'
+                      type="checkbox" name="property_value_id[]" :value="property_value.id">
+                  <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id">@{{property_value.value}}//@{{ checked_val.inch}}</label>
                 </div>
               </div>
             </template>
@@ -701,15 +706,17 @@
       category_id : [],
       properties_data : [],
       pr_values:[],
-      checked_val :{'num1' : 0, 'num2':0}
+      checked_val :{'num1' : 0, 'num2':0,'inch':0}
     },
     methods: {
       tvFilter() {
         str = location.search;
         number = str.substring(str.indexOf("=") + 1, str.indexOf("&"));
+        //?ifrom_ito=33%2C42&search=TV
         if (number.indexOf('%2C') != -1) {
           this.checked_val.num1 = number.split('%2C')[0]
           this.checked_val.num2 = number.split('%2C')[1]
+          this.checked_val.inch = this.checked_val.num2+"-"+this.checked_val.num1
         } else {
           if (str.indexOf('ifrom=') != -1) {
             this.checked_val.num1 = number
