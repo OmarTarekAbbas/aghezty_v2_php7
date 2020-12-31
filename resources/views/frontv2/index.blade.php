@@ -303,7 +303,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '22,32','search' => 'TV'])}}">
+              <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=1&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
 
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
@@ -318,7 +318,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '32,43','search' => 'TV'])}}">
+            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=2&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
 
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
@@ -333,7 +333,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '49,55','search' => 'TV'])}}">
+            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=3&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/49-55-inch.jpg" alt="mobiles-1000-3000"> -->
 
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
@@ -348,7 +348,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom_ito' => '60,75','search' => 'TV'])}}">
+            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=6&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/60-75-inch.jpg" alt="mobiles-3000-6000"> -->
 
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
@@ -363,7 +363,7 @@
 
           <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.list',['ifrom' => '66','search' => 'TV'])}}">
+            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=5&&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->
 
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
