@@ -1005,14 +1005,42 @@ class HomeController extends Controller
         }
 
         if ($request->has('property_value_id')) {
-          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
-          $products = $products->where(function($query) use ($property){
-            foreach ($property as $property_value_id) {
-              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
-                $q->whereIn('property_values.id', $property_value_id);
-              });
+          $category = $this->getCategoryWithPropertyWithPropertyValue($request->property_value_id);
+          // return $category;
+          /*
+            {
+              "17 = category id": {
+                  "26 = property_id": [
+                      "92 = property_value_id",
+                      "95 = property_value_id"
+                  ]
+              },
+              (or) i will make "or" for category
+              "35 = category id"": {
+                  "5 = property_id": [
+                      "20  = property_value_id",
+                      "21  = property_value_id"
+                  ],
+                  (and) i will make "end" in each proprty
+                  "23 = property_id": [
+                      "76 = property_value_id"
+                  ]
+              }
             }
-          });
+          */
+            $products = $products->where(function($search) use ($category){
+              foreach ($category as $property) {
+                $search->Orwhere(function($query) use ($property){
+                  foreach ($property as $property_value_id) {
+                    $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                      $q->whereIn('property_values.id', $property_value_id);
+                    });
+                  }
+                });
+              }
+            });
+
+          // dd($products->toSql());
           $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
           $category_have_current_property = $this->getCategoryThatHaveCurrentProperty($request);
           //dd($category_have_current_property);
@@ -1104,14 +1132,42 @@ class HomeController extends Controller
         // dd($request->has('property_value_id'));
 
         if ($request->has('property_value_id')) {
-          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
-          $products = $products->where(function($query) use ($property){
-            foreach ($property as $property_value_id) {
-              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
-                    $q->whereIn('property_values.id', $property_value_id);
-              });
-            }
-          });
+          $category = $this->getCategoryWithPropertyWithPropertyValue($request->property_value_id);
+            // return $category;
+            /*
+              {
+                "17 = category id": {
+                    "26 = property_id": [
+                        "92 = property_value_id",
+                        "95 = property_value_id"
+                    ]
+                },
+                (or) i will make "or" for category
+                "35 = category id"": {
+                    "5 = property_id": [
+                        "20  = property_value_id",
+                        "21  = property_value_id"
+                    ],
+                    (and) i will make "end" in each proprty
+                    "23 = property_id": [
+                        "76 = property_value_id"
+                    ]
+                }
+              }
+            */
+            $products = $products->where(function($search) use ($category){
+              foreach ($category as $property) {
+                $search->Orwhere(function($query) use ($property){
+                  foreach ($property as $property_value_id) {
+                    $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                      $q->whereIn('property_values.id', $property_value_id);
+                    });
+                  }
+                });
+              }
+            });
+
+          // dd($products->toSql());
           $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
                     ->get();
 
@@ -1136,12 +1192,14 @@ class HomeController extends Controller
      * @param array $property_values
      *
      * @return array
+     *
      */
-    public function getPropertyWithPropertyValue($property_values)
+    public function getCategoryWithPropertyWithPropertyValue($property_values)
     {
       foreach ($property_values as  $value) {
-        $key = PropertyValue::whereId($value)->first()->property_id;
-        $array[$key][] = $value;
+        $property_id = PropertyValue::whereId($value)->first()->property_id;
+        $category_id = Property::whereId($property_id)->first()->category_id;
+        $array[$category_id][$property_id][] = $value;
       }
       return $array;
     }

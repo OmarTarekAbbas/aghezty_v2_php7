@@ -66,7 +66,7 @@
 
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                <input id="panel_category_{{$category->id}}" class="mb-2 price sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -77,7 +77,7 @@
 
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
-                  <input  id="panel_category_{{$category->id}}" class="mb-2 price sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                  <input  id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
