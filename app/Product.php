@@ -89,6 +89,11 @@ class Product extends Model
       return $this->belongsToMany('App\PropertyValue','product_properties','product_id','property_value_id');
   }
 
+  public function orders()
+  {
+    return $this->hasMany('App\OrderDetail','product_id','id');
+
+  }
   public function rate()
   {
     return \DB::table('client_rates')

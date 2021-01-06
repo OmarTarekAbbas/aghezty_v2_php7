@@ -1003,6 +1003,10 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
+        if ($request->filled('most_solid')) {
+            $products = $products->withCount("orders")->orderBy("orders_count","desc");
+        }
+
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
@@ -1101,7 +1105,9 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
-        // dd($request->has('property_value_id'));
+        if ($request->filled('most_solid')) {
+          $products = $products->withCount("orders")->orderBy("orders_count","desc");
+        }
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);

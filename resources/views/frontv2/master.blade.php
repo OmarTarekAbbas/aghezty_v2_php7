@@ -635,6 +635,10 @@
                             <a class="text-capitalize hvr-icon-forward" href="{{url('clients/visa_terms')}}"
                               title="Maintenance">@lang('front.visa_terms')</a>
                           </li>
+                          <li>
+                            <a class="text-capitalize hvr-icon-forward" href="{{url('clients/productsv2?most_solid=most_solid')}}"
+                              title="Most Solid">{{ trans('front.most_solid') }}</a>
+                          </li>
                         </ul>
                       </div>
 
