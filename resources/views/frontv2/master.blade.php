@@ -69,7 +69,7 @@
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
   <link rel="stylesheet" href="{{url('public/frontv2/css/jquery-spinner.min.css')}}">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
   <!-- hover -->
   <!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
   <link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
@@ -503,7 +503,7 @@
 
   @yield('content')
 
-  <footer class="footer_footer">
+  {{-- <footer class="footer_footer">
     <div class="footer_content">
       <div class="container-fluid">
         <div class="row">
@@ -738,6 +738,159 @@
     <a class="rounded" href="javascript:" id="return-to-top">
       <i class="fas fa-chevron-up"></i>
     </a>
+  </footer> --}}
+
+  <footer class="new_footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-lg-8 col-xl-8 col-12">
+          <form class="newsletter" action="#0">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn_subscribe btn text-capitalize" type="button">subscribe</button>
+              </div>
+
+              <input type="text" class="input_subscribe form-control" placeholder="Email Address" aria-describedby="basic-addon1">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <ul class="social_media list-unstyled">
+            <li>
+              <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">
+                <i class="fab fa-facebook-f facebook_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?phone={{setting('phone')}}">
+                <i class="fab fa-whatsapp whatsapp_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button instagram_link" title="Instagram" href="#0">
+                <i class="fab fa-instagram instagram_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button phone_link" title="Phone Number" href="tel:{{setting('phone')}}">
+                <i class="fas fa-phone phone_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button sms_link" title="Messege" href="sms:{{setting('sms')}}">
+                <i class="far fa-comment sms_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button mail_link" title="Email" href="{{setting('mail')}}">
+                <i class="fas fa-envelope mail_icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <div class="logo_foot">
+            <img class="aghezty_logo" src="{{url('public/frontv2/images/new_footer/logo.png')}}" alt="Aghezty">
+
+            <p class="mb-0 text-center">The company "Aghezty" works in the field of online sale of all electrical and electronic devices, air conditioners, mobile devices, intercoms, alarms and monitoring devices, and provides high-quality products with advanced technology that meet the desires and expectations of the consumer.</p>
+          </div>
+
+          <div class="hotline mt-2 text-center">
+            <strong>للتواصل معنا</strong>
+            <a class="d-block" href="tel:+201116828111" title="Phone number">
+              <strong>+201116828111</strong>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <h6 class="text_foot text-capitalize font-weight-bold">important link</h6>
+
+          <ul class="important_link list-unstyled">
+            <li>
+              <a class="text-capitalize" href="#0">call us</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="#0">customers service</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="#0">who are we</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="#0">terms and conditions</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="#0">Terms and conditions payment</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <h6 class="text_foot text-capitalize font-weight-bold">important link</h6>
+
+          <div class="row mb-0">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <ul class="categories_link list-unstyled">
+                <li>
+                  <a class="text-capitalize" href="#0">call us</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">customers service</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">who are we</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">terms and conditions</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">Terms and conditions payment</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <ul class="categories_link list-unstyled">
+                <li>
+                  <a class="text-capitalize" href="#0">call us</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">customers service</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">who are we</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">terms and conditions</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="#0">Terms and conditions payment</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <!-- script -->
