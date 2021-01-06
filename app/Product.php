@@ -92,8 +92,13 @@ class Product extends Model
   public function orders()
   {
     return $this->hasMany('App\OrderDetail','product_id','id');
-
   }
+
+  public function wishList()
+  {
+      return $this->belongsToMany('App\Client','wish_lists','product_id','client_id');
+  }
+
   public function rate()
   {
     return \DB::table('client_rates')

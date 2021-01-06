@@ -2145,6 +2145,12 @@ class HomeController extends Controller
         $order = Order::find($request->order_id)->update(['payment_status' => PaymentStatus::Fail, 'transaction_id' =>$request->tran_id]);
         return 'yes';
     }
+
+    public function toggleProductWishList(Request $request)
+    {
+      \Auth::guard('client')->user()->wishList()->toggle($request->product_id);
+      return "ok";
+    }
     /*********************************************************** end design v2 *******/
 
     // encrypt and descrypt

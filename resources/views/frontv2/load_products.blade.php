@@ -2,7 +2,7 @@
 
 <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
   <div class="content_view hvr-bob px-2 bg-white rounded">
-    <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
+    <a href="#">
       <img class="lazy text-center d-block" src="{{$product->main_image}}" alt="Product">
       @if($product->discount)
         <div class="product-label text-center font-weight-bold">
@@ -10,6 +10,7 @@
         </div>
       @endif
       <h6 class="full_desc text-dark text-left text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
+
     </a>
 
     <div class="rating_list_product">
@@ -23,6 +24,14 @@
           @endif
         @endfor
     </div>
+
+    @if(\Auth::guard('client')->check())
+        <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
+          <span>
+            <i class="fa fa-heart fa-2x hotpink {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-productId="{{ $product->product_id }}"></i>
+          </span>
+        </div>
+      @endif
 
     <div class="price-description text-uppercase">Cash Price</div>
 
