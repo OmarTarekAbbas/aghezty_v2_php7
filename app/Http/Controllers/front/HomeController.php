@@ -1004,7 +1004,11 @@ class HomeController extends Controller
             $products = $products->inRandomOrder();
         }
         if ($request->filled('most_solid')) {
-            $products = $products->withCount("orders")->orderBy("orders_count","desc");
+            $products = $products->whereHas("orders")->withCount(["orders" => function($query) {
+              $query->join('orders', 'orders.id', '=', 'order_details.order_id');
+              $query->where('orders.status','=', 3);
+            }])->orderBy("orders_count","desc");
+            // return $products->get();
         }
 
 
@@ -1106,8 +1110,13 @@ class HomeController extends Controller
             $products = $products->inRandomOrder();
         }
         if ($request->filled('most_solid')) {
-          $products = $products->withCount("orders")->orderBy("orders_count","desc");
-        }
+          $products = $products->whereHas("orders")->withCount(["orders" => function($query) {
+            $query->join('orders', 'orders.id', '=', 'order_details.order_id');
+            $query->where('orders.status','=', 3);
+          }])->orderBy("orders_count","desc");
+          // return $products->get();
+      }
+
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);

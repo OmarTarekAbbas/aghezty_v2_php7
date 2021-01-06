@@ -186,6 +186,7 @@
           <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
           <input type="hidden" id="ifrom_in" name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
           <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
+          <input type="hidden" id="most_solid" name="most_solid" value="{{request()->filled('most_solid') ? request('most_solid') : ''}}">
         </form>
       </div>
       <!-- End Filter Search -->
@@ -378,7 +379,7 @@
           @endif
         </div>
         <!-- End Image Cover -->
-
+        @if(!request()->filled('most_solid'))
         <!-- Start Toolbar -->
         <div class="toolbar mt-3 p-2 border bg-white">
           <div class="sort-by mr-3 float-left">
@@ -403,6 +404,7 @@
           </strong>
         </div>
         <!-- End Toolbar -->
+        @endif
 
         <!-- start row product -->
         <div id="grid_two" class="row mt-3 content_view_mobile">
@@ -560,7 +562,7 @@
 
   }
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
-    // console.log("omartarek");
+    $('#most_solid').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
