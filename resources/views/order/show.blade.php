@@ -39,16 +39,22 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="order_id" value="{{$order->id}}">
                                         <input type="hidden" name="client_id" value="{{$order->client_id}}">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">Under Shipping</label>
                                                 <input type="radio" name="status" value="2" id="under_shipping">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">Finished</label>
                                                 <input type="radio" name="status" value="3" id="finished">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Not available</label>
+                                                <input type="radio" name="status" value="4" id="not_available">
                                             </div>
                                         </div>
                                         <div class="col-md-12">

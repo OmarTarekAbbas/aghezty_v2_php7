@@ -106,10 +106,12 @@ class OrderController extends Controller
 
   public function update_status(Request $request)
   {
+    //dd($request->status);
     $client = Client::find($request->client_id);
     $order = Order::find($request->order_id);
     $order->status = $request->status;
     $order->save();
+
     if ($request->status == 3) { // admin make finish
       $carts = OrderDetail::where('order_id', $request->order_id)->get();
       foreach ($carts as $key => $cart) {
@@ -119,11 +121,22 @@ class OrderController extends Controller
       }
     }
     $admin = \Auth::user();
-    Mail::send('front.mail', ['order' => $order, 'client' => $client, 'subject' => $request->message], function ($m) use ($client) {
-      $m->from(setting('super_mail'), __('front.title'));
-      $m->cc(setting('super_mail'));
-      $m->to($client->email, $client->name)->subject(__('front.order'));
-    });
+    //dd($order->payment);
+    if($request->status == 4 && ($order->payment == 1 || $order->payment == 2)){ // 4 = not_available + cash or cash on delivary
+      //dd("omar");
+      Mail::send('front.mail_not_available', ['order' => $order, 'client' => $client, 'subject' => $request->message], function ($m) use ($client) {
+        $m->from(setting('super_mail'), __('front.title'));
+        $m->cc(setting('super_mail'));
+        $m->to($client->email, $client->name)->subject(__('front.order'));
+      });
+    } else {
+      //dd("ahmed");
+      Mail::send('front.mail', ['order' => $order, 'client' => $client, 'subject' => $request->message], function ($m) use ($client) {
+        $m->from(setting('super_mail'), __('front.title'));
+        $m->cc(setting('super_mail'));
+        $m->to($client->email, $client->name)->subject(__('front.order'));
+      });
+    }
     $this->savedOrderReply($order, $request);
     \Session::flash('success', 'Email Is Send With Order Status');
     return back();
