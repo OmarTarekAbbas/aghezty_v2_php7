@@ -177,6 +177,8 @@ return [
         'property_value' => [
             'value' => 'Property Value',
             'property_values' => 'Property Values',
+
         ],
     ],
+    'admin_reply' => 'User',
 ];
