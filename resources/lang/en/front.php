@@ -179,4 +179,10 @@ return [
             'property_values' => 'Property Values',
         ],
     ],
+    'wishlist' => [
+      'wishlist' => 'WishList',
+      'add_to_cart' => 'Add To Cart',
+      'shoping_wish_list' => 'Shoping Wish List'
+    ],
+    'most_solid' => 'Most Solid',
 ];
