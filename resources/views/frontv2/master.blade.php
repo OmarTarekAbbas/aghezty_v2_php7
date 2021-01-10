@@ -846,29 +846,29 @@
         </div>
 
         <div class="col-md-4 col-lg-4 col-xl-4 col-12">
-          <h6 class="text_foot text-capitalize font-weight-bold">important link</h6>
+          <h6 class="text_foot text-capitalize font-weight-bold">categories</h6>
 
           <div class="row mb-0">
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
               <ul class="categories_link list-unstyled">
                 <li>
-                  <a class="text-capitalize" href="#0">call us</a>
+                  <a class="text-capitalize" href="#0">heavy machines</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">customers service</a>
+                  <a class="text-capitalize" href="#0">light devices</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">who are we</a>
+                  <a class="text-capitalize" href="#0">tv</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">terms and conditions</a>
+                  <a class="text-capitalize" href="#0">built-in</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">Terms and conditions payment</a>
+                  <a class="text-capitalize" href="#0">mobiles &amp; tablets</a>
                 </li>
               </ul>
             </div>
@@ -876,26 +876,54 @@
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
               <ul class="categories_link list-unstyled">
                 <li>
-                  <a class="text-capitalize" href="#0">call us</a>
+                  <a class="text-capitalize" href="#0">personal care</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">customers service</a>
+                  <a class="text-capitalize" href="#0">electronics</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">who are we</a>
+                  <a class="text-capitalize" href="#0">communication &amp; security systems</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">terms and conditions</a>
+                  <a class="text-capitalize" href="#0">brands</a>
                 </li>
 
                 <li>
-                  <a class="text-capitalize" href="#0">Terms and conditions payment</a>
+                  <a class="text-capitalize" href="#0">offers</a>
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/fast-delivery.png')}}" alt="fast delivery">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/visa-logo.png')}}" alt="visa">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/mastercard.png')}}" alt="mastercard">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/cib.png')}}" alt="cib">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/alahly-bank.png')}}" alt="alahly-bank">
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-12 col-12">
+          <div class="copyRight text-center">
+            <p class="mb-0">Aghezty 2021©. All Rights Reserved.</p>
           </div>
         </div>
       </div>

@@ -2341,6 +2341,22 @@ body {
 .new_footer .categories_link li a {
   color: #777777;
 }
+.new_footer .important_link li a:focus, .new_footer .important_link li a:hover,
+.new_footer .categories_link li a:focus,
+.new_footer .categories_link li a:hover {
+  color: #000;
+}
+.new_footer .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+}
+.new_footer .grid-container .payment_method_img img {
+  width: 80%;
+}
+.new_footer .copyRight {
+  color: #777777;
+}
 
 /* Start Scroll Top */
 #return-to-top {
