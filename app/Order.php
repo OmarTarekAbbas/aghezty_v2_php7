@@ -24,6 +24,9 @@ class Order extends Model
         if($value == 3){
             $value = 'Finshed';
         }
+        if($value == 4){
+          $value = 'Not Available';
+      }
         return $value;
     }
 
