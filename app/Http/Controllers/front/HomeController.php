@@ -1003,6 +1003,14 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
+        if ($request->filled('most_solid')) {
+            $products = $products->whereHas("orders")->withCount(["orders" => function($query) {
+              $query->join('orders', 'orders.id', '=', 'order_details.order_id');
+              $query->where('orders.status','=', 3);
+            }])->orderBy("orders_count","desc");
+            // return $products->get();
+        }
+
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
@@ -1101,7 +1109,14 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
-        // dd($request->has('property_value_id'));
+        if ($request->filled('most_solid')) {
+          $products = $products->whereHas("orders")->withCount(["orders" => function($query) {
+            $query->join('orders', 'orders.id', '=', 'order_details.order_id');
+            $query->where('orders.status','=', 3);
+          }])->orderBy("orders_count","desc");
+          // return $products->get();
+      }
+
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);

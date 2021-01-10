@@ -61,4 +61,9 @@ class Client extends Authenticatable
         return $this->belongsTo(SocialFacebookAccount::class, 'id', 'user_id');
     }
 
+    public function wishList()
+    {
+        return $this->belongsToMany('App\Product','wish_lists','client_id','product_id');
+    }
+
 }

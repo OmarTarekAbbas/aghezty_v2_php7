@@ -6,6 +6,12 @@
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
+  .red{
+    color: red !important;
+  }
+  .hotpink{
+    color:hotpink;
+  }
 </style>
 
 <link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
@@ -186,6 +192,7 @@
           <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
           <input type="hidden" id="ifrom_in" name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
           <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
+          <input type="hidden" id="most_solid" name="most_solid" value="{{request()->filled('most_solid') ? request('most_solid') : ''}}">
         </form>
       </div>
       <!-- End Filter Search -->
@@ -378,7 +385,7 @@
           @endif
         </div>
         <!-- End Image Cover -->
-
+        @if(!request()->filled('most_solid'))
         <!-- Start Toolbar -->
         <div class="toolbar mt-3 p-2 border bg-white">
           <div class="sort-by mr-3 float-left">
@@ -403,6 +410,7 @@
           </strong>
         </div>
         <!-- End Toolbar -->
+        @endif
 
         <!-- start row product -->
         <div id="grid_two" class="row mt-3 content_view_mobile">
@@ -421,7 +429,10 @@
                 @endif
 
                 <h6 class="full_desc text-dark text-left text-capitalize">
-                  {{$product->getTranslation('title',getCode())}}</h6>
+                  {{$product->getTranslation('title',getCode())}}
+                </h6>
+
+
               </a>
 
               <div class="rating_list_product">
@@ -434,6 +445,14 @@
                   @endif
                   @endfor
               </div>
+
+              @if(\Auth::guard('client')->check())
+              <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
+                <span>
+                  <i class="fa fa-heart fa-2x hotpink {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->product_id }}"></i>
+                </span>
+              </div>
+            @endif
 
               <div class="price-description text-uppercase">Cash Price</div>
 
@@ -560,7 +579,7 @@
 
   }
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
-    // console.log("omartarek");
+    $('#most_solid').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
@@ -692,6 +711,16 @@
         });
       @endif
     })
+</script>
+
+<script>
+  $(document).on('click','.fa-heart',function(){
+    _this = $(this)
+    product_id = $(this).data('id')
+    $.get("{{ route('front.toggle.product.wishlist')}}?product_id="+product_id, function(){
+      _this.toggleClass("red")
+    })
+  })
 </script>
 
 <script>

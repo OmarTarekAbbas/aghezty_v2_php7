@@ -28,7 +28,7 @@ class ReportIpController extends Controller
       'order_details.product_id as product_id',
       'products.title as title',
       'products.main_image as main_image',
-      'orders.status as status',
+      'orders.status as status'
       )
           ->join('products', 'products.id', '=', 'order_details.product_id')
           ->join('orders', 'orders.id', '=', 'order_details.order_id')

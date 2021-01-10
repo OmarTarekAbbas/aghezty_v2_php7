@@ -34,6 +34,10 @@ return [
     'not_have_rate_yet' => 'Not Rate Yet',
     'create_from_excel' => 'Create From Excel',
     'request_product' => 'Unavailable Product',
+    'Send_Mail' => 'Send Mail To Client With Order Status',
+    'Under_Shipping' => 'Under Shipping',
+    'Finished' => 'Finished',
+    'Not_available' => 'Not Available',
     'roles' => [
         'edit-role' => 'Edit Role',
         'role-name' => 'Role name',

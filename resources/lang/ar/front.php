@@ -178,7 +178,12 @@ return [
           'property_valus' => 'قيم الخصائص'
       ]
     ],
-
+    'wishlist' => [
+      'wishlist' => 'قائمه الامنيات',
+      'add_to_cart' => 'أضف الى عربة التسوق',
+      'shoping_wish_list' => 'عربة الامنيات'
+    ],
+    'most_solid' => 'الاكثر مبيعا',
     'date' => 'التاريخ',
     'message' => 'الرسالة',
     'admin_reply' => 'المستخدم',
