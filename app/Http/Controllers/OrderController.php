@@ -121,8 +121,17 @@ class OrderController extends Controller
       }
     }
     $admin = \Auth::user();
+    $lang = session()->get('applocale');
     //dd($order->payment);
-    if($request->status == 4 && ($order->payment == 1 || $order->payment == 2)){ // 4 = not_available + cash or cash on delivary
+    if ($lang == "en") {
+     $Cash = "Cash"; //$order->payment == 1 en
+     $Visa_After_Deliver = "Visa After Deliver"; //$order->payment == 3 en
+    } else {
+      $Cash = "نقدا عند الاستلام"; //$order->payment == 1 ar
+      $Visa_After_Deliver = "Visa After Deliver"; //$order->payment == 3 ar
+    }
+
+    if($request->status == 4 && ($order->payment == $Cash || $order->payment == $Visa_After_Deliver)){ // 4 = not_available + cash or cash on delivary
       //dd("omar");
       Mail::send('front.mail_not_available', ['order' => $order, 'client' => $client, 'subject' => $request->message], function ($m) use ($client) {
         $m->from(setting('super_mail'), __('front.title'));
@@ -137,6 +146,7 @@ class OrderController extends Controller
         $m->to($client->email, $client->name)->subject(__('front.order'));
       });
     }
+
     $this->savedOrderReply($order, $request);
     \Session::flash('success', 'Email Is Send With Order Status');
     return back();
