@@ -51,7 +51,7 @@ class WishListController extends Controller
    *
    * @param Request $request
    *
-   * @return void
+   * @return Response
    */
   public function addWishlistProductToCart(Request $request)
   {
