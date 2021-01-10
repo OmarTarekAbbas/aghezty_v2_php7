@@ -1,6 +1,7 @@
 <?php
 return [
     'about_mev2' => 'Who We Are',
+    'newsletter' => 'Subscribe to our Newsletter',
     'terms_conv2' => 'Terms and Conditions',
     'continue' => 'Continue',
     'title' => 'Aghezty',

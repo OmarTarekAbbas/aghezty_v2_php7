@@ -1,6 +1,9 @@
 <?php
 return [
     'title' => 'ألرسائل النصيه',
+    'mail' => 'الايميل',
+    'newsletter' => 'النشرة الاخبارية',
+    'newsletter_send' => 'ارسال النشرة الاخبارية',
     'offer_link' => 'لينك الاوفر',
     'language' => 'english',
     'role' => 'الادوار',

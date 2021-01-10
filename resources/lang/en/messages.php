@@ -1,7 +1,9 @@
 <?php
 return [
     'title' => 'SMS',
-    'offer_link' => 'Offer Link',
+    'mail' => 'Mail',
+    'newsletter' => 'Newsletter',
+    'newsletter_send' => 'Send Newsletter',
     'language' => 'عربي',
     'role' => 'Role',
     'create-role' => 'Create Role',
