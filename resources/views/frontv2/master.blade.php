@@ -812,7 +812,7 @@
           </div>
 
           <div class="hotline mt-2 text-center">
-            <strong>للتواصل معنا</strong>
+            <strong class="text-capitalize">contact us</strong>
             <a class="d-block" href="tel:+201116828111" title="Phone number">
               <strong>+201116828111</strong>
             </a>
