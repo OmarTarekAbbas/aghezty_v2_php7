@@ -18,6 +18,11 @@ class WishListController extends Controller
   {
     $wishListProducts = auth()->guard('client')->user()->wishList;
     $selected_for_you = Product::where('selected_for_you', 1)->get();
+    if (count($selected_for_you) != 6) {
+      $limit = 6 - count($selected_for_you);
+      $selected_for_youR = Product::all()->random($limit);
+      $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+    }
     return view("frontv2.wishlist",compact("wishListProducts", "selected_for_you"));
   }
 
@@ -33,7 +38,7 @@ class WishListController extends Controller
   public function createOrdelete(Request $request)
   {
       if($request->filled('delete_all')) {
-        auth()->guard('client')->user()->wishList()->delete();
+        auth()->guard('client')->user()->wishList()->detach();
       } else {
         auth()->guard('client')->user()->wishList()->toggle($request->product_id);
       }
