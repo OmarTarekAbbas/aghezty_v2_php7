@@ -33,10 +33,11 @@ class NewsletterStoreService
     {
         //foreach newsletter send mail
         $message = $request->message;
-
         $mails = $this->NewsletterRepository->all();
 
-        SendEmail::dispatch($this->NewsletterRepository)->onConnection('sync');
+        $sendEmailJob = new SendEmail($this->NewsletterRepository);
+
+        dispatch($sendEmailJob);
 
         return redirect()->back()->with('success', 'Sent!');
     }
