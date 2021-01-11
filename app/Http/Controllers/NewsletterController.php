@@ -71,6 +71,7 @@ class NewsletterController extends Controller
     public function sendMessage(NewsletterSendRequest $request)
     {
         $this->newsletterStoreService->handle($request);
+        return redirect('newsletter/send')->with('success', 'Sent!');
     }
 
     /**

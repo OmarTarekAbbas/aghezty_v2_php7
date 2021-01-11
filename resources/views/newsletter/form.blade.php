@@ -20,6 +20,12 @@
           @csrf
           <div class="form-group" id="cktextarea">
             <div class="col-sm-9 col-lg-10 controls">
+              <input class="form-control col-md-12" name="subject" placeholder="Subject"/>
+            </div>
+          </div>
+
+          <div class="form-group" id="cktextarea">
+            <div class="col-sm-9 col-lg-10 controls">
               <textarea class="form-control col-md-12 ckeditor" name="message" rows="6"></textarea>
             </div>
           </div>

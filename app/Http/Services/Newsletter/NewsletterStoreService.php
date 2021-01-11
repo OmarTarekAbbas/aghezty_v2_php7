@@ -31,14 +31,11 @@ class NewsletterStoreService
     */
     public function handle($request)
     {
-        //foreach newsletter send mail
         $message = $request->message;
-        $mails = $this->NewsletterRepository->all();
+        $subject = $request->subject;
 
-        $sendEmailJob = new SendEmail($this->NewsletterRepository);
+        $sendEmailJob = new SendEmail($this->NewsletterRepository, $message, $subject);
 
         dispatch($sendEmailJob);
-
-        return redirect()->back()->with('success', 'Sent!');
     }
 }

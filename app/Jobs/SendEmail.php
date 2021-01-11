@@ -21,26 +21,38 @@ class SendEmail extends Job implements ShouldQueue
     private $NewsletterRepository;
 
     /**
+     * message
+     * @var message
+     */
+    private $message;
+
+    /**
+     * subject
+     * @var subject
+     */
+    private $subject;
+
+    /**
      * __construct
      * @param $NewsletterRepository
      */
     public function __construct(
-      NewsletterRepository $NewsletterRepository
+      NewsletterRepository $NewsletterRepository,
+      $message,
+      $subject
     ) {
         $this->NewsletterRepository = $NewsletterRepository;
+        $this->message = $message;
+        $this->subject = $subject;
     }
 
     public function handle(Mailer $mailer)
     {
-        $message = request()->message;
-
         $mails = $this->NewsletterRepository->all();
-
         foreach ($mails as $mail) {
-
-            $mailer->send('mails.newsletter', ['content' => $message], function ($m) use ($mail) {
-                $m->from(setting('super_mail'), "Newsletter");
-                $m->to($mail->mail, "Newsletter")->subject("Newsletter");
+            $mailer->send('mails.newsletter', ['content' => $this->message], function ($m) use ($mail) {
+                $m->from(setting('super_mail'), "Aghezty Newsletter");
+                $m->to($mail->mail, "Newsletter")->subject($this->subject);
             });
         }
     }
