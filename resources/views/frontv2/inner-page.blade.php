@@ -150,7 +150,7 @@
                             <h5 class="font-weight-bold d-inline-block">@lang('front.product'):</h6>
                                 <p class="d-inline-block px-1">{{$product->getTranslation('title',getCode())}}</p>
           </div> --}}
-          @if(\Auth::guard('client')->check())
+          @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
             <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
               <span>
                 <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
@@ -446,7 +446,7 @@
             </h6>
           </a>
 
-          @if(\Auth::guard('client')->check())
+          @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
               <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
                 <span>
                   <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
