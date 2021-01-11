@@ -792,6 +792,8 @@
                                 <div>@lang('front.newsletter')</div>
                                 @if (session('success'))
                                 <div class="alert alert-success">{{session('success')}}</div>
+                                @elseif (session('fail'))
+                                <div class="alert alert-danger">{{session('fail')}}</div>
                                 @endif
                                 <form class="m-2" action="{{url('newsletter/store')}}" method="POST">
                                   @csrf

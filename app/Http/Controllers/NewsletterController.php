@@ -57,9 +57,14 @@ class NewsletterController extends Controller
      */
     public function store(NewsletterStoreRequest $request)
     {
-        $newsletter['mail'] = $request->mail;
-        $this->newsletterRepository->firstOrCreate($newsletter);
-        return redirect()->back()->with('success', 'Thank you for subscribe');
+        $exists = $this->newsletterRepository->where('mail', $request->mail)->count();
+        if($exists){
+          return redirect()->back()->with('fail', 'Already subscribed!');
+        }else{
+          $newsletter['mail'] = $request->mail;
+          $this->newsletterRepository->firstOrCreate($newsletter);
+          return redirect()->back()->with('success', 'Thank you for subscribe!');
+        }
     }
 
     /**
