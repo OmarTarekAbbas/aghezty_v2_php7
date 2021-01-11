@@ -12,9 +12,11 @@
                         <div class="col-md-6">
                             <h2>@lang('messages.order_details')</h2>
                         </div>
+
                         <div class="col-md-6 invoice-info">
                             <p class="font-size-17"><strong>@lang('messages.order_number')</strong> #{{$order->id}}</p>
                             <p>{{$order->created_at->format('d M Y')}}</p>
+                            <p style="font-weight: bold;">{{$order->status}}</p>
                         </div>
                     </div>
 
@@ -177,13 +179,7 @@
                       <td> {{  $order->client->name }} </td>
                       <td> {{  $order->client->email }} </td>
                       <td> {{  $replay->admin->name }} </td>
-                      <td>
-                      @if($replay->status == 4)
-                      Not Available
-                      @else
-                      {{  $replay->status }}
-                      @endif
-                      </td>
+                      <td>{{  $replay->status }}</td>
                       <td> {{  $replay->message }} </td>
                       <td> {{  $replay->created_at }} </td>
                   </tr>

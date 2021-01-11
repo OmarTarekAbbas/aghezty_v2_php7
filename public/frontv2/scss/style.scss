@@ -2945,6 +2945,8 @@ body {
       color: $white_color;
       border-bottom-left-radius: 500px;
       border-top-left-radius: 500px;
+      position: absolute;
+      margin-left: 17%;
 
       &:hover,
       &:focus {
@@ -2960,7 +2962,7 @@ body {
       border-bottom-right-radius: 500px;
       border-top-right-radius: 500px;
       width: 50%;
-      margin-left: 8%;
+      margin-left: 25%;
       position: absolute;
 
       &:hover,
@@ -7529,14 +7531,15 @@ body {
 
 
 @media (max-width: 900px) and (min-width: 360px){
-  
+
   .newsletter {
     margin-left: 18%;
 
     .btn_subscribe {
-      margin-left: -80% !important;
+      margin-left: -49% !important;
       width: unset !important;
       z-index: unset !important;
+      position: unset !important;
     }
 
     .input_subscribe {
@@ -7551,9 +7554,11 @@ body {
     margin-left: 18%;
 
     .btn_subscribe {
-      margin-left: -80% !important;
+      margin-left: -62% !important;
       width: unset !important;
       z-index: unset !important;
+      position: unset !important;
+
     }
 
     .input_subscribe {

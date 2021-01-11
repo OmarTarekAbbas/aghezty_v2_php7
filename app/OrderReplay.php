@@ -19,6 +19,9 @@ class OrderReplay extends Model
       if($value == 3){
           $value = 'Finshed';
       }
+      if($value == 4){
+        $value = __('messages.Not_available');
+    }
       return $value;
     }
     public function order()

@@ -2215,6 +2215,8 @@ body {
   color: #FFF;
   border-bottom-left-radius: 500px;
   border-top-left-radius: 500px;
+  position: absolute;
+  margin-left: 17%;
 }
 .new_footer .newsletter .btn_subscribe:hover, .new_footer .newsletter .btn_subscribe:focus {
   border-color: #fff;
@@ -2226,7 +2228,7 @@ body {
   border-bottom-right-radius: 500px;
   border-top-right-radius: 500px;
   width: 50%;
-  margin-left: 8%;
+  margin-left: 25%;
   position: absolute;
 }
 .new_footer .newsletter .input_subscribe:hover, .new_footer .newsletter .input_subscribe:focus {
@@ -5210,9 +5212,10 @@ body {
     margin-left: 18%;
   }
   .newsletter .btn_subscribe {
-    margin-left: -80% !important;
+    margin-left: -49% !important;
     width: unset !important;
     z-index: unset !important;
+    position: unset !important;
   }
   .newsletter .input_subscribe {
     width: 100% !important;
@@ -5223,9 +5226,10 @@ body {
     margin-left: 18%;
   }
   .newsletter .btn_subscribe {
-    margin-left: -80% !important;
+    margin-left: -62% !important;
     width: unset !important;
     z-index: unset !important;
+    position: unset !important;
   }
   .newsletter .input_subscribe {
     width: 100% !important;

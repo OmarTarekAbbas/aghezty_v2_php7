@@ -189,6 +189,8 @@ return [
     'most_solid' => 'Most Solid',
     'subscribe' => 'Subscribe',
     'Email_Address' => 'Email Address',
+    'message' => 'Message',
+    'date' => 'Date',
     'aghezty_info' => "The company 'Aghezty' works in the field of online sale of all electrical and electronic devices, air conditioners, mobile devices, intercoms, alarms and monitoring devices, and provides high-quality products with advanced technology that meet the desires and expectations of the consumer.",
     'admin_reply' => 'User'
 ];
