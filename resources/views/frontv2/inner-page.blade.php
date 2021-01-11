@@ -150,7 +150,13 @@
                             <h5 class="font-weight-bold d-inline-block">@lang('front.product'):</h6>
                                 <p class="d-inline-block px-1">{{$product->getTranslation('title',getCode())}}</p>
           </div> --}}
-
+          @if(\Auth::guard('client')->check())
+            <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
+              <span>
+                <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
+              </span>
+            </div>
+          @endif
           <div>
             <h6 class="font-weight-bold d-inline-block">@lang('front.inner.avialable'):</h6>
             <p class="d-inline-block px-1">
@@ -439,6 +445,14 @@
               {{$item->getTranslation('title',getCode())}}
             </h6>
           </a>
+
+          @if(\Auth::guard('client')->check())
+              <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
+                <span>
+                  <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+                </span>
+              </div>
+            @endif
 
           <div class="rating_list_product">
             @for ($i = 1; $i <= 5; $i++) @if(round($item->rate() - .25) >= $i)
