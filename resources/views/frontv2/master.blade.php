@@ -813,7 +813,18 @@
           <div class="logo_foot">
             <img class="aghezty_logo" src="{{url('public/frontv2/images/new_footer/logo.png')}}" alt="Aghezty">
 
-            <p class="mb-0 text-center">@lang("front.aghezty_info")</p>
+
+            @if (\Session::get('applocale') == 'ar')
+            <p class="mb-0 text-center">
+            {{setting('company_info_ar')}}
+            </p>
+            @else
+            <p class="mb-0 text-center">
+            {{setting('company_info_en')}}
+            </p>
+            @endif
+
+            
           </div>
 
           <div class="hotline mt-2 text-center">

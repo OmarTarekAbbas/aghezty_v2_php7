@@ -7528,6 +7528,41 @@ body {
 }
 
 
+@media (max-width: 900px) and (min-width: 360px){
+  
+  .newsletter {
+    margin-left: 18%;
+
+    .btn_subscribe {
+      margin-left: -80% !important;
+      width: unset !important;
+      z-index: unset !important;
+    }
+
+    .input_subscribe {
+      width: 100% !important;
+    }
+  }
+}
+
+@media (max-width: 359.9px) and (min-width: 320px)
+{
+  .newsletter {
+    margin-left: 18%;
+
+    .btn_subscribe {
+      margin-left: -80% !important;
+      width: unset !important;
+      z-index: unset !important;
+    }
+
+    .input_subscribe {
+      width: 100% !important;
+    }
+  }
+}
+
+
 /* End Animation For Flash Alert */
 
 
