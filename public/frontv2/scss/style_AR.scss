@@ -3163,7 +3163,7 @@ body {
 
 .new_footer {
   background-color: #dddddd;
-  padding: 10px 18px;
+  padding: 35px 20px;
 
   .container-fluid {
     padding-right: 50px !important;
@@ -3172,6 +3172,7 @@ body {
 
   .newsletter {
     direction: ltr;
+
     .btn_subscribe {
       background: #0057a7;
       color: $white_color;
@@ -3346,6 +3347,7 @@ body {
   .categories_link {
     text-align: right;
     padding: 0;
+
     li {
       a {
         color: #777777;
@@ -3371,6 +3373,7 @@ body {
   }
 
   .copyRight {
+    direction: ltr;
     color: #777777;
   }
 }
