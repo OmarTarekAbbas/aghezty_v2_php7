@@ -61,7 +61,7 @@ class WishListController extends Controller
   public function addWishlistProductToCart(Request $request)
   {
     auth()->guard('client')->user()->wishList()->toggle($request->product_id);
-    $price = product($request->product_id)->price_after_discount > 0 ? product($request->product_id)->price_after_discount : number_format((int)product($request->product_id)->price);
+    $price = product($request->product_id)->price_after_discount > 0 ? product($request->product_id)->price_after_discount : product($request->product_id)->price;
     $cart = Cart::create([
       'product_id' => $request->product_id,
       'client_id'  => auth()->guard('client')->id(),
