@@ -6,12 +6,6 @@
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
-  .red{
-    color: red !important;
-  }
-  .hotpink{
-    color:hotpink;
-  }
 </style>
 
 <link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
@@ -72,7 +66,7 @@
 
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                <input id="panel_category_{{$category->id}}" class="mb-2 price sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -83,7 +77,7 @@
 
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
-                  <input  id="panel_category_{{$category->id}}" class="mb-2 price sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                  <input  id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -446,10 +440,10 @@
                   @endfor
               </div>
 
-              @if(\Auth::guard('client')->check())
+              @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
               <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
                 <span>
-                  <i class="fa fa-heart fa-2x hotpink {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->product_id }}"></i>
+                  <i class="fa fa-heart fa-2x grey {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->product_id }}"></i>
                 </span>
               </div>
             @endif
@@ -711,16 +705,6 @@
         });
       @endif
     })
-</script>
-
-<script>
-  $(document).on('click','.fa-heart',function(){
-    _this = $(this)
-    product_id = $(this).data('id')
-    $.get("{{ route('front.toggle.product.wishlist')}}?product_id="+product_id, function(){
-      _this.toggleClass("red")
-    })
-  })
 </script>
 
 <script>

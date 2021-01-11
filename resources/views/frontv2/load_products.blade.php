@@ -2,7 +2,7 @@
 
 <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
   <div class="content_view hvr-bob px-2 bg-white rounded">
-    <a href="#">
+    <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
       <img class="lazy text-center d-block" src="{{$product->main_image}}" alt="Product">
       @if($product->discount)
         <div class="product-label text-center font-weight-bold">
@@ -25,10 +25,10 @@
         @endfor
     </div>
 
-    @if(\Auth::guard('client')->check())
+    @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
         <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
           <span>
-            <i class="fa fa-heart fa-2x hotpink {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-productId="{{ $product->product_id }}"></i>
+            <i class="fa fa-heart fa-2x grey {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->product_id }}"></i>
           </span>
         </div>
       @endif

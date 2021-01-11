@@ -36,6 +36,12 @@
   .footer_footer {
     font-weight: bold;
   }
+  .red{
+    color: red !important;
+  }
+  .grey{
+    color:grey;
+  }
 </style>
 @yield('style')
 
@@ -164,6 +170,9 @@
               <a class="dropdown-item" href="{{route('front.home.password')}}">@lang('front.auth.password')</a>
               @endif
               <a class="dropdown-item" href="{{route('front.home.order')}}">@lang('front.order')</a>
+              @if(setting("wish_list_flag") && setting("wish_list_flag") != '')
+              <a class="dropdown-item" href="{{route('front.home.wishlist')}}">@lang('front.wishlist.wishlist')</a>
+              @endif
               <a class="dropdown-item" href="{{route('front.home.logout')}}">@lang('front.sign_out')</a>
             </span>
           </span>
@@ -460,6 +469,12 @@
                         href="{{route('front.home.order')}}"><i class="fas fa-caret-right pl-1 pr-2"></i>
                         @lang('front.order')</a>
                     </li>
+                    @if(setting("wish_list_flag") && setting("wish_list_flag") != '')
+                    <li>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.wishlist')}}"><i class="fas fa-caret-right pl-1 pr-2"></i>
+                        @lang('front.wishlist.wishlist')</a>
+                    </li>
+                    @endif
 
                   </ul>
                 </div>
@@ -562,7 +577,7 @@
 
   @yield('content')
 
-  <footer class="footer_footer">
+  {{-- <footer class="footer_footer">
     <div class="footer_content">
       <div class="container-fluid">
         <div class="row">
@@ -703,9 +718,8 @@
                               title="Maintenance">@lang('front.visa_terms')</a>
                           </li>
                           <li>
-                            <a class="text-capitalize hvr-icon-forward"
-                              href="{{url('clients/productsv2?most_solid=most_solid')}}"
-                              title="Most Solid">{{ trans('front.most_solid') }}</a>
+                            <a class="text-capitalize hvr-icon-forward" href="{{url('clients/productsv2?most_solid=most_solid')}}"
+                              title="Most Solid">@lang('front.most_solid')</a>
                           </li>
                         </ul>
                       </div>
@@ -837,6 +851,188 @@
     <a class="rounded" href="javascript:" id="return-to-top">
       <i class="fas fa-chevron-up"></i>
     </a>
+  </footer> --}}
+
+  <footer class="new_footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-lg-8 col-xl-8 col-12">
+
+          @if (session('success'))
+          <div class="alert alert-success">{{session('success')}}</div>
+          @elseif (session('fail'))
+          <div class="alert alert-danger">{{session('fail')}}</div>
+          @endif
+
+          <form class="newsletter" action="{{url('newsletter/store')}}" method="POST">
+            @csrf
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn_subscribe btn text-capitalize" type="submit">@lang('front.subscribe')</button>
+              </div>
+              <input type="text" class="input_subscribe form-control" name="mail" placeholder="@lang('front.Email_Address')" >
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <ul class="social_media list-unstyled">
+            <li>
+              <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">
+                <i class="fab fa-facebook-f facebook_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button whatsapp_link" title="Whatsapp" href="whatsapp://send?phone={{setting('phone')}}">
+                <i class="fab fa-whatsapp whatsapp_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button instagram_link" title="Instagram" href="{{setting('instagram')}}">
+                <i class="fab fa-instagram instagram_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button phone_link" title="Phone Number" href="tel:{{setting('phone')}}">
+                <i class="fas fa-phone phone_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button sms_link" title="Messege" href="sms:{{setting('sms')}}">
+                <i class="far fa-comment sms_icon"></i>
+              </a>
+            </li>
+
+            <li>
+              <a class="social-button mail_link" title="Email" href="{{setting('mail')}}">
+                <i class="fas fa-envelope mail_icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <div class="logo_foot">
+            <img class="aghezty_logo" src="{{url('public/frontv2/images/new_footer/logo.png')}}" alt="Aghezty">
+
+
+            @if (\Session::get('applocale') == 'ar')
+            <p class="mb-0 text-center">
+            {{setting('company_info_ar')}}
+            </p>
+            @else
+            <p class="mb-0 text-center">
+            {{setting('company_info_en')}}
+            </p>
+            @endif
+
+
+          </div>
+
+          <div class="hotline mt-2 text-center">
+            <strong class="text-capitalize">@lang('front.contact')</strong>
+            <a class="d-block" href="tel:+{{setting('phone')}}" title="Phone number">
+              <strong>{{setting('phone')}}</strong>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <h6 class="text_foot text-capitalize font-weight-bold">@lang('front.important_links')</h6>
+
+          <ul class="important_link list-unstyled">
+            <li>
+              <a class="text-capitalize" href="{{url('clients/contactv2')}}">@lang('front.contact')</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="{{url('clients/service_centerv2')}}">@lang('front.service_center')</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="{{url('clients/about_mev2')}}">@lang('front.about_mev2')</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="{{url('clients/terms_conv2')}}">@lang('front.terms_conv2')</a>
+            </li>
+
+            <li>
+              <a class="text-capitalize" href="{{url('clients/visa_terms')}}">@lang('front.visa_terms')</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+          <h6 class="text_foot text-capitalize font-weight-bold">@lang('front.shop_by_category')</h6>
+
+          <div class="row mb-0">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <ul class="categories_link list-unstyled">
+                @foreach ($categorys->slice(0,6) as $category)
+                  @if($category->sub_cats->count())
+                    <li>
+                      <a class="text-capitalize" href="{{url('clients/productsv2?category_id='.$category->id)}} ">{{ $category->getTranslation("title",getCode()) }} </a>
+                    </li>
+                  @endif
+                @endforeach
+              </ul>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+              <ul class="categories_link list-unstyled">
+              @foreach ($categorys->slice(6) as $category)
+                  @if($category->sub_cats->count())
+                    <li>
+                      <a class="text-capitalize" href=" {{url('clients/productsv2?category_id='.$category->id)}} ">{{ $category->getTranslation("title",getCode()) }} </a>
+                    </li>
+                  @endif
+                @endforeach
+                <li>
+                  <a class="text-capitalize" href="{{url('clients/productsv2?most_solid=most_solid')}}">@lang('front.most_solid')</a>
+                </li>
+
+                <li>
+                  <a class="text-capitalize" href="{{url('clients/productsv2?offer=offer')}}">@lang('front.offer')</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/fast-delivery.png')}}" alt="fast delivery">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/visa-logo.png')}}" alt="visa">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/mastercard.png')}}" alt="mastercard">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/cib.png')}}" alt="cib">
+          </div>
+
+          <div class="payment_method_img">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/new_footer/alahly-bank.png')}}" alt="alahly-bank">
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-12 col-12">
+          <div class="copyRight text-center">
+            <p class="mb-0">Aghezty {{ date("Y") }}©. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <!-- script -->
@@ -859,40 +1055,15 @@
   <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
   <script src="{{url('public/frontv2/js/script.js')}}"></script>
   <script src="{{url('js/vue.min.js')}}"></script>
-  @foreach ($categorys as $category)
-  @if($category->sub_cats->count() > 0)
-  <!-- <script>
-
-    $(document).ready(function() {
-
-      var heavy_machines_title_typed = new Typed(".type_anime{{$category->id}}", {
-        strings: [$('.type_anime{{$category->id}}').parent().parent().parent().siblings('a').html()],
-        typeSpeed: 150,
-        backSpeed: 0,
-        fadeOut: true,
-        smartBackspace: true, // this is a default
-        loop: true
-      });
-
-
-      var shop_title1_typed = new Typed('#shop_title{{$category->id}}_typed', {
-        strings: ['@lang("front.shop_by_price")'],
-        typeSpeed: 150,
-        backSpeed: 0,
-        fadeOut: true,
-        smartBackspace: true, // this is a default
-        loop: true
-      });
-
-
-
-    });
-  </script> -->
-
-  @endif
-  @endforeach
-
-
+  <script>
+    $(document).on('click','.fa-heart',function(){
+      $(this).toggleClass("red")
+      var product_id = $(this).data('id')
+      $.get("{{ route('front.toggle.product.wishlist')}}?product_id="+product_id, function(){
+        product_id = ''
+      })
+    })
+  </script>
   <script>
     $.ajaxSetup({
       headers: {

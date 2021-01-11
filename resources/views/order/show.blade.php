@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-6 company-info">
                             <div class="alert alert-info">
-                                <h4 class="text-center">Send Mail To Client With Order Status
+                                <h4 class="text-center">@lang('messages.Send_Mail')
                                     <span><strong>{{ ($order->lang == 'ar') ? 'In Arabic' : 'In English'}}</strong></span>
                                 </h4><br>
                                 @if($order->status !="Finshed")
@@ -39,16 +39,22 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="order_id" value="{{$order->id}}">
                                         <input type="hidden" name="client_id" value="{{$order->client_id}}">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="">Under Shipping</label>
+                                                <label for="">@lang('messages.Under_Shipping')</label>
                                                 <input type="radio" name="status" value="2" id="under_shipping">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="">Finished</label>
+                                                <label for="">@lang('messages.Finished')</label>
                                                 <input type="radio" name="status" value="3" id="finished">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">@lang('messages.Not_available')</label>
+                                                <input type="radio" name="status" value="4" id="not_available">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -57,7 +63,7 @@
                                                 cols="70" rows="9" class="form-control" required
                                                 placeholder="{{ ($order->lang == 'ar') ? ' الرساله' : 'Your Message'}}"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                                        <button type="submit" class="btn btn-primary btn-lg">@lang('messages.send')</button>
                                     </form>
                                 </div>
                                 @else
@@ -171,7 +177,13 @@
                       <td> {{  $order->client->name }} </td>
                       <td> {{  $order->client->email }} </td>
                       <td> {{  $replay->admin->name }} </td>
-                      <td> {{  $replay->status }} </td>
+                      <td>
+                      @if($replay->status == 4)
+                      Not Available
+                      @else
+                      {{  $replay->status }}
+                      @endif
+                      </td>
                       <td> {{  $replay->message }} </td>
                       <td> {{  $replay->created_at }} </td>
                   </tr>
