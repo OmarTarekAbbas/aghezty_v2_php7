@@ -857,20 +857,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8 col-lg-8 col-xl-8 col-12">
-
-          @if (session('success'))
-          <div class="alert alert-success">{{session('success')}}</div>
-          @elseif (session('fail'))
-          <div class="alert alert-danger">{{session('fail')}}</div>
-          @endif
-
-          <form class="newsletter" action="{{url('newsletter/store')}}" method="POST">
+          <div id="flash-msg"></div>
+          <form class="newsletter">
             @csrf
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <button class="btn_subscribe btn text-capitalize" type="submit">@lang('front.subscribe')</button>
+                <a class="btn_subscribe btn text-capitalize">@lang('front.subscribe')</a>
               </div>
-              <input type="text" class="input_subscribe form-control" name="mail" placeholder="@lang('front.Email_Address')" >
+              <input id="mail" type="text" class="input_subscribe form-control" name="mail" placeholder="@lang('front.Email_Address')" >
             </div>
           </form>
         </div>
@@ -1112,6 +1106,43 @@
     })
   </script>
 
+  <script>
+    $('.btn_subscribe').click(function (e) {
+      e.preventDefault();
+      var mail = $('#mail').val();
+      var lang = "{{session()->get('applocale')}}";
+
+      if(mail){
+        $.ajax({
+          type: "POST",
+          url: "{{url('newsletter/store')}}",
+          data: {'mail' : mail},
+          success: function (response) {
+            if(response == 'success'){
+              if(lang == 'ar')
+              $('#flash-msg').html("<div class='alert alert-success text-right'>!شكرا للاشتراك</div>");
+              else{
+              $('#flash-msg').html("<div class='alert alert-success'>Thank you for subscribe!</div>");
+              }
+            }
+            if(response == 'fail'){
+              if(lang == 'ar'){
+              $('#flash-msg').html("<div class='alert alert-danger text-right'>!انت مشترك بالفعل</div>");
+              }else{
+              $('#flash-msg').html("<div class='alert alert-danger'>Already subscribed!</div>");
+              }
+            }
+          }
+        });
+      }else{
+        if(lang == 'ar'){
+        $('#flash-msg').html("<div class='alert alert-danger text-right'>!برجاء ادخال بريد الكتروني</div>");
+        }else{
+        $('#flash-msg').html("<div class='alert alert-danger'>Please enter valid mail!</div>");
+        }
+      }
+    });
+  </script>
   <!--Start of Tawk.to Script-->
   {{--  <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
