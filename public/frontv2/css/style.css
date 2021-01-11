@@ -2225,11 +2225,14 @@ body {
   color: #777777;
   border-bottom-right-radius: 500px;
   border-top-right-radius: 500px;
+  width: 50%;
+  margin-left: 8%;
+  position: absolute;
 }
 .new_footer .newsletter .input_subscribe:hover, .new_footer .newsletter .input_subscribe:focus {
   border-color: #fff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #0057a7;
+  box-shadow: 0 0 0 0rem #0057a7;
 }
 .new_footer .social_media {
   text-align: center;
@@ -5200,6 +5203,32 @@ body {
     transform: translateY(0);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
+  }
+}
+@media (max-width: 900px) and (min-width: 360px) {
+  .newsletter {
+    margin-left: 18%;
+  }
+  .newsletter .btn_subscribe {
+    margin-left: -80% !important;
+    width: unset !important;
+    z-index: unset !important;
+  }
+  .newsletter .input_subscribe {
+    width: 100% !important;
+  }
+}
+@media (max-width: 359.9px) and (min-width: 320px) {
+  .newsletter {
+    margin-left: 18%;
+  }
+  .newsletter .btn_subscribe {
+    margin-left: -80% !important;
+    width: unset !important;
+    z-index: unset !important;
+  }
+  .newsletter .input_subscribe {
+    width: 100% !important;
   }
 }
 /* End Animation For Flash Alert */

@@ -2416,12 +2416,17 @@ body {
 }
 .new_footer .newsletter {
   direction: ltr;
+  margin-left: 18%;
 }
 .new_footer .newsletter .btn_subscribe {
   background: #0057a7;
   color: #FFF;
   border-bottom-left-radius: 500px;
   border-top-left-radius: 500px;
+  position: absolute;
+  margin-left: -5%;
+  width: 13%;
+  z-index: 99;
 }
 .new_footer .newsletter .btn_subscribe:hover, .new_footer .newsletter .btn_subscribe:focus {
   border-color: #fff;
@@ -2433,11 +2438,13 @@ body {
   border-bottom-right-radius: 500px;
   border-top-right-radius: 500px;
   text-align: right;
+  width: 66%;
+  position: absolute;
 }
 .new_footer .newsletter .input_subscribe:hover, .new_footer .newsletter .input_subscribe:focus {
   border-color: #fff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #0057a7;
+  box-shadow: 0 0 0 0rem #0057a7;
 }
 .new_footer .social_media {
   text-align: center;
@@ -2566,6 +2573,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin: 0 auto;
+  direction: ltr;
 }
 .new_footer .grid-container .payment_method_img img {
   width: 80%;
@@ -5445,6 +5453,36 @@ body {
     transform: translateY(0);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
+  }
+}
+@media (max-width: 900px) and (min-width: 360px) {
+  .newsletter {
+    direction: ltr;
+    margin-left: 18%;
+  }
+  .newsletter .btn_subscribe {
+    margin-left: -29% !important;
+    width: unset !important;
+    z-index: unset !important;
+  }
+  .newsletter .input_subscribe {
+    width: 66%;
+    position: unset !important;
+  }
+}
+@media (max-width: 359.9px) and (min-width: 320px) {
+  .newsletter {
+    direction: ltr;
+    margin-left: 18%;
+  }
+  .newsletter .btn_subscribe {
+    margin-left: -42% !important;
+    width: unset !important;
+    z-index: unset !important;
+  }
+  .newsletter .input_subscribe {
+    width: 66%;
+    position: unset !important;
   }
 }
 /* End Animation For Flash Alert */
