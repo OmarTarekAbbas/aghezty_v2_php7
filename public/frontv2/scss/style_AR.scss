@@ -3172,13 +3172,17 @@ body {
 
   .newsletter {
     direction: ltr;
+    margin-left: 18%;
 
     .btn_subscribe {
       background: #0057a7;
       color: $white_color;
       border-bottom-left-radius: 500px;
       border-top-left-radius: 500px;
-
+      position: absolute;
+      margin-left: -5%;
+      width: 13%;
+      z-index: 99;
       &:hover,
       &:focus {
 
@@ -3193,12 +3197,14 @@ body {
       border-bottom-right-radius: 500px;
       border-top-right-radius: 500px;
       text-align: right;
+      width: 66%;
+      position: absolute;
 
       &:hover,
       &:focus {
         border-color: #fff;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem #0057a7;
+        box-shadow: 0 0 0 0.0rem #0057a7;
       }
     }
   }
@@ -3364,6 +3370,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: 0 auto;
+    direction: ltr;
 
     .payment_method_img {
       img {

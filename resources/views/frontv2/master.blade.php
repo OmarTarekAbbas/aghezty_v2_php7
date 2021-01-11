@@ -756,10 +756,9 @@
           <form class="newsletter" action="#0">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <button class="btn_subscribe btn text-capitalize" type="button">subscribe</button>
+                <button class="btn_subscribe btn text-capitalize" type="button">@lang('front.subscribe')</button>
               </div>
-
-              <input type="text" class="input_subscribe form-control" placeholder="Email Address" aria-describedby="basic-addon1">
+              <input type="text" class="input_subscribe form-control" placeholder="@lang('front.Email_Address')" >
             </div>
           </form>
         </div>
@@ -779,7 +778,7 @@
             </li>
 
             <li>
-              <a class="social-button instagram_link" title="Instagram" href="#0">
+              <a class="social-button instagram_link" title="Instagram" href="{{setting('instagram')}}">
                 <i class="fab fa-instagram instagram_icon"></i>
               </a>
             </li>
@@ -871,7 +870,7 @@
                   @endif
                 @endforeach
                 <li>
-                  <a class="text-capitalize" href="{{url('clients/productsv2')}}">@lang('front.brands')</a>
+                  <a class="text-capitalize" href="{{url('clients/productsv2?most_solid=most_solid')}}">@lang('front.most_solid')</a>
                 </li>
 
                 <li>

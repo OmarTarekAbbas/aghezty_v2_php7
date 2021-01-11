@@ -2959,12 +2959,15 @@ body {
       color: #777777;
       border-bottom-right-radius: 500px;
       border-top-right-radius: 500px;
+      width: 50%;
+      margin-left: 8%;
+      position: absolute;
 
       &:hover,
       &:focus {
         border-color: #fff;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem #0057a7;
+        box-shadow: 0 0 0 0.0rem #0057a7;
       }
     }
   }
