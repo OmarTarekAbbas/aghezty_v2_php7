@@ -177,7 +177,13 @@
                       <td> {{  $order->client->name }} </td>
                       <td> {{  $order->client->email }} </td>
                       <td> {{  $replay->admin->name }} </td>
-                      <td> {{  $replay->status }} </td>
+                      <td>
+                      @if($replay->status == 4)
+                      Not Available
+                      @else
+                      {{  $replay->status }}
+                      @endif
+                      </td>
                       <td> {{  $replay->message }} </td>
                       <td> {{  $replay->created_at }} </td>
                   </tr>
