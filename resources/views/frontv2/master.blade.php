@@ -36,6 +36,12 @@
   .footer_footer {
     font-weight: bold;
   }
+  .red{
+    color: red !important;
+  }
+  .grey{
+    color:grey;
+  }
 </style>
 @yield('style')
 
@@ -871,7 +877,7 @@
                   @endif
                 @endforeach
                 <li>
-                  <a class="text-capitalize" href="{{url('clients/productsv2')}}">@lang('front.brands')</a>
+                  <a class="text-capitalize" href="{{url('clients/productsv2?most_solid=most_solid')}}">@lang('front.most_solid')</a>
                 </li>
 
                 <li>
@@ -932,6 +938,15 @@
   <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
   <script src="{{url('public/frontv2/js/script.js')}}"></script>
   <script src="{{url('js/vue.min.js')}}"></script>
+  <script>
+    $(document).on('click','.fa-heart',function(){
+      _this = $(this)
+      product_id = $(this).data('id')
+      $.get("{{ route('front.toggle.product.wishlist')}}?product_id="+product_id, function(){
+        _this.toggleClass("red")
+      })
+    })
+  </script>
   <script>
 
     $.ajaxSetup({

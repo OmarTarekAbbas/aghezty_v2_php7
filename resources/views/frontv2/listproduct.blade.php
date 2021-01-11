@@ -6,12 +6,6 @@
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
-  .red{
-    color: red !important;
-  }
-  .hotpink{
-    color:hotpink;
-  }
 </style>
 
 <link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
@@ -449,7 +443,7 @@
               @if(\Auth::guard('client')->check())
               <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
                 <span>
-                  <i class="fa fa-heart fa-2x hotpink {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->product_id }}"></i>
+                  <i class="fa fa-heart fa-2x grey {{ in_array($product->product_id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->product_id }}"></i>
                 </span>
               </div>
             @endif
@@ -711,16 +705,6 @@
         });
       @endif
     })
-</script>
-
-<script>
-  $(document).on('click','.fa-heart',function(){
-    _this = $(this)
-    product_id = $(this).data('id')
-    $.get("{{ route('front.toggle.product.wishlist')}}?product_id="+product_id, function(){
-      _this.toggleClass("red")
-    })
-  })
 </script>
 
 <script>
