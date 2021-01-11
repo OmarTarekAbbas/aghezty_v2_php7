@@ -828,7 +828,7 @@
             </p>
             @endif
 
-            
+
           </div>
 
           <div class="hotline mt-2 text-center">
@@ -954,10 +954,10 @@
   <script src="{{url('js/vue.min.js')}}"></script>
   <script>
     $(document).on('click','.fa-heart',function(){
-      _this = $(this)
-      product_id = $(this).data('id')
+      $(this).toggleClass("red")
+      var product_id = $(this).data('id')
       $.get("{{ route('front.toggle.product.wishlist')}}?product_id="+product_id, function(){
-        _this.toggleClass("red")
+        product_id = ''
       })
     })
   </script>

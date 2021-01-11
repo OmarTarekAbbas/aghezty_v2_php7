@@ -45,7 +45,7 @@
                 @foreach ($wishListProducts as $wishlist)
                 <tr>
                   <th class="th_th h6" scope="row">
-                    <a class="item-delete btn btn-sm text-primary" href="{{route('front.toggle.product.wishlist',['product_id' => $wishlist->pivot->product_id])}}">
+                    <a class="btn btn-sm text-primary" href="{{route('front.toggle.product.wishlist',['product_id' => $wishlist->pivot->product_id])}}">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
