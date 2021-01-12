@@ -59,11 +59,13 @@ class NewsletterController extends Controller
     {
         $exists = $this->newsletterRepository->where('mail', $request->mail)->count();
         if($exists){
-          return redirect()->back()->with('fail', 'Already subscribed!');
+          session()->flash('fail', 'Already subscribed!');
+          return 'fail';
         }else{
           $newsletter['mail'] = $request->mail;
-          $this->newsletterRepository->firstOrCreate($newsletter);
-          return redirect()->back()->with('success', 'Thank you for subscribe!');
+          $this->newsletterRepository->create($newsletter);
+          session()->flash('success', 'Thank you for subscribe!');
+          return 'success';
         }
     }
 
