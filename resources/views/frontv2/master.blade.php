@@ -124,7 +124,7 @@
 
       <div class="col-md-6 col-lg-4 col-xl-7">
         <form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
-          <input type="text" id="search-bar" name="search" placeholder="@lang('messages.search')">
+          <input type="text" id="search-bar" autocomplete="true" value="{{ request()->get('search') }}" name="search" placeholder="@lang('messages.search')">
           <a onclick="document.getElementById('form_search').submit()" href="#">
             <div class="search_background">
               <i class="search-icon fas fa-search fa-2x"></i>
