@@ -166,6 +166,7 @@ Route::get('/facebook_callback', 'SocialAuthFacebookController@callback');
 
 /**newsletter routes */
 Route::get('newsletter', 'NewsletterController@index');
+Route::get('newsletter/testmail', 'NewsletterController@testmail');
 Route::get('newsletter/send', 'NewsletterController@send');
 Route::post('newsletter/store', 'NewsletterController@store');
 Route::post('newsletter/send_message', 'NewsletterController@sendMessage');
