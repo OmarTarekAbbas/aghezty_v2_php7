@@ -540,4 +540,16 @@ class ProductController extends Controller
       }
       return back()->with('success','Update All Product SuccessFully');
     }
+
+    public function updateOldSolidCountInProduct()
+    {
+      $order_details = \App\OrderDetail::whereHas("order",function($query){
+        $query->where('orders.status','=', 3);
+      })->get();
+      foreach ($order_details as $key => $order_detail) {
+        $product = Product::find($order_detail->product_id);
+        $product->solid_count = $product->solid_count + $order_detail->quantity;
+        $product->save();
+      }
+    }
 }
