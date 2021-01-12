@@ -29,11 +29,15 @@
                             <table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                    @if(Auth::user()->hasRole('super_admin'))
+                                    <th>@lang('messages.product_id')</th>
+                                    @else
+                                    <th>#</th>
+                                    @endif
                                         <th>@lang('messages.image')</th>
                                         <th>@lang('messages.campain.title')</th>
                                         <th>@lang('messages.sold_times')</th>
-                                        {{-- <th>@lang('front.quantity')</th> --}}
+                                        <th>@lang('front.quantity')</th>
                                         <th class="visible-md visible-lg" style="width:130px">@lang('messages.action')
                                         </th>
                                     </tr>
@@ -44,14 +48,14 @@
 
                                     <tr class="table-flag-blue">
                                     @if(Auth::user()->hasRole('super_admin'))
-                                    <td>{{ $i }}</td>
+                                    <td>{{ $product->product_id }}</td>
                                     @else
                                     <td>{{ $i }}</td>
                                     @endif
                                         <td><img src="{{url($product->main_image)}}" alt="{{$product->title}}" style="width: 25%;"></td>
                                         <td> <h4>{{$product->title}} </h4></td>
                                         <td> <h4>{{count_product($product->product_id)}} </h4></td>
-                                        {{-- <td> <h4>{{count_quantities($product->id)}} </h4></td> --}}
+                                        <td> <h4>{{count_quantities($product->product_id)}} </h4></td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
                                             <a href="{{url('clients/productv2/'.$product->product_id)}}" class="btn btn-primary" target="_blank">Show Product</a>

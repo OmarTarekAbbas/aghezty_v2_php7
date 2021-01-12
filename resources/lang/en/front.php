@@ -77,7 +77,7 @@ return [
     'order' => 'My Orders',
     'product' => 'Product Name',
     'product_image' => 'Product Image',
-    'quantity' => 'Quantity',
+    'quantity' => 'Quantitys',
     'status' => 'Status',
     'pound' => 'Pound',
     'ads' => 'Advertisments',

@@ -458,4 +458,6 @@ return [
     'key_feature' => 'المواصفات',
     'sold_times' => 'مرات البيع',
     'offer_image' => 'صور اوفر',
+    'product_id' => 'رقم المنتج',
+
 ];
