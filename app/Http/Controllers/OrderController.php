@@ -174,4 +174,11 @@ class OrderController extends Controller
 
     OrderReplay::create($data);
   }
+
+  public function removeProductFromOrderDeatilsThatNotHaveOrder()
+  {
+    // return \App\OrderDetail::doesntHave("order")->pluck("order_id")->toArray();
+    return \App\OrderDetail::doesntHave("order")->delete();
+  //  order_ids = [22,23,23,24,25,25,26,27,27,28,29,29,30,31,32,32,32,33,34,34,35,35,36,37,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,68,69,70,71,72,72,73,74,75,76,77,78,79,80,81,82,82,85,86,87,88,89,90,91,92,93,94,94,95,96,97,97,98,98,98,99,100,101,102,103,107,107,107,108,108,108,109,109,109,110,111,112,113,114,114,115,115,146,147,148,149,159,161,161];
+  }
 }
