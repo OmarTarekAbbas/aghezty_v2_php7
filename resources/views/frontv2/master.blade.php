@@ -39,7 +39,7 @@
   .red{
     color: red !important;
   }
-  .grey{
+  .grey {
     color:grey;
   }
 </style>
