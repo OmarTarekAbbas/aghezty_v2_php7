@@ -87,8 +87,9 @@ class NewsletterController extends Controller
      * @param  \App\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Newsletter $newsletter)
+    public function testmail()
     {
-        //
+        $content = 'test';
+        return view('mails.newsletter', compact('content'));
     }
 }
