@@ -1004,11 +1004,13 @@ class HomeController extends Controller
             $products = $products->inRandomOrder();
         }
         if ($request->filled('most_solid')) {
-            $products = $products->whereHas("orders")->withCount(["orders" => function($query) {
+            $products = $products->whereHas("orders",function($q){
+              $q->join('orders', 'orders.id', '=', 'order_details.order_id');
+              $q->where('orders.status','=', 3);
+            })->withCount(["orders" => function($query) {
               $query->join('orders', 'orders.id', '=', 'order_details.order_id');
               $query->where('orders.status','=', 3);
-            }])->orderBy("orders_count","desc");
-            // return $products->get();
+            }])->groupBy("products.id")->orderBy("orders_count","desc");
         }
 
 
@@ -1110,12 +1112,14 @@ class HomeController extends Controller
             $products = $products->inRandomOrder();
         }
         if ($request->filled('most_solid')) {
-          $products = $products->whereHas("orders")->withCount(["orders" => function($query) {
+          $products = $products->whereHas("orders",function($q){
+            $q->join('orders', 'orders.id', '=', 'order_details.order_id');
+            $q->where('orders.status','=', 3);
+          })->withCount(["orders" => function($query) {
             $query->join('orders', 'orders.id', '=', 'order_details.order_id');
             $query->where('orders.status','=', 3);
-          }])->orderBy("orders_count","desc");
-          // return $products->get();
-      }
+          }])->groupBy("products.id")->orderBy("orders_count","desc");
+        }
 
 
         if ($request->has('property_value_id')) {

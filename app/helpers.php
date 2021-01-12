@@ -98,6 +98,7 @@ function get_static_routes()
     Route::post('admin/image/order/{id}', 'ImageController@orderImage');
     Route::get('image/{id}/delete', 'ImageController@destroy');
     Route::get('product/{id}/dublicate', 'ProductController@dublicate_product');
+    Route::get('remove/old/order/details', 'OrderController@removeProductFromOrderDeatilsThatNotHaveOrder');
     /*****************start design v2 */
     Route::get('homepage/slides', 'HomeController@slidesv2');
     Route::get('slides/{id}/edit', 'HomeController@editv2');
