@@ -50,7 +50,7 @@ class SendEmail extends Job implements ShouldQueue
     {
         $mails = $this->NewsletterRepository->all();
         foreach ($mails as $mail) {
-            $mailer->send('mails.newsletter', ['content' => $this->message], function ($m) use ($mail) {
+            $mailer->send('mails.newsletter', ['content' => $this->message, 'subject' => $this->subject], function ($m) use ($mail) {
                 $m->from(setting('super_mail'), "Aghezty Newsletter");
                 $m->to($mail->mail, "Newsletter")->subject($this->subject);
             });
