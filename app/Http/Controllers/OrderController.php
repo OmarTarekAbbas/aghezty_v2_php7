@@ -116,7 +116,8 @@ class OrderController extends Controller
       $carts = OrderDetail::where('order_id', $request->order_id)->get();
       foreach ($carts as $key => $cart) {
         $product = Product::find($cart->product_id);
-        $product->stock = $product->stock - $cart->quantity;
+        $product->stock       = $product->stock - $cart->quantity;
+        $product->solid_count = $product->solid_count + $cart->quantity;
         $product->save();
       }
     }
