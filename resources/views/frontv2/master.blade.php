@@ -121,7 +121,7 @@
 
       <div class="col-md-6 col-lg-4 col-xl-7">
         <form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
-          <input type="text" id="search-bar" autocomplete="true" value="{{ request()->get('search') }}" name="search" placeholder="@lang('messages.search')">
+          <input type="text" id="search-bar" autocomplete="off" value="{{ request()->get('search') }}" name="search" placeholder="@lang('messages.search')">
           <a onclick="document.getElementById('form_search').submit()" href="#">
             <div class="search_background">
               <i class="search-icon fas fa-search fa-2x"></i>
@@ -960,6 +960,7 @@
         product_id = ''
       })
     })
+
   </script>
   <script>
 
@@ -1009,6 +1010,26 @@
       }
     })
   </script>
+
+<div class="old_search_value" style="position: absolute;left: 173px;top: 68px;z-index: 9999999999;background-color: #fff;border-radius: 2px;box-shadow: 1px 1px 1px #eee;min-width: 150px;display:none">
+  <?php $arr = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ?>
+  <ul class="list-unstyled">
+    @foreach(array_slice(array_reverse($arr), 0, 5) as $value)
+      <li class="mb-1 search-data p-2" style="cursor: pointer;"
+      onMouseOver="this.style.background='#666666f2'; this.style.borderRadius ='2px'"
+      onMouseOut="this.style.background='#fff'; this.style.borderRadius ='0px'">{{ $value }}</li>
+    @endforeach
+  </ul>
+</div>
+
+<script>
+    $("#search-bar").focus(function(){
+      $(".old_search_value").toggle()
+    })
+    $(document).on("click", ".search-data", function(){
+      $("#search-bar").val($(this).text())
+    })
+</script>
 
 <!--Start of Tawk.to Script-->
 {{--  <script type="text/javascript">

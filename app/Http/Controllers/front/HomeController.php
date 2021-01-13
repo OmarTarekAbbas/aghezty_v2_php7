@@ -919,7 +919,6 @@ class HomeController extends Controller
 
     public function productsv2(Request $request)
     {
-       //dd($request->brand_id);
         $sub_category_ids = [];
         $brand_ids = [];
         $products = Product::select('products.*','products.id as product_id');
@@ -983,6 +982,7 @@ class HomeController extends Controller
             $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
+          $this->setSearchValue($request->search);
       }
 
 
@@ -1262,6 +1262,22 @@ class HomeController extends Controller
         }
 
         return $products;
+    }
+
+    /**
+     * Method setSearchKey
+     *
+     * @param string $searchValue
+     *
+     * @return void
+     */
+    public function setSearchValue($searchValue)
+    {
+      $arr = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
+      if(!in_array($searchValue, $arr)) {
+        array_push($arr,$searchValue);
+      }
+      setcookie('old_search_value', serialize($arr), time() + (86400 * 30 * 12));
     }
 
     public function inner_productv2($id)
