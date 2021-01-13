@@ -4502,8 +4502,18 @@ body {
       }
     }
 
+    .hotline {
+      margin-bottom: 3%;
+    }
+
     .text_foot {
       margin-bottom: 1.5%;
+      text-align: center;
+    }
+
+    .important_link,
+    .categories_link {
+      text-align: center;
     }
 
     .grid-container {
@@ -5853,10 +5863,19 @@ body {
       }
     }
 
-    .text_foot {
-      margin-bottom: 1.5%;
+    .hotline {
+      margin-bottom: 3%;
     }
 
+    .text_foot {
+      margin-bottom: 1.5%;
+      text-align: center;
+    }
+
+    .important_link,
+    .categories_link {
+      text-align: center;
+    }
     .grid-container {
       .payment_method_img {
         img {}

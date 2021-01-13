@@ -3496,8 +3496,16 @@ body {
     width: 45%;
     margin: 3% auto 3%;
   }
+  .new_footer .hotline {
+    margin-bottom: 3%;
+  }
   .new_footer .text_foot {
     margin-bottom: 1.5%;
+    text-align: center;
+  }
+  .new_footer .important_link,
+.new_footer .categories_link {
+    text-align: center;
   }
   .new_footer .grid-container .payment_method_img img {
     width: 100%;
@@ -4415,8 +4423,16 @@ body {
     width: 45%;
     margin: 3% auto 3%;
   }
+  .new_footer .hotline {
+    margin-bottom: 3%;
+  }
   .new_footer .text_foot {
     margin-bottom: 1.5%;
+    text-align: center;
+  }
+  .new_footer .important_link,
+.new_footer .categories_link {
+    text-align: center;
   }
   #return-to-top {
     left: 4px;
