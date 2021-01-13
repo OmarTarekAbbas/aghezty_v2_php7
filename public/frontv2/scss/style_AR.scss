@@ -3171,15 +3171,15 @@ body {
   }
 
   .newsletter {
-    direction: ltr;
+    // direction: ltr;
     width: 70%;
     margin: 0 auto;
 
     .btn_subscribe {
       background: #0057a7;
       color: $white_color;
-      border-bottom-left-radius: 500px;
-      border-top-left-radius: 500px;
+      border-bottom-right-radius: 500px;
+      border-top-right-radius: 500px;
 
       &:hover,
       &:focus {
@@ -3192,8 +3192,8 @@ body {
 
     .input_subscribe {
       color: #777777;
-      border-bottom-right-radius: 500px;
-      border-top-right-radius: 500px;
+      border-bottom-left-radius: 500px;
+      border-top-left-radius: 500px;
       text-align: right;
 
 
@@ -3313,7 +3313,7 @@ body {
         .phone_icon,
         .instagram_icon,
         .messenger_icon {
-          font-size: 25px;
+          // font-size: 25px;
         }
       }
     }
@@ -3367,7 +3367,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: 0 auto;
-    direction: ltr;
 
     .payment_method_img {
       img {
@@ -4754,6 +4753,63 @@ body {
     }
   }
 
+  .new_footer {
+    padding: 10px 0px;
+
+    .mobile_views {
+      &.container {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+    }
+
+    .newsletter {
+      width: 100%;
+    }
+
+    .social_media {
+      li {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 45%;
+        margin: 3% auto 3%;
+      }
+    }
+
+    .hotline {
+      margin-bottom: 3%;
+    }
+
+    .text_foot {
+      margin-bottom: 1.5%;
+      text-align: center;
+    }
+
+    .important_link,
+    .categories_link {
+      text-align: center;
+    }
+
+    .grid-container {
+      .payment_method_img {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+
   // Scroll Top
   #return-to-top {
     left: 4px;
@@ -6110,6 +6166,60 @@ body {
     }
   }
 
+  .new_footer {
+    padding: 10px 0px;
+
+    .mobile_views {
+      &.container {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+    }
+
+    .newsletter {
+      width: 100%;
+    }
+
+    .social_media {
+      li {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 45%;
+        margin: 3% auto 3%;
+      }
+    }
+
+    .hotline {
+      margin-bottom: 3%;
+    }
+
+    .text_foot {
+      margin-bottom: 1.5%;
+      text-align: center;
+    }
+
+    .important_link,
+    .categories_link {
+      text-align: center;
+    }
+
+    .grid-container {
+      .payment_method_img {
+        img {}
+      }
+    }
+  }
+
   // Scroll Top
   #return-to-top {
     left: 4px;
@@ -6206,12 +6316,9 @@ body {
       .choose_category_background {
         .choose_category_form {
           .diamond_sample {
-            width: 100% !important;
-            height: 11rem !important;
-
-            .diamond_sample_title {
-              font-size: 1rem;
-            }
+            width: 80%;
+            height: 11rem;
+            margin-bottom: 7%;
           }
         }
       }
@@ -6251,6 +6358,19 @@ body {
               &:hover,
               &:focus {}
             }
+          }
+        }
+      }
+
+      .choose_category_form {
+        .hoverabley {
+          img {
+            height: 8.242rem;
+          }
+
+          .hovertitle {
+            height: 8rem;
+            top: -3.5rem;
           }
         }
       }
@@ -6349,7 +6469,7 @@ body {
 
             .full_desc {
               font-size: 15px !important;
-              text-align: center;
+              height: 2.5rem;
             }
           }
 
@@ -6394,6 +6514,50 @@ body {
             padding-right: 15px !important;
           }
         }
+      }
+    }
+  }
+
+  .new_footer {
+    padding: 20px 0px;
+
+    .mobile_views {
+      &.container {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+    }
+
+    .newsletter {
+      width: 100%;
+    }
+
+    .social_media {
+      li {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 45%;
+        margin: 3% auto 3%;
+      }
+    }
+
+    .text_foot {
+      margin-bottom: 1.5%;
+    }
+
+    .grid-container {
+      .payment_method_img {
+        img {}
       }
     }
   }
@@ -6505,18 +6669,9 @@ body {
       .choose_category_background {
         .choose_category_form {
           .diamond_sample {
-            width: 100% !important;
-            height: 11rem !important;
-
-            .diamond_sample_title {
-              font-size: 1rem !important;
-            }
-          }
-
-          .hoverabley {
-            img {
-              height: 168px;
-            }
+            width: 70%;
+            height: 11rem;
+            margin-bottom: 7%;
           }
         }
       }
@@ -6563,9 +6718,7 @@ body {
         margin-top: 5%;
 
         .owl_brands {
-          .owl-stage-outer {
-            height: 6vh;
-          }
+          .owl-stage-outer {}
 
           .item {
             .brands_img {
@@ -6581,7 +6734,7 @@ body {
             button {
               font-weight: bold;
               font-size: 2.5rem;
-              bottom: -0.75rem;
+              bottom: 1rem;
 
               &.owl-prev {
                 right: -3.5%;
@@ -6852,9 +7005,66 @@ body {
       }
     }
   }
+
+  .new_footer {
+    padding: 20px 0px;
+
+    .mobile_views {
+      &.container {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+    }
+
+    .newsletter {
+      width: 100%;
+    }
+
+    .social_media {
+      li {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 45%;
+        margin: 3% auto 3%;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    .text_foot {
+      margin-bottom: 1.5%;
+    }
+
+    .important_link,
+    .categories_link {
+      li {
+        a {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .grid-container {
+      .payment_method_img {
+        img {}
+      }
+    }
+  }
 }
 
-@media (min-width: 1024px) and (max-width: 1050px) {
+@media (min-width: 1025px) and (max-width: 1050px) {
   .head_three {
     // top: 12.87%;
   }
@@ -7069,6 +7279,48 @@ body {
       }
     }
   }
+
+  .new_footer {
+    padding: 20px 0px;
+
+    .mobile_views {
+      &.container {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+    }
+
+    .newsletter {}
+
+    .social_media {
+      li {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 45%;
+        margin: 3% auto 3%;
+      }
+    }
+
+    .text_foot {
+      margin-bottom: 1.5%;
+    }
+
+    .grid-container {
+      .payment_method_img {
+        img {}
+      }
+    }
+  }
 }
 
 @media (min-width: 1281px) and (max-width: 1440px) {
@@ -7247,6 +7499,48 @@ body {
             }
           }
         }
+      }
+    }
+  }
+
+  .new_footer {
+    padding: 20px 0px;
+
+    .mobile_views {
+      &.container {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+    }
+
+    .newsletter {}
+
+    .social_media {
+      li {
+        .social-button {
+          width: 2.125rem;
+          height: 2.125rem;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 45%;
+        margin: 3% auto 3%;
+      }
+    }
+
+    .text_foot {
+      margin-bottom: 1.5%;
+    }
+
+    .grid-container {
+      .payment_method_img {
+        img {}
       }
     }
   }

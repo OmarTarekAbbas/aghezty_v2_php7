@@ -2316,14 +2316,6 @@ body {
   background: #fefefe;
   border-color: #ffa930;
 }
-.new_footer .social_media li .social-button .facebook_icon,
-.new_footer .social_media li .social-button .whatsapp_icon,
-.new_footer .social_media li .social-button .twitter_icon,
-.new_footer .social_media li .social-button .phone_icon,
-.new_footer .social_media li .social-button .instagram_icon,
-.new_footer .social_media li .social-button .messenger_icon {
-  font-size: 25px;
-}
 .new_footer .logo_foot .aghezty_logo {
   width: 32%;
   margin: 0 auto 3%;
@@ -2401,7 +2393,6 @@ body {
 
 /* End Scroll Top */
 /*----------------------------------------- End Footer -----------------------------------------*/
-/*----------------------------------------- Start Media Query -----------------------------------------*/
 /* Start Media Query Mobile */
 @media (min-width: 320px) and (max-width: 375px) {
   .alert-success.msg_success_min, .alert-success.msg_danger_min,
@@ -3254,6 +3245,42 @@ body {
 .footer_footer .rounded-social-buttons .social-button .instagram_icon,
 .footer_footer .rounded-social-buttons .social-button .linkedin_icon {
     font-size: 1.5rem;
+  }
+
+  .new_footer {
+    padding: 10px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .hotline {
+    margin-bottom: 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+    text-align: center;
+  }
+  .new_footer .important_link,
+.new_footer .categories_link {
+    text-align: center;
+  }
+  .new_footer .grid-container .payment_method_img img {
+    width: 100%;
   }
 
   #return-to-top {
@@ -4113,6 +4140,38 @@ body {
     font-size: 1.5rem;
   }
 
+  .new_footer {
+    padding: 10px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .hotline {
+    margin-bottom: 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+    text-align: center;
+  }
+  .new_footer .important_link,
+.new_footer .categories_link {
+    text-align: center;
+  }
   #return-to-top {
     left: 89%;
     width: 40px;
@@ -4164,6 +4223,19 @@ body {
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
     left: -2%;
   }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
+    width: 80%;
+    height: 11rem;
+    margin-bottom: 7%;
+  }
+  .main .choose_category .choose_category_form .hoverabley img {
+    height: 8.242rem;
+  }
+  .main .choose_category .choose_category_form .hoverabley .hovertitle {
+    height: 8rem;
+    top: -3.5rem;
+  }
+
   .head_three {
     top: 0 !important;
   }
@@ -4268,6 +4340,30 @@ body {
     padding-right: 15px !important;
   }
 
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
   #return-to-top {
     left: 92%;
   }
@@ -4327,14 +4423,9 @@ body {
     padding-top: 12% !important;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
-    width: 100% !important;
-    height: 11rem !important;
-  }
-  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
-    font-size: 1rem !important;
-  }
-  .main .choose_category .choose_category_background .choose_category_form .hoverabley img {
-    height: 168px;
+    width: 70%;
+    height: 11rem;
+    margin-bottom: 7%;
   }
   .main .choose_category .choose_category_form .hoverabley .hovertitle {
     top: -4.85rem;
@@ -4361,14 +4452,14 @@ body {
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button {
     font-weight: bold;
-    font-size: 2rem;
-    bottom: -1.75rem;
+    font-size: 2.5rem;
+    bottom: 1rem;
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
-    right: -7.5%;
+    right: -3.5%;
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
-    left: -4%;
+    left: -3%;
   }
   .main .product_view .product_view_type .product_desc {
     height: 350px;
@@ -4527,8 +4618,33 @@ body {
 .footer_footer .footer_content .rounded-social-buttons .social-button .mail_icon {
     font-size: 20px;
   }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
 }
-@media (min-width: 1024px) and (max-width: 1050px) {
+@media (min-width: 1025px) and (max-width: 1050px) {
   .head_two .new_head {
     margin-top: 9%;
     margin-left: 9%;
@@ -4656,6 +4772,28 @@ body {
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 63rem;
   }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
 }
 @media (min-width: 1281px) and (max-width: 1440px) {
   .head_two .new_head {
@@ -4738,6 +4876,28 @@ body {
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 63rem;
+  }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/
