@@ -1275,9 +1275,10 @@ class HomeController extends Controller
     public function setSearchValue($searchValue)
     {
       $oldSearchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
-      if(!in_array($searchValue, $oldSearchValue)) {
-        array_push($oldSearchValue,$searchValue);
+      if (($key = array_search($searchValue, $oldSearchValue)) !== false) {
+        unset($oldSearchValue[$key]);
       }
+      array_push($oldSearchValue,$searchValue);
       setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12)); //set for 1 year
       session(["old_search_value" => $oldSearchValue]);
     }
@@ -1896,6 +1897,7 @@ class HomeController extends Controller
             //update product stock after nbe success
             foreach ($carts as $cart) {
                 $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->solid_count = $cart->product->solid_count + $cart->quantity;
                 $cart->product->save();
                 $cart->delete();
             }
@@ -2059,6 +2061,7 @@ class HomeController extends Controller
             //update product stock after cib success
             foreach ($carts as $cart) {
                 $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->solid_count = $cart->product->solid_count + $cart->quantity;
                 $cart->product->save();
                 $cart->delete();
             }

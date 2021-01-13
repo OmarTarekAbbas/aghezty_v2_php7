@@ -482,7 +482,7 @@
   <section class="search_mobile d-block d-sm-none d-md-none d-lg-none d-xl-none">
     <div class="col-12">
       <form class="search-container" id="form_search_m" action="{{url('clients/productsv2')}}" method="get">
-        <input type="text" name="search" placeholder="@lang('messages.search')">
+        <input type="text" id="search-bar-m" name="search" autocomplete="off" value="{{ request()->get('search') }}" placeholder="@lang('messages.search')">
         <a onclick="document.getElementById('form_search_m').submit()" href="#">
           <div class="search_background">
             <i class="search-icon fas fa-search fa-2x"></i>
@@ -1023,11 +1023,12 @@
 </div>
 
 <script>
-    $("#search-bar").focus(function(){
+    $("#search-bar, #search-bar-m").focus(function(){
       $(".old_search_value").toggle()
     })
     $(document).on("click", ".search-data", function(){
       $("#search-bar").val($(this).text())
+      $("#search-bar-m").val($(this).text())
     })
 </script>
 
