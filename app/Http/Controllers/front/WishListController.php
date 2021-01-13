@@ -17,10 +17,10 @@ class WishListController extends Controller
   public function index()
   {
     $wishListProducts = auth()->guard('client')->user()->wishList;
-    $selected_for_you = Product::where('selected_for_you', 1)->get();
+    $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
     if (count($selected_for_you) != 6) {
       $limit = 6 - count($selected_for_you);
-      $selected_for_youR = Product::all()->random($limit);
+      $selected_for_youR = Product::stock()->get()->random($limit);
       $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
     }
     return view("frontv2.wishlist",compact("wishListProducts", "selected_for_you"));

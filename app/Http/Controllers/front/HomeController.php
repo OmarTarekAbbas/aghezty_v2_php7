@@ -680,8 +680,8 @@ class HomeController extends Controller
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
         $home_brands = Brand::all();
-        $recently_added = Product::where('recently_added', 1)->get();
-        $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $recently_added = Product::stock()->where('recently_added', 1)->get();
+        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
         if (count($recently_added) != 6) {
             $limit = 6 - count($recently_added);
@@ -691,7 +691,7 @@ class HomeController extends Controller
 
         if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
-            $selected_for_youR = Product::all()->random($limit);
+            $selected_for_youR = Product::stock()->get()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
 
@@ -921,7 +921,7 @@ class HomeController extends Controller
     {
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -1036,6 +1036,7 @@ class HomeController extends Controller
         } else {
           $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
         }
+
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
@@ -1043,7 +1044,7 @@ class HomeController extends Controller
     {
 
         //return $request->all();
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
@@ -1175,7 +1176,7 @@ class HomeController extends Controller
      * @return array
      */
     public function getCategoryThatHaveCurrentProperty($request) {
-      $category_ids = Product::whereHas('pr_value', function ($q) use ($request) {
+      $category_ids = Product::stock()->whereHas('pr_value', function ($q) use ($request) {
         $q->whereIn('property_values.id', $request->property_value_id);
       })->pluck("category_id")->toArray();
 
@@ -1192,7 +1193,7 @@ class HomeController extends Controller
      */
     public function redfineQueryWithoutProperty($request, $category_have_current_property)
     {
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', array_diff($request->sub_category_id, $category_have_current_property));
@@ -1283,11 +1284,11 @@ class HomeController extends Controller
     public function inner_productv2($id)
     {
 
-        $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
+        $product = Product::stock()->latest('created_at')->whereId($id)->where('products.active', 1)->first();
         if(!$product){
           return view('frontv2.error404');
         }
-        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
+        $items = Product::stock()->where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
 
@@ -1470,13 +1471,13 @@ class HomeController extends Controller
             \Session::flash('success_pr', Product::find($request->product_id));
         }
 
-        $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->inRandomOrder()->first();
 
         if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
-            $selected_for_youR = Product::all()->random($limit);
+            $selected_for_youR = Product::stock()->get()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
 
