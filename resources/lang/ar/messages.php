@@ -1,6 +1,9 @@
 <?php
 return [
     'title' => 'ألرسائل النصيه',
+    'mail' => 'الايميل',
+    'newsletter' => 'النشرة الاخبارية',
+    'newsletter_send' => 'ارسال النشرة الاخبارية',
     'offer_link' => 'لينك الاوفر',
     'language' => 'english',
     'role' => 'الادوار',
@@ -455,4 +458,6 @@ return [
     'key_feature' => 'المواصفات',
     'sold_times' => 'مرات البيع',
     'offer_image' => 'صور اوفر',
+    'product_id' => 'رقم المنتج',
+
 ];

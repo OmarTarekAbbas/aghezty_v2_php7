@@ -25,8 +25,8 @@ class Order extends Model
             $value = 'Finshed';
         }
         if($value == 4){
-          $value = 'Not Available';
-      }
+          $value = __('messages.Not_available');
+        }
         return $value;
     }
 

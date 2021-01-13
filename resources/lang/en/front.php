@@ -1,6 +1,7 @@
 <?php
 return [
     'about_mev2' => 'Who We Are',
+    'newsletter' => 'Subscribe to our Newsletter',
     'terms_conv2' => 'Terms and Conditions',
     'continue' => 'Continue',
     'title' => 'Aghezty',
@@ -76,7 +77,7 @@ return [
     'order' => 'My Orders',
     'product' => 'Product Name',
     'product_image' => 'Product Image',
-    'quantity' => 'Quantity',
+    'quantity' => 'Quantitys',
     'status' => 'Status',
     'pound' => 'Pound',
     'ads' => 'Advertisments',
@@ -188,6 +189,8 @@ return [
     'most_solid' => 'Most Solid',
     'subscribe' => 'Subscribe',
     'Email_Address' => 'Email Address',
+    'message' => 'Message',
+    'date' => 'Date',
     'aghezty_info' => "The company 'Aghezty' works in the field of online sale of all electrical and electronic devices, air conditioners, mobile devices, intercoms, alarms and monitoring devices, and provides high-quality products with advanced technology that meet the desires and expectations of the consumer.",
     'admin_reply' => 'User'
 ];

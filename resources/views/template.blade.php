@@ -672,6 +672,23 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                       </ul>
                                   </li>
                               </ul>
+
+                               <ul class="nav nav-list">
+                                  <li id="newsletter">
+                                      <a href="#" class="dropdown-toggle">
+                                          <i class="glyphicon glyphicon-home"></i>
+                                          <span>@lang('messages.newsletter')</span>
+                                          <b class="arrow fa fa-angle-right"></b>
+                                      </a>
+
+                                      <!-- BEGIN Submenu -->
+                                      <ul class="submenu">
+                                        <li id="newsletter_index"><a href="{{url('newsletter')}}">@lang('messages.newsletter')</a></li>
+                                        <li id="newsletter_send"><a href="{{url('newsletter/send')}}">@lang('messages.newsletter_send')</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+
                               @endif
 
                         </ul>
