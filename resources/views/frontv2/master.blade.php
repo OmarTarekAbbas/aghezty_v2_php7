@@ -854,9 +854,9 @@
   </footer> --}}
 
   <footer class="new_footer">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-8 col-lg-8 col-xl-8 col-12">
+    <div class="mobile_views">
+      <div class="row m-0">
+        <div class="col-md-7 col-lg-8 col-xl-8 col-12">
           <div id="flash-msg"></div>
           <form class="newsletter">
             @csrf
@@ -869,7 +869,7 @@
           </form>
         </div>
 
-        <div class="col-md-4 col-lg-4 col-xl-4 col-12">
+        <div class="col-md-5 col-lg-4 col-xl-4 col-12">
           <ul class="social_media list-unstyled">
             <li>
               <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">

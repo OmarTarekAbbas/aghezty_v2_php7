@@ -25,7 +25,7 @@
     <div class="mobile_views">
       <div class="choose_category_background">
         <div class="row mr-0 ml-0">
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{route('front.home.list',['sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles.jpg" alt="mobiles"> -->
@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{route('front.home.list',['to' => '1000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/less-1000.jpg" alt="less-1000"> -->
@@ -55,7 +55,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{route('front.home.list',['from_to' => '1000,3000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-1000-3000.jpg" alt="mobiles-1000-3000"> -->
@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{route('front.home.list',['from_to' => '3000,6000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-3000-6000.jpg" alt="mobiles-3000-6000"> -->
@@ -83,7 +83,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a
                 href="{{route('front.home.list',['from_to' => '6000,10000','sub_category_id' => '49'])}}">
@@ -98,7 +98,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{route('front.home.list',['from' => '10000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/more-10000.jpg" alt="more-10000"> -->
@@ -284,7 +284,7 @@
     <div class="mobile_views">
       <div class="choose_category_background">
         <div class="row mr-0 ml-0">
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{route('front.home.list',['search' => 'TV'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/tv-offers.webp" alt="mobiles"> -->
@@ -301,7 +301,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
               <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=1&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
@@ -316,7 +316,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
             <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=2&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
@@ -331,7 +331,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
             <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=3&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/49-55-inch.jpg" alt="mobiles-1000-3000"> -->
@@ -346,7 +346,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
             <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=6&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/60-75-inch.jpg" alt="mobiles-3000-6000"> -->
@@ -361,7 +361,7 @@
             </div>
           </div>
 
-          <div class="col-md-2 col-xl-2 col-4 margin_bottom_mob">
+          <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
             <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=5&&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->

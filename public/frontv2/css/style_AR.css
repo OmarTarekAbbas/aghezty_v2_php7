@@ -2415,15 +2415,14 @@ body {
   padding-left: 50px !important;
 }
 .new_footer .newsletter {
-  direction: ltr;
   width: 70%;
   margin: 0 auto;
 }
 .new_footer .newsletter .btn_subscribe {
   background: #0057a7;
   color: #FFF;
-  border-bottom-left-radius: 500px;
-  border-top-left-radius: 500px;
+  border-bottom-right-radius: 500px;
+  border-top-right-radius: 500px;
 }
 .new_footer .newsletter .btn_subscribe:hover, .new_footer .newsletter .btn_subscribe:focus {
   color: #FFF;
@@ -2433,8 +2432,8 @@ body {
 }
 .new_footer .newsletter .input_subscribe {
   color: #777777;
-  border-bottom-right-radius: 500px;
-  border-top-right-radius: 500px;
+  border-bottom-left-radius: 500px;
+  border-top-left-radius: 500px;
   text-align: right;
 }
 .new_footer .newsletter .input_subscribe:hover, .new_footer .newsletter .input_subscribe:focus {
@@ -2523,14 +2522,6 @@ body {
   background: #fefefe;
   border-color: #ffa930;
 }
-.new_footer .social_media li .social-button .facebook_icon,
-.new_footer .social_media li .social-button .whatsapp_icon,
-.new_footer .social_media li .social-button .twitter_icon,
-.new_footer .social_media li .social-button .phone_icon,
-.new_footer .social_media li .social-button .instagram_icon,
-.new_footer .social_media li .social-button .messenger_icon {
-  font-size: 25px;
-}
 .new_footer .logo_foot .aghezty_logo {
   width: 32%;
   margin: 0 auto 3%;
@@ -2569,7 +2560,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin: 0 auto;
-  direction: ltr;
 }
 .new_footer .grid-container .payment_method_img img {
   width: 80%;
@@ -3485,6 +3475,34 @@ body {
     font-size: 1.5rem;
   }
 
+  .new_footer {
+    padding: 10px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
+  .new_footer .grid-container .payment_method_img img {
+    width: 100%;
+  }
+
   #return-to-top {
     left: 4px;
     width: 40px;
@@ -4376,6 +4394,30 @@ body {
     font-size: 1.5rem;
   }
 
+  .new_footer {
+    padding: 10px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
   #return-to-top {
     left: 4px;
     width: 40px;
@@ -4435,11 +4477,9 @@ body {
     height: 95px;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
-    width: 100% !important;
-    height: 11rem !important;
-  }
-  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
-    font-size: 1rem;
+    width: 80%;
+    height: 11rem;
+    margin-bottom: 7%;
   }
   .main .choose_category .logo_brands {
     margin-top: 2.5%;
@@ -4460,6 +4500,13 @@ body {
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
     left: -2%;
+  }
+  .main .choose_category .choose_category_form .hoverabley img {
+    height: 8.242rem;
+  }
+  .main .choose_category .choose_category_form .hoverabley .hovertitle {
+    height: 8rem;
+    top: -3.5rem;
   }
   .main .content_view {
     height: 350px !important;
@@ -4508,7 +4555,7 @@ body {
   }
   .product_view .product_view_type .margin_bottom_mob .product_desc a .full_desc {
     font-size: 15px !important;
-    text-align: center;
+    height: 2.5rem;
   }
   .product_view .product_view_type .margin_bottom_mob .product_desc .price-box {
     text-align: center;
@@ -4533,6 +4580,31 @@ body {
   .footer_footer .footer_content .block_brand_content .block_content .no_padding_mobile {
     padding-left: 15px !important;
     padding-right: 15px !important;
+  }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
   }
 }
 @media (min-width: 992px) and (max-width: 1024px) {
@@ -4590,14 +4662,9 @@ body {
     padding-top: 12% !important;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
-    width: 100% !important;
-    height: 11rem !important;
-  }
-  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
-    font-size: 1rem !important;
-  }
-  .main .choose_category .choose_category_background .choose_category_form .hoverabley img {
-    height: 168px;
+    width: 70%;
+    height: 11rem;
+    margin-bottom: 7%;
   }
   .main .choose_category .choose_category_form .hoverabley .hovertitle {
     top: -4.85rem;
@@ -4619,16 +4686,13 @@ body {
   .main .choose_category .logo_brands {
     margin-top: 5%;
   }
-  .main .choose_category .logo_brands .owl_brands .owl-stage-outer {
-    height: 6vh;
-  }
   .main .choose_category .logo_brands .owl_brands .item .brands_img img {
     width: 90%;
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button {
     font-weight: bold;
     font-size: 2.5rem;
-    bottom: -0.75rem;
+    bottom: 1rem;
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
     right: -3.5%;
@@ -4798,8 +4862,40 @@ body {
 .footer_footer .footer_content .rounded-social-buttons .social-button .mail_icon {
     font-size: 20px;
   }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .newsletter {
+    width: 100%;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .logo_foot p {
+    font-size: 1.5rem;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
+  .new_footer .important_link li a,
+.new_footer .categories_link li a {
+    font-size: 1.5rem;
+  }
 }
-@media (min-width: 1024px) and (max-width: 1050px) {
+@media (min-width: 1025px) and (max-width: 1050px) {
   .head_two .new_head {
     margin-top: 9%;
     margin-left: 9%;
@@ -4900,6 +4996,28 @@ body {
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 63rem;
   }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
 }
 @media (min-width: 1281px) and (max-width: 1440px) {
   .head_two .new_head {
@@ -4982,6 +5100,28 @@ body {
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 63rem;
+  }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/
