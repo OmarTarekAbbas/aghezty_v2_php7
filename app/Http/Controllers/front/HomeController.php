@@ -1274,11 +1274,12 @@ class HomeController extends Controller
      */
     public function setSearchValue($searchValue)
     {
-      $arr = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
-      if(!in_array($searchValue, $arr)) {
-        array_push($arr,$searchValue);
+      $oldSearchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
+      if(!in_array($searchValue, $oldSearchValue)) {
+        array_push($oldSearchValue,$searchValue);
       }
-      setcookie('old_search_value', serialize($arr), time() + (86400 * 30 * 12));
+      setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12)); //set for 1 year
+      session(["old_search_value" => $oldSearchValue]);
     }
 
     public function inner_productv2($id)

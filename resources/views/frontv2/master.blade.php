@@ -1012,9 +1012,9 @@
   </script>
 
 <div class="old_search_value" style="position: absolute;left: 173px;top: 68px;z-index: 9999999999;background-color: #fff;border-radius: 2px;box-shadow: 1px 1px 1px #eee;min-width: 150px;display:none">
-  <?php $arr = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ?>
+  <?php $searchValue = session()->has("old_search_value") ? session()->get("old_search_value") : [] ?>
   <ul class="list-unstyled">
-    @foreach(array_slice(array_reverse($arr), 0, 5) as $value)
+    @foreach(array_slice(array_reverse($searchValue), 0, 5) as $value)
       <li class="mb-1 search-data p-2" style="cursor: pointer;"
       onMouseOver="this.style.background='#666666f2'; this.style.borderRadius ='2px'"
       onMouseOut="this.style.background='#fff'; this.style.borderRadius ='0px'">{{ $value }}</li>
