@@ -117,7 +117,7 @@ class OrderController extends Controller
      $Visa_After_Deliver = "Visa After Deliver"; //$order->payment == 3 en
     } else {
       $Cash = "نقدا عند الاستلام"; //$order->payment == 1 ar
-      $Visa_After_Deliver = "Visa After Deliver"; //$order->payment == 3 ar
+      $Visa_After_Deliver = "ادفع بالبطاقة البنكية عند التوصيل"; //$order->payment == 3 ar
     }
     
     if ($request->status == 3 && ($order->payment == $Cash || $order->payment == $Visa_After_Deliver)) { // admin make finish

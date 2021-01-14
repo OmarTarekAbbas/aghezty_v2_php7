@@ -453,7 +453,7 @@ return [
     'cash_on_delivery' => 'Cash On Delivery',
     'return_or_refund' => 'Return Or Refund',
     'key_feature' => 'Key Feature',
-    'sold_times' => 'Orders Count',
+    'sold_times' => 'Solid Count',
     'offer_image' => 'Offer Image',
     'product_id' => 'Product id',
 

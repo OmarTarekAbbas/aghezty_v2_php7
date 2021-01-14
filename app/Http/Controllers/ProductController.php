@@ -549,7 +549,9 @@ class ProductController extends Controller
       foreach ($order_details as $key => $order_detail) {
         $product = Product::find($order_detail->product_id);
         $product->solid_count = $product->solid_count + $order_detail->quantity;
+        //dd($product);
         $product->save();
+        return back();
       }
     }
 }
