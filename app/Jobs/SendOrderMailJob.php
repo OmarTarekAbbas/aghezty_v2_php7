@@ -8,6 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Throwable;
 
 class SendOrderMailJob extends Job implements ShouldQueue
 {
@@ -82,8 +83,8 @@ class SendOrderMailJob extends Job implements ShouldQueue
      *
      * @return void
      */
-    public function failed(Exception $exception)
+    public function failed(Throwable $exception)
     {
-      \File::append(path('storage') . 'logs/' . date('Y-m-d') . '.log', $exception->getMessage());
+      \File::append(storage_path('logs') . '/' . basename(get_class($this)) . '.log', $exception->getMessage().PHP_EOL);
     }
 }
