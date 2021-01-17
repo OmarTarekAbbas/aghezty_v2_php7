@@ -131,6 +131,15 @@
             </div>
           </a>
         </form>
+
+        <div class="old_search_value">
+          <?php $searchValue = session()->has("old_search_value") ? session()->get("old_search_value") : [] ?>
+          <ul class="list-unstyled">
+            @foreach(array_slice(array_reverse($searchValue), 0, 5) as $value)
+              <li class="mb-1 search-data p-2">{{ $value }}</li>
+            @endforeach
+          </ul>
+        </div>
       </div>
       @if(!Auth::guard('client')->user())
 
@@ -548,6 +557,15 @@
           </div>
         </a>
       </form>
+
+      <div class="old_search_value">
+          <?php $searchValue = session()->has("old_search_value") ? session()->get("old_search_value") : [] ?>
+          <ul class="list-unstyled">
+            @foreach(array_slice(array_reverse($searchValue), 0, 5) as $value)
+              <li class="mb-1 search-data p-2">{{ $value }}</li>
+            @endforeach
+          </ul>
+        </div>
     </div>
   </section>
 
@@ -856,7 +874,12 @@
   <footer class="new_footer">
     <div class="mobile_views">
       <div class="row m-0">
-        <div class="col-md-7 col-lg-8 col-xl-8 col-12">
+        <div class="col-md-4 col-lg-6 col-xl-4 col-12">
+          <h6 class="subscribe_title text-uppercase font-weight-bold">BE THE FIRST TO KNOW</h6>
+          <p class="subscribe_desc">Get all the latest information on Events, Sales and Offers. Sign up for newsletter today.</p>
+        </div>
+
+        <div class="col-md-8 col-lg-6 col-xl-4 col-12">
           <div id="flash-msg"></div>
           <form class="newsletter">
             @csrf
@@ -869,7 +892,7 @@
           </form>
         </div>
 
-        <div class="col-md-5 col-lg-4 col-xl-4 col-12">
+        <div class="col-md-12 col-lg-12 col-xl-4 col-12">
           <ul class="social_media list-unstyled">
             <li>
               <a class="social-button facebook_link" title="Facebook" href="{{setting('facebook')}}" target="_blank">
@@ -1066,6 +1089,7 @@
   </script>
   <script src="{{url('js/pusher.min.js')}}"></script>
   <script src="{{url('js/pusher_config.js')}}"></script>
+
   <script>
     channel = pusher.subscribe('product');
     channel.bind('product-event', function(data) {
@@ -1104,17 +1128,6 @@
       }
     })
   </script>
-
-<div class="old_search_value" style="position: absolute;left: 173px;top: 68px;z-index: 9999999999;background-color: #fff;border-radius: 2px;box-shadow: 1px 1px 1px #eee;min-width: 150px;display:none">
-  <?php $searchValue = session()->has("old_search_value") ? session()->get("old_search_value") : [] ?>
-  <ul class="list-unstyled">
-    @foreach(array_slice(array_reverse($searchValue), 0, 5) as $value)
-      <li class="mb-1 search-data p-2" style="cursor: pointer;"
-      onMouseOver="this.style.background='#666666f2'; this.style.borderRadius ='2px'"
-      onMouseOut="this.style.background='#fff'; this.style.borderRadius ='0px'">{{ $value }}</li>
-    @endforeach
-  </ul>
-</div>
 
 <script>
     $("#search-bar, #search-bar-m").focus(function(){
@@ -1164,7 +1177,7 @@
       }
     });
   </script>
-  
+
 <!--Start of Tawk.to Script-->
 {{--  <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

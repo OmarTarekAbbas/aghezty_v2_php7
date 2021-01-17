@@ -447,20 +447,11 @@
         </div>
 
         <div class="row">
-
-          {{-- --}}
           @foreach ($recently_added as $item)
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
-                  class="text-center d-block">
-
-                @if($item->discount > 0)
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">{{$item->discount}} %</span>
-                </div>
-                @endif
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="text-center d-block">
 
                 <div class="mt-1">
                   <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
@@ -468,12 +459,19 @@
               </a>
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
-                <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
-                  <span>
-                    <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
-                  </span>
+                  <div class="fav_product">
+                    <span>
+                      <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+                    </span>
+                  </div>
+                @endif
+
+                @if($item->discount > 0)
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">{{$item->discount}} %</span>
                 </div>
-              @endif
+                @endif
+
               @if ($item->price_after_discount >0)
 
               <div class="price-box">
@@ -567,14 +565,7 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
               <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
-                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
-                  class="img_size d-block">
-
-                @if($item->discount > 0)
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">{{$item->discount}} %</span>
-                </div>
-                @endif
+                <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="img_size d-block">
 
                 <div>
                   <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
@@ -582,12 +573,18 @@
               </a>
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
-                <div class="text-right font-weight-bold" style="bottom: 26px;top: 1px;left: 48px;font-size: 14px;background-image: linear-gradient(45deg, white, transparent);">
-                  <span>
-                    <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
-                  </span>
-                </div>
+              <div class="fav_product">
+                    <span>
+                      <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+                    </span>
+                  </div>
               @endif
+
+              @if($item->discount > 0)
+                <div class="product-label text-center font-weight-bold">
+                  <span class="sale-product-icon">{{$item->discount}} %</span>
+                </div>
+                @endif
 
               @if ($item->price_after_discount >0)
 
