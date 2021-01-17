@@ -555,7 +555,7 @@ body {
   font-weight: bold;
 }
 .product_view .product_view_type .product_desc .price-box .old-price {
-  text-align: right;
+  float: right;
   margin-bottom: 0;
   color: #333;
   letter-spacing: 0.5px;
@@ -1046,7 +1046,7 @@ body {
   background-color: #fe9901;
   color: #FFF;
   position: absolute;
-  left: 90px;
+  left: 15%;
   top: 0px;
   height: 48px;
 }
@@ -1063,6 +1063,14 @@ body {
 }
 .main #inner-page .quantity-form #notify_me:hover, .main #inner-page .quantity-form #notify_me:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+}
+.main #inner-page .quantity-form .fav_product {
+  position: absolute;
+  left: 70%;
+  top: 10%;
+}
+.main #inner-page .rounded-social-buttons {
+  padding-left: 15px;
 }
 .main #inner-page .rounded-social-buttons .social-button {
   display: inline-block;
@@ -2108,6 +2116,15 @@ body {
 }
 
 /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
+.wishlist_shopping #tablePreview .wishlist_shopping_title {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: ltr;
+  width: 70%;
+}
+
 /*----------------------------------------- Start Footer -----------------------------------------*/
 .footer_footer::before {
   content: "";
@@ -2871,31 +2888,30 @@ body {
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
     margin-left: 0;
-    margin-top: -10% !important;
+    margin-top: -1% !important;
     margin-bottom: 0 !important;
-  }
-  .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
-    left: 55%;
   }
   .main #inner-page .info .features .quantity {
     width: 40%;
     margin: 0 auto;
     margin-bottom: 5%;
   }
-  .main #inner-page .info #add_to {
-    width: 72% !important;
-  }
-  .main #inner-page .info #notify_me {
-    width: 100% !important;
-  }
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-right: 0 !important;
+  }
+  .main #inner-page .quantity-form #add_to {
+    width: 60% !important;
+    left: 27%;
+  }
+  .main #inner-page .quantity-form #notify_me {
+    width: 100% !important;
+  }
+  .main #inner-page .quantity-form .fav_product {
+    left: 90%;
   }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
     margin-top: 5% !important;
-    margin-left: 4.5rem;
-    text-align: center;
   }
   .main #inner-page .rounded-social-buttons .social-button {
     width: 2.5rem;
@@ -2903,7 +2919,6 @@ body {
     line-height: 2.25rem;
     margin: 0 auto;
     margin-right: 0.5rem;
-    margin-left: 0.5rem;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
@@ -3790,7 +3805,7 @@ body {
     margin-top: 1rem;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
-    margin-left: 5.5rem;
+    margin-left: 6rem;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
@@ -3802,20 +3817,22 @@ body {
     margin: 0 auto;
     margin-bottom: 5%;
   }
-  .main #inner-page .info #add_to {
-    width: 70% !important;
-  }
-  .main #inner-page .info #notify_me {
-    width: 94% !important;
-  }
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-right: 0 !important;
+  }
+  .main #inner-page .quantity-form #add_to {
+    width: 65% !important;
+    left: 23%;
+  }
+  .main #inner-page .quantity-form #notify_me {
+    width: 94% !important;
+  }
+  .main #inner-page .quantity-form .fav_product {
+    left: 90%;
   }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
     margin-top: 5% !important;
-    margin-left: 4.5rem;
-    text-align: center;
   }
   .main #inner-page .rounded-social-buttons .social-button {
     width: 2.5rem;
@@ -3823,7 +3840,6 @@ body {
     line-height: 2.25rem;
     margin: 0 auto;
     margin-right: 0.75rem;
-    margin-left: 0.75rem;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
@@ -4597,15 +4613,22 @@ body {
     right: 3rem;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons {
-    margin-left: 4.5rem;
+    margin-left: 1.5rem;
     margin-top: -10% !important;
     margin-bottom: 0 !important;
   }
   .main #inner-page .info .features .contact_us .rounded-social-buttons .social-button {
     left: -1.5rem;
+    margin-right: 0.75rem;
   }
   .main #inner-page .info .features .quantity {
     width: 25%;
+  }
+  .main #inner-page .quantity-form #add_to {
+    left: 22%;
+  }
+  .main #inner-page .quantity-form .fav_product {
+    left: 75%;
   }
   .main #inner-page #carouselExampleControls {
     width: 100% !important;
@@ -4843,6 +4866,12 @@ body {
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 63rem;
+  }
+  .main #inner-page .quantity-form #add_to {
+    left: 25%;
+  }
+  .main #inner-page .quantity-form .fav_product {
+    left: 80%;
   }
 
   .new_footer {

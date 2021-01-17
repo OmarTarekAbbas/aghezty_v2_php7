@@ -1450,7 +1450,7 @@ body {
         background-color: #fe9901;
         color: #FFF;
         position: absolute;
-        right: 90px;
+        right: 13%;
         top: 0px;
         height: 48px;
 
@@ -1473,6 +1473,12 @@ body {
         &:focus {
           box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
         }
+      }
+
+      .fav_product {
+        position: absolute;
+        left: 30%;
+        top: 10%;
       }
     }
 
@@ -3022,6 +3028,20 @@ body {
 
 /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
 
+.wishlist_shopping {
+  #tablePreview {
+    .wishlist_shopping_title {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: rtl;
+      width: 70%;
+      text-align: right;
+    }
+  }
+}
+
 /*----------------------------------------- Start Footer -----------------------------------------*/
 
 .footer_footer {
@@ -3649,8 +3669,9 @@ body {
 
       ul {
         text-align: right;
-    padding-right: 0;
+        padding-right: 0;
         padding-top: 1%;
+
         .search-data {
           cursor: pointer;
 
@@ -4147,15 +4168,6 @@ body {
           }
         }
 
-        #add_to {
-          width: 70% !important;
-        }
-
-        #notify_me {
-          width: 100% !important;
-          margin-left: 0.25rem;
-        }
-
         .col-md-12 {
           &.padding_right_mob {
             padding-left: 0 !important;
@@ -4163,11 +4175,27 @@ body {
         }
       }
 
+      .quantity-form {
+        #add_to {
+          width: 60% !important;
+          right: 27%;
+        }
+
+        #notify_me {
+          width: 100% !important;
+          margin-left: 0.25rem;
+        }
+
+        .fav_product {
+          left: 0;
+        }
+      }
+
       .rounded-social-buttons {
+        padding-right: 15px;
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-right: 4.5rem;
-        text-align: center;
+        text-align: right;
 
         .social-button {
           width: 2.5rem;
@@ -4175,7 +4203,6 @@ body {
           line-height: 2.25rem;
           margin: 0 auto;
           margin-right: 0.5rem;
-          margin-left: 0.5rem;
 
           .facebook_icon,
           .whatsapp_icon,
@@ -5562,7 +5589,7 @@ body {
             margin-top: 1rem;
 
             .rounded-social-buttons {
-              margin-right: 5.5rem;
+              margin-right: -0.5rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 
@@ -5579,15 +5606,6 @@ body {
           }
         }
 
-        #add_to {
-          width: 70% !important;
-        }
-
-        #notify_me {
-          width: 94% !important;
-          margin-left: 1.5rem;
-        }
-
         .col-md-12 {
           &.padding_right_mob {
             padding-left: 0 !important;
@@ -5595,11 +5613,27 @@ body {
         }
       }
 
+      .quantity-form {
+        #add_to {
+          width: 60% !important;
+          right: 25%;
+        }
+
+        #notify_me {
+          width: 94% !important;
+          margin-left: 1.5rem;
+        }
+
+        .fav_product {
+          left: 3%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-right: 4.5rem;
-        text-align: center;
+        padding-right: 15px;
+        text-align: right;
 
         .social-button {
           width: 2.5rem;
@@ -5607,7 +5641,6 @@ body {
           line-height: 2.25rem;
           margin: 0 auto;
           margin-right: 0.75rem;
-          margin-left: 0.75rem;
 
           .facebook_icon,
           .whatsapp_icon,
@@ -6960,12 +6993,11 @@ body {
 
           .contact_us {
             .rounded-social-buttons {
-              margin-left: 4.5rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 
               .social-button {
-                right: 33%;
+                right: -2%;
               }
             }
           }
@@ -6973,6 +7005,21 @@ body {
           .quantity {
             width: 25%;
           }
+        }
+      }
+
+      .quantity-form {
+        #add_to {
+          background-color: #fe9901;
+          color: #FFF;
+          position: absolute;
+          right: 23%;
+          top: 0px;
+          height: 48px;
+        }
+
+        .fav_product {
+          left: 14%;
         }
       }
 
@@ -7373,6 +7420,18 @@ body {
         }
       }
     }
+
+    #inner-page {
+      .quantity-form {
+        #add_to {
+          right: 25%;
+        }
+
+        .fav_product {
+          left: 10%;
+        }
+      }
+    }
   }
 
   .new_footer {
@@ -7593,6 +7652,18 @@ body {
               }
             }
           }
+        }
+      }
+    }
+
+    #inner-page {
+      .quantity-form {
+        #add_to {
+          right: 20%;
+        }
+
+        .fav_product {
+          left: 22%;
         }
       }
     }

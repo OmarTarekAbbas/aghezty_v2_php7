@@ -220,6 +220,7 @@ body {
 
     ul {
       padding-top: 1%;
+
       .search-data {
         cursor: pointer;
 
@@ -741,7 +742,7 @@ body {
         }
 
         .old-price {
-          text-align: right;
+          float: right;
           margin-bottom: 0;
           color: #333;
           letter-spacing: .5px;
@@ -1371,7 +1372,7 @@ body {
         background-color: #fe9901;
         color: #FFF;
         position: absolute;
-        left: 90px;
+        left: 15%;
         top: 0px;
         height: 48px;
 
@@ -1394,9 +1395,17 @@ body {
           box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
         }
       }
+
+      .fav_product {
+        position: absolute;
+        left: 70%;
+        top: 10%;
+      }
     }
 
     .rounded-social-buttons {
+      padding-left: 15px;
+
       .social-button {
         display: inline-block;
         position: relative;
@@ -2223,9 +2232,7 @@ body {
   }
 }
 
-
 /*----------------------------------------- End MyOrder Page -----------------------------------------*/
-
 
 /*----------------------------------------- Start Status Page -----------------------------------------*/
 
@@ -2286,12 +2293,9 @@ body {
   }
 }
 
-
 /*----------------------------------------- End Status Page -----------------------------------------*/
 
-
 /*----------------------------------------- Strat Profile page -----------------------------------------*/
-
 .my_profile {
   .my_profile_bg {
     background-color: #343a40;
@@ -2621,12 +2625,9 @@ body {
   }
 }
 
-
 /*----------------------------------------- End Profile page -----------------------------------------*/
 
-
 /*----------------------------------------- Start contact us  -----------------------------------------*/
-
 .call-center {
   background-color: $black_color;
   border-radius: 12px;
@@ -2706,9 +2707,7 @@ body {
   }
 }
 
-
 /*----------------------------------------- End contact us  -----------------------------------------*/
-
 
 /*----------------------------------------- Start Service Center  -----------------------------------------*/
 
@@ -2739,9 +2738,7 @@ body {
   }
 }
 
-
 /*----------------------------------------- End Service Center  -----------------------------------------*/
-
 
 /*----------------------------------------- Start Upload Img Section Include -----------------------------------------*/
 
@@ -2792,9 +2789,20 @@ body {
   }
 }
 
-
 /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
 
+.wishlist_shopping {
+  #tablePreview {
+    .wishlist_shopping_title {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: ltr;
+      width: 70%;
+    }
+  }
+}
 
 /*----------------------------------------- Start Footer -----------------------------------------*/
 
@@ -3858,11 +3866,11 @@ body {
 
             .rounded-social-buttons {
               margin-left: 0;
-              margin-top: -10% !important;
+              margin-top: -1% !important;
               margin-bottom: 0 !important;
 
               .social-button {
-                left: 55%;
+                // left: 55%;
               }
             }
           }
@@ -3874,14 +3882,6 @@ body {
           }
         }
 
-        #add_to {
-          width: 72% !important;
-        }
-
-        #notify_me {
-          width: 100% !important;
-        }
-
         .col-md-12 {
           &.padding_right_mob {
             padding-right: 0 !important;
@@ -3889,11 +3889,24 @@ body {
         }
       }
 
+      .quantity-form {
+        #add_to {
+          width: 60% !important;
+          left: 27%;
+        }
+
+        #notify_me {
+          width: 100% !important;
+        }
+
+        .fav_product {
+          left: 90%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-left: 4.5rem;
-        text-align: center;
 
         .social-button {
           width: 2.5rem;
@@ -3901,7 +3914,6 @@ body {
           line-height: 2.25rem;
           margin: 0 auto;
           margin-right: 0.5rem;
-          margin-left: 0.5rem;
 
           .facebook_icon,
           .whatsapp_icon,
@@ -5249,7 +5261,7 @@ body {
             margin-top: 1rem;
 
             .rounded-social-buttons {
-              margin-left: 5.5rem;
+              margin-left: 6rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 
@@ -5266,14 +5278,6 @@ body {
           }
         }
 
-        #add_to {
-          width: 70% !important;
-        }
-
-        #notify_me {
-          width: 94% !important;
-        }
-
         .col-md-12 {
           &.padding_right_mob {
             padding-right: 0 !important;
@@ -5281,11 +5285,24 @@ body {
         }
       }
 
+      .quantity-form {
+        #add_to {
+          width: 65% !important;
+          left: 23%;
+        }
+
+        #notify_me {
+          width: 94% !important;
+        }
+
+        .fav_product {
+          left: 90%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-left: 4.5rem;
-        text-align: center;
 
         .social-button {
           width: 2.5rem;
@@ -5293,7 +5310,6 @@ body {
           line-height: 2.25rem;
           margin: 0 auto;
           margin-right: 0.75rem;
-          margin-left: 0.75rem;
 
           .facebook_icon,
           .whatsapp_icon,
@@ -6626,12 +6642,13 @@ body {
 
           .contact_us {
             .rounded-social-buttons {
-              margin-left: 4.5rem;
+              margin-left: 1.5rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 
               .social-button {
                 left: -1.5rem;
+                margin-right: 0.75rem;
               }
             }
           }
@@ -6639,6 +6656,16 @@ body {
           .quantity {
             width: 25%;
           }
+        }
+      }
+
+      .quantity-form {
+        #add_to {
+          left: 22%;
+        }
+
+        .fav_product {
+          left: 75%;
         }
       }
 
@@ -7104,6 +7131,18 @@ body {
               }
             }
           }
+        }
+      }
+    }
+
+    #inner-page {
+      .quantity-form {
+        #add_to {
+          left: 25%;
+        }
+
+        .fav_product {
+          left: 80%;
         }
       }
     }

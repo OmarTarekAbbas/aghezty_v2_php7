@@ -272,9 +272,9 @@
             <i class="fa fa-minus fa-xs" aria-hidden="true"></i>
           </span>
           @if($product->stock > 0)
-          <button class="w-75 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
+          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
           @else
-          <button class="w-75 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
+          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
           @endif
 
           @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
@@ -291,7 +291,8 @@
             <p class="text-danger m-2 font-weight-bold"><i class="fa fa-heart"></i> ADD TO WISHLIST</p>
 					</div> -->
 
-      <div class="rounded-social-buttons w-100 text-center">
+      <div class="rounded-social-buttons w-100">
+        <strong class="text-capitalize">share with: </strong>
         <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id]))}}" target="_blank" title="Facebook">
           <i class="fab fa-facebook-f facebook_icon"></i>
         </a>
