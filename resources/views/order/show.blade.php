@@ -35,7 +35,7 @@
                                 <h4 class="text-center">@lang('messages.Send_Mail')
                                     <span><strong>{{ ($order->lang == 'ar') ? 'In Arabic' : 'In English'}}</strong></span>
                                 </h4><br>
-                                @if($order->status !="Finshed")
+                                @if($order->status !="Finished")
                                 <div class="row text-center">
                                     <form action="{{url('orders/update_status')}}" method="post">
                                         {{ csrf_field() }}

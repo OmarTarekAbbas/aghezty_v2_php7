@@ -29,7 +29,7 @@
                 style="clear:both; font-size:0.75rem; left:50%; margin:0 auto; overflow:hidden; padding:1rem 0; position:relative; top:50%; transform:translate(-50%, 0); width:100%"
                 width="100%">
                 @if(isset($subject))
-                <div class="note-box success"  @if($order->status == 'Finshed') style="background:#1fa67a; color:#fff; margin:1.5em 0" @else style="background:#39cccc; color:#fff; margin:1.5em 0" @endif>
+                <div class="note-box success"  @if($order->status == 'Finished') style="background:#1fa67a; color:#fff; margin:1.5em 0" @else style="background:#39cccc; color:#fff; margin:1.5em 0" @endif>
                     <div class="note-icon"
                         style="background:rgba(0, 0, 0, 0.1); display:table-cell; height:100%; min-width:60px; padding:0 1em; text-align:center; vertical-align:middle"
                         height="100%" align="center" valign="middle">
@@ -38,8 +38,8 @@
                         </span>
                     </div>
                     <div class="note-text" style="display:table-cell; padding:0.3em 2em">
-                        <h5>@if($order->status == 'Finshed')  @lang('front.mail.thanks') @lang('front.title') @else @lang('front.mail.info') @endif :)</h5>
-                        <h4>{{$subject}} @if($order->status == 'Finshed') @lang('front.mail.contact')  <a href="{{url('/clients/contactv2?lang='.$order->lang)}}">@lang('front.mail.link')</a> @endif. </h4>
+                        <h5>@if($order->status == 'Finished')  @lang('front.mail.thanks') @lang('front.title') @else @lang('front.mail.info') @endif :)</h5>
+                        <h4>{{$subject}} @if($order->status == 'Finished') @lang('front.mail.contact')  <a href="{{url('/clients/contactv2?lang='.$order->lang)}}">@lang('front.mail.link')</a> @endif. </h4>
                     </div>
                 </div>
                 @endif
@@ -120,7 +120,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
             </main>
         </div>
     </div>

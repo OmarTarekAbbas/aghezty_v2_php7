@@ -37,8 +37,8 @@
 
         <div class="col-md-4 col-lg-4 col-xl-4 col-6">
           <div class="order_method text-center">
-            <h6 class="date_order text-center text-capitalize">Finshed</h6>
-            <i class="fas fa-truck fa-2x text-center rounded-circle p-3 {{$order->status == 'Finshed' ? 'order_icon_check':'order_icon_track'}}"></i>
+            <h6 class="date_order text-center text-capitalize">Finished</h6>
+            <i class="fas fa-truck fa-2x text-center rounded-circle p-3 {{$order->status == 'Finished' ? 'order_icon_check':'order_icon_track'}}"></i>
           </div>
         </div>
 

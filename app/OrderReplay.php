@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Constants\OrderStatus;
 
 class OrderReplay extends Model
 {
@@ -10,19 +11,7 @@ class OrderReplay extends Model
 
     public function getStatusAttribute($value)
     {
-      if($value == 1){
-          $value = __('front.admin_status.pending');
-      }
-      if($value == 2){
-          $value = __('front.admin_status.under_shipping');
-      }
-      if($value == 3){
-          $value = 'Finshed';
-      }
-      if($value == 4){
-        $value = __('messages.Not_available');
-    }
-      return $value;
+      return OrderStatus::getLabel($value);
     }
     public function order()
     {
