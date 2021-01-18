@@ -108,16 +108,16 @@ class OrderController extends Controller
   {
     $client = Client::find($request->client_id);
     $order = Order::find($request->order_id);
-
+    $last_order_status = $order->status;
     //if old status is pending and admin make it finish direct make decrease product stock and increase product solid count
-    if ($request->status == OrderStatus::FINISHED && $order->status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
+    if ($request->status == OrderStatus::FINISHED && $last_order_status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
        ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
 
       $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
     }
 
     //if old status is pending and admin make it UNDER SHIPPING direct make decrease product stock and increase product solid count
-    if ($request->status == OrderStatus::UNDER_SHIPPING && $order->status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
+    if ($request->status == OrderStatus::UNDER_SHIPPING && $last_order_status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
        ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
 
       $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
