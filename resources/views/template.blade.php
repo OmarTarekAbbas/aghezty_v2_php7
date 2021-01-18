@@ -693,7 +693,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
                         </ul>
 
-
+                        <br>
                 <!-- END Navlist -->
 
                 <!-- BEGIN Sidebar Collapse Button -->
@@ -725,8 +725,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                 @include('partial.flash')
                 @yield('content')
             </div>
-            <div class="footer" align="center" style=" position: absolute; width: 100%; bottom: 0;">
-                <p>{{\Carbon\Carbon::now()->year}} © iVAS Template</p>
+            <div class="footer" align="center">
+                <p style="margin-top:-23px">{{\Carbon\Carbon::now()->year}} © iVAS Template</p>
             </div>
             <a id="btn-scrollup" class="btn btn-circle btn-lg" href="#"><i class="fa fa-chevron-up"></i></a>
         </div>
