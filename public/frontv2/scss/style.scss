@@ -4491,6 +4491,21 @@ body {
     }
   }
 
+  .wishlist_shopping {
+    #tablePreview {
+
+      .img_link {
+        img {
+          width: 10% !important;
+        }
+      }
+      .wishlist_shopping_title {
+        display: block;
+        width: 40%;
+      }
+    }
+  }
+
   // Footer Page
   .footer_footer {
     .footer_content {
