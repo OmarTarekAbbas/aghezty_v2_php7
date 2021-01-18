@@ -875,8 +875,8 @@
     <div class="mobile_views">
       <div class="row m-0">
         <div class="col-md-4 col-lg-6 col-xl-4 col-12">
-          <h6 class="subscribe_title text-uppercase font-weight-bold">BE THE FIRST TO KNOW</h6>
-          <p class="subscribe_desc">Get all the latest information on Events, Sales and Offers. Sign up for newsletter today.</p>
+          <h6 class="subscribe_title text-uppercase font-weight-bold">@lang('front.be_first')</h6>
+          <p class="subscribe_desc">@lang('front.subscribe_info').</p>
         </div>
 
         <div class="col-md-8 col-lg-6 col-xl-4 col-12">
