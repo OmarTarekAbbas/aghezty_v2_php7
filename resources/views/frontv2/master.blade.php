@@ -1154,25 +1154,25 @@
           success: function (response) {
             if(response == 'success'){
               if(lang == 'ar')
-              $('#flash-msg').html("<div class='alert alert-success text-right'>!شكرا للاشتراك</div>");
+              $('#flash-msg').html(`<div class='alert alert-success text-right'>!شكرا للاشتراك <span class='closebtn' style='margin-left: 15px;color: black;font-weight: bold;float: right;font-size: 22px;cursor: pointer;transition: 0.3s;line-height: 20px;' onclick="this.parentElement.style.display='none';">&times;</span></div>`);
               else{
-              $('#flash-msg').html("<div class='alert alert-success'>Thank you for subscribe!</div>");
+              $('#flash-msg').html(`<div class='alert alert-success'>Thank you for subscribe! <span class='closebtn' style='margin-left: 15px;color: black;font-weight: bold;float: right;font-size: 22px;cursor: pointer;transition: 0.3s;line-height: 20px;' onclick="this.parentElement.style.display='none';">&times;</span></div>`);
               }
             }
             if(response == 'fail'){
               if(lang == 'ar'){
-              $('#flash-msg').html("<div class='alert alert-danger text-right'>!انت مشترك بالفعل</div>");
+              $('#flash-msg').html(`<div class='alert alert-danger text-right'>!انت مشترك بالفعل <span class='closebtn' style='margin-left: 15px;color: black;font-weight: bold;float: right;font-size: 22px;cursor: pointer;transition: 0.3s;line-height: 20px;' onclick="this.parentElement.style.display='none';">&times;</span></div>`);
               }else{
-              $('#flash-msg').html("<div class='alert alert-danger'>Already subscribed!</div>");
+              $('#flash-msg').html(`<div class='alert alert-danger'>Already subscribed! <span class='closebtn' style='margin-left: 15px;color: black;font-weight: bold;float: right;font-size: 22px;cursor: pointer;transition: 0.3s;line-height: 20px;' onclick="this.parentElement.style.display='none';">&times;</span></div>`);
               }
             }
           }
         });
       }else{
         if(lang == 'ar'){
-        $('#flash-msg').html("<div class='alert alert-danger text-right'>!برجاء ادخال بريد الكتروني</div>");
+        $('#flash-msg').html(`<div class='alert alert-danger text-right'>!برجاء ادخال بريد الكتروني <span class='closebtn' style='margin-left: 15px;color: black;font-weight: bold;float: right;font-size: 22px;cursor: pointer;transition: 0.3s;line-height: 20px;' onclick="this.parentElement.style.display='none';">&times;</span></div>`);
         }else{
-        $('#flash-msg').html("<div class='alert alert-danger'>Please enter valid mail!</div>");
+        $('#flash-msg').html(`<div class='alert alert-danger'>Please enter valid mail! <span class='closebtn' style='margin-left: 15px;color: black;font-weight: bold;float: right;font-size: 22px;cursor: pointer;transition: 0.3s;line-height: 20px;' onclick="this.parentElement.style.display='none';">&times;</span></div>`);
         }
       }
     });
