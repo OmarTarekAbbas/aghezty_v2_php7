@@ -70,6 +70,20 @@ class NewsletterController extends Controller
     }
 
     /**
+     * Method delete
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+      $news = $this->newsletterRepository->find($id);
+      $news->delete();
+      return back()->with("success", "delete successfully");
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

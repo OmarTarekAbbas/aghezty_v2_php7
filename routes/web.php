@@ -169,6 +169,7 @@ Route::get('newsletter', 'NewsletterController@index');
 Route::get('newsletter/testmail', 'NewsletterController@testmail');
 Route::get('newsletter/send', 'NewsletterController@send');
 Route::post('newsletter/store', 'NewsletterController@store');
+Route::get('newsletter/{id}/delete', 'NewsletterController@delete');
 Route::post('newsletter/send_message', 'NewsletterController@sendMessage');
 Route::get('newsletter/send_message/{message}', 'NewsletterController@sendMessage');
 /**end newsletter routes */

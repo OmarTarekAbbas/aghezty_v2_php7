@@ -24,6 +24,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>@lang('messages.mail')</th>
+                                        @if(auth()->user()->id == 1)
+                                        <th>@lang('messages.action')</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,6 +34,11 @@
                                     <tr>
                                         <td>{{$newsletter->id}}</td>
                                         <td>{{$newsletter->mail}}</td>
+                                        @if(auth()->user()->id == 1)
+                                        <td>
+                                          <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("newsletter/".$newsletter->id."/delete")}}" title="Delete"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
