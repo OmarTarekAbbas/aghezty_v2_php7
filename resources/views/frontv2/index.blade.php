@@ -419,7 +419,7 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <strong style="font-size: 19px;">@lang('messages.recently_added')</strong>
+                <strong>@lang('messages.recently_added')</strong>
               </div>
             </div>
 
@@ -461,13 +461,13 @@
 
               <div class="price-box">
                 <div class="row m-0">
-                  <div class="col-6 p-0">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12 p-0">
                     <span class="regular-price">
                       <span class="price">{{number_format($item->price_after_discount)}} @lang('front.egp') </span>
                     </span>
                   </div>
 
-                  <div class="col-6 p-0">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12 p-0">
                     <p class="old-price">
                       <span class="price">
                         {{number_format($item->price)}} @lang('front.egp') </span>
@@ -477,7 +477,7 @@
               </div>
               @else
               <div class="row m-0">
-                <div class="col-12 p-0">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-12 p-0">
                   <div class="price-box">
                     <span class="regular-price">
                       <span class="price">{{number_format($item->price)}} @lang('front.egp') </span>
@@ -575,13 +575,13 @@
 
               <div class="price-box">
                 <div class="row m-0">
-                  <div class="col-6 p-0">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12 p-0">
                     <span class="regular-price">
                       <span class="price">{{number_format($item->price_after_discount)}} @lang('front.egp') </span>
                     </span>
                   </div>
 
-                  <div class="col-6 p-0">
+                  <div class="col-md-6 col-lg-6 col-xl-6 col-12 p-0">
                     <p class="old-price">
                       <span class="price">
                         {{number_format($item->price)}} @lang('front.egp') </span>
@@ -591,7 +591,7 @@
               </div>
               @else
               <div class="row m-0">
-                <div class="col-12 p-0">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-12 p-0">
                   <div class="price-box">
                     <span class="regular-price">
                       <span class="price">{{number_format($item->price)}} @lang('front.egp') </span>
