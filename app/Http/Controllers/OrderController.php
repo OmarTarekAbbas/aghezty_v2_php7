@@ -11,6 +11,7 @@ use Mail;
 use App\Client;
 use App\OrderReplay;
 use App\Constants\OrderStatus;
+use App\Constants\PaymentStatus;
 use App\Constants\PaymentType;
 use App\Jobs\SendOrderMailJob;
 
@@ -109,10 +110,12 @@ class OrderController extends Controller
     $client = Client::find($request->client_id);
     $order = Order::find($request->order_id);
     $last_order_status = $order->status;
+
     //if old status is pending and admin make it finish direct make decrease product stock and increase product solid count
     if ($request->status == OrderStatus::FINISHED && $last_order_status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
        ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
 
+      $order->payment_status = PaymentStatus::Success;
       $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
     }
 
@@ -121,6 +124,13 @@ class OrderController extends Controller
        ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
 
       $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
+    }
+
+    //if old status is UNDER SHIPPING and admin make it FINISHED direct make payment status success
+    if ($request->status == OrderStatus::FINISHED  && $last_order_status == OrderStatus::getLabel(OrderStatus::UNDER_SHIPPING) &&
+       ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
+
+      $order->payment_status = PaymentStatus::Success;
     }
 
     if($request->status == OrderStatus::NOT_AVAILABLE &&
