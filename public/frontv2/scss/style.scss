@@ -310,11 +310,14 @@ body {
 
 .head_three {
   width: 100%;
-  z-index: 999999;
   position: fixed;
-  top: 0;
+  top: 0;z-index: 999999;
+  
 
   .navbar {
+    position: relative;
+  top: 0;
+  z-index: 999999;
     text-align: center;
     padding: 0;
 
@@ -3384,9 +3387,8 @@ body {
       background-color: rgb(255 255 255);
       border-radius: 2px;
       box-shadow: rgb(238, 238, 238) 1px 1px 1px;
-      width: 94%;
-      // height: 42px;
-      margin-top: -1%;
+      width: 78%;
+      margin-top: -11%;
       display: none;
 
       ul {
@@ -4567,6 +4569,11 @@ body {
         padding-right: 5px;
         padding-left: 5px;
       }
+    }
+
+    .subscribe_title,
+    .subscribe_desc {
+      text-align: center;
     }
 
     .subscribe_desc {
