@@ -47,12 +47,12 @@
 
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0BS83XR2E"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187664661-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-D0BS83XR2E');
+    gtag('config', 'UA-187664661-1');
   </script>
   <title>Aghezty</title>
   <meta charset="utf-8">
