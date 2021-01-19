@@ -42,8 +42,6 @@ $yellow_color: #ffeb00;
 }
 
 .active_menu {
-
-  // background-color: $white_color;
   a {
     color: $blue_color !important;
     text-decoration: underline !important;
@@ -62,16 +60,11 @@ a {
   padding-left: 100px !important;
 }
 
-// @font-face {
-// 	font-family: myFont;
-// 	src: url('../font/HSN_sadiyah.ttf');
-// }
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  // font-family: myFont;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   width: 100%;
   height: 100%;
@@ -110,7 +103,6 @@ body {
     }
   }
 }
-
 
 /*----------------------------------------- Start Header -----------------------------------------*/
 
@@ -309,9 +301,6 @@ body {
   }
 }
 
-// .dropdown:hover .dropdown-menu {
-// 	display: block;
-// }
 .dropdown-item.active {
   color: #007bff !important;
   background: none !important;
