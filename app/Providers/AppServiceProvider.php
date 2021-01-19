@@ -5,11 +5,15 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Queue\Events\JobProcessed;
 use App\Constants\OrderStatus;
+use App\Traits\JobEventTrait;
 use View;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use JobEventTrait;
     /**
      * Bootstrap any application services.
      *
@@ -23,6 +27,14 @@ class AppServiceProvider extends ServiceProvider
           $view->with("orderStatus", OrderStatus::class);
         });
 
+        Queue::after(function (JobProcessed $event) {
+          switch ($event->job->resolveName()) {
+            case "App\Jobs\SendEmail":
+              $this->sendMailToAdminWithFinishedNewsLetter();
+            default:
+              break;
+          }
+        });
     }
 
     /**
