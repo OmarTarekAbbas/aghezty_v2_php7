@@ -1581,6 +1581,9 @@ class HomeController extends Controller
                 Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
             }
         }
+        if($request->ajax()) {
+          return "ok";
+        }
         \Session::flash('success', 'delete will');
         return back();
     }

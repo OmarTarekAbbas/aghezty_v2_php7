@@ -1136,6 +1136,11 @@
       $("#search-bar").val($(this).text())
       $("#search-bar-m").val($(this).text())
     })
+    $(document).on("click", '.item-delete', function() {
+      $.get($(this).data('href'), function() {
+        $("#href_load").load(location.href + " #href_load>*", "");
+      })
+    })
 </script>
 
 
