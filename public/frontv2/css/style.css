@@ -374,6 +374,30 @@ body {
 .main {
   padding-bottom: 1%;
   padding-top: 7%;
+  /*----------------------------------------- End Home Page -----------------------------------------*/
+  /*----------------------------------------- Start List Product Page -----------------------------------------*/
+  /* right */
+  /*----------------------------------------- End List Product Page -----------------------------------------*/
+  /***************************************** start inner-page ********************************************/
+  /***************************************** end inner-page ********************************************/
+  /*----------------------------------------- Start Cart Page -----------------------------------------*/
+  /*----------------------------------------- End Cart Page -----------------------------------------*/
+  /*----------------------------------------- Start Login Page -----------------------------------------*/
+  /*----------------------------------------- End Login Page -----------------------------------------*/
+  /*----------------------------------------- Start MyOrder Page -----------------------------------------*/
+  /*----------------------------------------- End MyOrder Page -----------------------------------------*/
+  /*----------------------------------------- Start Status Page -----------------------------------------*/
+  /*----------------------------------------- End Status Page -----------------------------------------*/
+  /*----------------------------------------- Strat Profile page -----------------------------------------*/
+  /*----------------------------------------- End Profile page -----------------------------------------*/
+  /*----------------------------------------- Start contact us  -----------------------------------------*/
+  /*----------------------------------------- End contact us  -----------------------------------------*/
+  /*----------------------------------------- Start Service Center  -----------------------------------------*/
+  /*----------------------------------------- End Service Center  -----------------------------------------*/
+  /*----------------------------------------- Start Upload Img Section Include -----------------------------------------*/
+  /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
+  /*----------------------------------------- Start Wishlist  -----------------------------------------*/
+  /*----------------------------------------- End Wishlist  -----------------------------------------*/
 }
 .main .choose_category .choose_category_background {
   background-color: #eaeaea;
@@ -468,21 +492,20 @@ body {
 .main .choose_category .left-img a img {
   height: 269px;
 }
-
-.product_view .product_view_type {
+.main .product_view .product_view_type {
   background-color: #efefef;
   padding: 10px 18px;
 }
-.product_view .product_view_type .product_title {
+.main .product_view .product_view_type .product_title {
   padding: 10px 4px;
 }
-.product_view .product_view_type .product_desc {
+.main .product_view .product_view_type .product_desc {
   background: #FFF;
   box-shadow: 0 0 1px #ccc;
   height: 410px;
   width: 100%;
 }
-.product_view .product_view_type .product_desc a img {
+.main .product_view .product_view_type .product_desc a img {
   width: auto;
   max-width: 100%;
   height: 250px;
@@ -493,7 +516,7 @@ body {
   -ms-transition: all 1.1s linear;
   -o-transition: all 1.1s linear;
 }
-.product_view .product_view_type .product_desc a .full_desc {
+.main .product_view .product_view_type .product_desc a .full_desc {
   text-align: left !important;
   font-weight: bold;
   font-size: 13px;
@@ -503,13 +526,13 @@ body {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.product_view .product_view_type .product_desc .fav_product {
+.main .product_view .product_view_type .product_desc .fav_product {
   font-size: 14px;
   position: absolute;
   top: 1px;
   left: 4px;
 }
-.product_view .product_view_type .product_desc .product-label {
+.main .product_view .product_view_type .product_desc .product-label {
   position: absolute;
   top: 1px;
   right: 4px;
@@ -526,17 +549,17 @@ body {
   -ms-transition: all 1.1s linear;
   -o-transition: all 1.1s linear;
 }
-.product_view .product_view_type .product_desc .product-label:hover, .product_view .product_view_type .product_desc .product-label:focus {
+.main .product_view .product_view_type .product_desc .product-label:hover, .main .product_view .product_view_type .product_desc .product-label:focus {
   transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   -o-transform: rotate(360deg);
 }
-.product_view .product_view_type .product_desc .product-label .sale-product-icon {
+.main .product_view .product_view_type .product_desc .product-label .sale-product-icon {
   line-height: 40px;
 }
-.product_view .product_view_type .product_desc .product-label .sale-product-icon::before {
+.main .product_view .product_view_type .product_desc .product-label .sale-product-icon::before {
   content: "";
   display: block;
   position: absolute;
@@ -547,14 +570,14 @@ body {
   border-top-color: #ff4765;
   margin-left: 0px;
 }
-.product_view .product_view_type .product_desc .price-box .regular-price {
+.main .product_view .product_view_type .product_desc .price-box .regular-price {
   color: #444;
 }
-.product_view .product_view_type .product_desc .price-box .regular-price .price {
+.main .product_view .product_view_type .product_desc .price-box .regular-price .price {
   color: #008eff;
   font-weight: bold;
 }
-.product_view .product_view_type .product_desc .price-box .old-price {
+.main .product_view .product_view_type .product_desc .price-box .old-price {
   float: right;
   margin-bottom: 0;
   color: #333;
@@ -562,12 +585,6 @@ body {
   font-size: 12px;
   text-decoration: line-through;
   font-weight: bold;
-}
-
-/*----------------------------------------- End Home Page -----------------------------------------*/
-/*----------------------------------------- Start List Product Page -----------------------------------------*/
-.main {
-  /* right */
 }
 .main #button_jq {
   position: fixed;
@@ -785,7 +802,7 @@ body {
   box-shadow: 0 0 1px #ccc;
   padding: 0.65rem 0;
   width: 100%;
-  height: 500px;
+  height: 450px;
 }
 .main .content_view a img {
   width: auto;
@@ -874,9 +891,6 @@ body {
   font-size: 12px;
   text-decoration: line-through;
 }
-
-/*----------------------------------------- End List Product Page -----------------------------------------*/
-/***************************************** start inner-page ********************************************/
 .main #inner-page .price_disc_offer .product-label {
   float: right;
   margin-top: 13%;
@@ -1350,12 +1364,9 @@ body {
 .main .review_comment form em {
   color: #eb340a;
 }
-.colorstar {
+.main .colorstar {
   color: #ffc600;
 }
-
-/***************************************** end inner-page ********************************************/
-/*----------------------------------------- Start Cart Page -----------------------------------------*/
 .main .alert_msg {
   font-size: 0.8rem;
   cursor: pointer;
@@ -1557,70 +1568,64 @@ body {
 .main .choose_category .choose_category_form .hoverabley img {
   height: 262px;
 }
-
-/*----------------------------------------- End Cart Page -----------------------------------------*/
-/*----------------------------------------- Start Login Page -----------------------------------------*/
-.log_in .log_in_bg {
+.main .log_in .log_in_bg {
   background-color: #343a40;
   color: #FFF;
   padding: 30px 0;
 }
-.log_in .log_in_bg .all_forms .input-group .form-control:focus,
-.log_in .log_in_bg .all_forms .input-group textarea:focus {
+.main .log_in .log_in_bg .all_forms .input-group .form-control:focus,
+.main .log_in .log_in_bg .all_forms .input-group textarea:focus {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
 }
-.log_in .log_in_bg .all_forms .forgot_your_password {
+.main .log_in .log_in_bg .all_forms .forgot_your_password {
   margin-top: 1rem !important;
 }
-.log_in .log_in_bg .all_forms .forgot_your_password:focus {
+.main .log_in .log_in_bg .all_forms .forgot_your_password:focus {
   outline: 0;
   border: 0;
   box-shadow: none;
 }
-.log_in .log_in_bg .all_forms .btn_save:hover,
-.log_in .log_in_bg .all_forms .btn_save:focus {
+.main .log_in .log_in_bg .all_forms .btn_save:hover,
+.main .log_in .log_in_bg .all_forms .btn_save:focus {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
 }
-.log_in .log_in_bg .all_forms .btn_log_fb {
+.main .log_in .log_in_bg .all_forms .btn_log_fb {
   margin-top: 3% !important;
   background-color: #3b5999;
   color: #FFF;
   width: 30%;
 }
-.log_in .log_in_bg .all_forms .btn_log_fb:hover, .log_in .log_in_bg .all_forms .btn_log_fb:focus {
+.main .log_in .log_in_bg .all_forms .btn_log_fb:hover, .main .log_in .log_in_bg .all_forms .btn_log_fb:focus {
   background-color: #FFF;
   color: #3b5999;
   box-shadow: 0 0 0 0.2rem #3b5999;
 }
-.log_in .log_in_bg .all_forms .btn_log_fb i {
+.main .log_in .log_in_bg .all_forms .btn_log_fb i {
   font-size: 1.5rem;
   padding-right: 1rem;
 }
-
-/*----------------------------------------- End Login Page -----------------------------------------*/
-/*----------------------------------------- Start MyOrder Page -----------------------------------------*/
-.order_one .date_order,
-.order_two .date_order {
+.main .order_one .date_order,
+.main .order_two .date_order {
   color: #807d7d;
 }
-.order_one .order_method .order_icon_check,
-.order_two .order_method .order_icon_check {
+.main .order_one .order_method .order_icon_check,
+.main .order_two .order_method .order_icon_check {
   color: #197b30;
 }
-.order_one .order_method .order_icon_track,
-.order_two .order_method .order_icon_track {
+.main .order_one .order_method .order_icon_track,
+.main .order_two .order_method .order_icon_track {
   background-color: #666666;
   color: #FFF;
 }
-.order_one .order_nm,
-.order_two .order_nm {
+.main .order_one .order_nm,
+.main .order_two .order_nm {
   background-color: #666666;
   color: #FFF;
 }
-.order_one .img_order,
-.order_two .img_order {
+.main .order_one .img_order,
+.main .order_two .img_order {
   width: 30%;
   transition: all 0.6s ease-in-out;
   -webkit-transition: all 0.6s ease-in-out;
@@ -1628,24 +1633,24 @@ body {
   -ms-transition: all 0.6s ease-in-out;
   -o-transition: all 0.6s ease-in-out;
 }
-.order_one .img_order:hover, .order_one .img_order:focus,
-.order_two .img_order:hover,
-.order_two .img_order:focus {
+.main .order_one .img_order:hover, .main .order_one .img_order:focus,
+.main .order_two .img_order:hover,
+.main .order_two .img_order:focus {
   width: 40%;
   border: #e1e1e1 solid 4px;
 }
-.order_one .cart-aside .summary,
-.order_two .cart-aside .summary {
+.main .order_one .cart-aside .summary,
+.main .order_two .cart-aside .summary {
   position: relative;
 }
-.order_one .cart-aside .summary .summary-total-items,
-.order_two .cart-aside .summary .summary-total-items {
+.main .order_one .cart-aside .summary .summary-total-items,
+.main .order_two .cart-aside .summary .summary-total-items {
   color: #666;
   font-size: 1.3rem;
   text-decoration: underline;
 }
-.order_one .cart-aside .summary .summary-subtotal,
-.order_two .cart-aside .summary .summary-subtotal {
+.main .order_one .cart-aside .summary .summary-subtotal,
+.main .order_two .cart-aside .summary .summary-subtotal {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   clear: both;
@@ -1658,34 +1663,31 @@ body {
   -ms-transition: all 0.6s linear;
   -o-transition: all 0.6s linear;
 }
-.order_one .cart-aside .summary .summary-subtotal .subtotal-title,
-.order_two .cart-aside .summary .summary-subtotal .subtotal-title {
+.main .order_one .cart-aside .summary .summary-subtotal .subtotal-title,
+.main .order_two .cart-aside .summary .summary-subtotal .subtotal-title {
   color: #111;
 }
-.order_one .cart-aside .summary .summary-subtotal .subtotal-value::after,
-.order_two .cart-aside .summary .summary-subtotal .subtotal-value::after {
+.main .order_one .cart-aside .summary .summary-subtotal .subtotal-value::after,
+.main .order_two .cart-aside .summary .summary-subtotal .subtotal-value::after {
   content: " LE";
 }
-.order_one .cart-aside .summary .summary-subtotal:hover, .order_one .cart-aside .summary .summary-subtotal:focus,
-.order_two .cart-aside .summary .summary-subtotal:hover,
-.order_two .cart-aside .summary .summary-subtotal:focus {
+.main .order_one .cart-aside .summary .summary-subtotal:hover, .main .order_one .cart-aside .summary .summary-subtotal:focus,
+.main .order_two .cart-aside .summary .summary-subtotal:hover,
+.main .order_two .cart-aside .summary .summary-subtotal:focus {
   font-size: 1.5rem;
 }
-
-/*----------------------------------------- End MyOrder Page -----------------------------------------*/
-/*----------------------------------------- Start Status Page -----------------------------------------*/
-.choose-address .card-header #collapsed_pay {
+.main .choose-address .card-header #collapsed_pay {
   float: left;
   color: #6e6e6e;
   text-decoration: none;
 }
-.choose-address .card-body .choose-visa {
+.main .choose-address .card-body .choose-visa {
   background-color: #e9ecef;
   margin-bottom: 15px !important;
 }
-.choose-address .card-body .choose-visa .span_input_radio,
-.choose-address .card-body .choose-visa .span_font_icon,
-.choose-address .card-body .choose-visa .span_label_cash {
+.main .choose-address .card-body .choose-visa .span_input_radio,
+.main .choose-address .card-body .choose-visa .span_font_icon,
+.main .choose-address .card-body .choose-visa .span_label_cash {
   padding: 4px 18px;
 }
 @keyframes rotation {
@@ -1697,16 +1699,16 @@ body {
     -o-transform: rotate(1turn);
   }
 }
-.choose-address .nbe_loading,
-.choose-address .cib_loading {
+.main .choose-address .nbe_loading,
+.main .choose-address .cib_loading {
   display: block;
   position: relative;
   margin: 1.25rem auto;
   padding-top: 4.5em;
   color: #000;
 }
-.choose-address .nbe_loading::before,
-.choose-address .cib_loading::before {
+.main .choose-address .nbe_loading::before,
+.main .choose-address .cib_loading::before {
   content: "";
   display: block;
   position: absolute;
@@ -1720,19 +1722,16 @@ body {
   border-radius: 50%;
   animation: rotation 0.8s linear infinite;
 }
-
-/*----------------------------------------- End Status Page -----------------------------------------*/
-/*----------------------------------------- Strat Profile page -----------------------------------------*/
-.my_profile .my_profile_bg {
+.main .my_profile .my_profile_bg {
   background-color: #343a40;
 }
-.my_profile .my_profile_bg .my_profile_title h5 {
+.main .my_profile .my_profile_bg .my_profile_title h5 {
   font-size: 1.75rem;
 }
-.my_profile .my_profile_bg .my_profile_title .change_title {
+.main .my_profile .my_profile_bg .my_profile_title .change_title {
   width: 15%;
 }
-.my_profile .my_profile_bg .profile_img .upload_img {
+.main .my_profile .my_profile_bg .profile_img .upload_img {
   cursor: pointer;
   color: #343a40;
   font-size: 0.75rem;
@@ -1744,7 +1743,7 @@ body {
   -ms-transition: all 1.1s ease-in-out;
   -o-transition: all 1.1s ease-in-out;
 }
-.my_profile .my_profile_bg .profile_img .upload_img img {
+.main .my_profile .my_profile_bg .profile_img .upload_img img {
   height: 20vh;
   width: 12%;
   transition: all 1.1s ease-in-out;
@@ -1753,7 +1752,7 @@ body {
   -ms-transition: all 1.1s ease-in-out;
   -o-transition: all 1.1s ease-in-out;
 }
-.my_profile .my_profile_bg .profile_img .upload_img .upload_icon_img {
+.main .my_profile .my_profile_bg .profile_img .upload_img .upload_icon_img {
   font-size: 2.2rem;
   position: absolute;
   top: 5rem;
@@ -1764,13 +1763,13 @@ body {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
 }
-.my_profile .my_profile_bg .profile_img .upload_img img:hover, .my_profile .my_profile_bg .profile_img .upload_img img:focus {
+.main .my_profile .my_profile_bg .profile_img .upload_img img:hover, .main .my_profile .my_profile_bg .profile_img .upload_img img:focus {
   height: 25vh;
   width: 15%;
   margin-bottom: 1.5rem;
   margin-left: 1rem;
 }
-.my_profile .my_profile_bg .accordion_add {
+.main .my_profile .my_profile_bg .accordion_add {
   color: #444;
   padding: 10px;
   width: 100%;
@@ -1784,44 +1783,44 @@ body {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
-.my_profile .my_profile_bg .accordion_add:hover {
+.main .my_profile .my_profile_bg .accordion_add:hover {
   background-color: #fafafa;
 }
-.my_profile .my_profile_bg .accordion_add .card:first-of-type {
+.main .my_profile .my_profile_bg .accordion_add .card:first-of-type {
   border-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.my_profile .my_profile_bg .accordion_add .card:last-of-type {
+.main .my_profile .my_profile_bg .accordion_add .card:last-of-type {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header h5 button {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header h5 button {
   color: #000;
   font-weight: 700;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address {
   height: 0;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox] {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox] {
   display: none;
   appearance: none;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
   left: 96rem;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
   transform: scale(1) rotate(0deg);
   left: 96rem;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label {
   position: relative;
   cursor: pointer;
   cursor: pointer;
   font-size: 13px;
   color: #777;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label:before {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label:before {
   content: "";
   width: 2rem;
   height: 2rem;
@@ -1836,7 +1835,7 @@ body {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label:after {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label:after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "";
@@ -1859,17 +1858,17 @@ body {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .add_new_address {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .add_new_address {
   position: relative;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-header .add_new_address i {
+.main .my_profile .my_profile_bg .accordion_add .card .card-header .add_new_address i {
   position: absolute;
   left: -5.75rem;
   top: 0.5rem;
   color: #343a40;
   font-size: 1.5rem;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .table_title {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .table_title {
   background-color: #222;
   color: #FFF;
   text-align: center;
@@ -1883,30 +1882,30 @@ body {
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .table_title h3 {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .table_title h3 {
   padding-bottom: 2px;
   line-height: 39px;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .input-group .form-control:focus,
-.my_profile .my_profile_bg .accordion_add .card .card-body .input-group .form-control:hover,
-.my_profile .my_profile_bg .accordion_add .card .card-body .input-group textarea:focus,
-.my_profile .my_profile_bg .accordion_add .card .card-body .input-group textarea:hover {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .input-group .form-control:focus,
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .input-group .form-control:hover,
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .input-group textarea:focus,
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .input-group textarea:hover {
   box-shadow: 0 0 0 0.2rem rgba(101, 101, 101, 0.25) !important;
   border-color: #969798 !important;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .btn_save:hover, .my_profile .my_profile_bg .accordion_add .card .card-body .btn_save:focus {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .btn_save:hover, .main .my_profile .my_profile_bg .accordion_add .card .card-body .btn_save:focus {
   box-shadow: 0 0 0 0.2rem rgba(101, 101, 101, 0.25) !important;
   border-color: #969798 !important;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr th {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr th {
   width: 10%;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td {
   width: 90%;
   text-align: right;
   direction: rtl;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image {
   width: 15%;
   transition: all 1.1s linear;
   -webkit-transition: all 1.1s linear;
@@ -1914,22 +1913,22 @@ body {
   -ms-transition: all 1.1s linear;
   -o-transition: all 1.1s linear;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:hover, .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:focus {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:hover, .main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .product_image:focus {
   width: 20%;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .currency_shortcuts {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body #tablePreview tbody tr td .currency_shortcuts {
   float: right;
   margin-left: 3px;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary {
   position: relative;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-total-items {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-total-items {
   color: #666;
   font-size: 1.3rem;
   text-decoration: underline;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   clear: both;
@@ -1942,60 +1941,56 @@ body {
   -ms-transition: all 0.6s linear;
   -o-transition: all 0.6s linear;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-title {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-title {
   color: #111;
 }
-.my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-value::after {
+.main .my_profile .my_profile_bg .accordion_add .card .card-body .cart-aside .summary .summary-subtotal .subtotal-value::after {
   content: " LE";
 }
-.my_profile .my_profile_bg .profile_accordion .input-group .form-control:focus,
-.my_profile .my_profile_bg .profile_accordion .input-group .form-control:hover,
-.my_profile .my_profile_bg .profile_accordion .input-group textarea:focus,
-.my_profile .my_profile_bg .profile_accordion .input-group textarea:hover,
-.my_profile .my_profile_bg .address_accordion .input-group .form-control:focus,
-.my_profile .my_profile_bg .address_accordion .input-group .form-control:hover,
-.my_profile .my_profile_bg .address_accordion .input-group textarea:focus,
-.my_profile .my_profile_bg .address_accordion .input-group textarea:hover,
-.my_profile .my_profile_bg .password_accordion .input-group .form-control:focus,
-.my_profile .my_profile_bg .password_accordion .input-group .form-control:hover,
-.my_profile .my_profile_bg .password_accordion .input-group textarea:focus,
-.my_profile .my_profile_bg .password_accordion .input-group textarea:hover {
+.main .my_profile .my_profile_bg .profile_accordion .input-group .form-control:focus,
+.main .my_profile .my_profile_bg .profile_accordion .input-group .form-control:hover,
+.main .my_profile .my_profile_bg .profile_accordion .input-group textarea:focus,
+.main .my_profile .my_profile_bg .profile_accordion .input-group textarea:hover,
+.main .my_profile .my_profile_bg .address_accordion .input-group .form-control:focus,
+.main .my_profile .my_profile_bg .address_accordion .input-group .form-control:hover,
+.main .my_profile .my_profile_bg .address_accordion .input-group textarea:focus,
+.main .my_profile .my_profile_bg .address_accordion .input-group textarea:hover,
+.main .my_profile .my_profile_bg .password_accordion .input-group .form-control:focus,
+.main .my_profile .my_profile_bg .password_accordion .input-group .form-control:hover,
+.main .my_profile .my_profile_bg .password_accordion .input-group textarea:focus,
+.main .my_profile .my_profile_bg .password_accordion .input-group textarea:hover {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
 }
-.my_profile .my_profile_bg .profile_accordion .btn_save:focus,
-.my_profile .my_profile_bg .profile_accordion .btn_save:hover,
-.my_profile .my_profile_bg .address_accordion .btn_save:focus,
-.my_profile .my_profile_bg .address_accordion .btn_save:hover,
-.my_profile .my_profile_bg .password_accordion .btn_save:focus,
-.my_profile .my_profile_bg .password_accordion .btn_save:hover {
+.main .my_profile .my_profile_bg .profile_accordion .btn_save:focus,
+.main .my_profile .my_profile_bg .profile_accordion .btn_save:hover,
+.main .my_profile .my_profile_bg .address_accordion .btn_save:focus,
+.main .my_profile .my_profile_bg .address_accordion .btn_save:hover,
+.main .my_profile .my_profile_bg .password_accordion .btn_save:focus,
+.main .my_profile .my_profile_bg .password_accordion .btn_save:hover {
   box-shadow: 0 0 0 0.2rem white !important;
   border-color: #343a40 !important;
 }
-.my_profile .my_profile_bg .card-header button {
+.main .my_profile .my_profile_bg .card-header button {
   color: #666;
 }
-
-/*----------------------------------------- End Profile page -----------------------------------------*/
-/*----------------------------------------- Start contact us  -----------------------------------------*/
-.call-center {
+.main .call-center {
   background-color: #000;
   border-radius: 12px;
   margin-top: 2% !important;
   cursor: pointer;
 }
-.call-center span {
+.main .call-center span {
   color: #FFF;
   font-size: 20px;
 }
-.call-center i {
+.main .call-center i {
   color: #FFF;
   float: right;
 }
-
-.contact-desc,
-.contact-input,
-.contact-btn {
+.main .contact-desc,
+.main .contact-input,
+.main .contact-btn {
   line-height: 1.5rem;
   border: 0;
   outline: none;
@@ -2004,26 +1999,22 @@ body {
   -moz-appearance: none;
   appearance: none;
 }
-
-.contact-desc,
-.contact-input {
+.main .contact-desc,
+.main .contact-input {
   color: #4e5e72;
   background-color: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
 }
-
-.contact-desc {
+.main .contact-desc {
   width: 100%;
   height: 8rem;
   resize: none;
 }
-
-.contact-input {
+.main .contact-input {
   width: 50%;
   margin-bottom: 1rem;
 }
-
-.contact-btn {
+.main .contact-btn {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   background-color: rgba(78, 94, 114, 0.9);
@@ -2031,52 +2022,43 @@ body {
   font-size: 1rem;
   transition: background-color 0.2s;
 }
-
-.contact-btn:hover,
-.contact-btn :focus {
+.main .contact-btn:hover,
+.main .contact-btn :focus {
   outline: none;
   background-color: #4e5e72;
 }
-
-.contact-input[type=text]:focus,
-.contact-input[type=email]:focus,
-.contact-desc:focus {
+.main .contact-input[type=text]:focus,
+.main .contact-input[type=email]:focus,
+.main .contact-desc:focus {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgba(78, 94, 114, 0.3)' x='0' y='23' width='10' height='1'/></svg>");
   outline: none;
 }
-
-.your_comments {
+.main .your_comments {
   background-color: #343a4033;
   margin-bottom: 2rem;
 }
-.your_comments .form-control:focus {
+.main .your_comments .form-control:focus {
   border-color: #a4a5a7;
   box-shadow: 0 0 0 0.2rem rgba(107, 111, 115, 0.25);
 }
-
-/*----------------------------------------- End contact us  -----------------------------------------*/
-/*----------------------------------------- Start Service Center  -----------------------------------------*/
-.service_center .service_center_tabel tbody tr,
-.service_center .service_center_tabel tbody td,
-.service_center .service_center_tabel tbody th {
+.main .service_center .service_center_tabel tbody tr,
+.main .service_center .service_center_tabel tbody td,
+.main .service_center .service_center_tabel tbody th {
   vertical-align: middle !important;
 }
-.service_center .service_center_tabel tbody tr .num_row {
+.main .service_center .service_center_tabel tbody tr .num_row {
   padding: 4px 5px;
 }
-.service_center .service_center_tabel tbody tr td {
+.main .service_center .service_center_tabel tbody tr td {
   padding: 4px 3px;
 }
-.service_center .service_center_tabel tbody tr td a {
+.main .service_center .service_center_tabel tbody tr td a {
   color: #007bff;
 }
-
-/*----------------------------------------- End Service Center  -----------------------------------------*/
-/*----------------------------------------- Start Upload Img Section Include -----------------------------------------*/
-.profile_img {
+.main .profile_img {
   position: relative;
 }
-.profile_img .upload_img {
+.main .profile_img .upload_img {
   cursor: pointer;
   color: #343a40;
   font-size: 0.75rem;
@@ -2088,7 +2070,7 @@ body {
   -ms-transition: all 1.1s ease-in-out;
   -o-transition: all 1.1s ease-in-out;
 }
-.profile_img .upload_img img {
+.main .profile_img .upload_img img {
   height: 20vh;
   width: 12%;
   transition: all 1.1s ease-in-out;
@@ -2097,7 +2079,7 @@ body {
   -ms-transition: all 1.1s ease-in-out;
   -o-transition: all 1.1s ease-in-out;
 }
-.profile_img .upload_img .upload_icon_img {
+.main .profile_img .upload_img .upload_icon_img {
   font-size: 2.2rem;
   position: absolute;
   top: 5rem;
@@ -2108,15 +2090,13 @@ body {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
 }
-.profile_img .upload_img img:hover, .profile_img .upload_img img:focus {
+.main .profile_img .upload_img img:hover, .main .profile_img .upload_img img:focus {
   height: 25vh;
   width: 15%;
   margin-bottom: 1.5rem;
   margin-left: 1rem;
 }
-
-/*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
-.wishlist_shopping #tablePreview .wishlist_shopping_title {
+.main .wishlist_shopping #tablePreview .wishlist_shopping_title {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -2125,7 +2105,7 @@ body {
   width: 70%;
 }
 
-/*----------------------------------------- Start Footer -----------------------------------------*/
+/*----------------------------------------- Start Old Footer -----------------------------------------*/
 .footer_footer::before {
   content: "";
   display: block;
@@ -2251,6 +2231,8 @@ body {
   font-size: 25px;
 }
 
+/*----------------------------------------- End Old Footer -----------------------------------------*/
+/*----------------------------------------- Start New Footer -----------------------------------------*/
 .new_footer {
   background-color: #dddddd;
   padding: 35px 20px;
@@ -2407,7 +2389,8 @@ body {
   color: #777777;
 }
 
-/* Start Scroll Top */
+/*----------------------------------------- End New Footer -----------------------------------------*/
+/*----------------------------------------- Start Scroll Top -----------------------------------------*/
 #return-to-top {
   position: fixed;
   bottom: 20px;
@@ -2443,9 +2426,9 @@ body {
   background-color: #666;
 }
 
-/* End Scroll Top */
-/*----------------------------------------- End Footer -----------------------------------------*/
-/* Start Media Query Mobile */
+/*----------------------------------------- End Scroll Top -----------------------------------------*/
+/*----------------------------------------- Start Media Query Mobile -----------------------------------------*/
+/*----------------------------------------- End Media Query Mobile -----------------------------------------*/
 @media (min-width: 320px) and (max-width: 375px) {
   .alert-success.msg_success_min, .alert-success.msg_danger_min,
 .alert-danger.msg_success_min,

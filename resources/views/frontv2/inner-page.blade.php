@@ -279,10 +279,10 @@
 
           @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
         <div class="fav_product">
-                    <span>
-                      <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
-                    </span>
-                  </div>
+          <span>
+            <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
+          </span>
+        </div>
           @endif
         </form>
       </div>

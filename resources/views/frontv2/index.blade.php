@@ -31,10 +31,8 @@
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles.jpg" alt="mobiles"> -->
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong
-                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.mobile'):__('front.offer')  }}</strong>
-                    <strong
-                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.mobile') }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.mobile'):__('front.offer')  }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.mobile') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -85,8 +83,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a
-                href="{{route('front.home.list',['from_to' => '6000,10000','sub_category_id' => '49'])}}">
+              <a href="{{route('front.home.list',['from_to' => '6000,10000','sub_category_id' => '49'])}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-6000-10000.jpg" alt="mobiles-6000-10000"> -->
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -118,9 +115,9 @@
         <div class="owl_brands owl-carousel owl-theme">
           @foreach($home_brands as $homeBrand)
           <div class="item">
-              <div class="brands_img">
+            <div class="brands_img">
               <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
-                  <img  src="{{ $homeBrand->image }}"  alt="{{ $homeBrand->title }}">
+                <img src="{{ $homeBrand->image }}" alt="{{ $homeBrand->title }}">
               </a>
             </div>
           </div>
@@ -291,10 +288,8 @@
 
                 <div class="diamond_sample diamond_bg_1 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong
-                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
-                    <strong
-                      class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.tv'):__('front.offer')  }}</strong>
+                    <strong class="d-block">{{\Session::get('applocale') == 'en'? __('front.offer'):__('front.tv') }}</strong>
                   </h5>
                 </div>
               </a>
@@ -318,7 +313,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=2&sorted=price%2Casc')}}">
+              <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=2&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
 
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
@@ -333,7 +328,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=3&sorted=price%2Casc')}}">
+              <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=3&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/49-55-inch.jpg" alt="mobiles-1000-3000"> -->
 
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
@@ -348,7 +343,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=6&sorted=price%2Casc')}}">
+              <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=6&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/60-75-inch.jpg" alt="mobiles-3000-6000"> -->
 
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
@@ -363,7 +358,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-            <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=5&&sorted=price%2Casc')}}">
+              <a href="{{url('clients/productsv2?sub_category_id%5B%5D=34&property_value_id%5B%5D=5&&sorted=price%2Casc')}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->
 
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
@@ -378,28 +373,23 @@
         </div>
       </div>
 
-
       <div class="row ml-0">
-
-
-
-
-          @if(advertisements(5) && advertisements(6))
-          <div class="col-md-6 col-xl-6 pl-0 ">
+        @if(advertisements(5) && advertisements(6))
+        <div class="col-md-6 col-xl-6 pl-0 ">
           <div class="left-img mt-3">
-              <a href="{{advertisements(5)->ads_url}}">
-                <img class="w-100 rounded" src="{{advertisements(5)->image}}" alt="{{advertisements(5)->ads_url}}">
-              </a>
+            <a href="{{advertisements(5)->ads_url}}">
+              <img class="w-100 rounded" src="{{advertisements(5)->image}}" alt="{{advertisements(5)->ads_url}}">
+            </a>
           </div>
-          </div>
+        </div>
 
-          <div class="col-md-6 col-xl-6 pl-0">
+        <div class="col-md-6 col-xl-6 pl-0">
           <div class="left-img mt-3">
-              <a href="{{advertisements(6)->ads_url}}">
-                <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
-              </a>
+            <a href="{{advertisements(6)->ads_url}}">
+              <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
+            </a>
           </div>
-          </div>
+        </div>
         @elseif(advertisements(5))
         <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
@@ -412,17 +402,13 @@
         @elseif(advertisements(6))
         <div class="col-md-12 col-xl-12 pl-0 ">
           <div class="left-img mt-3">
-          <a href="{{advertisements(6)->ads_url}}">
+            <a href="{{advertisements(6)->ads_url}}">
               <img class="w-100 rounded" src="{{advertisements(6)->image}}" alt="{{advertisements(6)->ads_url}}">
             </a>
           </div>
         </div>
         @endif
-
-
       </div>
-
-
     </div>
   </section>
 
@@ -439,8 +425,7 @@
 
             <div class="col-6">
               <div class="title_right text-right">
-                <a href="{{route('front.home.list',['last' => 'last'])}}"
-                  class="btn btn-dark">@lang('messages.view_more')</a>
+                <a href="{{route('front.home.list',['last' => 'last'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
               </div>
             </div>
           </div>
@@ -459,18 +444,18 @@
               </a>
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
-                  <div class="fav_product">
-                    <span>
-                      <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
-                    </span>
-                  </div>
-                @endif
+              <div class="fav_product">
+                <span>
+                  <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+                </span>
+              </div>
+              @endif
 
-                @if($item->discount > 0)
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">{{$item->discount}} %</span>
-                </div>
-                @endif
+              @if($item->discount > 0)
+              <div class="product-label text-center font-weight-bold">
+                <span class="sale-product-icon">{{$item->discount}} %</span>
+              </div>
+              @endif
 
               @if ($item->price_after_discount >0)
 
@@ -527,7 +512,8 @@
               <img class="rounded w-100" src="{{$item->image}}" alt="{{$item->getTranslation('title',getCode())}}">
             </a>
             <h4 class="d-block d-sm-block d-md-none d-lg-none d-xl-none text-capitalize text-center h5">
-              {{$item->getTranslation('title',getCode())}}</h4>
+              {{$item->getTranslation('title',getCode())}}
+            </h4>
           </div>
         </div>
 
@@ -551,8 +537,7 @@
 
             <div class="col-6">
               <div class="title_right text-right">
-                <a href="{{route('front.home.list',['random' => 'random'])}}"
-                  class="btn btn-dark">@lang('messages.view_more')</a>
+                <a href="{{route('front.home.list',['random' => 'random'])}}" class="btn btn-dark">@lang('messages.view_more')</a>
               </div>
             </div>
           </div>
@@ -574,17 +559,17 @@
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
               <div class="fav_product">
-                    <span>
-                      <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
-                    </span>
-                  </div>
+                <span>
+                  <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+                </span>
+              </div>
               @endif
 
               @if($item->discount > 0)
-                <div class="product-label text-center font-weight-bold">
-                  <span class="sale-product-icon">{{$item->discount}} %</span>
-                </div>
-                @endif
+              <div class="product-label text-center font-weight-bold">
+                <span class="sale-product-icon">{{$item->discount}} %</span>
+              </div>
+              @endif
 
               @if ($item->price_after_discount >0)
 
