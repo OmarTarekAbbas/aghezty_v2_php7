@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <section class="wishlist_shopping my-2">
+  <section class="wishlist_shopping  my-2">
     <div class="mobile_views">
       <div class="row" id="href_load">
         <div class="col-md-12 col-lg-12 col-xl-12 col-12">
@@ -45,7 +45,7 @@
                 @foreach ($wishListProducts as $wishlist)
                 <tr>
                   <th class="th_th h6" scope="row">
-                    <a class="btn btn-sm text-primary" href="{{route('front.toggle.product.wishlist',['product_id' => $wishlist->pivot->product_id])}}">
+                    <a class="btn delete_times btn-sm text-primary" href="{{route('front.toggle.product.wishlist',['product_id' => $wishlist->pivot->product_id])}}">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 

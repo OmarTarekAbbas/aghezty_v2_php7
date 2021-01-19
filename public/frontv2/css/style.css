@@ -3282,6 +3282,23 @@ body {
     padding-right: 0 !important;
   }
 
+  .wishlist_shopping #tablePreview .img_link img {
+    width: 8% !important;
+  }
+  .wishlist_shopping #tablePreview .wishlist_shopping_title {
+    display: block;
+    width: 40%;
+  }
+  .wishlist_shopping #tablePreview .delete_times {
+    float: left;
+  }
+  .wishlist_shopping .btn_shopping {
+    text-align: center;
+  }
+  .wishlist_shopping .btn_shopping .continue_shopping {
+    margin-bottom: 3%;
+  }
+
   .footer_footer .footer_content {
     padding: 10px 0;
     font-size: 11px;
@@ -4196,6 +4213,23 @@ body {
     padding-right: 0 !important;
   }
 
+  .wishlist_shopping #tablePreview .img_link img {
+    width: 8% !important;
+  }
+  .wishlist_shopping #tablePreview .wishlist_shopping_title {
+    display: block;
+    width: 40%;
+  }
+  .wishlist_shopping #tablePreview .delete_times {
+    float: left;
+  }
+  .wishlist_shopping .btn_shopping {
+    text-align: center;
+  }
+  .wishlist_shopping .btn_shopping .continue_shopping {
+    margin-bottom: 3%;
+  }
+
   .footer_footer .footer_content {
     padding: 10px 0;
     font-size: 11px;
@@ -4421,6 +4455,23 @@ body {
 
   .log_in .all_forms .btn_log_fb {
     width: 50% !important;
+  }
+
+  .wishlist_shopping #tablePreview .img_link img {
+    width: 8% !important;
+  }
+  .wishlist_shopping #tablePreview .wishlist_shopping_title {
+    display: block;
+    width: 40%;
+  }
+  .wishlist_shopping #tablePreview .delete_times {
+    float: left;
+  }
+  .wishlist_shopping .btn_shopping {
+    text-align: center;
+  }
+  .wishlist_shopping .btn_shopping .continue_shopping {
+    margin-bottom: 3%;
   }
 
   .footer_footer .footer_content .block_brand_content .block_content .no_padding_mobile {
@@ -4699,6 +4750,23 @@ body {
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 48rem;
+  }
+
+  .wishlist_shopping #tablePreview .img_link img {
+    width: 8% !important;
+  }
+  .wishlist_shopping #tablePreview .wishlist_shopping_title {
+    display: block;
+    width: 40%;
+  }
+  .wishlist_shopping #tablePreview .delete_times {
+    float: left;
+  }
+  .wishlist_shopping .btn_shopping {
+    text-align: center;
+  }
+  .wishlist_shopping .btn_shopping .continue_shopping {
+    margin-bottom: 3%;
   }
 
   .footer_footer .footer_content .rounded-social-buttons .social-button {
