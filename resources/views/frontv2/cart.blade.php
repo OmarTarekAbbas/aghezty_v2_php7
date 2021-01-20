@@ -121,7 +121,7 @@
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button onclick="location.href= '{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}'" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">@lang('front.clear') @lang('front.shopping_cart')</button>
+              <button data-href="{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right item-delete-all">@lang('front.clear') @lang('front.shopping_cart')</button>
             </div>
           </div>
         </div>
@@ -396,5 +396,14 @@
         },
     });
   })
+
+  // start delete all cart
+  $(document).on("click", '.item-delete-all', function() {
+      $.get($(this).data('href'), function() {
+        $("#href_load").load(location.href + " #href_load>*", "");
+      })
+    })
+// start delete all cart
+
 </script>
 @endsection
