@@ -83,7 +83,7 @@
                         <i class="fas fa-times fa-lg "></i>
                       </a>
 
-                      <a class="img_link" ref="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
+                      <a class="img_link"  href="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
                         <img class="w-25" src="{{product($session_carts[$i]['product_id'])->main_image}}" alt="iphone">
 
                         <div class="cart_shopping_title">
