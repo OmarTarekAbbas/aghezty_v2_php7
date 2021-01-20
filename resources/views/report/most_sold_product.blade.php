@@ -56,7 +56,7 @@
                                         <td><img src="{{url($product->main_image)}}" alt="{{$product->title}}" style="width: 25%;"></td>
                                         <td> <h4>{{$product->title}} </h4></td>
                                         <td> <h4>{{$product->solid_count}} </h4></td>
-                                        <!-- <td> <h4>{{count_product($product->product_id)}} </h4></td>
+                                        <!-- <td> <h4>{{count_product($product->product_id)}} </h4></td> 
                                         <td> <h4>{{count_quantities($product->product_id)}} </h4></td> -->
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
