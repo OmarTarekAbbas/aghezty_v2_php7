@@ -37,7 +37,7 @@ class Product extends Model
 
   public function getMainImageAttribute($value)
   {
-    return url($value);
+    return url(file_exists(base_path($value)) ? $value : 'uploads/product/not_found.png');
   }
 
   public function category()

@@ -22,7 +22,7 @@ class ProductImage extends Model
         {
           $this->attributes['image'] = $value;
         }
-        
+
         if(is_file($value))
         {
         $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
@@ -34,7 +34,7 @@ class ProductImage extends Model
 
   public function getImageAttribute($value)
   {
-    return url($value);
+    return url(file_exists(base_path($value)) ? $value : 'uploads/product/not_found.png');
   }
 
   protected static function boot() {

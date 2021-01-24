@@ -1247,7 +1247,7 @@ class HomeController extends Controller
     {
 
         $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
-        if(!$product){
+        if(!$product || !$product->category){
           return view('frontv2.error404');
         }
         $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
