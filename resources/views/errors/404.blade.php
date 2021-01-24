@@ -62,9 +62,9 @@
       <h1 class="error error2 text-center text-white text-uppercase font-weight-bold" style="font-size:3.5rem;">@lang('front.page')</h1>
       <h5 class="text-center text-white text-uppercase" style="font-size:1.8rem;">@lang('front.was_not_found')</h5>
 
-      <form class="back_home" action="{{url('clients/homev2')}}">
-        <button class="btn text-capitalize m-auto d-block">@lang('front.back') @lang('front.home')</button>
-      </form>
+      <div class="back_home">
+        <button onclick="location.href='{{url("clients/homev2")}}'" class="btn text-capitalize m-auto d-block">@lang('front.back') @lang('front.home')</button>
+      </div>
 
 
     </div>
