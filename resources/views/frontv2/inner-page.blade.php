@@ -62,7 +62,7 @@
 
   <section id="inner-page" class="mobile_views">
     <div class="">
-      <h3 class="product-title font-weight-bold">{{$product->getTranslation('title',getCode())}}</h3>
+      <h1 class="product-title font-weight-bold">{{$product->getTranslation('title',getCode())}}</h1>
 
       <span class="rating rating_star">
         @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
