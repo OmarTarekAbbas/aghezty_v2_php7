@@ -452,7 +452,7 @@
           @foreach ($recently_added as $item)
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
-              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
+              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
                   class="text-center d-block">
 
@@ -558,7 +558,7 @@
 
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
-              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
+              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}"
                   class="img_size d-block">
 

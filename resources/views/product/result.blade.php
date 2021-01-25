@@ -71,7 +71,7 @@
             </td>
             <td>
                 <a class="btn btn-sm btn-info show-tooltip" title="Show Product"
-                   href="{{route("front.home.inner",['id'=>$value->product_id])}}" data-original-title="Show Product"><i
+                   href="{{route("front.home.inner",['id'=>$value->product_id ,'slug' => setSlug($value->getTranslation('title',getCode()))])}}" data-original-title="Show Product"><i
                         class="fa fa-forward"></i></a>
                 <a class="btn btn-sm btn-success show-tooltip" title="Image Control"
                    href="{{route("admin.image.index",['product_id'=>$value->product_id])}}" data-original-title="Show Product"><i
