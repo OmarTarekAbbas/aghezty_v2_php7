@@ -531,7 +531,7 @@
           <div class="row">
             <div class="col-6">
               <div class="title_left text-left font-weight-bold">
-                <strong style="font-size: 19px;">@lang('messages.selected_for_you')</strong>
+                <strong>@lang('messages.selected_for_you')</strong>
               </div>
             </div>
 
