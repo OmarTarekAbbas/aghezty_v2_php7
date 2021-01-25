@@ -1286,8 +1286,8 @@ class HomeController extends Controller
     public function inner_productv2($id)
     {
 
-        $product = Product::stock()->latest('created_at')->whereId($id)->where('products.active', 1)->first();
-        if(!$product){
+        $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
+        if(!$product || !$product->category){
           return view('frontv2.error404');
         }
         $items = Product::stock()->where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();

@@ -61,6 +61,7 @@
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
                                             <a href="{{url('clients/productv2/'.$product->product_id)}}" class="btn btn-primary" target="_blank">Show Product</a>
+
                                             </div>
                                         </td>
                                     </tr>

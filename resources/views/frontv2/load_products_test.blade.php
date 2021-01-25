@@ -3,7 +3,7 @@
 <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
             <div class="card-group">
               <div class="card" style='height:500px'>
-                <a href="{{route('front.home.inner',['id' => $product->product_id]) }}">
+                <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
                   <img class="lazy card-img-top" style="width: auto; height: 292px; text-align:center; margin: 10px auto; display:block;" src="{{$product->main_image}}" alt="Product" class="d-block m-auto">
                   <!-- @if($product->discount > 0)
                   <div class="product-label text-center font-weight-bold">

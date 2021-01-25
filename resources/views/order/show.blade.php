@@ -127,7 +127,7 @@
                                     <td>{{$value->total_price}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-success show-tooltip" title="Show Product"
-                                            href="{{route("front.home.inner",['id'=>$value->product->id])}}"
+                                            href="{{route("front.home.inner",['id'=>$value->product->id ,'slug' => setSlug($value->product->getTranslation('title',getCode()))])}}"
                                             data-original-title="Show Product"><i class="fa fa-forward"></i></a>
                                         {{-- <i class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}"
                                         title="Edit"><i class="fa fa-edit"></i></i> --}}

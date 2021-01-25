@@ -39,7 +39,7 @@ class Product extends Model
 
   public function getMainImageAttribute($value)
   {
-    return url($value);
+    return url(file_exists(base_path($value)) ? $value : 'images/not_found.png');
   }
 
   public function category()
@@ -135,4 +135,6 @@ class Product extends Model
     });
 
   }
+
+
 }

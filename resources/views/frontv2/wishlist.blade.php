@@ -49,7 +49,7 @@
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
-                    <a class="img_link" href="{{route('front.home.inner',['id' => $wishlist->pivot->product_id])}}">
+                    <a class="img_link" href="{{route('front.home.inner',['id' => $wishlist->pivot->product_id , setSlug(product($wishlist->pivot->product_id)->getTranslation('title',getCode()))])}}">
                       <img class="w-25" src="{{product($wishlist->pivot->product_id)->main_image}}" alt="iphone">
 
                       <div class="wishlist_shopping_title">
@@ -112,7 +112,7 @@
 
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
-              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id])}}">
+              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id , 'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
                 <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="img_size w-75 d-block m-auto">
 
                 @if($item->discount > 0)

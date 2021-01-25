@@ -63,7 +63,7 @@
 
   <section id="inner-page" class="mobile_views">
     <div class="">
-      <h3 class="product-title font-weight-bold">{{$product->getTranslation('title',getCode())}}</h3>
+      <h1 class="product-title font-weight-bold">{{$product->getTranslation('title',getCode())}}</h1>
 
       <span class="rating rating_star">
         @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
@@ -291,17 +291,16 @@
             <p class="text-danger m-2 font-weight-bold"><i class="fa fa-heart"></i> ADD TO WISHLIST</p>
 					</div> -->
 
-      <div class="rounded-social-buttons w-100">
-        <strong class="text-capitalize">share with: </strong>
-        <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id]))}}" target="_blank" title="Facebook">
+      <div class="rounded-social-buttons w-100 text-center">
+        <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))]))}}" target="_blank" title="Facebook">
           <i class="fab fa-facebook-f facebook_icon"></i>
         </a>
 
-        <a class="social-button whatsapp_link" href="https://api.whatsapp.com/send?text={{$product->getTranslation('title')}} url: {{route('front.home.inner',['id' => $product->id])}}" title="Whatsapp">
+        <a class="social-button whatsapp_link" href="https://api.whatsapp.com/send?text={{$product->getTranslation('title')}} url: {{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))])}}" title="Whatsapp">
           <i class="fab fa-whatsapp whatsapp_icon"></i>
         </a>
 
-        <a class="social-button twitter_link" href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id])}}" target="_blank" title="Twitter">
+        <a class="social-button twitter_link" href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))])}}" target="_blank" title="Twitter">
           <i class="fab fa-twitter twitter_icon"></i>
         </a>
 
@@ -438,7 +437,7 @@
       @foreach ($items as $item)
       <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 bg-white rounded">
-          <a href="{{route('front.home.inner',['id' => $item->id])}}">
+          <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
             <img src="{{url($item->main_image)}}" alt="Product" class="text-center d-block based_selection_img">
 
             <h6 class="full_desc text-dark text-left text-capitalize my-3">
