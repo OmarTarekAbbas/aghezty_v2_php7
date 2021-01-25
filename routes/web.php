@@ -161,3 +161,6 @@ Route::get('getChild','front\HomeController@getChild');
 
 Route::get('/facebook_redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/facebook_callback', 'SocialAuthFacebookController@callback');
+
+Route::get('category/{sub_category_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
+Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
