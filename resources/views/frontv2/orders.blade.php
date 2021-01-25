@@ -65,7 +65,7 @@
                           <tr>
                             <th>@lang('front.product_image')</th>
                             <td>
-                              <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))])}}">
+                              <a href="{{route('front.home.inner',['id' => $product->product_id ,setSlug(product($product->product_id)->getTranslation('title',getCode()))])}}">
                                 <img class="product_image" src="{{product($product->product_id)->main_image}}"
                                   alt="Mobile">
                               </a>
