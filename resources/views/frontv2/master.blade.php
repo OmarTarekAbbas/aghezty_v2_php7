@@ -531,7 +531,7 @@
                           @endphp
                           @foreach ($category->sub_cats->slice(0, $limit) as $sub_category)
                           <li>
-                            <a class="hvr-icon-forward" href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+                            <a class="hvr-icon-forward" href="{{url('category/'.$sub_category->id.'/'.setSlug($sub_category->getTranslation('title',getCode())))}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
                           </li>
                           @endforeach
                         </ul>
@@ -539,13 +539,13 @@
 
                       <div class="col-md-3 col-xl-3 col-6 p-0 no_padding_mobile">
                         <ul class="list-unstyled ul_links">
-                          <a href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}">
+                          <a href="{{url('category/'.$sub_category->id.'/'.setSlug($sub_category->getTranslation('title',getCode())))}}">
                             <strong class="font-weight-bold border-bottom invisible">Heavy Machines</strong>
                           </a>
 
                           @foreach ($category->sub_cats->slice($limit, $count) as $sub_category)
                           <li>
-                            <a class="hvr-icon-forward" href="{{url('clients/productsv2?sub_category_id='.$sub_category->id)}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
+                            <a class="hvr-icon-forward" href="{{url('category/'.$sub_category->id.'/'.setSlug($sub_category->getTranslation('title',getCode())))}}" title="Dish Washers">{{$sub_category->getTranslation('title',getCode())}}</a>
                           </li>
                           @endforeach
 
