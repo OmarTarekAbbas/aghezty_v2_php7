@@ -1,7 +1,9 @@
 <?php
 return [
     'title' => 'SMS',
-    'offer_link' => 'Offer Link',
+    'mail' => 'Mail',
+    'newsletter' => 'Newsletter',
+    'newsletter_send' => 'Send Newsletter',
     'language' => 'عربي',
     'role' => 'Role',
     'create-role' => 'Create Role',
@@ -34,6 +36,10 @@ return [
     'not_have_rate_yet' => 'Not Rate Yet',
     'create_from_excel' => 'Create From Excel',
     'request_product' => 'Unavailable Product',
+    'Send_Mail' => 'Send Mail To Client With Order Status',
+    'Under_Shipping' => 'Under Shipping',
+    'Finished' => 'Finished',
+    'Not_available' => 'Not Available',
     'roles' => [
         'edit-role' => 'Edit Role',
         'role-name' => 'Role name',
@@ -447,7 +453,8 @@ return [
     'cash_on_delivery' => 'Cash On Delivery',
     'return_or_refund' => 'Return Or Refund',
     'key_feature' => 'Key Feature',
-    'sold_times' => 'Sold Times',
+    'sold_times' => 'Solid Count',
     'offer_image' => 'Offer Image',
+    'product_id' => 'Product id',
 
 ];

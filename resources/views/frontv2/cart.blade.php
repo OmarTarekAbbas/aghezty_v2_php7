@@ -44,7 +44,7 @@
                 @foreach ($auth_carts as $cart)
                 <tr>
                   <th class="th_th h6" scope="row">
-                    <a class="item-delete btn btn-sm text-primary" href="{{route('front.home.cart.delete',['cart_id' => $cart->pivot->id , 'type' => 'auth'])}}">
+                    <a class="item-delete btn btn-sm text-primary" data-href="{{route('front.home.cart.delete',['cart_id' => $cart->pivot->id , 'type' => 'auth'])}}">
                       <i class="fas fa-times fa-lg "></i>
                     </a>
 
@@ -79,11 +79,11 @@
                 @for ($i =0; $i < count($session_carts); $i++)
                   <tr>
                     <th class="th_th h6" scope="row">
-                      <a class="item-delete btn btn-sm text-primary" href="{{route('front.home.cart.delete',['cart_id' => $i , 'type' => 'cookie'])}}">
+                      <a class="item-delete btn btn-sm text-primary" data-href="{{route('front.home.cart.delete',['cart_id' => $i , 'type' => 'cookie'])}}">
                         <i class="fas fa-times fa-lg "></i>
                       </a>
 
-                      <a class="img_link" ref="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
+                      <a class="img_link"  href="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
                         <img class="w-25" src="{{product($session_carts[$i]['product_id'])->main_image}}" alt="iphone">
 
                         <div class="cart_shopping_title">
@@ -121,7 +121,7 @@
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-6 col-12">
-              <button onclick="location.href= '{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}'" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right">@lang('front.clear') @lang('front.shopping_cart')</button>
+              <button data-href="{{route('front.home.cart.delete',['delete_all' => 'delete_all' , 'type' => Auth::guard('client')->user() ? 'auth' : 'cookie'])}}" class="btn clear_shopping btn-secondary text-capitalize text-white text-right hvr-wobble-to-bottom-right item-delete-all">@lang('front.clear') @lang('front.shopping_cart')</button>
             </div>
           </div>
         </div>
@@ -296,6 +296,14 @@
                 </div>
               </a>
 
+              @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
+                <div class="fav_product">
+                  <span>
+                    <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+                  </span>
+                </div>
+              @endif
+
               @if ($item->price_after_discount >0)
 
               <div class="price-box">
@@ -388,5 +396,14 @@
         },
     });
   })
+
+  // start delete all cart
+  $(document).on("click", '.item-delete-all', function() {
+      $.get($(this).data('href'), function() {
+        $("#href_load").load(location.href + " #href_load>*", "");
+      })
+    })
+// start delete all cart
+
 </script>
 @endsection

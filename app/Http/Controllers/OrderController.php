@@ -10,18 +10,20 @@ use App\Product;
 use Mail;
 use App\Client;
 use App\OrderReplay;
+use App\Constants\OrderStatus;
+use App\Constants\PaymentStatus;
+use App\Constants\PaymentType;
+use App\Jobs\SendOrderMailJob;
 
 class OrderController extends Controller
 {
   public function index(Request $request)
   {
-
     return view('order.index');
   }
 
   public function allData(Request $request)
   {
-
     $orders = Order::query();
     if ($request->has('client_id') && $request->client_id != '') {
       $orders = $orders->where('client_id', $request->client_id);
@@ -71,7 +73,6 @@ class OrderController extends Controller
 
   }
 
-
   public function show($id)
   {
     $order = Order::findOrFail($id);
@@ -108,22 +109,41 @@ class OrderController extends Controller
   {
     $client = Client::find($request->client_id);
     $order = Order::find($request->order_id);
+    $last_order_status = $order->status;
+
+    //if old status is pending and admin make it finish direct make decrease product stock and increase product solid count
+    if ($request->status == OrderStatus::FINISHED && $last_order_status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
+       ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
+
+      $order->payment_status = PaymentStatus::Success;
+      $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
+    }
+
+    //if old status is pending and admin make it UNDER SHIPPING direct make decrease product stock and increase product solid count
+    if ($request->status == OrderStatus::UNDER_SHIPPING && $last_order_status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
+       ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
+
+      $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
+    }
+
+    //if old status is UNDER SHIPPING and admin make it FINISHED direct make payment status success
+    if ($request->status == OrderStatus::FINISHED  && $last_order_status == OrderStatus::getLabel(OrderStatus::UNDER_SHIPPING) &&
+       ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
+
+      $order->payment_status = PaymentStatus::Success;
+    }
+
+    if($request->status == OrderStatus::NOT_AVAILABLE &&
+      ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
+        $mail_template_page = "front.mail_not_available";
+        dispatch(new SendOrderMailJob($order, $client, $request->message, $mail_template_page));
+    } else {
+        $mail_template_page = "front.mail";
+        dispatch(new SendOrderMailJob($order, $client, $request->message, $mail_template_page));
+    }
+
     $order->status = $request->status;
     $order->save();
-    if ($request->status == 3) { // admin make finish
-      $carts = OrderDetail::where('order_id', $request->order_id)->get();
-      foreach ($carts as $key => $cart) {
-        $product = Product::find($cart->product_id);
-        $product->stock = $product->stock - $cart->quantity;
-        $product->save();
-      }
-    }
-    $admin = \Auth::user();
-    Mail::send('front.mail', ['order' => $order, 'client' => $client, 'subject' => $request->message], function ($m) use ($client) {
-      $m->from(setting('super_mail'), __('front.title'));
-      $m->cc(setting('super_mail'));
-      $m->to($client->email, $client->name)->subject(__('front.order'));
-    });
     $this->savedOrderReply($order, $request);
     \Session::flash('success', 'Email Is Send With Order Status');
     return back();
@@ -154,5 +174,35 @@ class OrderController extends Controller
     $data['message']   = $request->message;
 
     OrderReplay::create($data);
+  }
+
+  /**
+   * Method removeProductFromOrderDeatilsThatNotHaveOrder
+   *
+   * @return void
+   */
+  public function removeProductFromOrderDeatilsThatNotHaveOrder()
+  {
+    return \App\OrderDetail::doesntHave("order")->delete();
+  }
+
+  /**
+   * Method handleStockAndSolidCountForProductAfterChangeOrderStatus
+   *
+   * when order status change to finish or under shipping make decrease for product stock and increase for product solid count
+   *
+   * @param Request $request
+   *
+   * @return void
+   */
+  public function handleStockAndSolidCountForProductAfterChangeOrderStatus($request)
+  {
+    $carts = OrderDetail::where('order_id', $request->order_id)->get();
+    foreach ($carts as $key => $cart) {
+      $product = Product::find($cart->product_id);
+      $product->stock       = $product->stock - $cart->quantity;
+      $product->solid_count = $product->solid_count + $cart->quantity;
+      $product->save();
+    }
   }
 }

@@ -66,7 +66,7 @@
 
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                <input id="panel_category_{{$category->id}}" class="mb-2 price sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -77,7 +77,7 @@
 
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
-                  <input  id="panel_category_{{$category->id}}" class="mb-2 price sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                  <input  id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -186,6 +186,7 @@
           <input type="hidden" id="ito_in" name="ito" value="{{isset($_REQUEST['ito'])?$_REQUEST['ito']:''}}">
           <input type="hidden" id="ifrom_in" name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
           <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
+          <input type="hidden" id="most_solid" name="most_solid" value="{{request()->filled('most_solid') ? request('most_solid') : ''}}">
         </form>
       </div>
       <!-- End Filter Search -->
@@ -378,7 +379,7 @@
           @endif
         </div>
         <!-- End Image Cover -->
-
+        @if(!request()->filled('most_solid'))
         <!-- Start Toolbar -->
         <div class="toolbar mt-3 p-2 border bg-white">
           <div class="sort-by mr-3 float-left">
@@ -403,6 +404,7 @@
           </strong>
         </div>
         <!-- End Toolbar -->
+        @endif
 
         <!-- start row product -->
         <div id="grid_two" class="row mt-3 content_view_mobile">
@@ -414,15 +416,24 @@
               <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
                 <img class="lazy text-center d-block" src="{{$product->main_image}}" alt="Product">
 
-                @if($product->discount > 0)
+                <h6 class="full_desc text-dark text-left text-capitalize">
+                  {{$product->getTranslation('title',getCode())}}
+                </h6>
+              </a>
+
+              @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
+              <div class="fav_product">
+                    <span>
+                      <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
+                    </span>
+                  </div>
+            @endif
+
+              @if($product->discount > 0)
                 <div class="product-label text-center font-weight-bold">
                   <span class="sale-product-icon">{{$product->discount}} %</span>
                 </div>
                 @endif
-
-                <h6 class="full_desc text-dark text-left text-capitalize">
-                  {{$product->getTranslation('title',getCode())}}</h6>
-              </a>
 
               <div class="rating_list_product">
                 @for ($i = 1; $i <= 5; $i++) @if(round($product->rate() - .25) >= $i)
@@ -560,7 +571,7 @@
 
   }
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
-    // console.log("omartarek");
+    $('#most_solid').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {

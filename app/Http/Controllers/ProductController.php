@@ -10,6 +10,8 @@ use Validator;
 use App\Language;
 use App\Events\Products;
 use Illuminate\Http\Request;
+use App\Constants\OrderStatus;
+use App\Constants\PaymentStatus;
 
 class ProductController extends Controller
 {
@@ -539,5 +541,21 @@ class ProductController extends Controller
         $value->save();
       }
       return back()->with('success','Update All Product SuccessFully');
+    }
+
+    public function updateOldSolidCountInProduct()
+    {
+      $order_details = \App\OrderDetail::whereHas("order",function($query){
+        $query->where('orders.status','=', OrderStatus::UNDER_SHIPPING);
+        $query->orWhere('orders.status','=', OrderStatus::FINISHED);
+        $query->orWhere('orders.payment_status','=', PaymentStatus::Success);
+      })->get();
+      foreach ($order_details as $key => $order_detail) {
+        $product = Product::find($order_detail->product_id);
+        $product->solid_count = $product->solid_count + $order_detail->quantity;
+        //dd($product);
+        $product->save();
+        return back();
+      }
     }
 }

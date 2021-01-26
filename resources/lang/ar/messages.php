@@ -1,6 +1,9 @@
 <?php
 return [
     'title' => 'ألرسائل النصيه',
+    'mail' => 'الايميل',
+    'newsletter' => 'النشرة الاخبارية',
+    'newsletter_send' => 'ارسال النشرة الاخبارية',
     'offer_link' => 'لينك الاوفر',
     'language' => 'english',
     'role' => 'الادوار',
@@ -30,6 +33,10 @@ return [
     'cancel' => 'ألغاء',
     'publish' => 'حاله النشر',
     'not_have_rate_yet' => 'لم يقيم بعد',
+    'Send_Mail' => 'إرسال بريد إلى العميل بحالة الطلب',
+    'Under_Shipping' => 'تحت الشحن',
+    'Finished' => 'تم الانتهاء من',
+    'Not_available' => 'غير متوفر',
     'create_from_excel' => 'انشاء المنتجات من ملف',
     'roles' => [
         'edit-role' => 'تعديل الدور',
@@ -451,4 +458,6 @@ return [
     'key_feature' => 'المواصفات',
     'sold_times' => 'مرات البيع',
     'offer_image' => 'صور اوفر',
+    'product_id' => 'رقم المنتج',
+
 ];

@@ -105,7 +105,9 @@ Route::prefix('clients')->group(function() {
         Route::get('order_addressv2','front\HomeController@choose_addressv2')->name('front.home.checkout.address');
         Route::get('myorderv2/{id}','front\HomeController@myorderv2')->name('front.home.inner.order');
         Route::get('confirm_order/{id}','front\HomeController@confirm_order')->name('front.home.confirm');
-
+        Route::get('toggle/wishlist','front\WishListController@createOrdelete')->name('front.toggle.product.wishlist');
+        Route::get('wishlist','front\WishListController@index')->name('front.home.wishlist');
+        Route::get('add/wishlist/to/cart','front\WishListController@addWishlistProductToCart')->name('front.add.wishlist.to.cart');
         //nbe
         Route::get('ready_nbe/','front\HomeController@readyNbe')->name('front.home.ready.nbe');
         Route::post('createPayment/','front\HomeController@createOrderWithPayment')->name('front.home.payment.submit');
@@ -162,5 +164,14 @@ Route::get('getChild','front\HomeController@getChild');
 Route::get('/facebook_redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/facebook_callback', 'SocialAuthFacebookController@callback');
 
+/**newsletter routes */
+Route::get('newsletter', 'NewsletterController@index');
+Route::get('newsletter/testmail', 'NewsletterController@testmail');
+Route::get('newsletter/send', 'NewsletterController@send');
+Route::post('newsletter/store', 'NewsletterController@store');
+Route::get('newsletter/{id}/delete', 'NewsletterController@delete');
+Route::post('newsletter/send_message', 'NewsletterController@sendMessage');
+Route::get('newsletter/send_message/{message}', 'NewsletterController@sendMessage');
+/**end newsletter routes */
 Route::get('category/{sub_category_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
 Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');

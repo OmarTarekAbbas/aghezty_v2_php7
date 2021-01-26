@@ -98,6 +98,8 @@ function get_static_routes()
     Route::post('admin/image/order/{id}', 'ImageController@orderImage');
     Route::get('image/{id}/delete', 'ImageController@destroy');
     Route::get('product/{id}/dublicate', 'ProductController@dublicate_product');
+    Route::get('remove/old/order/details', 'OrderController@removeProductFromOrderDeatilsThatNotHaveOrder');
+    Route::get('add/solid/count', 'ProductController@updateOldSolidCountInProduct');
     /*****************start design v2 */
     Route::get('homepage/slides', 'HomeController@slidesv2');
     Route::get('slides/{id}/edit', 'HomeController@editv2');
@@ -446,7 +448,14 @@ function count_product($id)
 
 function count_quantities($id)
 {
-  $count_quantities = OrderDetail::where('product_id', $id)->sum('quantity');
+
+  //$count_quantities = OrderDetail::where('product_id', $id)->sum('quantity');
+  $count_quantities = OrderDetail::select('*')
+  ->join('orders', 'orders.id', '=', 'order_details.order_id')
+  ->where('orders.status','=', 3)
+  ->where('order_details.product_id','=', $id)
+  ->sum('quantity');
+  //dd($count_quantities);
   return $count_quantities;
 }
 

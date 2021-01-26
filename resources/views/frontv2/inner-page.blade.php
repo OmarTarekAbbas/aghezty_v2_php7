@@ -4,7 +4,8 @@
 <style>
   nav.container-fluid {
     padding-right: 0 !important;
-    padding-left: 0 !important;nth-last-of-type()
+    padding-left: 0 !important;
+    nth-last-of-type()
   }
 
   .notify_me {
@@ -154,7 +155,8 @@
           <div>
             <h6 class="font-weight-bold d-inline-block">@lang('front.inner.avialable'):</h6>
             <p class="d-inline-block px-1">
-              {{$product->stock ? __('front.inner.in_stock') : __('front.inner.not_stock') }}</p>
+              {{$product->stock ? __('front.inner.in_stock') : __('front.inner.not_stock') }}
+            </p>
           </div>
 
           {{-- @if ($product->sku)
@@ -199,7 +201,8 @@
           <div class="col-md-5 col-5 p-0">
             <h4 class="price text-primary font-weight-bold">
               {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
-              @lang('front.egp')</h4>
+              @lang('front.egp')
+            </h4>
           </div>
 
           <div class="col-md-5 col-5 p-0">
@@ -269,9 +272,17 @@
             <i class="fa fa-minus fa-xs" aria-hidden="true"></i>
           </span>
           @if($product->stock > 0)
-          <button class="w-75 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
+          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
           @else
-          <button class="w-75 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
+          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
+          @endif
+
+          @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
+        <div class="fav_product">
+                    <span>
+                      <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
+                    </span>
+                  </div>
           @endif
         </form>
       </div>
@@ -304,17 +315,17 @@
 
 @if($counter)
 <section class="inner_table_desc" style="margin-top: -1rem">
-@else
-<section class="inner_table_desc" style="margin-top: 0">
-  @endif
-  <div class="table_desc pt-3">
-    <h3 style="text-decoration:underline">@lang('front.product_info')</h3>
-    <div style="max-width: 100%; overflow:hidden;">
-      {!! $product->getTranslation('description',getCode()) !!}
+  @else
+  <section class="inner_table_desc" style="margin-top: 0">
+    @endif
+    <div class="table_desc pt-3">
+      <h3 style="text-decoration:underline">@lang('front.product_info')</h3>
+      <div style="max-width: 100%; overflow:hidden;">
+        {!! $product->getTranslation('description',getCode()) !!}
+      </div>
     </div>
-  </div>
 
-  {{-- <table class="add_new_table table table-hover border">
+    {{-- <table class="add_new_table table table-hover border">
       <h5>@lang('front.title')</h5>
       <tbody>
         <tr>
@@ -338,11 +349,11 @@
         </tr>
       </tbody>
     </table> --}}
-</section>
+  </section>
 
-<div class="mobile_view mt-2">
-  <div class="border-bottom w-100 mt-3"></div>
-</div>
+  <div class="mobile_view mt-2">
+    <div class="border-bottom w-100 mt-3"></div>
+  </div>
 </section>
 
 <section class="model_notify_me">
@@ -429,16 +440,25 @@
           <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
             <img src="{{url($item->main_image)}}" alt="Product" class="text-center d-block based_selection_img">
 
-            @if($item->discount > 0)
-            <div class="product-label text-center font-weight-bold">
-              <span class="sale-product-icon">{{$item->discount}} %</span>
-            </div>
-            @endif
-
             <h6 class="full_desc text-dark text-left text-capitalize my-3">
               {{$item->getTranslation('title',getCode())}}
             </h6>
           </a>
+
+          @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
+          <div class="fav_product">
+            <span>
+              <i class="fa fa-heart fa-2x grey {{ in_array($item->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $item->id }}"></i>
+            </span>
+          </div>
+          @endif
+
+          @if($item->discount > 0)
+          <div class="product-label text-center font-weight-bold">
+            <span class="sale-product-icon">{{$item->discount}} %</span>
+          </div>
+          @endif
+
 
           <div class="rating_list_product">
             @for ($i = 1; $i <= 5; $i++) @if(round($item->rate() - .25) >= $i)
@@ -569,7 +589,6 @@
 </div>
 
 @endsection
-
 @section('script')
 <script>
   sessionStorage.setItem("current_url", document.referrer)

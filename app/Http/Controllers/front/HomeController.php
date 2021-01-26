@@ -680,8 +680,8 @@ class HomeController extends Controller
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
         $home_brands = Brand::all();
-        $recently_added = Product::where('recently_added', 1)->get();
-        $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $recently_added = Product::stock()->where('recently_added', 1)->get();
+        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
         if (count($recently_added) != 6) {
             $limit = 6 - count($recently_added);
@@ -691,7 +691,7 @@ class HomeController extends Controller
 
         if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
-            $selected_for_youR = Product::all()->random($limit);
+            $selected_for_youR = Product::stock()->get()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
 
@@ -919,10 +919,9 @@ class HomeController extends Controller
 
     public function productsv2(Request $request)
     {
-       //dd($request->brand_id);
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -983,6 +982,7 @@ class HomeController extends Controller
             $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
+          $this->setSearchValue($request->search);
       }
 
 
@@ -1003,6 +1003,17 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
+        if ($request->filled('most_solid')) {
+          // $products = $products->whereHas("orders",function($q){
+          //   $q->join('orders', 'orders.id', '=', 'order_details.order_id');
+          //   $q->where('orders.status','=', 3);
+          // })->withCount(["orders" => function($query) {
+          //   $query->join('orders', 'orders.id', '=', 'order_details.order_id');
+          //   $query->where('orders.status','=', 3);
+          // }])->groupBy("products.id")->orderBy("orders_count","desc");
+          $products = $products->where("solid_count", '>', 0)->orderBy("solid_count","desc");
+        }
+
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
@@ -1025,6 +1036,7 @@ class HomeController extends Controller
         } else {
           $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
         }
+
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
@@ -1032,7 +1044,7 @@ class HomeController extends Controller
     {
 
         //return $request->all();
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
@@ -1101,7 +1113,17 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
-        // dd($request->has('property_value_id'));
+        if ($request->filled('most_solid')) {
+          // $products = $products->whereHas("orders",function($q){
+          //   $q->join('orders', 'orders.id', '=', 'order_details.order_id');
+          //   $q->where('orders.status','=', 3);
+          // })->withCount(["orders" => function($query) {
+          //   $query->join('orders', 'orders.id', '=', 'order_details.order_id');
+          //   $query->where('orders.status','=', 3);
+          // }])->groupBy("products.id")->orderBy("orders_count","desc");
+          $products = $products->where("solid_count", '>', 0)->orderBy("solid_count","desc");
+        }
+
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
@@ -1154,7 +1176,7 @@ class HomeController extends Controller
      * @return array
      */
     public function getCategoryThatHaveCurrentProperty($request) {
-      $category_ids = Product::whereHas('pr_value', function ($q) use ($request) {
+      $category_ids = Product::stock()->whereHas('pr_value', function ($q) use ($request) {
         $q->whereIn('property_values.id', $request->property_value_id);
       })->pluck("category_id")->toArray();
 
@@ -1171,7 +1193,7 @@ class HomeController extends Controller
      */
     public function redfineQueryWithoutProperty($request, $category_have_current_property)
     {
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', array_diff($request->sub_category_id, $category_have_current_property));
@@ -1243,6 +1265,24 @@ class HomeController extends Controller
         return $products;
     }
 
+    /**
+     * Method setSearchKey
+     *
+     * @param string $searchValue
+     *
+     * @return void
+     */
+    public function setSearchValue($searchValue)
+    {
+      $oldSearchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
+      if (($key = array_search($searchValue, $oldSearchValue)) !== false) {
+        unset($oldSearchValue[$key]);
+      }
+      array_push($oldSearchValue,$searchValue);
+      setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12)); //set for 1 year
+      session(["old_search_value" => $oldSearchValue]);
+    }
+
     public function inner_productv2($id)
     {
 
@@ -1250,7 +1290,7 @@ class HomeController extends Controller
         if(!$product || !$product->category){
           return view('frontv2.error404');
         }
-        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
+        $items = Product::stock()->where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
 
@@ -1433,13 +1473,13 @@ class HomeController extends Controller
             \Session::flash('success_pr', Product::find($request->product_id));
         }
 
-        $selected_for_you = Product::where('selected_for_you', 1)->get();
+        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->inRandomOrder()->first();
 
         if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
-            $selected_for_youR = Product::all()->random($limit);
+            $selected_for_youR = Product::stock()->get()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
 
@@ -1540,6 +1580,9 @@ class HomeController extends Controller
             } else {
                 Cart::where('client_id', \Auth::guard('client')->user()->id)->delete();
             }
+        }
+        if($request->ajax()) {
+          return "ok";
         }
         \Session::flash('success', 'delete will');
         return back();
@@ -1857,6 +1900,7 @@ class HomeController extends Controller
             //update product stock after nbe success
             foreach ($carts as $cart) {
                 $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->solid_count = $cart->product->solid_count + $cart->quantity;
                 $cart->product->save();
                 $cart->delete();
             }
@@ -2020,6 +2064,7 @@ class HomeController extends Controller
             //update product stock after cib success
             foreach ($carts as $cart) {
                 $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->solid_count = $cart->product->solid_count + $cart->quantity;
                 $cart->product->save();
                 $cart->delete();
             }

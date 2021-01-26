@@ -3,6 +3,8 @@
 namespace App;
 //use Illuminate\Database\Eloquent\ForceDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
 use App\Traits\Translatable;
 class Product extends Model
 {
@@ -89,6 +91,16 @@ class Product extends Model
       return $this->belongsToMany('App\PropertyValue','product_properties','product_id','property_value_id');
   }
 
+  public function orders()
+  {
+    return $this->hasMany('App\OrderDetail','product_id','id');
+  }
+
+  public function wishList()
+  {
+      return $this->belongsToMany('App\Client','wish_lists','product_id','client_id');
+  }
+
   public function rate()
   {
     return \DB::table('client_rates')
@@ -97,14 +109,32 @@ class Product extends Model
           ->avg('rate');
   }
 
+  public function scopeStock($query)
+  {
+    return $query->where("stock", ">", 0);
+  }
+
+  /**
+   * The "boot" method of the model.
+   *
+   * @return void
+   */
   protected static function boot() {
     parent::boot();
-        static::deleting(function($product) { // before delete() method call this
-            if(file_exists(base_path('/uploads/product/'.basename($product->main_image))))
-            {
-                unlink(base_path('/uploads/product/'.basename($product->main_image))) ;
-            }
-       });
-    }
-      
+
+    static::addGlobalScope('price', function (Builder $builder) {
+      $builder->where('price', '>', 0)
+      ->orWhere('price_after_discount', '>', 0);
+    });
+
+    static::deleting(function($product) { // before delete() method call this
+        if(file_exists(base_path('/uploads/product/'.basename($product->main_image))))
+        {
+            unlink(base_path('/uploads/product/'.basename($product->main_image))) ;
+        }
+    });
+
+  }
+
+
 }

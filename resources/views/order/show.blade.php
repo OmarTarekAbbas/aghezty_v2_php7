@@ -12,9 +12,11 @@
                         <div class="col-md-6">
                             <h2>@lang('messages.order_details')</h2>
                         </div>
+
                         <div class="col-md-6 invoice-info">
                             <p class="font-size-17"><strong>@lang('messages.order_number')</strong> #{{$order->id}}</p>
                             <p>{{$order->created_at->format('d M Y')}}</p>
+                            <p style="font-weight: bold;">{{$order->status}}</p>
                         </div>
                     </div>
 
@@ -30,40 +32,62 @@
                         </div>
                         <div class="col-md-6 company-info">
                             <div class="alert alert-info">
-                                <h4 class="text-center">Send Mail To Client With Order Status
+                                <h4 class="text-center">@lang('messages.Send_Mail')
                                     <span><strong>{{ ($order->lang == 'ar') ? 'In Arabic' : 'In English'}}</strong></span>
                                 </h4><br>
-                                @if($order->status !="Finshed")
                                 <div class="row text-center">
                                     <form action="{{url('orders/update_status')}}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="order_id" value="{{$order->id}}">
                                         <input type="hidden" name="client_id" value="{{$order->client_id}}">
-                                        <div class="col-md-6">
+                                        @if($order->status != $orderStatus::getLabel($orderStatus::NOT_AVAILABLE))
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="">Under Shipping</label>
+                                                <label for="">@lang('messages.Under_Shipping')</label>
+                                                @if($order->status == $orderStatus::getLabel($orderStatus::UNDER_SHIPPING)
+                                                || $order->status == $orderStatus::getLabel($orderStatus::FINISHED))
+                                                <span> <i class= "fa fa-check fa-2x text-success"></i> </span>
+                                                @else
                                                 <input type="radio" name="status" value="2" id="under_shipping">
+                                                @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        @endif
+                                        @if($order->status != $orderStatus::getLabel($orderStatus::NOT_AVAILABLE))
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="">Finished</label>
+                                                <label for="">@lang('messages.Finished')</label>
+                                                @if($order->status == $orderStatus::getLabel($orderStatus::FINISHED))
+                                                <span> <i class= "fa fa-check fa-2x text-success"></i> </span>
+                                                @else
                                                 <input type="radio" name="status" value="3" id="finished">
+                                                @endif
                                             </div>
                                         </div>
+                                        @endif
+                                        @if($order->status != $orderStatus::getLabel($orderStatus::FINISHED))
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">@lang('messages.Not_available')</label>
+                                                @if($order->status == $orderStatus::getLabel($orderStatus::NOT_AVAILABLE))
+                                                <span> <i class= "fa fa-check fa-2x text-success"></i> </span>
+                                                @else
+                                                <input type="radio" name="status" value="4" id="not_available">
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if($order->status == $orderStatus::getLabel($orderStatus::PENDING) || $order->status == $orderStatus::getLabel($orderStatus::UNDER_SHIPPING))
                                         <div class="col-md-12">
                                             <textarea type="text" name="message"
                                                 style="width:100%;text-align:{{ ($order->lang == 'ar') ? 'right' : 'left'}}"
                                                 cols="70" rows="9" class="form-control" required
                                                 placeholder="{{ ($order->lang == 'ar') ? ' الرساله' : 'Your Message'}}"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                                        <button type="submit" class="btn btn-primary btn-lg">@lang('messages.send')</button>
+                                        @endif
                                     </form>
                                 </div>
-                                @else
-                                <div class="text-center"> <strong>Order Is Finished Now</strong> </div>
-
-                                @endif
                             </div>
 
                         </div>
@@ -171,7 +195,7 @@
                       <td> {{  $order->client->name }} </td>
                       <td> {{  $order->client->email }} </td>
                       <td> {{  $replay->admin->name }} </td>
-                      <td> {{  $replay->status }} </td>
+                      <td>{{  $replay->status }}</td>
                       <td> {{  $replay->message }} </td>
                       <td> {{  $replay->created_at }} </td>
                   </tr>
