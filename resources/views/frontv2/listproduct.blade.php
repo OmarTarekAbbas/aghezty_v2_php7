@@ -66,7 +66,7 @@
 
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                <input id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -77,7 +77,7 @@
 
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox">
-                  <input  id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                  <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -225,7 +225,7 @@
                 @endphp
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                  <input class="price" form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  <input class="select_one_category" form="filter_form" id="panel_category_{{$category->id}}_mobile"
                   {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
@@ -235,7 +235,7 @@
               @else
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox" >
-                  <input class="price" form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  <input class="select_one_category" form="filter_form" id="panel_category_{{$category->id}}_mobile"
                   {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
@@ -505,6 +505,11 @@
   })
   $('.price').click(function() {
     $('.price').not(this).each(function() {
+      $(this).prop('checked', false)
+    });
+  })
+  $('.select_one_category').click(function() {
+    $('.select_one_category').not(this).each(function() {
       $(this).prop('checked', false)
     });
   })
