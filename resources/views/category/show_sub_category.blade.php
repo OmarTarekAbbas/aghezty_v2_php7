@@ -3,7 +3,7 @@
  {{$sub_categorys[0]->cat->title}}
 @stop
 @section('content')
-<div class="row">
+<div class="row"> 
     <div class="col-md-12">
         <div class="row">
 
