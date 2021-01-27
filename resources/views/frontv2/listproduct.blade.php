@@ -509,6 +509,9 @@
     });
   })
   $('.select_one_category').click(function() {
+    if($(this).attr("checked")) {
+      $(this).prop('checked', true)
+    }
     $('.select_one_category').not(this).each(function() {
       $(this).prop('checked', false)
     });
