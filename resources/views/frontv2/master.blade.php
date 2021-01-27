@@ -343,7 +343,7 @@
                     @endphp
                     @foreach ($brands->slice(0, $limit) as $item)
                     <li>
-                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('brand/'.$item->id.'/'.setSlug($item->getTranslation('title',getCode())))}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('brand/'.$item->id.'/'.setSlug($item->getTranslation('title',getCode())).'?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
                     </li>
                     @endforeach
                   </ul>
@@ -354,7 +354,7 @@
                   <ul class="list-unstyled">
                     @foreach ($brands->slice($limit, $count) as $item)
                     <li>
-                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('brand/'.$item->id.'/'.setSlug($item->getTranslation('title',getCode())))}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
+                      <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('brand/'.$item->id.'/'.setSlug($item->getTranslation('title',getCode())).'?brand_id='.$item->id)}}"><i class="fas fa-caret-right pl-1 pr-2"></i> {{$item->getTranslation('title',getCode())}}</a>
                     </li>
                     @endforeach
                   </ul>
@@ -978,7 +978,7 @@
                 @foreach ($categorys->slice(0,6) as $category)
                   @if($category->sub_cats->count())
                     <li>
-                      <a class="text-capitalize" href="{{url('clients/productsv2?category_id='.$category->id)}} ">{{ $category->getTranslation("title",getCode()) }} </a>
+                      <a class="text-capitalize" href="{{url('category/'.$sub_category->id.'/'.setSlug($sub_category->getTranslation('title',getCode())))}}">{{ $category->getTranslation("title",getCode()) }} </a>
                     </li>
                   @endif
                 @endforeach
@@ -990,7 +990,7 @@
               @foreach ($categorys->slice(6) as $category)
                   @if($category->sub_cats->count())
                     <li>
-                      <a class="text-capitalize" href=" {{url('clients/productsv2?category_id='.$category->id)}} ">{{ $category->getTranslation("title",getCode()) }} </a>
+                      <a class="text-capitalize" href=" {{url('category/'.$sub_category->id.'/'.setSlug($sub_category->getTranslation('title',getCode())))}} ">{{ $category->getTranslation("title",getCode()) }} </a>
                     </li>
                   @endif
                 @endforeach
