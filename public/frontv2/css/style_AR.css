@@ -258,8 +258,9 @@ body {
 
 .head_three {
   width: 100%;
-  z-index: 999999;
+  z-index: 9999999999999998000000000000000000000;
   position: fixed;
+  top: 0;
 }
 .head_three .navbar {
   text-align: center;

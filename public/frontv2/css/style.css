@@ -257,7 +257,7 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 999999;
+  z-index: 9999999999999998000000000000000000000;
 }
 .head_three .navbar {
   position: relative;
