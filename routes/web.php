@@ -175,3 +175,4 @@ Route::get('newsletter/send_message/{message}', 'NewsletterController@sendMessag
 /**end newsletter routes */
 Route::get('category/{sub_category_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
 Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
+Route::get('parent/{category_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
