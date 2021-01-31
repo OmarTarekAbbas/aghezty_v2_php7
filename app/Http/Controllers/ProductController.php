@@ -164,7 +164,7 @@ class ProductController extends Controller
           }
         }
         $product->discount = $request->discount;
-        if (!$request->discount && $request->price > $request->price_after_discount) {
+        if (!$request->discount && $request->price > $request->price_after_discount  && $request->price_after_discount > 0) {
           $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
         }
         //dd($product);
@@ -317,7 +317,7 @@ class ProductController extends Controller
           }
         }
         $product->discount = $request->discount;
-        if (!$request->discount && $request->price > $request->price_after_discount) {
+        if (!$request->discount && $request->price > $request->price_after_discount && $request->price_after_discount > 0) {
           $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
         }
 
@@ -564,7 +564,7 @@ class ProductController extends Controller
         $q->where("discount",0);
         $q->orWhereNull("discount");
       })->get();
-      return $products;
+      // return $products;
       foreach ($products as $key => $product) {
         if($product->price > $product->price_after_discount) {
           $product->discount = ceil(($product->price - $product->price_after_discount)*100) / $product->price ;
