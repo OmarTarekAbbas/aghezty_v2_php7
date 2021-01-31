@@ -50,7 +50,7 @@
                       <!--Table 1-->
                       <table id="tablePreview" class="table table-sm table-hover">
                         <!--Table body-->
-                        <div class="table_title" style="width: 15%">
+                        <div class="table_title">
                           <h4> <a class="text-white" href="{{route('front.home.inner.order',['id' => $order->id])}}">
                               @lang('front.product_no') {{$key+1}} </a> </h4>
                         </div>

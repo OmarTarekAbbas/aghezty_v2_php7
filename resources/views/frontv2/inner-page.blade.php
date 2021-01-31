@@ -278,11 +278,11 @@
           @endif
 
           @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
-        <div class="fav_product">
-          <span>
-            <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
-          </span>
-        </div>
+          <div class="fav_product">
+            <span>
+              <i class="fa fa-heart fa-2x grey {{ in_array($product->id, \Auth::guard('client')->user()->wishList()->pluck('product_id')->toArray()) ? 'red':''}}" data-id="{{ $product->id }}"></i>
+            </span>
+          </div>
           @endif
         </form>
       </div>
@@ -291,16 +291,17 @@
             <p class="text-danger m-2 font-weight-bold"><i class="fa fa-heart"></i> ADD TO WISHLIST</p>
 					</div> -->
 
-      <div class="rounded-social-buttons w-100 text-center">
-        <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))]))}}" target="_blank" title="Facebook">
+      <div class="rounded-social-buttons w-100">
+        <strong class="text-capitalize">share with: </strong>
+        <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id]))}}" target="_blank" title="Facebook">
           <i class="fab fa-facebook-f facebook_icon"></i>
         </a>
 
-        <a class="social-button whatsapp_link" href="https://api.whatsapp.com/send?text={{$product->getTranslation('title')}} url: {{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))])}}" title="Whatsapp">
+        <a class="social-button whatsapp_link" href="https://api.whatsapp.com/send?text={{$product->getTranslation('title')}} url: {{route('front.home.inner',['id' => $product->id])}}" title="Whatsapp">
           <i class="fab fa-whatsapp whatsapp_icon"></i>
         </a>
 
-        <a class="social-button twitter_link" href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))])}}" target="_blank" title="Twitter">
+        <a class="social-button twitter_link" href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id])}}" target="_blank" title="Twitter">
           <i class="fab fa-twitter twitter_icon"></i>
         </a>
 

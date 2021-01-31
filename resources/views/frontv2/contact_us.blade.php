@@ -103,7 +103,7 @@
               id="" cols="10" rows="5"></textarea>
           </div>
 
-          <div class="col-12">
+          <div class="col-12 m-auto d-block">
             {!! app('captcha')->display() !!}
           </div>
 
