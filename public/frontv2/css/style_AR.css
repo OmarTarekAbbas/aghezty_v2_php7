@@ -3667,9 +3667,6 @@ body {
     top: unset;
   }
 
-  .head_three {
-    top: 0 !important;
-  }
   .head_three .navbar-nav {
     padding: 0;
   }
