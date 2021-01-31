@@ -525,7 +525,7 @@
     </div>
   </section>
 
-  <section class="product_view mt-3">
+  <section class="product_view mt-3 ">
     <div class="mobile_views">
       <div class="product_view_type">
         <div class="product_title mb-3">
