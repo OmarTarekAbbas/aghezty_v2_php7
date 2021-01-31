@@ -215,7 +215,7 @@
             <div id="heavy_machines" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink2">
 
               <div class="row">
-                <div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4">
+                <div class="col-md-4 col-xl-4 col-6 sub-menu mb-xl-0 mb-4 ">
                   <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">{{$category->getTranslation('title',getCode())}}</h6>
                   <ul class="list-unstyled">
                     @php
