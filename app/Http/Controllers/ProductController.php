@@ -163,10 +163,10 @@ class ProductController extends Controller
             $product->setTranslation('key_feature', $key, $value);
           }
         }
-        // if ($request->discount == null) {
-        //   $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
-        // }
         $product->discount = $request->discount;
+        if (!$request->discount && $request->price > $request->price_after_discount) {
+          $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
+        }
         //dd($product);
         if($request->offer == null){
           $product->offer = 0;
@@ -316,12 +316,11 @@ class ProductController extends Controller
             $product->setTranslation('key_feature', $key, $value);
           }
         }
-        // if ($request->discount == null) {
-        //   $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
-        // }else{
-        //   $product->discount = $request->discount;
-        // }
         $product->discount = $request->discount;
+        if (!$request->discount && $request->price > $request->price_after_discount) {
+          $product->discount = ceil(($request->price - $request->price_after_discount)*100) /$request->price ;
+        }
+
         if($request->offer == "on"){
           $product->offer = 1;
         }else{
@@ -557,5 +556,21 @@ class ProductController extends Controller
         $product->save();
         return back();
       }
+    }
+
+    public function updateOldProductWithDiscount()
+    {
+      $products = Product::where("price_after_discount", ">", "0")->where(function($q){
+        $q->where("discount",0);
+        $q->orWhereNull("discount");
+      })->get();
+      return $products;
+      foreach ($products as $key => $product) {
+        if($product->price > $product->price_after_discount) {
+          $product->discount = ceil(($product->price - $product->price_after_discount)*100) / $product->price ;
+          $product->save();
+        }
+      }
+      return "ok";
     }
 }

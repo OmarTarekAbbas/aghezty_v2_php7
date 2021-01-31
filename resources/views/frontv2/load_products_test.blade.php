@@ -31,10 +31,10 @@
 
                   <div class="price-box">
                     <span class="regular-price">
-                      <span class="price font-weight-bold">{{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
+                      <span class="price font-weight-bold">{{number_format(($product->price_after_discount > 0 && $product->price  > $product->price_after_discount)?$product->price_after_discount:$product->price)}}
                         @lang('front.egp') </span>
                     </span>
-                    @if($product->price_after_discount > 0)
+                    @if($product->price_after_discount > 0 && $product->price  > $product->price_after_discount)
                     <span class="old-price">
                       <span class="price font-weight-bold float-right">{{number_format($product->price)}} @lang('front.egp') </span>
                     </span>

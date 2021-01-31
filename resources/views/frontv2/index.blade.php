@@ -458,7 +458,7 @@
               </div>
               @endif
 
-              @if ($item->price_after_discount >0)
+              @if ($item->price_after_discount > 0 && $item->price  > $item->price_after_discount)
 
               <div class="price-box">
                 <div class="row m-0">
@@ -573,7 +573,7 @@
               </div>
               @endif
 
-              @if ($item->price_after_discount >0)
+              @if ($item->price_after_discount > 0 && $item->price  > $item->price_after_discount)
 
               <div class="price-box">
                 <div class="row m-0">

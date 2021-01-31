@@ -200,13 +200,13 @@
         <div class="row price_disc_offer m-0">
           <div class="col-md-5 col-5 p-0">
             <h4 class="price text-primary font-weight-bold">
-              {{number_format(($product->price_after_discount > 0)?$product->price_after_discount:$product->price)}}
+              {{number_format(($product->price_after_discount > 0 && $product->price  > $product->price_after_discount)?$product->price_after_discount:$product->price)}}
               @lang('front.egp')
             </h4>
           </div>
 
           <div class="col-md-5 col-5 p-0">
-            @if($product->price_after_discount > 0)
+            @if($product->price_after_discount > 0 && $product->price  > $product->price_after_discount)
             <h4 class="discount text-muted font-weight-bold">{{number_format($product->price)}}
               @lang('front.egp')</h4>
             @if($product->discount > 0)
@@ -475,10 +475,10 @@
 
           <div class="price-box">
             <span class="regular-price">
-              <span class="price font-weight-bold">{{number_format(($item->price_after_discount > 0)?$item->price_after_discount:$item->price)}}
+              <span class="price font-weight-bold">{{number_format(($item->price_after_discount > 0 && $item->price  > $item->price_after_discount)?$item->price_after_discount:$item->price)}}
                 @lang('front.egp') </span>
             </span>
-            @if($item->price_after_discount > 0)
+            @if($item->price_after_discount > 0 && $item->price  > $item->price_after_discount)
             <p class="old-price">
               <span class="price font-weight-bold">{{number_format($item->price)}} @lang('front.egp') </span>
             </p>

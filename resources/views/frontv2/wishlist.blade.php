@@ -134,7 +134,7 @@
                 </div>
               @endif
 
-              @if ($item->price_after_discount >0)
+              @if ($item->price_after_discount > 0 && $item->price  > $item->price_after_discount)
 
               <div class="price-box">
                 <span class="regular-price">
