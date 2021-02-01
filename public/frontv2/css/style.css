@@ -308,6 +308,60 @@ body {
   min-width: 20%;
 }
 
+.head_three_ul {
+  position: relative;
+}
+.head_three_ul .navbar-nav {
+  text-align: center;
+  position: fixed;
+  top: 5rem;
+  z-index: 1000000000000000100;
+}
+.head_three_ul .navbar-nav .nav-link {
+  color: #FFF;
+  font-size: 13px;
+  padding-right: 0;
+  padding-left: 0;
+  font-family: "Tajawal", sans-serif;
+}
+.head_three_ul .navbar-nav .nav-link:hover, .head_three_ul .navbar-nav .nav-link:focus {
+  color: #FFF;
+}
+.head_three_ul .navbar-nav .nav-item {
+  position: unset !important;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 auto;
+  font-weight: bold;
+}
+.head_three_ul .navbar-nav .nav-item .dropdown-menu {
+  position: absolute !important;
+  left: inherit;
+  min-width: 40%;
+  max-height: 29rem;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.head_three_ul .navbar-nav .nav-item .dropdown-menu .sub-title {
+  color: #0f6ab2;
+  text-align: left;
+}
+.head_three_ul .navbar-nav .nav-item .dropdown-menu .menu-item {
+  cursor: pointer;
+  color: #777;
+  background: none;
+  outline: 0;
+  font-size: 13px;
+}
+.head_three_ul .navbar-nav .nav-item .dropdown-menu .menu-item:hover {
+  text-decoration: underline !important;
+}
+.head_three_ul .navbar-nav .nav-item .dropdown-menu.dropdown-menu-mob {
+  left: inherit;
+  right: 0;
+  min-width: 20%;
+}
+
 /*----------------------------------------- End Header -----------------------------------------*/
 /*----------------------------------------- Start Home Page -----------------------------------------*/
 .carsoul_ads .owl-one .item a img {
@@ -2305,6 +2359,10 @@ body {
     color: #FFF;
   }
 
+  .head_three_ul .navbar-nav {
+    position: absolute;
+    top: 4.4rem;
+  }
   .search_mobile {
     padding-top: 20%;
   }
@@ -3164,6 +3222,10 @@ body {
     color: #FFF;
   }
 
+  .head_three_ul .navbar-nav {
+    position: absolute;
+    top: 4.4rem;
+  }
   .search_mobile {
     padding-top: 20%;
   }
@@ -3970,6 +4032,10 @@ body {
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
+  .head_three_ul .navbar-nav {
+    position: absolute;
+    top: 6.09rem;
+  }
   .main {
     padding-top: 16%;
   }
@@ -4139,6 +4205,13 @@ body {
     text-align: justify;
   }
 
+  .head_three_ul .navbar-nav {
+    position: absolute;
+    top: 5rem;
+  }
+  .head_three_ul .navbar-nav .nav-item .dropdown-menu {
+    position: absolute !important;
+  }
   .carsoul_ads .owl-one .item a img {
     height: 325px;
   }

@@ -399,6 +399,76 @@ body {
   }
 }
 
+.head_three_ul {
+  position: relative;
+
+  .navbar-nav {
+    text-align: center;
+    position: fixed;
+    top: 5rem;
+    z-index: 999999999999999999;
+
+    .nav-link {
+      color: $white_color;
+      font-size: 13px;
+      padding-right: 0;
+      padding-left: 0;
+      font-family: 'Tajawal', sans-serif;
+
+      &:hover,
+      &:focus {
+        color: $white_color;
+      }
+    }
+
+    .nav-item {
+      position: unset !important;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 auto;
+      font-weight: bold;
+
+      .dropdown-menu {
+        position: absolute!important;
+        left: inherit;
+        min-width: 40%;
+        max-height: 29rem;
+        overflow: hidden;
+        overflow-y: scroll;
+        text-align: right;
+
+        .sub-title {
+          color: $blueTitle_color;
+          text-align: right;
+        }
+
+        ul {
+          padding: 0;
+
+          li {
+            .menu-item {
+              cursor: pointer;
+              color: #777;
+              background: none;
+              outline: 0;
+              font-size: 13px;
+
+              &:hover {
+                text-decoration: underline !important;
+              }
+            }
+          }
+        }
+
+        &.dropdown-menu-mob {
+          left: 0;
+          right: inherit;
+          min-width: 20%;
+        }
+      }
+    }
+  }
+}
 
 /*----------------------------------------- End Header -----------------------------------------*/
 

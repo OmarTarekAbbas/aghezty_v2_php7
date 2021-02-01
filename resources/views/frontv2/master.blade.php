@@ -190,7 +190,7 @@
       </a>
 
       <!-- Collapse button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler menu_click_up" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -198,12 +198,20 @@
         <span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
         <img class="d-block m-auto w-100" src="{{url('public/frontv2/images/cart-dark.png')}}" alt="Logo">
       </a>
-      @php
+
+      <!-- Collapsible content -->
+    </nav>
+
+    <!-- Navbar -->
+  </header>
+
+  <div class="head_three_ul w-100">
+  @php
       $categorys = categorys();
       @endphp
       <!-- Collapsible content -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-        <ul id="sub-header" class="navbar-nav w-100">
+      <div class="collapse navbar-collapse navbar-expand-lg d-lg-block d-xl-block" id="navbarSupportedContent2">
+        <ul id="sub-header" class="navbar-nav bg-dark navbar-expand-lg w-100">
           <!-- Start Heavy Machines -->
           @foreach ($categorys as $category)
           @if($category->sub_cats->count() > 0)
@@ -428,41 +436,11 @@
             <a class="nav-link text-uppercase slide_toggle" id="navbarDropdownMenuLink112" href="{{url('lang')}}/{{Session::get('applocale') == 'en'? "ar" : "en"}}">
               <img src="{{url('public/frontv2/images/lang/'.(Session::get('applocale') == 'ar'? 'en' : 'ar').'.webp')}}" alt="{{\Session::get('applocale') == 'ar'? "English" : "Arabic"}}">{{\Session::get('applocale') == 'ar'? " English" : " العربية"}}
             </a>
-
-            {{-- <div id="languages" class="dropdown-menu dropdown-menu-mob mega-menu v-2 z-depth-1 special-color pt-3 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink112">
-							<div class="row">
-
-								<div class="col-md-6 col-xl-6 col-6 sub-menu mb-4">
-									<ul class="list-unstyled">
-										<li>
-											<a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'en'? "active" : ""}}"
-            href="{{url('lang/en')}}">
-            <img src="{{url('public/frontv2/images/lang/en.webp')}}" alt="English Language"> English
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-md-6 col-xl-6 col-6 sub-menu mb-0">
-        <ul class="list-unstyled">
-          <li>
-            <a class="menu-item pl-0 dropdown-item hvr-icon-forward {{\Session::get('applocale') == 'ar'? "active" : ""}}" href="{{url('lang/ar')}}">
-              <img src="{{url('public/frontv2/images/lang/ar.webp')}}" alt="Arabic Language"> Arabic
-            </a>
-          </li>
-        </ul>
-      </div>
-      </div>
-      </div> --}}
       </li>
       <!-- End Languages-->
       </ul>
       </div>
-      <!-- Collapsible content -->
-    </nav>
-
-    <!-- Navbar -->
-  </header>
+  </div>
 
   <section class="search_mobile d-block d-sm-none d-md-none d-lg-none d-xl-none">
     <div class="col-12">
