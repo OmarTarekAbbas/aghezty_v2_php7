@@ -14,9 +14,7 @@
 get_static_routes() ;
 get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
-Route::get('/',function(){
-    return redirect(route('front.home.index'));
-});
+Route::get('/','front\HomeController@indexv2')->name('front.home.index');
 
 
 
@@ -51,7 +49,7 @@ Route::prefix('clients')->group(function() {
     Route::get('service_center','front\HomeController@service_center');
     /*************** designv2 routes ****/
     Route::get('error404', 'front\HomeController@error404')->name('front.home.error404');
-    Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
+    // Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('contactv2', 'front\HomeController@contactusv2');
     Route::get('productsv2', 'front\HomeController@productsv2')->name('front.home.list');
@@ -124,7 +122,7 @@ Route::prefix('clients')->group(function() {
    });
 
     /*************** designv2 routes ****/
-    Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
+    // Route::get('homev2', 'front\HomeController@indexv2')->name('front.home.index');
     Route::get('service_centerv2', 'front\HomeController@service_centerv2');
     Route::get('about_mev2', 'front\HomeController@about_mev2');
     Route::get('terms_conv2', 'front\HomeController@terms_conv2');
@@ -172,8 +170,8 @@ Route::get('newsletter/{id}/delete', 'NewsletterController@delete');
 Route::post('newsletter/send_message', 'NewsletterController@sendMessage');
 Route::get('newsletter/send_message/{message}', 'NewsletterController@sendMessage');
 /**end newsletter routes */
-Route::get('category/{sub_category_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
-Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
-Route::get('parent/{category_id?}/{slug?}', 'front\HomeController@productsv2Slug')->name('front.home.list');
+Route::get('category/{sub_category_id?}/{slug?}', 'front\HomeController@productsv2Slug');
+Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug');
+Route::get('parent/{category_id?}/{slug?}', 'front\HomeController@productsv2Slug');
 
-Route::get("discount" ,'ProductController@updateOldProductWithDiscount')->name('front.home.list');
+Route::get("discount" ,'ProductController@updateOldProductWithDiscount');

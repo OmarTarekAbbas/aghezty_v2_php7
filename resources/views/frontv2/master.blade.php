@@ -116,7 +116,7 @@
     <div class="row mx-0">
       <div class="col-md-3 col-lg-2 col-xl-1">
         <div class="img_logo">
-          <a href="{{url('clients/homev2')}}">
+          <a href="{{route('front.home.index')}}">
             <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
           </a>
         </div>
@@ -215,7 +215,7 @@
   <header class="head_three ">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
-      <a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{url('clients/homev2')}}">
+      <a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{route('front.home.index')}}">
         <img class="d-block m-auto w-25" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
       </a>
 
