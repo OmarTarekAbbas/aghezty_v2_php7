@@ -15,7 +15,6 @@ get_static_routes() ;
 get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
 Route::get('/',function(){
-   \Session::put('applocale', 'ar');
     return redirect(route('front.home.index'));
 });
 

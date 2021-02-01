@@ -662,12 +662,15 @@ class HomeController extends Controller
 
     public function indexv2()
     {
-      if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
+        if(!session()->has("applocale")) {
+          session()->put('applocale', 'ar');
+        }
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+          $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+          $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
         } else {
-            $ip = $_SERVER['REMOTE_ADDR'];
+          $ip = $_SERVER['REMOTE_ADDR'];
         }
         // $ip = "41.33.167.4";
         $get_ip_address = IpAddress::where("ip",$ip)->first();
