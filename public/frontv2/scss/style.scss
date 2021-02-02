@@ -201,12 +201,11 @@ body {
   }
 
   .old_search_value {
-    z-index: 2147483647;
+    z-index: 9999999999;
     background-color: rgb(255 255 255);
     border-radius: 2px;
     box-shadow: rgb(238, 238, 238) 1px 1px 1px;
     width: 94%;
-    // height: 42px;
     margin-top: -1%;
     display: none;
 
@@ -408,7 +407,7 @@ body {
     text-align: center;
     position: fixed;
     top: 5rem;
-    z-index: 999999999999999999;
+    z-index: 999999999;
 
     .nav-link {
       color: $white_color;
@@ -466,13 +465,34 @@ body {
   }
 }
 
+.old_search_value {
+  z-index: 9999999999;
+  background-color: rgb(255 255 255);
+  border-radius: 2px;
+  box-shadow: rgb(238, 238, 238) 1px 1px 1px;
+  width: 94%;
+  margin-top: -1%;
+  display: none;
+
+  ul {
+    padding-top: 1%;
+
+    .search-data {
+      cursor: pointer;
+
+      &:hover {
+        background-color: #666666f2;
+        border-radius: 2px;
+        color: $white_color;
+      }
+    }
+  }
+}
+
 /*----------------------------------------- End Header -----------------------------------------*/
 
 
 /*----------------------------------------- Start Home Page -----------------------------------------*/
-
-
-
 .main {
   padding-bottom: 1%;
   padding-top: 7%;
@@ -6396,6 +6416,11 @@ body {
         opacity: 0;
       }
     }
+
+    .old_search_value {
+      display: none;
+      margin-top: -12%;
+    }
   }
 
   // Home Page
@@ -7724,6 +7749,11 @@ body {
         opacity: 0;
       }
     }
+
+    .old_search_value {
+      display: none;
+      margin-top: -12%;
+    }
   }
 
   // Home Page
@@ -8869,7 +8899,6 @@ body {
     }
   }
 }
-
 
 /* End Media Query Mobile */
 
