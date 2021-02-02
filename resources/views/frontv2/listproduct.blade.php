@@ -604,7 +604,8 @@
         $('.load').hide();
       },
     });
-    history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
+    console.log(fullUrl())
+    history.pushState({}, null, fullUrl());
   })
   $(document).on('change', '.property', function() {
 
@@ -637,7 +638,8 @@
         $('.load').hide();
       },
     });
-    history.pushState({}, null, '{{url("clients/productsv2")}}?'+ $('#filter_form').serialize());
+    console.log(fullUrl())
+    history.pushState({}, null, fullUrl());
   })
   $('#button_jq , .fa-sliders-h').click(function() {
     //$(this).prop('disabled',true)
@@ -692,25 +694,45 @@
     });
   })
 
-    $( document ).ready(function(){
-      @if(!request()->has('sorted'))
-        $.ajax({
-          url: '{{url("clients/loadproductsv2")}}?start=0',
-          type: "post",
-          data: $('#filter_form').serialize(),
-          success: function(data) {
-            if (data.html == '') {
-              action = 'active';
-              $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
-            } else {
-              $('#grid_two').html(data.html);
-              action = 'inactive';
-            }
-            $('.load').hide();
-          },
-        });
-      @endif
-    })
+  $( document ).ready(function(){
+    @if(!request()->has('sorted'))
+      $.ajax({
+        url: '{{url("clients/loadproductsv2")}}?start=0',
+        type: "post",
+        data: $('#filter_form').serialize(),
+        success: function(data) {
+          if (data.html == '') {
+            action = 'active';
+            $('#grid_two').html('<h3 class="text-center">@lang("front.no_product")</h3>')
+          } else {
+            $('#grid_two').html(data.html);
+            action = 'inactive';
+          }
+          $('.load').hide();
+        },
+      });
+    @endif
+  })
+
+  function fullUrl() {
+      var category_name = ''
+      var brands_name   = []
+      //get checked category
+      $(".sub_cat_id").each(function(){
+        if($(this).is(":checked")) {
+          category_name = $(this).next(".text-capitalize").text()
+        }
+      })
+      //get checked brand
+      $(".brand_id").each(function(){
+        if($(this).is(":checked")) {
+          if(!brands_name.includes($(this).next(".text-capitalize").text()))
+            brands_name.push($(this).next(".text-capitalize").text())
+        }
+      })
+      var url = '{{url("filter")}}'+ '/' + brands_name.join('-') + '/' + category_name
+      return url
+  }
 </script>
 
 <script>
