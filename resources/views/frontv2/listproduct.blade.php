@@ -532,13 +532,14 @@
         var html        = ''
         var html_mobile = ''
         var brands = data.data
+        var brand_array = '{{ json_encode($brand_ids) }}'
         var old_brand = getUrlParameter("brand_id[]")
         old_brand = old_brand ? old_brand.map(function (x) {
           return parseInt(x);
         }) : []
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            checked = old_brand.includes(brands[i].id) ? 'checked':''
+            checked = old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
             html += `<div class="z-checkbox">
                             <input form="filter_form" ${checked} id="panel_brand_${brands[i].id}" class="mb-2 brand_id"
                               type="checkbox"
@@ -604,8 +605,11 @@
         $('.load').hide();
       },
     });
-    console.log(fullUrl())
-    history.pushState({}, null, fullUrl());
+    var full_url = fullUrl()
+    if(!($(this).hasClass("brand_id") || $(this).hasClass("sub_cat_id"))) {
+      full_url += "?"+$("#filter_form").serialize()
+    }
+    history.pushState({}, null, full_url);
   })
   $(document).on('change', '.property', function() {
 
@@ -638,8 +642,8 @@
         $('.load').hide();
       },
     });
-    console.log(fullUrl())
-    history.pushState({}, null, fullUrl());
+    var full_url = fullUrl()+"?"+$("#filter_form").serialize()
+    history.pushState({}, null, full_url);
   })
   $('#button_jq , .fa-sliders-h').click(function() {
     //$(this).prop('disabled',true)
@@ -667,11 +671,12 @@
         var html        = ''
         var html_mobile = ''
         var brands = data.data
+        var brand_array = '{{ json_encode($brand_ids) }}'
         var old_brand = "{{ json_encode(request()->get('brand_id')??[]) }}"
         old_brand = old_brand.replace(/&quot;/g, '\"');
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            checked=old_brand.includes(brands[i].id) ? 'checked':''
+            checked=old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
             html += '<div class="z-checkbox">\
                             <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'" class="mb-2 brand_id"\
                               type="checkbox"\
@@ -730,7 +735,7 @@
             brands_name.push($(this).next(".text-capitalize").text())
         }
       })
-      var url = '{{url("filter")}}'+ '/' + brands_name.join('-') + '/' + category_name
+      var url = '{{url("filter")}}'+ '/' + category_name.replaceAll(" ","-") + '/' + brands_name.join('-')
       return url
   }
 </script>

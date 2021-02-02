@@ -173,5 +173,6 @@ Route::get('newsletter/send_message/{message}', 'NewsletterController@sendMessag
 Route::get('category/{sub_category_id?}/{slug?}', 'front\HomeController@productsv2Slug');
 Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug');
 Route::get('parent/{category_id?}/{slug?}', 'front\HomeController@productsv2Slug');
+Route::get('filter/{category_name?}/{brands_name?}', 'front\HomeController@productsv2Filter');
 
 Route::get("discount" ,'ProductController@updateOldProductWithDiscount');

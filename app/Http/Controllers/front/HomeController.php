@@ -2357,5 +2357,47 @@ class HomeController extends Controller
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
+    public function productsv2Filter(Request $request)
+    {
+        $products = Product::select('products.*','products.id as product_id');
+
+        if ($request->category_name) {
+          $products = $products->whereHas("category",function($builder) {
+            $builder->join('translatables','translatables.record_id','=','categories.id')
+                    ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+                    ->where('translatables.table_name','categories')
+                    ->where('translatables.column_name','title')
+                    ->where(function($q){
+                      $q->where('categories.title', str_replace("-", " ", request()->route("category_name"))  );
+                      $q->orWhere('tans_bodies.body',  str_replace("-", " ", request()->route("category_name")) );
+                    });
+          });
+        }
+
+        if ($request->brands_name) {
+          $products = $products->whereHas("brand",function($builder) {
+            $builder->join('translatables','translatables.record_id','=','brands.id')
+                    ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+                    ->where('translatables.table_name','brands')
+                    ->where('translatables.column_name','title')
+                    ->where(function($q){
+                      $q->whereIn('brands.title',  explode("-", request()->route("brands_name")) );
+                      $q->orWhereIn('tans_bodies.body',  explode("-", request()->route("brands_name")) );
+                    });
+          });
+        }
+        $category = $products;
+        $brand    = $products;
+        $sub_category_ids = $category->pluck("category_id")->toArray();
+        $brand_ids        = $brand->pluck("brand_id")->toArray();
+
+        $products         = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+        
+        if(request()->filled("sub_category_id")) {
+          return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
+        }
+        return redirect("filter/".request()->route("category_name").'/'.request()->route("brands_name").'?sub_category_id='.$sub_category_ids[0]);
+    }
+
 
 }
