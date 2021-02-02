@@ -215,7 +215,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
       <a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{route('front.home.index')}}">
-        <img class="d-block m-auto w-25" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
+        <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
       </a>
 
       <!-- Collapse button -->
