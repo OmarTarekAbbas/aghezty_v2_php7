@@ -291,7 +291,8 @@
             <p class="text-danger m-2 font-weight-bold"><i class="fa fa-heart"></i> ADD TO WISHLIST</p>
 					</div> -->
 
-      <div class="rounded-social-buttons w-100 text-center">
+      <div class="rounded-social-buttons w-100">
+        <strong class="text-capitalize">share with: </strong>
         <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))]))}}" target="_blank" title="Facebook">
           <i class="fab fa-facebook-f facebook_icon"></i>
         </a>

@@ -26,6 +26,12 @@ $('#return-to-top').click(function () { // When arrow is clicked
     scrollTop: 0 // Scroll to top of body
   }, 500);
 });
+
+$('.menu_click_up').click(function () { // When arrow is clicked
+  $('body,html').animate({
+    scrollTop: 0 // Scroll to top of body
+  }, 100);
+});
 /* ===== End Scroll to Top ==== */
 
 /* ===== Start List Product Accordion (Open & Close)  ==== */
