@@ -1527,6 +1527,8 @@ body {
     }
 
     .rounded-social-buttons {
+      padding-right: 15px;
+
       .social-button {
         display: inline-block;
         position: relative;
@@ -6654,6 +6656,7 @@ body {
         .dropdown-menu {
           position: unset !important;
           transform: unset !important;
+
           .sub-title {}
 
           .menu-item {}
@@ -7104,7 +7107,7 @@ body {
 
       #carouselExampleControls {
         border: 2px solid #ccc !important;
-        // width: 100% !important;
+        width: 95% !important;
 
         .carousel-inner {
           .carousel-item {
@@ -7134,7 +7137,7 @@ body {
 
         .left_slider,
         .right_slider {
-          top: 8rem;
+          top: 6rem;
           font-size: 2rem;
 
           &.left_slider {
@@ -7221,7 +7224,8 @@ body {
         }
 
         #add_to {
-          width: 70% !important;
+          width: 55% !important;
+          right: 29%;
         }
 
         #notify_me {
@@ -7236,18 +7240,23 @@ body {
         }
       }
 
+      .quantity-form {
+        .fav_product {
+          left: 0%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-right: 4.5rem;
-        text-align: center;
+        padding-right: 5px;
+        text-align: right;
 
         .social-button {
           width: 2.5rem;
           height: 2.5rem;
           line-height: 2.25rem;
           margin: 0 auto;
-          margin-right: 0.5rem;
           margin-left: 0.5rem;
 
           .facebook_icon,
@@ -8014,6 +8023,7 @@ body {
         .dropdown-menu {
           position: unset !important;
           transform: unset !important;
+
           .sub-title {}
 
           .menu-item {}
@@ -8474,7 +8484,7 @@ body {
 
       #carouselExampleControls {
         border: 2px solid #ccc !important;
-        // width: 100% !important;
+        width: 95% !important;
 
         .carousel-inner {
           .carousel-item {
@@ -8504,7 +8514,7 @@ body {
 
         .left_slider,
         .right_slider {
-          top: 9rem;
+          top: 8rem;
           font-size: 2rem;
 
           &.left_slider {
@@ -8573,7 +8583,6 @@ body {
             margin-top: 1rem;
 
             .rounded-social-buttons {
-              margin-right: 5.5rem;
               margin-top: -10% !important;
               margin-bottom: 0 !important;
 
@@ -8591,7 +8600,8 @@ body {
         }
 
         #add_to {
-          width: 70% !important;
+          width: 60% !important;
+          right: 23%;
         }
 
         #notify_me {
@@ -8606,18 +8616,23 @@ body {
         }
       }
 
+      .quantity-form {
+        .fav_product {
+          left: 5%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-right: 4.5rem;
-        text-align: center;
+        padding-right: 10px;
+        text-align: right;
 
         .social-button {
           width: 2.5rem;
           height: 2.5rem;
           line-height: 2.25rem;
           margin: 0 auto;
-          margin-right: 0.75rem;
           margin-left: 0.75rem;
 
           .facebook_icon,
@@ -9330,6 +9345,7 @@ body {
         .dropdown-menu {
           position: unset !important;
           transform: unset !important;
+
           .sub-title {}
 
           .menu-item {}
@@ -9776,16 +9792,16 @@ body {
             }
           }
         }
-  
+
         .owl-nav {
-  
+
           .owl-prev,
           .owl-next {
             bottom: 3rem;
           }
         }
       }
-  
+
       .top_banner {
         a {
           img {
@@ -9793,7 +9809,7 @@ body {
           }
         }
       }
-  
+
       .full_banner {
         img {
           height: 137px;

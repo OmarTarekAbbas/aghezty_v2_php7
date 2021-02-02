@@ -5760,6 +5760,7 @@ body {
   }
   .main #inner-page #carouselExampleControls {
     border: 2px solid #ccc !important;
+    width: 95% !important;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
@@ -5771,7 +5772,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 8rem;
+    top: 7rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -5842,7 +5843,8 @@ body {
     margin-bottom: 5%;
   }
   .main #inner-page .info #add_to {
-    width: 72% !important;
+    width: 55% !important;
+    left: 28%;
   }
   .main #inner-page .info #notify_me {
     width: 100% !important;
@@ -5850,11 +5852,13 @@ body {
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-right: 0 !important;
   }
+  .main #inner-page .quantity-form .fav_product {
+    left: 85%;
+  }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
     margin-top: 5% !important;
-    margin-left: 4.5rem;
-    text-align: center;
+    padding-left: 5px;
   }
   .main #inner-page .rounded-social-buttons .social-button {
     width: 2.5rem;
@@ -6270,7 +6274,7 @@ body {
 }
 @media (min-width: 375px) and (max-width: 415px) {
   .info .features .contact_us .rounded-social-buttons .social-button {
-    left: 0% !important;
+    left: 6% !important;
   }
 }
 @media (min-width: 376px) and (max-width: 415px) {
@@ -6631,18 +6635,19 @@ body {
   }
   .main #inner-page #carouselExampleControls {
     border: 2px solid #ccc !important;
+    width: 95% !important;
   }
   .main #inner-page .product-title {
     font-size: 1rem;
   }
   .main #inner-page .rating {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .main #inner-page .carousel-control-next .left_slider,
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 9rem;
+    top: 8rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -6713,7 +6718,8 @@ body {
     margin-bottom: 5%;
   }
   .main #inner-page .info #add_to {
-    width: 70% !important;
+    width: 55% !important;
+    left: 23%;
   }
   .main #inner-page .info #notify_me {
     width: 94% !important;
@@ -6721,11 +6727,13 @@ body {
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-right: 0 !important;
   }
+  .main #inner-page .quantity-form .fav_product {
+    left: 80%;
+  }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
     margin-top: 5% !important;
-    margin-left: 4.5rem;
-    text-align: center;
+    padding-left: 10px;
   }
   .main #inner-page .rounded-social-buttons .social-button {
     width: 2.5rem;
@@ -6733,7 +6741,6 @@ body {
     line-height: 2.25rem;
     margin: 0 auto;
     margin-right: 0.75rem;
-    margin-left: 0.75rem;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
@@ -7259,7 +7266,7 @@ body {
 #inner-page #carouselExampleControls .carousel-control-next .right_slider,
 #inner-page #carouselExampleControls .carousel-control-prev .left_slider,
 #inner-page #carouselExampleControls .carousel-control-prev .right_slider {
-    top: 13rem;
+    top: 9rem;
   }
   #inner-page #carouselExampleControls .carousel-control-next .left_slider.left_slider,
 #inner-page #carouselExampleControls .carousel-control-next .right_slider.left_slider,
@@ -7480,7 +7487,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 12.5rem;
+    top: 8rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,

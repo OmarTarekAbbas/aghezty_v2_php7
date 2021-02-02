@@ -6758,7 +6758,7 @@ body {
 
       #carouselExampleControls {
         border: 2px solid #ccc !important;
-        // width: 100% !important;
+        width: 95% !important;
       }
 
       .product-title {
@@ -6774,7 +6774,7 @@ body {
 
         .left_slider,
         .right_slider {
-          top: 8rem;
+          top: 7rem;
           font-size: 2rem;
 
           &.left_slider {
@@ -6861,7 +6861,8 @@ body {
         }
 
         #add_to {
-          width: 72% !important;
+          width: 55% !important;
+          left: 28%;
         }
 
         #notify_me {
@@ -6875,11 +6876,16 @@ body {
         }
       }
 
+      .quantity-form {
+        .fav_product {
+          left: 85%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-left: 4.5rem;
-        text-align: center;
+        padding-left: 5px;
 
         .social-button {
           width: 2.5rem;
@@ -7537,7 +7543,7 @@ body {
       .contact_us {
         .rounded-social-buttons {
           .social-button {
-            left: 0% !important;
+            left: 6% !important;
           }
         }
       }
@@ -8090,7 +8096,7 @@ body {
 
       #carouselExampleControls {
         border: 2px solid #ccc !important;
-        // width: 100% !important;
+        width: 95% !important;
       }
 
       .product-title {
@@ -8098,7 +8104,7 @@ body {
       }
 
       .rating {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
       .carousel-control-next,
@@ -8106,7 +8112,7 @@ body {
 
         .left_slider,
         .right_slider {
-          top: 9rem;
+          top: 8rem;
           font-size: 2rem;
 
           &.left_slider {
@@ -8193,7 +8199,8 @@ body {
         }
 
         #add_to {
-          width: 70% !important;
+          width: 55% !important;
+          left: 23%;
         }
 
         #notify_me {
@@ -8207,11 +8214,16 @@ body {
         }
       }
 
+      .quantity-form {
+        .fav_product {
+          left: 80%;
+        }
+      }
+
       .rounded-social-buttons {
         margin-bottom: 5% !important;
         margin-top: 5% !important;
-        margin-left: 4.5rem;
-        text-align: center;
+        padding-left: 10px;
 
         .social-button {
           width: 2.5rem;
@@ -8219,7 +8231,6 @@ body {
           line-height: 2.25rem;
           margin: 0 auto;
           margin-right: 0.75rem;
-          margin-left: 0.75rem;
 
           .facebook_icon,
           .whatsapp_icon,
@@ -9087,7 +9098,7 @@ body {
 
         .left_slider,
         .right_slider {
-          top: 13rem;
+          top: 9rem;
 
           &.left_slider {
             left: -2.25rem;
@@ -9308,7 +9319,7 @@ body {
     }
   }
 
-  
+
   .navbar-expand-lg {
     .navbar-nav {
       .nav-link {
@@ -9335,16 +9346,16 @@ body {
             }
           }
         }
-  
+
         .owl-nav {
-  
+
           .owl-prev,
           .owl-next {
             bottom: 3rem;
           }
         }
       }
-  
+
       .top_banner {
         a {
           img {
@@ -9352,14 +9363,14 @@ body {
           }
         }
       }
-  
+
       .full_banner {
         img {
           height: 137px;
         }
       }
     }
-  
+
 
     .choose_category {
       .choose_category_background {
@@ -9528,7 +9539,7 @@ body {
 
         .left_slider,
         .right_slider {
-          top: 12.5rem;
+          top: 8rem;
           font-size: 2rem;
 
           &.left_slider {

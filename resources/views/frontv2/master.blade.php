@@ -179,7 +179,7 @@
               @endif
               <a class="dropdown-item" href="{{route('front.home.order')}}">@lang('front.order')</a>
               @if(setting("wish_list_flag") && setting("wish_list_flag") != '')
-              <a class="dropdown-item" href="{{route('front.home.wishlist')}}">@lang('front.wishlist.wishlist')</a>
+              <a class="tstttt dropdown-item" href="{{route('front.home.wishlist')}}">@lang('front.wishlist.wishlist')</a>
               @endif
               <a class="dropdown-item" href="{{route('front.home.logout')}}">@lang('front.sign_out')</a>
             </span>
