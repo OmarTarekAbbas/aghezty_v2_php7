@@ -110,18 +110,18 @@ body {
   background-color: $greyTitle_color;
   width: 100%;
   height: 80px;
-  z-index: 99999999999999999999;
   position: fixed;
   top: 0;
+  z-index: 99999;
 
   .img_logo {
     width: 100%;
     position: relative;
 
     img {
-      width: 90%;
+      width: 50%;
       position: absolute;
-      top: 44px;
+      top: 39px;
       left: 50%;
       transform: translate(-50%, -50%);
       -webkit-transform: translate(-50%, -50%);
@@ -407,7 +407,7 @@ body {
     text-align: center;
     position: fixed;
     top: 5rem;
-    z-index: 999999999;
+    z-index: 9999;
 
     .nav-link {
       color: $white_color;
@@ -6276,6 +6276,13 @@ body {
 
     .navbar {
       padding: 5px 0;
+      height: 72px;
+
+      .mobile_logo {
+        img {
+          width: 15%;
+        }
+      }
 
       .navbar-nav {
         .nav-item {
@@ -6326,6 +6333,7 @@ body {
     .navbar-nav {
       position: absolute;
       top: 4.40rem;
+      z-index: 9999;
 
       .nav-link {}
 
@@ -7610,6 +7618,13 @@ body {
 
     .navbar {
       padding: 5px 0;
+      height: 72px;
+
+      .mobile_logo {
+        img {
+          width: 14%;
+        }
+      }
 
       .navbar-nav {
         .nav-item {
@@ -7658,7 +7673,8 @@ body {
   .head_three_ul {
     .navbar-nav {
       position: absolute;
-      top: 4.78rem;
+      top: 4.53rem;
+      z-index: 9999;
 
       .nav-link {}
 
@@ -9053,12 +9069,13 @@ body {
   // Header NavBar
   .navbar {
     padding: 19px !important;
+    height: 98px;
 
     .mobile_logo {
-      margin-bottom: -11% !important;
+      margin-bottom: -9% !important;
 
       img {
-        width: 17% !important;
+        width: 10% !important;
       }
     }
 
@@ -9306,7 +9323,7 @@ body {
 
     .img_logo {
       img {
-        width: 70%;
+        width: 48%;
       }
     }
 

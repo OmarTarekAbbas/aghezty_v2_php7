@@ -111,7 +111,7 @@
   <script src="//www.google.com/recaptcha/api.js"></script>
 </head>
 
-<body oncontextmenu="return true;">
+<body oncontextmenu="return false;">
   <header class="head_two d-none d-sm-block d-md-none d-none d-md-none d-lg-block">
     <div class="row mx-0">
       <div class="col-md-3 col-lg-2 col-xl-1">
@@ -215,7 +215,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
       <a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{route('front.home.index')}}">
-        <img class="d-block m-auto w-25" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
+        <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
       </a>
 
       <!-- Collapse button -->
