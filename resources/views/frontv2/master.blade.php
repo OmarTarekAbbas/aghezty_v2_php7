@@ -179,7 +179,7 @@
               @endif
               <a class="dropdown-item" href="{{route('front.home.order')}}">@lang('front.order')</a>
               @if(setting("wish_list_flag") && setting("wish_list_flag") != '')
-              <a class="tstttt dropdown-item" href="{{route('front.home.wishlist')}}">@lang('front.wishlist.wishlist')</a>
+              <a class="dropdown-item" href="{{route('front.home.wishlist')}}">@lang('front.wishlist.wishlist')</a>
               @endif
               <a class="dropdown-item" href="{{route('front.home.logout')}}">@lang('front.sign_out')</a>
             </span>
@@ -446,6 +446,13 @@
                       <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.order')}}"><i class="fas fa-caret-right pl-1 pr-2"></i>
                         @lang('front.order')</a>
                     </li>
+
+                    @if(setting("wish_list_flag") && setting("wish_list_flag") != '')
+                      <li>
+                        <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{route('front.home.wishlist')}}"><i class="fas fa-caret-right pl-1 pr-2"></i>
+                        @lang('front.wishlist.wishlist')</a>
+                      </li>
+                    @endif
 
                   </ul>
                 </div>

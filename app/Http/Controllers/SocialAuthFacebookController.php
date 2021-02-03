@@ -27,6 +27,6 @@ class SocialAuthFacebookController extends Controller
         Auth::guard('client')->login($user);
         if(session('newuser'))
             return redirect()->to('clients/profilev2')->with('success', 'Please update your phone!');
-        return redirect()->to('clients/homev2');
+        return redirect()->to('/');
     }
 }
