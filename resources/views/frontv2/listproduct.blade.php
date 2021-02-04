@@ -69,7 +69,7 @@
                 <input id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
-                    for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                    for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
 
@@ -80,7 +80,7 @@
                   <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
-                    for="panel_category_{{$category->id}}">{{$category->getTranslation('title',getCode())}}</label>
+                    for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
 
@@ -118,7 +118,7 @@
                 {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"
                 name="brand_id[]" value="{{$brand->id}}">
               <label class="d-block text-capitalize"
-                for="panel_brand_{{$brand->id}}">{{$brand->getTranslation('title',getCode())}}</label>
+                for="panel_brand_{{$brand->id}}" data-en="{{$brand->getTranslation('title','en')}}">{{$brand->getTranslation('title',getCode())}}</label>
             </div>
             @endforeach
           </div>
@@ -225,21 +225,21 @@
                 @endphp
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                  <input class="select_one_category" form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
                   {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
-                    class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                    class="mb-2 select_one_category sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
-                    for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
+                    for="panel_category_{{$category->id}}_mobile" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
               @else
                 @foreach ($item->sub_cats as $category)
                 <div class="z-checkbox" >
-                  <input class="select_one_category" form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
                   {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
-                    class="mb-2 sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                    class="mb-2 select_one_category sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label class="d-block text-capitalize"
-                    for="panel_category_{{$category->id}}_mobile">{{$category->getTranslation('title',getCode())}}</label>
+                    for="panel_category_{{$category->id}}_mobile" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
               @endif
@@ -275,7 +275,7 @@
                   {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}}
                     class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
-                    for="panel_brand_{{$brand->id}}_mobile">{{$brand->getTranslation('title',getCode())}}</label>
+                    for="panel_brand_{{$brand->id}}_mobile" data-en="{{$brand->getTranslation('title','en')}}">{{$brand->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
               </div>
@@ -532,7 +532,8 @@
         var html        = ''
         var html_mobile = ''
         var brands = data.data
-        var brand_array = '{{ json_encode($brand_ids) }}'
+        var brand_array = "{{ json_encode($brand_ids) }}"
+        brand_array     = JSON.parse(brand_array)
         var old_brand = getUrlParameter("brand_id[]")
         old_brand = old_brand ? old_brand.map(function (x) {
           return parseInt(x);
@@ -545,14 +546,14 @@
                               type="checkbox"
                               name="brand_id[]" value="${brands[i].id}">
                             <label class="d-block text-capitalize"
-                              for="panel_brand_${brands[i].id}">${brands[i].title}</label>
+                              for="panel_brand_${brands[i].id}" data-en="${brands[i].title_en}">${brands[i].title}</label>
                           </div>`;
             html_mobile += `<div class="z-checkbox">
                             <input form="filter_form" ${checked} id="panel_brand_${brands[i].id}_mobile" class="mb-2 brand_id"
                               type="checkbox"
                               name="brand_id[]" value="${brands[i].id}">
                             <label class="d-block text-capitalize"
-                              for="panel_brand_${brands[i].id}_mobile">${brands[i].title}</label>
+                              for="panel_brand_${brands[i].id}_mobile" data-en="${brands[i].title_en}">${brands[i].title}</label>
                           </div>`;
           }
           $('.brand_panel_change').html(html)
@@ -671,9 +672,16 @@
         var html        = ''
         var html_mobile = ''
         var brands = data.data
-        var brand_array = '{{ json_encode($brand_ids) }}'
-        var old_brand = "{{ json_encode(request()->get('brand_id')??[]) }}"
+        var brand_array = "{{ json_encode($brand_ids) }}"
+        brand_array     = brand_array.replace(/&quot;/g, '\"');
+        brand_array     = JSON.parse(brand_array)
+        console.log(brand_array);
+        var old_brand   = "{{ json_encode(request()->get('brand_id')??[]) }}"
         old_brand = old_brand.replace(/&quot;/g, '\"');
+        old_brand = JSON.parse(old_brand);
+        old_brand = old_brand ? old_brand.map(function (x) {
+          return parseInt(x);
+        }) : []
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
             checked=old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
@@ -682,14 +690,14 @@
                               type="checkbox"\
                               name="brand_id[]" value="'+brands[i].id+'">\
                             <label class="d-block text-capitalize"\
-                              for="panel_brand_'+brands[i].id+'">'+brands[i].title+'</label>\
+                              for="panel_brand_'+brands[i].id+'" data-en="'+brands[i].title_en+'">'+brands[i].title+'</label>\
                           </div>';
             html_mobile += '<div class="z-checkbox">\
                               <input form="filter_form" '+checked+' id="panel_brand_'+brands[i].id+'_mobile" class="mb-2 brand_id"\
                                 type="checkbox"\
                                 name="brand_id[]" value="'+brands[i].id+'">\
                               <label class="d-block text-capitalize"\
-                                for="panel_brand_'+brands[i].id+'_mobile">'+brands[i].title+'</label>\
+                                for="panel_brand_'+brands[i].id+'_mobile" data-en="'+brands[i].title_en+'">'+brands[i].title+'</label>\
                             </div>';
           }
           $('.brand_panel_change').html(html)
@@ -725,14 +733,14 @@
       //get checked category
       $(".sub_cat_id").each(function(){
         if($(this).is(":checked")) {
-          category_name = $(this).next(".text-capitalize").text()
+          category_name = $(this).next(".text-capitalize").data('en')
         }
       })
       //get checked brand
       $(".brand_id").each(function(){
         if($(this).is(":checked")) {
-          if(!brands_name.includes($(this).next(".text-capitalize").text()))
-            brands_name.push($(this).next(".text-capitalize").text())
+          if(!brands_name.includes($(this).next(".text-capitalize").data("en")))
+            brands_name.push($(this).next(".text-capitalize").data("en"))
         }
       })
       var url = '{{url("filter")}}'+ '/' + category_name.replaceAll(" ","-") + '/' + brands_name.join('-')

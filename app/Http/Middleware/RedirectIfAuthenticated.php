@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
         switch ($guard) {
             case 'client' :
                 if (Auth::guard($guard)->check()) {
-                    return redirect('clients/homev2');
+                    return redirect('/');
                 }
                 break;
             default:

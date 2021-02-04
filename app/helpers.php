@@ -241,7 +241,7 @@ function categoryInFooter()
 function filter_categorys()
 {
   $categorys = \App\Category::whereNull('parent_id');
-  if (request()->has('category_id') && request()->get('category_id') != '') {
+  if (request()->filled('category_id')) {
     $categorys = $categorys->where('categories.id', request()->get('category_id'));
   }
 
@@ -253,8 +253,13 @@ function filter_categorys()
       ->select('t2.*', 't2.id AS parID')
       ->groupBy('parID');
   }
-  if (request()->has('sub_category_id') && request()->get('sub_category_id') != '') {
+  if (request()->filled('sub_category_id')) {
     $parent_ids = \App\Category::whereIn('id', (array) request()->get('sub_category_id'))->pluck('parent_id')->toArray();
+    $parent_ids = array_unique($parent_ids);
+    $categorys = $categorys->whereIn('categories.id', $parent_ids);
+  }
+  if (request()->route('category_name')) {
+    $parent_ids = \App\Category::where('categories.title', str_replace("-", " ", request()->route("category_name")))->pluck('parent_id')->toArray();
     $parent_ids = array_unique($parent_ids);
     $categorys = $categorys->whereIn('categories.id', $parent_ids);
   }

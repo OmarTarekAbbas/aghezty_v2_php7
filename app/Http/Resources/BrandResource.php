@@ -19,6 +19,7 @@ class BrandResource extends JsonResource
       $data =  [
           'id' => $this->id,
           'title' => $this->getTranslation('title',getCode()),
+          'title_en' => $this->getTranslation('title','en'),
           'image' => $this->image,
       ];
       $lng = [];

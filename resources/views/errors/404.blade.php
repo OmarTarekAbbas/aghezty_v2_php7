@@ -63,7 +63,7 @@
       <h5 class="text-center text-white text-uppercase" style="font-size:1.8rem;">@lang('front.was_not_found')</h5>
 
       <div class="back_home">
-        <button onclick="location.href='{{url("clients/homev2")}}'" class="btn text-capitalize m-auto d-block">@lang('front.back') @lang('front.home')</button>
+        <button onclick="location.href='{{url("/")}}'" class="btn text-capitalize m-auto d-block">@lang('front.back') @lang('front.home')</button>
       </div>
 
 
