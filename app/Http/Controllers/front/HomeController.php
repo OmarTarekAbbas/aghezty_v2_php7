@@ -2359,6 +2359,7 @@ class HomeController extends Controller
 
     public function productsv2Filter(Request $request)
     {
+
         $products = Product::select('products.*','products.id as product_id');
 
         if ($request->category_name) {
@@ -2371,9 +2372,11 @@ class HomeController extends Controller
             $builder->whereIn('brands.title',  explode("-", request()->route("brands_name")) );
           });
         }
+        
         $category = $products;
         $brand    = $products;
         $sub_category_ids = $category->pluck("category_id")->toArray();
+
         $brand_ids        = array_values(array_unique($brand->pluck("brand_id")->toArray()));
         if ($request->has('from') && $request->from != '') {
           $products = $products->where('price', '>=', $request->from);

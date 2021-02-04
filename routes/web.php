@@ -176,3 +176,5 @@ Route::get('parent/{category_id?}/{slug?}', 'front\HomeController@productsv2Slug
 Route::get('filter/{category_name?}/{brands_name?}', 'front\HomeController@productsv2Filter');
 
 Route::get("discount" ,'ProductController@updateOldProductWithDiscount');
+Route::get("solid" ,'ProductController@updateOldSolidCountInProduct');
+Route::get("old_order_details" ,'OrderController@removeProductFromOrderDeatilsThatNotHaveOrder');
