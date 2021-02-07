@@ -35,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
               break;
           }
         });
+
+        session()->put('applocale', 'ar');
+        app()->setlocale("ar");
     }
 
     /**

@@ -662,9 +662,6 @@ class HomeController extends Controller
 
     public function indexv2()
     {
-        if(!session()->has("applocale")) {
-          session()->put('applocale', 'ar');
-        }
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
           $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -2372,7 +2369,7 @@ class HomeController extends Controller
             $builder->whereIn('brands.title',  explode("-", request()->route("brands_name")) );
           });
         }
-        
+
         $category = $products;
         $brand    = $products;
         $sub_category_ids = $category->pluck("category_id")->toArray();
