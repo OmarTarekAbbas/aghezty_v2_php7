@@ -1138,15 +1138,15 @@ body {
 .main #inner-page .quantity-form #add_to:hover, .main #inner-page .quantity-form #add_to:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
-.main #inner-page .quantity-form #notify_me {
+.main #inner-page .quantity-form .notify_me {
   background-color: #fe9901;
   color: #FFF;
+  position: absolute;
+  left: 13%;
+  top: 0px;
   height: 48px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 87%;
 }
-.main #inner-page .quantity-form #notify_me:hover, .main #inner-page .quantity-form #notify_me:focus {
+.main #inner-page .quantity-form .notify_me:hover, .main #inner-page .quantity-form .notify_me:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
 .main #inner-page .quantity-form .fav_product {
@@ -3103,14 +3103,16 @@ body {
     width: 55% !important;
     left: 28%;
   }
-  .main #inner-page .info #notify_me {
-    width: 100% !important;
+  .main #inner-page .info .notify_me {
+    width: 60% !important;
+    font-size: 0.85rem;
+    left: 25%;
   }
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-right: 0 !important;
   }
   .main #inner-page .quantity-form .fav_product {
-    left: 85%;
+    left: 87%;
   }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
@@ -4083,14 +4085,16 @@ body {
     width: 55% !important;
     left: 23%;
   }
-  .main #inner-page .info #notify_me {
-    width: 94% !important;
+  .main #inner-page .info .notify_me {
+    width: 60% !important;
+    font-size: 0.85rem;
+    left: 23%;
   }
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-right: 0 !important;
   }
   .main #inner-page .quantity-form .fav_product {
-    left: 80%;
+    left: 85%;
   }
   .main #inner-page .rounded-social-buttons {
     margin-bottom: 5% !important;
@@ -4961,6 +4965,9 @@ body {
   }
   .main #inner-page .quantity-form #add_to {
     left: 22%;
+  }
+  .main #inner-page .quantity-form .notify_me {
+    left: 21%;
   }
   .main #inner-page .quantity-form .fav_product {
     left: 75%;

@@ -1506,14 +1506,13 @@ body {
         }
       }
 
-      #notify_me {
+      .notify_me {
         background-color: #fe9901;
         color: #FFF;
+        position: absolute;
+        right: 13%;
+        top: 0px;
         height: 48px;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        margin-left: 6.5rem;
-        width: 87%;
 
         &:hover,
         &:focus {
@@ -4456,9 +4455,9 @@ body {
           right: 29%;
         }
 
-        #notify_me {
-          width: 100% !important;
-          margin-left: 0.25rem;
+        .notify_me {
+          width: 60% !important;
+          right: 27%;
         }
 
         .col-md-12 {
@@ -5960,9 +5959,9 @@ body {
           right: 23%;
         }
 
-        #notify_me {
-          width: 94% !important;
-          margin-left: 1.5rem;
+        .notify_me {
+          width: 60% !important;
+          right: 24%;
         }
 
         .col-md-12 {
@@ -7482,6 +7481,10 @@ body {
           right: 23%;
           top: 0px;
           height: 48px;
+        }
+
+        .notify_me {
+          right: 22%;
         }
 
         .fav_product {

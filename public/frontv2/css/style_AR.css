@@ -1192,16 +1192,15 @@ body {
 .main #inner-page .quantity-form #add_to:hover, .main #inner-page .quantity-form #add_to:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
-.main #inner-page .quantity-form #notify_me {
+.main #inner-page .quantity-form .notify_me {
   background-color: #fe9901;
   color: #FFF;
+  position: absolute;
+  right: 13%;
+  top: 0px;
   height: 48px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: 6.5rem;
-  width: 87%;
 }
-.main #inner-page .quantity-form #notify_me:hover, .main #inner-page .quantity-form #notify_me:focus {
+.main #inner-page .quantity-form .notify_me:hover, .main #inner-page .quantity-form .notify_me:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
 }
 .main #inner-page .quantity-form .fav_product {
@@ -3359,9 +3358,9 @@ body {
     width: 55% !important;
     right: 29%;
   }
-  .main #inner-page .info #notify_me {
-    width: 100% !important;
-    margin-left: 0.25rem;
+  .main #inner-page .info .notify_me {
+    width: 60% !important;
+    right: 27%;
   }
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-left: 0 !important;
@@ -4354,9 +4353,9 @@ body {
     width: 60% !important;
     right: 23%;
   }
-  .main #inner-page .info #notify_me {
-    width: 94% !important;
-    margin-left: 1.5rem;
+  .main #inner-page .info .notify_me {
+    width: 60% !important;
+    right: 24%;
   }
   .main #inner-page .info .col-md-12.padding_right_mob {
     padding-left: 0 !important;
@@ -5252,6 +5251,9 @@ body {
     right: 23%;
     top: 0px;
     height: 48px;
+  }
+  .main #inner-page .quantity-form .notify_me {
+    right: 22%;
   }
   .main #inner-page .quantity-form .fav_product {
     left: 14%;
