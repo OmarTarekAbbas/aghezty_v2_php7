@@ -554,8 +554,9 @@ class ProductController extends Controller
         $product->solid_count = $product->solid_count + $order_detail->quantity;
         //dd($product);
         $product->save();
-        return back();
       }
+
+      echo "Solid Done"  ;
     }
 
     public function updateOldProductWithDiscount()

@@ -183,7 +183,8 @@ class OrderController extends Controller
    */
   public function removeProductFromOrderDeatilsThatNotHaveOrder()
   {
-    return \App\OrderDetail::doesntHave("order")->delete();
+      \App\OrderDetail::doesntHave("order")->delete();
+      echo "Done" ;
   }
 
   /**

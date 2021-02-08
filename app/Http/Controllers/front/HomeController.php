@@ -1105,8 +1105,13 @@ class HomeController extends Controller
             $products = $products->orderBy(explode(',', $request->sorted)[0], explode(',', $request->sorted)[1]);
         }
         if ($request->has('offer') && $request->offer != '') {
-            $products = $products->where('offer', 1);
-        }
+          // $products = $products->where('offer', 1);
+          $products = $products->where(function($q) {
+            // $q->where("offer", 1);
+            $q->where("price_after_discount", '>', 0);
+            // $q->orderBy('offer');
+          });
+      }
         if ($request->has('last') && $request->last != '') {
             $products = $products->latest('created_at');
         }
