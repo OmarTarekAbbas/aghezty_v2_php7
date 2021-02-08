@@ -111,7 +111,7 @@
   <script src="//www.google.com/recaptcha/api.js"></script>
 </head>
 
-<body oncontextmenu="return false;">
+<body oncontextmenu="return true;">
   <header class="head_two d-none d-sm-block d-md-none d-none d-md-none d-lg-block">
     <div class="row mx-0">
       <div class="col-md-3 col-lg-2 col-xl-1">

@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <section class="wishlist_shopping  my-2">
+  <section class="wishlist_shopping my-2">
     <div class="mobile_views">
       <div class="row" id="href_load">
         <div class="col-md-12 col-lg-12 col-xl-12 col-12">
@@ -60,10 +60,10 @@
 
                   <td class="item-price align-middle">{{product($wishlist->pivot->product_id)->price_after_discount > 0? product($wishlist->pivot->product_id)->price_after_discount:  number_format((int)product($wishlist->pivot->product_id)->price)}} @lang('front.egp')</td>
 
-                  <td class = "align-middle">1</td>
+                  <td class = "align-middle item-price">1</td>
 
                   <td class="item-price align-middle">{{product($wishlist->pivot->product_id)->price_after_discount > 0? product($wishlist->pivot->product_id)->price_after_discount:  number_format((int)product($wishlist->pivot->product_id)->price)}} @lang('front.egp')</td>
-                  <td class="align-middle">
+                  <td class="align-middle text-center">
                     <a href="{{ route('front.add.wishlist.to.cart',['product_id' => $wishlist->pivot->product_id,'quantity' => 1]) }}" class="btn btn-success">@lang('front.wishlist.add_to_cart')</a>
                   </td>
                 </tr>
@@ -165,10 +165,4 @@
   </section>
 
 </div>
-@endsection
-
-@section('script')
-<script>
-
-</script>
 @endsection
