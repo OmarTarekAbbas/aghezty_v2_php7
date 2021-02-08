@@ -5,14 +5,13 @@
   nav.container-fluid {
     padding-right: 0 !important;
     padding-left: 0 !important;
-    nth-last-of-type()
   }
 
   .notify_me {
     background-color: #fe9901;
     color: #FFF;
     position: absolute;
-    left: 90px;
+    right: 13%;
     top: 0px;
     height: 48px;
   }
