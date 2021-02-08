@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                         @endif
-                                        @if($order->status != $orderStatus::getLabel($orderStatus::FINISHED))
+                                        @if($order->status != $orderStatus::getLabel($orderStatus::FINISHED) || $order->status != $orderStatus::getLabel($orderStatus::UNDER_SHIPPING))
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">@lang('messages.Not_available')</label>
