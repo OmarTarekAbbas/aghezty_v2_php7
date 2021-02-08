@@ -501,7 +501,7 @@
     if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
       $('.load').show();
       action = 'active';
-      start = start + 1;
+      start = start + {{ get_limit_paginate() }};
       setTimeout(function() {
         load_content_data(start);
       }, 500);
@@ -570,7 +570,7 @@
   function load_content_data(start) {
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?' + 'start=' + start,
-      type: "get",
+      type: "post",
       data: $('#filter_form').serialize(),
       success: function(data) {
         if (data.html == '') {
@@ -595,7 +595,7 @@
       $('#' + str.split('_mobile')[0]).removeAttr('checked')
     }
     $.ajax({
-      url: '{{url("clients/productsv2")}}?start=0',
+      url: '{{url("clients/loadproductsv2")}}?start=0',
       type: "post",
       data: $('#filter_form').serialize(),
       success: function(data) {
@@ -713,8 +713,8 @@
   $( document ).ready(function(){
     @if(!request()->has('sorted'))
       $.ajax({
-        url: '{{url("clients/loadproductsv2")}}?start=0',
-        type: "post",
+        url: '{{url("clients/productsv2")}}?start=0',
+        type: "get",
         data: $('#filter_form').serialize(),
         success: function(data) {
           if (data.html == '') {
