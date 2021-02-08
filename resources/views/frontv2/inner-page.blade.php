@@ -5,16 +5,6 @@
   nav.container-fluid {
     padding-right: 0 !important;
     padding-left: 0 !important;
-    nth-last-of-type()
-  }
-
-  .notify_me {
-    background-color: #fe9901;
-    color: #FFF;
-    position: absolute;
-    left: 90px;
-    top: 0px;
-    height: 48px;
   }
 
   @media (min-width: 320px) and (max-width: 375px) {
