@@ -67,7 +67,7 @@
 
                       <a href="#0" class="table_qty_inc">+</a>
 
-                      <a href="{{route('front.home.inner',['id' => $cart->pivot->product_id])}}">
+                      <a href="{{route('front.home.inner',['id' => $cart->pivot->product_id ,'slug' => setSlug(product($cart->pivot->product_id)->getTranslation('title',getCode()))])}}">
                         <i class="far fa-eye px-2 h6"></i>
                       </a>
                     </div>

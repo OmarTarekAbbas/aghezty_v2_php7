@@ -66,7 +66,7 @@
 
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                <input id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -76,12 +76,14 @@
               @else
 
                 @foreach ($item->sub_cats as $category)
-                <div class="z-checkbox">
-                  <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
-                    type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
-                  <label class="d-block text-capitalize"
-                    for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
-                </div>
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false))
+                  <div class="z-checkbox">
+                    <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
+                      type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                    <label class="d-block text-capitalize"
+                      for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
+                  </div>
+                @endif
                 @endforeach
 
               @endif
@@ -113,6 +115,7 @@
 
           <div class="panel brand_panel_change mb-3 w-100 border border-light">
             @foreach (filtter_brands() as $brand)
+            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id) || request()->filled("sub_category_id") || request()->route("category_name"))
             <div class="z-checkbox">
               <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
                 {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"
@@ -120,6 +123,7 @@
               <label class="d-block text-capitalize"
                 for="panel_brand_{{$brand->id}}" data-en="{{$brand->getTranslation('title','en')}}">{{$brand->getTranslation('title',getCode())}}</label>
             </div>
+            @endif
             @endforeach
           </div>
 
@@ -490,14 +494,14 @@
       return urlParams.getAll(sParam)
   }
 
-  var start = 0;
+  var start = 1;
   var action = 'inactive';
   $('.load').hide();
   $(window).on("scroll", function() {
     if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
       $('.load').show();
       action = 'active';
-      start = start + {{get_limit_paginate()}};
+      start = start + 1;
       setTimeout(function() {
         load_content_data(start);
       }, 500);
@@ -565,8 +569,8 @@
   })
   function load_content_data(start) {
     $.ajax({
-      url: '{{url("clients/loadproductsv2")}}?' + '&start=' + start,
-      type: "post",
+      url: '{{url("clients/productsv2")}}?' + 'page=' + start,
+      type: "get",
       data: $('#filter_form').serialize(),
       success: function(data) {
         if (data.html == '') {
