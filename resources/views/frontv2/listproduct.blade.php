@@ -76,7 +76,7 @@
               @else
 
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false))
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search"))
                   <div class="z-checkbox">
                     <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                       type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
@@ -494,7 +494,7 @@
       return urlParams.getAll(sParam)
   }
 
-  var start = 1;
+  var start = 0;
   var action = 'inactive';
   $('.load').hide();
   $(window).on("scroll", function() {
@@ -569,7 +569,7 @@
   })
   function load_content_data(start) {
     $.ajax({
-      url: '{{url("clients/productsv2")}}?' + 'page=' + start,
+      url: '{{url("clients/loadproductsv2")}}?' + 'start=' + start,
       type: "get",
       data: $('#filter_form').serialize(),
       success: function(data) {
@@ -594,9 +594,8 @@
       $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
       $('#' + str.split('_mobile')[0]).removeAttr('checked')
     }
-    start = 0
     $.ajax({
-      url: '{{url("clients/loadproductsv2")}}?start=0',
+      url: '{{url("clients/productsv2")}}?start=0',
       type: "post",
       data: $('#filter_form').serialize(),
       success: function(data) {

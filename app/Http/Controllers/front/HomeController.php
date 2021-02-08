@@ -1029,12 +1029,12 @@ class HomeController extends Controller
           //dd($category_have_current_property);
           if($category_have_current_property){
             $product_without_property       = $this->redfineQueryWithoutProperty($request, $category_have_current_property);
-            $products = $products->merge($product_without_property->where('products.active', 1)->paginate(get_limit_paginate()));
+            $products = $products->merge($product_without_property->where('products.active', 1)->limit(get_limit_paginate())->get());
           }
 
 
         } else {
-          $products = $products->where('products.active', 1)->paginate(get_limit_paginate());
+          $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
         }
 
         if($request->ajax()) {
