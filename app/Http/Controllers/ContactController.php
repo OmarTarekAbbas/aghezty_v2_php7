@@ -21,7 +21,7 @@ class ContactController extends Controller
 
     // Request For New Product From Client
     public function request_index(){
-        $contacts = Contact::whereNotNull('product_id')->get();
+        $contacts = Contact::whereNotNull('product_id')->latest()->get();
         return view('request_product.index',compact('contacts'));
     }
 
