@@ -282,7 +282,7 @@
 					</div> -->
 
       <div class="rounded-social-buttons w-100">
-        <strong class="text-capitalize">share with: </strong>
+        <strong class="text-capitalize">  @lang('front.share_with') : </strong>
         <a class="social-button facebook_link" href="https://www.facebook.com/sharer/sharer.php?u={{urldecode(route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))]))}}" target="_blank" title="Facebook">
           <i class="fab fa-facebook-f facebook_icon"></i>
         </a>

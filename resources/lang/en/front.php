@@ -10,6 +10,7 @@ return [
     'search' => 'Search',
     'offer' => 'Offers',
     'contact' => 'Contact Us',
+    'share_with' => 'Share With',
     'summary' => 'Summary',
     'sign_out' => 'Log Out',
     'price' => 'Price',

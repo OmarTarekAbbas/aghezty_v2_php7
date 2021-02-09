@@ -11,6 +11,7 @@ return [
     'offer' => 'عروض',
     'visa_online' => 'كيفية الشراء خلال موقع اجهزتي',
     'contact' => 'اتصل بنا',
+    'share_with' => ' انشر علي ',
     'sign_out' => 'خروج',
     'price' => 'السعر',
     'total_price' => 'الاجمالى',
