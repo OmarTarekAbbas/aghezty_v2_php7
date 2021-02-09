@@ -359,11 +359,13 @@ body {
 }
 .head_three_ul .navbar-nav .nav-item .dropdown-menu {
   position: absolute !important;
-  left: inherit;
   min-width: 40%;
   max-height: 29rem;
   overflow: hidden;
   overflow-y: scroll;
+}
+.head_three_ul .navbar-nav .nav-item .dropdown-menu#offer {
+  min-width: 18%;
 }
 .head_three_ul .navbar-nav .nav-item .dropdown-menu .sub-title {
   color: #0f6ab2;
@@ -4833,6 +4835,9 @@ body {
     text-align: justify;
   }
 
+  .head_three_ul .navbar-nav .nav-item .dropdown-menu#offer {
+    min-width: 30%;
+  }
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-left: 0 !important;
     padding-right: 0 !important;

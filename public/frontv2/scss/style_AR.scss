@@ -425,6 +425,11 @@ body {
         overflow-y: scroll;
         text-align: right;
 
+        &#offer {
+          min-width: 18%;
+          left: 1% !important;
+        }
+
         .sub-title {
           color: $blueTitle_color;
           text-align: right;
@@ -7185,6 +7190,7 @@ body {
         .dropdown-menu {
           &#offer {
             left: 1% !important;
+            min-width: 30%;
           }
 
           .sub-title {}

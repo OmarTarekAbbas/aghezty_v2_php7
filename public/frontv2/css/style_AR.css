@@ -355,6 +355,10 @@ body {
   overflow-y: scroll;
   text-align: right;
 }
+.head_three_ul .navbar-nav .nav-item .dropdown-menu#offer {
+  min-width: 18%;
+  left: 1% !important;
+}
 .head_three_ul .navbar-nav .nav-item .dropdown-menu .sub-title {
   color: #0f6ab2;
   text-align: right;
@@ -5101,6 +5105,7 @@ body {
 
   .head_three_ul .navbar-nav .nav-item .dropdown-menu#offer {
     left: 1% !important;
+    min-width: 30%;
   }
   .carsoul_ads .owl-one .item a img {
     height: 325px;

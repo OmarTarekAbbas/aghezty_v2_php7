@@ -431,11 +431,16 @@ body {
 
       .dropdown-menu {
         position: absolute !important;
-        left: inherit;
+        // left: unset !important;
         min-width: 40%;
         max-height: 29rem;
         overflow: hidden;
         overflow-y: scroll;
+
+        &#offer {
+          min-width: 18%;
+          // left: 1% !important;
+        }
 
         .sub-title {
           color: $blueTitle_color;
@@ -6836,6 +6841,28 @@ body {
               text-align: justify;
             }
           }
+        }
+      }
+    }
+  }
+
+  .head_three_ul {
+    .navbar-nav {
+      .nav-link {}
+
+      .nav-item {
+        // width: 100%;
+        .dropdown-menu {
+          &#offer {
+            // left: -1% !important;
+            min-width: 30%;
+          }
+
+          .sub-title {}
+
+          .menu-item {}
+
+          &.dropdown-menu-mob {}
         }
       }
     }
