@@ -41,7 +41,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile', 'to' => 1000 ]).'&sub_category_id=49'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile']).'?sub_category_id=49&to=1000'}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/less-1000.jpg" alt="less-1000"> -->
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -55,7 +55,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile', 'from_to' => '1000,3000' ]).'&sub_category_id=49'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile']).'?sub_category_id=49&from_to=1000,3000'}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-1000-3000.jpg" alt="mobiles-1000-3000"> -->
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -69,7 +69,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile', 'from_to' => '3000,6000' ]).'&sub_category_id=49'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile']).'?sub_category_id=49&from_to=3000,6000'}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-3000-6000.jpg" alt="mobiles-3000-6000"> -->
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -83,7 +83,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile', 'from_to' => '6000,10000' ]).'&sub_category_id=49'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile']).'?sub_category_id=49&from_to=6000,10000'}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/mobiles-6000-10000.jpg" alt="mobiles-6000-10000"> -->
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -97,7 +97,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile', 'from' => 10000 ]).'&sub_category_id=49'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 49, 'slug' => 'Mobile']).'?sub_category_id=49&from=10000'}}">
                 <!-- <img class="rounded-circle w-75" src="images/mobiles_offers/more-10000.jpg" alt="more-10000"> -->
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
@@ -298,7 +298,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV', 'property_value_id[]' => 1, 'sorted' => 'price,asc']).'&sub_category_id=34'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-21']).'?sub_category_id=34&property_value_id[]=1&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
 
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
@@ -313,7 +313,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV', 'property_value_id[]' => 2, 'sorted' => 'price,asc']).'&sub_category_id=34'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-32-42']).'?sub_category_id=34&property_value_id[]=2&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
 
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
@@ -328,7 +328,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV', 'property_value_id[]' => 3, 'sorted' => 'price,asc']).'&sub_category_id=34'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-43-54']).'?sub_category_id=34&property_value_id[]=3&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/49-55-inch.jpg" alt="mobiles-1000-3000"> -->
 
                 <div class="diamond_sample diamond_bg_4 hvr-sweep-to-bottom hvr-pulse">
@@ -343,7 +343,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV', 'property_value_id[]' => 6, 'sorted' => 'price,asc']).'&sub_category_id=34'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-55-65']).'?sub_category_id=34&property_value_id[]=6&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/60-75-inch.jpg" alt="mobiles-3000-6000"> -->
 
                 <div class="diamond_sample diamond_bg_5 hvr-sweep-to-bottom hvr-pulse">
@@ -358,7 +358,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV', 'property_value_id[]' => 5, 'sorted' => 'price,asc']).'&sub_category_id=34'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-66']).'?sub_category_id=34&property_value_id[]=5&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/more-75-inch.jpg" alt="more-10000"> -->
 
                 <div class="diamond_sample diamond_bg_6 hvr-sweep-to-bottom hvr-pulse">
