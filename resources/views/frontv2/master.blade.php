@@ -403,12 +403,12 @@
                 </div>
 
                 <div class="col-md-6 col-xl-6 col-6 sub-menu mb-xl-0 mb-4">
-                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">most sold</h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">@lang('front.most_solid')</h6>
                   <ul class="list-unstyled">
 
                     <li>
-                    <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="#0">
-                    <i class="fas fa-caret-right pl-1 pr-2"></i>most sold</a>
+                    <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?most_solid=most_solid')}}">
+                    <i class="fas fa-caret-right pl-1 pr-2"></i>@lang('front.most_solid')</a>
                     </li>
                   </ul>
                 </div>
