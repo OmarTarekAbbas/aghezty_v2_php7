@@ -38,7 +38,7 @@
                     </div>
                     <div class="note-text" style="display:table-cell; padding:0.3em 2em">
                         <h5> @lang('front.title') :)</h5>
-                        <h4> {{$subject}} <a href="{{url('/clients/productv2/'.$products[0]->id)}}">@lang('front.mail.link')</a> </h4>
+                        <h4> {{$subject}} <a href="{{route('front.home.inner',['id' => $products[0]->id ,'slug' => setSlug($products[0]->getTranslation('title',getCode()))]) }}">@lang('front.mail.link')</a> </h4>
                     </div>
                 </div>
                 <aside class="cart-aside"

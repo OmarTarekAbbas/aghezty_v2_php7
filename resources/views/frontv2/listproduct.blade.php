@@ -393,10 +393,10 @@
           </div>
 
           <select class="selsort p-1 border border-secondary bg-white" id="sorted" form="filter_form" name="sorted">
-            <option value="">@lang('messages.users.select')</option>
+            <option value="" selected="selected">@lang('messages.users.select')</option>
             <option value="title,asc">@lang('messages.scheduled.name')</option>
-            <option value="price,desc">@lang('front.price') @lang('front.desc')</option>
-            <option value="price,asc" selected="selected">@lang('front.price') @lang('front.asc')</option>
+            <option value="price,desc" {{ request()->get("sorted") == "price,desc" ? 'selected' : '' }}>@lang('front.price') @lang('front.desc')</option>
+            <option value="price,asc" {{ request()->get("sorted") == "price,asc"   ? 'selected' : '' }}>@lang('front.price') @lang('front.asc')</option>
           </select>
 
           <strong class="grid_list float-right">
