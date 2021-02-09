@@ -10,9 +10,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Throwable;
 
-class SendOrderMailJob extends Job implements ShouldQueue
+class SendOrderMailJob extends Job
 {
-    use Dispatchable, InteractsWithQueue, SerializesModels;
+    use Dispatchable, SerializesModels;
 
     /**
      * order
