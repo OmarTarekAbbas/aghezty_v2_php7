@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                         @endif
-                                        @if($order->status != $orderStatus::getLabel($orderStatus::FINISHED) || $order->status != $orderStatus::getLabel($orderStatus::UNDER_SHIPPING))
+                                        @if(!($order->status == $orderStatus::getLabel($orderStatus::FINISHED) || $order->status == $orderStatus::getLabel($orderStatus::UNDER_SHIPPING)))
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="">@lang('messages.Not_available')</label>
@@ -82,9 +82,11 @@
                                             <textarea type="text" name="message"
                                                 style="width:100%;text-align:{{ ($order->lang == 'ar') ? 'right' : 'left'}}"
                                                 cols="70" rows="9" class="form-control" required
-                                                placeholder="{{ ($order->lang == 'ar') ? ' الرساله' : 'Your Message'}}"></textarea>
-                                        </div>
+                                                placeholder="{{ ($order->lang == 'ar') ? ' الرساله' : 'Your Message'}}">
+                                            </textarea>
+                                            <br>
                                         <button type="submit" class="btn btn-primary btn-lg">@lang('messages.send')</button>
+                                        </div>
                                         @endif
                                     </form>
                                 </div>
