@@ -386,8 +386,34 @@
           <!-- End Brands-->
 
           <!-- Start Offers -->
-          <li class="nav-item">
-            <a class="nav-link nav_link2 text-uppercase" href="{{url('clients/productsv2?offer=offer')}}" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">@lang('front.offer')</a>
+          <li class="nav-item dropdown mega-dropdown">
+            <a class="nav-link dropdown-toggle text-uppercase slide_toggle" href="" data-toggle="dropdown" id="navbarDropdownMenuLink5" aria-haspopup="true" aria-expanded="false">@lang('front.offer')</a>
+
+            <div id="offer" class="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 slideContent" aria-labelledby="navbarDropdownMenuLink5">
+              <div class="row">
+                <div class="col-md-6 col-xl-6 col-6 sub-menu mb-xl-0 mb-4">
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">@lang('front.offer')</h6>
+                  <ul class="list-unstyled">
+
+                    <li>
+                    <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="{{url('clients/productsv2?offer=offer')}}">
+                    <i class="fas fa-caret-right pl-1 pr-2"></i>@lang('front.offer')</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-md-6 col-xl-6 col-6 sub-menu mb-xl-0 mb-4">
+                  <h6 class="sub-title text-uppercase font-weight-bold d-inline-block">most sold</h6>
+                  <ul class="list-unstyled">
+
+                    <li>
+                    <a class="menu-item font-weight-bold text-capitalize border-0 pl-0 hvr-icon-forward" href="#0">
+                    <i class="fas fa-caret-right pl-1 pr-2"></i>most sold</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </li>
           <!-- End Offers -->
 

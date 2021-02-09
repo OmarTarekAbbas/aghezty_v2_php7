@@ -347,7 +347,7 @@ body {
 .head_three_ul .navbar-nav .nav-item .dropdown-menu {
   position: absolute !important;
   transform: unset !important;
-  left: inherit !important;
+  left: unset !important;
   top: 94% !important;
   min-width: 40%;
   max-height: 29rem;
@@ -1739,7 +1739,7 @@ body {
   color: #e1e1e1 !important;
 }
 .main .wishlist_shopping table th .img_link img {
-  height: 154px;
+  height: 250px;
   transition: all 0.8s ease-in-out;
   -webkit-transition: all 0.8s ease-in-out;
   -moz-transition: all 0.8s ease-in-out;
@@ -2961,6 +2961,9 @@ body {
     top: 3.96rem;
     z-index: 9999;
   }
+  .head_three_ul .navbar-nav .nav-item {
+    width: 100%;
+  }
   .head_three_ul .navbar-nav .nav-item .dropdown-menu {
     position: unset !important;
     transform: unset !important;
@@ -3949,6 +3952,9 @@ body {
     top: 4.52rem;
     z-index: 9999;
   }
+  .head_three_ul .navbar-nav .nav-item {
+    width: 100%;
+  }
   .head_three_ul .navbar-nav .nav-item .dropdown-menu {
     position: unset !important;
     transform: unset !important;
@@ -4900,6 +4906,9 @@ body {
     position: absolute;
     top: 6.09rem;
   }
+  .head_three_ul .navbar-nav .nav-item {
+    width: 95%;
+  }
   .head_three_ul .navbar-nav .nav-item .dropdown-menu {
     position: unset !important;
     transform: unset !important;
@@ -5090,6 +5099,9 @@ body {
     text-align: justify;
   }
 
+  .head_three_ul .navbar-nav .nav-item .dropdown-menu#offer {
+    left: 1% !important;
+  }
   .carsoul_ads .owl-one .item a img {
     height: 325px;
   }

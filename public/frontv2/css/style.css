@@ -1618,7 +1618,7 @@ body {
   color: #e1e1e1 !important;
 }
 .main .wishlist_shopping table th .img_link img {
-  height: 154px;
+  height: 250px;
   transition: all 0.8s ease-in-out;
   -webkit-transition: all 0.8s ease-in-out;
   -moz-transition: all 0.8s ease-in-out;
@@ -2718,6 +2718,9 @@ body {
     top: 4.4rem;
     z-index: 9999;
   }
+  .head_three_ul .navbar-nav .nav-item {
+    width: 100%;
+  }
   .head_three_ul .navbar-nav .nav-item .dropdown-menu {
     position: unset !important;
     transform: unset !important;
@@ -3695,6 +3698,9 @@ body {
     top: 4.53rem;
     z-index: 9999;
   }
+  .head_three_ul .navbar-nav .nav-item {
+    width: 100%;
+  }
   .head_three_ul .navbar-nav .nav-item .dropdown-menu {
     position: unset !important;
     transform: unset !important;
@@ -4612,6 +4618,9 @@ body {
   .head_three_ul .navbar-nav {
     position: absolute;
     top: 6.09rem;
+  }
+  .head_three_ul .navbar-nav .nav-item {
+    width: 95%;
   }
   .head_three_ul .navbar-nav .nav-item .dropdown-menu {
     position: unset !important;
