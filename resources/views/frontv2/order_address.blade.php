@@ -81,7 +81,7 @@
                         </div>
 
                         @if (!Auth::guard('client')->user()->phone)
-                            
+
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                           <div class="input-group mb-2 w-75 m-auto hvr-float">
                             <div class="input-group-prepend w-100">
@@ -94,7 +94,7 @@
                         @endif
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                        <button id="checkphone" type="button" onclick="if($('#phone').val() != ''){location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'}else{alert('Please enter your phone!')}" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
+                        <button id="checkphone" type="button" onclick="if($('#phone').val() != ''){this.preventDefault();location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'}else{alert('Please enter your phone!')}" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
                         </div>
                       </div>
                     </form>
@@ -225,7 +225,7 @@
   })
 </script>
 <script>
-  $('#phone').change(function (e) { 
+  $('#phone').change(function (e) {
     e.preventDefault();
     $.ajax({
       type: "post",
@@ -236,6 +236,6 @@
       }
     });
   });
-  
+
 </script>
 @endsection
