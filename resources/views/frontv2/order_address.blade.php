@@ -80,22 +80,34 @@
                           </div>
                         </div>
 
-                        @if (!Auth::guard('client')->user()->phone)
+
+
+                        @if (Auth::guard('client')->user()->phone == "")
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
                           <div class="input-group mb-2 w-75 m-auto hvr-float">
                             <div class="input-group-prepend w-100">
                               <div class="input-group-text"><i class="fas fa-phone"></i></div>
-                              <input id="phone" class="form-control w-100" placeholder="Please Enter Your Phone" name="phone" required>
+                              <input id="phone" class="form-control w-100"     placeholder="Please Enter Your Phone" name="phone" required>
                             </div>
                           </div>
                         </div>
 
-                        @endif
 
                         <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                        <button id="checkphone" type="button" onclick="if($('#phone').val() != ''){this.preventDefault();location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'}else{alert('Please enter your phone!')}" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
-                        </div>
+
+                          <button id="checkphone" type="button"   onclick="saveOrderAndPone(event)"     class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
+
+                          </div>
+
+                          @else
+                          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
+                            <button id="checkphone" type="button"     onclick="saveOrder(event)"   class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.continue')</button>
+                            </div>
+
+                        @endif
+
+
                       </div>
                     </form>
                   </div>
@@ -223,8 +235,44 @@
       }
     })
   })
+
+
+function  saveOrderAndPone(e){
+  e.preventDefault();
+   var phone =  $('#phone').val()
+
+  if($('#phone').val() != ''){
+
+    $.ajax({
+      type: "post",
+      url: "{{url('clients/phoneStoreAjax')}}",
+      data: {phone : $('#phone').val()},
+      success: function (response) {
+        console.log(response);
+      }
+    });
+
+    location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
+  }else{
+    alert('Please enter your phone!')
+  }
+
+}
+
+
+
+
+function  saveOrder(e){
+  e.preventDefault();
+
+  location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
+
+}
+
 </script>
-<script>
+
+
+ {{-- <script>
   $('#phone').change(function (e) {
     e.preventDefault();
     $.ajax({
@@ -237,5 +285,9 @@
     });
   });
 
-</script>
+</script> --}}
+
+
+
+
 @endsection

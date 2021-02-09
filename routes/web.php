@@ -101,7 +101,7 @@ Route::prefix('clients')->group(function() {
         Route::get('thanksv2','front\HomeController@thanksv2')->name('front.home.checkout.thanks');
         Route::get('order_addressv2','front\HomeController@choose_addressv2')->name('front.home.checkout.address');
         Route::get('myorderv2/{id}','front\HomeController@myorderv2')->name('front.home.inner.order');
-        Route::get('confirm_order/{id}','front\HomeController@confirm_order')->name('front.home.confirm');
+        Route::get('confirm_order/{id}/{phone?}','front\HomeController@confirm_order')->name('front.home.confirm');
         Route::get('toggle/wishlist','front\WishListController@createOrdelete')->name('front.toggle.product.wishlist');
         Route::get('wishlist','front\WishListController@index')->name('front.home.wishlist');
         Route::get('add/wishlist/to/cart','front\WishListController@addWishlistProductToCart')->name('front.add.wishlist.to.cart');
