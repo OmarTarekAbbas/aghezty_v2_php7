@@ -298,13 +298,13 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-21']).'?sub_category_id=34&property_value_id[]=1&sorted=price,asc'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-22-32']).'?sub_category_id=34&property_value_id[]=1&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/less-32-inch.jpg" alt="mobiles-6000-10000"> -->
 
                 <div class="diamond_sample diamond_bg_2 hvr-sweep-to-bottom hvr-pulse">
                   <h5 class="diamond_sample_title text-capitalize text-center text-white w-100">
-                    <strong class="d-block"> @lang('front.less') @lang('front.from')</strong>
-                    <strong class="d-block"> 21 @lang('front.inch')</strong>
+                    <strong class="d-block">22 @lang('front.to')</strong>
+                    <strong class="d-block"> 32 @lang('front.inch')</strong>
                   </h5>
                 </div>
               </a>
@@ -313,7 +313,7 @@
 
           <div class="col-md-4 col-lg-4 col-xl-2 col-4 margin_bottom_mob">
             <div class="choose_category_form text-center">
-              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-32-42']).'?sub_category_id=34&property_value_id[]=2&sorted=price,asc'}}">
+              <a href="{{route('front.home.search.category',['sub_category_id' => 34, 'slug' => 'TV' , 'property' => 'inch-33-42']).'?sub_category_id=34&property_value_id[]=2&sorted=price,asc'}}">
                 <!-- <img class="rounded-circle w-75" src="images/tv_offers/32-43-inch.jpg" alt="less-1000"> -->
 
                 <div class="diamond_sample diamond_bg_3 hvr-sweep-to-bottom hvr-pulse">
