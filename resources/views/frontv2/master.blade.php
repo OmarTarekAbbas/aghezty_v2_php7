@@ -55,6 +55,7 @@
     gtag('config', 'UA-187664661-1');
   </script>
   <title>Aghezty</title>
+  <link rel="shortcut icon" href="{{url('public/frontv2/images/logo/fav_icon.png')}}">
   <meta charset="utf-8">
   <!--IE Compatibility Meta-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -114,15 +115,15 @@
 <body oncontextmenu="return {{ setting('enable_rclick') ? 'true' : 'false' }};">
   <header class="head_two d-none d-sm-block d-md-none d-none d-md-none d-lg-block">
     <div class="row mx-0">
-      <div class="col-md-3 col-lg-2 col-xl-1">
+      <div class="col-md-3 col-lg-2 col-xl-3">
         <div class="img_logo">
           <a href="{{route('front.home.index')}}">
-            <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
+            <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/06.png')}}" alt="Logo">
           </a>
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-4 col-xl-7">
+      <div class="col-md-6 col-lg-4 col-xl-5">
         <form class="search-container" id="form_search" action="{{url('clients/productsv2')}}" method="get">
           <input type="text" id="search-bar" autocomplete="off" value="{{ request()->get('search') }}" name="search" placeholder="@lang('messages.search')">
           <a onclick="document.getElementById('form_search').submit()" href="#">
@@ -171,7 +172,7 @@
                 aria-expanded="false">{{\Auth::guard('client')->user()->name}}</a>
             </span>
 
-            <span class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+            <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{{route('front.home.profile')}}">@lang('front.profile')</a>
               <a class="dropdown-item" href="{{route('front.home.address')}}">@lang('front.address')</a>
               @if (!Auth::guard('client')->user()->facebook)
@@ -195,15 +196,23 @@
       <!-- End My Account-->
       @endif
 
-      {{-- --}}
 
       <div class="col-md-3 col-lg-2 col-xl-1">
         <div class="shopping_cart">
           <button type="button" onclick="location.href = '{{route('front.home.cart')}}'">
             <!-- <i class="fas fa-shopping-cart fa-3x"></i> -->
-            <span
-              class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
-            <img src="{{url('public/frontv2/images/cart-dark.png')}}" class="shopping_cart_img" alt="Cart Shop">
+            <span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
+            <svg class="shopping_cart_img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 40 38" xml:space="preserve">
+              <g>
+                <path class="st0" d="M40,16.7c-0.9,2.7-1.8,5.4-2.7,8.1c-0.1,0.5-0.6,0.8-1.1,0.7c-6.7,0-13.3,0-20,0c0.3,1.1,0.6,2.1,0.9,3.2   c7,0,13.9,0,20.9,0c0.3,0,0.5,0.5,0.5,1c0,0.5-0.2,1-0.5,1c-7.2,0-14.5,0-21.7,0c-0.5,0-0.9-0.3-1-0.8c-2.4-8.7-4.7-17.5-7-26.2   c-2.3,0-4.7,0-7,0c-0.6,0-1.1-0.6-1-1.2c0.1-0.5,0.5-0.9,1-0.9c2.6,0,5.1,0,7.7,0c0.5,0,1,0.3,1.1,0.8c1.9,7,3.8,14,5.7,21.1   c6.6,0,13.2,0,19.8,0c0.8-2.4,1.7-4.9,2.5-7.3"/>
+                <g>
+                  <path class="st0" d="M17.7,31.1c1.7-0.5,3.6,0.6,4.1,2.2c0.4,1,0.3,2.3-0.4,3.2c-0.8,1.2-2.3,1.8-3.7,1.5    c-1.5-0.3-2.7-1.7-2.7-3.2C15,33.1,16.1,31.5,17.7,31.1z M18.1,32.9c-0.8,0.2-1.4,1.1-1.2,1.9c0.1,0.8,0.9,1.5,1.8,1.4    c1,0,1.8-1.2,1.5-2.1C20,33.2,19,32.6,18.1,32.9z"/>
+                </g>
+                <g>
+                  <path class="st0" d="M33.6,31.1c1.6-0.5,3.5,0.5,4.1,2.1c0.4,1,0.3,2.3-0.3,3.2c-0.7,1.2-2.3,1.8-3.6,1.5    c-1.6-0.3-2.8-1.8-2.8-3.4C30.9,33,32,31.5,33.6,31.1z M33.9,32.9c-0.6,0.2-1.1,0.7-1.2,1.4c-0.2,1,0.7,1.9,1.6,1.9    c1,0.1,1.9-1,1.7-2C35.9,33.2,34.9,32.6,33.9,32.9z"/>
+                </g>
+              </g>
+            </svg>
           </button>
           <!-- (<span class="total-count"></span>) -->
         </div>
@@ -213,21 +222,31 @@
 
   <header class="head_three ">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark special-color-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark special-color-dark">
       <a class="mobile_logo d-sm-block d-md-block d-lg-none" href="{{route('front.home.index')}}">
-        <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/01.png')}}" alt="Logo">
+        <img class="d-block m-auto" src="{{url('public/frontv2/images/logo/06.png')}}" alt="Logo">
       </a>
 
       <!-- Collapse button -->
       <button class="navbar-toggler menu_click_up" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
         aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
       </button>
 
       <a class="shopping_cart_img d-sm-block d-md-block d-lg-none" href="{{url('clients/cartv2')}}">
-        <span
-          class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
-        <img class="d-block m-auto w-100" src="{{url('public/frontv2/images/cart-dark.png')}}" alt="Logo">
+        <span class="shopping_cart_num">{{((Auth::guard('client')->user()) ? count(Auth::guard('client')->user()->carts):0)+count_session_cart()}}</span>
+        <!-- <img class="d-block m-auto w-100" src="{{url('public/frontv2/images/cart-dark.png')}}" alt="Cart"> -->
+        <svg class="shopping_cart_img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 40 38" xml:space="preserve">
+          <g>
+            <path class="st0" d="M40,16.7c-0.9,2.7-1.8,5.4-2.7,8.1c-0.1,0.5-0.6,0.8-1.1,0.7c-6.7,0-13.3,0-20,0c0.3,1.1,0.6,2.1,0.9,3.2   c7,0,13.9,0,20.9,0c0.3,0,0.5,0.5,0.5,1c0,0.5-0.2,1-0.5,1c-7.2,0-14.5,0-21.7,0c-0.5,0-0.9-0.3-1-0.8c-2.4-8.7-4.7-17.5-7-26.2   c-2.3,0-4.7,0-7,0c-0.6,0-1.1-0.6-1-1.2c0.1-0.5,0.5-0.9,1-0.9c2.6,0,5.1,0,7.7,0c0.5,0,1,0.3,1.1,0.8c1.9,7,3.8,14,5.7,21.1   c6.6,0,13.2,0,19.8,0c0.8-2.4,1.7-4.9,2.5-7.3"/>
+            <g>
+              <path class="st0" d="M17.7,31.1c1.7-0.5,3.6,0.6,4.1,2.2c0.4,1,0.3,2.3-0.4,3.2c-0.8,1.2-2.3,1.8-3.7,1.5    c-1.5-0.3-2.7-1.7-2.7-3.2C15,33.1,16.1,31.5,17.7,31.1z M18.1,32.9c-0.8,0.2-1.4,1.1-1.2,1.9c0.1,0.8,0.9,1.5,1.8,1.4    c1,0,1.8-1.2,1.5-2.1C20,33.2,19,32.6,18.1,32.9z"/>
+            </g>
+            <g>
+              <path class="st0" d="M33.6,31.1c1.6-0.5,3.5,0.5,4.1,2.1c0.4,1,0.3,2.3-0.3,3.2c-0.7,1.2-2.3,1.8-3.6,1.5    c-1.6-0.3-2.8-1.8-2.8-3.4C30.9,33,32,31.5,33.6,31.1z M33.9,32.9c-0.6,0.2-1.1,0.7-1.2,1.4c-0.2,1,0.7,1.9,1.6,1.9    c1,0.1,1.9-1,1.7-2C35.9,33.2,34.9,32.6,33.9,32.9z"/>
+            </g>
+          </g>
+        </svg>
       </a>
     </nav>
 
