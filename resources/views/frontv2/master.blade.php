@@ -259,7 +259,7 @@
       @endphp
       <!-- Collapsible content -->
       <div class="collapse navbar-collapse navbar-expand-lg d-lg-block d-xl-block" id="navbarSupportedContent2">
-        <ul id="sub-header" class="navbar-nav bg-dark navbar-expand-lg w-100">
+        <ul id="sub-header" class="navbar-nav navbar-expand-lg w-100">
           <!-- Start Heavy Machines -->
           @foreach ($categorys as $category)
           @if($category->sub_cats->count() > 0)
