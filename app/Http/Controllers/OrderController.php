@@ -116,14 +116,14 @@ class OrderController extends Controller
        ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
 
       $order->payment_status = PaymentStatus::Success;
-      $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
+      // $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
     }
 
     //if old status is pending and admin make it UNDER SHIPPING direct make decrease product stock and increase product solid count
     if ($request->status == OrderStatus::UNDER_SHIPPING && $last_order_status == OrderStatus::getLabel(OrderStatus::PENDING)  &&
        ($order->payment == PaymentType::getLabel(PaymentType::CASH) || $order->payment == PaymentType::getLabel(PaymentType::VISA_AFTER_DELIVER))) {
 
-      $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
+      // $this->handleStockAndSolidCountForProductAfterChangeOrderStatus($request);
     }
 
     //if old status is UNDER SHIPPING and admin make it FINISHED direct make payment status success

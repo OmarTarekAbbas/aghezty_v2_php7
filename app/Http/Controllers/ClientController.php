@@ -15,6 +15,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::find($id);
+        $client->facebook()->delete();
         $client->delete();
         \Session::flash('success','Delete Client Successfuly');
         return back();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\IpAddress;
 use App\Order;
 use App\Product;
 use App\OrderDetail;
@@ -14,10 +15,15 @@ class ReportIpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $report_ips = IpAddress::all();
-        return view('report.ip_address');
+        $report_ips = IpAddress::query();
+        if($request->filled("search")) {
+          $report_ips= $report_ips->whereDate("created_at",$request->search);
+        }
+        $report_ips = $report_ips->get();
+        $entery_users = IpAddress::select(\DB::raw('DATE(created_at) as date'), \DB::raw('count(*) as total'))->groupBy('date')->latest()->get();
+        return view('report.ip_address',compact("report_ips", "entery_users"));
     }
 
     public function most_sold_product()
