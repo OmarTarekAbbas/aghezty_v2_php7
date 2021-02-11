@@ -1740,6 +1740,9 @@ class HomeController extends Controller
                     'price' => $cart->price,
                     'total_price' => $cart->total_price,
                 ]);
+                $cart->product->stock = $cart->product->stock - $cart->quantity;
+                $cart->product->solid_count = $cart->product->solid_count + $cart->quantity;
+                $cart->product->save();
                 $cart->delete();
             }
             $client = \Auth::guard('client')->user();
