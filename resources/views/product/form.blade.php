@@ -216,9 +216,9 @@ const property = new Vue({
 
     }
 
-    // $('.discount').keyup(function(){
-    //   $('.price_after').val(Math.ceil( $('.price').val() - (($(this).val()/100) * $('.price').val()) ))
-    // })
+    $(document).on('keyup','.discount',function(){
+      $('.price_after').val(Math.ceil( $('.price').val() - (($(this).val()/100) * $('.price').val()) ))
+    })
 
     // $('.price_after').keyup(function(){
     //   $('.discount').val(Math.ceil(($('.price').val() - ($('.price_after').val()) *100) / $('.price').val() ))

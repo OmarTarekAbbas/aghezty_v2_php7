@@ -115,16 +115,16 @@ trait Translatable {
         return $this->fallback;
     }
 
-    public function delete() {
-        if ($this->exists) {
-            $translatables = HasTranslation::where('table_name', $this->table)->where('record_id', $this->id)->get();
-            foreach ($translatables as $translatable) {
-                $translatable->delete();
-            }
-            parent::delete();
-        }
-        return true;
-    }
+    // public function delete() {
+    //     if ($this->exists) {
+    //         $translatables = HasTranslation::where('table_name', $this->table)->where('record_id', $this->id)->get();
+    //         foreach ($translatables as $translatable) {
+    //             $translatable->delete();
+    //         }
+    //         parent::delete();
+    //     }
+    //     return true;
+    // }
 
 }
 

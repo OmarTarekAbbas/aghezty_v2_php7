@@ -1,19 +1,20 @@
 <?php
 
 namespace App;
-//use Illuminate\Database\Eloquent\ForceDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 use App\Traits\Translatable;
 class Product extends Model
 {
-    use Translatable;
-    protected $table="products";
-  //use ForceDeletes;
+  use Translatable, SoftDeletes;
+  protected $table="products";
   protected $fillable = ['title','main_image','price','discount','price_after_discount',
                         'special','active','description','short_description','category_id','brand_id','stock', 'inch','sku',
                         'key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer'];
+
+  protected $dates = ['deleted_at'];
   public function getPriceAttribute($value){
     return (int) $value;
   }
