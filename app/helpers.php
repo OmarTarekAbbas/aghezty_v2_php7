@@ -115,6 +115,8 @@ function get_static_routes()
     Route::get('homepage/selected_HPcat', 'HomeController@selected_HPcat');
     Route::get('homepage/offer', 'HomeController@makeOffer');
     Route::get('brands/home/flag', 'BrandController@updateBrandHomeFlag');
+    Route::get('brands/{id}/discount', 'BrandController@getHandleDiscountPage');
+    Route::post('brands/{id}/discount', 'BrandController@handleDiscount');
     /*****************************end */
   });
 

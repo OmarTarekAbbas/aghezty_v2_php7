@@ -249,4 +249,28 @@ class BrandController extends Controller
       $brand->save();
       return 'yes';
     }
+
+    public function getHandleDiscountPage($id)
+    {
+      $brand = Brand::find($id);
+      $categories = \App\Category::select('categories.*')
+        ->join('categories AS t2', 'categories.parent_id', 't2.id')
+        ->join('products', 'products.category_id', '=', 'categories.id')
+        ->join('brands', 'brands.id', '=', 'products.brand_id')
+        ->where('products.brand_id', $id)
+        ->groupBy('categories.id')
+        ->get();
+      return view("brand.discount",compact("brand", "categories"));
+    }
+
+    public function handleDiscount($id,Request $request)
+    {
+      $products = Product::where('brand_id',$id)->where('category_id',$request->category_id)->get();
+      foreach ($products as $key => $product) {
+        $product->discount = $request->discount;
+        $product->price_after_discount = $product->price - (($product->price * $request->discount)/100) ;
+        $product->save();
+      }
+      return redirect("brand")->with("success","update all discount");
+    }
 }
