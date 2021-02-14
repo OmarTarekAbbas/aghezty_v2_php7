@@ -1,7 +1,7 @@
 /* general */
 
 $blue_color: #0566b4;
-$blueTitle_color: #0f6ab2;
+$blueTitle_color: #085C9B;
 $greyTitle_color: #666;
 $grey_color: #e6e6e6;
 $white_color: #FFF;
@@ -1016,6 +1016,7 @@ body {
 
       .breadcrumb-item {
         color: $black_color;
+        font-size: 1rem;
 
         &+::before {
           padding-left: 0.5rem !important;
@@ -1611,6 +1612,17 @@ body {
             color: #55acee;
             background: #fefefe;
             border-color: #55acee;
+          }
+        }
+
+        &.download_link {
+          background: $blueTitle_color;
+
+          &:hover,
+          &:focus {
+            color: $blueTitle_color;
+            background: #fefefe;
+            border-color: $blueTitle_color;
           }
         }
 
@@ -3826,7 +3838,7 @@ body {
 
       .mobile_logo {
         img {
-          width: 60%;
+          width: 75%;
         }
       }
     }
@@ -4513,17 +4525,18 @@ body {
         .social-button {
           width: 2.5rem;
           height: 2.5rem;
-          line-height: 2.25rem;
+          line-height: 2rem;
           margin: 0 auto;
-          margin-left: 0.5rem;
+          margin-left: 0.25rem;
 
           .facebook_icon,
           .whatsapp_icon,
           .twitter_icon,
+          .download_icon,
           .youtube_icon,
           .instagram_icon,
           .linkedin_icon {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
           }
         }
       }
@@ -5352,7 +5365,7 @@ body {
 
       .mobile_logo {
         img {
-          width: 60%;
+          width: 75%;
         }
       }
 
@@ -6048,17 +6061,18 @@ body {
         .social-button {
           width: 2.5rem;
           height: 2.5rem;
-          line-height: 2.25rem;
+          line-height: 2rem;
           margin: 0 auto;
-          margin-left: 0.75rem;
+          margin-left: 0.25rem;
 
           .facebook_icon,
           .whatsapp_icon,
           .twitter_icon,
+          .download_icon,
           .youtube_icon,
           .instagram_icon,
           .linkedin_icon {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
           }
         }
       }

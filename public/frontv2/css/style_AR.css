@@ -12,7 +12,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #0f6ab2;
+  background: #085C9B;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 4px;
@@ -118,7 +118,7 @@ body {
 }
 .head_two .search-container #search-bar {
   border-radius: 10px;
-  background-color: #0f6ab2;
+  background-color: #085C9B;
   color: #FFF;
   width: 100%;
   height: 45px;
@@ -131,7 +131,7 @@ body {
   color: #FFF;
 }
 .head_two .search-container #search-bar:focus {
-  border: 1px solid #0f6ab2;
+  border: 1px solid #085C9B;
   transition: 0.35s ease;
   color: #FFF;
 }
@@ -189,13 +189,13 @@ body {
   padding: 0 6%;
 }
 .head_two .new_head a {
-  color: #0f6ab2;
+  color: #085C9B;
   padding: 0 0.5rem;
   text-align: right;
   font-weight: bold;
 }
 .head_two .new_head a.active_menu {
-  border-bottom: 5px solid #0f6ab2;
+  border-bottom: 5px solid #085C9B;
 }
 .head_two .new_head a:hover {
   background: transparent;
@@ -213,7 +213,7 @@ body {
 }
 .head_two .shopping_cart button .shopping_cart_num {
   font-weight: bold;
-  color: #0f6ab2;
+  color: #085C9B;
   position: absolute;
   top: 24px;
   left: 60px;
@@ -224,7 +224,7 @@ body {
   -o-transform: translate(-50%, -50%);
 }
 .head_two .shopping_cart button .shopping_cart_img {
-  fill: #0f6ab2;
+  fill: #085C9B;
   cursor: pointer;
   width: 45%;
   position: absolute;
@@ -263,10 +263,10 @@ body {
   width: 30%;
   margin-top: -6%;
   margin-right: 51%;
-  fill: #0f6ab2;
+  fill: #085C9B;
 }
 .head_three .navbar .shopping_cart_img .shopping_cart_num {
-  color: #0f6ab2;
+  color: #085C9B;
   position: absolute;
   top: 1.5rem;
   left: 2rem;
@@ -281,7 +281,7 @@ body {
   margin-left: 4px;
 }
 .head_three .navbar .navbar-toggler i {
-  color: #0f6ab2;
+  color: #085C9B;
 }
 .head_three .navbar .navbar-nav {
   text-align: center;
@@ -305,7 +305,7 @@ body {
   overflow-y: scroll;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu .sub-title {
-  color: #0f6ab2;
+  color: #085C9B;
 }
 .head_three .navbar .navbar-nav .nav-item .dropdown-menu ul {
   padding: 0;
@@ -335,7 +335,7 @@ body {
   top: 5rem;
   z-index: 9999;
   padding: 0;
-  background-color: #0f6ab2;
+  background-color: #085C9B;
 }
 .head_three_ul .navbar-nav .nav-link {
   color: #FFF;
@@ -370,7 +370,7 @@ body {
   left: 1% !important;
 }
 .head_three_ul .navbar-nav .nav-item .dropdown-menu .sub-title {
-  color: #0f6ab2;
+  color: #085C9B;
   text-align: right;
 }
 .head_three_ul .navbar-nav .nav-item .dropdown-menu ul {
@@ -796,6 +796,7 @@ body {
 }
 .main nav .breadcrumb .breadcrumb-item {
   color: #000;
+  font-size: 1rem;
 }
 .main nav .breadcrumb .breadcrumb-item + ::before {
   padding-left: 0.5rem !important;
@@ -1272,6 +1273,14 @@ body {
   color: #55acee;
   background: #fefefe;
   border-color: #55acee;
+}
+.main #inner-page .rounded-social-buttons .social-button.download_link {
+  background: #085C9B;
+}
+.main #inner-page .rounded-social-buttons .social-button.download_link:hover, .main #inner-page .rounded-social-buttons .social-button.download_link:focus {
+  color: #085C9B;
+  background: #fefefe;
+  border-color: #085C9B;
 }
 .main #inner-page .rounded-social-buttons .social-button.messenger_link {
   background: #0084ff;
@@ -2935,7 +2944,7 @@ body {
     height: 70px;
   }
   .head_three .navbar .mobile_logo img {
-    width: 60%;
+    width: 75%;
   }
   .head_three .navbar-nav {
     padding: 0;
@@ -2997,11 +3006,11 @@ body {
     font-size: 1.2rem;
     border: 0;
     outline: none;
-    background-color: #0f6ab2;
+    background-color: #085C9B;
     color: #FFF;
   }
   .search_mobile .search-container input:focus {
-    border: 1px solid #0f6ab2;
+    border: 1px solid #085C9B;
     transition: 0.35s ease;
     color: #FFF;
   }
@@ -3398,17 +3407,18 @@ body {
   .main #inner-page .rounded-social-buttons .social-button {
     width: 2.5rem;
     height: 2.5rem;
-    line-height: 2.25rem;
+    line-height: 2rem;
     margin: 0 auto;
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
 .main #inner-page .rounded-social-buttons .social-button .twitter_icon,
+.main #inner-page .rounded-social-buttons .social-button .download_icon,
 .main #inner-page .rounded-social-buttons .social-button .youtube_icon,
 .main #inner-page .rounded-social-buttons .social-button .instagram_icon,
 .main #inner-page .rounded-social-buttons .social-button .linkedin_icon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .main .model_notify_me #notify_me_modal .modal-dialog {
     max-width: 95% !important;
@@ -3948,7 +3958,7 @@ body {
     height: 70px;
   }
   .head_three .navbar .mobile_logo img {
-    width: 60%;
+    width: 75%;
   }
   .head_three .navbar .navbar-nav {
     padding: 0 !important;
@@ -4010,11 +4020,11 @@ body {
     font-size: 1.2rem;
     border: 0;
     outline: none;
-    background-color: #0f6ab2;
+    background-color: #085C9B;
     color: #FFF;
   }
   .search_mobile .search-container input:focus {
-    border: 1px solid #0f6ab2;
+    border: 1px solid #085C9B;
     transition: 0.35s ease;
     color: #FFF;
   }
@@ -4418,17 +4428,18 @@ body {
   .main #inner-page .rounded-social-buttons .social-button {
     width: 2.5rem;
     height: 2.5rem;
-    line-height: 2.25rem;
+    line-height: 2rem;
     margin: 0 auto;
-    margin-left: 0.75rem;
+    margin-left: 0.25rem;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
 .main #inner-page .rounded-social-buttons .social-button .twitter_icon,
+.main #inner-page .rounded-social-buttons .social-button .download_icon,
 .main #inner-page .rounded-social-buttons .social-button .youtube_icon,
 .main #inner-page .rounded-social-buttons .social-button .instagram_icon,
 .main #inner-page .rounded-social-buttons .social-button .linkedin_icon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .main .model_notify_me #notify_me_modal .modal-dialog {
     max-width: 95% !important;

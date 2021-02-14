@@ -40,13 +40,13 @@
   <div class="mobile_views">
     <nav class="nav_breadcrumb" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
+        <h1 class="breadcrumb-item">
           <a href="{{route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
-        </li>
+        </h1>
 
-        <li class="breadcrumb-item">
+        <h1 class="breadcrumb-item">
           <a href="{{route('front.home.list',['sub_category_id' => $product->category->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
-        </li>
+        </h1>
       </ol>
     </nav>
   </div>
@@ -295,6 +295,10 @@
 
         <a class="social-button twitter_link" href="https://www.twitter.com/intent/tweet?text={{$product->getTranslation('title')}} url : {{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))])}}" target="_blank" title="Twitter">
           <i class="fab fa-twitter twitter_icon"></i>
+        </a>
+
+        <a class="social-button download_link" href="{{url($image->image)}}" download title="Download">
+          <i class="fas fa-download download_icon"></i>
         </a>
 
         <!-- <a class="social-button instagram_link" href="https://www.instagram.com/" target="_blank" title="Instagram">
