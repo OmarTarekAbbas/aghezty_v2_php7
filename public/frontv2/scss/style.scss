@@ -992,6 +992,7 @@ body {
 
       .breadcrumb-item {
         color: $black_color;
+        font-size: 1rem;
 
         a {
           color: $black_color;
@@ -1552,6 +1553,17 @@ body {
             color: #55acee;
             background: #fefefe;
             border-color: #55acee;
+          }
+        }
+
+        &.download_link {
+          background: $blueTitle_color;
+
+          &:hover,
+          &:focus {
+            color: $blueTitle_color;
+            background: #fefefe;
+            border-color: $blueTitle_color;
           }
         }
 
@@ -3558,7 +3570,7 @@ body {
 
       .mobile_logo {
         img {
-          width: 60%;
+          width: 75%;
         }
       }
 
@@ -4165,7 +4177,7 @@ body {
               margin-bottom: 0 !important;
 
               .social-button {
-                left: 55%;
+                left: -10%;
               }
             }
           }
@@ -4209,18 +4221,18 @@ body {
         .social-button {
           width: 2.5rem;
           height: 2.5rem;
-          line-height: 2.25rem;
+          line-height: 2rem;
           margin: 0 auto;
-          margin-right: 0.5rem;
-          margin-left: 0.5rem;
+          margin-left: 0.15rem;
 
           .facebook_icon,
           .whatsapp_icon,
           .twitter_icon,
+          .download_icon,
           .youtube_icon,
           .instagram_icon,
           .linkedin_icon {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
           }
         }
       }
@@ -5045,7 +5057,7 @@ body {
 
       .mobile_logo {
         img {
-          width: 60%;
+          width: 75%;
         }
       }
 
@@ -5705,17 +5717,18 @@ body {
         .social-button {
           width: 2.5rem;
           height: 2.5rem;
-          line-height: 2.25rem;
+          line-height: 2rem;
           margin: 0 auto;
-          margin-right: 0.75rem;
+          margin-right: 0.25rem;
 
           .facebook_icon,
           .whatsapp_icon,
           .twitter_icon,
+          .download_icon,
           .youtube_icon,
           .instagram_icon,
           .linkedin_icon {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
           }
         }
       }

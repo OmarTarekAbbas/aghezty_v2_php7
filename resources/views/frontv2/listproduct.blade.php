@@ -15,15 +15,15 @@
   <div class="mobile_views">
     <nav class="nav_breadcrumb" aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
+        <h1 class="breadcrumb-item">
           <a href="{{ route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
-        </li>
+        </h1>
         @if(isset($_REQUEST['sub_category_id']) && isset($products[0]))
-        <li class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</li>
+        <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
         @elseif(isset($_REQUEST['brand_id']) && isset($products[0]))
-        <li class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</li>
+        <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
         @else
-        <li class="breadcrumb-item active" aria-current="page">@lang('front.products')</li>
+        <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
         @endif
       </ol>
     </nav>
