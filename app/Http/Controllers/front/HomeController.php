@@ -1520,7 +1520,7 @@ class HomeController extends Controller
             return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
 
-        if(!$this->checkCanBuy($request->product_id, $request->counter)) {
+        if(!$this->canBuy($request->product_id, $request->counter)) {
           return response()->json(['error' => "You Can't Purches this product", 'status' => "stop_buy"]);
         }
 
@@ -1553,13 +1553,14 @@ class HomeController extends Controller
         return response()->json(['success' => 'Added To Cart Successfully', 'status' => 'success']);
     }
 
-    public function checkCanBuy($product_id, $counter)
+    public function canBuy($product_id, $counter)
     {
       $product = Product::find($product_id);
-      if($counter < $product->stock || !checkbuyLimit($product_id)) {
-        return false;
+      $limit = checkbuyLimit($product_id);
+      if($counter <= $product->stock && $limit['status'] && ($limit['count']+ $counter) <= 2) {
+        return true;
       }
-      return true;
+      return false;
     }
 
     public function check_couponv2(Request $request)
@@ -1623,7 +1624,7 @@ class HomeController extends Controller
     {
         if ($request->type == "cookie") {
             $arr = unserialize($_COOKIE['carts']);
-            if(!$this->checkCanBuy($arr[$request->cart_id]['product_id'], $request->value)){
+            if(!$this->canBuy($arr[$request->cart_id]['product_id'], $request->value)){
               return response()->json(['error' => "You Can't Purches this product", 'status' => "stop_buy"]);
             }
             $arr[$request->cart_id]['quantity'] = $request->value;
@@ -1632,7 +1633,7 @@ class HomeController extends Controller
         }
         if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
-            if(!$this->checkCanBuy($cart->product_id, $request->value)){
+            if(!$this->canBuy($cart->product_id, $request->value)){
               return response()->json(['error' => "You Can't Purches this product", 'status' => "stop_buy"]);
             }
             $cart->quantity = $request->value;
