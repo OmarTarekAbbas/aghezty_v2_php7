@@ -55,7 +55,7 @@
             <td>{{$value->rate() ? $value->rate():__('messages.not_have_rate_yet')}}</td>
             <td>{{$value->sku}}</td>
             <td>{{$value->price}}</td>
-            <td>{{$value->discount?$value->discount:'-'}}</td>
+            <td>{{$value->discount?$value->discount.'%':'-'}}</td>
             <td>{{$value->price_after_discount?$value->price_after_discount:'-'}}</td>
             <td class="recently_added">
                 <label class="switch">

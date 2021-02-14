@@ -940,14 +940,26 @@ class HomeController extends Controller
             $products = $products->whereIn('brand_id', $request->brand_id);
         }
         if ($request->has('from') && $request->from != '') {
-            $products = $products->where('price', '>=', $request->from);
-        }
-        if ($request->has('to') && $request->to != '') {
-            $products = $products->where('price', '<', $request->to);
-        }
-        if ($request->has('from_to') && $request->from_to != '') {
-            $products = $products->whereBetween('price', explode(',', $request->from_to));
-        }
+          $products = $products->where('price', '>=', $request->from)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount",">=",request("from"));
+          });
+      }
+      if ($request->has('to') && $request->to != '') {
+          $products = $products->where('price', '<', $request->to)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount","<",request("to"));
+          });
+      }
+      if ($request->has('from_to') && $request->from_to != '') {
+          $products = $products->whereBetween('price', explode(',', $request->from_to))->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->whereBetween("price_after_discount", explode(',', request()->get("from_to")));
+          });
+      }
         if ($request->has('ifrom') && $request->ifrom != '') {
             $products = $products->whereHas('pr_value', function ($q) use ($request) {
                 $q->join('properties', 'property_values.property_id', '=', 'properties.id');
@@ -1064,13 +1076,25 @@ class HomeController extends Controller
             $products = $products->whereIn('brand_id', $request->brand_id);
         }
         if ($request->has('from') && $request->from != '') {
-            $products = $products->where('price', '>=', $request->from);
+            $products = $products->where('price', '>=', $request->from)->orWhere(function($query){
+              $query->where("price_after_discount",">",0);
+              $query->whereNotNull("price_after_discount");
+              $query->where("price_after_discount",">=",request("from"));
+            });
         }
         if ($request->has('to') && $request->to != '') {
-            $products = $products->where('price', '<', $request->to);
+            $products = $products->where('price', '<', $request->to)->orWhere(function($query){
+              $query->where("price_after_discount",">",0);
+              $query->whereNotNull("price_after_discount");
+              $query->where("price_after_discount","<",request("to"));
+            });
         }
         if ($request->has('from_to') && $request->from_to != '') {
-            $products = $products->whereBetween('price', explode(',', $request->from_to));
+            $products = $products->whereBetween('price', explode(',', $request->from_to))->orWhere(function($query){
+              $query->where("price_after_discount",">",0);
+              $query->whereNotNull("price_after_discount");
+              $query->whereBetween("price_after_discount", explode(',', request()->get("from_to")));
+            });
         }
         if ($request->has('ifrom') && $request->ifrom != '') {
             $products = $products->whereHas('pr_value', function ($q) use ($request) {
@@ -1215,14 +1239,26 @@ class HomeController extends Controller
             $products = $products->whereIn('brand_id', $request->brand_id);
         }
         if ($request->has('from') && $request->from != '') {
-            $products = $products->where('price', '>=', $request->from);
-        }
-        if ($request->has('to') && $request->to != '') {
-            $products = $products->where('price', '<', $request->to);
-        }
-        if ($request->has('from_to') && $request->from_to != '') {
-            $products = $products->whereBetween('price', explode(',', $request->from_to));
-        }
+          $products = $products->where('price', '>=', $request->from)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount",">=",request("from"));
+          });
+      }
+      if ($request->has('to') && $request->to != '') {
+          $products = $products->where('price', '<', $request->to)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount","<",request("to"));
+          });
+      }
+      if ($request->has('from_to') && $request->from_to != '') {
+          $products = $products->whereBetween('price', explode(',', $request->from_to))->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->whereBetween("price_after_discount", explode(',', request()->get("from_to")));
+          });
+      }
         if ($request->has('ifrom') && $request->ifrom != '') {
             $products = $products->whereHas('pr_value', function ($q) use ($request) {
                 $q->join('properties', 'property_values.property_id', '=', 'properties.id');
@@ -2307,14 +2343,26 @@ class HomeController extends Controller
             $products = $products->whereIn('brand_id', $request->brand_id);
         }
         if ($request->has('from') && $request->from != '') {
-            $products = $products->where('price', '>=', $request->from);
-        }
-        if ($request->has('to') && $request->to != '') {
-            $products = $products->where('price', '<', $request->to);
-        }
-        if ($request->has('from_to') && $request->from_to != '') {
-            $products = $products->whereBetween('price', explode(',', $request->from_to));
-        }
+          $products = $products->where('price', '>=', $request->from)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount",">=",request("from"));
+          });
+      }
+      if ($request->has('to') && $request->to != '') {
+          $products = $products->where('price', '<', $request->to)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount","<",request("to"));
+          });
+      }
+      if ($request->has('from_to') && $request->from_to != '') {
+          $products = $products->whereBetween('price', explode(',', $request->from_to))->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->whereBetween("price_after_discount", explode(',', request()->get("from_to")));
+          });
+      }
         if ($request->has('ifrom') && $request->ifrom != '') {
             $products = $products->whereHas('pr_value', function ($q) use ($request) {
                 $q->join('properties', 'property_values.property_id', '=', 'properties.id');
@@ -2417,14 +2465,26 @@ class HomeController extends Controller
 
         $brand_ids        = array_values(array_unique($brand->pluck("brand_id")->toArray()));
         if ($request->has('from') && $request->from != '') {
-          $products = $products->where('price', '>=', $request->from);
-        }
-        if ($request->has('to') && $request->to != '') {
-            $products = $products->where('price', '<', $request->to);
-        }
-        if ($request->has('from_to') && $request->from_to != '') {
-            $products = $products->whereBetween('price', explode(',', $request->from_to));
-        }
+          $products = $products->where('price', '>=', $request->from)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount",">=",request("from"));
+          });
+      }
+      if ($request->has('to') && $request->to != '') {
+          $products = $products->where('price', '<', $request->to)->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->where("price_after_discount","<",request("to"));
+          });
+      }
+      if ($request->has('from_to') && $request->from_to != '') {
+          $products = $products->whereBetween('price', explode(',', $request->from_to))->orWhere(function($query){
+            $query->where("price_after_discount",">",0);
+            $query->whereNotNull("price_after_discount");
+            $query->whereBetween("price_after_discount", explode(',', request()->get("from_to")));
+          });
+      }
         if ($request->has('ifrom') && $request->ifrom != '') {
             $products = $products->whereHas('pr_value', function ($q) use ($request) {
                 $q->join('properties', 'property_values.property_id', '=', 'properties.id');

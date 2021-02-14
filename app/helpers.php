@@ -507,6 +507,8 @@ function checkbuyLimit($product_id)
     if($countOrder < 2) {
       return ['status' => true ,'count' => $countOrder];
     }
+    return ['status' => false ,'count' => 0];
+  } else {
+    return ['status' => true ,'count' => 0];
   }
-  return ['status' => false ,'count' => 0];
 }
