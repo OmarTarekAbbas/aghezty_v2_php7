@@ -8,6 +8,7 @@ use App\Brand;
 use App\ProductImage;
 use Validator;
 use App\Language;
+use App\DeleteProduct;
 use App\Events\Products;
 use Illuminate\Http\Request;
 use App\Constants\OrderStatus;
@@ -361,7 +362,12 @@ class ProductController extends Controller
                 unlink(base_path('/uploads/product/images/'.basename($image->image))) ;
             }
         }
-        $product->delete();
+        if($product->delete()){
+        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products = new DeleteProduct();
+        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products->product_id	= $id;
+        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products->category_id	= $product->category_id;
+        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products->save();
+        }
         \Session::flash('success', 'Product Delete Successfully');
         return back();
 
