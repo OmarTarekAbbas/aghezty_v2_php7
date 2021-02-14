@@ -117,7 +117,9 @@ function get_static_routes()
     Route::get('brands/home/flag', 'BrandController@updateBrandHomeFlag');
     Route::get('brands/{id}/discount', 'BrandController@getHandleDiscountPage');
     Route::post('brands/{id}/discount', 'BrandController@handleDiscount');
-    Route::get("product_update_price_excel" ,'ProductController@product_update_price_excel');
+    Route::get("products/product_update_price_excel" ,'ProductController@product_update_price_excel');
+    Route::post("products/product_update_price_excel_post" ,'ProductController@product_update_price_excel_post');
+    Route::get("product_update_price_excel_download" ,'ProductController@product_update_price_excel_download');
     /*****************************end */
   });
 

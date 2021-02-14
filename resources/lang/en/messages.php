@@ -456,5 +456,6 @@ return [
     'sold_times' => 'Solid Count',
     'offer_image' => 'Offer Image',
     'product_id' => 'Product id',
+    'product_update_price_excel' => 'Product Update Price Excel',
 
 ];
