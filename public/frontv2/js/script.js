@@ -526,3 +526,12 @@ $('.owl_brands').owlCarousel({
 //   });
 // });
 /* End jQuery slide toggle menu */
+
+
+/* Start Close Menu when Open Filter */
+$(document).on("click", '#button_jq', function () {
+  if ($('.collapse').is(":visible")) {
+    $('.menu_click_up').click();
+  }
+});
+/* End Close Menu when Open Filter */
