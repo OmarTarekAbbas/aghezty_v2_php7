@@ -261,9 +261,9 @@
           <span class="btn btn-light btn-sm border np-minus p-0 px-1">
             <i class="fa fa-minus fa-xs" aria-hidden="true"></i>
           </span>
-          @if($product->stock > 0)
+          @if($product->stock > 0 && checkbuyLimit($product->id)['status'])
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
-          @elseif(checkbuyLimit($product->id))
+          @elseif(!checkbuyLimit($product->id)['status'])
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right">{{ trans('front.You have exceeded the limit to buy which is 2 items') }} </button>
           @else
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
