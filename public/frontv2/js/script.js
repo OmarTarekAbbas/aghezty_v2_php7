@@ -436,6 +436,7 @@ $(document).ready(function ($) {
     nav: true,
     animateOut: 'lightSpeedOut',
     animateIn: 'lightSpeedIn',
+    autoplayTimeout: 5000,
     smartSpeed: 1000,
   });
 });

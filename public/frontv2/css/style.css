@@ -344,6 +344,7 @@ body {
   position: fixed;
   top: 5rem;
   z-index: 9999;
+  background-color: #085C9B;
 }
 .head_three_ul .navbar-nav .nav-link {
   color: #FFF;
@@ -587,13 +588,13 @@ body {
 .main .product_view .product_view_type .product_desc {
   background: #FFF;
   box-shadow: 0 0 1px #ccc;
-  height: 410px;
+  height: 360px;
   width: 100%;
 }
 .main .product_view .product_view_type .product_desc a img {
   width: auto;
   max-width: 100%;
-  height: 250px;
+  height: 220px;
   margin: 10px auto;
   transition: all 1.1s linear;
   -webkit-transition: all 1.1s linear;
@@ -1625,7 +1626,7 @@ body {
   color: #e1e1e1 !important;
 }
 .main .wishlist_shopping table th .img_link img {
-  height: 250px;
+  height: 230px;
   transition: all 0.8s ease-in-out;
   -webkit-transition: all 0.8s ease-in-out;
   -moz-transition: all 0.8s ease-in-out;
@@ -2603,7 +2604,7 @@ body {
 }
 .new_footer .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   margin: 0 auto;
 }
 .new_footer .grid-container .payment_method_img img {
@@ -3631,6 +3632,17 @@ body {
     font-size: 1.5rem;
   }
 
+  .new_footer {
+    text-align: center;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    margin-right: 0;
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
   #return-to-top {
     left: 87%;
     width: 40px;
@@ -4612,6 +4624,17 @@ body {
     font-size: 1.5rem;
   }
 
+  .new_footer {
+    text-align: center;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    margin-right: 0;
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
   #return-to-top {
     left: 89%;
     width: 40px;
@@ -5387,6 +5410,132 @@ body {
   }
   .new_footer .text_foot {
     margin-bottom: 1.5%;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1628px) {
+  .head_two .img_logo img {
+    width: 100%;
+    left: 40%;
+  }
+  .head_two .new_head {
+    margin-top: 9%;
+    margin-left: 9%;
+  }
+  .head_two .search-container {
+    margin-top: 2.5%;
+  }
+
+  .head_three_ul .navbar-nav .nav-item .dropdown-menu#offer {
+    min-width: 20%;
+  }
+
+  .main {
+    padding-top: 10%;
+  }
+  .main .carsoul_ads .owl-one .item a img {
+    height: 24vh;
+  }
+  .main .carsoul_ads .top_banner a img {
+    height: 151px;
+  }
+  .main .carsoul_ads .owl-one .owl-nav .owl-prev,
+.main .carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: 2.5rem;
+  }
+  .main .product_view .product_view_type .product_desc {
+    height: 290px;
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important;
+  }
+  .main .product_view .product_view_type .product_desc a img {
+    height: 150px;
+  }
+  .main .product_view .product_view_type .product_desc .price-box .regular-price .price {
+    font-size: 0.7rem;
+  }
+  .main .product_view .product_view_type .product_desc .price-box .old-price {
+    font-size: 0.7rem;
+  }
+  .main .content_view {
+    height: 395px;
+  }
+  .main .content_view a img {
+    height: 250px;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
+    width: 100%;
+    height: 10rem;
+  }
+  .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:hover, .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title:focus {
+    font-size: 1.25rem;
+    line-height: 28px;
+  }
+  .main .choose_category .choose_category_form .hoverabley img {
+    height: 200px;
+  }
+  .main .choose_category .full_banner img {
+    height: 150px;
+  }
+  .main .choose_category .logo_brands {
+    margin-top: 2%;
+  }
+  .main .choose_category .logo_brands .owl_brands .owl-stage-outer {
+    height: 6.5vh;
+  }
+  .main .choose_category .logo_brands .owl_brands .item .brands_img img {
+    width: 80%;
+    margin: unset;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button {
+    font-weight: bold;
+    bottom: -0.5rem;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-prev {
+    right: -2.5%;
+  }
+  .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
+    left: -1.5%;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+    left: 63rem;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
+    left: 63rem;
+  }
+  .main .my_profile .my_profile_bg .profile_img .upload_img img {
+    height: 15vh;
+    width: 17%;
+  }
+  .main .cart_shopping table th .img_link img {
+    height: 110px;
+  }
+  .main .wishlist_shopping table th .img_link img {
+    height: 180px;
+  }
+
+  .new_footer {
+    padding: 20px 0px;
+  }
+  .new_footer .mobile_views.container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 45%;
+    margin: 3% auto 3%;
+  }
+  .new_footer .text_foot {
+    margin-bottom: 1.5%;
+  }
+  .new_footer .grid-container {
+    grid-template-columns: 0.75fr 0.75fr 0.75fr 0.75fr 0.75fr;
   }
 }
 /*----------------------------------------- End Media Query -----------------------------------------*/
