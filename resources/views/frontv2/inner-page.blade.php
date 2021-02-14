@@ -606,8 +606,10 @@
           location.href = "{{route('front.home.cart',['product_id' => $product->id])}}"
         } else if(data.status == 'stop_buy') {
           alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
+          $('.quantity-input').val(1);
         } else {
           alert("@lang('front.you_already_take_this_product_in_your_cart')")
+          $('.quantity-input').val(1);
         }
 
       },
