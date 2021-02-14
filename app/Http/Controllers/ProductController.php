@@ -583,4 +583,64 @@ class ProductController extends Controller
       }
       return "ok";
     }
+
+
+    public function product_update_price_excel()
+    {
+
+      return view('product.product_update_price_excel');
+    }
+
+    public function product_update_price_excel_download()
+    {
+      $file = base_path(). "/files/product_update_price_excel.xlsx";
+      $headers = array(
+                'Content-Type: application/xlsx',
+              );
+      return response()->download($file, 'product_update_price_excel.xlsx', $headers);
+
+    }
+
+    public function product_update_price_excel_post(Request $request)
+    {
+
+
+      if ($request->hasFile('fileToUpload')) {
+        $ext =  $request->file('fileToUpload')->getClientOriginalExtension();
+        if ($ext != 'xls' && $ext != 'xlsx' && $ext != 'csv') {
+            $request->session()->flash('failed', 'File must be excel');
+            return back();
+        }
+
+        $file = $request->file('fileToUpload');
+        $filename = time().'_'.$file->getClientOriginalName();
+        if(!$file->move(base_path().'/files/product_update_price_excel',  $filename) ){
+            return back();
+        }
+
+        \Excel::filter('chunk')->load(base_path() . '/files/product_update_price_excel/' . $filename)->chunk(10000, function($results) use ($request,&$counter,&$total_counter)
+        {
+          foreach ($results as $row) {
+            $total_counter++;
+
+            $product = Product::where('short_description',$row->model)->first();
+            if($product){
+             $product->price = $row->price;
+             if($row->price_after_discount){
+               $product->price_after_discount = $row->price_after_discount;
+             }
+             $product->save();
+            }
+          }
+        },false);
+      } else{
+        $request->session()->flash('failed', 'Excel file is required');
+        return back();
+      }
+      \Session::flash('success', 'Product Add Successfully');
+
+      return redirect('product');
+    }
+
+
 }
