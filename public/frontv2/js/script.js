@@ -426,20 +426,43 @@ $('.item-total').each(function () {
 /* End Cart Page */
 
 /* Start Slider */
-$(document).ready(function ($) {
-  $('.fadeOut').owlCarousel({
-    items: 1,
-    center: true,
-    loop: true,
-    autoplay: true,
-    // margin: 10,
-    nav: true,
-    animateOut: 'lightSpeedOut',
-    animateIn: 'lightSpeedIn',
-    autoplayTimeout: 5000,
-    smartSpeed: 1000,
-  });
+var owl = $('.fadeOut');
+owl.owlCarousel({
+  items: 1,
+  center: true,
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  autoplayHoverPause:true,
+  // margin: 10,
+  nav: true,
+  animateOut: 'lightSpeedOut',
+  animateIn: 'lightSpeedIn',
+  // smartSpeed: 1000,
 });
+
+$('.play').on('click',function(){
+    owl.trigger('play.owl.autoplay',[5000])
+});
+
+$('.stop').on('click',function(){
+    owl.trigger('stop.owl.autoplay')
+});
+
+// $(document).ready(function ($) {
+//   $('.fadeOut').owlCarousel({
+//     items: 1,
+//     center: true,
+//     loop: true,
+//     autoplay: true,
+//     // margin: 10,
+//     nav: true,
+//     animateOut: 'lightSpeedOut',
+//     animateIn: 'lightSpeedIn',
+//     autoplayTimeout: 5000,
+//     smartSpeed: 1000,
+//   });
+// });
 /* End Slider */
 
 /* Start Add Your Review Focus To Input Nickname */
