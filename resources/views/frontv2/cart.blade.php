@@ -339,6 +339,7 @@
 @section('script')
 <script>
   $(document).on('click','.table_qty_inc',function () {
+      var _this = $(this)
       var x = parseInt($(this).parent().children('.qty').val()) + 1;
       $(this).parent().children('.qty').val(x);
       $.ajax({
@@ -350,15 +351,19 @@
                 value: $(this).parent().children('.qty').val()
             },
             success: function(data) {
-                console.log(data.status);
                 if (data.status == 'success') {
                     $("#href_load").load(location.href + " #href_load>*", "");
+                } else {
+                  alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
+                  console.log( _this.parent().children('.qty').val());
+                  _this.parent().children('.qty').val(x-1);
                 }
             },
         });
   })
 
   $(document).on('click','.table_qty_dec',function () {
+    var _this = $(this)
     var x = parseInt($(this).parent().children('.qty').val()) - 1;
       if (x > 0)
           $(this).parent().children('.qty').val(x);
@@ -371,15 +376,18 @@
                 value: $(this).parent().children('.qty').val()
             },
             success: function(data) {
-                console.log(data.status);
                 if (data.status == 'success') {
                     $("#href_load").load(location.href + " #href_load>*", "");
+                } else {
+                  alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
+                  _this.parent().children('.qty').val(x-1);
                 }
             },
         });
   })
   $(document).on('change', '.qty', function(e) {
     e.preventDefault();
+    var _this = $(this)
     $.ajax({
         url: "{{route('front.home.cart.update')}}",
         type: "get",
@@ -389,9 +397,11 @@
             value: $(this).val()
         },
         success: function(data) {
-            console.log(data.status);
             if (data.status == 'success') {
                 $("#href_load").load(location.href + " #href_load>*", "");
+            } else {
+              alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
+              _this.val(_this.val() - 1);
             }
         },
     });

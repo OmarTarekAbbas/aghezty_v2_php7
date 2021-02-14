@@ -263,6 +263,8 @@
           </span>
           @if($product->stock > 0)
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
+          @elseif(checkbuyLimit($product->id))
+          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right">{{ trans('front.You have exceeded the limit to buy which is 2 items') }} </button>
           @else
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
           @endif
@@ -598,8 +600,9 @@
         if (data.status == 'success') {
           $('.shopping_cart_num').html(parseInt($('.shopping_cart_num').html()) + 1)
           location.href = "{{route('front.home.cart',['product_id' => $product->id])}}"
+        } else if(data.status == 'stop_buy') {
+          alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
         } else {
-          console.log(data.status);
           alert("@lang('front.you_already_take_this_product_in_your_cart')")
         }
 

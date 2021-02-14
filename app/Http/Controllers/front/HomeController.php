@@ -1512,10 +1512,14 @@ class HomeController extends Controller
             'counter' => '',
             'price' => 'required',
         ]);
-        //$request->request->add(['counter' => 1]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors(), 'status' => 'error']);
         }
+
+        if(!$this->checkCanBuy($request->product_id, $request->counter)) {
+          return response()->json(['error' => "You Can't Purches this product", 'status' => "stop_buy"]);
+        }
+
         if (\Auth::guard('client')->check()) {
             $product = Cart::where('client_id', \Auth::guard('client')->user()->id)->where('product_id', $request->product_id)->first();
             if ($product) {
@@ -1543,6 +1547,15 @@ class HomeController extends Controller
             setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
         return response()->json(['success' => 'Added To Cart Successfully', 'status' => 'success']);
+    }
+
+    public function checkCanBuy($product_id, $counter)
+    {
+      $product = Product::find($product_id);
+      if($counter < $product->stock || !checkbuyLimit($product_id)) {
+        return false;
+      }
+      return true;
     }
 
     public function check_couponv2(Request $request)
@@ -1606,12 +1619,18 @@ class HomeController extends Controller
     {
         if ($request->type == "cookie") {
             $arr = unserialize($_COOKIE['carts']);
+            if(!$this->checkCanBuy($arr[$request->cart_id]['product_id'], $request->value)){
+              return response()->json(['error' => "You Can't Purches this product", 'status' => "stop_buy"]);
+            }
             $arr[$request->cart_id]['quantity'] = $request->value;
             $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
             setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
         }
         if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
+            if(!$this->checkCanBuy($cart->product_id, $request->value)){
+              return response()->json(['error' => "You Can't Purches this product", 'status' => "stop_buy"]);
+            }
             $cart->quantity = $request->value;
             $cart->total_price = $request->value * $cart->price;
             $cart->save();
