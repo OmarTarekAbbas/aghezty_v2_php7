@@ -2336,6 +2336,11 @@ class HomeController extends Controller
             $sub_category_ids = Category::where('parent_id', $request->category_id)->pluck('id')->toArray();
             $products = $products->whereIn('category_id', $sub_category_ids);
         }
+        if ($request->category_id) {
+          //dd("cat");
+            $sub_category_ids = Category::where('parent_id', $request->category_id)->pluck('id')->toArray();
+            $products = $products->whereIn('category_id', $sub_category_ids);
+        }
         if ($request->brand_id) {
           //dd("brand");
             $request->brand_id = (array) $request->brand_id;

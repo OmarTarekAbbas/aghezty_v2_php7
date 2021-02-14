@@ -76,7 +76,7 @@
               @else
 
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || request()->filled("offer"))
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || request()->filled("offer") || request()->route("parent_name") || request()->route("brand_name"))
                   <div class="z-checkbox">
                     <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                       type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
@@ -115,7 +115,7 @@
 
           <div class="panel brand_panel_change mb-3 w-100 border border-light">
             @foreach (filtter_brands() as $brand)
-            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id) || request()->filled("sub_category_id") || request()->route("category_name"))
+            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id) || request()->filled("sub_category_id") || request()->route("category_name") || (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) )
             <div class="z-checkbox">
               <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
                 {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"
@@ -238,7 +238,7 @@
                 @endforeach
               @else
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || request()->filled("offer"))
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || request()->filled("offer")|| request()->route("parent_name") || request()->route("brand_name"))
                 <div class="z-checkbox" >
                   <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
                   {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}

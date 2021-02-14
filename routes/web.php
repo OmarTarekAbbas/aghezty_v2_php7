@@ -170,9 +170,9 @@ Route::get('newsletter/{id}/delete', 'NewsletterController@delete');
 Route::post('newsletter/send_message', 'NewsletterController@sendMessage');
 Route::get('newsletter/send_message/{message}', 'NewsletterController@sendMessage');
 /**end newsletter routes */
-Route::get('category/{sub_category_id?}/{slug?}/{property?}', 'front\HomeController@productsv2Slug')->name("front.home.search.category");
-Route::get('brand/{brand_id?}/{slug?}', 'front\HomeController@productsv2Slug');
-Route::get('parent/{category_id?}/{slug?}', 'front\HomeController@productsv2Slug');
+Route::get('category/{sub_category_id?}/{category_name?}/{property?}', 'front\HomeController@productsv2Slug')->name("front.home.search.category");
+Route::get('brand/{brand_id?}/{brand_name?}', 'front\HomeController@productsv2Slug');
+Route::get('parent/{category_id?}/{parent_name?}', 'front\HomeController@productsv2Slug');
 Route::get('filter/{category_name?}/{brands_name?}', 'front\HomeController@productsv2Filter');
 
 Route::get("discount" ,'ProductController@updateOldProductWithDiscount');

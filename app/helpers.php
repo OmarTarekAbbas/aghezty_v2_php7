@@ -247,12 +247,23 @@ function filter_categorys()
   if (request()->filled('category_id')) {
     $categorys = $categorys->where('categories.id', request()->get('category_id'));
   }
+  if (request()->route('category_id')) {
+    $categorys = $categorys->where('categories.id', request()->route('category_id'));
+  }
 
   if (request()->has('brand_id') && request()->get('brand_id') != '' && !request()->has('sub_category_id')) {
     $categorys = \App\Category::join('categories AS t2', 'categories.parent_id', 't2.id')
       ->join('products', 'products.category_id', '=', 'categories.id')
       ->join('brands', 'brands.id', '=', 'products.brand_id')
       ->where('products.brand_id', request()->get('brand_id'))
+      ->select('t2.*', 't2.id AS parID')
+      ->groupBy('parID');
+  }
+  if (request()->route('brand_id')) {
+    $categorys = \App\Category::join('categories AS t2', 'categories.parent_id', 't2.id')
+      ->join('products', 'products.category_id', '=', 'categories.id')
+      ->join('brands', 'brands.id', '=', 'products.brand_id')
+      ->where('products.brand_id', request()->route('brand_id'))
       ->select('t2.*', 't2.id AS parID')
       ->groupBy('parID');
   }
@@ -288,8 +299,6 @@ function brands()
 
 function filtter_brands()
 {
-
-
   if (\Session::get('applocale') == 'ar') {
     $brands = \App\Brand::select('brands.*')->join('products', 'products.brand_id', '=', 'brands.id')
       ->join('translatables','translatables.record_id','=','brands.id')
@@ -299,6 +308,7 @@ function filtter_brands()
       ->select('brands.*','brands.id As id')
       ->orderby('body', 'ASC')
       ->groupBy('title');
+
     if (request()->has('sub_category_id') && request()->get('sub_category_id') != '') {
       $brands = $brands->where('products.category_id', request()->get('sub_category_id'));
     }
@@ -475,7 +485,7 @@ function setSlug($title){
   $string = trim($title);
   // Lower case everything
   // using mb_strtolower() function is important for non-Latin UTF-8 string | more info: https://www.php.net/manual/en/function.mb-strtolower.php
-  $string = mb_strtolower($string, "UTF-8");;
+  // $string = mb_strtolower($string, "UTF-8");;
 
   // Make alphanumeric (removes all other characters)
   // this makes the string safe especially when used as a part of a URL
