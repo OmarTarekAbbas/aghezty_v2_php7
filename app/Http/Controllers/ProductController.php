@@ -614,11 +614,11 @@ class ProductController extends Controller
 
         $file = $request->file('fileToUpload');
         $filename = time().'_'.$file->getClientOriginalName();
-        if(!$file->move(base_path().'/files/product_update_price_excel',  $filename) ){
+        if(!$file->move(base_path().'uploads/price_update/product_update_price_excel',  $filename) ){
             return back();
         }
 
-        \Excel::filter('chunk')->load(base_path() . '/files/product_update_price_excel/' . $filename)->chunk(10000, function($results) use ($request,&$counter,&$total_counter)
+        \Excel::filter('chunk')->load(base_path() . 'uploads/price_update/product_update_price_excel/' . $filename)->chunk(10000, function($results) use ($request,&$counter,&$total_counter)
         {
           foreach ($results as $row) {
             $total_counter++;

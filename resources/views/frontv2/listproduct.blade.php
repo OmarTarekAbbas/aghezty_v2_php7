@@ -733,12 +733,15 @@
   })
 
   function fullUrl() {
-      var category_name = ''
-      var brands_name   = []
+      var category_name  = ''
+      var category_id    = ''
+      var brands_name    = []
+      var brands_id       = []
       //get checked category
       $(".sub_cat_id").each(function(){
         if($(this).is(":checked")) {
           category_name = $(this).next(".text-capitalize").data('en')
+          category_id = $(this).val()
         }
       })
       //get checked brand
@@ -746,9 +749,19 @@
         if($(this).is(":checked")) {
           if(!brands_name.includes($(this).next(".text-capitalize").data("en")))
             brands_name.push($(this).next(".text-capitalize").data("en"))
+            brands_id.push($(this).val())
         }
       })
-      var url = '{{url("filter")}}'+ '/' + category_name.replaceAll(" ","-") + '/' + brands_name.join('-')
+      if(category_name && !brands_name.length) {
+        var url = '{{url("category")}}'+ '/' + category_id + '/'+ category_name.replaceAll(" ","-")
+      }
+      if(brands_name.length == 1 && !category_name) {
+        var url = '{{url("brand")}}'+ '/' + brands_id[0] + '/'+ brands_name.join('-')
+      }
+      if(brands_name.length && category_name) {
+        var url = '{{url("filter")}}'+ '/' + category_name.replaceAll(" ","-") + '/' + brands_name.join('-')
+      }
+
       return url
   }
 </script>
