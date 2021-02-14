@@ -178,3 +178,4 @@ Route::get('filter/{category_name?}/{brands_name?}', 'front\HomeController@produ
 Route::get("discount" ,'ProductController@updateOldProductWithDiscount');
 Route::get("solid" ,'ProductController@updateOldSolidCountInProduct');
 Route::get("old_order_details" ,'OrderController@removeProductFromOrderDeatilsThatNotHaveOrder');
+
