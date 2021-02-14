@@ -13,14 +13,15 @@ class SocialFacebookAccountService
         $account = SocialFacebookAccount::whereProvider('facebook')
             ->whereProviderUserId($providerUser->getId())
             ->first();
-        if ($account) {
+        if ($account &&  $account->user ) {
             return $account->user;
         } else {
-            $account = new SocialFacebookAccount([
-                'provider_user_id' => $providerUser->getId(),
-                'provider' => 'facebook'
-            ]);
+
+
+
+
             $user = Client::whereEmail($providerUser->getEmail())->first();
+
             if (!$user) {
                 $user = Client::create([
                     'email' => $providerUser->getEmail(),
@@ -30,7 +31,18 @@ class SocialFacebookAccountService
                 ]);
                 session()->flash('newuser', 'newuser');
             }
-            $account->user()->associate($user);
+
+            $SocialFacebookAccount =   SocialFacebookAccount::where("provider_user_id",$providerUser->getId())->where("provider","facebook")->where("user_id", $user->id)->first();
+            if(!$SocialFacebookAccount){
+              $account = new SocialFacebookAccount([
+                'provider_user_id' => $providerUser->getId(),
+                'provider' => 'facebook',
+                'user_id'=>  $user->id
+            ]);
+            }
+
+
+            //$account->user()->associate($user);
             $account->save();
             return $user;
         }

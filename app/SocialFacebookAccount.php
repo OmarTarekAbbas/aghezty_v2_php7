@@ -8,7 +8,7 @@ class SocialFacebookAccount extends Model
 
   public function user()
   {
-      return $this->belongsTo(Client::class, 'user_id', 'id');
+      return $this->belongsTo(Client::class, 'user_id');
   }
 
 }
