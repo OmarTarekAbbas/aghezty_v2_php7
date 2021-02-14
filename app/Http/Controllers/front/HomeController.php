@@ -34,6 +34,7 @@ use PayPal\Api\Transaction;
 use Illuminate\Http\Request;
 use PayPal\Api\RedirectUrls;
 use App\Constants\PaymentStatus;
+use App\DeleteProduct;
 use PayPal\Api\PaymentExecution;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -1296,14 +1297,17 @@ class HomeController extends Controller
     public function inner_productv2($id)
     {
         $product = Product::latest('created_at')->whereId($id)->where('products.active', 1)->first();
+
         if (!$product) {
-          $product  = Product::withTrashed()->latest('created_at')->whereId($id)->where('products.active', 1)->first();
-          $category = Category::find($product->category_id);
-          return redirect(route("front.home.search.category",['sub_category_id' => $category->id, 'slug' => setSlug($category->title)]));
+          $is_not_product_get_category = DeleteProduct::where("product_id",$id)->first();
+          $get_category = Category::where("id",$is_not_product_get_category->category_id)->first();
+          return redirect(route("front.home.search.category",['sub_category_id' => $get_category->id, 'slug' => setSlug($get_category->title)]));
         }
+
         if(!$product->category){
           return abort(404);
         }
+
         $items = Product::stock()->where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }

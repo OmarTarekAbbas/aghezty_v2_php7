@@ -1,14 +1,13 @@
 <?php
 
 namespace App;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 use App\Traits\Translatable;
 class Product extends Model
 {
-  use Translatable, SoftDeletes;
+  use Translatable;
   protected $table="products";
   protected $fillable = ['title','main_image','price','discount','price_after_discount',
                         'special','active','description','short_description','category_id','brand_id','stock', 'inch','sku',
