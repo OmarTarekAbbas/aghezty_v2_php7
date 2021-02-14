@@ -297,7 +297,7 @@
           <i class="fab fa-twitter twitter_icon"></i>
         </a>
 
-        <a class="social-button download_link" href="{{url($image->image)}}" download title="Download">
+        <a class="social-button download_link" href="{{url($product->main_image)}}" download title="Download">
           <i class="fas fa-download download_icon"></i>
         </a>
 
