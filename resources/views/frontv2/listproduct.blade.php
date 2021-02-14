@@ -49,12 +49,12 @@
             </button>
 
             <div class="panel mb-3 w-100 border border-light">
-              @if (request()->has('brand_id') && !request()->has('sub_category_id'))
+              @if ((request()->has('brand_id') || request()->route("brand_id")) && !request()->has('sub_category_id'))
 
                 @php
                 $subs = \App\Category::join('products','products.category_id','=','categories.id')
                         ->join('brands','brands.id','=','products.brand_id')
-                        ->where('products.brand_id', request()->get('brand_id'))
+                        ->where('products.brand_id',request("brand_id"))
                         ->select('categories.*')
                         ->groupBy('categories.id')
                         ->get();
@@ -66,7 +66,7 @@
 
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
-                <input id="panel_category_{{$category->id}}" class="mb-2 sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
+                <input id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)))?'checked':''}}
                     type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
                   <label  class="d-block text-capitalize"
                     for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
@@ -115,7 +115,7 @@
 
           <div class="panel brand_panel_change mb-3 w-100 border border-light">
             @foreach (filtter_brands() as $brand)
-            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id) || request()->filled("sub_category_id") || request()->route("category_name") || (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) )
+            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id) || request()->filled("sub_category_id") || request()->route("category_name") || (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) || request()->filled("offer") || request()->filled("most_solid"))
             <div class="z-checkbox">
               <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
                 {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"

@@ -119,6 +119,7 @@ return [
     'loading'=> 'Loading',
     'filter' => 'Filter',
     'visa_terms' => 'Visa Terms',
+    'You have exceeded the limit to buy this item' => 'You have exceeded your maximum purchase limit of 2 pieces',
     'inner' => [
         'add_your_review' => 'Add Your Review',
         'reviews' => 'Reviews',
