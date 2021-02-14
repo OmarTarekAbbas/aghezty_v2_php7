@@ -2604,7 +2604,7 @@ body {
 }
 .new_footer .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   margin: 0 auto;
 }
 .new_footer .grid-container .payment_method_img img {
@@ -3632,6 +3632,17 @@ body {
     font-size: 1.5rem;
   }
 
+  .new_footer {
+    text-align: center;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    margin-right: 0;
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
   #return-to-top {
     left: 87%;
     width: 40px;
@@ -4611,6 +4622,17 @@ body {
 .footer_footer .rounded-social-buttons .social-button .instagram_icon,
 .footer_footer .rounded-social-buttons .social-button .linkedin_icon {
     font-size: 1.5rem;
+  }
+
+  .new_footer {
+    text-align: center;
+  }
+  .new_footer .social_media li .social-button {
+    width: 2.125rem;
+    height: 2.125rem;
+    margin-right: 0;
+    font-size: 1rem;
+    line-height: 2rem;
   }
 
   #return-to-top {
