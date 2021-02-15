@@ -911,7 +911,7 @@
 
         <div class="col-md-4 col-lg-4 col-xl-4 col-12">
           <div class="logo_foot">
-            <img class="aghezty_logo" src="{{url('public/frontv2/images/new_footer/logo.png')}}" alt="Aghezty">
+            <img class="aghezty_logo" src="{{url('public/frontv2/images/new_footer/logo2.png')}}" alt="Aghezty">
 
             @if (\Session::get('applocale') == 'ar')
             <p class="mb-0 text-right">
