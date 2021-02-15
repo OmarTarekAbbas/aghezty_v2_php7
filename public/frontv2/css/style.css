@@ -99,7 +99,7 @@ body {
   width: 80%;
   position: absolute;
   top: 39px;
-  left: 30%;
+  left: 40%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -2587,7 +2587,7 @@ body {
   border-color: #ffa930;
 }
 .new_footer .logo_foot .aghezty_logo {
-  width: 32%;
+  width: 40%;
   margin: 0 auto 3%;
   display: block;
 }
@@ -3653,6 +3653,16 @@ body {
     font-size: 1rem;
     line-height: 2rem;
   }
+  .new_footer .important_link,
+.new_footer .categories_link,
+.new_footer .text_foot,
+.new_footer .subscribe_title,
+.new_footer .subscribe_desc {
+    text-align: center;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 75%;
+  }
 
   #return-to-top {
     left: 87%;
@@ -4646,6 +4656,16 @@ body {
     font-size: 1rem;
     line-height: 2rem;
   }
+  .new_footer .important_link,
+.new_footer .categories_link,
+.new_footer .text_foot,
+.new_footer .subscribe_title,
+.new_footer .subscribe_desc {
+    text-align: center;
+  }
+  .new_footer .logo_foot .aghezty_logo {
+    width: 70%;
+  }
 
   #return-to-top {
     left: 89%;
@@ -4849,8 +4869,8 @@ body {
     margin-right: 0;
   }
   .new_footer .logo_foot .aghezty_logo {
-    width: 45%;
-    margin: 3% auto 3%;
+    width: 100%;
+    margin: -22% auto 3%;
   }
   .new_footer .text_foot {
     margin-bottom: 1.5%;
@@ -5155,8 +5175,8 @@ body {
     margin-right: 0;
   }
   .new_footer .logo_foot .aghezty_logo {
-    width: 45%;
-    margin: 3% auto 3%;
+    width: 100%;
+    margin: -17% auto 3%;
   }
   .new_footer .text_foot {
     margin-bottom: 1.5%;
@@ -5171,16 +5191,15 @@ body {
     margin-top: 2.5%;
   }
 
-  .carsoul_ads .top_banner a img {
-    height: 151px;
-  }
-  .carsoul_ads .owl-one .owl-nav .owl-prev,
-.carsoul_ads .owl-one .owl-nav .owl-next {
-    bottom: 2.5rem;
-  }
-
   .main {
     padding-top: 10%;
+  }
+  .main .carsoul_ads .top_banner a img {
+    height: 151px;
+  }
+  .main .carsoul_ads .owl-one .owl-nav .owl-prev,
+.main .carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: 2.5rem;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
     width: 100%;
@@ -5222,16 +5241,15 @@ body {
     margin-top: 2.5%;
   }
 
-  .carsoul_ads .top_banner a img {
-    height: 151px;
-  }
-  .carsoul_ads .owl-one .owl-nav .owl-prev,
-.carsoul_ads .owl-one .owl-nav .owl-next {
-    bottom: 2.5rem;
-  }
-
   .main {
     padding-top: 10%;
+  }
+  .main .carsoul_ads .top_banner a img {
+    height: 151px;
+  }
+  .main .carsoul_ads .owl-one .owl-nav .owl-prev,
+.main .carsoul_ads .owl-one .owl-nav .owl-next {
+    bottom: 2.5rem;
   }
   .main .carsoul_ads .owl-one .item a img {
     height: 38vh;
@@ -5327,15 +5345,19 @@ body {
   .head_two .search-container {
     margin-top: 2.5%;
   }
+  .head_two .img_logo img {
+    width: 100%;
+    left: 45%;
+  }
 
   .main {
     padding-top: 10%;
   }
   .main .carsoul_ads .owl-one .item a img {
-    height: 47.5vh;
+    height: 37.5vh;
   }
   .main .carsoul_ads .top_banner a img {
-    height: 151px;
+    height: 163px;
   }
   .main .carsoul_ads .owl-one .owl-nav .owl-prev,
 .main .carsoul_ads .owl-one .owl-nav .owl-next {
@@ -5417,8 +5439,8 @@ body {
     margin-right: 0;
   }
   .new_footer .logo_foot .aghezty_logo {
-    width: 45%;
-    margin: 3% auto 3%;
+    width: 60%;
+    margin: 0% auto 3%;
   }
   .new_footer .text_foot {
     margin-bottom: 1.5%;
