@@ -252,7 +252,9 @@ function  saveOrderAndPone(e){
       }
     });
 
+    @if(isset( $item->pivot->city_id))
     location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
+    @endif
   }else{
     alert('Please enter your phone!')
   }
@@ -264,8 +266,9 @@ function  saveOrderAndPone(e){
 
 function  saveOrder(e){
   e.preventDefault();
-
+  @if(isset( $item->pivot->city_id))
   location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
+  @endif
 
 }
 
