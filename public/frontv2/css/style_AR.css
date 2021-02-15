@@ -30,7 +30,7 @@
 }
 
 .active_menu a {
-  color: #0566b4 !important;
+  color: #FFF !important;
   text-decoration: underline !important;
   font-weight: bold;
 }
@@ -238,7 +238,7 @@ body {
 }
 
 .dropdown-item.active {
-  color: #007bff !important;
+  color: #085C9B !important;
   background: none !important;
   outline: 0;
   border: 0;
@@ -670,7 +670,7 @@ body {
   float: right;
 }
 .main .product_view .product_view_type .product_desc .price-box .regular-price .price {
-  color: #008eff;
+  color: #085C9B;
   font-weight: bold;
 }
 .main .product_view .product_view_type .product_desc .price-box .old-price {
@@ -779,7 +779,7 @@ body {
   right: 0;
 }
 .main #propertys_mobile .filter_close {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
   margin: 8% auto;
   display: block;
@@ -1007,7 +1007,7 @@ body {
   text-align: right;
 }
 .main .content_view .price-box .regular-price .price {
-  color: #008eff;
+  color: #085C9B;
 }
 .main .content_view .price-box .old-price {
   float: left;
@@ -1197,7 +1197,7 @@ body {
   top: 24px;
 }
 .main #inner-page .quantity-form #add_to {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
   position: absolute;
   right: 13%;
@@ -1205,18 +1205,19 @@ body {
   height: 48px;
 }
 .main #inner-page .quantity-form #add_to:hover, .main #inner-page .quantity-form #add_to:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main #inner-page .quantity-form .notify_me {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
   position: absolute;
   right: 13%;
   top: 0px;
   height: 48px;
+  white-space: normal;
 }
 .main #inner-page .quantity-form .notify_me:hover, .main #inner-page .quantity-form .notify_me:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main #inner-page .quantity-form .fav_product {
   position: absolute;
@@ -1386,22 +1387,22 @@ body {
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms select:hover,
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms select:focus,
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms select:active {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
   border-color: #ffa50085;
 }
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
 }
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button:hover, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button:focus, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-body .forms .model_send button:active {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
 }
 .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close:hover, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close:focus, .main .model_notify_me #notify_me_modal .modal-dialog .modal-content .modal-footer .modal_foot_close:active {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main .inner_table_desc {
   text-align: right;
@@ -1576,11 +1577,11 @@ body {
   border: 4px solid #e1e1e1;
 }
 .main .cart_shopping table th .img_link .cart_shopping_title {
-  display: contents;
+  display: inline-block;
 }
 .main .cart_shopping table th .img_link .cart_shopping_title span {
   font-size: 0.85rem;
-  color: #007bff;
+  color: #085C9B;
 }
 .main .cart_shopping table th.th_th {
   text-align: right;
@@ -1702,13 +1703,13 @@ body {
   float: left !important;
 }
 .main .cart_shopping .discount_code_accordion .card-body .input-group .add_coupon {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 .main .cart_shopping .discount_code_accordion .card-body .input-group .add_coupon:hover, .main .cart_shopping .discount_code_accordion .card-body .input-group .add_coupon:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main .cart_shopping .discount_code_accordion .card-body .input-group .form-control {
   border-top-left-radius: 0;
@@ -1733,11 +1734,11 @@ body {
   float: left !important;
 }
 .main .cart_shopping .discount_code_accordion .card-body .cart_checkout button {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
 }
 .main .cart_shopping .discount_code_accordion .card-body .cart_checkout button:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main .wishlist_shopping table th {
   transition: all 0.5s ease-in-out;
@@ -1774,7 +1775,7 @@ body {
 }
 .main .wishlist_shopping table th .img_link .wishlist_shopping_title span {
   font-size: 0.85rem;
-  color: #007bff;
+  color: #085C9B;
 }
 .main .wishlist_shopping table th.th_th {
   text-align: right;
@@ -1896,13 +1897,13 @@ body {
   float: left !important;
 }
 .main .wishlist_shopping .discount_code_accordion .card-body .input-group .add_coupon {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 .main .wishlist_shopping .discount_code_accordion .card-body .input-group .add_coupon:hover, .main .wishlist_shopping .discount_code_accordion .card-body .input-group .add_coupon:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main .wishlist_shopping .discount_code_accordion .card-body .input-group .form-control {
   border-top-left-radius: 0;
@@ -1927,11 +1928,11 @@ body {
   float: left !important;
 }
 .main .wishlist_shopping .discount_code_accordion .card-body .cart_checkout button {
-  background-color: #fe9901;
+  background-color: #085C9B;
   color: #FFF;
 }
 .main .wishlist_shopping .discount_code_accordion .card-body .cart_checkout button:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.52);
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
 .main .choose_category .choose_category_form {
   transition: all 1s ease-in-out;
@@ -2164,7 +2165,7 @@ body {
   height: 4em;
   width: 4em;
   margin-left: -2em;
-  border: 0.375em solid #ffeb00;
+  border: 0.375em solid #085C9B;
   border-right-style: double;
   border-radius: 50%;
   animation: rotation 0.8s linear infinite;
@@ -2449,7 +2450,7 @@ body {
   color: #666;
 }
 .main .call-center {
-  background-color: #000;
+  background-color: #085C9B;
   border-radius: 12px;
   margin-top: 2% !important;
 }
@@ -2526,7 +2527,8 @@ body {
   padding: 4px 3px;
 }
 .main .service_center .service_center_tabel tbody tr td a {
-  color: #007bff;
+  color: #085C9B;
+  font-weight: bold;
 }
 .main .profile_img {
   position: relative;
@@ -2721,7 +2723,7 @@ body {
   margin: 0 auto;
 }
 .new_footer .newsletter .btn_subscribe {
-  background: #0057a7;
+  background: #085C9B;
   color: #FFF;
   border-bottom-right-radius: 500px;
   border-top-right-radius: 500px;
@@ -2730,7 +2732,7 @@ body {
   color: #FFF;
   border-color: #FFF;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #0057a7;
+  box-shadow: 0 0 0 0.2rem #085C9B;
 }
 .new_footer .newsletter .input_subscribe {
   color: #777777;
@@ -2741,7 +2743,7 @@ body {
 .new_footer .newsletter .input_subscribe:hover, .new_footer .newsletter .input_subscribe:focus {
   border-color: #fff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #0057a7;
+  box-shadow: 0 0 0 0.2rem #085C9B;
 }
 .new_footer .social_media {
   text-align: center;
@@ -5333,7 +5335,7 @@ body {
     width: 25%;
   }
   .main #inner-page .quantity-form #add_to {
-    background-color: #fe9901;
+    background-color: #085C9B;
     color: #FFF;
     position: absolute;
     right: 23%;
@@ -5374,7 +5376,7 @@ body {
   }
   .main .cart_shopping table th .img_link .cart_shopping_title span {
     font-size: 0.85rem;
-    color: #007bff;
+    color: #085C9B;
     display: table-caption;
     width: 14rem;
   }
@@ -5390,7 +5392,7 @@ body {
   }
   .main .wishlist_shopping table th .img_link .wishlist_shopping_title span {
     font-size: 0.85rem;
-    color: #007bff;
+    color: #085C9B;
   }
   .main .wishlist_shopping .discount_code_accordion .ads_img img {
     height: 12.6rem !important;
@@ -6140,7 +6142,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fe9901;
+  background: #085C9B;
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 0;
