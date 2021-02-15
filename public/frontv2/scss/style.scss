@@ -123,7 +123,7 @@ body {
       width: 80%;
       position: absolute;
       top: 39px;
-      left: 30%;
+      left: 40%;
       transform: translate(-50%, -50%);
       -webkit-transform: translate(-50%, -50%);
       -moz-transform: translate(-50%, -50%);
@@ -3424,7 +3424,7 @@ body {
 
   .logo_foot {
     .aghezty_logo {
-      width: 32%;
+      width: 40%;
       margin: 0 auto 3%;
       display: block;
     }
@@ -4992,6 +4992,20 @@ body {
         }
       }
     }
+
+    .important_link,
+    .categories_link,
+    .text_foot,
+    .subscribe_title,
+    .subscribe_desc {
+      text-align: center;
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 75%;
+      }
+    }
   }
 
   // Scroll Top
@@ -6484,6 +6498,20 @@ body {
         }
       }
     }
+
+    .important_link,
+    .categories_link,
+    .text_foot,
+    .subscribe_title,
+    .subscribe_desc {
+      text-align: center;
+    }
+
+    .logo_foot {
+      .aghezty_logo {
+        width: 70%;
+      }
+    }
   }
 
   // Scroll Top
@@ -6675,8 +6703,6 @@ body {
     }
   }
 
-
-
   .product_view {
     .product_view_type {
       .margin_bottom_mob {
@@ -6858,8 +6884,8 @@ body {
 
     .logo_foot {
       .aghezty_logo {
-        width: 45%;
-        margin: 3% auto 3%;
+        width: 100%;
+        margin: -22% auto 3%;
       }
     }
 
@@ -6953,7 +6979,6 @@ body {
       }
     }
   }
-
 
   .navbar-expand-lg {
     .navbar-nav {
@@ -7429,8 +7454,8 @@ body {
 
     .logo_foot {
       .aghezty_logo {
-        width: 45%;
-        margin: 3% auto 3%;
+        width: 100%;
+        margin: -17% auto 3%;
       }
     }
 
@@ -7462,23 +7487,23 @@ body {
     }
   }
 
-  .carsoul_ads {
-    .top_banner {
-      a {
-        img {
-          height: 151px;
-        }
-      }
-    }
-
-    .owl-one .owl-nav .owl-prev,
-    .owl-one .owl-nav .owl-next {
-      bottom: 2.5rem;
-    }
-  }
-
   .main {
     padding-top: 10%;
+
+    .carsoul_ads {
+      .top_banner {
+        a {
+          img {
+            height: 151px;
+          }
+        }
+      }
+
+      .owl-one .owl-nav .owl-prev,
+      .owl-one .owl-nav .owl-next {
+        bottom: 2.5rem;
+      }
+    }
 
     .choose_category {
       .choose_category_background {
@@ -7573,23 +7598,23 @@ body {
     }
   }
 
-  .carsoul_ads {
-    .top_banner {
-      a {
-        img {
-          height: 151px;
-        }
-      }
-    }
-
-    .owl-one .owl-nav .owl-prev,
-    .owl-one .owl-nav .owl-next {
-      bottom: 2.5rem;
-    }
-  }
-
   .main {
     padding-top: 10%;
+
+    .carsoul_ads {
+      .top_banner {
+        a {
+          img {
+            height: 151px;
+          }
+        }
+      }
+
+      .owl-one .owl-nav .owl-prev,
+      .owl-one .owl-nav .owl-next {
+        bottom: 2.5rem;
+      }
+    }
 
     .carsoul_ads {
       .owl-one {
@@ -7796,6 +7821,13 @@ body {
     .search-container {
       margin-top: 2.5%;
     }
+
+    .img_logo {
+      img {
+        width: 100%;
+        left: 45%;
+      }
+    }
   }
 
   .main {
@@ -7806,7 +7838,7 @@ body {
         .item {
           a {
             img {
-              height: 47.5vh;
+              height: 37.5vh;
             }
           }
         }
@@ -7815,7 +7847,7 @@ body {
       .top_banner {
         a {
           img {
-            height: 151px;
+            height: 163px;
           }
         }
       }
@@ -7989,8 +8021,8 @@ body {
 
     .logo_foot {
       .aghezty_logo {
-        width: 45%;
-        margin: 3% auto 3%;
+        width: 60%;
+        margin: 0% auto 3%;
       }
     }
 
