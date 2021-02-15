@@ -407,7 +407,7 @@
 
                 <div class="form-group col-md-12 col-lg-12 col-xl-12 col-12">
                   <div class="model_send my-3 hvr-float">
-                    <button type="submit" class="btn w-100" style="background-color: #fe9901;color: #FFF;">@lang('front.send')</button>
+                    <button type="submit" class="btn w-100" style="background-color: #085C9B;color: #FFF;">@lang('front.send')</button>
                   </div>
                 </div>
               </div>

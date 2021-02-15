@@ -4,7 +4,7 @@
 <style>
   .main,
   .footer_footer {
-    background: #fe9901;
+    background: #085C9B;
   }
 
   .error_page {
@@ -27,7 +27,7 @@
   }
 
   .back_home button {
-    color: #fe9901;
+    color: #085C9B;
     background: #fff;
     font-size: 1.5rem !important;
   }
