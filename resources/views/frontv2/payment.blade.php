@@ -28,8 +28,7 @@
         <div class="card">
           <div class="card-header" id="headingThree">
             <button class="btn btn-link collapsed" id="collapsed_pay" type="button" data-toggle="collapse"
-              data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Select Payment Method</button>
+              data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">@lang('front.Select_Payment_Method')</button>
           </div>
 
           <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">

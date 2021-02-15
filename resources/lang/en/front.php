@@ -78,6 +78,7 @@ return [
     'order' => 'My Orders',
     'product' => 'Product Name',
     'product_image' => 'Product Image',
+    'Select_Payment_Method' => 'Select Payment Method',
     'quantity' => 'Quantitys',
     'status' => 'Status',
     'pound' => 'Pound',
