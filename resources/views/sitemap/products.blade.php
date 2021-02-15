@@ -5,7 +5,7 @@
   ttp://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     @foreach ($products as $product)
     <url>
-        <loc>{{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}</loc>
+        <loc>{{route('front.home.inner',['id' => $product->id ,'slug' => setSlug($product->getTranslation('title',"en"))]) }}</loc>
         <lastmod>{{ $product->updated_at->tz('UTC')->toAtomString() }}</lastmod>
         <priority>1.00</priority>
     </url>

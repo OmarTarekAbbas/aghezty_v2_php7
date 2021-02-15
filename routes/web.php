@@ -179,3 +179,10 @@ Route::get("discount" ,'ProductController@updateOldProductWithDiscount');
 Route::get("solid" ,'ProductController@updateOldSolidCountInProduct');
 Route::get("old_order_details" ,'OrderController@removeProductFromOrderDeatilsThatNotHaveOrder');
 
+
+
+   // Start Make Route SiteMape
+   Route::get('sitemap/categories', 'SitemapController@sitemap_categories');
+   Route::get('sitemap/products', 'SitemapController@sitemap_products');
+   Route::get('sitemap/image_products', 'SitemapController@image_products');
+   // End Make Route SiteMape

@@ -122,14 +122,11 @@ function get_static_routes()
     Route::get("product_update_price_excel_download" ,'ProductController@product_update_price_excel_download');
     /*****************************end */
 
-    // Start Make Route SiteMape
 
-    Route::get('sitemap/categories', 'SitemapController@sitemap_categories');
-    Route::get('sitemap/products', 'SitemapController@sitemap_products');
-    Route::get('sitemap/image_products', 'SitemapController@image_products');
-
-    // End Make Route SiteMape
   });
+
+
+
 
 
   Route::post('delete_multiselect', function (Request $request) {
