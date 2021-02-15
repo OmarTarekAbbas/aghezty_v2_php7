@@ -116,7 +116,7 @@
           @foreach($home_brands as $homeBrand)
           <div class="item">
             <div class="brands_img">
-              <a href="{{ route('front.home.list', ['brand_id' => $homeBrand->id]) }}">
+              <a href="{{url('brand/'.$homeBrand->id.'/'.setSlug($homeBrand->title))}}">
                 <img src="{{ $homeBrand->image }}" alt="{{ $homeBrand->title }}">
               </a>
             </div>

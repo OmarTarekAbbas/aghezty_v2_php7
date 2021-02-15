@@ -344,7 +344,7 @@ class ProductController extends Controller
         \Session::flash('success', 'Product Update Successfully');
 
         return redirect(
-          session()->has('redirect_edit_url') ? (strpos(session()->get('redirect_edit_url'), "?") ? session()->get('redirect_edit_url')."&brand_id=".$product->brand_id : session()->get('redirect_edit_url').'?brand_id='.$product->brand_id  ) : 'product?category_id='.$request->category_id
+          session()->has('redirect_edit_url') ? (strpos(session()->get('redirect_edit_url'), "?") ? session()->get('redirect_edit_url')."&brand_id=".$product->brand_id : session()->get('redirect_edit_url').'?brand_id='.$product->brand_id  ) : 'product?category_id='.$request->category_id .'?brand_id='.$product->brand_id
         );
     }
 
