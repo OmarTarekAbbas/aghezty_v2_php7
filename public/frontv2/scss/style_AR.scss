@@ -7899,6 +7899,14 @@ body {
         }
       }
 
+      .top_banner {
+        a {
+          img {
+            height: 140px;
+          }
+        }
+      }
+
       .owl-one .owl-nav .owl-prev,
       .owl-one .owl-nav .owl-next {
         bottom: 2.5rem;
@@ -8115,7 +8123,7 @@ body {
         .item {
           a {
             img {
-              height: 37.5vh;
+              height: 48.5vh;
             }
           }
         }
@@ -8124,7 +8132,7 @@ body {
       .top_banner {
         a {
           img {
-            height: 163px;
+            height: 151px;
           }
         }
       }
