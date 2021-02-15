@@ -5244,15 +5244,15 @@ body {
   .main {
     padding-top: 10%;
   }
+  .main .carsoul_ads .owl-one .item a img {
+    height: 38vh;
+  }
   .main .carsoul_ads .top_banner a img {
-    height: 151px;
+    height: 140px;
   }
   .main .carsoul_ads .owl-one .owl-nav .owl-prev,
 .main .carsoul_ads .owl-one .owl-nav .owl-next {
     bottom: 2.5rem;
-  }
-  .main .carsoul_ads .owl-one .item a img {
-    height: 38vh;
   }
   .main .product_view .product_view_type .product_desc {
     height: 310px;
@@ -5354,10 +5354,10 @@ body {
     padding-top: 10%;
   }
   .main .carsoul_ads .owl-one .item a img {
-    height: 37.5vh;
+    height: 48.5vh;
   }
   .main .carsoul_ads .top_banner a img {
-    height: 163px;
+    height: 151px;
   }
   .main .carsoul_ads .owl-one .owl-nav .owl-prev,
 .main .carsoul_ads .owl-one .owl-nav .owl-next {
