@@ -822,12 +822,16 @@ class HomeController extends Controller
         if ($request->has('random') && $request->random != '') {
             $products = $products->inRandomOrder();
         }
-        if ($request->has('property_value_id')) {
-            $products = $products->whereHas('pr_value', function ($q) use ($request) {
-                $q->whereIn('property_values.id', $request->property_value_id);
-            });
+         if ($request->has('property_value_id')) {
+          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
+          $products = $products->where(function($query) use ($property){
+            foreach ($property as $property_value_id) {
+              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                $q->whereIn('property_values.id', $property_value_id);
+              });
+            }
+          });
         }
-
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct_test', compact('products', 'sub_category_ids','brand_ids'));
     }
@@ -906,9 +910,14 @@ class HomeController extends Controller
             $products = $products->inRandomOrder();
         }
         if ($request->has('property_value_id')) {
-            $products = $products->whereHas('pr_value', function ($q) use ($request) {
-                $q->whereIn('property_values.id', $request->property_value_id);
-            });
+          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
+          $products = $products->where(function($query) use ($property){
+            foreach ($property as $property_value_id) {
+              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                $q->whereIn('property_values.id', $property_value_id);
+              });
+            }
+          });
         }
 
         $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
@@ -1037,12 +1046,14 @@ class HomeController extends Controller
 
 
         if ($request->has('property_value_id')) {
-          $products = $products->where(function($query){
-              $query->whereHas('pr_value', function ($q) {
-                $q->whereIn('property_values.id', request('property_value_id'));
+          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
+          $products = $products->where(function($query) use ($property){
+            foreach ($property as $property_value_id) {
+              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                $q->whereIn('property_values.id', $property_value_id);
               });
+            }
           });
-
         }
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
 
@@ -1165,16 +1176,18 @@ class HomeController extends Controller
 
 
         if ($request->has('property_value_id')) {
-          $products = $products->where(function($query){
-              $query->whereHas('pr_value', function ($q) {
-                $q->whereIn('property_values.id', request('property_value_id'));
+          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
+          $products = $products->where(function($query) use ($property){
+            foreach ($property as $property_value_id) {
+              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                $q->whereIn('property_values.id', $property_value_id);
               });
+            }
           });
-
         }
           $products = $products->where('products.active', 1)->offset($request->start)->limit(get_limit_paginate())
           ->get();
-        
+
         $view = view('frontv2.load_products', compact('products'))->render();
         return Response(array('html' => $view));
     }
@@ -2433,12 +2446,14 @@ class HomeController extends Controller
         }
 
         if ($request->has('property_value_id')) {
-          $products = $products->where(function($query){
-              $query->whereHas('pr_value', function ($q) {
-                $q->whereIn('property_values.id', request('property_value_id'));
+          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
+          $products = $products->where(function($query) use ($property){
+            foreach ($property as $property_value_id) {
+              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                $q->whereIn('property_values.id', $property_value_id);
               });
+            }
           });
-
         }
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
@@ -2544,12 +2559,14 @@ class HomeController extends Controller
             $products = $products->inRandomOrder();
         }
         if ($request->has('property_value_id')) {
-          $products = $products->where(function($query){
-              $query->whereHas('pr_value', function ($q) {
-                $q->whereIn('property_values.id', request('property_value_id'));
+          $property = $this->getPropertyWithPropertyValue($request->property_value_id);
+          $products = $products->where(function($query) use ($property){
+            foreach ($property as $property_value_id) {
+              $query->whereHas('pr_value', function ($q) use ($property_value_id) {
+                $q->whereIn('property_values.id', $property_value_id);
               });
+            }
           });
-
         }
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
 
