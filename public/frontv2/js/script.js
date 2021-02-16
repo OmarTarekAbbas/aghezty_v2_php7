@@ -61,7 +61,7 @@ $(document).ready(function () {
 
     } else {
       $('#grid_list_two').on('click', function () {
-        $('#grid_two .col-md-6').attr('class', 'col-md-3');
+        $('#grid_two .col-md-6').attr('class', 'col-md-4');
         $('#grid_two img').attr('class', 'w-100');
         $('#grid_two h6').attr('class', 'full_desc text-dark text-center text-capitalize');
       });

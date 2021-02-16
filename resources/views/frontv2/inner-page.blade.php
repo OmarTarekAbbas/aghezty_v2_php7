@@ -264,9 +264,9 @@
           @if($product->stock > 0 && checkbuyLimit($product->id)['status'])
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
           @elseif(!checkbuyLimit($product->id)['status'])
-          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right limit_exceed">{{ trans('front.You have exceeded the limit to buy this item') }} </button>
+          <button class="w-50 btn float-left text-capitalize hvr-wobble-to-bottom-right limit_exceed">{{ trans('front.You have exceeded the limit to buy this item') }} </button>
           @else
-          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
+          <button class="w-50 btn float-left text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
           @endif
 
           @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')

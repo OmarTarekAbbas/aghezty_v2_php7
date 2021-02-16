@@ -1628,6 +1628,7 @@ body {
 
         &.download_link {
           background: $blueTitle_color;
+          margin-right: 21%;
 
           &:hover,
           &:focus {
@@ -3361,181 +3362,6 @@ body {
   /*----------------------------------------- End Upload Img Section Include -----------------------------------------*/
 }
 
-/*----------------------------------------- Start Old Footer -----------------------------------------*/
-
-.footer_footer {
-  &::before {
-    content: "";
-    display: block;
-    height: 70px;
-    background: linear-gradient(to top left, #383838 0%, #383838 calc(50% - 0.8px), #383838 50%, rgba(0, 0, 0, 0) calc(50% + 0.8px), rgba(0, 0, 0, 0) 100%);
-  }
-
-  .footer_content {
-    .container-fluid {
-      padding-left: 20px !important;
-      padding-right: 20px !important;
-    }
-
-    background-color: #383838;
-    color: #777;
-    padding: 20px 0;
-    font-size: 13px;
-
-    .block {
-      .block_title {
-        font-size: 22px;
-        color: $white_color;
-        text-align: right;
-      }
-
-      .block_content {
-        .ul_links {
-          text-align: right;
-          padding-right: 1.5rem;
-
-          li {
-            font-size: 15px;
-
-            a {
-              color: $white_color;
-              line-height: 2;
-              text-transform: capitalize;
-
-              &:hover,
-              &:focus {
-                color: $greyTitle_color;
-                text-decoration: underline !important;
-              }
-            }
-          }
-
-          strong {
-            color: $white_color;
-          }
-        }
-
-        .hotline {
-          color: $white_color;
-          font-size: 15px;
-
-          a {
-            color: $white_color;
-            font-size: 20px;
-
-            &:hover,
-            &:focus {
-              text-decoration: underline !important;
-              color: $greyTitle_color;
-            }
-          }
-        }
-      }
-    }
-
-    .block_bottom {
-      address {
-        color: $white_color;
-        text-align: left !important;
-      }
-    }
-  }
-
-  .rounded-social-buttons {
-    .social-button {
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-      width: 3.125rem;
-      height: 3.125rem;
-      border: 0.125rem solid transparent;
-      padding: 0;
-      text-decoration: none;
-      text-align: center;
-      color: #fefefe;
-      font-size: 1.5625rem;
-      font-weight: normal;
-      line-height: 3rem;
-      border-radius: 1.6875rem;
-      transition: all 0.5s ease;
-      margin-right: 0.5rem;
-      margin-bottom: 0.25rem;
-
-      &:hover,
-      &:focus {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
-      }
-
-      &.facebook_link {
-        background: #3b5998;
-
-        &:hover,
-        &:focus {
-          color: #3b5998;
-          background: #fefefe;
-          border-color: #3b5998;
-        }
-      }
-
-      &.whatsapp_link {
-        background: #25D366;
-
-        &:hover,
-        &:focus {
-          color: #25D366;
-          background: #fefefe;
-          border-color: #25D366;
-        }
-      }
-
-      &.phone_link {
-        background: #00AFF0;
-
-        &:hover,
-        &:focus {
-          color: #00AFF0;
-          background: #fefefe;
-          border-color: #00AFF0;
-        }
-      }
-
-      &.sms_link {
-        background: #007bb5;
-
-        &:hover,
-        &:focus {
-          color: #007bb5;
-          background: #fefefe;
-          border-color: #007bb5;
-        }
-      }
-
-      &.mail_link {
-        background: #ffa930;
-
-        &:hover,
-        &:focus {
-          color: #ffa930;
-          background: #fefefe;
-          border-color: #ffa930;
-        }
-      }
-
-      .facebook_icon,
-      .whatsapp_icon,
-      .phone_icon,
-      .sms_icon,
-      .mail_icon {
-        font-size: 25px;
-      }
-    }
-  }
-}
-
-/*----------------------------------------- End Old Footer -----------------------------------------*/
-
 /*----------------------------------------- Start New Footer -----------------------------------------*/
 .new_footer {
   background-color: #dddddd;
@@ -4508,16 +4334,6 @@ body {
           }
         }
 
-        #add_to {
-          width: 55% !important;
-          right: 29%;
-        }
-
-        .notify_me {
-          width: 60% !important;
-          right: 27%;
-        }
-
         .col-md-12 {
           &.padding_right_mob {
             padding-left: 0 !important;
@@ -4526,6 +4342,22 @@ body {
       }
 
       .quantity-form {
+        #add_to {
+          width: 55% !important;
+          right: 29%;
+        }
+
+        .limit_exceed {
+          width: 60% !important;
+          font-size: 0.85rem;
+          right: 27%;
+        }
+
+        .notify_me {
+          width: 60% !important;
+          right: 27%;
+        }
+
         .fav_product {
           left: 0%;
         }
@@ -4543,6 +4375,10 @@ body {
           line-height: 2rem;
           margin: 0 auto;
           margin-left: 0.25rem;
+
+          &.download_link {
+            margin-right: 11%;
+          }
 
           .facebook_icon,
           .whatsapp_icon,
@@ -5231,73 +5067,6 @@ body {
         .col-12 {
           padding-left: 0 !important;
           padding-right: 0 !important;
-        }
-      }
-    }
-  }
-
-  // Footer Page
-  .footer_footer {
-    .footer_content {
-      padding: 10px 0;
-      font-size: 11px;
-
-      .mobile_center {
-        text-align: center;
-
-        .block {
-          .block_title {
-            text-align: center !important;
-          }
-
-          .block_content {
-            .ul_links {
-              text-align: center !important;
-            }
-          }
-        }
-      }
-
-      .block {
-        .block_content {
-          .no_padding_mobile {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
-          }
-
-          .ul_links {
-            padding-right: 0;
-
-            a {
-              strong {
-                font-size: 15px;
-              }
-            }
-          }
-        }
-      }
-
-      .block_bottom {
-        address {
-          text-align: center !important;
-        }
-      }
-    }
-
-    .rounded-social-buttons {
-      .social-button {
-        width: 2.5rem;
-        height: 2.5rem;
-        line-height: 2.25rem;
-        margin-right: 0.75rem;
-
-        .facebook_icon,
-        .whatsapp_icon,
-        .twitter_icon,
-        .youtube_icon,
-        .instagram_icon,
-        .linkedin_icon {
-          font-size: 1.5rem;
         }
       }
     }
@@ -6052,16 +5821,6 @@ body {
           }
         }
 
-        #add_to {
-          width: 60% !important;
-          right: 23%;
-        }
-
-        .notify_me {
-          width: 60% !important;
-          right: 24%;
-        }
-
         .col-md-12 {
           &.padding_right_mob {
             padding-left: 0 !important;
@@ -6070,6 +5829,21 @@ body {
       }
 
       .quantity-form {
+        #add_to {
+          width: 60% !important;
+          right: 23%;
+        }
+
+        .limit_exceed {
+          width: 60% !important;
+          font-size: 0.85rem;
+          right: 23%;
+        }
+
+        .notify_me {
+          width: 60% !important;
+          right: 24%;
+        }
         .fav_product {
           left: 5%;
         }
@@ -6087,6 +5861,10 @@ body {
           line-height: 2rem;
           margin: 0 auto;
           margin-left: 0.25rem;
+
+          &.download_link {
+            margin-right: 16%;
+          }
 
           .facebook_icon,
           .whatsapp_icon,
@@ -6788,73 +6566,6 @@ body {
     }
   }
 
-  // Footer Page
-  .footer_footer {
-    .footer_content {
-      padding: 10px 0;
-      font-size: 11px;
-
-      .mobile_center {
-        text-align: center;
-
-        .block {
-          .block_title {
-            text-align: center !important;
-          }
-
-          .block_content {
-            .ul_links {
-              text-align: center !important;
-            }
-          }
-        }
-      }
-
-      .block {
-        .block_content {
-          .no_padding_mobile {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
-          }
-
-          .ul_links {
-            padding-right: 0;
-
-            a {
-              strong {
-                font-size: 15px;
-              }
-            }
-          }
-        }
-      }
-
-      .block_bottom {
-        address {
-          text-align: center !important;
-        }
-      }
-    }
-
-    .rounded-social-buttons {
-      .social-button {
-        width: 2.75rem;
-        height: 2.75rem;
-        line-height: 2.5rem;
-        margin-right: 1.30rem;
-
-        .facebook_icon,
-        .whatsapp_icon,
-        .twitter_icon,
-        .youtube_icon,
-        .instagram_icon,
-        .linkedin_icon {
-          font-size: 1.5rem;
-        }
-      }
-    }
-  }
-
   .new_footer {
     text-align: center;
 
@@ -7131,6 +6842,14 @@ body {
           }
         }
       }
+
+      .rounded-social-buttons {
+        .social-button {
+          &.download_link {
+            margin-right: 10%;
+          }
+        }
+      }
     }
 
     .based_selection {
@@ -7214,19 +6933,6 @@ body {
       .all_forms {
         .btn_log_fb {
           width: 50% !important;
-        }
-      }
-    }
-  }
-
-  .footer_footer {
-    .footer_content {
-      .block_brand_content {
-        .block_content {
-          .no_padding_mobile {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
-          }
         }
       }
     }
@@ -7628,12 +7334,24 @@ body {
           height: 48px;
         }
 
+        .limit_exceed {
+          right: 22%;
+        }
+
         .notify_me {
           right: 22%;
         }
 
         .fav_product {
           left: 14%;
+        }
+      }
+
+      .rounded-social-buttons {
+        .social-button {
+          &.download_link {
+            margin-right: 8%;
+          }
         }
       }
 
@@ -7769,26 +7487,6 @@ body {
             .btn_log_fb {
               width: 50% !important;
             }
-          }
-        }
-      }
-    }
-  }
-
-  .footer_footer {
-    .footer_content {
-      .rounded-social-buttons {
-        .social-button {
-          width: 2.125rem;
-          height: 2.125rem;
-          line-height: 1.75rem;
-
-          .facebook_icon,
-          .whatsapp_icon,
-          .phone_icon,
-          .sms_icon,
-          .mail_icon {
-            font-size: 20px;
           }
         }
       }
@@ -8348,6 +8046,14 @@ body {
 
         .fav_product {
           left: 18%;
+        }
+      }
+
+      .rounded-social-buttons {
+        .social-button {
+          &.download_link {
+            margin-right: 12%;
+          }
         }
       }
     }

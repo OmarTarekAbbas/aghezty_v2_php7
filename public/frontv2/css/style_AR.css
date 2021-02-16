@@ -1284,6 +1284,7 @@ body {
 }
 .main #inner-page .rounded-social-buttons .social-button.download_link {
   background: #085C9B;
+  margin-right: 21%;
 }
 .main #inner-page .rounded-social-buttons .social-button.download_link:hover, .main #inner-page .rounded-social-buttons .social-button.download_link:focus {
   color: #085C9B;
@@ -2579,136 +2580,6 @@ body {
   margin-left: 1rem;
 }
 
-/*----------------------------------------- Start Old Footer -----------------------------------------*/
-.footer_footer::before {
-  content: "";
-  display: block;
-  height: 70px;
-  background: linear-gradient(to top left, #383838 0%, #383838 calc(50% - 0.8px), #383838 50%, rgba(0, 0, 0, 0) calc(50% + 0.8px), rgba(0, 0, 0, 0) 100%);
-}
-.footer_footer .footer_content {
-  background-color: #383838;
-  color: #777;
-  padding: 20px 0;
-  font-size: 13px;
-}
-.footer_footer .footer_content .container-fluid {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-.footer_footer .footer_content .block .block_title {
-  font-size: 22px;
-  color: #FFF;
-  text-align: right;
-}
-.footer_footer .footer_content .block .block_content .ul_links {
-  text-align: right;
-  padding-right: 1.5rem;
-}
-.footer_footer .footer_content .block .block_content .ul_links li {
-  font-size: 15px;
-}
-.footer_footer .footer_content .block .block_content .ul_links li a {
-  color: #FFF;
-  line-height: 2;
-  text-transform: capitalize;
-}
-.footer_footer .footer_content .block .block_content .ul_links li a:hover, .footer_footer .footer_content .block .block_content .ul_links li a:focus {
-  color: #666;
-  text-decoration: underline !important;
-}
-.footer_footer .footer_content .block .block_content .ul_links strong {
-  color: #FFF;
-}
-.footer_footer .footer_content .block .block_content .hotline {
-  color: #FFF;
-  font-size: 15px;
-}
-.footer_footer .footer_content .block .block_content .hotline a {
-  color: #FFF;
-  font-size: 20px;
-}
-.footer_footer .footer_content .block .block_content .hotline a:hover, .footer_footer .footer_content .block .block_content .hotline a:focus {
-  text-decoration: underline !important;
-  color: #666;
-}
-.footer_footer .footer_content .block_bottom address {
-  color: #FFF;
-  text-align: left !important;
-}
-.footer_footer .rounded-social-buttons .social-button {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  width: 3.125rem;
-  height: 3.125rem;
-  border: 0.125rem solid transparent;
-  padding: 0;
-  text-decoration: none;
-  text-align: center;
-  color: #fefefe;
-  font-size: 1.5625rem;
-  font-weight: normal;
-  line-height: 3rem;
-  border-radius: 1.6875rem;
-  transition: all 0.5s ease;
-  margin-right: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-.footer_footer .rounded-social-buttons .social-button:hover, .footer_footer .rounded-social-buttons .social-button:focus {
-  -webkit-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  transform: rotate(360deg);
-}
-.footer_footer .rounded-social-buttons .social-button.facebook_link {
-  background: #3b5998;
-}
-.footer_footer .rounded-social-buttons .social-button.facebook_link:hover, .footer_footer .rounded-social-buttons .social-button.facebook_link:focus {
-  color: #3b5998;
-  background: #fefefe;
-  border-color: #3b5998;
-}
-.footer_footer .rounded-social-buttons .social-button.whatsapp_link {
-  background: #25D366;
-}
-.footer_footer .rounded-social-buttons .social-button.whatsapp_link:hover, .footer_footer .rounded-social-buttons .social-button.whatsapp_link:focus {
-  color: #25D366;
-  background: #fefefe;
-  border-color: #25D366;
-}
-.footer_footer .rounded-social-buttons .social-button.phone_link {
-  background: #00AFF0;
-}
-.footer_footer .rounded-social-buttons .social-button.phone_link:hover, .footer_footer .rounded-social-buttons .social-button.phone_link:focus {
-  color: #00AFF0;
-  background: #fefefe;
-  border-color: #00AFF0;
-}
-.footer_footer .rounded-social-buttons .social-button.sms_link {
-  background: #007bb5;
-}
-.footer_footer .rounded-social-buttons .social-button.sms_link:hover, .footer_footer .rounded-social-buttons .social-button.sms_link:focus {
-  color: #007bb5;
-  background: #fefefe;
-  border-color: #007bb5;
-}
-.footer_footer .rounded-social-buttons .social-button.mail_link {
-  background: #ffa930;
-}
-.footer_footer .rounded-social-buttons .social-button.mail_link:hover, .footer_footer .rounded-social-buttons .social-button.mail_link:focus {
-  color: #ffa930;
-  background: #fefefe;
-  border-color: #ffa930;
-}
-.footer_footer .rounded-social-buttons .social-button .facebook_icon,
-.footer_footer .rounded-social-buttons .social-button .whatsapp_icon,
-.footer_footer .rounded-social-buttons .social-button .phone_icon,
-.footer_footer .rounded-social-buttons .social-button .sms_icon,
-.footer_footer .rounded-social-buttons .social-button .mail_icon {
-  font-size: 25px;
-}
-
-/*----------------------------------------- End Old Footer -----------------------------------------*/
 /*----------------------------------------- Start New Footer -----------------------------------------*/
 .new_footer {
   background-color: #dddddd;
@@ -3397,16 +3268,21 @@ body {
     margin: 0 auto;
     margin-bottom: 5%;
   }
-  .main #inner-page .info #add_to {
+  .main #inner-page .info .col-md-12.padding_right_mob {
+    padding-left: 0 !important;
+  }
+  .main #inner-page .quantity-form #add_to {
     width: 55% !important;
     right: 29%;
   }
-  .main #inner-page .info .notify_me {
+  .main #inner-page .quantity-form .limit_exceed {
     width: 60% !important;
+    font-size: 0.85rem;
     right: 27%;
   }
-  .main #inner-page .info .col-md-12.padding_right_mob {
-    padding-left: 0 !important;
+  .main #inner-page .quantity-form .notify_me {
+    width: 60% !important;
+    right: 27%;
   }
   .main #inner-page .quantity-form .fav_product {
     left: 0%;
@@ -3423,6 +3299,9 @@ body {
     line-height: 2rem;
     margin: 0 auto;
     margin-left: 0.25rem;
+  }
+  .main #inner-page .rounded-social-buttons .social-button.download_link {
+    margin-right: 11%;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
@@ -3866,47 +3745,6 @@ body {
   .main .your_comments form .col-12 {
     padding-left: 0 !important;
     padding-right: 0 !important;
-  }
-
-  .footer_footer .footer_content {
-    padding: 10px 0;
-    font-size: 11px;
-  }
-  .footer_footer .footer_content .mobile_center {
-    text-align: center;
-  }
-  .footer_footer .footer_content .mobile_center .block .block_title {
-    text-align: center !important;
-  }
-  .footer_footer .footer_content .mobile_center .block .block_content .ul_links {
-    text-align: center !important;
-  }
-  .footer_footer .footer_content .block .block_content .no_padding_mobile {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-  .footer_footer .footer_content .block .block_content .ul_links {
-    padding-right: 0;
-  }
-  .footer_footer .footer_content .block .block_content .ul_links a strong {
-    font-size: 15px;
-  }
-  .footer_footer .footer_content .block_bottom address {
-    text-align: center !important;
-  }
-  .footer_footer .rounded-social-buttons .social-button {
-    width: 2.5rem;
-    height: 2.5rem;
-    line-height: 2.25rem;
-    margin-right: 0.75rem;
-  }
-  .footer_footer .rounded-social-buttons .social-button .facebook_icon,
-.footer_footer .rounded-social-buttons .social-button .whatsapp_icon,
-.footer_footer .rounded-social-buttons .social-button .twitter_icon,
-.footer_footer .rounded-social-buttons .social-button .youtube_icon,
-.footer_footer .rounded-social-buttons .social-button .instagram_icon,
-.footer_footer .rounded-social-buttons .social-button .linkedin_icon {
-    font-size: 1.5rem;
   }
 
   .new_footer {
@@ -4425,16 +4263,21 @@ body {
     margin: 0 auto;
     margin-bottom: 5%;
   }
-  .main #inner-page .info #add_to {
+  .main #inner-page .info .col-md-12.padding_right_mob {
+    padding-left: 0 !important;
+  }
+  .main #inner-page .quantity-form #add_to {
     width: 60% !important;
     right: 23%;
   }
-  .main #inner-page .info .notify_me {
+  .main #inner-page .quantity-form .limit_exceed {
+    width: 60% !important;
+    font-size: 0.85rem;
+    right: 23%;
+  }
+  .main #inner-page .quantity-form .notify_me {
     width: 60% !important;
     right: 24%;
-  }
-  .main #inner-page .info .col-md-12.padding_right_mob {
-    padding-left: 0 !important;
   }
   .main #inner-page .quantity-form .fav_product {
     left: 5%;
@@ -4451,6 +4294,9 @@ body {
     line-height: 2rem;
     margin: 0 auto;
     margin-left: 0.25rem;
+  }
+  .main #inner-page .rounded-social-buttons .social-button.download_link {
+    margin-right: 16%;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
@@ -4900,47 +4746,6 @@ body {
     padding-right: 0 !important;
   }
 
-  .footer_footer .footer_content {
-    padding: 10px 0;
-    font-size: 11px;
-  }
-  .footer_footer .footer_content .mobile_center {
-    text-align: center;
-  }
-  .footer_footer .footer_content .mobile_center .block .block_title {
-    text-align: center !important;
-  }
-  .footer_footer .footer_content .mobile_center .block .block_content .ul_links {
-    text-align: center !important;
-  }
-  .footer_footer .footer_content .block .block_content .no_padding_mobile {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-  .footer_footer .footer_content .block .block_content .ul_links {
-    padding-right: 0;
-  }
-  .footer_footer .footer_content .block .block_content .ul_links a strong {
-    font-size: 15px;
-  }
-  .footer_footer .footer_content .block_bottom address {
-    text-align: center !important;
-  }
-  .footer_footer .rounded-social-buttons .social-button {
-    width: 2.75rem;
-    height: 2.75rem;
-    line-height: 2.5rem;
-    margin-right: 1.3rem;
-  }
-  .footer_footer .rounded-social-buttons .social-button .facebook_icon,
-.footer_footer .rounded-social-buttons .social-button .whatsapp_icon,
-.footer_footer .rounded-social-buttons .social-button .twitter_icon,
-.footer_footer .rounded-social-buttons .social-button .youtube_icon,
-.footer_footer .rounded-social-buttons .social-button .instagram_icon,
-.footer_footer .rounded-social-buttons .social-button .linkedin_icon {
-    font-size: 1.5rem;
-  }
-
   .new_footer {
     text-align: center;
   }
@@ -5105,6 +4910,9 @@ body {
 .main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.right_slider {
     right: -3.5rem;
   }
+  .main #inner-page .rounded-social-buttons .social-button.download_link {
+    margin-right: 10%;
+  }
   .main .based_selection .content_view {
     height: 350px !important;
   }
@@ -5142,11 +4950,6 @@ body {
   }
   .main .log_in .all_forms .btn_log_fb {
     width: 50% !important;
-  }
-
-  .footer_footer .footer_content .block_brand_content .block_content .no_padding_mobile {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
   }
 
   .new_footer {
@@ -5353,11 +5156,17 @@ body {
     top: 0px;
     height: 48px;
   }
+  .main #inner-page .quantity-form .limit_exceed {
+    right: 22%;
+  }
   .main #inner-page .quantity-form .notify_me {
     right: 22%;
   }
   .main #inner-page .quantity-form .fav_product {
     left: 14%;
+  }
+  .main #inner-page .rounded-social-buttons .social-button.download_link {
+    margin-right: 8%;
   }
   .main #inner-page #carouselExampleControls {
     width: 100% !important;
@@ -5444,19 +5253,6 @@ body {
 .main .log_in .my_profile_bg form .all_forms .btn_log_fb,
 .main .log_in .log_in_bg form .all_forms .btn_log_fb {
     width: 50% !important;
-  }
-
-  .footer_footer .footer_content .rounded-social-buttons .social-button {
-    width: 2.125rem;
-    height: 2.125rem;
-    line-height: 1.75rem;
-  }
-  .footer_footer .footer_content .rounded-social-buttons .social-button .facebook_icon,
-.footer_footer .footer_content .rounded-social-buttons .social-button .whatsapp_icon,
-.footer_footer .footer_content .rounded-social-buttons .social-button .phone_icon,
-.footer_footer .footer_content .rounded-social-buttons .social-button .sms_icon,
-.footer_footer .footer_content .rounded-social-buttons .social-button .mail_icon {
-    font-size: 20px;
   }
 
   .new_footer {
@@ -5732,6 +5528,9 @@ body {
   }
   .main #inner-page .quantity-form .fav_product {
     left: 18%;
+  }
+  .main #inner-page .rounded-social-buttons .social-button.download_link {
+    margin-right: 12%;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;
