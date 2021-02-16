@@ -756,6 +756,11 @@
     </div>
   </footer>
 
+  <!-- Scroll Up -->
+  <a class="rounded" href="javascript:" id="return-to-top">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+
   <!-- script -->
   <!-- jQuery JS -->
   <script src="{{url('public/frontv2/js/jquery-3.3.1.min.js')}}"></script>

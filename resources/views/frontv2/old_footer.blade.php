@@ -439,8 +439,5 @@
     </div>
     </div>
 
-    <!-- Scroll Up -->
-    <a class="rounded" href="javascript:" id="return-to-top">
-      <i class="fas fa-chevron-up"></i>
-    </a>
+    
   </footer> --}}

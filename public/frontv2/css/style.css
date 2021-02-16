@@ -704,6 +704,7 @@ body {
 }
 .main #grid_two .col-md-6 .content_view {
   width: 100% !important;
+  height: 471px;
   text-align: center !important;
 }
 .main #grid_two .col-md-6 .content_view a img {
@@ -2517,7 +2518,7 @@ body {
   position: fixed;
   bottom: 20px;
   left: 95%;
-  background-color: #ffa841;
+  background-color: #085C9B;
   width: 50px;
   height: 50px;
   text-decoration: none;
@@ -3918,12 +3919,24 @@ body {
     font-size: 12px;
     margin-top: 8px;
   }
+  .main .content_view_mobile .content_view .price-box {
+    text-align: center !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+  }
+  .main .content_view_mobile .content_view .price-box .regular-price {
+    font-size: 0.9rem;
+  }
+  .main .content_view_mobile .content_view .price-box .old-price {
+    float: inherit;
+  }
   .main .content_view_mobile .content_view .rating_list_product {
     font-size: 12px;
     text-align: center;
   }
   .main .content_view_mobile .content_view .price-description {
     font-size: 11px;
+    text-align: center;
   }
   .main .content_view_mobile .content_view .price-box .regular-price .price {
     font-size: 13px;
@@ -5276,7 +5289,7 @@ body {
     left: -1.5%;
   }
   .main #grid_two .col-md-6 .content_view {
-    height: 335px;
+    height: 355px;
   }
   .main #grid_two .col-md-6 .content_view a img {
     height: 223px;
