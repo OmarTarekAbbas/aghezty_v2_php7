@@ -122,7 +122,7 @@
     height: 4em;
     width: 4em;
     margin-left: -2em;
-    border: .375em solid #ffeb00;
+    border: .375em solid #085C9B;
     border-right-style: double;
     border-radius: 50%;
     animation: rotation .8s linear infinite;

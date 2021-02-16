@@ -1532,6 +1532,21 @@ body {
         }
       }
 
+      .limit_exceed {
+        background-color: $blueTitle_color;
+        color: #FFF;
+        position: absolute;
+        right: 13%;
+        top: 0px;
+        height: 48px;
+        white-space: normal;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.50);
+        }
+      }
+
       .notify_me {
         background-color: $blueTitle_color;
         color: #FFF;
@@ -1928,7 +1943,7 @@ body {
             left: 0;
             text-align: center;
             width: 100%;
-            color: #ffc600;
+            color: $blueTitle_color;
             transform: scale(0);
           }
         }
@@ -7869,6 +7884,14 @@ body {
         }
       }
     }
+
+    #inner-page {
+      .quantity-form {
+        .limit_exceed {
+          right: 17%;
+        }
+      }
+    }
   }
 }
 
@@ -8043,6 +8066,14 @@ body {
       .quantity-form {
         #add_to {
           right: 25%;
+        }
+
+        .limit_exceed {
+          right: 26%;
+        }
+
+        .notify_me {
+          right: 26%;
         }
 
         .fav_product {
@@ -8287,8 +8318,16 @@ body {
           right: 20%;
         }
 
+        .limit_exceed {
+          right: 18%;
+        }
+
+        .notify_me {
+          right: 18%;
+        }
+
         .fav_product {
-          left: 22%;
+          left: 18%;
         }
       }
     }
@@ -8548,6 +8587,10 @@ body {
       .quantity-form {
         #add_to {
           right: 20%;
+        }
+
+        .limit_exceed {
+          right: 17%;
         }
 
         .fav_product {

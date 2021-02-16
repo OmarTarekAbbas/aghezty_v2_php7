@@ -264,7 +264,7 @@
           @if($product->stock > 0 && checkbuyLimit($product->id)['status'])
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right" id="add_to">@lang('front.buy_now')</button>
           @elseif(!checkbuyLimit($product->id)['status'])
-          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me">{{ trans('front.You have exceeded the limit to buy this item') }} </button>
+          <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right limit_exceed">{{ trans('front.You have exceeded the limit to buy this item') }} </button>
           @else
           <button class="w-50 btn float-left font-weight-bold text-capitalize hvr-wobble-to-bottom-right notify_me" data-toggle="modal" data-target="#notify_me_modal" type="button">@lang('front.notify_me')</button>
           @endif
@@ -388,7 +388,6 @@
                   <label for="exampleFormControlInput2">@lang('front.auth.phone') *</label>
                   <input type="tel" id="exampleFormControlInput2" class="form-control hvr-float" name="phone" value="{{Auth::guard('client')->check()?Auth::guard('client')->user()->phone:''}}" placeholder="@lang('front.auth.phone') ">
                 </div>
-
 
                 <div class="form-group col-md-4 col-lg-4 col-xl-4 col-6 text-dark">
                   <label for="exampleFormControlSelect1">@lang('front.governorate')</label>

@@ -1471,13 +1471,28 @@ body {
         }
       }
 
+      .limit_exceed {
+        background-color: $blueTitle_color;
+        color: #FFF;
+        position: absolute;
+        left: 17%;
+        top: 0px;
+        height: 48px;
+        white-space: normal;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.50);
+        }
+      }
+
       .notify_me {
         background-color: $blueTitle_color;
         color: #FFF;
         position: absolute;
         left: 13%;
         top: 0px;
-        height: 52px;
+        height: 48px;
         white-space: normal;
 
         &:hover,
@@ -1843,7 +1858,7 @@ body {
             left: 0;
             text-align: center;
             width: 100%;
-            color: #ffc600;
+            color: $blueTitle_color;
             transform: scale(0);
           }
         }
@@ -4197,6 +4212,12 @@ body {
           left: 28%;
         }
 
+        .limit_exceed {
+          width: 60% !important;
+          font-size: 0.85rem;
+          left: 25%;
+        }
+
         .notify_me {
           width: 60% !important;
           font-size: 0.85rem;
@@ -5705,6 +5726,12 @@ body {
 
         #add_to {
           width: 55% !important;
+          left: 23%;
+        }
+
+        .limit_exceed {
+          width: 60% !important;
+          font-size: 0.85rem;
           left: 23%;
         }
 
@@ -7246,6 +7273,10 @@ body {
           left: 22%;
         }
 
+        .limit_exceed {
+          left: 21%;
+        }
+
         .notify_me {
           left: 21%;
         }
@@ -7559,6 +7590,14 @@ body {
       }
     }
 
+    #inner-page {
+      .quantity-form {
+        .limit_exceed {
+          left: 17%;
+        }
+      }
+    }
+
     .my_profile {
       .my_profile_bg {
         .accordion_add {
@@ -7756,6 +7795,14 @@ body {
       .quantity-form {
         #add_to {
           left: 25%;
+        }
+
+        .limit_exceed {
+          left: 22%;
+        }
+
+        .notify_me {
+          left: 22%;
         }
 
         .fav_product {
@@ -7967,6 +8014,22 @@ body {
               &:focus {}
             }
           }
+        }
+      }
+    }
+
+    #inner-page {
+      .quantity-form {
+        #add_to {
+          left: 17%;
+        }
+
+        .limit_exceed {
+          left: 17%;
+        }
+
+        .notify_me {
+          left: 17%;
         }
       }
     }
@@ -8210,6 +8273,14 @@ body {
               &:focus {}
             }
           }
+        }
+      }
+    }
+
+    #inner-page {
+      .quantity-form {
+        .limit_exceed {
+          left: 17%;
         }
       }
     }

@@ -1147,13 +1147,25 @@ body {
 .main #inner-page .quantity-form #add_to:hover, .main #inner-page .quantity-form #add_to:focus {
   box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
 }
+.main #inner-page .quantity-form .limit_exceed {
+  background-color: #085C9B;
+  color: #FFF;
+  position: absolute;
+  left: 17%;
+  top: 0px;
+  height: 48px;
+  white-space: normal;
+}
+.main #inner-page .quantity-form .limit_exceed:hover, .main #inner-page .quantity-form .limit_exceed:focus {
+  box-shadow: 0 0 0 0.2rem rgba(8, 92, 155, 0.5);
+}
 .main #inner-page .quantity-form .notify_me {
   background-color: #085C9B;
   color: #FFF;
   position: absolute;
   left: 13%;
   top: 0px;
-  height: 52px;
+  height: 48px;
   white-space: normal;
 }
 .main #inner-page .quantity-form .notify_me:hover, .main #inner-page .quantity-form .notify_me:focus {
@@ -1415,7 +1427,7 @@ body {
   left: 0;
   text-align: center;
   width: 100%;
-  color: #ffc600;
+  color: #085C9B;
   transform: scale(0);
 }
 .main .review_comment .add_comment label input:focus,
@@ -3130,6 +3142,11 @@ body {
     width: 55% !important;
     left: 28%;
   }
+  .main #inner-page .info .limit_exceed {
+    width: 60% !important;
+    font-size: 0.85rem;
+    left: 25%;
+  }
   .main #inner-page .info .notify_me {
     width: 60% !important;
     font-size: 0.85rem;
@@ -4141,6 +4158,11 @@ body {
     width: 55% !important;
     left: 23%;
   }
+  .main #inner-page .info .limit_exceed {
+    width: 60% !important;
+    font-size: 0.85rem;
+    left: 23%;
+  }
   .main #inner-page .info .notify_me {
     width: 60% !important;
     font-size: 0.85rem;
@@ -5056,6 +5078,9 @@ body {
   .main #inner-page .quantity-form #add_to {
     left: 22%;
   }
+  .main #inner-page .quantity-form .limit_exceed {
+    left: 21%;
+  }
   .main #inner-page .quantity-form .notify_me {
     left: 21%;
   }
@@ -5228,6 +5253,9 @@ body {
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
     left: -2%;
   }
+  .main #inner-page .quantity-form .limit_exceed {
+    left: 17%;
+  }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;
   }
@@ -5313,6 +5341,12 @@ body {
   }
   .main #inner-page .quantity-form #add_to {
     left: 25%;
+  }
+  .main #inner-page .quantity-form .limit_exceed {
+    left: 22%;
+  }
+  .main #inner-page .quantity-form .notify_me {
+    left: 22%;
   }
   .main #inner-page .quantity-form .fav_product {
     left: 80%;
@@ -5419,6 +5453,15 @@ body {
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
     left: -1.5%;
+  }
+  .main #inner-page .quantity-form #add_to {
+    left: 17%;
+  }
+  .main #inner-page .quantity-form .limit_exceed {
+    left: 17%;
+  }
+  .main #inner-page .quantity-form .notify_me {
+    left: 17%;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;
@@ -5532,6 +5575,9 @@ body {
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
     left: -1.5%;
+  }
+  .main #inner-page .quantity-form .limit_exceed {
+    left: 17%;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 63rem;
