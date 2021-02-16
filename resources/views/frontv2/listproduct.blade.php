@@ -485,6 +485,7 @@
 @endsection
 @section('script')
 <script type="text/javascript">
+$( document ).ready(function(){
   /**
    * Method getUrlParameter
    * get Query Parmater in url
@@ -661,9 +662,13 @@
       $('body').removeClass('modal-open')
     }
   })
+})
   $( document ).ready(function(){
     var cats = ''
     $('.sub_cat_id').each(function(i, obj) {
+      if ($(this).attr("checked")) {
+        $(this).prop("checked", true)
+      }
       if ($(this).prop("checked") == true) {
         cats += $(this).val()+','
       }
@@ -793,7 +798,7 @@
         }
       },
       getOldSelectProperty() {
-        this.pr_values = getUrlParameter('property_value_id[]')
+        this.pr_values = this.getUrlParameter('property_value_id[]')
         this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
           return parseInt(x);
         }) : []
@@ -820,6 +825,11 @@
             _this.category_id.push($(this).val())
           }
         });
+      },
+      getUrlParameter(sParam) {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.getAll(sParam)
       }
     },
     created() {
@@ -912,7 +922,7 @@ const propertys_mobile = new Vue({
         }
       },
       getOldSelectProperty() {
-        this.pr_values = getUrlParameter('property_value_id[]')
+        this.pr_values = this.getUrlParameter('property_value_id[]')
         this.pr_values = this.pr_values ? this.pr_values.map(function (x) {
           return parseInt(x);
         }) : []
@@ -939,6 +949,11 @@ const propertys_mobile = new Vue({
             _this.mobile_category_id.push($(this).val())
           }
         });
+      },
+      getUrlParameter(sParam) {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.getAll(sParam)
       }
     },
     created() {
@@ -1001,13 +1016,5 @@ const propertys_mobile = new Vue({
   //   }
   // })
   /************************** child category vue *************************/
-</script>
-<script>
-window.addEventListener( "pageshow", function ( event ) {
-  var historyTraversal = event.persisted ||( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
-  if ( historyTraversal ) {
-    window.location.reload();
-  }
-});
 </script>
 @endsection
