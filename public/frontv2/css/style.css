@@ -707,8 +707,8 @@ body {
   text-align: center !important;
 }
 .main #grid_two .col-md-6 .content_view a img {
-  width: 65% !important;
-  height: 444px;
+  width: 50% !important;
+  height: 340px;
   transition: all 1.1s linear;
   -webkit-transition: all 1.1s linear;
   -moz-transition: all 1.1s linear;
@@ -2993,9 +2993,12 @@ body {
     padding-left: 0;
     padding-right: 0;
   }
+  .main .content_view_mobile .col-12 .content_view {
+    height: 430px;
+  }
   .main .content_view_mobile .col-12 .content_view a img {
     width: 100% !important;
-    height: 300px;
+    height: 312px;
   }
   .main .content_view_mobile .col-12 .content_view a .full_desc {
     text-align: center !important;
@@ -4007,9 +4010,12 @@ body {
     padding-left: 0;
     padding-right: 0;
   }
+  .main .content_view_mobile .col-12 .content_view {
+    height: 475px;
+  }
   .main .content_view_mobile .col-12 .content_view a img {
     width: 100% !important;
-    height: 300px;
+    height: 363px;
   }
   .main .content_view_mobile .col-12 .content_view a .full_desc {
     text-align: center !important;
@@ -4798,76 +4804,77 @@ body {
     height: 8rem;
     top: -3.5rem;
   }
-
-  .product_view .product_view_type .margin_bottom_mob {
+  .main .product_view .product_view_type .margin_bottom_mob {
     margin-bottom: 10px;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc {
     height: 360px;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc a img {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc a img {
     height: 175px;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc a .full_desc {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc a .full_desc {
     font-size: 15px !important;
     text-align: center;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc .price-box {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc .price-box {
     text-align: center;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .regular-price .price {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .regular-price .price {
     font-size: 18px;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .old-price {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .old-price {
     float: none;
   }
-  .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .old-price .price {
+  .main .product_view .product_view_type .margin_bottom_mob .product_desc .price-box .old-price .price {
     font-size: 15px;
   }
-
-  .content_view {
-    height: 350px !important;
+  .main #grid_two .col-md-6 .content_view {
+    height: 330px;
   }
-  .content_view a img {
-    height: 175px !important;
+  .main #grid_two .col-md-6 .content_view a img {
+    width: 70% !important;
+    height: 220px !important;
+  }
+  .main .content_view {
+    height: 330px !important;
+  }
+  .main .content_view a img {
+    height: 194px !important;
     margin: 0 auto;
   }
-
-  #inner-page #carouselExampleControls .carousel-control-next .left_slider,
-#inner-page #carouselExampleControls .carousel-control-next .right_slider,
-#inner-page #carouselExampleControls .carousel-control-prev .left_slider,
-#inner-page #carouselExampleControls .carousel-control-prev .right_slider {
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider {
     top: 9rem;
   }
-  #inner-page #carouselExampleControls .carousel-control-next .left_slider.left_slider,
-#inner-page #carouselExampleControls .carousel-control-next .right_slider.left_slider,
-#inner-page #carouselExampleControls .carousel-control-prev .left_slider.left_slider,
-#inner-page #carouselExampleControls .carousel-control-prev .right_slider.left_slider {
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider.left_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.left_slider {
     left: -2.25rem;
   }
-  #inner-page #carouselExampleControls .carousel-control-next .left_slider.right_slider,
-#inner-page #carouselExampleControls .carousel-control-next .right_slider.right_slider,
-#inner-page #carouselExampleControls .carousel-control-prev .left_slider.right_slider,
-#inner-page #carouselExampleControls .carousel-control-prev .right_slider.right_slider {
+  .main #inner-page #carouselExampleControls .carousel-control-next .left_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-next .right_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .left_slider.right_slider,
+.main #inner-page #carouselExampleControls .carousel-control-prev .right_slider.right_slider {
     right: -3.5rem;
   }
-
-  .based_selection .content_view {
+  .main .based_selection .content_view {
     height: 350px !important;
   }
-  .based_selection .content_view a .based_selection_img {
+  .main .based_selection .content_view a .based_selection_img {
     height: 170px !important;
     margin: 0 auto;
   }
-
-  .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:before {
     left: 34rem;
   }
-  .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address input[type=checkbox]:checked + label:after {
     left: 34rem;
   }
-
-  .log_in .all_forms .btn_log_fb {
+  .main .log_in .all_forms .btn_log_fb {
     width: 50% !important;
   }
 
@@ -5026,20 +5033,18 @@ body {
   .main #toggle_plus_minus .panel .z-checkbox {
     width: 100% !important;
   }
+  .main #grid_two .col-md-6 .content_view {
+    height: 394px;
+  }
   .main #grid_two .col-md-6 .content_view a img {
     width: 65% !important;
-    height: 292px;
-    /* &:hover,
-    &:focus {
-      width: 60% !important;
-      height: 270px !important;
-    } */
+    height: 282px;
   }
   .main .content_view {
-    height: 350px;
+    height: 415px;
   }
   .main .content_view a img {
-    height: 175px;
+    height: 274px;
   }
   .main #inner-page .carousel-control-next .left_slider,
 .main #inner-page .carousel-control-next .right_slider,
@@ -5299,11 +5304,18 @@ body {
   .main .product_view .product_view_type .product_desc .price-box .old-price {
     font-size: 0.7rem;
   }
+  .main #grid_two .col-md-6 .content_view {
+    height: 380px;
+  }
+  .main #grid_two .col-md-6 .content_view a img {
+    width: 65% !important;
+    height: 268px;
+  }
   .main .content_view {
-    height: 410px;
+    height: 401px;
   }
   .main .content_view a img {
-    height: 250px;
+    height: 260px;
   }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
     width: 100%;
@@ -5414,12 +5426,6 @@ body {
   .main .product_view .product_view_type .product_desc .price-box .old-price {
     font-size: 0.7rem;
   }
-  .main .content_view {
-    height: 410px;
-  }
-  .main .content_view a img {
-    height: 250px;
-  }
   .main .choose_category .choose_category_background .choose_category_form .diamond_sample {
     width: 100%;
     height: 10rem;
@@ -5453,6 +5459,18 @@ body {
   }
   .main .choose_category .logo_brands .owl-theme .owl-nav button.owl-next {
     left: -1.5%;
+  }
+  .main #grid_two .col-md-6 .content_view {
+    height: 335px;
+  }
+  .main #grid_two .col-md-6 .content_view a img {
+    height: 223px;
+  }
+  .main .content_view {
+    height: 410px;
+  }
+  .main .content_view a img {
+    height: 250px;
   }
   .main #inner-page .quantity-form #add_to {
     left: 17%;
