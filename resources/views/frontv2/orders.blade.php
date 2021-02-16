@@ -47,56 +47,59 @@
                   <div class="card-body">
                     <div class='table-responsive'>
                       @foreach ($order->products as $key=>$product)
-                      <!--Table 1-->
-                      <table id="tablePreview" class="table table-sm table-hover">
-                        <!--Table body-->
-                        <div class="table_title" style="width: 15%">
-                          <h4> <a class="text-white" href="{{route('front.home.inner.order',['id' => $order->id])}}">
-                              @lang('front.product_no') {{$key+1}} </a> </h4>
-                        </div>
+                        @if(product($product->product_id))
+                          <!--Table 1-->
+                          <table id="tablePreview" class="table table-sm table-hover">
+                            <!--Table body-->
+                            <div class="table_title" style="width: 15%">
+                              <h4> <a class="text-white" href="{{route('front.home.inner.order',['id' => $order->id])}}">
+                                  @lang('front.product_no') {{$key+1}} </a> </h4>
+                            </div>
 
-                        <tbody>
-                          <tr>
-                            <th>@lang('front.product')</th>
-                            <td>{{product($product->product_id)->getTranslation('title',getCode())}}
-                            </td>
-                          </tr>
+                            <tbody>
+                              <tr>
+                                <th>@lang('front.product')</th>
+                                <td>{{product($product->product_id)->getTranslation('title',getCode())}}
+                                </td>
+                              </tr>
 
-                          <tr>
-                            <th>@lang('front.product_image')</th>
-                            <td>
-                              <a href="{{route('front.home.inner',['id' => $product->product_id ,setSlug(product($product->product_id)->getTranslation('title',getCode()))])}}">
-                                <img class="product_image" src="{{product($product->product_id)->main_image}}"
-                                  alt="Mobile">
-                              </a>
-                            </td>
-                          </tr>
+                              <tr>
+                                <th>@lang('front.product_image')</th>
+                                <td>
+                                  <a href="{{route('front.home.inner',['id' => $product->product_id ,setSlug(product($product->product_id)->getTranslation('title',getCode()))])}}">
+                                    <img class="product_image" src="{{product($product->product_id)->main_image}}"
+                                      alt="Mobile">
+                                  </a>
+                                </td>
+                              </tr>
 
-                          <tr>
-                            <th>@lang('front.quantity')</th>
-                            <td>{{$product->quantity}}</td>
-                          </tr>
+                              <tr>
+                                <th>@lang('front.quantity')</th>
+                                <td>{{$product->quantity}}</td>
+                              </tr>
 
-                          <tr>
-                            <th>@lang('front.price')</th>
-                            <td>{{number_format($product->price)}}
-                              <span>@lang('front.pound')</span></td>
-                          </tr>
-                          @if($product->discount)
-                          <tr>
-                            <th>@lang('front.discount')</th>
-                            <td>{{$product->discount}} <span>%</span></td>
-                          </tr>
-                          @endif
-                          <tr>
-                            <th>@lang('front.total_price')</th>
-                            <td>{{number_format($product->total_price)}}
-                              <span>@lang('front.pound')</span></td>
-                          </tr>
-                        </tbody>
-                        <!--Table body-->
-                      </table>
-                      <!--Table 1-->
+                              <tr>
+                                <th>@lang('front.price')</th>
+                                <td>{{number_format($product->price)}}
+                                  <span>@lang('front.pound')</span></td>
+                              </tr>
+                              @if($product->discount)
+                              <tr>
+                                <th>@lang('front.discount')</th>
+                                <td>{{$product->discount}} <span>%</span></td>
+                              </tr>
+                              @endif
+                              <tr>
+                                <th>@lang('front.total_price')</th>
+                                <td>{{number_format($product->total_price)}}
+                                  <span>@lang('front.pound')</span></td>
+                              </tr>
+                            </tbody>
+
+                            <!--Table body-->
+                          </table>
+                          <!--Table 1-->
+                        @endif
                       <div class="w-100 border-bottom border-dark mt-4"></div>
                       @endforeach
                     </div>
