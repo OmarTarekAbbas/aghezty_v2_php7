@@ -3917,6 +3917,21 @@ body {
           }
         }
 
+        .price-box {
+          text-align: center !important;
+          margin-left: -0.5rem !important;
+          margin-right: -0.5rem !important;
+
+          .regular-price {
+            font-size: 0.9rem;
+          }
+
+          .old-price {
+            float: inherit;
+            // display: inline;
+          }
+        }
+
         .rating_list_product {
           font-size: 12px;
           text-align: center;

@@ -3164,6 +3164,17 @@ body {
     font-size: 12px;
     margin-top: 8px;
   }
+  .main .content_view_mobile .content_view .price-box {
+    text-align: center !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+  }
+  .main .content_view_mobile .content_view .price-box .regular-price {
+    font-size: 0.9rem;
+  }
+  .main .content_view_mobile .content_view .price-box .old-price {
+    float: inherit;
+  }
   .main .content_view_mobile .content_view .rating_list_product {
     font-size: 12px;
     text-align: center;
