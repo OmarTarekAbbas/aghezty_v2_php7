@@ -127,8 +127,8 @@ class Product extends Model
 
     static::addGlobalScope('price', function (Builder $builder) {
       $builder->where(function($q){
-        $q->where('price', '>', 0)
-        ->orWhere('price_after_discount', '>', 0);
+        $q->where('products.price', '>', 0)
+        ->orWhere('products.price_after_discount', '>', 0);
       });
     });
 
