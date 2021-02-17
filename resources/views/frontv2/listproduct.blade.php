@@ -588,7 +588,7 @@ $( document ).ready(function(){
     });
 
   }
-  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer2 , #sorted', function() {
+  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
     $('#most_solid').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')

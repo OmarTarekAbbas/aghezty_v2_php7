@@ -2338,7 +2338,7 @@ class HomeController extends Controller
        //dd($request->brand_id);
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
         if ($request->sub_category_id) {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -2462,7 +2462,7 @@ class HomeController extends Controller
     public function productsv2Filter(Request $request)
     {
 
-        $products = Product::select('products.*','products.id as product_id');
+        $products = Product::stock()->select('products.*','products.id as product_id');
 
         if ($request->category_name) {
           $products = $products->whereHas("category",function($builder) {
