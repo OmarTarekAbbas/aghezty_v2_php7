@@ -22,6 +22,7 @@ trait Translatable {
     protected $fallback;
 
     public function __construct() {
+        parent::__construct();
         // if the user didn't spacify a fallback in the parent model it gives is the first language as value
         if (empty($this->fallback_locale)) {
             $this->fallback = \Config::get('app.fallback_locale');

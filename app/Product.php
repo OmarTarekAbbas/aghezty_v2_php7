@@ -1,13 +1,16 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 use App\Traits\Translatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Product extends Model
 {
-  use Translatable;
+  use Translatable, SoftDeletes;
   protected $table="products";
   protected $fillable = ['title','main_image','price','discount','price_after_discount',
                         'special','active','description','short_description','category_id','brand_id','stock', 'inch','sku',
@@ -123,8 +126,10 @@ class Product extends Model
     parent::boot();
 
     static::addGlobalScope('price', function (Builder $builder) {
-      $builder->where('price', '>', 0)
-      ->orWhere('price_after_discount', '>', 0);
+      $builder->where(function($q){
+        $q->where('price', '>', 0)
+        ->orWhere('price_after_discount', '>', 0);
+      });
     });
 
     static::deleting(function($product) { // before delete() method call this

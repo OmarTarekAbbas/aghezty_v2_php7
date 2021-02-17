@@ -364,12 +364,7 @@ class ProductController extends Controller
                 unlink(base_path('/uploads/product/images/'.basename($image->image))) ;
             }
         }
-        if($product->delete()){
-        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products = new DeleteProduct();
-        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products->product_id	= $id;
-        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products->category_id	= $product->category_id;
-        $delete_the_product_from_this_table_and_save_it_in_the_table_delete_products->save();
-        }
+        $product->delete();
         \Session::flash('success', 'Product Delete Successfully');
         return back();
 
