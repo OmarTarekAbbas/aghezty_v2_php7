@@ -76,7 +76,7 @@
               @else
 
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || request()->filled("offer") || request()->route("parent_name") || request()->route("brand_name"))
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || (request()->filled("offer") && !request()->route("category_name")) || request()->route("parent_name") || request()->route("brand_name"))
                   <div class="z-checkbox">
                     <input  id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
                       type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
@@ -238,7 +238,7 @@
                 @endforeach
               @else
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || request()->filled("offer")|| request()->route("parent_name") || request()->route("brand_name"))
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || request()->filled("most_solid") || (request()->filled("offer") && !request()->route("category_name"))|| request()->route("parent_name") || request()->route("brand_name"))
                 <div class="z-checkbox" >
                   <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
                   {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)))?'checked':''}}
@@ -497,8 +497,9 @@ $( document ).ready(function(){
       return urlParams.getAll(sParam)
   }
 
-  var start = 0;
+  var start  = 0;
   var action = 'inactive';
+  var click  = 0;
   $('.load').hide();
   $(window).on("scroll", function() {
     if ($(window).scrollTop() + $(window).height() > $("#grid_two").height() && action == 'inactive') {
@@ -587,7 +588,7 @@ $( document ).ready(function(){
     });
 
   }
-  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
+  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer2 , #sorted', function() {
     $('#most_solid').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
@@ -612,8 +613,9 @@ $( document ).ready(function(){
         $('.load').hide();
       },
     });
+
     var full_url = fullUrl()
-    if(!($(this).hasClass("brand_id") || $(this).hasClass("sub_cat_id"))) {
+    if(($(".price:checkbox, .property, .offer").filter(":checked")).length) {
       full_url += "?"+$("#filter_form").serialize()
     }
     history.pushState({}, null, full_url);
@@ -649,7 +651,10 @@ $( document ).ready(function(){
         $('.load').hide();
       },
     });
-    var full_url = fullUrl()+"?"+$("#filter_form").serialize()
+    var full_url = fullUrl()
+    if(($(".price:checkbox, .property, .offer").filter(":checked")).length) {
+      full_url += "?"+$("#filter_form").serialize()
+    }
     history.pushState({}, null, full_url);
   })
   $('#button_jq , .fa-sliders-h').click(function() {
@@ -663,11 +668,13 @@ $( document ).ready(function(){
     }
   })
 })
-  $( document ).ready(function(){
+$( document ).ready(function(){
     var cats = ''
     $('.sub_cat_id').each(function(i, obj) {
       if ($(this).attr("checked")) {
         $(this).prop("checked", true)
+      } else {
+        $(this).removeAttr("checked")
       }
       if ($(this).prop("checked") == true) {
         cats += $(this).val()+','
