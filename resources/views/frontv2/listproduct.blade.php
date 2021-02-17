@@ -211,7 +211,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h6 class="modal-title" style="font-weight: bold;">Filter Your Selection</h6>
+              <h6 class="modal-title" style="font-weight: bold;">{{ trans('front.Filter Your Selection') }}</h6>
               <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

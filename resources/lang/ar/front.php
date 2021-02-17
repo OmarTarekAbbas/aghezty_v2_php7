@@ -120,6 +120,7 @@ return [
     'page'  => 'هذه الصفحة',
     'visa_terms' => 'احكام وشروط الدفع الالكترونى',
     'You have exceeded the limit to buy this item' => 'تخطيت الحد الاقصي  قطعتين',
+    'Filter Your Selection' => 'فلتر بواسطه',
     'inner' => [
       'add_your_review' => 'اضف تعليقك',
       'reviews' => 'التعليقات',

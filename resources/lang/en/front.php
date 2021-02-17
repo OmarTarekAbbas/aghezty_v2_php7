@@ -121,6 +121,7 @@ return [
     'filter' => 'Filter',
     'visa_terms' => 'Visa Terms',
     'You have exceeded the limit to buy this item' => 'You exceed limit 2 pieces',
+    'Filter Your Selection' => 'Filter Your Selection',
     'inner' => [
         'add_your_review' => 'Add Your Review',
         'reviews' => 'Reviews',
