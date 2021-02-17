@@ -1349,6 +1349,9 @@ class HomeController extends Controller
 
         if (!$product) {
           $product = Product::withTrashed()->latest('created_at')->whereId($id)->where('products.active', 1)->first();
+          if(!$product || !$product->category){
+            return abort(404);
+          }
           $get_category = Category::where("id",$product->category_id)->first();
           return redirect(route("front.home.search.category",['sub_category_id' => $get_category->id, 'slug' => setSlug($get_category->title)]));
         }
