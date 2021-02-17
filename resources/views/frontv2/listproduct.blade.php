@@ -169,6 +169,17 @@
             </div>
           </div>
 
+          <button type="button" class="accordion active  w-100 border border-light text-uppercase">@lang('front.most_solid')
+            <i class="fas fa-minus float-right"></i>
+          </button>
+
+          <div class="panel w-100 border border-light">
+            <div class="z-checkbox">
+              <input id="panel_40" class="mb-2 most_solid" {{isset($_REQUEST['most_solid'])?'checked':''}} type="checkbox" name="most_solid" value="most_solid">
+              <label class="d-block text-capitalize" for="panel_40">@lang('front.most_solid') </label>
+            </div>
+          </div>
+
           <br>
 
           <div id="propertys">
@@ -325,6 +336,17 @@
                 <div class="z-checkbox">
                   <input form="filter_form" id="panel_39_mobile" {{isset($_REQUEST['offer'])?'checked':''}} class="mb-2 offer" type="checkbox" name="offer" value="offer">
                   <label class="d-block text-capitalize" for="panel_39_mobile">@lang('front.offer') </label>
+                </div>
+              </div>
+
+              <button class="accordion active active w-100 border border-light">@lang('front.most_solid')
+                <i class="fas fa-minus float-right"></i>
+              </button>
+
+              <div class="panel border border-secondary">
+                <div class="z-checkbox">
+                  <input form="filter_form" id="panel_40_mobile" {{isset($_REQUEST['most_solid'])?'checked':''}} class="mb-2 most_solid" type="checkbox" name="most_solid" value="most_solid">
+                  <label class="d-block text-capitalize" for="panel_40_mobile">@lang('front.most_solid') </label>
                 </div>
               </div>
 
@@ -588,7 +610,7 @@ $( document ).ready(function(){
     });
 
   }
-  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer , #sorted', function() {
+  $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer, .most_solid , #sorted', function() {
     $('#most_solid').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
@@ -615,7 +637,7 @@ $( document ).ready(function(){
     });
 
     var full_url = fullUrl()
-    if(($(".price:checkbox, .property, .offer").filter(":checked")).length) {
+    if(($(".price:checkbox, .property, .offer, .most_solid").filter(":checked")).length) {
       full_url += "?"+$("#filter_form").serialize()
     }
     history.pushState({}, null, full_url);
@@ -652,7 +674,7 @@ $( document ).ready(function(){
       },
     });
     var full_url = fullUrl()
-    if(($(".price:checkbox, .property, .offer").filter(":checked")).length) {
+    if(($(".price:checkbox, .property, .offer, .most_solid").filter(":checked")).length) {
       full_url += "?"+$("#filter_form").serialize()
     }
     history.pushState({}, null, full_url);
