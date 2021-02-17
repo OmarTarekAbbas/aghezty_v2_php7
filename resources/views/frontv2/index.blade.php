@@ -506,7 +506,7 @@
 
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
-            <a class="hoverabley" href="{{route('front.home.search.category',['sub_category_id' => $item->id, 'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
+            <a class="hoverabley" href="{{route('front.home.search.category',['sub_category_id' => $item->id, 'category_name' => setSlug($item->getTranslation('title','en'))])}}">
               <div class="hovertitle rounded">
                 <p>{{$item->getTranslation('title',getCode())}}</p>
               </div>
