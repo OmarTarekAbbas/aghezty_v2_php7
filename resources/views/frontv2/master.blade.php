@@ -593,7 +593,7 @@
               <div class="input-group-prepend">
                 <a class="btn_subscribe btn text-capitalize">@lang('front.subscribe')</a>
               </div>
-              <input id="mail" type="text" class="input_subscribe form-control" name="mail" placeholder="@lang('front.Email_Address')" >
+              <input id="mail" type="email" class="input_subscribe form-control" name="mail" placeholder="@lang('front.Email_Address')" >
             </div>
           </form>
         </div>

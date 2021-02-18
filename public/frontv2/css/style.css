@@ -343,7 +343,7 @@ body {
   text-align: center;
   position: fixed;
   top: 5rem;
-  z-index: 9999;
+  z-index: 9999999;
   background-color: #085C9B;
 }
 .head_three_ul .navbar-nav .nav-link {

@@ -62,13 +62,13 @@ $(document).ready(function () {
     } else {
       $('#grid_list_two').on('click', function () {
         $('#grid_two .col-md-6').attr('class', 'col-md-4');
-        // $('#grid_two img').attr('class', 'w-auto');
+        $('#grid_two img').attr('class', 'w-auto d-block m-auto');
         $('#grid_two h6').attr('class', 'full_desc text-dark text-center text-capitalize');
       });
 
       $('#grid_list_one').on('click', function () {
         $('#grid_two .content_view_mobile_col6').attr('class', 'col-md-6');
-        // $('#grid_two img').attr('class', 'w-50 d-block m-auto');
+        $('#grid_two img').attr('class', 'w-50 d-block m-auto');
         $('#grid_two h6').attr('class', 'full_desc text-dark text-left text-capitalize');
       });
     }
