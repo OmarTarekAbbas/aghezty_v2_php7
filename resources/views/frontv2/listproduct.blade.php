@@ -703,6 +703,16 @@ $( document ).ready(function(){
       }
     });
 
+    $('.brand_id').each(function(i, obj) {
+      if ($(this).attr("checked")) {
+        $(this).prop("checked", true)
+      } else {
+        $(this).removeAttr("checked")
+      }
+    });
+
+
+
     $.ajax({
       url: '{{url("clients/brands")}}',
       type: "get",
