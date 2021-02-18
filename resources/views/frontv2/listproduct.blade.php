@@ -703,13 +703,7 @@ $( document ).ready(function(){
       }
     });
 
-    $('.brand_id').each(function(i, obj) {
-      if ($(this).attr("checked")) {
-        $(this).prop("checked", true)
-      } else {
-        $(this).prop("checked", false)
-      }
-    });
+
 
 
 
@@ -757,6 +751,13 @@ $( document ).ready(function(){
   })
 
   $( document ).ready(function(){
+    $('.brand_id').each(function(i, obj) {
+      if ($(this).attr("checked")) {
+        $(this).prop("checked", true)
+      } else {
+        $(this).prop("checked", false)
+      }
+    });
     @if(!request()->has('sorted'))
       $.ajax({
         url: '{{url("clients/productsv2")}}?start=0',
