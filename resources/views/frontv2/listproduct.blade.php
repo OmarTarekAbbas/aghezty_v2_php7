@@ -707,7 +707,7 @@ $( document ).ready(function(){
       if ($(this).attr("checked")) {
         $(this).prop("checked", true)
       } else {
-        $(this).removeAttr("checked")
+        $(this).prop("checked", false)
       }
     });
 
