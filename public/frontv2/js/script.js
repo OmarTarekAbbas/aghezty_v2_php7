@@ -67,7 +67,7 @@ $(document).ready(function () {
       });
 
       $('#grid_list_one').on('click', function () {
-        $('#grid_two .content_view_mobile_col6').attr('class', 'col-md-6');
+        $('#grid_two .col-md-4').attr('class', 'col-md-6');
         $('#grid_two img').attr('class', 'w-50 d-block m-auto');
         $('#grid_two h6').attr('class', 'full_desc text-dark text-left text-capitalize');
       });
