@@ -439,7 +439,7 @@
 
           @foreach ($products as $product)
 
-          <div class="col-md-4 col-lg-4 col-xl-4 col-6 mb-3 content_view_mobile_col6">
+          <div class="col-md-4 col-lg-4 col-xl-4 col-6 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
                 <img class="lazy text-center d-block" src="{{$product->main_image}}" alt="Product">
