@@ -14,7 +14,7 @@ class Product extends Model
   protected $table="products";
   protected $fillable = ['title','main_image','price','discount','price_after_discount',
                         'special','active','description','short_description','category_id','brand_id','stock', 'inch','sku',
-                        'key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer'];
+                        'key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer','main_image_resize'];
 
   protected $dates = ['deleted_at'];
   public function getPriceAttribute($value){
@@ -42,6 +42,9 @@ class Product extends Model
 
   public function getMainImageAttribute($value)
   {
+    // if (true) {
+    //   return url(file_exists(base_path($this->main_image_resize)) ? $this->main_image_resize : 'images/not_found.png');
+    // }
     return url(file_exists(base_path($value)) ? $value : 'images/not_found.png');
   }
 
