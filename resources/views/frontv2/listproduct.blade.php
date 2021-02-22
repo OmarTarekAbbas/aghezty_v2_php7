@@ -374,7 +374,6 @@
       </div>
       <!-- Start Grid & List View -->
       <!-- Start Image Cover -->
-
       <div class="col-md-12 col-lg-12 col-xl-10">
         <div class="list_cover">
           @if(app('request')->input('offer'))
@@ -389,8 +388,8 @@
               @else
               <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif
-          @elseif(app('request')->input('sub_category_id'))
-            <?php  $sub_category= \App\Category::where('id',app('request')->input('sub_category_id'))->first()?>
+          @elseif( request()->route("sub_category_id"))
+            <?php  $sub_category= \App\Category::where('id',app('request')->route('sub_category_id'))->first()?>
               @if($sub_category->cat->offer_image)
               @if ($sub_category->cat->offer_image_link)
               <a href="{{$sub_category->cat->offer_image_link}}">
