@@ -94,7 +94,7 @@ body {
   height: 80px;
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 99999999;
 }
 .head_two .img_logo {
   width: 100%;
@@ -247,7 +247,6 @@ body {
 .head_three {
   background-color: #FFF;
   width: 100%;
-  z-index: 9999999999999998000000000000000000000;
   position: fixed;
   top: 0;
 }

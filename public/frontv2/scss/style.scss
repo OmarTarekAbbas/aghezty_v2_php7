@@ -112,7 +112,7 @@ body {
   height: 80px;
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 99999999;
 
   .img_logo {
     width: 100%;
@@ -319,8 +319,7 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 9999999999999999999999999999999999999;
-
+  // z-index: 9999999999999999999999999999999999999;
 
   .navbar {
     background-color: $white_color;
