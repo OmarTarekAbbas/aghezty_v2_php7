@@ -28,7 +28,10 @@ class OrderController extends Controller
     if ($request->has('client_id') && $request->client_id != '') {
       $orders = $orders->where('client_id', $request->client_id);
     }
+
+
     $orders = $orders->latest('created_at')->get();
+
 
     return \DataTables::of($orders)
       ->addColumn('index', function (Order $order) {
