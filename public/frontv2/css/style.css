@@ -89,7 +89,7 @@ body {
   height: 80px;
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 99999999;
 }
 .head_two .img_logo {
   width: 100%;
@@ -258,7 +258,6 @@ body {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 9999999999999998000000000000000000000;
 }
 .head_three .navbar {
   background-color: #FFF;

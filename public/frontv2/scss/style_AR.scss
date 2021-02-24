@@ -117,7 +117,7 @@ body {
   height: 80px;
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 99999999;
 
   .img_logo {
     width: 100%;
@@ -305,7 +305,7 @@ body {
 .head_three {
   background-color: $white_color;
   width: 100%;
-  z-index: 9999999999999999999999999999999999999;
+  // z-index: 9999999999999999999999999999999999999;
   position: fixed;
   top: 0;
 
