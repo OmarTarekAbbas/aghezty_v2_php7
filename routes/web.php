@@ -187,6 +187,10 @@ Route::get("old_order_details" ,'OrderController@removeProductFromOrderDeatilsTh
    Route::get('sitemap/image_products', 'SitemapController@image_products');
    // End Make Route SiteMape
 
-
+// omar demo
    Route::get('resizeImage', 'ImageResizeController@resizeImage');
    Route::post('resizeImagePost', 'ImageResizeController@resizeImagePost')->name('resizeImagePost');
+
+
+// mohamed resized
+   Route::get('resize_image', 'ImageResizeController@resizeProductImage');
