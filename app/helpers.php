@@ -100,6 +100,7 @@ function get_static_routes()
     Route::get('product/{id}/dublicate', 'ProductController@dublicate_product');
     Route::get('remove/old/order/details', 'OrderController@removeProductFromOrderDeatilsThatNotHaveOrder');
     Route::get('add/solid/count', 'ProductController@updateOldSolidCountInProduct');
+    Route::get('resize_image', 'ImageResizeController@resizeProductImage');
     /*****************start design v2 */
     Route::get('homepage/slides', 'HomeController@slidesv2');
     Route::get('slides/{id}/edit', 'HomeController@editv2');
