@@ -163,6 +163,7 @@ return [
     ],
     'admin_status' => [
         'pending' => 'Pending',
+        'pending' => 'Pending',
         'under_shipping' => 'Under Shipping',
         'finished' => 'Finished',
     ],

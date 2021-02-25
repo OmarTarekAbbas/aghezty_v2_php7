@@ -162,6 +162,7 @@ return [
         'total_price_after_discount' => 'الاجمالى بعد خصم الكوبونات',
     ],
     'admin_status' => [
+        'start' => 'لم يتم مراجعه هذا الطلب بعد',
         'pending' => 'لم يتم مراجعه هذا الطلب بعد',
         'under_shipping' => 'يتم تجهيز الطلب للشحن',
         'finished' => 'تم الانتهاء من الطلب'
