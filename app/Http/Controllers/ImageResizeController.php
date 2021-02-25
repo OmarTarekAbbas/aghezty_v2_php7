@@ -53,6 +53,7 @@ class ImageResizeController extends Controller
      */
     public function resizeProductImage()
     {
+      set_time_limit(-1);
         $path = 'uploads/product/image_resize';
         $destinationPath = base_path($path);
 
