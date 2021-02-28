@@ -13,6 +13,8 @@ use App\Events\Products;
 use Illuminate\Http\Request;
 use App\Constants\OrderStatus;
 use App\Constants\PaymentStatus;
+use Image;
+use File;
 
 class ProductController extends Controller
 {
@@ -174,6 +176,23 @@ class ProductController extends Controller
         }else{
           $product->offer = 1;
         }
+
+        $path_resize_path = 'uploads/product/image_resize';
+        $destinationPath = base_path($path_resize_path);
+        if(!File::exists($path_resize_path)) {
+            File::makeDirectory($path_resize_path, 0755, true, true);
+        }
+            $time = time().rand(0,999);
+            $main_image = $product->main_image;
+            $main_image_resize_path = $destinationPath.'/'.$time.".png";
+            //resize image
+            $img = Image::make($main_image);
+            $img->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($main_image_resize_path);
+            //save image
+            $product->main_image_resize = $path_resize_path.'/'.$time.".png";
+
         $product->save();
 
         if($request->has('property_value_id')){
@@ -327,6 +346,23 @@ class ProductController extends Controller
         }else{
           $product->offer = 0;
         }
+
+
+        $path_resize_path = 'uploads/product/image_resize';
+        $destinationPath = base_path($path_resize_path);
+        if(!File::exists($path_resize_path)) {
+            File::makeDirectory($path_resize_path, 0755, true, true);
+        }
+            $time = time().rand(0,999);
+            $main_image = $request->main_image;
+            $main_image_resize_path = $destinationPath.'/'.$time.".png";
+            //resize image
+            $img = Image::make($main_image);
+            $img->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($main_image_resize_path);
+            //save image
+            $product->main_image_resize = $path_resize_path.'/'.$time.".png";
         $product->save();
 
         if($request->has('property_value_id')){
