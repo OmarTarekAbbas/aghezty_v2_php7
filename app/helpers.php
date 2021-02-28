@@ -535,7 +535,7 @@ function checkbuyLimit($product_id)
 function checkImageProduct($product_id)
 {
   $products = Product::where('id', $product_id)->get(['main_image_resize','main_image']);
-  foreach ($products as $key => $product) {
+  foreach ($products as $product) {
     if($product->main_image_resize){
       return url($product->main_image_resize);
     }else{

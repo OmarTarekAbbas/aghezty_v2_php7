@@ -290,6 +290,7 @@ class ProductController extends Controller
                 return back();
             }
             $this->delete_image_if_exists(base_path('/uploads/product/main_image/'.basename($product->main_image)));
+            
          }
         if ($request->has('images'))
         {
@@ -347,12 +348,12 @@ class ProductController extends Controller
           $product->offer = 0;
         }
 
-
-        $path_resize_path = 'uploads/product/image_resize';
-        $destinationPath = base_path($path_resize_path);
-        if(!File::exists($path_resize_path)) {
-            File::makeDirectory($path_resize_path, 0755, true, true);
-        }
+        if($request->has('main_image')){
+            $path_resize_path = 'uploads/product/image_resize';
+            $destinationPath = base_path($path_resize_path);
+            if(!File::exists($path_resize_path)) {
+                File::makeDirectory($path_resize_path, 0755, true, true);
+            }
             $time = time().rand(0,999);
             $main_image = $request->main_image;
             $main_image_resize_path = $destinationPath.'/'.$time.".png";
@@ -363,6 +364,7 @@ class ProductController extends Controller
             })->save($main_image_resize_path);
             //save image
             $product->main_image_resize = $path_resize_path.'/'.$time.".png";
+          }
         $product->save();
 
         if($request->has('property_value_id')){
