@@ -37,7 +37,7 @@
 </style>
 
 <div class="main">
-  <div class="mobile_views">
+  <div class="mobile_views ">
     <nav class="nav_breadcrumb" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <h1 class="breadcrumb-item">
