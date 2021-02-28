@@ -3409,6 +3409,7 @@ body {
 
   .head_three {
     top: 0 !important;
+    z-index: 9;
 
     .navbar {
       padding: 5px 0;
@@ -4885,6 +4886,7 @@ body {
 
   .head_three {
     top: 0 !important;
+    z-index: 9;
 
     .navbar {
       padding: 5px 0;
@@ -6339,6 +6341,7 @@ body {
 @media (min-width: 768px) and (max-width: 991px) {
   .head_three {
     top: 0 !important;
+    z-index: 9;
 
     .navbar {
       .navbar-nav {
@@ -6748,6 +6751,7 @@ body {
 
   .head_three {
     // top: 5.8% !important;
+    z-index: 9;
 
     .navbar {
       .navbar-nav {
@@ -7271,6 +7275,7 @@ body {
 @media (min-width: 1025px) and (max-width: 1050px) {
   .head_three {
     // top: 12.87%;
+    z-index: 9;
   }
 
   .head_two {
