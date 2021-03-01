@@ -40,7 +40,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                {{-- <div class="col-md-12">
+                                <div class="col-md-12">
                                     <div class="box box-black">
                                     <form class="form-group form-search" action="{{ url('reports') }}" id="filter_form" method="get">
                                         <div class="container">
@@ -85,7 +85,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                     </div>
