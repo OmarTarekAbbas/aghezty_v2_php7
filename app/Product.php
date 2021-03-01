@@ -128,12 +128,12 @@ class Product extends Model
   protected static function boot() {
     parent::boot();
 
-    // static::addGlobalScope('price', function (Builder $builder) {
-    //   $builder->where(function($q){
-    //     $q->where('products.price', '>', 0)
-    //     ->orWhere('products.price_after_discount', '>', 0);
-    //   });
-    // });
+    static::addGlobalScope('price', function (Builder $builder) {
+      $builder->where(function($q){
+        $q->where('products.price', '>', 0)
+        ->orWhere('products.price_after_discount', '>', 0);
+      });
+    });
 
     static::deleting(function($product) { // before delete() method call this
         if(file_exists(base_path('/uploads/product/'.basename($product->main_image))))
