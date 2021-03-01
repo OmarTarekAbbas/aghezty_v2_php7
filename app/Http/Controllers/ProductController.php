@@ -661,6 +661,9 @@ class ProductController extends Controller
              if($row->price_after_discount){
                $product->price_after_discount = $row->price_after_discount;
                $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price ;
+             }else{  // beause we add new price so we reset this discount if found
+              $product->price_after_discount = NULL ;
+              $product->discount = 0 ;
              }
              $product->save();
             }
