@@ -54,15 +54,16 @@ class ImageResizeController extends Controller
     public function resizeProductImage()
     {
       set_time_limit(-1);
-        $path = 'uploads/product/image_resize';
-        $destinationPath = base_path($path);
+      $path = 'uploads/product/image_resize';
+      $destinationPath = base_path($path);
 
-        if(!File::exists($path)) {
-            File::makeDirectory($path, 0755, true, true);
-        }
+      if(!File::exists($path)) {
+          File::makeDirectory($path, 0755, true, true);
+      }
 
-        $products = Product::all();
-        foreach ($products as $key => $product) {
+        $products = Product::whereNull('main_image_resize')->chunk(1000, function($chunk_products) use($path , $destinationPath) {
+
+          foreach ($chunk_products as $product) {
             $main_image = $product->main_image;
             $main_image_resize_path = $destinationPath.'/'.$product->id.".png";
             //resize image
@@ -73,10 +74,9 @@ class ImageResizeController extends Controller
             //save image
             $product->main_image_resize = $path.'/'.$product->id.".png";
             $product->save();
-        }
-
-        return back()
-            ->with('success','Image Upload successful');
+          }
+      });
+        echo "resize done" ;
     }
 
 }

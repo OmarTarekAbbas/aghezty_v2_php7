@@ -290,7 +290,7 @@ class ProductController extends Controller
                 return back();
             }
             $this->delete_image_if_exists(base_path('/uploads/product/main_image/'.basename($product->main_image)));
-            
+
          }
         if ($request->has('images'))
         {
@@ -637,7 +637,6 @@ class ProductController extends Controller
     public function product_update_price_excel_post(Request $request)
     {
 
-
       if ($request->hasFile('fileToUpload')) {
         $ext =  $request->file('fileToUpload')->getClientOriginalExtension();
         if ($ext != 'xls' && $ext != 'xlsx' && $ext != 'csv') {
@@ -647,11 +646,11 @@ class ProductController extends Controller
 
         $file = $request->file('fileToUpload');
         $filename = time().'_'.$file->getClientOriginalName();
-        if(!$file->move(base_path().'uploads/price_update/product_update_price_excel',  $filename) ){
+        if(!$file->move(base_path().'/uploads/price_update/product_update_price_excel',  $filename) ){
             return back();
         }
 
-        \Excel::filter('chunk')->load(base_path() . 'uploads/price_update/product_update_price_excel/' . $filename)->chunk(10000, function($results) use ($request,&$counter,&$total_counter)
+        \Excel::filter('chunk')->load(base_path() . '/uploads/price_update/product_update_price_excel/' . $filename)->chunk(10000, function($results) use ($request,&$counter,&$total_counter)
         {
           foreach ($results as $row) {
             $total_counter++;
