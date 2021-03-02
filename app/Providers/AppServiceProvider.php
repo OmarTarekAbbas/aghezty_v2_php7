@@ -31,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
           switch ($event->job->resolveName()) {
             case "App\Jobs\SendEmail":
               $this->sendMailToAdminWithFinishedNewsLetter();
+              case "App\Jobs\ResizeImage":
+                $this->sendMailToAdminWithFinishedImagesResized();
             default:
               break;
           }

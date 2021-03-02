@@ -27,27 +27,44 @@ class ResizeImage extends Job implements ShouldQueue {
 	 */
 	public function handle() {
 
-		$path = 'uploads/product/image_resize';
-		$destinationPath = base_path($path);
+		// $path = 'uploads/product/image_resize';
+		// $destinationPath = base_path($path);
 
-		if (!File::exists($path)) {
-			File::makeDirectory($path, 0755, true, true);
-		}
+		// if (!File::exists($path)) {
+		// 	File::makeDirectory($path, 0755, true, true);
+		// }
 
-		$products = Product::whereNull('main_image_resize')->orderBy("id", "desc")->get();
+		// $products = Product::whereNull('main_image_resize')->orderBy("id", "desc")->get();
 
-		foreach ($products as $product) {
-			$main_image = $product->main_image;
-			$main_image_resize_path = $destinationPath . '/' . $product->id . ".png";
-			//resize image
-			$img = Image::make($main_image);
-			$img->resize(500, 500, function ($constraint) {
-				$constraint->aspectRatio();
-			})->save($main_image_resize_path);
-			//save image
-			$product->main_image_resize = $path . '/' . $product->id . ".png";
-			$product->save();
-		}
+		// foreach ($products as $product) {
+		// 	$main_image = $product->main_image;
+		// 	$main_image_resize_path = $destinationPath . '/' . $product->id . ".png";
+		// 	//resize image
+		// 	$img = Image::make($main_image);
+		// 	$img->resize(500, 500, function ($constraint) {
+		// 		$constraint->aspectRatio();
+		// 	})->save($main_image_resize_path);
+		// 	//save image
+		// 	$product->main_image_resize = $path . '/' . $product->id . ".png";
+		// 	$product->save();
+    // }
+
+    for ($i=1; $i <100 ; $i++) {
+
+      \App\Post::create([
+
+        "product_id" =>  1 ,
+        "operator_id" => 1 ,
+        "user_id"=> 1 ,
+        "published_date"=> "2021-03-02",
+        "active"=> 1 ,
+        "url"=>"test"
+
+             ]) ;
+
+    }
+
+    echo "Done" ;
 
 	}
 
