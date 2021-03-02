@@ -26,8 +26,6 @@
 					</div>
           @endif
 
-
-
           @if(advertisements(2))
 					<div class="col-md-12 col-xl-12 col-6 top_banner bottom_banner mt-3">
 						<a href="{{advertisements(2)->ads_url}}">
@@ -36,8 +34,6 @@
 					</div>
 
 					@endif
-				
-
 				</div>
 			</div>
 		</div>
