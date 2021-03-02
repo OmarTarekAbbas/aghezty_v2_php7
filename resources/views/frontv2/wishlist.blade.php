@@ -50,7 +50,8 @@
                     </a>
 
                     <a class="img_link" href="{{route('front.home.inner',['id' => $wishlist->pivot->product_id , setSlug(product($wishlist->pivot->product_id)->getTranslation('title',getCode()))])}}">
-                      <img class="w-25" src="{{product($wishlist->pivot->product_id)->main_image}}" alt="iphone">
+                      <img class="w-25" src="{{checkImageProduct($wishlist->pivot->product_id)}}" alt="iphone">
+
 
                       <div class="wishlist_shopping_title">
                         <span>{{product($wishlist->pivot->product_id)->getTranslation('title',getCode())}}</span>
