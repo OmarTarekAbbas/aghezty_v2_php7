@@ -41,13 +41,13 @@ trait JobEventTrait
             <body>
             <center> <strong> Resizing </strong> </center>
             </br>
-            <strong> All iimages are resized now </strong>
+            <strong> All images are resized now </strong>
         </body>
         </html>';
       \Mail::send([], [], function($email) use ($message)
       {
         $email->from(setting('super_mail'), __('front.title'));
-        $email->to(setting('super_mail'), 'Super Admin')->subject("NewsLetter Mails Status");
+        $email->to(setting('super_mail'), 'Super Admin')->subject("Aghezty Images Resizing");
         $email->setBody($message, 'text/html');
       });
   }
