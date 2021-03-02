@@ -12,7 +12,7 @@ use Image;
 use File;
 
 
-class ResizeImage
+class ResizeImage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
