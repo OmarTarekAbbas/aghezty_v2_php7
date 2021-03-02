@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('queue:work --timeout=3550')->hourly();
+        $schedule->command('queue:work --timeout=3000 --tries=2')->hourly();
         $schedule->command('queue:restart')->hourly();
     }
 
