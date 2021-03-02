@@ -2,7 +2,8 @@
 
 namespace App\Jobs;
 
-use Illuminate\Bus\Queueable;
+use App\Jobs\Job;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,9 +13,13 @@ use Image;
 use File;
 
 
-class ResizeImage implements ShouldQueue
+
+
+class ResizeImage extends Job implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, SerializesModels;
+
+
 
     /**
      * Create a new job instance.
@@ -31,7 +36,7 @@ class ResizeImage implements ShouldQueue
      */
     public function handle()
     {
-      set_time_limit(-1);
+
       $path = 'uploads/product/image_resize';
       $destinationPath = base_path($path);
 
@@ -39,9 +44,10 @@ class ResizeImage implements ShouldQueue
           File::makeDirectory($path, 0755, true, true);
       }
 
-        $products = Product::whereNull('main_image_resize')->chunk(1000, function($chunk_products) use($path , $destinationPath) {
+      $products = Product::whereNull('main_image_resize')->orderBy("id","desc")->get();
 
-          foreach ($chunk_products as $product) {
+
+          foreach ( $products   as $product) {
             $main_image = $product->main_image;
             $main_image_resize_path = $destinationPath.'/'.$product->id.".png";
             //resize image
@@ -53,8 +59,14 @@ class ResizeImage implements ShouldQueue
             $product->main_image_resize = $path.'/'.$product->id.".png";
             $product->save();
           }
-      });
 
+
+  }
+
+
+  public function failed(Throwable $exception)
+  {
+    \File::append(storage_path('logs') . '/' . basename(get_class($this)) . '.log', $exception->getMessage().PHP_EOL);
   }
 
 }

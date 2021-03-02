@@ -35,6 +35,7 @@ class ImageResizeController extends Controller
 
         $destinationPath = base_path('uploads/test_omar');
         $img = Image::make($image->path());
+
         $img->resize(500, 500, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath.'/'.$input['imagename']);
@@ -56,6 +57,29 @@ class ImageResizeController extends Controller
     {
       dispatch(new ResizeImage());
       echo "done";
+    }
+
+
+
+    public function test_job()
+    {
+
+      for ($i=1; $i <100 ; $i++) {
+
+        \App\Post::create([
+
+          "product_id" =>  1 ,
+          "operator_id" => 1 ,
+          "user_id"=> 1 ,
+          "published_date"=> "2021-03-02",
+          "active"=> 1 ,
+          "url"=>"test"
+
+               ]) ;
+
+      }
+
+      echo "Done" ;
     }
 
 }
