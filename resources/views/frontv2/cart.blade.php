@@ -49,7 +49,8 @@
                     </a>
 
                     <a class="img_link" href="{{route('front.home.inner',['id' => $cart->pivot->product_id ,'slug' => setSlug(product($cart->pivot->product_id)->getTranslation('title',getCode()))])}}">
-                      <img class="w-25" src="{{product($cart->pivot->product_id)->main_image}}" alt="iphone">
+                      <img class="w-25" src="{{checkImageProduct($cart->pivot->product_id)}}" alt="iphone">
+
 
                       <div class="cart_shopping_title">
                         <span>{{product($cart->pivot->product_id)->getTranslation('title',getCode())}}</span>
