@@ -523,7 +523,6 @@ function checkbuyLimit($product_id)
     $countOrder = OrderDetail::where("product_id", $product_id)->whereHas("order",function($query) {
       $query->where("client_id", auth()->guard("client")->id());
     })->sum("quantity");
-    
     if($countOrder < 2) {
       return ['status' => true ,'count' => $countOrder];
     }
