@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Image;
 use File;
+use App\Jobs\ResizeImage;
 class ImageResizeController extends Controller
 {
 
@@ -34,6 +35,7 @@ class ImageResizeController extends Controller
 
         $destinationPath = base_path('uploads/test_omar');
         $img = Image::make($image->path());
+
         $img->resize(500, 500, function ($constraint) {
             $constraint->aspectRatio();
         })->save($destinationPath.'/'.$input['imagename']);
@@ -53,30 +55,31 @@ class ImageResizeController extends Controller
      */
     public function resizeProductImage()
     {
-      set_time_limit(-1);
-      $path = 'uploads/product/image_resize';
-      $destinationPath = base_path($path);
+      dispatch(new ResizeImage());
+      echo "done";
+    }
 
-      if(!File::exists($path)) {
-          File::makeDirectory($path, 0755, true, true);
+
+
+    public function test_job()
+    {
+
+      for ($i=1; $i <100 ; $i++) {
+
+        \App\Post::create([
+
+          "product_id" =>  1 ,
+          "operator_id" => 1 ,
+          "user_id"=> 1 ,
+          "published_date"=> "2021-03-02",
+          "active"=> 1 ,
+          "url"=>"test"
+
+               ]) ;
+
       }
 
-        $products = Product::whereNull('main_image_resize')->chunk(1000, function($chunk_products) use($path , $destinationPath) {
-
-          foreach ($chunk_products as $product) {
-            $main_image = $product->main_image;
-            $main_image_resize_path = $destinationPath.'/'.$product->id.".png";
-            //resize image
-            $img = Image::make($main_image);
-            $img->resize(500, 500, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($main_image_resize_path);
-            //save image
-            $product->main_image_resize = $path.'/'.$product->id.".png";
-            $product->save();
-          }
-      });
-        echo "resize done" ;
+      echo "Done" ;
     }
 
 }

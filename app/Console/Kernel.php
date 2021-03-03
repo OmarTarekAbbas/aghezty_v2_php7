@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
         //
     ];
 
+
+
     /**
      * Define the application's command schedule.
      *
@@ -24,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('queue:work --tries=3')->hourly();
+        $schedule->command('queue:work --timeout=3000 --tries=2')->hourly();
         $schedule->command('queue:restart')->hourly();
     }
 

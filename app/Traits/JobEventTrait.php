@@ -30,4 +30,25 @@ trait JobEventTrait
         $email->setBody($message, 'text/html');
       });
   }
+
+
+  public function sendMailToAdminWithFinishedImagesResized()
+  {
+    $message  = '<!DOCTYPE html>
+        <html lang="en">
+            <head>
+            </head>
+            <body>
+            <center> <strong> Resizing </strong> </center>
+            </br>
+            <strong> All images are resized now </strong>
+        </body>
+        </html>';
+      \Mail::send([], [], function($email) use ($message)
+      {
+        $email->from(setting('super_mail'), __('front.title'));
+        $email->to(setting('super_mail'), 'Super Admin')->subject("Aghezty Images Resizing");
+        $email->setBody($message, 'text/html');
+      });
+  }
 }

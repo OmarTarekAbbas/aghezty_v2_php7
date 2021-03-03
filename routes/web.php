@@ -194,3 +194,5 @@ Route::get("old_order_details" ,'OrderController@removeProductFromOrderDeatilsTh
 
 // mohamed resized
    Route::get('resize_image', 'ImageResizeController@resizeProductImage');
+   Route::get('test_job', 'ImageResizeController@test_job');
+
