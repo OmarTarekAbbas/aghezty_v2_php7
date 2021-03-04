@@ -406,21 +406,22 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 </li>
                             </ul>
 
-                            <ul class="nav nav-list">
-                                <li id="operator">
-                                    <a href="#" class="dropdown-toggle">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                        <span>@lang('messages.operator')</span>
-                                        <b class="arrow fa fa-angle-right"></b>
-                                    </a>
 
-                                    <!-- BEGIN Submenu -->
-                                    <ul class="submenu">
-                                        <li id="operator_index"><a href="{{url('operator')}}">@lang('messages.list_operator')</a></li>
-                                        <li id="operator_create"><a href="{{url('operator/create')}}">@lang('messages.create_operator')</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            {{-- <ul class="nav nav-list">
+                              <li id="operator">
+                                  <a href="#" class="dropdown-toggle">
+                                      <i class="glyphicon glyphicon-user"></i>
+                                      <span>@lang('messages.operator')</span>
+                                      <b class="arrow fa fa-angle-right"></b>
+                                  </a>
+
+                                  <!-- BEGIN Submenu -->
+                                  <ul class="submenu">
+                                      <li id="operator_index"><a href="{{url('operator')}}">@lang('messages.list_operator')</a></li>
+                                      <li id="operator_create"><a href="{{url('operator/create')}}">@lang('messages.create_operator')</a></li>
+                                  </ul>
+                              </li>
+                          </ul> --}}
                           @endif
 
 
