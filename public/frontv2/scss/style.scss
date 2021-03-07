@@ -7710,7 +7710,7 @@ body {
           width: 2.25rem;
           height: 2.25rem;
           margin-right: 0;
-          font-size: 1.25rem;      
+          font-size: 1.25rem;
           line-height: 2rem;
         }
       }
@@ -11801,10 +11801,12 @@ body {
         }
       }
 
-      .top_banner {
-        a {
-          img {
-            height: 140px;
+      .ads {
+        .top_banner {
+          a {
+            img {
+              height: 140px;
+            }
           }
         }
       }
@@ -12054,6 +12056,7 @@ body {
         }
       }
 
+      .ads {
       .top_banner {
         a {
           img {
@@ -12061,6 +12064,7 @@ body {
           }
         }
       }
+    }
 
       .owl-one .owl-nav .owl-prev,
       .owl-one .owl-nav .owl-next {
@@ -12335,10 +12339,12 @@ body {
         }
       }
 
-      .top_banner {
-        a {
-          img {
-            height: 151px;
+      .ads {
+        .top_banner {
+          a {
+            img {
+              height: 151px;
+            }
           }
         }
       }
@@ -12625,9 +12631,7 @@ body {
   }
 }
 
-
 /* End Animation & Key Frame For Modal */
-
 
 /* Start Animation */
 
@@ -12708,8 +12712,6 @@ body {
   -webkit-animation-direction: normal, alternate;
   animation-direction: normal, alternate;
 }
-
-
 /* Icon Forward */
 
 .hvr-icon-forward {
@@ -12728,7 +12730,6 @@ body {
   -webkit-transform: translateX(12px);
   transform: translateX(12px);
 }
-
 
 /* Wobble To Bottom Right */
 
@@ -12816,8 +12817,6 @@ body {
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
 }
-
-
 /* Outline In */
 
 .hvr-outline-in {
@@ -12854,7 +12853,6 @@ body {
   opacity: 1;
 }
 
-
 /* Float */
 
 .hvr-float {
@@ -12877,7 +12875,6 @@ body {
   -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
 }
-
 
 /* Sweep To Bottom */
 
@@ -12927,8 +12924,6 @@ body {
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
 }
-
-
 /* Pulse */
 
 @-webkit-keyframes hvr-pulse {
@@ -12975,8 +12970,6 @@ body {
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
 }
-
-
 /* Start Animation For Flash Alert */
 
 .bounce-in-bottom {
