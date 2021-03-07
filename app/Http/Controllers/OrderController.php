@@ -30,8 +30,13 @@ class OrderController extends Controller
     }
 
 
-    $orders = $orders->latest('created_at')->get();
+    //$orders = $orders->latest('created_at')->get();
 
+    $orders = $orders->select('*','orders.id as id','clients.id as client_id','clients.name as client_name','orders.created_at as created_at_order')
+    ->leftJoin('clients','clients.id','=','client_id')
+    ->latest('created_at_order')
+    ->get();
+    //dd($orders);
 
     return \DataTables::of($orders)
       ->addColumn('index', function (Order $order) {
@@ -42,7 +47,7 @@ class OrderController extends Controller
       })
       ->addColumn('client_name', function (Order $order) {
         if ($order->client && isset($order->client))
-          return $order->client->name;
+          return $order->client_name;
       })
       ->addColumn('total_price', function (Order $order) {
         return $order->total_price - $order->shipping_amount;

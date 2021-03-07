@@ -589,30 +589,36 @@
 <script>
   sessionStorage.setItem("current_url", document.referrer)
   $('#add_to').click(function(e) {
+    var product_stock = {{ $product->stock }};
     e.preventDefault()
-    $.ajax({
-      url: "{{route('front.home.cart.add')}}",
-      type: "POST",
-      data: {
-        'success_pr': 'success_pr',
-        'product_id': '{{$product->id}}',
-        'counter': $('.quantity-input').val(),
-        'price': '{{($product->price_after_discount && $product->price_after_discount != 0)?$product->price_after_discount:$product->price}}'
-      },
-      success: function(data) {
-        if (data.status == 'success') {
-          $('.shopping_cart_num').html(parseInt($('.shopping_cart_num').html()) + 1)
-          location.href = "{{route('front.home.cart',['product_id' => $product->id])}}"
-        } else if(data.status == 'stop_buy') {
-          alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
-          $('.quantity-input').val(1);
-        } else {
-          alert("@lang('front.you_already_take_this_product_in_your_cart')")
-          $('.quantity-input').val(1);
-        }
+    if($('.quantity-input').val() > product_stock){
+      alert("{{ trans('front.Only_one_product_is_available') }}")
+    }else{
+      $.ajax({
+        url: "{{route('front.home.cart.add')}}",
+        type: "POST",
+        data: {
+          'success_pr': 'success_pr',
+          'product_id': '{{$product->id}}',
+          'counter': $('.quantity-input').val(),
+          'price': '{{($product->price_after_discount && $product->price_after_discount != 0)?$product->price_after_discount:$product->price}}'
+        },
+        success: function(data) {
+          if (data.status == 'success') {
+            $('.shopping_cart_num').html(parseInt($('.shopping_cart_num').html()) + 1)
+            location.href = "{{route('front.home.cart',['product_id' => $product->id])}}"
+          } else if(data.status == 'stop_buy') {
+            alert("{{ trans('front.You have exceeded the limit to buy this item') }} ")
+            $('.quantity-input').val(1);
+          } else {
+            alert("@lang('front.you_already_take_this_product_in_your_cart')")
+            $('.quantity-input').val(1);
+          }
 
-      },
-    });
+        },
+      });
+    }
+
   });
 
   $('#gover_add').change(function() {
