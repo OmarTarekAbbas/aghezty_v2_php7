@@ -5591,7 +5591,7 @@ body {
     margin-bottom: 1.5%;
   }
 }
-@media (min-width: 1441px) and (max-width: 1628px) {
+@media (min-width: 1441px) and (max-width: 1919.9px) {
   .head_two .img_logo img {
     width: 100%;
     left: 55%;
@@ -5612,7 +5612,7 @@ body {
     padding-top: 10%;
   }
   .main .carsoul_ads .owl-one .item a img {
-    height: 24vh;
+    height: 44vh;
   }
   .main .carsoul_ads .top_banner a img {
     height: 151px;
