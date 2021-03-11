@@ -5,7 +5,7 @@
 @endsection
 
 @section('description')
-{{$product->getTranslation('description',getCode())}}
+{{strip_tags($product->getTranslation('description',getCode()))}}
 @endsection
 
 @section('content')
@@ -61,8 +61,9 @@
           <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
         </h1>
         <h1 class="breadcrumb-item">
-          <a href="{{route('front.home.list',['sub_category_id' => $product->category->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
+          <a href="{{url('category/'.$product->category->id.'/'.setSlug($product->category->title))}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
         </h1>
+
         <h1 class="breadcrumb-item font-weight-bold">
           {{$product->getTranslation('title',getCode())}}
         </h1>

@@ -663,20 +663,20 @@ class HomeController extends Controller
 
     public function indexv2()
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-          $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-          $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
-          $ip = $_SERVER['REMOTE_ADDR'];
-        }
-        // $ip = "41.33.167.4";
-        $get_ip_address = IpAddress::where("ip",$ip)->first();
-        if ($get_ip_address == null) {
-          $ips = new IpAddress();
-          $ips->ip = $ip;
-          $ips->save();
-        }
+        // if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        //   $ip = $_SERVER['HTTP_CLIENT_IP'];
+        // } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        //   $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        // } else {
+        //   $ip = $_SERVER['REMOTE_ADDR'];
+        // }
+        // // $ip = "41.33.167.4";
+        // $get_ip_address = IpAddress::where("ip",$ip)->first();
+        // if ($get_ip_address == null) {
+        //   $ips = new IpAddress();
+        //   $ips->ip = $ip;
+        //   $ips->save();
+        // }
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();

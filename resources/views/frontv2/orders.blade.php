@@ -109,7 +109,7 @@
                         <aside class="cart-aside w-100">
                           <div class="summary w-100 p-3 my-3 border border-secondary bg-light text-dark">
                             <div class="summary-total-items text-center">
-                              <span class="total-items"></span> @lang('front.order') @lang('front.summary')
+                              <span class="total-items"></span>  @lang('front.summary')
                             </div>
 
                             <div class="summary-subtotal">
