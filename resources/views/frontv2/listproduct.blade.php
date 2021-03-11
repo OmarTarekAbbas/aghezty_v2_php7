@@ -18,7 +18,18 @@
         <h1 class="breadcrumb-item">
           <a href="{{ route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
         </h1>
-        @if(isset($_REQUEST['sub_category_id']) && isset($products[0]))
+
+        @if(app('request')->route('sub_category_id'))
+        <?php
+        $category = \App\Category::where('id',app('request')->route('sub_category_id'))->first();
+        $category_parent_id = \App\Category::where('id',$category->parent_id)->first();
+        ?>
+        <h1 class="breadcrumb-item">
+          <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
+        </h1>
+        @endif
+        @if( request()->route("sub_category_id") && isset($products[0]))
+        {{--  {{ dd($products[0]->category->id) }}  --}}
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
         @elseif(isset($_REQUEST['brand_id']) && isset($products[0]))
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
