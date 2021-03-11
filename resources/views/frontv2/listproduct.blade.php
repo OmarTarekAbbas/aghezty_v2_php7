@@ -44,7 +44,8 @@
           @foreach (filter_categorys() as $item)
           @if(count($item->sub_cats) > 0)
             <button type="button"
-              class="accordion active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
+              class="
+               active w-100 border border-light">{{$item->getTranslation('title',getCode())}}
               <i class="fas fa-minus float-right"></i>
             </button>
 
