@@ -660,6 +660,7 @@ $( document ).ready(function(){
       $(this).removeAttr('checked') // remove this
       $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
       $('#' + str.split('_mobile')[0]).removeAttr('checked')
+      $('#' + str.split('_mobile')[0]).prop("checked", false)
       $('#' + $(this).attr('id') + '_mobile').prop("checked", false)
       $(this).attr('id').checked = false;
     }else{
