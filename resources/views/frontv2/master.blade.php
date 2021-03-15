@@ -68,7 +68,7 @@
     <meta name="description"
     content="@yield('description')">
     <meta name="title"
-    content="@yield('description')" />
+    content="@yield('title')" />
     @else
     <meta name="description"
     content="Aghezty is the is the first and largest e-commerce website in Egypt dedicated for all types of consumer electronics, أجهزتى هو أول وأكبر موقع للتجارة الإلكترونية في مصر مخصص لجميع أنواع الإلكترونيات الاستهلاكية">
