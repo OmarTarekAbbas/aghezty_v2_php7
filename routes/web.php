@@ -16,7 +16,7 @@ get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
 Route::get('/','front\HomeController@indexv2')->name('front.home.index');
 
-
+Route::get('/clear_home_cash','front\HomeController@ClearHomeCash');
 
 Route::prefix('clients')->group(function() {
 

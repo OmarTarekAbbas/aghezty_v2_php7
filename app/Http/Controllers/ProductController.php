@@ -103,13 +103,13 @@ class ProductController extends Controller
         $images = [];
         $category = Category::find($request->category_id);
         $brand = Brand::find($request->brand_id);
-        $imgExtensions = array("png","jpeg","jpg");
+        $imgExtensions = array("jpeg","jpg");
         $file = $request->main_image;
         $request->special = ($request->special) ? 1:0;
         $request->active = ($request->active) ? 1:0;
         if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
         {
-            \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+            \Session::flash('failed','Image must be jpg or jpeg only !! No updates takes place, try again with that extensions please..');
             return back();
         }
         if ($request->has('images'))
@@ -117,7 +117,7 @@ class ProductController extends Controller
             foreach ($request->images as $key=>$image) {
                 if(! in_array($image->getClientOriginalExtension(),$imgExtensions))
                 {
-                    \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+                    \Session::flash('failed','Image must be jpg or jpeg only !! No updates takes place, try again with that extensions please..');
                     return back();
                 }
                 $images[] = new ProductImage(['image' => $image]);
@@ -268,7 +268,7 @@ class ProductController extends Controller
             return back()->withErrors($validator)->withInput();
         }
         $images = [];
-        $imgExtensions = array("png","jpeg","jpg");
+        $imgExtensions = array("jpeg","jpg");
         $request->special = ($request->special) ? 1:0;
         $request->active = ($request->active) ? 1:0;
         //$request->offer = ($request->offer) ? 1:0;
@@ -286,7 +286,7 @@ class ProductController extends Controller
             $file = $request->main_image;
             if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
             {
-                \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+                \Session::flash('failed','Image must be jpg or jpeg only !! No updates takes place, try again with that extensions please..');
                 return back();
             }
             $this->delete_image_if_exists(base_path('/uploads/product/main_image/'.basename($product->main_image)));
@@ -297,7 +297,7 @@ class ProductController extends Controller
             foreach ($request->images as $key=>$image) {
                 if(! in_array($image->getClientOriginalExtension(),$imgExtensions))
                 {
-                    \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+                    \Session::flash('failed','Image must be jpg or jpeg only !! No updates takes place, try again with that extensions please..');
                     return back();
                 }
                  $images[] = new ProductImage(['image' => $image]);

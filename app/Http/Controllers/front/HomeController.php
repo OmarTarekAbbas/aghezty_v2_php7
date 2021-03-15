@@ -49,6 +49,7 @@ class HomeController extends Controller
     {
 
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
+       
         return view('front.home', compact('products'));
     }
 
@@ -680,30 +681,34 @@ class HomeController extends Controller
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
-        $home_brands = Brand::all();
-        $recently_added = Product::stock()->where('recently_added', 1)->get();
-        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
-        $homepage_cat = Category::where('homepage', 1)->get();
+        $home_brands = cache()->remember('home_page_brands',60 * 60 * 60,function(){ return Brand::all(); });
+        $recently_added = cache()->remember('home_page_recently_added',60 * 60 * 60,function(){ return Product::stock()->where('recently_added', 1)->get(); });
+        $selected_for_you = cache()->remember('home_page_selected_for_you',60 * 60 * 60,function(){ return Product::stock()->where('selected_for_you', 1)->get(); });
+        $homepage_cat = cache()->remember('home_page_cat',60 * 60 * 60,function(){ return Category::where('homepage', 1)->get(); });
         if (count($recently_added) != 6) {
             $limit = 6 - count($recently_added);
             $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
-            $recently_added = $recently_added->toBase()->merge($recently_addedR);
+            $recently_added = cache()->remember('home_page_recently_added',60 * 60 * 60,function(){ return $recently_added->toBase()->merge($recently_addedR); });
         }
 
         if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
             $selected_for_youR = Product::stock()->get()->random($limit);
-            $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
+            $selected_for_you = cache()->remember('home_page_selected_for_you',60 * 60 * 60,function(){ return $selected_for_you->toBase()->merge($selected_for_youR); });
         }
 
         if (count($homepage_cat) != 6) {
             $limit = 6 - count($homepage_cat);
             $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
-            $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
+            $homepage_cat = cache()->remember('home_page_cat',60 * 60 * 60,function(){ return $homepage_cat->toBase()->merge($homepage_catR); });
         }
-
+        
         return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat', 'home_brands'));
 
+    }
+
+    public function ClearHomeCash(){
+        cache()->forget('home_page_brands', 'home_page_recently_added', 'home_page_selected_for_you', 'home_page_cat');
     }
 
     public function service_centerv2()
@@ -2468,6 +2473,8 @@ class HomeController extends Controller
           });
         }
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+
+
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
@@ -2595,6 +2602,5 @@ class HomeController extends Controller
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
 
     }
-
 
 }
