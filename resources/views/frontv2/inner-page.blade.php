@@ -1,4 +1,13 @@
 @extends('frontv2.master')
+
+@section('title')
+{{$product->getTranslation('title',getCode())}}
+@endsection
+
+@section('description')
+{{strip_tags($product->getTranslation('description',getCode()))}}
+@endsection
+
 @section('content')
 
 <style>
@@ -44,8 +53,19 @@
           <a href="{{route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
         </h1>
 
+        <?php
+        $category = \App\Category::where('id',$product->category->id)->first();
+        $category_parent_id = \App\Category::where('id',$category->parent_id)->first();
+        ?>
         <h1 class="breadcrumb-item">
-          <a href="{{route('front.home.list',['sub_category_id' => $product->category->id])}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
+          <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
+        </h1>
+        <h1 class="breadcrumb-item">
+          <a href="{{url('category/'.$product->category->id.'/'.setSlug($product->category->title))}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
+        </h1>
+
+        <h1 class="breadcrumb-item font-weight-bold">
+          {{$product->getTranslation('title',getCode())}}
         </h1>
       </ol>
     </nav>
@@ -434,7 +454,7 @@
       <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
-            <img src="{{checkImageProduct($item->id)}}" alt="Product" class="text-center d-block based_selection_img">
+            <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="Product" class="text-center d-block based_selection_img">
 
             <h6 class="full_desc text-dark text-left text-capitalize my-3">
               {{$item->getTranslation('title',getCode())}}

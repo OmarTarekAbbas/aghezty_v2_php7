@@ -67,7 +67,7 @@
                                 <th>@lang('front.product_image')</th>
                                 <td>
                                   <a href="{{route('front.home.inner',['id' => $product->product_id ,setSlug(product($product->product_id)->getTranslation('title',getCode()))])}}">
-                                    <img class="product_image" src="{{product($product->product_id)->main_image}}"
+                                    <img class="product_image" src="{{checkImageProduct($product->product_id)}}"
                                       alt="Mobile">
                                   </a>
                                 </td>
@@ -109,7 +109,7 @@
                         <aside class="cart-aside w-100">
                           <div class="summary w-100 p-3 my-3 border border-secondary bg-light text-dark">
                             <div class="summary-total-items text-center">
-                              <span class="total-items"></span> @lang('front.order') @lang('front.summary')
+                              <span class="total-items"></span>  @lang('front.summary')
                             </div>
 
                             <div class="summary-subtotal">

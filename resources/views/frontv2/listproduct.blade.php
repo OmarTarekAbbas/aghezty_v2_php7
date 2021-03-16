@@ -18,10 +18,21 @@
         <h1 class="breadcrumb-item">
           <a href="{{ route('front.home.index')}}" title="Go To Home">@lang('front.home')</a>
         </h1>
-        @if(isset($_REQUEST['sub_category_id']) && isset($products[0]))
+
+        @if( request()->route("sub_category_id") && isset($products[0]))
+        <?php
+        $category = \App\Category::where('id',app('request')->route('sub_category_id'))->first();
+        $category_parent_id = \App\Category::where('id',$category->parent_id)->first();
+        ?>
+        <h1 class="breadcrumb-item">
+          <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
+        </h1>
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
-        @elseif(isset($_REQUEST['brand_id']) && isset($products[0]))
+        @elseif(request()->route("brand_id")!==null && isset($products[0]))
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
+        @elseif(request()->url("parent"))
+        <?php $category_parent = \App\Category::where('id',app('request')->route('category_id'))->first(); ?>
+        <h1 class="breadcrumb-item active" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
         @else
         <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
         @endif
@@ -365,8 +376,8 @@
 
                   <div class="panel w-100 border border-light">
                     <div class="z-checkbox" v-for="property_value in properties_data[i].pvalue">
-                      <input :id="'m_panel_pr'+property_value.id" class="mb-2 property" type="checkbox"    :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'  name="property_value_id[]" :value="property_value.id"  form="filter_form">
-                      <label class="d-block text-capitalize" :for="'m_panel_pr'+property_value.id">@{{property_value.value}} </label>
+                      <input :id="'panel_pr'+property_value.id+'_mobile'" class="mb-2 property" type="checkbox"    :checked = '(property_value.value.replace( /^\D+/g, "") != "" && (property_value.value.replace( /^\D+/g, "") >= checked_val.num1 && property_value.value.replace( /^\D+/g, "") <= checked_val.num2)) || pr_values.includes(property_value.id)'  name="property_value_id[]" :value="property_value.id"  form="filter_form">
+                      <label class="d-block text-capitalize" :for="'panel_pr'+property_value.id+'_mobile'">@{{property_value.value}} </label>
                     </div>
                   </div>
                 </template>
@@ -448,7 +459,7 @@
           <div class="col-md-4 col-lg-4 col-xl-4 col-6 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
-                <img class="lazy text-center d-block" src="{{checkImageProduct($product->product_id)}}" alt="Product">
+                <img class="lazy text-center d-block" src="{{checkImageResize($product->main_image, $product->main_image_resize)}}" alt="Product">
 
 
 
@@ -655,10 +666,13 @@ $( document ).ready(function(){
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
+
       str = $(this).attr('id')
       $(this).removeAttr('checked') // remove this
       $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
       $('#' + str.split('_mobile')[0]).removeAttr('checked')
+      $('#' + str.split('_mobile')[0]).prop("checked", false)
+      $('#' + $(this).attr('id') + '_mobile').prop("checked", false)
       $(this).attr('id').checked = false;
     }else{
       str = $(this).attr('id')

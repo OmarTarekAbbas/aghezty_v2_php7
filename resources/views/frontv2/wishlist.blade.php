@@ -1,6 +1,8 @@
 @extends('frontv2.master')
 @section('content')
 
+
+
 <div class="main">
   <!-- Start Slider Carsoul -->
   {{-- @include('frontv2.video_slider') --}}
@@ -167,3 +169,8 @@
 
 </div>
 @endsection
+<script>
+  if(performance.navigation.type == 2){
+   location.reload(true);
+}
+</script>

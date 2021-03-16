@@ -64,7 +64,7 @@
             {{product($product->product_id)->getTranslation('title',getCode())}}
           </h6>
 
-          <img src="{{product($product->product_id)->main_image}}" class="img_order rounded img-thumbnail" alt="{{product($product->product_id)->getTranslation('title',getCode())}}">
+          <img src="{{checkImageResize(product($product->product_id)->main_image, product($product->product_id)->main_image_resize)}}" class="img_order rounded img-thumbnail" alt="{{product($product->product_id)->getTranslation('title',getCode())}}">
         </div>
 
         <div class="col-md-3 col-lg-3 col-xl-3 col-3 text-right">
@@ -149,7 +149,7 @@
             <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
               <div class="px-2 product_desc hvr-bob rounded">
                 <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
-                  <img src="{{$item->main_image}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 rounded d-block m-auto">
+                  <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}" class="w-100 rounded d-block m-auto">
 
                   @if($item->discount > 0)
                   <div class="product-label text-center font-weight-bold">
