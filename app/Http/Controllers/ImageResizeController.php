@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Brand;
 use Image;
 use File;
 use App\Jobs\ResizeImage;
@@ -57,6 +58,30 @@ class ImageResizeController extends Controller
     {
       dispatch(new ResizeImage());
       echo "done";
+    }
+
+    public function resizeBrandImages(){
+      $path = 'uploads/brand/image_resize';
+		  $destinationPath = base_path($path);
+
+      if (!File::exists($path)) {
+        File::makeDirectory($path, 0755, true, true);
+      }
+
+		  $brands = Brand::whereNull('image_resize')->orderBy("id", "desc")->get();
+
+      foreach ($brands as $brand) {
+        $image = $brand->image;
+        $image_resize_path = $destinationPath . '/' . $brand->id . ".png";
+        //resize image
+        $img = Image::make($image);
+        $img->resize(500, 500, function ($constraint) {
+          $constraint->aspectRatio();
+        })->save($image_resize_path);
+        //save image
+        $brand->image_resize = $path . '/' . $brand->id . ".png";
+        $brand->save();
+      }
     }
 
 

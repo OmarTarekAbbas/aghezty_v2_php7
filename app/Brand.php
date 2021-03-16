@@ -8,7 +8,7 @@ class Brand extends Model
 {
     use  Translatable;
     protected $table = 'brands';
-    protected $fillable = ['title', 'image', 'limit_price','category_ids','home'];
+    protected $fillable = ['title', 'image', 'limit_price','category_ids','home', 'image_resize'];
     ///////////////////set image///////////////////////////////
     public function setImageAttribute($value){
         if(is_file($value)){

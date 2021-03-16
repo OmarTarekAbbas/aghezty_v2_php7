@@ -117,7 +117,7 @@
           <div class="item">
             <div class="brands_img">
               <a href="{{url('brand/'.$homeBrand->id.'/'.setSlug($homeBrand->title))}}">
-                <img src="{{ $homeBrand->image }}" alt="{{ $homeBrand->title }}">
+                <img src="{{ isset($homeBrand->image_resize) && $homeBrand->image_resize!=null ? $homeBrand->image_resize : $homeBrand->image }}" alt="{{ $homeBrand->title }}">
               </a>
             </div>
           </div>
