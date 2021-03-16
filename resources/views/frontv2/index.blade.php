@@ -117,7 +117,7 @@
           <div class="item">
             <div class="brands_img">
               <a href="{{url('brand/'.$homeBrand->id.'/'.setSlug($homeBrand->title))}}">
-                <img src="{{ isset($homeBrand->image_resize) && $homeBrand->image_resize!=null ? $homeBrand->image_resize : $homeBrand->image }}" alt="{{ $homeBrand->title }}">
+                <img src="{{ checkImageResize($homeBrand->image, $homeBrand->image_resize)}}" alt="{{ $homeBrand->title }}">
               </a>
             </div>
           </div>
@@ -436,7 +436,7 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
             <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
-                <img src="{{checkImageProduct($item->id)}}" alt="{{$item->getTranslation('title',getCode())}}"
+                <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}"
                   class="text-center d-block">
 
                 <div class="mt-1">
@@ -490,7 +490,6 @@
             </div>
           </div>
           @endforeach
-          {{-- --}}
 
         </div>
       </div>
@@ -551,7 +550,7 @@
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
             <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
-                <img src="{{checkImageProduct($item->id)}}" alt="{{$item->getTranslation('title',getCode())}}"
+                <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}"
                   class="img_size d-block">
 
                 <div>
