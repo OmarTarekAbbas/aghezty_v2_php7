@@ -82,6 +82,8 @@ class ImageResizeController extends Controller
         $brand->image_resize = $path . '/' . $brand->id . ".png";
         $brand->save();
       }
+
+      echo "Brands Resized Done" ;
     }
 
 
