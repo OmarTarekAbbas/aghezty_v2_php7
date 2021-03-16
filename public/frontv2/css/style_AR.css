@@ -180,6 +180,26 @@ body {
   transition: opacity 0.45s ease;
   opacity: 0;
 }
+.head_two .old_search_value {
+  z-index: 9999999999;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: #eeeeee 1px 1px 1px;
+  width: 94%;
+  margin-top: -1%;
+  display: none;
+}
+.head_two .old_search_value ul {
+  padding-top: 1%;
+}
+.head_two .old_search_value ul .search-data {
+  cursor: pointer;
+}
+.head_two .old_search_value ul .search-data:hover {
+  background-color: #666666f2;
+  border-radius: 2px;
+  color: #FFF;
+}
 .head_two .new_head {
   margin-top: 7%;
   margin-left: 12%;
@@ -245,12 +265,15 @@ body {
 }
 
 .head_three {
-  background-color: #FFF;
   width: 100%;
   position: fixed;
   top: 0;
 }
 .head_three .navbar {
+  background-color: #FFF;
+  position: relative;
+  top: 0;
+  z-index: 999999;
   text-align: center;
   padding: 0;
 }
@@ -478,7 +501,7 @@ body {
 .main .carsoul_ads .owl-one .owl-dots {
   display: none;
 }
-.main .carsoul_ads .top_banner a img {
+.main .carsoul_ads .ads .top_banner a img {
   height: 228.5px;
 }
 .main .carsoul_ads .full_banner img {
@@ -517,6 +540,7 @@ body {
 }
 .main .choose_category .choose_category_background .choose_category_form .diamond_sample .diamond_sample_title {
   line-height: 33px;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -737,6 +761,9 @@ body {
   display: inline;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+.main #grid_two .col-md-6 .content_view:hover, .main #grid_two .col-md-6 .content_view:focus {
+  width: 100% !important;
 }
 .main .modal.open_left,
 .main .modal.open_right {
@@ -1009,6 +1036,9 @@ body {
   font-size: 12px;
   text-decoration: line-through;
 }
+.main #inner-page #carouselExampleControls {
+  width: 80%;
+}
 .main #inner-page .price_disc_offer .product-label {
   margin-top: 38%;
   margin-right: 2rem;
@@ -1081,6 +1111,11 @@ body {
 .main #inner-page .price_disc_offer .discount {
   line-height: 4;
 }
+.main #inner-page .slide .carousel-inner {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
 .main #inner-page .product-title {
   font-size: 1.3rem;
   text-align: right;
@@ -1126,14 +1161,6 @@ body {
 .main #inner-page .carousel-control-prev .left_slider.right_slider,
 .main #inner-page .carousel-control-prev .right_slider.right_slider {
   right: -5rem;
-}
-.main #inner-page .slide#carouselExampleControls {
-  width: 80%;
-}
-.main #inner-page .slide .carousel-inner {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
 }
 .main #inner-page .info {
   text-align: right;
@@ -3207,7 +3234,7 @@ body {
 .main #inner-page .carousel-control-next .right_slider,
 .main #inner-page .carousel-control-prev .left_slider,
 .main #inner-page .carousel-control-prev .right_slider {
-    top: 6rem;
+    top: 7rem;
     font-size: 2rem;
   }
   .main #inner-page .carousel-control-next .left_slider.left_slider,
@@ -3307,10 +3334,10 @@ body {
     height: 2.5rem;
     line-height: 2rem;
     margin: 0 auto;
-    margin-left: 0.25rem;
+    margin-left: 0.15rem;
   }
   .main #inner-page .rounded-social-buttons .social-button.download_link {
-    margin-right: 11%;
+    margin-right: 10%;
   }
   .main #inner-page .rounded-social-buttons .social-button .facebook_icon,
 .main #inner-page .rounded-social-buttons .social-button .whatsapp_icon,
@@ -3335,9 +3362,16 @@ body {
     font-weight: bold;
     font-size: 16px;
   }
+  .main .inner_table_desc .table_desc table {
+    width: 100%;
+  }
+  .main .inner_table_desc .table_desc table tr {
+    width: 100%;
+  }
   .main .inner_table_desc .table_desc table tr th,
 .main .inner_table_desc .table_desc table tr td {
     padding: 4px 6px !important;
+    width: 100%;
   }
   .main .inner_table_desc .add_new_table tbody tr .th_1 {
     width: 50%;
@@ -3430,7 +3464,7 @@ body {
   .main .cart_shopping table tbody tr th .img_link img {
     display: block;
     margin: 0 auto;
-    width: 90% !important;
+    width: 100% !important;
     height: 300px;
   }
   .main .cart_shopping table tbody tr th span {
@@ -3450,9 +3484,16 @@ body {
   .main .cart_shopping table tbody tr td.item-total {
     margin-top: 0.5rem;
   }
+  .main .cart_shopping table tbody tr .borderBottom {
+    border-bottom: 2px solid #CCC;
+  }
+  .main .cart_shopping .btn_shopping {
+    margin-top: 0.5rem;
+  }
   .main .cart_shopping .btn_shopping button {
     width: 100% !important;
     margin: 0.5rem auto;
+    text-align: center !important;
   }
   .main .cart_shopping .discount_code_accordion {
     margin: 0.5rem auto;
@@ -3498,6 +3539,7 @@ body {
     margin: 6px auto;
   }
   .main .wishlist_shopping table tbody tr th {
+    display: block;
     border: 0;
   }
   .main .wishlist_shopping table tbody tr th .item-delete {
@@ -3539,8 +3581,15 @@ body {
   .main .wishlist_shopping table tbody tr td.item-total {
     margin-top: 0.5rem;
   }
+  .main .wishlist_shopping table tbody .borderBottom {
+    border-bottom: 2px solid #CCC;
+  }
+  .main .wishlist_shopping .btn_shopping {
+    margin-top: 0.5rem;
+  }
   .main .wishlist_shopping .btn_shopping button {
     width: 100% !important;
+    text-align: center !important;
     margin: 0.5rem auto;
   }
   .main .wishlist_shopping .discount_code_accordion {
@@ -3681,7 +3730,7 @@ body {
     height: 180px;
   }
   .main .my_profile .my_profile_bg .profile_img .upload_img .upload_icon_img {
-    top: 5rem;
+    top: 4.25rem;
     right: 37%;
     font-size: 1.5rem;
   }
@@ -3700,7 +3749,11 @@ body {
     width: 100% !important;
   }
   .main .my_profile .my_profile_bg .accordion_add {
-    padding: 8px;
+    padding: 0;
+  }
+  .main .my_profile .my_profile_bg .accordion_add .card .card-header h5 button {
+    color: #000;
+    font-weight: 700;
   }
   .main .my_profile .my_profile_bg .accordion_add .card .card-header .checkbox_select_address label:before {
     content: "";
@@ -3755,13 +3808,19 @@ body {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+  .main .call-center span {
+    font-size: 15px;
+  }
+  .main .call-center i {
+    font-size: 17px;
+  }
 
   .new_footer {
     text-align: center;
   }
   .new_footer .social_media li .social-button {
-    width: 2.125rem;
-    height: 2.125rem;
+    width: 2rem;
+    height: 2rem;
     margin-right: 0;
     font-size: 1rem;
     line-height: 2rem;
@@ -3778,7 +3837,7 @@ body {
   }
 
   #return-to-top {
-    left: 4px;
+    left: 2%;
     width: 40px;
     height: 40px;
   }
