@@ -1535,7 +1535,7 @@ class HomeController extends Controller
             'address' => $request->address,
         ]);
 
-        return 1;
+        return $request->city_id;
     }
 
     public function phoneStoreAjax(Request $request)

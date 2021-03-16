@@ -280,11 +280,13 @@ function saveOrder(e){
       url: '{{route('front.home.address.update.ajax',['id' => $item->pivot->id])}}',
       data: {governorate_id: governorate_id, city_id: city_id, address: address},
       success: function (response) {
-        //console.log(response);
 
-        @if(isset( $item->pivot->city_id))
-         location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
-        @endif
+
+        console.log(response);
+        console.log({{$item->pivot->city_id}});
+        var url = "{{route('front.home.confirm', '')}}"+"/"+response;
+
+         location.href= url;
       }
     });
 
