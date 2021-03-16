@@ -1495,11 +1495,11 @@ class HomeController extends Controller
 
     public function updated_addressv2(Request $request, $id)
     {
+        
         $validator = Validator::make($request->all(), [
             'city_id' => 'required',
             'governorate_id' => 'required',
             'address' => 'required',
-            'phone' => 'required',
         ], ['address.required' => 'يجب ادخال العنوان بالتفصيل']);
 
         if ($validator->fails()) {
@@ -1514,6 +1514,28 @@ class HomeController extends Controller
 
         \Session::flash('success', __('front.address_success_message'));
         return back();
+    }
+
+    public function updated_addressv2_ajax(Request $request, $id)
+    {
+        
+        $validator = Validator::make($request->all(), [
+            'city_id' => 'required',
+            'governorate_id' => 'required',
+            'address' => 'required',
+        ], ['address.required' => 'يجب ادخال العنوان بالتفصيل']);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $client_address = ClientAddress::find($id)->update([
+            'city_id' => $request->city_id,
+            'client_id' => \Auth::guard('client')->user()->id,
+            'address' => $request->address,
+        ]);
+
+        return 1;
     }
 
     public function phoneStoreAjax(Request $request)

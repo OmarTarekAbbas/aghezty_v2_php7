@@ -91,6 +91,7 @@ Route::prefix('clients')->group(function() {
         Route::post('updated_passwordv2','front\HomeController@updated_passwordv2')->name('front.home.password.update');
         Route::get('addressv2','front\HomeController@get_addressv2')->name('front.home.address');
         Route::post('updated_addressv2/{id}','front\HomeController@updated_addressv2')->name('front.home.address.update');
+        Route::post('updated_addressv2_ajax/{id}','front\HomeController@updated_addressv2_ajax')->name('front.home.address.update.ajax');
         Route::post('phoneStoreAjax','front\HomeController@phoneStoreAjax');
         Route::post('add_addressv2','front\HomeController@add_addressv2')->name('front.home.address.add');
         Route::get('addressv2/{id}/delete','front\HomeController@delete_addressv2')->name('front.home.address.delete');
