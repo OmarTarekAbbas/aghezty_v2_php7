@@ -49,6 +49,7 @@ class HomeController extends Controller
     {
 
         $products = Product::where('special', 1)->inRandomOrder()->take(10)->get();
+       
         return view('front.home', compact('products'));
     }
 
@@ -680,30 +681,51 @@ class HomeController extends Controller
 
         $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
-        $home_brands = Brand::all();
-        $recently_added = Product::stock()->where('recently_added', 1)->get();
-        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
-        $homepage_cat = Category::where('homepage', 1)->get();
-        if (count($recently_added) != 6) {
-            $limit = 6 - count($recently_added);
-            $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
-            $recently_added = $recently_added->toBase()->merge($recently_addedR);
-        }
+        $home_brands = cache()->remember('home_brands',60 * 60 * 60,function(){ return Brand::all(); });
 
-        if (count($selected_for_you) != 6) {
-            $limit = 6 - count($selected_for_you);
-            $selected_for_youR = Product::stock()->get()->random($limit);
-            $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
-        }
+        $recently_added = cache()->remember('recently_added',60 * 60 * 60,function(){
+            $recently_added_values = Product::stock()->where('recently_added', 1)->get(); 
 
-        if (count($homepage_cat) != 6) {
-            $limit = 6 - count($homepage_cat);
-            $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
-            $homepage_cat = $homepage_cat->toBase()->merge($homepage_catR);
-        }
+            if (count($recently_added_values) != 6) {
+                $limit = 6 - count($recently_added_values);
+                $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
+                $recently_added_values =  $recently_added_values->toBase()->merge($recently_addedR);
+            }
 
+            return $recently_added_values;
+
+            });
+
+        $selected_for_you = cache()->remember('selected_for_you',60 * 60 * 60,function(){
+            $selected_for_you_values = Product::stock()->where('selected_for_you', 1)->get(); 
+
+            if (count($selected_for_you_values) != 6) {
+                $limit = 6 - count($selected_for_you_values);
+                $selected_for_youR = Product::stock()->get()->random($limit);
+                $selected_for_you_values = $selected_for_you_values->toBase()->merge($selected_for_youR);
+            }
+
+            return $selected_for_you_values;
+        });
+
+        $homepage_cat = cache()->remember('homepage_cat',60 * 60 * 60,function(){ 
+            $homepage_cat_values = Category::where('homepage', 1)->get(); 
+
+            if (count($homepage_cat_values) != 6) {
+                $limit = 6 - count($homepage_cat_values);
+                $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+                $homepage_cat_values = $homepage_cat_values->toBase()->merge($homepage_catR);
+            }
+
+            return $homepage_cat_values;
+        });
+        
         return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat', 'home_brands'));
 
+    }
+
+    public function ClearHomeCash(){
+        cache()->flush();
     }
 
     public function service_centerv2()
@@ -2468,6 +2490,8 @@ class HomeController extends Controller
           });
         }
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
+
+
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
@@ -2595,6 +2619,5 @@ class HomeController extends Controller
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
 
     }
-
 
 }

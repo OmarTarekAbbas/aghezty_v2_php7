@@ -16,7 +16,7 @@ get_dynamic_routes();
 define('DS', DIRECTORY_SEPARATOR);
 Route::get('/','front\HomeController@indexv2')->name('front.home.index');
 
-
+Route::get('/clear_home_cash','front\HomeController@ClearHomeCash');
 
 Route::prefix('clients')->group(function() {
 
@@ -195,4 +195,6 @@ Route::get("old_order_details" ,'OrderController@removeProductFromOrderDeatilsTh
 // mohamed resized
    Route::get('resize_image', 'ImageResizeController@resizeProductImage');
    Route::get('test_job', 'ImageResizeController@test_job');
+
+   Route::get('resize_brand_image','ImageResizeController@resizeBrandImages');
 
