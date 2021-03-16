@@ -454,7 +454,7 @@
       <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
-            <img src="{{checkImageProduct($item->id)}}" alt="Product" class="text-center d-block based_selection_img">
+            <img src="{{checkImageResize($item->main_image_resize, $item->main_image_resize)}}" alt="Product" class="text-center d-block based_selection_img">
 
             <h6 class="full_desc text-dark text-left text-capitalize my-3">
               {{$item->getTranslation('title',getCode())}}
