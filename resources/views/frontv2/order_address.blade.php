@@ -261,17 +261,6 @@ function  saveOrderAndPone(e){
 
 }
 
-
-
-
-// function  saveOrder(e){
-//   e.preventDefault();
-//   @if(isset( $item->pivot->city_id))
-//   location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
-//   @endif
-
-// }
-
 function saveOrder(e){
   e.preventDefault();
 
