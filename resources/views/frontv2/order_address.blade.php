@@ -58,7 +58,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>
-                            {!! Form::select("governorate_id", $countrys->pluck('title_'.getCode(),'id'),$item->governorate->id, ['required','class' => 'form-control gover_update' , 'disabled']) !!}
+                            {!! Form::select("governorate_id", $countrys->pluck('title_'.getCode(),'id'),$item->governorate->id, ['required','class' => 'form-control gover_update' , 'id'=>'governorate_id_value']) !!}
                           </div>
                         </div>
 
@@ -67,7 +67,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>
-                            {!! Form::select("city_id", $citys->pluck('city_'.getCode(),'id'),$item->pivot->city_id , ['required' , 'class' => 'form-control update_city' , 'disabled']) !!}
+                            {!! Form::select("city_id", $citys->pluck('city_'.getCode(),'id'),$item->pivot->city_id , ['required' , 'class' => 'form-control update_city' , 'id'=>'city_id_value']) !!}
                           </div>
                         </div>
 
@@ -75,7 +75,7 @@
                           <div class="input-group mb-2 w-75 m-auto hvr-float">
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
-                              <textarea class="p-3 w-100" placeholder="@lang('front.my_address') {{$key+1}}" cols="150" rows="2" name="address" readonly>{{$item->pivot->address}}</textarea>
+                              <textarea class="p-3 w-100" placeholder="@lang('front.my_address') {{$key+1}}" cols="150" rows="2" name="address" id="address_value">{{$item->pivot->address}}</textarea>
                             </div>
                           </div>
                         </div>
@@ -261,15 +261,38 @@ function  saveOrderAndPone(e){
 
 }
 
-
-
-
-function  saveOrder(e){
+function saveOrder(e){
   e.preventDefault();
-  @if(isset( $item->pivot->city_id))
-  location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
-  @endif
 
+  //get form values
+  var governorate_id =  $('#governorate_id_value').val();
+  var city_id =  $('#city_id_value').val();
+  var address =  $('#address_value').val();
+
+  if((governorate_id != '') && (city_id != '') && (address!='')){
+    //console.log('governorate_id', governorate_id);
+    //console.log('city_id', city_id);
+    //console.log('address', address);
+    //console.log('url', '{{route('front.home.address.update',['id' => $item->pivot->id])}}');
+
+    $.ajax({
+      type: "post",
+      url: '{{route('front.home.address.update.ajax',['id' => $item->pivot->id])}}',
+      data: {governorate_id: governorate_id, city_id: city_id, address: address},
+      success: function (response) {
+
+
+        console.log(response);
+        console.log({{$item->pivot->city_id}});
+        var url = "{{route('front.home.confirm', '')}}"+"/"+response;
+
+         location.href= url;
+      }
+    });
+
+  }else{
+    alert('Please Fill The Form Data!')
+  }
 }
 
 </script>

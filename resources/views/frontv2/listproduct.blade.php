@@ -30,8 +30,11 @@
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
         @elseif(request()->route("brand_id")!==null && isset($products[0]))
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
-        @elseif(request()->url("parent"))
+        @elseif(request()->url("parent") && app('request')->route('category_id')!=null)
         <?php $category_parent = \App\Category::where('id',app('request')->route('category_id'))->first(); ?>
+        <h1 class="breadcrumb-item active" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
+        @elseif(request()->url("parent") && app('request')->route('sub_category_id')!=null)
+        <?php $category_parent = \App\Category::where('id',app('request')->route('sub_category_id'))->first(); ?>
         <h1 class="breadcrumb-item active" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
         @else
         <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
