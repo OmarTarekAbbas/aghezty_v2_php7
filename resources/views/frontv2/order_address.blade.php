@@ -291,7 +291,7 @@ function saveOrder(e){
     });
 
   }else{
-    alert('Please Fill The Form Data!')
+    alert(' @lang('front.address_alert_message') ')
   }
 }
 

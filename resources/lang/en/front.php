@@ -200,5 +200,6 @@ return [
     'aghezty_info' => "The company 'Aghezty' works in the field of online sale of all electrical and electronic devices, air conditioners, mobile devices, intercoms, alarms and monitoring devices, and provides high-quality products with advanced technology that meet the desires and expectations of the consumer.",
     'admin_reply' => 'User',
     'be_first' => 'BE THE FIRST TO KNOW',
-    'subscribe_info' => 'Get all the latest information on Events, Sales and Offers. Sign up for newsletter today'
+    'subscribe_info' => 'Get all the latest information on Events, Sales and Offers. Sign up for newsletter today',
+    'address_alert_message' => 'Please Fill All Form Data !',
 ];
