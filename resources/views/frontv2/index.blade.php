@@ -11,7 +11,7 @@
         <div class="col-md-12 col-xl-12">
           <a href="{{advertisements(3)->ads_url}}">
             <div class="full_banner">
-              <img class="rounded w-100" src="{{advertisements(3)->image}}" alt="{{advertisements(3)->ads_url}}">
+              <img class="rounded w-100" src="{{checkImageResize(advertisements(3)->image, advertisements(3)->image_resize)}}" alt="{{advertisements(3)->ads_url}}">
             </div>
           </a>
         </div>

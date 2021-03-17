@@ -7,7 +7,7 @@
 
 					<div class="item">
 						<a href="{{$slide->ads_url}}">
-							<img class="d-block w-100 rounded" src="{{$slide->image}}" alt="{{$slide->image}}">
+							<img class="d-block w-100 rounded" src="{{checkImageResize($slide->image, $slide->image_resize)}}" alt="{{$slide->ads_url}}">
 						</a>
 					</div>
 
@@ -21,7 +21,7 @@
           @if(advertisements(1))
 					<div class="col-md-12 col-xl-12 col-6 top_banner">
 						<a href="{{advertisements(1)->ads_url}}">
-							<img class="rounded w-100" src="{{advertisements(1)->image}}" alt="{{advertisements(1)->ads_url}}">
+							<img class="rounded w-100" src="{{checkImageResize(advertisements(1)->image, advertisements(1)->image_resize)}}" alt="{{advertisements(1)->ads_url}}">
 						</a>
 					</div>
           @endif
@@ -29,7 +29,7 @@
           @if(advertisements(2))
 					<div class="col-md-12 col-xl-12 col-6 top_banner bottom_banner mt-3">
 						<a href="{{advertisements(2)->ads_url}}">
-							<img class="rounded w-100" src="{{advertisements(2)->image}}" alt="{{advertisements(2)->ads_url}}">
+							<img class="rounded w-100" src="{{checkImageResize(advertisements(2)->image, advertisements(2)->image_resize)}}" alt="{{advertisements(2)->ads_url}}">
 						</a>
 					</div>
 

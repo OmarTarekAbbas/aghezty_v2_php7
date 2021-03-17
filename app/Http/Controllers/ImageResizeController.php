@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Brand;
+use App\Advertisement;
 use Image;
 use File;
 use App\Jobs\ResizeImage;
@@ -84,6 +85,33 @@ class ImageResizeController extends Controller
       }
 
       echo "Brands Resized Done" ;
+    }
+
+    public function resizeAdvertisementImages(){
+      $path = 'uploads/advertisement/image_resize';
+		  $destinationPath = base_path($path);
+
+      if (!File::exists($path)) {
+        File::makeDirectory($path, 0755, true, true);
+      }
+
+		  $advertisemets = Advertisement::whereNull('image_resize')->orderBy("id", "desc")->get();
+      foreach ($advertisemets as $advertisemet) {
+        $image = $advertisemet->image;
+        if(isset($image) && $image!=null){
+        $image_resize_path = $destinationPath . '/' . $advertisemet->id . ".png";
+        //resize image
+        $img = Image::make($image);
+        $img->resize(500, 500, function ($constraint) {
+          $constraint->aspectRatio();
+        })->save($image_resize_path);
+        //save image
+        $advertisemet->image_resize = $path . '/' . $advertisemet->id . ".png";
+        $advertisemet->save();
+      }
+      }
+
+      echo "Advertisemets Resized Done" ;
     }
 
 

@@ -87,7 +87,7 @@ class BrandController extends Controller
         $img = Image::make($image);
         $img->resize(500, 500, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($main_image_resize_path);
+        })->save($image_resize_path);
         //save image
         $brand->image_resize = $path_resize_path.'/'.$time.".png";
       }
@@ -189,7 +189,7 @@ class BrandController extends Controller
         $img = Image::make($image);
         $img->resize(500, 500, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($main_image_resize_path);
+        })->save($image_resize_path);
         //save image
         $brand->image_resize = $path_resize_path.'/'.$time.".png";
       }
