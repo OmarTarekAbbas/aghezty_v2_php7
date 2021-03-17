@@ -62,6 +62,7 @@ class ImageResizeController extends Controller
     }
 
     public function resizeBrandImages(){
+
       $path = 'uploads/brand/image_resize';
 		  $destinationPath = base_path($path);
 
@@ -70,17 +71,28 @@ class ImageResizeController extends Controller
       }
 
 		  $brands = Brand::whereNull('image_resize')->orderBy("id", "desc")->get();
-
+      
       foreach ($brands as $brand) {
         $image = $brand->image;
-        $image_resize_path = $destinationPath . '/' . $brand->id . ".png";
+        $image_resize_path = $destinationPath . '/' . $brand->id . ".webp";
         //resize image
-        $img = Image::make($image);
-        $img->resize(500, 500, function ($constraint) {
-          $constraint->aspectRatio();
-        })->save($image_resize_path);
+
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        if ($ext != "png") {
+          $img = Image::make($image);
+          $img->encode('webp', 90)->save($image_resize_path);
+        } elseif($ext == "png") {
+          $image_form = imagecreatefrompng($image);
+          imagepalettetotruecolor($image_form);
+          imageAlphaBlending($image_form, true); // alpha channel
+          imageSaveAlpha($image_form, true); // save alpha setting
+
+          $img = Image::make($image_form);
+          $img->encode('webp', 90)->save($image_resize_path);
+        }
+
         //save image
-        $brand->image_resize = $path . '/' . $brand->id . ".png";
+        $brand->image_resize = $path . '/' . $brand->id . ".webp";
         $brand->save();
       }
 
@@ -99,22 +111,31 @@ class ImageResizeController extends Controller
       foreach ($advertisemets as $advertisemet) {
         $image = $advertisemet->image;
         if(isset($image) && $image!=null){
-        $image_resize_path = $destinationPath . '/' . $advertisemet->id . ".png";
+        $image_resize_path = $destinationPath . '/' . $advertisemet->id . ".webp";
         //resize image
-        $img = Image::make($image);
-        $img->resize(1000, 1000, function ($constraint) {
-          $constraint->aspectRatio();
-        })->save($image_resize_path);
+        
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        if ($ext != "png") {
+          $img = Image::make($image);
+          $img->encode('webp', 90)->save($image_resize_path);
+        } elseif($ext == "png") {
+          $image_form = imagecreatefrompng($image);
+          imagepalettetotruecolor($image_form);
+          imageAlphaBlending($image_form, true); // alpha channel
+          imageSaveAlpha($image_form, true); // save alpha setting
+
+          $img = Image::make($image_form);
+          $img->encode('webp', 90)->save($image_resize_path);
+        }
+
         //save image
-        $advertisemet->image_resize = $path . '/' . $advertisemet->id . ".png";
+        $advertisemet->image_resize = $path . '/' . $advertisemet->id . ".webp";
         $advertisemet->save();
       }
       }
 
       echo "Advertisemets Resized Done" ;
     }
-
-
 
     public function test_job()
     {
