@@ -544,7 +544,7 @@ function checkImageProduct($product_id)
   }
 }
 
-  function checkImageResize($image, $image_resize)
+function checkImageResize($image, $image_resize)
 {
   return isset($image_resize)&&$image_resize!=null ? $image_resize : $image;
 }

@@ -80,7 +80,7 @@ class ImageResizeController extends Controller
         $ext = pathinfo($image, PATHINFO_EXTENSION);
         if ($ext != "png") {
           $img = Image::make($image);
-          $img->encode('webp', 90)->save($image_resize_path);
+          $img->encode('webp', 90)->resize(132, 65)->save($image_resize_path);
         } elseif($ext == "png") {
           $image_form = imagecreatefrompng($image);
           imagepalettetotruecolor($image_form);
@@ -88,7 +88,7 @@ class ImageResizeController extends Controller
           imageSaveAlpha($image_form, true); // save alpha setting
 
           $img = Image::make($image_form);
-          $img->encode('webp', 90)->save($image_resize_path);
+          $img->encode('webp', 90)->resize(132, 65)->save($image_resize_path);
         }
 
         //save image

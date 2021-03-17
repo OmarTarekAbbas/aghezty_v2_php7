@@ -310,6 +310,11 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                     </ul>
                                 </li>
                             </ul>
+                       @endif
+                    @endif
+
+                        @if(Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('content'))
+                        <ul class="nav nav-list">
                             <li id="file_manager">
                                 <a href="#" class="dropdown-toggle">
                                     <i class="fa fa-file"></i>
@@ -325,7 +330,11 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 </ul>
                                 <!-- END Submenu -->
                             </li>
+                            </ul>
+                        @endif
 
+                     @if(Auth::user()->hasRole('super_admin'))
+                      @if(Auth::user()->id == 1)
                             <li id="images">
                                 <a href="#" class="dropdown-toggle">
                                     <i class="glyphicon glyphicon-fullscreen"></i>
@@ -699,6 +708,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                         </ul>
 
                         <br>
+                    
                 <!-- END Navlist -->
 
                 <!-- BEGIN Sidebar Collapse Button -->
