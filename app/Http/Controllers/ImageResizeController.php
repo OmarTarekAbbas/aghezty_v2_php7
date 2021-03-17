@@ -102,7 +102,7 @@ class ImageResizeController extends Controller
         $image_resize_path = $destinationPath . '/' . $advertisemet->id . ".png";
         //resize image
         $img = Image::make($image);
-        $img->resize(500, 500, function ($constraint) {
+        $img->resize(1000, 1000, function ($constraint) {
           $constraint->aspectRatio();
         })->save($image_resize_path);
         //save image
