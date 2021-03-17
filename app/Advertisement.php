@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Advertisement extends Model
 {
-    protected $fillable = ['image','ads_url','order'];
+    protected $fillable = ['image','ads_url','order', 'image_resize'];
 
     ///////////////////set image///////////////////////////////
     public function setImageAttribute($value){

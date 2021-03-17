@@ -47,7 +47,10 @@ class AdvertisementController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $advertisement = Advertisement::create($request->all());
+        $path = 'uploads/advertisement/image_resize';
+        $resized_image = resizeImage($path, $request->image);
+
+        $advertisement = Advertisement::create(array_merge($request->all(), ['image_resize', $resized_image]));
         \Session::flash('success', 'Advertisement Created Successfully');
         return redirect('/advertisement');
     }
@@ -85,7 +88,7 @@ class AdvertisementController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'image' => '',
+            'image' => 'required',
             'ads_url' => ''
         ]);
 
@@ -93,7 +96,10 @@ class AdvertisementController extends Controller
           return back()->withErrors($validator)->withInput();
       }
 
-      $advertisement = Advertisement::findOrFail($id)->update($request->all());
+      $path = 'uploads/advertisement/image_resize';
+    $resized_image = resizeImage($path, $request->image);
+
+      $advertisement = Advertisement::findOrFail($id)->update(array_merge($request->all(), ['image_resize', $resized_image]));
 
       \Session::flash('success', 'Advertisement Update Successfully');
       return redirect('/advertisement');

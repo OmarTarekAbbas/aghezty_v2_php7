@@ -548,3 +548,25 @@ function checkImageProduct($product_id)
 {
   return isset($image_resize)&&$image_resize!=null ? $image_resize : $image;
 }
+
+function resizeImage($resize_path, $image){
+        $destinationPath = base_path($resize_path);
+
+        if(!File::exists($resize_path)) {
+            File::makeDirectory($resize_path, 0755, true, true);
+        }
+
+        $time = time().rand(0,999);
+
+        $image_resize_path = $destinationPath.'/'.$time.".png";
+        
+        //resize image
+        $img = Image::make($image);
+        $img->resize(500, 500, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($image_resize_path);
+
+        $resized_image_path = $resize_path.'/'.$time.".png";
+
+        return $resized_image_path;
+}
