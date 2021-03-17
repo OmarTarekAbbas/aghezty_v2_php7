@@ -507,11 +507,10 @@ body {
 
 /*----------------------------------------- End Header -----------------------------------------*/
 
-
-/*----------------------------------------- Start Home Page -----------------------------------------*/
 .main {
   padding-bottom: 1%;
   padding-top: 7%;
+  /*----------------------------------------- Start Home Page -----------------------------------------*/
 
   .carsoul_ads {
     .owl-one {
@@ -889,15 +888,10 @@ body {
   .panel {
     padding: 15px 17px;
     display: block;
-    // background-color: $white_color;
-    // overflow: hidden;
-    // float: right;
   }
 
   #grid_two {
     .col-md-6 {
-      // margin-bottom: 12px;
-
       .content_view {
         width: 100% !important;
         height: 471px;
@@ -1261,9 +1255,6 @@ body {
 
     .price_disc_offer {
       .product-label {
-        // position: absolute;
-        // top: 22%;
-        // right: -2.5rem;
         float: right;
         margin-top: 13%;
         margin-right: -2rem;
@@ -1342,7 +1333,6 @@ body {
     }
 
     .slide {
-
       .carousel-inner {
         height: 100%;
         width: 100%;
@@ -1370,7 +1360,6 @@ body {
 
     .carousel-control-next,
     .carousel-control-prev {
-      // position: relative;
       color: #343a40;
       height: 0;
 
@@ -1759,8 +1748,6 @@ body {
 
   .inner_table_desc {
     .table_desc {
-
-      // padding-left: 6%;
       .table {
         border: 1px solid #dcdcdc;
 
@@ -1792,6 +1779,14 @@ body {
             width: 75%;
           }
         }
+      }
+    }
+  }
+
+  .based_selection {
+    .content_view {
+      a {
+        .based_selection_img {}
       }
     }
   }
@@ -1915,17 +1910,6 @@ body {
     form {
       em {
         color: #eb340a;
-      }
-    }
-  }
-
-  .based_selection {
-    .content_view {
-      a {
-        .based_selection_img {
-          // width: 100% !important;
-          // height: 389px !important;
-        }
       }
     }
   }
