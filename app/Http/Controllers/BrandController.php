@@ -75,21 +75,9 @@ class BrandController extends Controller
        }
 
        if($request->has('image')){
-        $path_resize_path = 'uploads/brand/image_resize';
-        $destinationPath = base_path($path_resize_path);
-        if(!File::exists($path_resize_path)) {
-            File::makeDirectory($path_resize_path, 0755, true, true);
-        }
-        $time = time().rand(0,999);
-        $image = $request->image;
-        $image_resize_path = $destinationPath.'/'.$time.".png";
-        //resize image
-        $img = Image::make($image);
-        $img->resize(500, 500, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($image_resize_path);
-        //save image
-        $brand->image_resize = $path_resize_path.'/'.$time.".png";
+        $path = 'uploads/brand/image_resize';
+        $resized_image = resizeImage($path, $request->main_image);
+        $brand->image_resize = $resized_image;
       }
 
       $brand->save();
@@ -177,21 +165,9 @@ class BrandController extends Controller
       }
 
       if($request->has('image')){
-        $path_resize_path = 'uploads/brand/image_resize';
-        $destinationPath = base_path($path_resize_path);
-        if(!File::exists($path_resize_path)) {
-            File::makeDirectory($path_resize_path, 0755, true, true);
-        }
-        $time = time().rand(0,999);
-        $image = $request->image;
-        $image_resize_path = $destinationPath.'/'.$time.".png";
-        //resize image
-        $img = Image::make($image);
-        $img->resize(500, 500, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($image_resize_path);
-        //save image
-        $brand->image_resize = $path_resize_path.'/'.$time.".png";
+        $path = 'uploads/brand/image_resize';
+        $resized_image = resizeImage($path, $request->main_image);
+        $brand->image_resize = $resized_image;
       }
 
       $brand->update($request->except('title'));
