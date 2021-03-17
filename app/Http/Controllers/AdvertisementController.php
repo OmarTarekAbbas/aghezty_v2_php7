@@ -48,7 +48,7 @@ class AdvertisementController extends Controller
         }
 
         $path = 'uploads/advertisement/image_resize';
-        $resized_image = resizeImage($path, $request->image);
+        $resized_image = resizeSliderImage($path, $request->image);
 
         $advertisement = Advertisement::create(array_merge($request->all(), ['image_resize', $resized_image]));
         \Session::flash('success', 'Advertisement Created Successfully');
@@ -97,7 +97,7 @@ class AdvertisementController extends Controller
       }
 
       $path = 'uploads/advertisement/image_resize';
-    $resized_image = resizeImage($path, $request->image);
+    $resized_image = resizeSliderImage($path, $request->image);
 
       $advertisement = Advertisement::findOrFail($id)->update(array_merge($request->all(), ['image_resize', $resized_image]));
 
