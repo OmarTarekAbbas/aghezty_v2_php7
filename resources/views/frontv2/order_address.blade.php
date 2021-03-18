@@ -270,25 +270,22 @@ function saveOrder(e){
   var address =  $('#address_value').val();
 
   if((governorate_id != '') && (city_id != '') && (address!='')){
-    //console.log('governorate_id', governorate_id);
-    //console.log('city_id', city_id);
-    //console.log('address', address);
-    //console.log('url', '{{route('front.home.address.update',['id' => $item->pivot->id])}}');
-
-    $.ajax({
-      type: "post",
-      url: '{{route('front.home.address.update.ajax',['id' => $item->pivot->id])}}',
-      data: {governorate_id: governorate_id, city_id: city_id, address: address},
-      success: function (response) {
+    @if(isset($item->pivot->id) && $item->pivot->id!=null)
+      $.ajax({
+        type: "post",
+        url: '{{route('front.home.address.update.ajax',['id' => $item->pivot->id])}}',
+        data: {governorate_id: governorate_id, city_id: city_id, address: address},
+        success: function (response) {
 
 
-        console.log(response);
-        console.log({{$item->pivot->city_id}});
-        var url = "{{route('front.home.confirm', '')}}"+"/"+response;
+          console.log(response);
+          console.log({{$item->pivot->city_id}});
+          var url = "{{route('front.home.confirm', '')}}"+"/"+response;
 
-         location.href= url;
-      }
-    });
+          location.href= url;
+        }
+      });
+      @endif
 
   }else{
     alert(' @lang('front.address_alert_message') ')
