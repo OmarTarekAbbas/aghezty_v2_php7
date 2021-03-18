@@ -17,11 +17,6 @@
   border-top-right-radius: 0;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  /* border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px; */
 }
 
 /* Handle on hover */
@@ -2877,6 +2872,7 @@ body {
     position: unset !important;
     transform: unset !important;
   }
+
   .search_mobile {
     padding-top: 20%;
   }
@@ -4843,6 +4839,7 @@ body {
     position: unset !important;
     transform: unset !important;
   }
+
   .navbar {
     padding: 19px !important;
     height: 98px;
@@ -5045,6 +5042,7 @@ body {
     left: 1% !important;
     min-width: 30%;
   }
+
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-left: 0 !important;
     padding-right: 0 !important;
