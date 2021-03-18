@@ -787,12 +787,19 @@ body {
   padding-right: 105px;
   border-radius: 0;
 }
+.main nav .breadcrumb .breadcrumb_slash::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: #6c757d;
+  content: "/";
+}
 .main nav .breadcrumb .breadcrumb-item {
   color: #000;
   font-size: 1rem;
 }
-.main nav .breadcrumb .breadcrumb-item + ::before {
-  padding-left: 0.5rem !important;
+.main nav .breadcrumb .breadcrumb-item::before {
+  display: none;
 }
 .main nav .breadcrumb .breadcrumb-item a {
   color: #000;

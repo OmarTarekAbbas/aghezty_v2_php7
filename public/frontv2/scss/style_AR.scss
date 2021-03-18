@@ -1010,12 +1010,22 @@ body {
       padding-right: 105px;
       border-radius: 0;
 
+      .breadcrumb_slash {
+        &::before {
+          display: inline-block;
+          padding-right: .5rem;
+          padding-left: .5rem;
+          color: #6c757d;
+          content: "/";
+        }
+      }
+
       .breadcrumb-item {
         color: $black_color;
         font-size: 1rem;
 
-        &+::before {
-          padding-left: 0.5rem !important;
+        &::before {
+          display: none;
         }
 
         a {
