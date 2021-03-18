@@ -72,7 +72,7 @@ class ImageResizeController extends Controller
       }
 
 		  $brands = Brand::whereNull('image_resize')->orderBy("id", "desc")->get();
-      
+
       foreach ($brands as $brand) {
         $image = $brand->image;
         $image_resize_path = $destinationPath . '/' . $brand->id . ".webp";
@@ -114,7 +114,7 @@ class ImageResizeController extends Controller
         if(isset($image) && $image!=null){
         $image_resize_path = $destinationPath . '/' . $advertisemet->id . ".webp";
         //resize image
-        
+
         $ext = pathinfo($image, PATHINFO_EXTENSION);
         if ($ext != "png") {
           $img = Image::make($image);
@@ -146,13 +146,13 @@ class ImageResizeController extends Controller
         File::makeDirectory($path, 0755, true, true);
       }
 
-		  $categories = Category::whereNull('offer_image_resize')->orderBy("id", "desc")->get();
+		  $categories = Category::whereNull('parent_id')->whereNull('offer_image_resize')->orderBy("id", "desc")->get();
       foreach ($categories as $category) {
         $image = $category->offer_image;
         if(isset($image) && $image!=null){
         $image_resize_path = $destinationPath . '/' . $category->id . ".webp";
         //resize image
-        
+
         $ext = pathinfo($image, PATHINFO_EXTENSION);
         if ($ext != "png") {
           $img = Image::make($image);
