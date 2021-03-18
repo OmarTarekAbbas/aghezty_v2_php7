@@ -6823,12 +6823,18 @@ body {
     }
 
     .content_view {
-      height: 330px !important;
+      height: 340px !important;
 
       a {
         img {
           height: 194px !important;
           margin: 0 auto;
+        }
+
+        .full_desc {
+          margin-top: 5px;
+          font-size: 13px;
+          height: 50px;
         }
       }
     }
@@ -6914,7 +6920,7 @@ body {
           margin-bottom: 10px;
 
           .product_desc {
-            height: 360px;
+            height: 330px;
 
             a {
               img {
@@ -6922,8 +6928,8 @@ body {
               }
 
               .full_desc {
-                font-size: 15px !important;
-                height: 2.5rem;
+                font-size: 13px;
+                height: 57px;
               }
             }
 
@@ -7225,7 +7231,7 @@ body {
     .product_view {
       .product_view_type {
         .product_desc {
-          height: 350px;
+          height: 320px;
 
           a {
             img {
@@ -7233,9 +7239,11 @@ body {
               margin: 0 auto;
             }
 
-            // .img_size {
-            //   height: 110px !important;
-            // }
+            .full_desc {
+              margin-top: 5px;
+              font-size: 14px;
+              height: 60px;
+            }
           }
         }
 
@@ -7246,6 +7254,7 @@ body {
     }
 
     .nav_breadcrumb {
+      margin-top: 4%;
       .breadcrumb-item {
         &::before {
           padding-left: .5rem !important;
@@ -7280,12 +7289,18 @@ body {
     #grid_two {
       .col-md-6 {
         .content_view {
-          height: 394px;
+          height: 470px;
 
           a {
             img {
               width: 65% !important;
               height: 282px;
+            }
+
+            .full_desc {
+              margin-top: 5px;
+              font-size: 15px;
+              height: 53px;
             }
           }
         }
@@ -7293,11 +7308,17 @@ body {
     }
 
     .content_view {
-      height: 415px;
+      height: 440px;
 
       a {
         img {
           height: 274px;
+        }
+
+        .full_desc {
+          margin-top: 5px;
+          font-size: 14px;
+          height: 50px;
         }
       }
     }
@@ -7385,7 +7406,7 @@ body {
 
     .based_selection {
       .content_view {
-        height: 350px !important;
+        height: 326px !important;
 
         a {
           .based_selection_img {
@@ -7394,10 +7415,9 @@ body {
           }
 
           h6 {
-            line-height: 1.35rem;
-            height: 2.5rem;
-            text-overflow: ellipsis;
-            overflow: hidden;
+            margin-top: 5px;
+            font-size: 15px;
+            height: 53px;
           }
         }
 
@@ -7765,7 +7785,7 @@ body {
     #grid_two {
       .col-md-6 {
         .content_view {
-          height: 380px;
+          height: 402px;
 
           a {
             img {
@@ -7778,7 +7798,7 @@ body {
     }
 
     .content_view {
-      height: 410px;
+      height: 438px;
 
       a {
         img {
