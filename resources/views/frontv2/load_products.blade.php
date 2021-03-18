@@ -5,7 +5,7 @@
     <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
       <img class="lazy text-center d-block" src="{{checkImageProduct($product->product_id)}}" alt="Product">
 
-      <h6 class="full_desc text-dark text-left text-capitalize">{{$product->getTranslation('title',getCode())}}</h6>
+      <h6 class="full_desc text-dark text-left text-capitalize mb-0">{{$product->getTranslation('title',getCode())}}</h6>
     </a>
 
     @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')

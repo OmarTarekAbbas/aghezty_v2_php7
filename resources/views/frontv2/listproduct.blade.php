@@ -469,7 +469,7 @@
 
 
 
-                <h6 class="full_desc text-dark text-left text-capitalize">
+                <h6 class="full_desc text-dark text-left text-capitalize mb-0">
                   {{$product->getTranslation('title',getCode())}}
                 </h6>
               </a>
