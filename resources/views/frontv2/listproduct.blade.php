@@ -248,11 +248,11 @@
               </button>
 
               <div class="panel mb-3 border border-secondary">
-              @if (request()->has('brand_id') && !request()->has('sub_category_id'))
+              @if (request()->route('brand_id') && !request()->has('sub_category_id'))
                 @php
                 $subs = \App\Category::join('products','products.category_id','=','categories.id')
                         ->join('brands','brands.id','=','products.brand_id')
-                        ->where('products.brand_id', request()->get('brand_id'))
+                        ->where('products.brand_id', request()->route('brand_id'))
                         ->select('categories.*')
                         ->groupBy('categories.id')
                         ->get();
@@ -309,10 +309,12 @@
               </button>
 
               <div class="panel brand_panel_change_mobile mb-3 border border-secondary">
+              
                 @foreach (filtter_brands() as $brand)
-                <div class="z-checkbox">
+                <div class="z-checkbox" style="display: {{in_array($brand->id, $brand_ids) ? '' : 'none' }}">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
-                  {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}}
+                  {{((request()->route('brand_id') && $brand->id == request()->route('brand_id') ) 
+                  || in_array($brand->id,$brand_ids))?'checked':''}}
                     class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_brand_{{$brand->id}}_mobile" data-en="{{$brand->getTranslation('title','en')}}">{{$brand->getTranslation('title',getCode())}}</label>
@@ -643,9 +645,6 @@ $( document ).ready(function(){
 
       var input_id = 'panel_category_' + checked_value;
       console.log(input_id);
-
-      var parent_node = document.getElementById("myLI").parentNode.nodeName;
-      conslole.log(parent_node);
     });
 
   });
