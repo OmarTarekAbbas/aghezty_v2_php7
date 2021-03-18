@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Brand;
 use App\Advertisement;
+use App\Category;
 use Image;
 use File;
 use App\Jobs\ResizeImage;
@@ -135,6 +136,44 @@ class ImageResizeController extends Controller
       }
 
       echo "Advertisemets Resized Done" ;
+    }
+
+    public function resizeOfferImages(){
+      $path = 'uploads/offer_image/image_resize';
+		  $destinationPath = base_path($path);
+
+      if (!File::exists($path)) {
+        File::makeDirectory($path, 0755, true, true);
+      }
+
+		  $categories = Category::whereNull('offer_image_resize')->orderBy("id", "desc")->get();
+      foreach ($categories as $category) {
+        $image = $category->offer_image;
+        if(isset($image) && $image!=null){
+        $image_resize_path = $destinationPath . '/' . $category->id . ".webp";
+        //resize image
+        
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        if ($ext != "png") {
+          $img = Image::make($image);
+          $img->encode('webp', 90)->save($image_resize_path);
+        } elseif($ext == "png") {
+          $image_form = imagecreatefrompng($image);
+          imagepalettetotruecolor($image_form);
+          imageAlphaBlending($image_form, true); // alpha channel
+          imageSaveAlpha($image_form, true); // save alpha setting
+
+          $img = Image::make($image_form);
+          $img->encode('webp', 90)->save($image_resize_path);
+        }
+
+        //save image
+        $category->offer_image_resize = $path . '/' . $category->id . ".webp";
+        $category->save();
+      }
+      }
+
+      echo "Offer Category Resized Done" ;
     }
 
     public function test_job()
