@@ -105,7 +105,7 @@ class HomeController extends Controller
         $slide->order = $request->order;
 
         if($slide->save()){
-            $path = 'uploads/ads/image_resize';
+            $path = 'uploads/advertisement/image_resize';
             $resized_image = resizeImage($path, $slide->image);
         }
 
