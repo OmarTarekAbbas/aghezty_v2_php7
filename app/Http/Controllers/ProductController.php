@@ -107,6 +107,7 @@ class ProductController extends Controller
         $file = $request->main_image;
         $request->special = ($request->special) ? 1:0;
         $request->active = ($request->active) ? 1:0;
+
         if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
         {
             \Session::flash('failed','Image must be jpg or jpeg only !! No updates takes place, try again with that extensions please..');
