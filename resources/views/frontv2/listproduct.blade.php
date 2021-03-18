@@ -39,6 +39,8 @@
         @else
         <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
         @endif
+
+        <div id="fillter_breadcrumb"></div>
       </ol>
     </nav>
   </div>
@@ -630,8 +632,22 @@ $( document ).ready(function(){
         $('.load').hide();
       },
     });
-
   }
+
+  $(document).on('change', '.sub_cat_id', function() {
+    $("[name='sub_category_id[]']:checked").each(function () {
+      var checked_value = $(this).val();
+      console.log( checked_value );
+
+      var input_id = 'panel_category_' + checked_value;
+      console.log(input_id);
+
+      var parent_node = document.getElementById("myLI").parentNode.nodeName;
+      conslole.log(parent_node);
+    });
+
+  });
+
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer, .most_solid , #sorted', function() {
     $('#most_solid').remove()
     $('.load').show();
@@ -642,6 +658,7 @@ $( document ).ready(function(){
       $('#' + $(this).attr('id') + '_mobile').removeAttr('checked')
       $('#' + str.split('_mobile')[0]).removeAttr('checked')
     }
+
     $.ajax({
       url: '{{url("clients/loadproductsv2")}}?start=0',
       type: "post",

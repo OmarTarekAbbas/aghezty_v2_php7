@@ -44,7 +44,7 @@ class BrandController extends Controller
       $validator = Validator::make($request->all(), [
                 'title' => 'required|array',
                 'title.*' => 'required|string',
-                'image' => ''
+                'image' => 'required'
           ]);
 
         if ($validator->fails()) {
@@ -74,13 +74,12 @@ class BrandController extends Controller
          }
        }
 
-       if($request->has('image')){
+      if($brand->save()){
         $path = 'uploads/brand/image_resize';
-        $resized_image = resizeImage($path, $request->main_image);
+        $resized_image = resizeBrandImage($path, $brand->image);
         $brand->image_resize = $resized_image;
+        $brand->save();
       }
-
-      $brand->save();
 
 
       \Session::flash('success', 'Brand Created Successfully');
@@ -164,13 +163,15 @@ class BrandController extends Controller
           // $this->delete_image_if_exists(base_path('/uploads/brand/'.basename($brand->image)));
       }
 
-      if($request->has('image')){
-        $path = 'uploads/brand/image_resize';
-        $resized_image = resizeImage($path, $request->main_image);
-        $brand->image_resize = $resized_image;
+      if($brand->update($request->except('title'))){
+        if(isset($brand->image) && $brand->image!=null){
+          $path = 'uploads/brand/image_resize';
+          $resized_image = resizeBrandImage($path, $brand->image);
+          $brand->image_resize = $resized_image;
+          $brand->save();
+        }
       }
-
-      $brand->update($request->except('title'));
+      
 
       //calculate Installments price
       $this->calculateProductInstallmentsPrice($id,$Installments,$limitPrice,$request);

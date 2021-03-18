@@ -544,7 +544,7 @@ function checkImageProduct($product_id)
   }
 }
 
-  function checkImageResize($image, $image_resize)
+function checkImageResize($image, $image_resize)
 {
   return isset($image_resize)&&$image_resize!=null ? $image_resize : $image;
 }
@@ -558,15 +558,53 @@ function resizeImage($resize_path, $image){
 
         $time = time().rand(0,999);
 
-        $image_resize_path = $destinationPath.'/'.$time.".png";
+        $image_resize_path = $destinationPath.'/'.$time.".webp";
         
-        //resize image
-        $img = Image::make($image);
-        $img->resize(500, 500, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($image_resize_path);
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        if ($ext != "png") {
+          $img = Image::make($image);
+          $img->encode('webp', 90)->save($image_resize_path);
+        } elseif($ext == "png") {
+          $image_form = imagecreatefrompng($image);
+          imagepalettetotruecolor($image_form);
+          imageAlphaBlending($image_form, true); // alpha channel
+          imageSaveAlpha($image_form, true); // save alpha setting
 
-        $resized_image_path = $resize_path.'/'.$time.".png";
+          $img = Image::make($image_form);
+          $img->encode('webp', 90)->save($image_resize_path);
+        }
+
+        $resized_image_path = $resize_path.'/'.$time.".webp";
 
         return $resized_image_path;
+}
+
+function resizeBrandImage($resize_path, $image){
+  $destinationPath = base_path($resize_path);
+
+  if(!File::exists($resize_path)) {
+      File::makeDirectory($resize_path, 0755, true, true);
+  }
+
+  $time = time().rand(0,999);
+
+  $image_resize_path = $destinationPath.'/'.$time.".webp";
+  
+  $ext = pathinfo($image, PATHINFO_EXTENSION);
+        if ($ext != "png") {
+          $img = Image::make($image);
+          $img->encode('webp', 90)->resize(132, 65)->save($image_resize_path);
+        } elseif($ext == "png") {
+          $image_form = imagecreatefrompng($image);
+          imagepalettetotruecolor($image_form);
+          imageAlphaBlending($image_form, true); // alpha channel
+          imageSaveAlpha($image_form, true); // save alpha setting
+
+          $img = Image::make($image_form);
+          $img->encode('webp', 90)->resize(132, 65)->save($image_resize_path);
+        }
+
+  $resized_image_path = $resize_path.'/'.$time.".webp";
+
+  return $resized_image_path;
 }
