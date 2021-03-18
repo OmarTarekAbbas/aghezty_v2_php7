@@ -91,7 +91,7 @@ body {
 .head_two {
   background-color: #FFF;
   width: 100%;
-  height: 80px;
+  height: 85px;
   position: fixed;
   top: 0;
   z-index: 99999999;
@@ -331,7 +331,7 @@ body {
 .head_three_ul .navbar-nav {
   text-align: center;
   position: fixed;
-  top: 5rem;
+  top: 5.34rem;
   z-index: 9999999;
   padding: 0;
   background-color: #085C9B;
@@ -596,7 +596,7 @@ body {
 .main .product_view .product_view_type .product_desc {
   background: #FFF;
   box-shadow: 0 0 1px #ccc;
-  height: 360px;
+  height: 380px;
   width: 100%;
 }
 .main .product_view .product_view_type .product_desc a img {
@@ -615,10 +615,8 @@ body {
   font-weight: bold;
   font-size: 13px;
   color: #333;
-  white-space: nowrap;
+  height: 57px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  direction: rtl;
 }
 .main .product_view .product_view_type .product_desc .fav_product {
   font-size: 14px;
@@ -710,7 +708,7 @@ body {
 }
 .main #grid_two .col-md-6 .content_view {
   width: 100% !important;
-  height: 471px;
+  height: 480px;
   text-align: center !important;
 }
 .main #grid_two .col-md-6 .content_view a img {
@@ -724,6 +722,9 @@ body {
 }
 .main #grid_two .col-md-6 .content_view a .full_desc {
   text-align: center !important;
+  height: 45px;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 .main #grid_two .col-md-6 .content_view .rating_list_product,
 .main #grid_two .col-md-6 .content_view .price-description {
@@ -915,7 +916,7 @@ body {
   box-shadow: 0 0 1px #ccc;
   padding: 0.65rem 0;
   width: 100%;
-  height: 450px;
+  height: 470px;
   margin-bottom: 1rem;
 }
 .main .content_view a img {
@@ -933,10 +934,8 @@ body {
   text-align: right !important;
   font-weight: bold;
   font-size: 13px;
-  white-space: nowrap;
+  height: 60px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  direction: rtl;
 }
 .main .content_view .fav_product {
   font-size: 14px;
@@ -3039,17 +3038,15 @@ body {
     padding-right: 5px;
   }
   .main .product_view .product_view_type .product_desc {
-    height: 310px;
+    height: 311px;
   }
   .main .product_view .product_view_type .product_desc a img {
     height: 150px;
     margin: 0 auto;
   }
   .main .product_view .product_view_type .product_desc a .full_desc {
-    font-weight: normal;
-    text-align: center;
-    line-height: 1.5;
-    height: 2.3rem !important;
+    font-size: 11px;
+    height: 64px;
   }
   .main .product_view .product_view_type .product_desc .price-box {
     text-align: center;
@@ -3111,7 +3108,7 @@ body {
     padding-right: 0;
   }
   .main .content_view_mobile .col-12 .content_view {
-    height: 430px;
+    height: 438px;
   }
   .main .content_view_mobile .col-12 .content_view a img {
     width: 100% !important;
@@ -3119,6 +3116,7 @@ body {
   }
   .main .content_view_mobile .col-12 .content_view a .full_desc {
     text-align: center !important;
+    height: 37px;
   }
   .main .content_view_mobile .col-12 .content_view .rating_list_product,
 .main .content_view_mobile .col-12 .content_view .price-description,
@@ -3133,7 +3131,7 @@ body {
   }
   .main .content_view_mobile .content_view {
     border: 1px solid #CCC;
-    height: 300px;
+    height: 313px;
   }
   .main .content_view_mobile .content_view a img {
     height: 150px;
@@ -3159,8 +3157,9 @@ body {
     line-height: 2;
   }
   .main .content_view_mobile .content_view a .full_desc {
-    font-size: 12px;
-    margin-top: 8px;
+    font-size: 10px;
+    margin-top: 5px;
+    height: 53px;
   }
   .main .content_view_mobile .content_view .price-box {
     text-align: center !important;
@@ -3357,7 +3356,7 @@ body {
     padding-right: 2px !important;
   }
   .main .based_selection .content_view {
-    height: 340px;
+    height: 311px;
   }
   .main .based_selection .content_view a .based_selection_img {
     height: 170px;
@@ -3367,10 +3366,9 @@ body {
     left: 4px;
   }
   .main .based_selection .content_view a h6 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-height: 1.5;
-    height: 3rem !important;
+    font-size: 10px;
+    margin-top: 5px;
+    height: 37px;
   }
   .main .based_selection .content_view .price-box .regular-price {
     font-size: 0.75rem;
@@ -4038,17 +4036,16 @@ body {
     padding-right: 5px;
   }
   .main .product_view .product_view_type .product_desc {
-    height: 350px;
+    height: 300px;
   }
   .main .product_view .product_view_type .product_desc a img {
     height: 150px;
     margin: 0 auto;
   }
   .main .product_view .product_view_type .product_desc a .full_desc {
-    font-weight: normal;
-    text-align: center;
-    line-height: 1.5;
-    height: 2.5rem !important;
+    height: 48px;
+    font-size: 11px;
+    margin-top: 5px;
   }
   .main .product_view .product_view_type .product_desc .price-box {
     text-align: center;
@@ -4139,11 +4136,16 @@ body {
   }
   .main .content_view_mobile .content_view {
     border: 1px solid #CCC;
-    height: 300px;
+    height: 314px;
   }
   .main .content_view_mobile .content_view a img {
     height: 150px;
     margin: 0 auto;
+  }
+  .main .content_view_mobile .content_view a .full_desc {
+    font-size: 11px;
+    margin-top: 5px;
+    height: 41px;
   }
   .main .content_view_mobile .content_view a .product-label {
     top: 3px;
@@ -4163,10 +4165,6 @@ body {
   .main .content_view_mobile .content_view a .product-label .sale-product-icon::after {
     font-size: 11px;
     line-height: 3;
-  }
-  .main .content_view_mobile .content_view a .full_desc {
-    font-size: 12px;
-    margin-top: 8px;
   }
   .main .content_view_mobile .content_view .price-box {
     text-align: center !important;
@@ -4365,7 +4363,7 @@ body {
     padding-right: 2px !important;
   }
   .main .based_selection .content_view {
-    height: 340px;
+    height: 314px;
   }
   .main .based_selection .content_view a .based_selection_img {
     height: 170px;
@@ -4375,10 +4373,9 @@ body {
     left: 4px;
   }
   .main .based_selection .content_view a h6 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-height: 1.5;
-    height: 3rem !important;
+    font-size: 11px;
+    margin-top: 5px;
+    height: 40px;
   }
   .main .based_selection .content_view .price-box .regular-price {
     font-size: 0.9rem;

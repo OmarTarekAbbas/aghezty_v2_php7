@@ -749,7 +749,7 @@ body {
       .product_desc {
         background: $white_color;
         box-shadow: 0 0 1px #ccc;
-        height: 360px;
+        height: 380px;
         width: 100%;
 
         a {
@@ -770,10 +770,8 @@ body {
             font-weight: bold;
             font-size: 13px;
             color: #333;
-            white-space: nowrap;
+            height: 57px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            direction: rtl;
           }
         }
 
@@ -907,7 +905,7 @@ body {
 
       .content_view {
         width: 100% !important;
-        height: 471px;
+        height: 480px;
         text-align: center !important;
 
         a {
@@ -923,6 +921,9 @@ body {
 
           .full_desc {
             text-align: center !important;
+            height: 45px;
+            overflow: hidden;
+            margin-bottom: 0;
           }
         }
 
@@ -1168,7 +1169,7 @@ body {
     box-shadow: 0 0 1px #ccc;
     padding: 0.65rem 0;
     width: 100%;
-    height: 450px;
+    height: 470px;
     margin-bottom: 1rem;
 
     a {
@@ -1188,10 +1189,8 @@ body {
         text-align: right !important;
         font-weight: bold;
         font-size: 13px;
-        white-space: nowrap;
+        height: 60px;
         overflow: hidden;
-        text-overflow: ellipsis;
-        direction: rtl;
       }
     }
 
@@ -4016,7 +4015,7 @@ body {
         }
 
         .product_desc {
-          height: 310px;
+          height: 311px;
 
           a {
             img {
@@ -4024,16 +4023,9 @@ body {
               margin: 0 auto;
             }
 
-            // .img_size {
-            //   width: 100% !important;
-            //   height: 136px !important;
-            // }
-
             .full_desc {
-              font-weight: normal;
-              text-align: center;
-              line-height: 1.5;
-              height: 2.3rem !important;
+              font-size: 11px;
+              height: 64px;
             }
           }
 
@@ -4127,7 +4119,7 @@ body {
         padding-right: 0;
 
         .content_view {
-          height: 430px;
+          height: 438px;
 
           a {
             img {
@@ -4137,6 +4129,7 @@ body {
 
             .full_desc {
               text-align: center !important;
+              height: 37px;
             }
           }
 
@@ -4159,7 +4152,7 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 300px;
+        height: 313px;
 
         a {
           img {
@@ -4191,8 +4184,9 @@ body {
           }
 
           .full_desc {
-            font-size: 12px;
-            margin-top: 8px
+            font-size: 10px;
+            margin-top: 5px;
+            height: 53px;
           }
         }
 
@@ -4477,7 +4471,7 @@ body {
       }
 
       .content_view {
-        height: 340px;
+        height: 311px;
 
         a {
           .based_selection_img {
@@ -4490,10 +4484,9 @@ body {
           }
 
           h6 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1.5;
-            height: 3rem !important;
+            font-size: 10px;
+            margin-top: 5px;
+            height: 37px;
           }
         }
 
@@ -5509,7 +5502,7 @@ body {
         }
 
         .product_desc {
-          height: 350px;
+          height: 300px;
 
           a {
             img {
@@ -5517,15 +5510,10 @@ body {
               margin: 0 auto;
             }
 
-            // .img_size {
-            //   height: 162px !important;
-            // }
-
             .full_desc {
-              font-weight: normal;
-              text-align: center;
-              line-height: 1.5;
-              height: 2.5rem !important;
+              height: 48px;
+              font-size: 11px;
+              margin-top: 5px;
             }
           }
 
@@ -5655,12 +5643,18 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 300px;
+        height: 314px;
 
         a {
           img {
             height: 150px;
             margin: 0 auto;
+          }
+
+          .full_desc {
+            font-size: 11px;
+            margin-top: 5px;
+            height: 41px;
           }
 
           .product-label {
@@ -5684,11 +5678,6 @@ body {
                 line-height: 3;
               }
             }
-          }
-
-          .full_desc {
-            font-size: 12px;
-            margin-top: 8px
           }
         }
 
@@ -5980,7 +5969,7 @@ body {
       }
 
       .content_view {
-        height: 340px;
+        height: 314px;
 
         a {
           .based_selection_img {
@@ -5993,10 +5982,9 @@ body {
           }
 
           h6 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1.5;
-            height: 3rem !important;
+            font-size: 11px;
+            margin-top: 5px;
+            height: 40px;
           }
         }
 
