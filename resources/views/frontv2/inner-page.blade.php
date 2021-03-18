@@ -57,12 +57,20 @@
         $category = \App\Category::where('id',$product->category->id)->first();
         $category_parent_id = \App\Category::where('id',$category->parent_id)->first();
         ?>
+
+        <span class="breadcrumb_slash"></span>
+
         <h1 class="breadcrumb-item">
           <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
         </h1>
+
+        <span class="breadcrumb_slash"></span>
+
         <h1 class="breadcrumb-item">
           <a href="{{url('category/'.$product->category->id.'/'.setSlug($product->category->title))}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
         </h1>
+
+        <span class="breadcrumb_slash"></span>
 
         <h1 class="breadcrumb-item font-weight-bold">
           {{$product->getTranslation('title',getCode())}}

@@ -990,9 +990,23 @@ body {
       padding-left: 105px;
       border-radius: 0;
 
+      .breadcrumb_slash {
+        &::before {
+          display: inline-block;
+          padding-right: .5rem;
+          padding-left: .5rem;
+          color: #6c757d;
+          content: "/";
+        }
+      }
+
       .breadcrumb-item {
         color: $black_color;
         font-size: 1rem;
+
+        &::before {
+          display: none;
+        }
 
         a {
           color: $black_color;
