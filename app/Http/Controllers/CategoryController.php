@@ -92,8 +92,15 @@ class CategoryController extends Controller
             $category->offer_image_link = $request->offer_image_link;
         }
 
-       // dd($request->category);
-        $category->save();
+        if($category->save()){
+          if(isset($category->offer_image) && $category->offer_image!=null){
+            $path = 'uploads/offer_image/image_resize';
+            $offer_image_resize = resizeImage($path, $category->offer_image);
+            $category->offer_image_resize = $offer_image_resize;
+            $category->save();
+          }
+        }
+
         \Session::flash('success', 'Category Created Successfully');
         return redirect('/category');
     }
@@ -179,8 +186,17 @@ class CategoryController extends Controller
       }
 
       $category->offer_image_link = $request->offer_image_link;
-      //dd($category->offer_image);
-      $category->save();
+      
+
+      if($category->save()){
+        if(isset($category->offer_image) && $category->offer_image!=null){
+          $path = 'uploads/offer_image/image_resize';
+          $offer_image_resize = resizeImage($path, $category->offer_image);
+          $category->offer_image_resize = $offer_image_resize;
+          $category->save();
+        }
+      }
+
       \Session::flash('success', 'Category Updated Successfully');
       return redirect('/category');
     }
