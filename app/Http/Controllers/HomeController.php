@@ -77,7 +77,7 @@ class HomeController extends Controller
     public function adsUpdatev2(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'file' => '',
+            'file' => 'required',
             'slide_url' => '',
             'order' => 'required'
         ]);
@@ -104,7 +104,10 @@ class HomeController extends Controller
         }
         $slide->order = $request->order;
 
-        $slide->save();
+        if($slide->save()){
+            $path = 'uploads/ads/image_resize';
+            $resized_image = resizeImage($path, $slide->image);
+        }
 
         \Session::flash('success', 'Updated Successfully');
         return redirect()->back();
