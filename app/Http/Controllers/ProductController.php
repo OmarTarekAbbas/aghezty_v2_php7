@@ -177,11 +177,12 @@ class ProductController extends Controller
           $product->offer = 1;
         }
 
-        $path = 'uploads/product/image_resize';
-        $resized_image = resizeImage($path, $request->main_image);
-        $product->main_image_resize = $resized_image;
-
-        $product->save();
+        if($product->save()){
+          $path = 'uploads/product/image_resize';
+          $resized_image = resizeImage($path, $product->main_image);
+          $product->main_image_resize = $resized_image;
+          $product->save();
+        }
 
         if($request->has('property_value_id')){
           $property_value_id = array_values(array_filter($request->property_value_id));
@@ -343,7 +344,12 @@ class ProductController extends Controller
           $product->main_image_resize = $resized_image;
         }
 
-        $product->save();
+        if($product->save()){
+          $path = 'uploads/product/image_resize';
+          $resized_image = resizeImage($path, $product->main_image);
+          $product->main_image_resize = $resized_image;
+          $product->save();
+        }
 
         if($request->has('property_value_id')){
           $property_value_id = array_values(array_filter($request->property_value_id));
