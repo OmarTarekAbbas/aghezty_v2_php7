@@ -529,6 +529,18 @@ class ProductController extends Controller
         //return redirect('category/'.$request->category_id);
         return redirect('product');
     }
+    
+    public function export_product_excel()
+    {
+        $categorys = Category::all();
+        $brands    = Brand::all();
+        return view('product.export_product_excel',compact('categorys','brands'));
+    }
+
+    public function download_product_excel(Request $request)
+    {
+        dd($request);
+    }
 
     public function getDownload()
     {
