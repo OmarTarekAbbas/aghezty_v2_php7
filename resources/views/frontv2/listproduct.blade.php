@@ -641,16 +641,15 @@ $( document ).ready(function(){
   $(document).on('change', '.sub_cat_id', function() {
     $("[name='sub_category_id[]']:checked").each(function () {
       var checked_value = $(this).val();
-      //console.log( checked_value );
       
       var input_id = 'panel_category_' + checked_value;
-      //console.log(input_id);
 
       var category_title = $('label[for="' + input_id + '"]').html();  
-      console.log(category_title);
 
       //append html
-
+      var html_breadcrumb = '<h1 class="breadcrumb-item active" aria-current="page"> <span style="padding:0em .5rem; color:#6c757d">/</span> ' + category_title + '</h1>';
+      $("#fillter_breadcrumb").html(html_breadcrumb);
+      
     });
 
   });

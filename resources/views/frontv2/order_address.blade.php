@@ -285,7 +285,7 @@ function saveOrder(e){
           location.href= url;
         }
       });
-      @endif
+    @endif
 
   }else{
     alert(' @lang('front.address_alert_message') ')
