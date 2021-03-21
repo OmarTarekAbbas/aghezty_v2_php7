@@ -27,27 +27,27 @@
 
         <span class="breadcrumb_slash"></span>
 
-        <h1 class="breadcrumb-item">
+        <h1 class="breadcrumb-item" id="breadcrumb-item">
           <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
         </h1>
 
         <span class="breadcrumb_slash"></span>
 
-        <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
+        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
         @elseif(request()->route("brand_id")!==null && isset($products[0]))
         <span class="breadcrumb_slash"></span>
-        <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
+        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
         @elseif(request()->url("parent") && app('request')->route('category_id')!=null)
         <?php $category_parent = \App\Category::where('id',app('request')->route('category_id'))->first(); ?>
         <span class="breadcrumb_slash"></span>
-        <h1 class="breadcrumb-item active" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
+        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
         @elseif(request()->url("parent") && app('request')->route('sub_category_id')!=null)
         <?php $category_parent = \App\Category::where('id',app('request')->route('sub_category_id'))->first(); ?>
         <span class="breadcrumb_slash"></span>
-        <h1 class="breadcrumb-item active" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
+        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
         @else
         <span class="breadcrumb_slash"></span>
-        <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
+        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">@lang('front.products')</h1>
         @endif
 
         <div id="fillter_breadcrumb"></div>
@@ -648,7 +648,18 @@ $( document ).ready(function(){
   }
 
 //------------------------------------------------------------------
+  var set_breadcrumb_link;
+
   $(document).on('change', '.sub_cat_id', function() {
+    if((set_breadcrumb_link==undefined || set_breadcrumb_link==null) && set_breadcrumb_link!=true){
+      var breadcrumb_url = get_breadcrumb_new_link();
+      var new_url = "{{url('')}}"+"/"+breadcrumb_url;
+      var caregory_name = document.getElementById("breadcrumb-item").innerText;
+
+      var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + caregory_name + '</a> </h1>';
+      $("#breadcrumb-item").html(set_breadcrumb_link);
+    }
+
     $("[name='sub_category_id[]']:checked").each(function () {
       var checked_value = $(this).val();
       
@@ -663,6 +674,21 @@ $( document ).ready(function(){
     });
 
   });
+
+  
+  function get_breadcrumb_new_link(){
+    set_breadcrumb_link = true;
+    
+    var window_href = window.location.href;
+    var window_url = null;
+
+    if(window_href.indexOf("brand")){
+      window_url = window_href.substr(window_href.indexOf("brand"), window_href.length);
+    }
+
+    return window_url;
+  }
+  //------------------------------------------------------------------
 
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer, .most_solid , #sorted', function() {
     $('#most_solid').remove()
