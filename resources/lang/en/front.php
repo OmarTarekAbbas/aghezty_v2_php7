@@ -201,5 +201,7 @@ return [
     'admin_reply' => 'User',
     'be_first' => 'BE THE FIRST TO KNOW',
     'subscribe_info' => 'Get all the latest information on Events, Sales and Offers. Sign up for newsletter today',
-    'address_alert_message' => 'Please Fill All Form Data !',
+    'address_alert_message' => 'Please Fill All Form Data!',
+    'phone_number_field' => 'Please Enter Your Phone',
+    'phone_alert_message' => 'Please enter your phone!',
 ];

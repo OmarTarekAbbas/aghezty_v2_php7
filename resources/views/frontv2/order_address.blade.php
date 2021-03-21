@@ -88,7 +88,7 @@
                           <div class="input-group mb-2 w-75 m-auto hvr-float">
                             <div class="input-group-prepend w-100">
                               <div class="input-group-text"><i class="fas fa-phone"></i></div>
-                              <input id="phone" class="form-control w-100"     placeholder="Please Enter Your Phone" name="phone" required>
+                              <input id="phone" class="form-control w-100" placeholder=" @lang('front.phone_number_field') " name="phone" required>
                             </div>
                           </div>
                         </div>
@@ -256,7 +256,7 @@ function  saveOrderAndPone(e){
     location.href='{{route('front.home.confirm',['id' => $item->pivot->city_id])}}'
     @endif
   }else{
-    alert('Please enter your phone!')
+    alert(' @lang('front.phone_alert_message') ')
   }
 
 }
