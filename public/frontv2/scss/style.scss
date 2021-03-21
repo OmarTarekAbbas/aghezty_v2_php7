@@ -743,7 +743,7 @@ body {
       .product_desc {
         background: $white_color;
         box-shadow: 0 0 1px #ccc;
-        height: 360px;
+        height: 380px;
         width: 100%;
 
         a {
@@ -764,10 +764,8 @@ body {
             font-weight: bold;
             font-size: 13px;
             color: #333;
-            white-space: nowrap;
+            height: 57px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            direction: ltr;
           }
         }
 
@@ -900,7 +898,7 @@ body {
 
       .content_view {
         width: 100% !important;
-        height: 471px;
+        height: 480px;
         text-align: center !important;
 
         a {
@@ -916,6 +914,9 @@ body {
 
           .full_desc {
             text-align: center !important;
+            height: 45px;
+            overflow: hidden;
+            margin-bottom: 0;
           }
         }
 
@@ -989,9 +990,23 @@ body {
       padding-left: 105px;
       border-radius: 0;
 
+      .breadcrumb_slash {
+        &::before {
+          display: inline-block;
+          padding-right: .5rem;
+          padding-left: .5rem;
+          color: #6c757d;
+          content: "/";
+        }
+      }
+
       .breadcrumb-item {
         color: $black_color;
         font-size: 1rem;
+
+        &::before {
+          display: none;
+        }
 
         a {
           color: $black_color;
@@ -1133,7 +1148,7 @@ body {
     box-shadow: 0 0 1px #ccc;
     padding: 0.65rem 0;
     width: 100%;
-    height: 450px;
+    height: 470px;
     margin-bottom: 1rem;
 
     a {
@@ -1152,10 +1167,8 @@ body {
       .full_desc {
         font-weight: bold;
         font-size: 13px;
-        white-space: nowrap;
+        height: 60px;
         overflow: hidden;
-        text-overflow: ellipsis;
-        direction: ltr;
       }
     }
 
@@ -3733,6 +3746,11 @@ body {
               height: 150px;
               margin: 0 auto;
             }
+
+            .full_desc {
+              font-size: 11px;
+              height: 64px;
+            }
           }
 
           .price-box {
@@ -3819,7 +3837,7 @@ body {
         padding-right: 0;
 
         .content_view {
-          height: 430px;
+          height: 311px;
 
           a {
             img {
@@ -3829,6 +3847,7 @@ body {
 
             .full_desc {
               text-align: center !important;
+              height: 37px;
             }
           }
 
@@ -3851,7 +3870,7 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 300px;
+        height: 313px;
 
         a {
           img {
@@ -3883,8 +3902,9 @@ body {
           }
 
           .full_desc {
-            font-size: 12px;
-            margin-top: 8px
+            font-size: 10px;
+            margin-top: 5px;
+            height: 53px;
           }
         }
 
@@ -4153,7 +4173,7 @@ body {
       }
 
       .content_view {
-        height: 340px;
+        height: 311px;
 
         a {
           .based_selection_img {
@@ -4166,10 +4186,9 @@ body {
           }
 
           h6 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1;
-            height: 3rem !important;
+            font-size: 10px;
+            margin-top: 5px;
+            height: 37px;
           }
         }
 
@@ -5192,6 +5211,11 @@ body {
               height: 150px;
               margin: 0 auto;
             }
+
+            .full_desc {
+              font-size: 11px;
+              height: 63px;
+            }
           }
 
           .price-box {
@@ -5288,6 +5312,9 @@ body {
 
             .full_desc {
               text-align: center !important;
+              font-size: 10px;
+              margin-top: 5px;
+              height: 37px;
             }
           }
 
@@ -5310,7 +5337,7 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 300px;
+        height: 311px;
 
         a {
           img {
@@ -5342,8 +5369,9 @@ body {
           }
 
           .full_desc {
-            font-size: 12px;
-            margin-top: 8px
+            font-size: 10px;
+            margin-top: 5px;
+            height: 55px;
           }
         }
 
@@ -5612,7 +5640,7 @@ body {
       }
 
       .content_view {
-        height: 340px;
+        height: 311px;
 
         a {
           .based_selection_img {
@@ -5625,10 +5653,9 @@ body {
           }
 
           h6 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1;
-            height: 3rem !important;
+            font-size: 10px;
+            margin-top: 5px;
+            height: 37px;
           }
         }
 
@@ -6644,12 +6671,17 @@ body {
         }
 
         .product_desc {
-          height: 310px;
+          height: 311px;
 
           a {
             img {
               height: 150px;
               margin: 0 auto;
+            }
+
+            .full_desc {
+              font-size: 11px;
+              height: 64px;
             }
           }
 
@@ -6769,7 +6801,7 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 300px;
+        height: 310px;
 
         a {
           img {
@@ -6801,8 +6833,9 @@ body {
           }
 
           .full_desc {
-            font-size: 12px;
-            margin-top: 8px
+            font-size: 10px;
+            margin-top: 5px;
+            height: 37px;
           }
         }
 
@@ -7071,7 +7104,7 @@ body {
       }
 
       .content_view {
-        height: 340px;
+        height: 305px;
 
         a {
           .based_selection_img {
@@ -7084,10 +7117,9 @@ body {
           }
 
           h6 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1;
-            height: 3rem !important;
+            font-size: 11px;
+            height: 39px;
+            margin-top: 5px;
           }
         }
 
@@ -8105,7 +8137,7 @@ body {
         }
 
         .product_desc {
-          height: 350px;
+          height: 300px;
 
           a {
             img {
@@ -8113,15 +8145,10 @@ body {
               margin: 0 auto;
             }
 
-            .img_size {
-              // height: 162px !important;
-            }
-
             .full_desc {
-              font-weight: normal;
-              text-align: center;
-              line-height: 1.5;
-              height: 2.5rem !important;
+              height: 48px;
+              font-size: 11px;
+              margin-top: 5px;
             }
           }
 
@@ -8249,7 +8276,7 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 300px;
+        height: 314px;
 
         a {
           img {
@@ -8281,8 +8308,9 @@ body {
           }
 
           .full_desc {
-            font-size: 12px;
-            margin-top: 8px
+            font-size: 11px;
+            margin-top: 5px;
+            height: 41px;
           }
         }
 
@@ -8558,7 +8586,7 @@ body {
       }
 
       .content_view {
-        height: 340px;
+        height: 314px;
 
         a {
           .based_selection_img {
@@ -8571,10 +8599,9 @@ body {
           }
 
           h6 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            line-height: 1.5;
-            height: 3rem !important;
+            font-size: 11px;
+            margin-top: 5px;
+            height: 40px;
           }
         }
 
@@ -12355,7 +12382,7 @@ body {
           margin-bottom: 10px;
 
           .product_desc {
-            height: 360px;
+            height: 330px;
 
             a {
               img {
@@ -12363,8 +12390,9 @@ body {
               }
 
               .full_desc {
-                font-size: 15px !important;
-                text-align: center;
+                margin-top: 5px;
+                font-size: 13px;
+                height: 56px;
               }
             }
 
@@ -12412,6 +12440,12 @@ body {
         img {
           height: 194px !important;
           margin: 0 auto;
+        }
+
+        .full_desc {
+          margin-top: 5px;
+          font-size: 13px;
+          height: 45px;
         }
       }
     }
@@ -12778,7 +12812,7 @@ body {
     .product_view {
       .product_view_type {
         .product_desc {
-          height: 350px;
+          height: 320px;
 
           a {
             img {
@@ -12786,8 +12820,10 @@ body {
               margin: 0 auto;
             }
 
-            .img_size {
-              // height: 110px !important;
+            .full_desc {
+              margin-top: 5px;
+              font-size: 14px;
+              height: 60px;
             }
           }
         }
@@ -12796,6 +12832,10 @@ body {
           margin-top: 1rem;
         }
       }
+    }
+
+    .nav_breadcrumb {
+      margin-top: 4%;
     }
 
     .list_cover {
@@ -12825,12 +12865,18 @@ body {
     #grid_two {
       .col-md-6 {
         .content_view {
-          height: 394px;
+          height: 470px;
 
           a {
             img {
               width: 65% !important;
               height: 282px;
+            }
+
+            .full_desc {
+              margin-top: 5px;
+              font-size: 15px;
+              height: 53px;
             }
           }
         }
@@ -12838,11 +12884,17 @@ body {
     }
 
     .content_view {
-      height: 415px;
+      height: 440px;
 
       a {
         img {
           height: 274px;
+        }
+
+        .full_desc {
+          margin-top: 5px;
+          font-size: 14px;
+          height: 50px;
         }
       }
     }
@@ -12927,7 +12979,7 @@ body {
 
     .based_selection {
       .content_view {
-        height: 350px !important;
+        height: 326px !important;
 
         a {
           .based_selection_img {
@@ -12936,10 +12988,9 @@ body {
           }
 
           h6 {
-            line-height: 1.35rem;
-            height: 2.5rem;
-            text-overflow: ellipsis;
-            overflow: hidden;
+            margin-top: 5px;
+            font-size: 15px;
+            height: 53px;
           }
         }
 
@@ -13316,7 +13367,7 @@ body {
     #grid_two {
       .col-md-6 {
         .content_view {
-          height: 380px;
+          height: 402px;
 
           a {
             img {
@@ -13329,7 +13380,7 @@ body {
     }
 
     .content_view {
-      height: 401px;
+      height: 438px;
 
       a {
         img {

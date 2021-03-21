@@ -24,9 +24,15 @@
         $category = \App\Category::where('id',app('request')->route('sub_category_id'))->first();
         $category_parent_id = \App\Category::where('id',$category->parent_id)->first();
         ?>
+
+        <span class="breadcrumb_slash"></span>
+
         <h1 class="breadcrumb-item">
           <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
         </h1>
+
+        <span class="breadcrumb_slash"></span>
+
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
         @elseif(request()->route("brand_id")!==null && isset($products[0]))
         <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
@@ -471,7 +477,7 @@
 
 
 
-                <h6 class="full_desc text-dark text-left text-capitalize">
+                <h6 class="full_desc text-dark text-left text-capitalize mb-0">
                   {{$product->getTranslation('title',getCode())}}
                 </h6>
               </a>

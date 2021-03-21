@@ -57,12 +57,20 @@
         $category = \App\Category::where('id',$product->category->id)->first();
         $category_parent_id = \App\Category::where('id',$category->parent_id)->first();
         ?>
+
+        <span class="breadcrumb_slash"></span>
+
         <h1 class="breadcrumb-item">
           <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
         </h1>
+
+        <span class="breadcrumb_slash"></span>
+
         <h1 class="breadcrumb-item">
           <a href="{{url('category/'.$product->category->id.'/'.setSlug($product->category->title))}}" title="Go To {{$product->category->getTranslation('title',getCode())}}">{{$product->category->getTranslation('title',getCode())}}</a>
         </h1>
+
+        <span class="breadcrumb_slash"></span>
 
         <h1 class="breadcrumb-item font-weight-bold">
           {{$product->getTranslation('title',getCode())}}
@@ -456,7 +464,7 @@
           <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
             <img src="{{url( checkImageResize($item->main_image, $item->main_image_resize) )}}" alt="Product" class="text-center d-block based_selection_img">
 
-            <h6 class="full_desc text-dark text-left text-capitalize my-3">
+            <h6 class="full_desc text-dark text-left text-capitalize mb-0">
               {{$item->getTranslation('title',getCode())}}
             </h6>
           </a>

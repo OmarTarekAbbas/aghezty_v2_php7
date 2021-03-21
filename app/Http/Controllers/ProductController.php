@@ -108,6 +108,7 @@ class ProductController extends Controller
         $file = $request->main_image;
         $request->special = ($request->special) ? 1:0;
         $request->active = ($request->active) ? 1:0;
+
         if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
         {
             \Session::flash('failed','Image must be jpg or jpeg only !! No updates takes place, try again with that extensions please..');
@@ -178,6 +179,8 @@ class ProductController extends Controller
           $product->offer = 1;
         }
 
+
+        // resizing
         if($product->save()){
           $path = 'uploads/product/image_resize';
           $resized_image = resizeImage($path, $product->main_image);
@@ -338,14 +341,9 @@ class ProductController extends Controller
           $product->offer = 0;
         }
 
-        if($request->has('main_image')){
-          $path = 'uploads/product/image_resize';
-          $resized_image = resizeImage($path, $request->main_image);
 
-          $product->main_image_resize = $resized_image;
-        }
 
-        if($product->save()){
+        if($product->save() && $request->has('main_image') ){
           $path = 'uploads/product/image_resize';
           $resized_image = resizeImage($path, $product->main_image);
           $product->main_image_resize = $resized_image;
