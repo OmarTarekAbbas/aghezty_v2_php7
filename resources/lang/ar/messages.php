@@ -460,6 +460,7 @@ return [
     'offer_image' => 'صور اوفر',
     'product_id' => 'رقم المنتج',
     'product_update_price_excel' => 'سعر تحديث المنتج اكسل',
+    'export_product_excel' => 'تصدير المنتجات اكسل',
 
 
 ];

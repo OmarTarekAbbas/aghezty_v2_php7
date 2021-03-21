@@ -15,6 +15,7 @@ use App\Constants\OrderStatus;
 use App\Constants\PaymentStatus;
 use Image;
 use File;
+use Excel;
 
 class ProductController extends Controller
 {
@@ -541,7 +542,67 @@ class ProductController extends Controller
 
     public function download_product_excel(Request $request)
     {
-        dd($request);
+      $data=Product::where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->get();
+
+      return Excel::create('Products', function($excel) use ($data) {
+        $excel->sheet('mySheet', function($sheet) use ($data)
+        {
+          $sheet->cell('A1', function($cell) 
+            {
+                $cell->setValue('ID');  
+            });
+            $sheet->cell('B1', function($cell) 
+            {
+                $cell->setValue('Model');  
+            });
+            $sheet->cell('C1', function($cell) 
+            {
+                $cell->setValue('Price'); 
+            });
+            $sheet->cell('D1', function($cell) 
+            {
+                $cell->setValue('Discount');    
+            });
+            $sheet->cell('E1', function($cell) 
+            {
+                $cell->setValue('Price After Discount');    
+            });
+            $sheet->cell('F1', function($cell) 
+            {
+                $cell->setValue('Title (Arabic)');    
+            });
+            $sheet->cell('G1', function($cell) 
+            {
+                $cell->setValue('Title (English)');    
+            });
+            $sheet->cell('H1', function($cell) 
+            {
+                $cell->setValue('Description (Arabic)');    
+            });
+            $sheet->cell('I1', function($cell) 
+            {
+                $cell->setValue('Description (English)');    
+            });
+
+            if (!empty($data)) {
+                $sno=1;
+                foreach ($data as $key => $value) 
+                {
+                    $i= $key+2;
+                    $sheet->cell('A'.$i, $sno); 
+                    $sheet->cell('B'.$i, $value->short_description); 
+                    $sheet->cell('C'.$i, $value->price);
+                    $sheet->cell('D'.$i, $value->discount);
+                    $sheet->cell('E'.$i, $value->price_after_discount);
+                    $sheet->cell('F'.$i, $value->getTranslation('title','ar') ); 
+                    $sheet->cell('G'.$i, $value->getTranslation('title','en') ); 
+                    $sheet->cell('H'.$i, strip_tags($value->getTranslation('description','ar')) );
+                    $sheet->cell('I'.$i, strip_tags($value->getTranslation('description','en')) );
+                    $sno++;
+                }
+            }
+        });
+      })->download('xlsx');
     }
 
     public function getDownload()

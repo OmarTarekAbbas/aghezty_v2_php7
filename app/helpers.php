@@ -122,8 +122,8 @@ function get_static_routes()
     Route::post("products/product_update_price_excel_post" ,'ProductController@product_update_price_excel_post');
     Route::get("product_update_price_excel_download" ,'ProductController@product_update_price_excel_download');
 
-    Route::get("export_product_excel" ,'ProductController@export_product_excel');
-    Route::post("download_product_excel" ,'ProductController@download_product_excel')->name('admin.product.download.excel');
+    Route::get("products/export_product_excel" ,'ProductController@export_product_excel');
+    Route::post("products/download_product_excel" ,'ProductController@download_product_excel')->name('admin.product.download.excel');
     /*****************************end */
 
 
