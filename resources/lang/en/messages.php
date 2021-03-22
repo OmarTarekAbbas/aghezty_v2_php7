@@ -458,5 +458,6 @@ return [
     'product_id' => 'Product id',
     'product_update_price_excel' => 'Product Update Price Excel',
     'export_product_excel' => 'Export Products Excel',
+    'select_category' => 'Select category or leave it empty',
 
 ];
