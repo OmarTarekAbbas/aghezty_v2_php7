@@ -81,7 +81,7 @@
                             <div class="customer-data" style="color:#111; float:{{$lang1}}; text-align:{{$lang1}}; width:30%"
                                 align="right" width="30%">@lang('front.auth.address')</div>
                             <div class="">
-                                {{$order->address->address}},<br>{{$order->address->city['city_'.getcode()]}},{{$order->address->city->governorate['title_'.getcode()]}}
+                                {{{ $order->address->address or '----'}}},<br>{{{ $order->address->city['city_'.getcode()] or '----'}}},{{{ $order->address->city->governorate['title_'.getcode()]  or '----' }}}
                             </div>
                         </div>
                     </div>
