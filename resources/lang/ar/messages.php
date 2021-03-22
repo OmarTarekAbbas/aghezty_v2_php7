@@ -461,6 +461,7 @@ return [
     'product_id' => 'رقم المنتج',
     'product_update_price_excel' => 'سعر تحديث المنتج اكسل',
     'export_product_excel' => 'تصدير المنتجات اكسل',
+    'select_category' => 'حدد القسم أو اتركه فارغا',
 
 
 ];

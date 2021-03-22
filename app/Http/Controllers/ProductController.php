@@ -540,11 +540,18 @@ class ProductController extends Controller
 
     public function download_product_excel(Request $request)
     {
-      $data= Product::stock()->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->where('products.active', 1)->get();
+      if($request->category_id == -1){
+        $data= Product::stock()->where(['brand_id' => $request->brand_id])->where('products.active', 1)->get();
 
-      $category = Category::where('id',$request->category_id)->first();
-      $brand    = Brand::where('id',$request->brand_id)->first();
-      $excell_title = $category->getTranslation('title','en') . '-' . $brand->getTranslation('title','en') . '-'. date("d-m-Y");
+        $brand    = Brand::where('id',$request->brand_id)->first();
+        $excell_title = $brand->getTranslation('title','en') . '-'. date("d-m-Y");
+      }else{
+        $data= Product::stock()->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->where('products.active', 1)->get();
+
+        $category = Category::where('id',$request->category_id)->first();
+        $brand    = Brand::where('id',$request->brand_id)->first();
+        $excell_title = $category->getTranslation('title','en') . '-' . $brand->getTranslation('title','en') . '-'. date("d-m-Y");
+      }
 
       return Excel::create($excell_title, function($excel) use ($data) {
         $excel->sheet('mySheet', function($sheet) use ($data)
