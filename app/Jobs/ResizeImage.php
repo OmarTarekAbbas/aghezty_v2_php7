@@ -62,14 +62,10 @@ class ResizeImage extends Job implements ShouldQueue {
 		}
 
 		echo "Products Resized Done" ;
-    }
-
-
 
 	}
 
 	public function failed(Throwable $exception) {
 		\File::append(storage_path('logs') . '/' . basename(get_class($this)) . '.log', $exception->getMessage() . PHP_EOL);
 	}
-
 }

@@ -671,7 +671,6 @@ class HomeController extends Controller
         } else {
           $ip = $_SERVER['REMOTE_ADDR'];
         }
-        // $ip = "41.33.167.4";
         $get_ip_address = IpAddress::where("ip",$ip)->first();
         if ($get_ip_address == null) {
           $ips = new IpAddress();
@@ -719,9 +718,8 @@ class HomeController extends Controller
 
             return $homepage_cat_values;
         });
-        
+    
         return view('frontv2.index', compact('slides', 'ads', 'recently_added', 'selected_for_you', 'homepage_cat', 'home_brands'));
-
     }
 
     public function ClearHomeCash(){
