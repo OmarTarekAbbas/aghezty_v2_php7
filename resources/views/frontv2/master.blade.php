@@ -119,7 +119,7 @@
 
     }
   </style>
-  <script src="//www.google.com/recaptcha/api.js"></script>
+  <script src="//www.google.com/recaptcha/api.js" async></script>
 </head>
 
 <body oncontextmenu="return {{ setting('enable_rclick') ? 'true' : 'false' }};">
