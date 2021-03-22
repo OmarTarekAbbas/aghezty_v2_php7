@@ -25,8 +25,8 @@
                     <div class="row">
                         <div class="col-md-6 company-info">
                             <h4>{{$order->client->name}}</h4>
-                            <p>{{$order->address->address}},<br>{{$order->address->city->city_ar}},{{$order->address->city->governorate->title_ar}}
-                            </p>
+
+                            <p>{{{ $order->address->address or '----'}}},<br>{{{ $order->address->city->city_ar or '----' }}},{{{ $order->address->city->governorate->title_ar or '----' }}}</p>
                             <p><i class="fa fa-phone"></i>{{$order->client->phone}}</p>
                             <p><i class="fa fa-envelope"></i> {{$order->client->email}}</p>
                         </div>
