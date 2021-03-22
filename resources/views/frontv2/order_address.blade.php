@@ -39,7 +39,7 @@
                   <div class="card-header" id="headingOne">
                     <h5 class="mb-0 d-flex">
                       <button class="btn btn-link text-center w-100 checked_add" data-value="{{$key+1}}"  type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
-                        @lang('front.choose_address') {{$key+1}}
+                         @lang('front.choose_address') <!-- {{$key+1}} -->
                       </button>
                     </h5>
 

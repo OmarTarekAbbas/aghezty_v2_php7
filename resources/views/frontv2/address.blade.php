@@ -37,7 +37,7 @@
                   <div class="card-header" id="heading{{$key+1}}">
                     <h5 class="mb-0 d-flex">
                       <button class="btn btn-link text-center w-100" type="button" data-toggle="collapse" data-target="#collapse{{$key+1}}" aria-expanded="true" aria-controls="collapseOne">
-                        @lang('front.my_address') {{$key+1}}
+                        @lang('front.my_address') <!-- {{$key+1}} -->
                       </button>
 
                       <!--<a type="button" href="{{url('clients/addressv2/'.$item->pivot->id.'/delete')}}" class="btn btn-labeled btn-danger">
