@@ -649,8 +649,8 @@ $( document ).ready(function(){
 
 //------------------------------------------------------------------
   var set_breadcrumb_link;
-
   $(document).on('change', '.sub_cat_id', function() {
+    console.log('1-' + set_breadcrumb_link);
     if((set_breadcrumb_link==undefined || set_breadcrumb_link==null) && set_breadcrumb_link!=true){
       var breadcrumb_url = get_breadcrumb_new_link();
       var new_url = "{{url('')}}"+"/"+breadcrumb_url;
@@ -677,13 +677,25 @@ $( document ).ready(function(){
 
   
   function get_breadcrumb_new_link(){
+    console.log('2-' + set_breadcrumb_link);
     set_breadcrumb_link = true;
+    console.log('3-' + set_breadcrumb_link);
     
     var window_href = window.location.href;
     var window_url = null;
 
+    console.log( window_href );
+
     if(window_href.indexOf("brand")){
+
+      console.log( window_href.indexOf("brand") );
       window_url = window_href.substr(window_href.indexOf("brand"), window_href.length);
+
+    }else if( window_href.indexOf("parent") ){
+
+      console.log( window_href.indexOf("parent") );
+      window_url = window_href.substr(window_href.indexOf("parent"), window_href.length);
+
     }
 
     return window_url;
