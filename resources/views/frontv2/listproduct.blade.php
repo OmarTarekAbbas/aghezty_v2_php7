@@ -429,10 +429,10 @@
               @if($sub_category->cat->offer_image)
               @if ($sub_category->cat->offer_image_link)
               <a href="{{$sub_category->cat->offer_image_link}}">
-                <img class="w-100 rounded" src="{{url( checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize) )}}" alt="Cover" title="Apple" style="height: auto !important">
+                <img class="w-100 rounded" src="{{checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize)}}" alt="Cover" title="Apple" style="height: auto !important">
               </a>
               @else
-              <img class="w-100 rounded" src="{{url( checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize) )}}" alt="Cover" title="Apple" style="height: auto !important">
+              <img class="w-100 rounded" src="{{checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize)}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif
               @else
               <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
@@ -477,7 +477,7 @@
           <div class="col-md-4 col-lg-4 col-xl-4 col-6 content_view_mobile_col6">
             <div class="content_view hvr-bob px-2 bg-white rounded">
               <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
-                <img class="lazy text-center d-block" src="{{url( checkImageResize($product->main_image, $product->main_image_resize) )}}" alt="Product">
+                <img class="lazy text-center d-block" src="{{checkImageResize($product->main_image, $product->main_image_resize)}}" alt="Product">
 
 
 

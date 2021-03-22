@@ -549,7 +549,7 @@ function checkImageProduct($product_id)
 
 function checkImageResize($image, $image_resize)
 {
-  return isset($image_resize)&&$image_resize!=null ? $image_resize : $image;
+  return isset($image_resize)&&$image_resize!=null ? url($image_resize) : url($image);
 }
 
 function resizeImage($resize_path, $image){
