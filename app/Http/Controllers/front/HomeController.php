@@ -2636,6 +2636,7 @@ class HomeController extends Controller
             }
           });
         }
+        
         $products = $products->where('products.active', 1)->limit(get_limit_paginate())->get();
 
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
