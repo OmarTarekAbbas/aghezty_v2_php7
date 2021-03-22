@@ -692,10 +692,8 @@ $( document ).ready(function(){
       window_url = window_href.substr(window_href.indexOf("brand"), window_href.length);
 
     }else if( window_href.indexOf("parent") ){
-
       console.log( window_href.indexOf("parent") );
       window_url = window_href.substr(window_href.indexOf("parent"), window_href.length);
-
     }
 
     return window_url;

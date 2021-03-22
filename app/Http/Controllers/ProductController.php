@@ -540,9 +540,13 @@ class ProductController extends Controller
 
     public function download_product_excel(Request $request)
     {
-      $data=Product::where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->get();
+      $data= Product::stock()->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->where('products.active', 1)->get();
 
-      return Excel::create('Products', function($excel) use ($data) {
+      $category = Category::where('id',$request->category_id)->first();
+      $brand    = Brand::where('id',$request->brand_id)->first();
+      $excell_title = $category->getTranslation('title','en') . '-' . $brand->getTranslation('title','en') . '-'. date("d-m-Y");
+
+      return Excel::create($excell_title, function($excel) use ($data) {
         $excel->sheet('mySheet', function($sheet) use ($data)
         {
           $sheet->cell('A1', function($cell) 
@@ -587,7 +591,7 @@ class ProductController extends Controller
                 foreach ($data as $key => $value) 
                 {
                     $i= $key+2;
-                    $sheet->cell('A'.$i, $sno); 
+                    $sheet->cell('A'.$i, $sno);  
                     $sheet->cell('B'.$i, $value->short_description); 
                     $sheet->cell('C'.$i, $value->price);
                     $sheet->cell('D'.$i, $value->discount);
