@@ -27,13 +27,13 @@
 
         <span class="breadcrumb_slash"></span>
 
-        <h1 class="breadcrumb-item" id="breadcrumb-item">
+        <h1 class="breadcrumb-item">
           <a href="{{url('parent/'.$category_parent_id->id.'/'.setSlug($category_parent_id->title))}}" title="Go To {{$category_parent_id->title}}">{{$category_parent_id->getTranslation('title',getCode())}}</a>
         </h1>
 
         <span class="breadcrumb_slash"></span>
 
-        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
+        <h1 class="breadcrumb-item active" aria-current="page">{{$products[0]->category->getTranslation('title',getCode())}}</h1>
         @elseif(request()->route("brand_id")!==null && isset($products[0]))
         <span class="breadcrumb_slash"></span>
         <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$products[0]->brand->getTranslation('title',getCode())}}</h1>
@@ -47,7 +47,7 @@
         <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
         @else
         <span class="breadcrumb_slash"></span>
-        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">@lang('front.products')</h1>
+        <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
         @endif
 
         <div id="fillter_breadcrumb"></div>
@@ -666,34 +666,25 @@ $( document ).ready(function(){
 
   });
 
-  var x = '';
+  var set_breadcrumb_var = false;
   function get_breadcrumb_new_link(){
-    console.log('1- '+x);
-    if(x == ''){
-      console.log('2- '+x);
-        x = true;
-        console.log('2- '+x);
+    if(set_breadcrumb_var == false){
+        set_breadcrumb_var = true;
         
         var window_href = window.location.href;
         var window_url = null;
 
-        console.log( window_href );
-
-        if(window_href.indexOf("brand")){
-
-          console.log( window_href.indexOf("brand") );
+        if(window_href.indexOf("brand") != -1){
           window_url = window_href.substr(window_href.indexOf("brand"), window_href.length);
-
-        }else if( window_href.indexOf("parent") ){
-          console.log( window_href.indexOf("parent") );
+        }else if( window_href.indexOf("parent") != -1 ){
           window_url = window_href.substr(window_href.indexOf("parent"), window_href.length);
         }
 
         var new_url = "{{url('')}}"+"/"+window_url;
-          var caregory_name = document.getElementById("breadcrumb-item").innerText;
+        var caregory_name = document.getElementById("breadcrumb-item").innerText;
 
-          var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + caregory_name + '</a> </h1>';
-          $("#breadcrumb-item").html(set_breadcrumb_link);
+        var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + caregory_name + '</a> </h1>';
+        $("#breadcrumb-item").html(set_breadcrumb_link);
     }
   }
   //------------------------------------------------------------------
