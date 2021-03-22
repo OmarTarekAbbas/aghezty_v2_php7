@@ -40,11 +40,11 @@
                         @lang('front.my_address') {{$key+1}}
                       </button>
 
-                      <a type="button" href="{{url('clients/addressv2/'.$item->pivot->id.'/delete')}}" class="btn btn-labeled btn-danger">
+                      <!--<a type="button" href="{{url('clients/addressv2/'.$item->pivot->id.'/delete')}}" class="btn btn-labeled btn-danger">
                         <span class="btn-label">
                           <i class="fas fa-times"></i>
                         </span>
-                      </a>
+                      </a>-->
                     </h5>
                   </div>
 
@@ -88,55 +88,58 @@
                 </div>
                 <!-- End My Address 1 -->
                 @endforeach
-                <!-- Start Add New Address -->
-                <div class="card z-depth-0 bordered">
-                  <div class="card-header" id="headingThree">
-                    <h5 class="mb-0 d-flex">
-                      <button class="btn btn-link collapsed text-center w-100" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        @lang('front.add_address')
-                      </button>
-                    </h5>
+
+                @if(count(Auth::guard('client')->user()->cities)==0)
+                  <!-- Start Add New Address -->
+                  <div class="card z-depth-0 bordered">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0 d-flex">
+                        <button class="btn btn-link collapsed text-center w-100" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          @lang('front.add_address')
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                      <form action="{{route('front.home.address.add')}}" method="post">
+                        @csrf
+                        <div class="card-body">
+                          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
+                            <div class="input-group mb-2 m-auto w-75 hvr-float">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+                              </div>
+                              {!! Form::select("governorate_id", $countrys->pluck('title_'.getCode(),'id'),null, ['required','class' => 'form-control' ,'id' => 'gover_add']) !!}
+                            </div>
+                          </div>
+
+                          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
+                            <div class="input-group mb-2 m-auto w-75 hvr-float">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+                              </div>
+                              {!! Form::select("city_id", $citys->pluck('city_'.getCode(),'id'),null , ['required' , 'class' => 'form-control' ,'id' => 'add_city']) !!}
+                            </div>
+                          </div>
+
+                          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
+                            <div class="input-group mb-2 w-75 m-auto hvr-float">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
+                                <textarea class="p-3 w-100" placeholder="@lang('front.my_address')" cols="150" rows="2" name="address"></textarea>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
+                            <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.save')</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-
-                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <form action="{{route('front.home.address.add')}}" method="post">
-                      @csrf
-                      <div class="card-body">
-                        <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                          <div class="input-group mb-2 m-auto w-75 hvr-float">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
-                            </div>
-                            {!! Form::select("governorate_id", $countrys->pluck('title_'.getCode(),'id'),null, ['required','class' => 'form-control' ,'id' => 'gover_add']) !!}
-                          </div>
-                        </div>
-
-                        <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                          <div class="input-group mb-2 m-auto w-75 hvr-float">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
-                            </div>
-                            {!! Form::select("city_id", $citys->pluck('city_'.getCode(),'id'),null , ['required' , 'class' => 'form-control' ,'id' => 'add_city']) !!}
-                          </div>
-                        </div>
-
-                        <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0 mb-4">
-                          <div class="input-group mb-2 w-75 m-auto hvr-float">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text"><i class="fas fa-keyboard"></i></div>
-                              <textarea class="p-3 w-100" placeholder="@lang('front.my_address')" cols="150" rows="2" name="address"></textarea>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-12 col-lg-12 col-xl-12 col-12 px-0">
-                          <button type="submit" class="btn_save btn btn-secondary text-white mb-2 m-auto d-block w-75 text-capitalize hvr-wobble-to-bottom-right">@lang('front.save')</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <!-- End Add New Address -->
+                  <!-- End Add New Address -->
+                @endif
               </div>
             </div>
           </div>
