@@ -39,7 +39,7 @@ return [
     'governorate' => 'Governorate',
     'city' => 'City',
     'address_info' => 'Address Info',
-    'address' => 'My Addresses',
+    'address' => 'My Address',
     'add_address' => 'Add Address',
     'save' => 'Save',
     'old_password' => 'Old Password',
