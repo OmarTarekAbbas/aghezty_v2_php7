@@ -629,5 +629,5 @@ function savingUserIp(){
     $ips->save();
   }
 
-  setcookie('usre_ip', $ip, time() + (86400), "/");
+  setcookie('usre_ip', $ip, time() + (60 * 60 * 24), "/");
 }
