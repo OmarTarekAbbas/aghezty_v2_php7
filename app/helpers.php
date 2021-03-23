@@ -624,9 +624,7 @@ function savingUserIp(){
   $get_ip_address = \App\IpAddress::where("ip",$ip)->first();
 
   if ($get_ip_address == null) {
-    $ips = new IpAddress();
-    $ips->ip = $ip;
-    $ips->save();
+    \App\IpAddress::create(['ip' => $ip]);
   }
 
   setcookie('usre_ip', $ip, time() + (60 * 60 * 24), "/");
