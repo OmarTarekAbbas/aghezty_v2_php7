@@ -111,6 +111,7 @@
         </div>
       </div>
 
+      <!-- Home Brands Start -->
       <div class="logo_brands">
         <div class="owl_brands owl-carousel owl-theme">
           @foreach($home_brands as $homeBrand)
@@ -124,144 +125,7 @@
           @endforeach
         </div>
       </div>
-
-      <!-- <div class="logo_brands">
-        <div class="owl_brands owl-carousel owl-theme">
-          <div class="item">
-            <div class="brands_img">
-            <a href="#0">
-              <img src="{{url('public/frontv2/images/logo_brands/Apple.png')}}" alt="">
-              </a>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Ariston.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Black_Decker.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Bosch.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Braun.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/carrier.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/elba.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Franke.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Glem-Gas.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/infinix.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Kenwood.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/koldair.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/LG.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/mi-mobile.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Panasonic.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Samsung.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Sharp.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/Sony.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/tornado.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/TOSHIBA.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/white-point.png')}}" alt="">
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="brands_img">
-              <img src="{{url('public/frontv2/images/logo_brands/white-whale.png')}}" alt="">
-            </div>
-          </div>
-        </div>
-      </div> -->
+      <!-- Home Brands End -->
 
       @if(advertisements(4))
       {{-- <div class="row d-sm-block">
@@ -412,6 +276,7 @@
     </div>
   </section>
 
+  <!-- Home Recently Added Start -->
   <section class="product_view mt-3">
     <div class="mobile_views">
       <div class="product_view_type">
@@ -495,14 +360,13 @@
       </div>
     </div>
   </section>
+  <!-- Home Recently Added End -->
 
+  <!-- Home Category Start -->
   <section class="choose_category mt-3">
     <div class="mobile_views">
       <div class="row no_margin">
-
-        {{-- --}}
         @foreach ($homepage_cat as $item)
-
         <div class="col-md-2 col-xl-2 col-6 margin_bottom_mob">
           <div class="choose_category_form text-center">
             <a class="hoverabley" href="{{route('front.home.search.category',['sub_category_id' => $item->id, 'category_name' => setSlug($item->getTranslation('title','en'))])}}">
@@ -516,14 +380,13 @@
             </h4>
           </div>
         </div>
-
         @endforeach
-        {{-- --}}
-
       </div>
     </div>
   </section>
+  <!-- Home Category End -->
 
+  <!-- Home Selected For You Start -->
   <section class="product_view mt-3">
     <div class="mobile_views">
       <div class="product_view_type">
@@ -544,9 +407,7 @@
         </div>
 
         <div class="row">
-          {{-- --}}
           @foreach ($selected_for_you as $item)
-
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
             <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
@@ -603,13 +464,11 @@
               @endif
             </div>
           </div>
-
           @endforeach
-          {{-- --}}
-
         </div>
       </div>
     </div>
   </section>
+  <!-- Home Selected For You End -->
 </div>
 @endsection

@@ -664,30 +664,20 @@ class HomeController extends Controller
 
     public function indexv2()
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-          $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-          $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
-          $ip = $_SERVER['REMOTE_ADDR'];
-        }
-        $get_ip_address = IpAddress::where("ip",$ip)->first();
-        if ($get_ip_address == null) {
-          $ips = new IpAddress();
-          $ips->ip = $ip;
-          $ips->save();
+        if( !isset($_COOKIE['usre_ip']) ){
+            savingUserIp();
         }
 
-        $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get();
-        $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get();
-        $home_brands = cache()->remember('home_brands',60 * 60 * 60,function(){ return Brand::all(); });
+        $slides = Advertisement::where('type', 'slider')->where('active', 1)->orderBy('order', 'ASC')->get(['ads_url', 'image', 'image_resize']);
+        $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->get(['ads_url', 'image', 'image_resize']);
+        $home_brands = cache()->remember('home_brands',60 * 60 * 60,function(){ return Brand::all(['id', 'title', 'image', 'image_resize']); });
 
         $recently_added = cache()->remember('recently_added',60 * 60 * 60,function(){
-            $recently_added_values = Product::stock()->where('recently_added', 1)->get(); 
+            $recently_added_values = Product::stock()->where('recently_added', 1)->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize']); 
 
             if (count($recently_added_values) != 6) {
                 $limit = 6 - count($recently_added_values);
-                $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get();
+                $recently_addedR = Product::orderBy('created_at', 'desc')->limit($limit)->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize']);
                 $recently_added_values =  $recently_added_values->toBase()->merge($recently_addedR);
             }
 
@@ -696,11 +686,11 @@ class HomeController extends Controller
             });
 
         $selected_for_you = cache()->remember('selected_for_you',60 * 60 * 60,function(){
-            $selected_for_you_values = Product::stock()->where('selected_for_you', 1)->get(); 
+            $selected_for_you_values = Product::stock()->where('selected_for_you', 1)->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize']); 
 
             if (count($selected_for_you_values) != 6) {
                 $limit = 6 - count($selected_for_you_values);
-                $selected_for_youR = Product::stock()->get()->random($limit);
+                $selected_for_youR = Product::stock()->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize'])->random($limit);
                 $selected_for_you_values = $selected_for_you_values->toBase()->merge($selected_for_youR);
             }
 
@@ -708,11 +698,11 @@ class HomeController extends Controller
         });
 
         $homepage_cat = cache()->remember('homepage_cat',60 * 60 * 60,function(){ 
-            $homepage_cat_values = Category::where('homepage', 1)->get(); 
+            $homepage_cat_values = Category::where('homepage', 1)->get(['id', 'title', 'image']); 
 
             if (count($homepage_cat_values) != 6) {
                 $limit = 6 - count($homepage_cat_values);
-                $homepage_catR = Category::whereNotNull('parent_id')->get()->random($limit);
+                $homepage_catR = Category::whereNotNull('parent_id')->get(['id', 'title', 'image'])->random($limit);
                 $homepage_cat_values = $homepage_cat_values->toBase()->merge($homepage_catR);
             }
 
