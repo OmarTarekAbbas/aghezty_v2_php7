@@ -293,7 +293,7 @@
                 @endif
 
                 <div>
-                  <p class="full_desc my-3">{{$item->getTranslation('title',getCode())}}</p>
+                  <p class="full_desc mb-0">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
               </a>
 
