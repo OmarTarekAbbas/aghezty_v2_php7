@@ -5022,7 +5022,7 @@ body {
         }
 
         .product_desc {
-          height: 310px;
+          height: 311px;
 
           a {
             img {
@@ -5118,7 +5118,7 @@ body {
         padding-right: 0;
 
         .content_view {
-          height: 430px;
+          height: 438px;
 
           a {
             img {
@@ -5153,7 +5153,7 @@ body {
 
       .content_view {
         border: 1px solid #CCC;
-        height: 311px;
+        height: 313px;
 
         a {
           img {
@@ -5553,7 +5553,7 @@ body {
                 img {
                   display: block;
                   margin: 0 auto;
-                  width: 100% !important;
+                  width: 90% !important;
                   height: 300px;
                 }
               }
@@ -5588,7 +5588,6 @@ body {
 
       .btn_shopping {
         margin-top: 0.5rem;
-
         button {
           width: 100% !important;
           margin: 0.5rem auto;
@@ -5598,10 +5597,8 @@ body {
 
       .discount_code_accordion {
         margin: 0.5rem auto;
-
         .alert-success,
         .alert-danger {
-
           &.msg_success_min,
           &.msg_danger_min {
             text-align: left;
@@ -5674,7 +5671,7 @@ body {
                 img {
                   display: block;
                   margin: 0 auto;
-                  width: 100% !important;
+                  width: 90% !important;
                   height: 300px;
                 }
               }
@@ -5799,12 +5796,6 @@ body {
               top: 5rem;
               right: 37%;
               font-size: 1.5rem;
-            }
-
-            & img:hover,
-            & img:focus {
-              margin-bottom: 0;
-              margin-left: 0;
             }
           }
         }
@@ -5941,12 +5932,6 @@ body {
               top: 4.25rem;
               right: 37%;
               font-size: 1.5rem;
-            }
-
-            & img:hover,
-            & img:focus {
-              margin-bottom: 0;
-              margin-left: 0;
             }
           }
         }
