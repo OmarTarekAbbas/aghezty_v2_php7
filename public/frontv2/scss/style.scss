@@ -3685,7 +3685,7 @@ body {
         padding-right: 0;
 
         .content_view {
-          height: 311px;
+          height: 438px;
 
           a {
             img {
@@ -3820,7 +3820,6 @@ body {
 
       .info {
         .features {
-
           .modal_feature,
           .desc_feature {
             line-height: 15px !important;
@@ -4239,7 +4238,7 @@ body {
                 img {
                   display: block;
                   margin: 0 auto;
-                  width: 100% !important;
+                  width: 90% !important;
                   height: 300px;
                 }
               }
@@ -4365,12 +4364,6 @@ body {
               right: 37%;
               font-size: 1.5rem;
             }
-
-            & img:hover,
-            & img:focus {
-              margin-bottom: 0;
-              margin-left: 0;
-            }
           }
         }
 
@@ -4461,7 +4454,6 @@ body {
           width: 100% !important;
 
           .visa-cash {
-
             .span_input_radio,
             .span_font_icon,
             .span_label_cash {
@@ -4506,12 +4498,6 @@ body {
               top: 4.25rem;
               right: 37%;
               font-size: 1.5rem;
-            }
-
-            & img:hover,
-            & img:focus {
-              margin-bottom: 0;
-              margin-left: 0;
             }
           }
         }

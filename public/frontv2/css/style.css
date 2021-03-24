@@ -2858,7 +2858,7 @@ body {
     padding-right: 0;
   }
   .main .content_view_mobile .col-12 .content_view {
-    height: 311px;
+    height: 438px;
   }
   .main .content_view_mobile .col-12 .content_view a img {
     width: 100% !important;
@@ -3273,7 +3273,7 @@ body {
   .main .wishlist_shopping table tbody tr th .img_link img {
     display: block;
     margin: 0 auto;
-    width: 100% !important;
+    width: 90% !important;
     height: 300px;
   }
   .main .wishlist_shopping table tbody tr th span {
@@ -3359,10 +3359,6 @@ body {
     right: 37%;
     font-size: 1.5rem;
   }
-  .main .log_in .log_in_bg .profile_img .upload_img img:hover, .main .log_in .log_in_bg .profile_img .upload_img img:focus {
-    margin-bottom: 0;
-    margin-left: 0;
-  }
   .main .log_in .log_in_bg form .all_forms {
     margin: 0 auto;
     display: block;
@@ -3439,10 +3435,6 @@ body {
     top: 4.25rem;
     right: 37%;
     font-size: 1.5rem;
-  }
-  .main .my_profile .my_profile_bg .profile_img .upload_img img:hover, .main .my_profile .my_profile_bg .profile_img .upload_img img:focus {
-    margin-bottom: 0;
-    margin-left: 0;
   }
   .main .my_profile .my_profile_bg .profile_accordion .input-group,
 .main .my_profile .my_profile_bg .address_accordion .input-group,
