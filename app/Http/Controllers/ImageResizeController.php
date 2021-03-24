@@ -71,7 +71,7 @@ class ImageResizeController extends Controller
        File::makeDirectory($path, 0755, true, true);
      }
 
-     Product::whereNull('main_image_resize')->orderBy("id", "desc")->chunk(100, function ($products) {
+     Product::whereNull('main_image_resize')->orderBy("id", "desc")->chunk(100, function ($products) use($destinationPath,$path){
        foreach ($products as $product) {
          $image = $product->main_image;
          if (isset($image) && $image != null) {
