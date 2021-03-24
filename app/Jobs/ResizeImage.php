@@ -26,7 +26,7 @@ class ResizeImage extends Job implements ShouldQueue {
 	 * @return void
 	 */
 	public function handle() {
-    ini_set('memory_limit', '1M');
+    ini_set('memory_limit', '20M');
 
 		$path = 'uploads/product/image_resize';
 		  $destinationPath = base_path($path);
