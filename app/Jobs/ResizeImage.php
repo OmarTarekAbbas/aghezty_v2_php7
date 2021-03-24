@@ -30,14 +30,14 @@ class ResizeImage extends Job implements ShouldQueue
   {
     ini_set('memory_limit', '20M');
 
-    $path = 'uploads/product/image_resize';
-    $destinationPath = base_path($path);
-
     if (!File::exists($path)) {
       File::makeDirectory($path, 0755, true, true);
     }
 
     Product::whereNull('main_image_resize')->orderBy("id", "desc")->chunk(100, function ($products) {
+      $path = 'uploads/product/image_resize';
+      $destinationPath = base_path($path);
+
       foreach ($products as $product) {
         $image = $product->main_image;
         if (isset($image) && $image != null) {
