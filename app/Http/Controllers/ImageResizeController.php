@@ -62,7 +62,7 @@ class ImageResizeController extends Controller
      // dispatch(new ResizeImage());
 
 
-     ini_set('memory_limit', '20M');
+     ini_set('memory_limit', '20000000000M');
 
      $path = 'uploads/product/image_resize';
      $destinationPath = base_path($path);
