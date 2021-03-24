@@ -63,6 +63,8 @@ class ImageResizeController extends Controller
 
 
      ini_set('memory_limit', '200M');
+     ini_set('max_execution_time', '300000000'); //300 seconds = 5 minutes
+
 
      $path = 'uploads/product/image_resize';
      $destinationPath = base_path($path);
