@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /* general */
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -5566,7 +5565,7 @@ body {
     height: 223px;
   }
   .main .content_view {
-    height: 410px;
+    height: 429px;
   }
   .main .content_view a img {
     height: 250px;
