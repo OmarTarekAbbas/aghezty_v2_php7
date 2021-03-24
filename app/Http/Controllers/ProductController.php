@@ -530,7 +530,7 @@ class ProductController extends Controller
         //return redirect('category/'.$request->category_id);
         return redirect('product');
     }
-    
+
     public function export_product_excel()
     {
         $categorys = Category::all();
@@ -540,71 +540,75 @@ class ProductController extends Controller
 
     public function download_product_excel(Request $request)
     {
+
+      $product = Product::query();
       if($request->category_id == -1){
-        $data= Product::stock()->where(['brand_id' => $request->brand_id])->where('products.active', 1)->get();
+        $product->where('brand_id', $request->brand_id)->where('products.active', 1);
 
         $brand    = Brand::where('id',$request->brand_id)->first();
         $excell_title = $brand->getTranslation('title','en') . '-'. date("d-m-Y");
       }else{
-        $data= Product::stock()->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->where('products.active', 1)->get();
+        $product->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->where('products.active', 1);
 
         $category = Category::where('id',$request->category_id)->first();
         $brand    = Brand::where('id',$request->brand_id)->first();
         $excell_title = $category->getTranslation('title','en') . '-' . $brand->getTranslation('title','en') . '-'. date("d-m-Y");
       }
 
+      $data = $product->get();
+
       return Excel::create($excell_title, function($excel) use ($data) {
         $excel->sheet('mySheet', function($sheet) use ($data)
         {
-          $sheet->cell('A1', function($cell) 
+          $sheet->cell('A1', function($cell)
             {
-                $cell->setValue('ID');  
+                $cell->setValue('ID');
             });
-            $sheet->cell('B1', function($cell) 
+            $sheet->cell('B1', function($cell)
             {
-                $cell->setValue('Model');  
+                $cell->setValue('Model');
             });
-            $sheet->cell('C1', function($cell) 
+            $sheet->cell('C1', function($cell)
             {
-                $cell->setValue('Price'); 
+                $cell->setValue('Price');
             });
-            $sheet->cell('D1', function($cell) 
+            $sheet->cell('D1', function($cell)
             {
-                $cell->setValue('Discount');    
+                $cell->setValue('Discount');
             });
-            $sheet->cell('E1', function($cell) 
+            $sheet->cell('E1', function($cell)
             {
-                $cell->setValue('Price After Discount');    
+                $cell->setValue('Price After Discount');
             });
-            $sheet->cell('F1', function($cell) 
+            $sheet->cell('F1', function($cell)
             {
-                $cell->setValue('Title (Arabic)');    
+                $cell->setValue('Title (Arabic)');
             });
-            $sheet->cell('G1', function($cell) 
+            $sheet->cell('G1', function($cell)
             {
-                $cell->setValue('Title (English)');    
+                $cell->setValue('Title (English)');
             });
-            $sheet->cell('H1', function($cell) 
+            $sheet->cell('H1', function($cell)
             {
-                $cell->setValue('Description (Arabic)');    
+                $cell->setValue('Description (Arabic)');
             });
-            $sheet->cell('I1', function($cell) 
+            $sheet->cell('I1', function($cell)
             {
-                $cell->setValue('Description (English)');    
+                $cell->setValue('Description (English)');
             });
 
             if (!empty($data)) {
                 $sno=1;
-                foreach ($data as $key => $value) 
+                foreach ($data as $key => $value)
                 {
                     $i= $key+2;
-                    $sheet->cell('A'.$i, $sno);  
-                    $sheet->cell('B'.$i, $value->short_description); 
+                    $sheet->cell('A'.$i, $sno);
+                    $sheet->cell('B'.$i, $value->short_description);
                     $sheet->cell('C'.$i, $value->price);
                     $sheet->cell('D'.$i, $value->discount);
                     $sheet->cell('E'.$i, $value->price_after_discount);
-                    $sheet->cell('F'.$i, $value->getTranslation('title','ar') ); 
-                    $sheet->cell('G'.$i, $value->getTranslation('title','en') ); 
+                    $sheet->cell('F'.$i, $value->getTranslation('title','ar') );
+                    $sheet->cell('G'.$i, $value->getTranslation('title','en') );
                     $sheet->cell('H'.$i, strip_tags($value->getTranslation('description','ar')) );
                     $sheet->cell('I'.$i, strip_tags($value->getTranslation('description','en')) );
                     $sno++;
