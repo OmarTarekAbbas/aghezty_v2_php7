@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Governorate;
+use App\City;
 use App\Language;
 use Validator;
 class GovernorateController extends Controller
@@ -112,5 +113,20 @@ class GovernorateController extends Controller
       $governorate = Governorate::findOrFail($id)->delete();
       \Session::flash('success', 'Governorate Delete Successfully');
       return back();
+    }
+
+    public function OtherThanThat_city_insert()
+    {
+      $governorates = Governorate::all();
+      foreach ($governorates as $governorate) {
+        $city = New City();
+        $city->city_en = 'Other than that';
+        $city->city_ar = 'غير ذلك';
+        $city->shipping_amount = 0;
+        $city->governorate_id = $governorate->id;
+        $city->save();
+      }
+
+      echo 'cities inserted successfully.';
     }
 }
