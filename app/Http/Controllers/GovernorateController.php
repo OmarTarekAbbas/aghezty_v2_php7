@@ -120,8 +120,8 @@ class GovernorateController extends Controller
       $governorates = Governorate::all();
       foreach ($governorates as $governorate) {
         $city = New City();
-        $city->city_en = 'Other than that';
-        $city->city_ar = 'غير ذلك';
+        $city->city_en = 'Other than that (Shipping fees are determined by customer service)';
+        $city->city_ar = 'غير ذلك (مصاريف الشحن تحدد من خلال خدمة العملاء)';
         $city->shipping_amount = 0;
         $city->governorate_id = $governorate->id;
         $city->save();
