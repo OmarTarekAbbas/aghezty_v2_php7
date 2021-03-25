@@ -94,12 +94,8 @@
   <!-- <link rel="stylesheet" href="{{url('public/frontv2/css/hover.css')}}"> -->
   <link rel="stylesheet" href="{{url('public/frontv2/css/animate.css')}}">
   <meta name="token" content="{{ csrf_token() }}">
-  @if (\Session::has('applocale'))
   @if (\Session::get('applocale') == 'ar')
   <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style_AR.css')}}">
-  @else
-  <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
-  @endif
   @else
   <link rel="stylesheet" type="text/css" href="{{url('public/frontv2/css/style.css')}}">
   @endif
@@ -787,7 +783,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.js"></script>
   <!-- Script JS -->
   <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
-  <script src="{{url('public/frontv2/js/script.js')}}"></script>
+  <script src="{{url('public/frontv2/js/script.min.js')}}"></script>
   <script src="{{url('js/vue.min.js')}}"></script>
   <script>
     $(document).on('click','.fa-heart',function(){
