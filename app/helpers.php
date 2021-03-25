@@ -562,7 +562,7 @@ function resizeImage($resize_path, $image){
         $time = time().rand(0,999);
 
         $image_resize_path = $destinationPath.'/'.$time.".webp";
-        
+
         $ext = pathinfo($image, PATHINFO_EXTENSION);
         if ($ext != "png") {
           $img = Image::make($image);
@@ -592,7 +592,7 @@ function resizeBrandImage($resize_path, $image){
   $time = time().rand(0,999);
 
   $image_resize_path = $destinationPath.'/'.$time.".webp";
-  
+
   $ext = pathinfo($image, PATHINFO_EXTENSION);
         if ($ext != "png") {
           $img = Image::make($image);
@@ -610,4 +610,22 @@ function resizeBrandImage($resize_path, $image){
   $resized_image_path = $resize_path.'/'.$time.".webp";
 
   return $resized_image_path;
+}
+
+function savingUserIp(){
+  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  } else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+  }
+
+  $get_ip_address = \App\IpAddress::where("ip",$ip)->first();
+
+  if ($get_ip_address == null) {
+    \App\IpAddress::create(['ip' => $ip]);
+  }
+
+  setcookie('usre_ip', $ip, time() + (60 * 60 * 24), "/");
 }
