@@ -116,12 +116,12 @@
                                     <td class="center">{{($key+1)}}</td>
                                     <td>
                                         <img class=" img-circle" width="100px" height="100px"
-                                            src="{{$value->product->main_image}}" />
+                                            src="{{ $value->order_product->main_image }}" />
                                     </td>
                                     <td>
                                         @foreach($languages as $language)
                                         <li> <b>{{$language->title}} :</b>
-                                            {{$value->product->getTranslation('title',$language->short_code)}}</li>
+                                            {{$value->order_product->getTranslation('title',$language->short_code)}}</li>
                                         @endforeach
                                     </td>
                                     <td>{{$value->price}}</td>
@@ -129,7 +129,7 @@
                                     <td>{{$value->total_price}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-success show-tooltip" title="Show Product"
-                                            href="{{route("front.home.inner",['id'=>$value->product->id ,'slug' => setSlug($value->product->getTranslation('title',getCode()))])}}"
+                                            href="{{route("front.home.inner",['id'=>$value->order_product->id ,'slug' => setSlug($value->order_product->getTranslation('title',getCode()))])}}"
                                             data-original-title="Show Product"><i class="fa fa-forward"></i></a>
                                         {{-- <i class="btn btn-sm show-tooltip" href="{{url("product/$value->id/edit")}}"
                                         title="Edit"><i class="fa fa-edit"></i></i> --}}
