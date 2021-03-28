@@ -24,9 +24,35 @@ class SocialAuthFacebookController extends Controller
     public function callback(SocialFacebookAccountService $service)
     {
         $user = $service->createOrGetUser(Socialite::driver('facebook')->stateless()->user());
+        $this->setCartData($user);
         Auth::guard('client')->login($user);
         if(session('newuser'))
             return redirect()->to('clients/profilev2')->with('success', 'Please update your phone!');
         return redirect()->to('/');
+    }
+
+    /**
+     * Method getCartData
+     *
+     * Take Data fro cookie and set it in cart table
+     * @param User $user
+     * @return void
+     */
+    public function setCartData($user)
+    {
+      if(isset($_COOKIE['carts'])) {
+        $carts = unserialize($_COOKIE['carts']);
+        for ($i=0; $i < count($carts) ; $i++) {
+            \App\Cart::create([
+                'product_id' => $carts[$i]['product_id'],
+                'client_id' => $user->id,
+                'quantity'=> $carts[$i]['quantity'],
+                'price'  => $carts[$i]['price'],
+                'total_price' => $carts[$i]['price'] * $carts[$i]['quantity']
+            ]);
+        }
+        unset($_COOKIE['carts']);
+        setcookie('carts','', time() - 3600);
+      }
     }
 }
