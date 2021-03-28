@@ -499,6 +499,10 @@ class ProductController extends Controller
             \Excel::filter('chunk')->load(base_path().'/uploads/product/'.date('Y-m-d').'/excel/'.$filename)->chunk(100, function($results) use ($request,&$counter,&$total_counter,&$category,&$brand)
             {
                 foreach ($results as $row) {
+                  $final_brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', $row->brand)->first()!=null ? Brand::where('title', $row->brand)->first()->id : 0);
+                  $final_category_id = isset($request->category_id)&&$request->category_id != -1 ? $request->category_id : (Category::where('title', $row->category)->first()!=null ? Category::where('title', $row->category)->first()->id : 0);
+
+                  if($final_brand_id!=0 && $final_category_id!=0){
                     $total_counter++;
                     $product = new Product();
                     $product->setTranslation('title', 'ar', $row->title_ar);
@@ -507,8 +511,8 @@ class ProductController extends Controller
                     $product->setTranslation('description', 'en', $row->description_en);
                     $product->setTranslation('short_description', 'ar', $row->model_ar);
                     $product->setTranslation('short_description', 'en', $row->model_en);
-                    $product->brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', $row->brand)->first()!=null ? Brand::where('title', $row->brand)->first()->id : 0) ;
-                    $product->category_id = isset($request->category_id)&&$request->category_id != -1 ? $request->category_id : (Category::where('title', $row->category)->first()!=null ? Category::where('title', $row->category)->first()->id : 0) ;
+                    $product->brand_id = $final_brand_id;
+                    $product->category_id = $final_category_id;
                     $product->price = $row->price;
                     $product->discount = $row->discount;
                     $product->sku = $row->sku;
@@ -536,6 +540,7 @@ class ProductController extends Controller
                     {
                         $counter++ ;
                     }
+                  }
                 }
             },false);
 
