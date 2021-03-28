@@ -213,14 +213,17 @@
     });
   })
   $(document).ready(function() {
+    var user_city = "{{$item->pivot->city_id}}";
+
     $.ajax({
-      url: "{{url('clients/city')}}/" + $('#gover_add').val(),
+      url: "{{url('clients/city')}}/" + $('.gover_update').val(),
       type: "get",
       success: function(data) {
-        $('#add_city').empty();
+        $('#city_id_value').empty();
         for (let i = 0; i < data.length; i++) {
-          const element = '<option value="' + data[i].id + '">' + data[i].city + '</option>'
-          $('#add_city').append(element)
+          var selected_var = user_city==data[i].id ? "selected" : "";
+          const element = '<option value="' + data[i].id + '" '+selected_var+' >' + data[i].city + '</option>'
+          $('#city_id_value').append(element)
         }
       },
     });
