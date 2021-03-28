@@ -344,7 +344,7 @@ class HomeController extends Controller
             $data['price'] = $request->price;
             $data['total_price'] = $request->price * $request->counter;
             array_push($arr, $data);
-            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12), "/");
         }
         return response()->json(['success' => 'Added To Cart Successfully', 'status' => 'success']);
     }
@@ -355,7 +355,7 @@ class HomeController extends Controller
             $arr = unserialize($_COOKIE['carts']);
             $arr[$request->cart_id]['quantity'] = $request->value;
             $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
-            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12), "/");
         }
         if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
@@ -372,7 +372,7 @@ class HomeController extends Controller
             $arr = unserialize($_COOKIE['carts']);
             unset($arr[$request->cart_id]);
             $arr = array_values($arr);
-            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12), "/");
         }
         if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
@@ -1345,7 +1345,7 @@ class HomeController extends Controller
         unset($oldSearchValue[$key]);
       }
       array_push($oldSearchValue,$searchValue);
-      setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12)); //set for 1 year
+      setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12), "/"); //set for 1 year
       session(["old_search_value" => $oldSearchValue]);
     }
 
@@ -1628,7 +1628,7 @@ class HomeController extends Controller
             $data['price'] = $request->price;
             $data['total_price'] = $request->price * $request->counter;
             array_push($arr, $data);
-            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12), "/");
         }
         return response()->json(['success' => 'Added To Cart Successfully', 'status' => 'success']);
     }
@@ -1679,10 +1679,10 @@ class HomeController extends Controller
                 $arr = unserialize($_COOKIE['carts']);
                 unset($arr[$request->cart_id]);
                 $arr = array_values($arr);
-                setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+                setcookie('carts', serialize($arr), time() + (86400 * 30 * 12), "/");
             } else {
                 unset($_COOKIE['carts']);
-                setcookie('carts', '', time() - 3600);
+                setcookie('carts', '', time() - 3600, "/");
             }
         }
         if ($request->type == "auth") {
@@ -1709,7 +1709,7 @@ class HomeController extends Controller
             }
             $arr[$request->cart_id]['quantity'] = $request->value;
             $arr[$request->cart_id]['total_price'] = $request->value * $arr[$request->cart_id]['price'];
-            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12));
+            setcookie('carts', serialize($arr), time() + (86400 * 30 * 12), "/");
         }
         if ($request->type == "auth") {
             $cart = Cart::find($request->cart_id);
