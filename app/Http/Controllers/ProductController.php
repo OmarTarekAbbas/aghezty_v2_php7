@@ -463,7 +463,28 @@ class ProductController extends Controller
         ini_set('memory_limit', -1);
 
         if ($request->hasFile('fileToUpload')) {
+
+          if($request->brand_id != -1 && $request->brand_id != -1){
+            $data = $this->store_excel_functionality($request, $category, $brand, $counter, $total_counter);
+          }else{
+            $data = $this->store_excel_functionality($request, $category, $brand, $counter, $total_counter);
+          }
+
+        }else{
+            $request->session()->flash('failed', 'Excel file is required');
+            return back();
+        }
+
+        $failures = $data['total_counter'] - $data['counter'];
+        $request->session()->flash('success', $data['counter'].' item(s) created successfully, and '.$failures.' item(s) failed');
+        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productsv2?sub_category_id='.$request->category_id.'&brand_id='.$request->brand_id.'')))->toOthers();
+        //return redirect('category/'.$request->category_id);
+        return redirect('product');
+    }
+
+    public function store_excel_functionality($request, $category, $brand, $counter, $total_counter){
             $ext =  $request->file('fileToUpload')->getClientOriginalExtension();
+
             if ($ext != 'xls' && $ext != 'xlsx' && $ext != 'csv') {
                 $request->session()->flash('failed', 'File must be excel');
                 return back();
@@ -480,16 +501,14 @@ class ProductController extends Controller
                 foreach ($results as $row) {
                     $total_counter++;
                     $product = new Product();
-                    // $product->setTranslation('title', 'ar', $category->getTranslation('title','ar').'-'.$brand->getTranslation('title','ar').'-'.$row->model_ar);
-                    // $product->setTranslation('title', 'en', $category->getTranslation('title','en').'-'.$brand->getTranslation('title','en').'-'.$row->model_en);
                     $product->setTranslation('title', 'ar', $row->title_ar);
                     $product->setTranslation('title', 'en', $row->title_en);
                     $product->setTranslation('description', 'ar', $row->description_ar);
                     $product->setTranslation('description', 'en', $row->description_en);
                     $product->setTranslation('short_description', 'ar', $row->model_ar);
                     $product->setTranslation('short_description', 'en', $row->model_en);
-                    $product->brand_id = $request->brand_id;
-                    $product->category_id = $request->category_id;
+                    $product->brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', $row->brand)->first()!=null ? Brand::where('title', $row->brand)->first()->id : 0) ;
+                    $product->category_id = isset($request->category_id)&&$request->category_id != -1 ? $request->category_id : (Category::where('title', $row->category)->first()!=null ? Category::where('title', $row->category)->first()->id : 0) ;
                     $product->price = $row->price;
                     $product->discount = $row->discount;
                     $product->sku = $row->sku;
@@ -519,16 +538,8 @@ class ProductController extends Controller
                     }
                 }
             },false);
-        }else{
-            $request->session()->flash('failed', 'Excel file is required');
-            return back();
-        }
-        //    unlink(base_path().'/uploads/rbt/excel/'.$filename);
-        $failures = $total_counter - $counter ;
-        $request->session()->flash('success', $counter.' item(s) created successfully, and '.$failures.' item(s) failed');
-        broadcast(new Products('The New Product is Added You Can See It Now',url('clients/productsv2?sub_category_id='.$request->category_id.'&brand_id='.$request->brand_id.'')))->toOthers();
-        //return redirect('category/'.$request->category_id);
-        return redirect('product');
+
+            return ['counter'=>$counter, 'total_counter'=>$total_counter];
     }
 
     public function export_product_excel()

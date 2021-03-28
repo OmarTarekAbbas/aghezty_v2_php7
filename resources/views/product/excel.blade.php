@@ -22,6 +22,7 @@
                             <label class="col-sm-3 col-lg-2 control-label">@lang('messages.category')<span class="text-danger">*</span></label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 <select name="category_id"  class="form-control chosen-rtl" required>
+                                  <option value="-1">@lang('messages.select_category')</option>
                                     @foreach ($categorys as $category)
                                         @if(count($category->sub_cats) > 0)
                                             <optgroup label="{{$category->title}}">
@@ -39,7 +40,13 @@
                         <div class="form-group">
                             <label class="col-sm-3 col-lg-2 control-label">@lang('messages.brands')<span class="text-danger">*</span></label>
                             <div class="col-sm-9 col-lg-10 controls">
-                                {!! Form::select('brand_id',$brands->pluck('title','id'),null,['class'=>'form-control chosen-rtl','required']) !!}
+                              <select name="brand_id"  class="form-control chosen-rtl" required>
+                                <option value="-1">@lang('messages.select_brand')</option>
+                                @foreach ($brands as $brand)
+                                  <option value="{{$brand->id}}">{{$brand->title}}</option>
+                                @endforeach
+                              </select>
+                                {{-- {!! Form::select('brand_id',$brands->pluck('title','id'),null,['class'=>'form-control chosen-rtl','required']) !!} --}}
                             </div>
                         </div>
                         <div class="form-group">
