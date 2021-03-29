@@ -182,22 +182,24 @@
       },
     });
   })
-  // $(document).ready(function() {
-  //   $.ajax({
-  //     url: "{{url('clients/city')}}/" + $('#gover_add').val(),
-  //     type: "get",
-  //     success: function(data) {
-  //       $('#add_city').empty();
-  //       for (let i = 0; i < data.length; i++) {
-  //         const element = '<option value="' + data[i].id + '">' + data[i].city + '</option>'
-  //         $('#add_city').append(element)
-  //       }
-  //     },
-  //   });
-  // });
 
   $(document).ready(function() {
-    var user_city = "{{$item->pivot->city_id}}";
+    $.ajax({
+      url: "{{url('clients/city')}}/" + $('#gover_add').val(),
+      type: "get",
+      success: function(data) {
+        $('#add_city').empty();
+        for (let i = 0; i < data.length; i++) {
+          const element = '<option value="' + data[i].id + '">' + data[i].city + '</option>'
+          $('#add_city').append(element)
+        }
+      },
+    });
+  });
+
+  $(document).ready(function() {
+    {{$user_city_id = isset(Auth::guard('client')->user()->cities) && count(Auth::guard('client')->user()->cities) > 0  ? $item->pivot->city_id : 1}}
+    var user_city = "{{$user_city_id}}";
 
     $.ajax({
       url: "{{url('clients/city')}}/" + $('.gover_update').val(),
