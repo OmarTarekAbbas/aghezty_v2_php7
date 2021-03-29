@@ -764,5 +764,55 @@ class ProductController extends Controller
       return redirect('product');
     }
 
+    public function DeleteProductFromModelExcelDownload()
+    {
+      $file = base_path(). "/files/delete_product_from_model_excel.xlsx";
+      $headers = array(
+                'Content-Type: application/xlsx',
+              );
+      return response()->download($file, 'delete_product_from_model_excel.xlsx', $headers);
+
+    }
+
+    public function getDeleteProductFromModelExcel()
+    {
+      return view('product.delete_product_from_model_excel');
+    }
+
+    public function makeDeleteProductFromModelExcel(Request $request)
+    {
+      $total_counter = 0;
+      if ($request->hasFile('fileToUpload')) {
+        $ext =  $request->file('fileToUpload')->getClientOriginalExtension();
+        if ($ext != 'xls' && $ext != 'xlsx' && $ext != 'csv') {
+            $request->session()->flash('failed', 'File must be excel');
+            return back();
+        }
+
+        $file = $request->file('fileToUpload');
+        $filename = time().'_'.$file->getClientOriginalName();
+        if(!$file->move(base_path().'/uploads/delete_product/delete_product_from_model_excel',  $filename) ){
+            return back();
+        }
+
+        \Excel::filter('chunk')->load(base_path() . '/uploads/delete_product/delete_product_from_model_excel/' . $filename)->chunk(100, function($results) use ($request,&$total_counter)
+        {
+          foreach ($results as $row) {
+            $product = Product::where('short_description', $row->model)->first();
+            if($product){
+             $product->delete();
+             $total_counter++;
+            }
+          }
+        },false);
+      } else{
+        $request->session()->flash('failed', 'Excel file is required');
+        return back();
+      }
+      \Session::flash('success', 'SuccessFully Delete '.$total_counter.' Product from excel');
+
+      return redirect('product');
+    }
+
 
 }

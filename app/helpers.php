@@ -124,6 +124,9 @@ function get_static_routes()
 
     Route::get("products/export_product_excel" ,'ProductController@export_product_excel');
     Route::post("products/download_product_excel" ,'ProductController@download_product_excel')->name('admin.product.download.excel');
+    Route::get("products/get_delete_product_from_model_excel", 'ProductController@DeleteProductFromModelExcelDownload')->name('admin.product.model.excel');
+    Route::get("products/delete_product_from_model_excel", 'ProductController@getDeleteProductFromModelExcel')->name('admin.product.delete.with.model.excel.get');
+    Route::post("products/delete_product_from_model_excel", 'ProductController@makeDeleteProductFromModelExcel')->name('admin.product.delete.with.model.excel.post');
     /*****************************end */
 
 
