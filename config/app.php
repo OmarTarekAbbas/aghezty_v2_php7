@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'APP_DOMAIN' => env('APP_DOMAIN', '.aghezty.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

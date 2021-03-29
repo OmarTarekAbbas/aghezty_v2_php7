@@ -38,7 +38,7 @@ class ClientLoginController extends Controller
                 ]);
             }
             unset($_COOKIE['carts']);
-            setcookie('carts','', time() - 3600, "/", ".aghezty.com");
+            setcookie('carts','', time() - 3600, "/", config('app.APP_DOMAIN'));
         }
         return redirect()->intended($this->redirectPath());
     }

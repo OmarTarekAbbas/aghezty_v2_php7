@@ -75,7 +75,7 @@ class ClientRegisterController extends Controller
                 ]);
             }
             unset($_COOKIE['carts']);
-            setcookie('carts','', time() - 3600, "/", ".aghezty.com");
+            setcookie('carts','', time() - 3600, "/", config('app.APP_DOMAIN'));
         }
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());

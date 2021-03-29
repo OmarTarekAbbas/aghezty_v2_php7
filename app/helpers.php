@@ -627,5 +627,5 @@ function savingUserIp(){
     \App\IpAddress::create(['ip' => $ip]);
   }
 
-  setcookie('usre_ip', $ip, time() + (60 * 60 * 24), "/", ".aghezty.com");
+  setcookie('usre_ip', $ip, time() + (60 * 60 * 24), "/", config('app.APP_DOMAIN'));
 }
