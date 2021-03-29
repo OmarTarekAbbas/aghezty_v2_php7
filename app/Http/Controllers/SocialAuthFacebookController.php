@@ -26,9 +26,12 @@ class SocialAuthFacebookController extends Controller
         $user = $service->createOrGetUser(Socialite::driver('facebook')->stateless()->user());
         $this->setCartData($user);
         Auth::guard('client')->login($user);
-        if(session('newuser'))
+        if(session('newuser')){
             return redirect()->to('clients/profilev2')->with('success', 'Please update your phone!');
-        return redirect()->to('clients/cartv2');
+        }else{
+          return redirect()->to('/');
+        }
+        //return redirect()->to('clients/cartv2');
     }
 
     /**
