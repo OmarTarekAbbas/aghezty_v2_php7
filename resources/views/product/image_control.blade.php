@@ -89,6 +89,8 @@
       list.push($(this).attr('id'))
     });
 
+    console.log(list);
+
     $.ajax({
       type:'post',
       url:'{{url("admin/image/order/".request()->get("product_id"))}}',
