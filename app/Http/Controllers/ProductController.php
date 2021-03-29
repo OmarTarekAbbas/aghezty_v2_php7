@@ -586,29 +586,33 @@ class ProductController extends Controller
             });
             $sheet->cell('C1', function($cell)
             {
-                $cell->setValue('Price');
+                $cell->setValue('Stock');
             });
             $sheet->cell('D1', function($cell)
             {
-                $cell->setValue('Discount');
+                $cell->setValue('Price');
             });
             $sheet->cell('E1', function($cell)
             {
-                $cell->setValue('Price After Discount');
+                $cell->setValue('Discount');
             });
             $sheet->cell('F1', function($cell)
             {
-                $cell->setValue('Title (Arabic)');
+                $cell->setValue('Price After Discount');
             });
             $sheet->cell('G1', function($cell)
             {
-                $cell->setValue('Title (English)');
+                $cell->setValue('Title (Arabic)');
             });
             $sheet->cell('H1', function($cell)
             {
-                $cell->setValue('Description (Arabic)');
+                $cell->setValue('Title (English)');
             });
             $sheet->cell('I1', function($cell)
+            {
+                $cell->setValue('Description (Arabic)');
+            });
+            $sheet->cell('J1', function($cell)
             {
                 $cell->setValue('Description (English)');
             });
@@ -620,13 +624,14 @@ class ProductController extends Controller
                     $i= $key+2;
                     $sheet->cell('A'.$i, $sno);
                     $sheet->cell('B'.$i, $value->short_description);
-                    $sheet->cell('C'.$i, $value->price);
-                    $sheet->cell('D'.$i, $value->discount);
-                    $sheet->cell('E'.$i, $value->price_after_discount);
-                    $sheet->cell('F'.$i, $value->getTranslation('title','ar') );
-                    $sheet->cell('G'.$i, $value->getTranslation('title','en') );
-                    $sheet->cell('H'.$i, strip_tags($value->getTranslation('description','ar')) );
-                    $sheet->cell('I'.$i, strip_tags($value->getTranslation('description','en')) );
+                    $sheet->cell('C'.$i, $value->stock);
+                    $sheet->cell('D'.$i, $value->price);
+                    $sheet->cell('E'.$i, $value->discount);
+                    $sheet->cell('F'.$i, $value->price_after_discount);
+                    $sheet->cell('G'.$i, $value->getTranslation('title','ar') );
+                    $sheet->cell('H'.$i, $value->getTranslation('title','en') );
+                    $sheet->cell('I'.$i, strip_tags($value->getTranslation('description','ar')) );
+                    $sheet->cell('J'.$i, strip_tags($value->getTranslation('description','en')) );
                     $sno++;
                 }
             }
