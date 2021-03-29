@@ -52,7 +52,7 @@ class SocialAuthFacebookController extends Controller
             ]);
         }
         unset($_COOKIE['carts']);
-        setcookie('carts','', time() - 3600, "/");
+        setcookie('carts','', time() - 3600, "/", ".aghezty.com");
       }
     }
 }
