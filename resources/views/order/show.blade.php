@@ -158,7 +158,12 @@
                         <div class="col-md-12 invoice-amount">
                             <p><strong>@lang('messages.total_price'):</strong> <span>{{$order->sum()}}</span></p>
                             <p><strong>@lang('messages.shipping_amount'):</strong>
-                                <span>{{(int)$order->shipping_amount}}</span></p>
+                                @if((int)$order->shipping_amount!=0)
+                                  <span>{{ (int)$order->shipping_amount}}</span>
+                                @else
+                                  @lang('front.shipping_amount_message')
+                                @endif
+                            </p>
                             <p><strong>@lang('messages.price_after_shipping') :</strong>
                                 <span>{{$order->sum() + $order->shipping_amount}}</span></p>
                             @if((($order->sum() + $order->shipping_amount)-$order->total_price) > 0)
