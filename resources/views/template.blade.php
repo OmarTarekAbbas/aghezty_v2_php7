@@ -531,6 +531,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                       <li id="product_create"><a href="{{url('products/get_excel')}}">@lang('messages.create_from_excel')</a></li>
                                       <li id="product_create"><a href="{{url('products/product_update_price_excel')}}">@lang('messages.product_update_price_excel')</a></li>
                                       <li id="product_create"><a href="{{url('products/export_product_excel')}}">@lang('messages.export_product_excel')</a></li>
+                                      <li id="product_create"><a href="{{ route('admin.product.delete.with.model.excel.get') }}">{{ trans('front.Model Excel For Delete Product') }}</a></li>
                                   </ul>
                               </li>
                           </ul>
@@ -709,7 +710,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                         </ul>
 
                         <br>
-                    
+
                 <!-- END Navlist -->
 
                 <!-- BEGIN Sidebar Collapse Button -->
