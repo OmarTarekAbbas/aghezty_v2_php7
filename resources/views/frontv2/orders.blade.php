@@ -123,8 +123,13 @@
                             <div class="summary-subtotal">
                               <div class="subtotal-title text-left w-50 float-left">
                                 @lang('front.shipping_amount')</div>
-                              <div class="subtotal-value final-value text-right w-50 float-right">
-                                {{number_format((int)$order->shipping_amount)}}</div>
+                              <div class="final-value text-right w-50 float-right">
+                                @if(number_format((int)$order->shipping_amount)!=0)
+                                  {{ number_format((int)$order->shipping_amount)}} @lang('front.pound')
+                                @else
+                                  @lang('front.shipping_amount_message')
+                                @endif
+                              </div>
                             </div>
                             <div class="summary-subtotal">
                               <div class="subtotal-title text-left w-50 float-left">
@@ -132,14 +137,16 @@
                               <div class="subtotal-value  text-right w-50 float-right ">
                                 {{number_format($order->total_price)}}</div>
                             </div>
-                            <div class="summary-subtotal">
-                              <div class="subtotal-title text-left w-50 float-left">
-                                @lang('front.address')</div>
-                              <div class="final-value text-right w-50 float-right">
-                                {{$order->address->address}} ,
-                                {{$order->address->city['city_'.getcode()]}}-{{$order->address->city->governorate['title_'.getcode()]}}
+                            @if(isset($order->addres) && $order->addres!=null)
+                              <div class="summary-subtotal">
+                                <div class="subtotal-title text-left w-50 float-left">
+                                  @lang('front.address')</div>
+                                <div class="final-value text-right w-50 float-right">
+                                  {{$order->address->address}} ,
+                                  {{$order->address->city['city_'.getcode()]}}-{{$order->address->city->governorate['title_'.getcode()]}}
+                                </div>
                               </div>
-                            </div>
+                            @endif
                             <div class="summary-subtotal">
                               <div class="subtotal-title text-left w-50 float-left">
                                 @lang('front.status')</div>

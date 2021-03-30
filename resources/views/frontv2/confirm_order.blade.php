@@ -76,7 +76,7 @@
 
                   <div class="sub_total">
                     <strong class="text-capitalize">@lang('front.shipping_amount')</strong>
-                    <strong class="subtotal_price text-uppercase float-right">@if($city) {{number_format((int)$city->shipping_amount)}} @else 0 @endif <span>@lang('front.egp')</span> </strong>
+                    <strong class="subtotal_price text-uppercase float-right">@if( number_format((int)$city->shipping_amount)!=0 ) {{number_format((int)$city->shipping_amount)}} <span>@lang('front.egp')</span> @else @lang('front.shipping_amount_message') @endif </strong>
                   </div>
 
                   <div class="border-bottom border-secondary w-100 my-3"></div>

@@ -202,4 +202,5 @@ return [
     'address_alert_message' => 'برجاءأدخال جميع بيانات النموذج',
     'phone_number_field' => 'الرجاء إدخال رقم هاتفك',
     'phone_alert_message' => 'برجاءأدخال رقم الهاتف',
+    'shipping_amount_message' => 'مصاريف الشحن تحدد من خلال خدمة العملاء',
 ];

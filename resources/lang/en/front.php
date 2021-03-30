@@ -204,4 +204,5 @@ return [
     'address_alert_message' => 'Please Fill All Form Data!',
     'phone_number_field' => 'Please Enter Your Phone',
     'phone_alert_message' => 'Please enter your phone!',
+    'shipping_amount_message' => 'Shipping fees are determined by customer service.',
 ];

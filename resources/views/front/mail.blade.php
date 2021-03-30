@@ -144,7 +144,12 @@
                                 align="right" width="50%"> @lang('front.shipping_amount')</div>
                             <div class="subtotal-value final-value" id="basket-subtotal"
                                 style="color:#111; float:{{$lang1}}; text-align:{{$lang2}}; width:50%" align="left" width="50%">
-                                {{(int)$order->shipping_amount}} @lang('front.pound')</div>
+                                @if(number_format((int)$order->shipping_amount)!=0)
+                                  {{ number_format((int)$order->shipping_amount)}} @lang('front.pound')
+                                @else
+                                  @lang('front.shipping_amount_message')
+                                @endif
+                               </div>
                         </div>
 
                         <div class="summary-subtotal"

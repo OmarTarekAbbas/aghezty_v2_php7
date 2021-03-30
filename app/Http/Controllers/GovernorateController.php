@@ -127,6 +127,7 @@ class GovernorateController extends Controller
         $city->save();
       }
 
+      
       echo 'cities inserted successfully.';
     }
 }
