@@ -499,8 +499,8 @@ class ProductController extends Controller
             \Excel::filter('chunk')->load(base_path().'/uploads/product/'.date('Y-m-d').'/excel/'.$filename)->chunk(100, function($results) use ($request,&$counter,&$total_counter,&$category,&$brand)
             {
                 foreach ($results as $row) {
-                  $final_brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', $row->brand)->first()!=null ? Brand::where('title', $row->brand)->first()->id : 0);
-                  $final_category_id = isset($request->category_id)&&$request->category_id != -1 ? $request->category_id : (Category::where('title', $row->category)->first()!=null ? Category::where('title', $row->category)->first()->id : 0);
+                  $final_brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', ltrim($row->brand))->first()!=null ? Brand::where('title', ltrim($row->brand))->first()->id : 0);
+                  $final_category_id = isset($request->category_id)&&$request->category_id != -1 ? $request->category_id : (Category::where('title', ltrim($row->category))->first()!=null ? Category::where('title', ltrim($row->category))->first()->id : 0);
 
                   if($final_brand_id!=0 && $final_category_id!=0){
                     $total_counter++;
@@ -641,7 +641,7 @@ class ProductController extends Controller
 
     public function getDownload()
     {
-        $file= base_path(). "/files/product.xlsx";
+        $file= base_path(). "/files/product-new.xlsx";
 
         $headers = array(
                   'Content-Type: application/xlsx',
