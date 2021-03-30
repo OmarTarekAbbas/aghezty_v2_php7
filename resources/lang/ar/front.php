@@ -203,4 +203,5 @@ return [
     'phone_number_field' => 'الرجاء إدخال رقم هاتفك',
     'phone_alert_message' => 'برجاءأدخال رقم الهاتف',
     'shipping_amount_message' => 'مصاريف الشحن تحدد من خلال خدمة العملاء',
+    'delete_product_using_excel' => 'حذف المنتجات باستخدام الاكسيل',
 ];

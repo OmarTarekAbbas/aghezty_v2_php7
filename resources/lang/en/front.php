@@ -205,4 +205,5 @@ return [
     'phone_number_field' => 'Please Enter Your Phone',
     'phone_alert_message' => 'Please enter your phone!',
     'shipping_amount_message' => 'Shipping fees are determined by customer service.',
+    'delete_product_using_excel' => 'Delete Product Using Excel',
 ];
