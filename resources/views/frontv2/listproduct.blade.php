@@ -46,8 +46,8 @@
         <span class="breadcrumb_slash"></span>
         <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">{{$category_parent->getTranslation('title',getCode())}}</h1>
         @else
-        <span class="breadcrumb_slash"></span>
-        <h1 class="breadcrumb-item active" aria-current="page">@lang('front.products')</h1>
+        <span class="breadcrumb_slash" id="breadcrumb_slash"></span>
+        <h1 class="breadcrumb-item active" id="breadcrumb-item" aria-current="page">@lang('front.products')</h1>
         @endif
 
         <div id="fillter_breadcrumb"></div>
@@ -319,11 +319,11 @@
               </button>
 
               <div class="panel brand_panel_change_mobile mb-3 border border-secondary">
-              
+
                 @foreach (filtter_brands() as $brand)
                 <div class="z-checkbox" style="display: {{in_array($brand->id, $brand_ids) ? '' : 'none' }}">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
-                  {{((request()->route('brand_id') && $brand->id == request()->route('brand_id') ) 
+                  {{((request()->route('brand_id') && $brand->id == request()->route('brand_id') )
                   || in_array($brand->id,$brand_ids))?'checked':''}}
                     class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
@@ -650,18 +650,18 @@ $( document ).ready(function(){
 //------------------------------------------------------------------
   $(document).on('change', '.sub_cat_id', function() {
     get_breadcrumb_new_link()
-  
+
     $("[name='sub_category_id[]']:checked").each(function () {
       var checked_value = $(this).val();
-      
+
       var input_id = 'panel_category_' + checked_value;
 
-      var category_title = $('label[for="' + input_id + '"]').html();  
+      var category_title = $('label[for="' + input_id + '"]').html();
 
       //append html
       var html_breadcrumb = '<h1 class="breadcrumb-item active" aria-current="page"> <span style="padding:0em .5rem; color:#6c757d">/</span> ' + category_title + '</h1>';
       $("#fillter_breadcrumb").html(html_breadcrumb);
-      
+
     });
 
   });
@@ -670,21 +670,27 @@ $( document ).ready(function(){
   function get_breadcrumb_new_link(){
     if(set_breadcrumb_var == false){
         set_breadcrumb_var = true;
-        
+
         var window_href = window.location.href;
         var window_url = null;
 
-        if(window_href.indexOf("brand") != -1){
-          window_url = window_href.substr(window_href.indexOf("brand"), window_href.length);
-        }else if( window_href.indexOf("parent") != -1 ){
-          window_url = window_href.substr(window_href.indexOf("parent"), window_href.length);
+        if(window_href.indexOf("search") != -1){
+          var set_breadcrumb_link = '';
+          $("#breadcrumb_slash").remove();
+          $("#breadcrumb-item").remove();
+        }else{
+          if(window_href.indexOf("brand") != -1){
+            window_url = window_href.substr(window_href.indexOf("brand"), window_href.length);
+          }else if( window_href.indexOf("parent") != -1 ){
+            window_url = window_href.substr(window_href.indexOf("parent"), window_href.length);
+          }
+
+          var new_url = "{{url('')}}"+"/"+window_url;
+          var caregory_name = document.getElementById("breadcrumb-item").innerText;
+
+          var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + caregory_name + '</a> </h1>';
+          $("#breadcrumb-item").html(set_breadcrumb_link);
         }
-
-        var new_url = "{{url('')}}"+"/"+window_url;
-        var caregory_name = document.getElementById("breadcrumb-item").innerText;
-
-        var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + caregory_name + '</a> </h1>';
-        $("#breadcrumb-item").html(set_breadcrumb_link);
     }
   }
   //------------------------------------------------------------------
