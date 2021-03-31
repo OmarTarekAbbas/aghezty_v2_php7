@@ -411,8 +411,7 @@
       <!-- Start Image Cover -->
       <div class="col-md-12 col-lg-12 col-xl-10">
 
-        @if(!app('request')->input('search'))
-          <div class="list_cover">
+          <div class="list_cover" id="list_cover" style="display:{{app('request')->input('search') ? "none" : "block"}}">
               @if(app('request')->input('offer'))
                 @if(setting('offer_image'))
                 <img class="w-100 rounded" src="{{url(setting('offer_image'))}}" alt="Cover" title="Apple" style="height: auto !important">
@@ -443,7 +442,6 @@
               <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif
           </div>
-        @endif
 
         <!-- End Image Cover -->
         @if(!request()->filled('most_solid'))
@@ -658,6 +656,8 @@ $( document ).ready(function(){
     $("[name='sub_category_id[]']:checked").each(function () {
       var checked_value = $(this).val();
 
+      get_subcategory_banner(checked_value);
+
       var input_id = 'panel_category_' + checked_value;
 
       var category_title = $('label[for="' + input_id + '"]').html();
@@ -669,6 +669,36 @@ $( document ).ready(function(){
     });
 
   });
+
+  function get_subcategory_banner(subcategory_id){
+    var banner_html = '';
+
+    $.ajax({
+      url: '{{url("clients/loadbanner")}}' + '/' + subcategory_id,
+      type: "get",
+      success: function(data) {
+        if(data["offer_image"]!=null && data["offer_image_link"]!=null){
+
+          var image_url = "{{url('')}}" + "/" + data["offer_image"];
+          banner_html += '<a href="'+ data["offer_image_link"] +'">';
+          banner_html += '<img class="w-100 rounded" src="' + image_url + '" alt="Cover" title="Apple" style="height: auto !important">';
+          banner_html += '</a>';
+          $("#list_cover").html(banner_html);
+          $("#list_cover").css('display','block');
+
+        }else if(data["offer_image"]!=null && data["offer_image_link"]==null){
+          var image_url = "{{url('')}}" + "/" + data["offer_image"];
+          banner_html += '<img class="w-100 rounded" src="' + image_url + '" alt="Cover" title="Apple" style="height: auto !important">';
+          $("#list_cover").html(banner_html);
+          $("#list_cover").css('display','block');
+        }else{
+          banner_html += '<img class="w-100 rounded" src="{{url(setting("list_banner"))}}" alt="Cover" title="Apple" style="height: auto !important">';
+          $("#list_cover").html(banner_html);
+          $("#list_cover").css('display','block');
+        }
+      },
+    });
+  }
 
   var set_breadcrumb_var = false;
   function get_breadcrumb_new_link(){

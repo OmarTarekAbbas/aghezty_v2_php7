@@ -69,6 +69,7 @@ Route::prefix('clients')->group(function() {
     Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
     Route::get('brands','front\HomeController@getBrand');
 
+    Route::get('loadbanner/{subcategory_id}','front\HomeController@loadbanner')->name('loadbanner');
     Route::get('search','front\HomeController@search')->name('search');
     /*************** end ***************/
 
