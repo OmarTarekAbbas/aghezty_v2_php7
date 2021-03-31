@@ -160,7 +160,7 @@
         </form>
 
         <div class="old_search_value">
-          <?php $searchValue = session()->has("old_search_value") ? session()->get("old_search_value") : [] ?>
+          <?php $searchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ?>
           <ul class="list-unstyled">
             @foreach(array_slice(array_reverse($searchValue), 0, 5) as $value)
               <li class="mb-1 search-data p-2">{{ $value }}</li>
@@ -565,7 +565,7 @@
       </form>
 
       <div class="old_search_value">
-          <?php $searchValue = session()->has("old_search_value") ? session()->get("old_search_value") : [] ?>
+          <?php $searchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : []  ?>
           <ul class="list-unstyled">
             @foreach(array_slice(array_reverse($searchValue), 0, 5) as $value)
               <li class="mb-1 search-data p-2">{{ $value }}</li>
@@ -922,6 +922,8 @@
 <script>
   $('input[name="search"]').autoComplete({
       source: function(term, response){
+          $('.old_search_value').css('display','none');
+
           $.getJSON('{{ route("search") }}', { q: term }, function(data){
              response(data);
             });

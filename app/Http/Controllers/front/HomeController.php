@@ -1402,12 +1402,16 @@ class HomeController extends Controller
     public function setSearchValue($searchValue)
     {
       $oldSearchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
+      //dd($oldSearchValue);
       if (($key = array_search($searchValue, $oldSearchValue)) !== false) {
         unset($oldSearchValue[$key]);
       }
-      array_push($oldSearchValue,$searchValue);
+
+      array_push($oldSearchValue, $searchValue);
+      //dd($oldSearchValue);
+      unset($_COOKIE['old_search_value']);
+
       setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12), "/", config('app.APP_DOMAIN')); //set for 1 year
-      session(["old_search_value" => $oldSearchValue]);
     }
 
     public function inner_productv2($id)
