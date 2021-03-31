@@ -1071,6 +1071,67 @@ class HomeController extends Controller
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
     }
 
+    public function search(){
+      $q = $_GET['q'];
+      $new_q = trim( preg_replace('!\s+!', ' ', $q) );
+
+      $products = Product::stock();
+
+      $products = $products->join('translatables','translatables.record_id','=','products.id')
+      ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+      ->where('translatables.table_name','products')
+      ->where('translatables.column_name','title')
+      ->where(function($query) use ($new_q){
+        $query->where('products.title', 'like', '%' . $new_q . '%');
+        $query->orWhere('products.short_description', 'like', '%' . $new_q . '%');
+        $query->orWhere('tans_bodies.body', 'like', '%' . $new_q . '%');
+      });
+
+      $products = $products->where('products.active', 1)->pluck('body');
+
+      if(isset($products) && $products!=null && count($products)>0){
+        return $products;
+      }else{
+        return $this->stringSearch($new_q);
+      }
+
+    }
+
+    private function stringSearch($q){
+      $q_array = explode(" ", $q);
+      $counter = 0;
+      $result = [];
+
+      foreach($q_array as $q_string){
+        $products = Product::stock();
+
+        $products = $products->join('translatables','translatables.record_id','=','products.id')
+        ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+        ->where('translatables.table_name','products')
+        ->where('translatables.column_name','title')
+        ->where(function($query) use ($q_string){
+          $query->where('products.title', 'like', '%' . $q_string . '%');
+          $query->orWhere('products.short_description', 'like', '%' . $q_string . '%');
+          $query->orWhere('tans_bodies.body', 'like', '%' . $q_string . '%');
+        });
+
+        $products = $products->where('products.active', 1)->pluck('body')->toArray();
+
+        if(isset($products) && $products!=null && count($products)!=0){
+          if($counter == 0){
+            $result = $products;
+            $counter += 1 ;
+          }else{
+            $result = array_intersect($result, $products);
+          }
+        }
+      }
+
+      $result = array_values($result);
+
+      return $result;
+    }
+
     public function load_productsv2(Request $request)
     {
 

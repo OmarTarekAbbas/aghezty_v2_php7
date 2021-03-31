@@ -68,6 +68,8 @@ Route::prefix('clients')->group(function() {
     Route::get('update_cartv2','front\HomeController@update_cartv2')->name('front.home.cart.update');
     Route::get('delete_cartv2','front\HomeController@delete_cartv2')->name('front.home.cart.delete');
     Route::get('brands','front\HomeController@getBrand');
+
+    Route::get('search','front\HomeController@search')->name('search');
     /*************** end ***************/
 
     Route::group(['middleware' => 'auth:client'], function () {

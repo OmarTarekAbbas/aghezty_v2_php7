@@ -88,6 +88,7 @@
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{url('public/frontv2/css/owl.theme.default.min.css')}}">
   <link rel="stylesheet" href="{{url('public/frontv2/css/jquery-spinner.min.css')}}">
+  <link rel="stylesheet" href="{{url('public/frontv2/css/jquery.auto-complete.css')}}">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
   <!-- hover -->
@@ -803,6 +804,7 @@
   <!-- Script JS -->
   <script src="{{url('public/frontv2/js/jquery-spinner.min.js')}}"></script>
   <script src="{{url('public/frontv2/js/script.min.js')}}"></script>
+  <script src="{{url('public/frontv2/js/jquery.auto-complete.min.js')}}"></script>
   <script src="{{url('js/vue.min.js')}}"></script>
   <script>
     $(document).on('click','.fa-heart',function(){
@@ -916,6 +918,16 @@
       }
     });
   </script>
+
+<script>
+  $('input[name="search"]').autoComplete({
+      source: function(term, response){
+          $.getJSON('{{ route("search") }}', { q: term }, function(data){
+             response(data);
+            });
+      }
+  });
+</script>
 
 <!--Start of Tawk.to Script-->
 {{--  <script type="text/javascript">
