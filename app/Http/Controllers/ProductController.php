@@ -646,7 +646,7 @@ class ProductController extends Controller
         $headers = array(
                   'Content-Type: application/xlsx',
                 );
-        return response()->download($file, 'product.xlsx', $headers);
+        return response()->download($file, 'product-new.xlsx', $headers);
     }
 
     public function delete_all_product(Request $request)
