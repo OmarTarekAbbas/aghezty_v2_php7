@@ -677,8 +677,6 @@ $( document ).ready(function(){
       url: '{{url("clients/loadbanner")}}' + '/' + subcategory_id,
       type: "get",
       success: function(data) {
-        console.log(data);
-
         if(data["offer_image"]!=null && data["offer_image_link"]!=null){
 
           var image_url = "{{url('')}}" + "/" + data["offer_image"];
@@ -697,15 +695,9 @@ $( document ).ready(function(){
           $("#list_cover").css('display','none');
         }
 
-        //var catagory_title = data['title'];
-        //var new_url = '{{url("")}}'+'/parent/'+ data["id"] + '/' + '{{ setSlug("") }}';
-        //var caregory_name = '{{ $category->getTranslation(' + data["title"] + ',getCode()) }}';
-
-        //console.log(new_url);
-       // console.log(caregory_name);
-
-        //var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + caregory_name + '</a> </h1>';
-        //$("#breadcrumb-item").html(set_breadcrumb_link);
+        var new_url = "{{url('')}}"+"/parent/"+ data["id"] + "/" + data["title_slug"];
+        var set_breadcrumb_link = '<h1 class="breadcrumb-item" aria-current="page"> <a href="' + new_url + '">' + data['title'] + '</a> </h1>';
+        $("#breadcrumb-item").html(set_breadcrumb_link);
       },
     });
   }
