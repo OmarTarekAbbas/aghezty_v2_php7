@@ -47,7 +47,13 @@
                             :</b> {{$value->getTranslation('short_description',$language->short_code)}}</li>
                 @endforeach
             </td>
-            <td>{{$value->stock}}</td>
+            <td>
+            <div class="btn-group">
+              <button class="btn increment_stock"> <i class="fa fa-plus"></i> </button>
+              <button class="btn stock_number" id="{{ $value->product_id }}" > {{ $value->stock }} </button>
+              <button class="btn decrement_stock"> <i class="fa fa-minus"></i> </button>
+            </div>
+            </td>
             <td>{{$value->price}}</td>
             <td>
                 <img class="" width="100px" height="100px" src="{{$value->main_image}}"/>

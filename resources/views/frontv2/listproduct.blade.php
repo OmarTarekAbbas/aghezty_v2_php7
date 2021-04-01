@@ -424,9 +424,12 @@
                   @else
                   <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
                   @endif
-              @elseif( request()->route("sub_category_id"))
+              @elseif( request()->route("sub_category_id") || request()->route("category_name"))
 
-                <?php  $sub_category= \App\Category::where('id',app('request')->route('sub_category_id'))->first()?>
+                <?php
+                  $sub_category= \App\Category::where('id',app('request')->route('sub_category_id'))
+                  ->Orwhere('categories.title', str_replace("-", " ", request()->route("category_name")))->first()
+                ?>
                   @if($sub_category->cat->offer_image)
                   @if ($sub_category->cat->offer_image_link)
                   <a href="{{$sub_category->cat->offer_image_link}}">
