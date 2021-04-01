@@ -46,6 +46,7 @@
 @yield('style')
 
 <head>
+  <meta name="facebook-domain-verification" content="djs4gg983dg4g7nd7tis5xy5jaik7q" />
   <!-- Global site tag (gtag.js) - Google Analytics  -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187664661-1"></script>
   <script>

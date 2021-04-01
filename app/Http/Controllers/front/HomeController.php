@@ -1073,10 +1073,12 @@ class HomeController extends Controller
 
     public function loadbanner($subcategory_id){
       $sub_category= \App\Category::where('id',$subcategory_id)->first();
+      $category_id = $sub_category->cat->id;
+      $category_title = $sub_category->cat->title;
       $subcategory_offer_image = $sub_category->cat->offer_image;
       $subcategory_offer_image_link =$sub_category->cat->offer_image_link;
 
-      return ['offer_image'=>$subcategory_offer_image, 'offer_image_link'=>$subcategory_offer_image_link];
+      return ['id'=>$category_id, 'title'=>$category_title, 'offer_image'=>$subcategory_offer_image, 'offer_image_link'=>$subcategory_offer_image_link];
     }
 
     public function search(){
