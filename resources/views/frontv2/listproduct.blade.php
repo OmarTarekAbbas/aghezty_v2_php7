@@ -677,18 +677,13 @@ $( document ).ready(function(){
       url: '{{url("clients/loadbanner")}}' + '/' + subcategory_id,
       type: "get",
       success: function(data) {
-        if(data["offer_image"]!=null && data["offer_image_link"]!=null){
-
+        if(data["offer_image"]!=null){
           var image_url = "{{url('')}}" + "/" + data["offer_image"];
-          banner_html += '<a href="'+ data["offer_image_link"] +'">';
+          var offer_image_link = data["offer_image_link"]!=null ? data["offer_image_link"] : 'javascript:void(0)';
+
+          banner_html += '<a href="'+ offer_image_link +'">';
           banner_html += '<img class="w-100 rounded" src="' + image_url + '" alt="Cover" title="Apple" style="height: auto !important">';
           banner_html += '</a>';
-          $("#list_cover").html(banner_html);
-          $("#list_cover").css('display','block');
-
-        }else if(data["offer_image"]!=null && data["offer_image_link"]==null){
-          var image_url = "{{url('')}}" + "/" + data["offer_image"];
-          banner_html += '<img class="w-100 rounded" src="' + image_url + '" alt="Cover" title="Apple" style="height: auto !important">';
           $("#list_cover").html(banner_html);
           $("#list_cover").css('display','block');
         }else{
