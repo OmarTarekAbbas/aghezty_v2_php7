@@ -25,6 +25,11 @@
     <tbody>
     @foreach($products as $key=>$value)
         <tr id="product_{{$value->product_id}}">
+        <style>
+        td, th {
+          padding: 6px !important;
+        }
+        </style>
             <td><input data-check-all-item class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->product_id}}"
                        class="roles"></td>
             <td>{{$key+1}}</td>
