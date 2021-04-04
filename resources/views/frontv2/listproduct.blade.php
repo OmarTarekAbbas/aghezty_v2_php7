@@ -415,33 +415,20 @@
               @if(app('request')->input('offer') && !request()->route("category_name"))
                 @if(setting('offer_image'))
                 <img class="w-100 rounded" src="{{url(setting('offer_image'))}}" alt="Cover" title="Apple" style="height: auto !important">
-                @else
-                <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
                 @endif
-              @elseif(app('request')->input('brand_id') && !request()->route("category_name"))
-                @if(setting('brands_image'))
-                  <img class="w-100 rounded" src="{{url(setting('brands_image'))}}" alt="Cover" title="Apple" style="height: auto !important">
-                  @else
-                  <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
-                  @endif
               @elseif(request()->route("category_name"))
-
-                <?php
-                  $sub_category = \App\Category::where('title', str_replace("-", " ", request()->route("category_name")))->first();
-                ?>
+                  <?php
+                    $sub_category = \App\Category::where('title', str_replace("-", " ", request()->route("category_name")))->first();
+                  ?>
                   @if($sub_category->cat->offer_image)
-                  @if ($sub_category->cat->offer_image_link)
-                  <a href="{{$sub_category->cat->offer_image_link}}">
+                    @if ($sub_category->cat->offer_image_link)
+                    <a href="{{$sub_category->cat->offer_image_link}}">
+                      <img class="w-100 rounded" src="{{checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize)}}" alt="Cover" title="Apple" style="height: auto !important">
+                    </a>
+                    @else
                     <img class="w-100 rounded" src="{{checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize)}}" alt="Cover" title="Apple" style="height: auto !important">
-                  </a>
-                  @else
-                  <img class="w-100 rounded" src="{{checkImageResize($sub_category->cat->offer_image, $sub_category->cat->offer_image_resize)}}" alt="Cover" title="Apple" style="height: auto !important">
+                    @endif
                   @endif
-                  @else
-                  <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
-                  @endif
-              @else
-              <img class="w-100 rounded" src="{{url(setting('list_banner'))}}" alt="Cover" title="Apple" style="height: auto !important">
               @endif
           </div>
 
