@@ -725,8 +725,6 @@ $( document ).ready(function(){
         var cookie_list_html = '<ul class="list-unstyled">';
 
         $.each(data, function(index, value) {
-          console.log('index - ',index);
-          console.log('value - ', value);
           cookie_list_html += '<li class="mb-1 search-data p-2">'+ value +'</li>';
         });
 
