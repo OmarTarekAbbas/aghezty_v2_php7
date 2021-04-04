@@ -1010,6 +1010,8 @@ class HomeController extends Controller
         }
 
       if ($request->has('search') && $request->search != '') {
+        $this->setSearchValue($request->search);
+
         $products = $products->join('translatables','translatables.record_id','=','products.id')
           ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
           ->where('translatables.table_name','products')
@@ -1019,7 +1021,6 @@ class HomeController extends Controller
             $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
             $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
           });
-          $this->setSearchValue($request->search);
       }
 
         if ($request->has('offer') && $request->offer != '') {
@@ -1413,13 +1414,13 @@ class HomeController extends Controller
     public function setSearchValue($searchValue)
     {
       $oldSearchValue = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [] ;
-      //dd($oldSearchValue);
+
       if (($key = array_search($searchValue, $oldSearchValue)) !== false) {
         unset($oldSearchValue[$key]);
       }
 
       array_push($oldSearchValue, $searchValue);
-      //dd($oldSearchValue);
+
       unset($_COOKIE['old_search_value']);
 
       setcookie('old_search_value', serialize($oldSearchValue), time() + (60 * 60 * 24 * 30 * 12), "/", config('app.APP_DOMAIN')); //set for 1 year

@@ -52,6 +52,8 @@ class AdvertisementController extends Controller
         if($advertisement){
             $path = 'uploads/advertisement/image_resize';
             $resized_image = resizeImage($path, $advertisement->image);
+            $advertisement->image_resize = $resized_image;
+            $advertisement->save();
         }
 
         \Session::flash('success', 'Advertisement Created Successfully');
@@ -90,7 +92,7 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+      dd($request);
     $validator = Validator::make($request->all(), [
             'image' => 'required',
             'ads_url' => ''
@@ -103,9 +105,12 @@ class AdvertisementController extends Controller
       $advertisement = Advertisement::findOrFail($id);
       $advertisement->update( $request->all() );
 
+
       if($advertisement){
         $path = 'uploads/advertisement/image_resize';
         $resized_image = resizeImage($path, $advertisement->image);
+        $advertisement->image_resize = $resized_image;
+        $advertisement->save();
     }
 
       \Session::flash('success', 'Advertisement Update Successfully');
