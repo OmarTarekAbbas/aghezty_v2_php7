@@ -819,5 +819,19 @@ class ProductController extends Controller
       return redirect('product');
     }
 
-
+    /**
+     * Method toggleProductStock
+     *
+     * @param \Illuminate\Http\Request $request [type - determaine if action increment or decrement, product_id product that will have action]
+     * @return \Illuminate\Http\Response
+     */
+    public function toggleProductStock(Request $request)
+    {
+      if($request->type == 'increment') {
+        Product::find($request->product_id)->increment("stock");
+      } else {
+        Product::find($request->product_id)->decrement("stock");
+      }
+      return response("ok");
+    }
 }

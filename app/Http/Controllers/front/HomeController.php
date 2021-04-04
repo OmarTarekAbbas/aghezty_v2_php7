@@ -1010,17 +1010,9 @@ class HomeController extends Controller
         }
 
       if ($request->has('search') && $request->search != '') {
+        $product_ids = $this->stringGlobalSearch($request->search);
+        $products = $products->whereIn("id",$product_ids);
         $this->setSearchValue($request->search);
-
-        $products = $products->join('translatables','translatables.record_id','=','products.id')
-          ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
-          ->where('translatables.table_name','products')
-          ->where('translatables.column_name','title')
-          ->where(function($q) use ($request){
-            $q->where('products.title', 'like', '%' . $request->search . '%');
-            $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
-            $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
-          });
       }
 
         if ($request->has('offer') && $request->offer != '') {
@@ -1070,6 +1062,41 @@ class HomeController extends Controller
         }
 
         return view('frontv2.listproduct', compact('products', 'sub_category_ids','brand_ids'));
+    }
+
+    private function stringGlobalSearch($q){
+      $q_array = explode(" ", $q);
+      $counter = 0;
+      $result = [];
+
+      foreach($q_array as $q_string){
+        $products = Product::stock();
+
+        $products = $products->join('translatables','translatables.record_id','=','products.id')
+        ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+        ->where('translatables.table_name','products')
+        ->where('translatables.column_name','title')
+        ->where(function($query) use ($q_string){
+          $query->where('products.title', 'like', '%' . $q_string . '%');
+          $query->orWhere('products.short_description', 'like', '%' . $q_string . '%');
+          $query->orWhere('tans_bodies.body', 'like', '%' . $q_string . '%');
+        });
+
+        $products = $products->where('products.active', 1)->pluck('products.id')->toArray();
+
+        if(isset($products) && $products!=null && count($products)!=0){
+          if($counter == 0){
+            $result = $products;
+            $counter += 1 ;
+          }else{
+            $result = array_intersect($result, $products);
+          }
+        }
+      }
+
+      $result = array_values($result);
+
+      return $result;
     }
 
     public function loadbanner($subcategory_id){
@@ -1222,15 +1249,9 @@ class HomeController extends Controller
 
 
       if ($request->has('search') && $request->search != '') {
-                $products = $products->join('translatables','translatables.record_id','=','products.id')
-          ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
-          ->where('translatables.table_name','products')
-          ->where('translatables.column_name','title')
-          ->where(function($q) use ($request){
-            $q->where('products.title', 'like', '%' . $request->search . '%');
-            $q->orWhere('products.short_description', 'like', '%' . $request->search . '%');
-            $q->orWhere('tans_bodies.body', 'like', '%' . $request->search . '%');
-          });
+        $product_ids = $this->stringGlobalSearch($request->search);
+        $products = $products->whereIn("id",$product_ids);
+        $this->setSearchValue($request->search);
       }
 
         if ($request->has('sorted') && $request->sorted != '') {

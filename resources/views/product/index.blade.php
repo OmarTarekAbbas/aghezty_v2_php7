@@ -579,4 +579,47 @@ session()->put('redirect_edit_url',url()->full())
         Search()
     });
   </script>
+
+  <script>
+    $(document).on("click", ".increment_stock", function(){
+      toggleStockNumber('increment', $(this))
+    })
+    $(document).on("click", ".decrement_stock", function(){
+      toggleStockNumber('decrement', $(this))
+    })
+
+
+    /**
+     * Method toggleStockNumber - increment or decrement stock
+     *
+     * @param {string} type - type of toggle
+     * @param {HTMLButtonElement} _this - refrence to button increment,decrement
+     * @return {void} nothing
+     */
+    function toggleStockNumber(type, _this) {
+      stockNumberInput = _this.parent().children(".stock_number");
+      var pid = stockNumberInput.attr('id')
+      if(type == 'increment') {
+        stockNumberInput.html(parseInt(stockNumberInput.text())+1)
+      } else {
+        if(!parseInt(stockNumberInput.text())) {
+          alert("stock Number Now Is Zero")
+          return
+        }
+        stockNumberInput.html(parseInt(stockNumberInput.text())-1)
+      }
+
+      $.ajax({
+        url  : "{{ route('admin.product.toggle.stock') }}",
+        type : "GET",
+        data : {
+          'type'       : type,
+          'product_id' : pid
+        },
+        success: function(res){
+          console.log("ok");
+        }
+      })
+    }
+  </script>
 @stop

@@ -926,9 +926,12 @@
           $('.old_search_value').css('display','none');
 
           $.getJSON('{{ route("search") }}', { q: term }, function(data){
-             response(data);
+            response(data);
             });
-      }
+      },
+      onSelect: function (suggestion) {
+        $('#form_search').submit();
+    }
   });
 </script>
 
