@@ -107,6 +107,8 @@ class HomeController extends Controller
         if($slide->save()){
             $path = 'uploads/advertisement/image_resize';
             $resized_image = resizeImage($path, $slide->image);
+            $slide->image_resize = $resized_image;
+            $slide->save();
         }
 
         \Session::flash('success', 'Updated Successfully');

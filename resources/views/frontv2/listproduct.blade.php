@@ -713,6 +713,14 @@ $( document ).ready(function(){
         }
     }
   }
+
+  $(document).ready(function() {
+    var window_href = window.location.href;
+    if(window_href.indexOf("search") != -1){
+
+    }
+  });
+
   //------------------------------------------------------------------
 
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer, .most_solid , #sorted', function() {
