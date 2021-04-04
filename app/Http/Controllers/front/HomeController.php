@@ -1109,6 +1109,14 @@ class HomeController extends Controller
 
     }
 
+    public function getCookie(){
+      $current_cookies = isset($_COOKIE['old_search_value']) ? unserialize($_COOKIE['old_search_value']) : [];
+
+      $current_cookies_slice = array_slice(array_reverse($current_cookies), 0, 5);
+
+      return $current_cookies_slice;
+    }
+
     private function stringSearch($q){
       $q_array = explode(" ", $q);
       $counter = 0;

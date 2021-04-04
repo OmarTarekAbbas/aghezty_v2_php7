@@ -728,7 +728,24 @@ $( document ).ready(function(){
   $(document).ready(function() {
     var window_href = window.location.href;
     if(window_href.indexOf("search") != -1){
+      $.ajax({
+        url: '{{route("getCookie")}}',
+        type: "get",
+        success: function(data) {
 
+        var cookie_list_html = '<ul class="list-unstyled">';
+
+        $.each(data, function(index, value) {
+          console.log('index - ',index);
+          console.log('value - ', value);
+          cookie_list_html += '<li class="mb-1 search-data p-2">'+ value +'</li>';
+        });
+
+        cookie_list_html += '</ul>';
+
+        $('.old_search_value').html(cookie_list_html);
+        }
+      });
     }
   });
 

@@ -71,6 +71,7 @@ Route::prefix('clients')->group(function() {
 
     Route::get('loadbanner/{subcategory_id}','front\HomeController@loadbanner')->name('loadbanner');
     Route::get('search','front\HomeController@search')->name('search');
+    Route::get('getCookie','front\HomeController@getCookie')->name('getCookie');
     /*************** end ***************/
 
     Route::group(['middleware' => 'auth:client'], function () {
