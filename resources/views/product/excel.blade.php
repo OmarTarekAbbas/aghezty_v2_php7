@@ -25,9 +25,9 @@
                                   <option value="-1">@lang('messages.select_category')</option>
                                     @foreach ($categorys as $category)
                                         @if(count($category->sub_cats) > 0)
-                                            <optgroup label="{{$category->title}}">
+                                            <optgroup label="{{$category->getTranslation('title',getCode())}}">
                                                 @foreach ($category->sub_cats as $sub_category)
-                                                <option value="{{$sub_category->id}}">{{$sub_category->title}}</option>
+                                                <option value="{{$sub_category->id}}">{{$sub_category->getTranslation('title',getCode())}}</option>
                                                 @endforeach
                                             </optgroup>
                                         @endif
