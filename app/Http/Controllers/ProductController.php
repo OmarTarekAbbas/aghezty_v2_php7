@@ -500,7 +500,27 @@ class ProductController extends Controller
             {
                 foreach ($results as $row) {
                   $final_brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', ltrim($row->brand))->first()!=null ? Brand::where('title', ltrim($row->brand))->first()->id : 0);
-                  $final_category_id = isset($request->category_id)&&$request->category_id != -1 ? $request->category_id : (Category::where('title', ltrim($row->category))->first()!=null ? Category::where('title', ltrim($row->category))->first()->id : 0);
+                  $final_category_id = 0;
+
+                  $category_title_from_tans_bodies = Category::join('translatables','translatables.record_id','=','categories.id')
+                  ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+                  ->where('translatables.table_name','categories')
+                  ->where('translatables.column_name','title')
+                  ->where('tans_bodies.body', ltrim($row->category))
+                  ->select('categories.*','categories.id As id')
+                  ->first();
+
+                  if (isset($request->category_id) && $request->category_id != -1) {
+                    $final_category_id =  $request->category_id;
+                  } else{
+                    if(Category::where('title', ltrim($row->category))->first()!=null){
+                      $final_category_id = Category::where('title', ltrim($row->category))->first()->id;
+                    }elseif(isset($category_title_from_tans_bodies) && $category_title_from_tans_bodies!=null){
+                      $final_category_id = $category_title_from_tans_bodies->id;
+                    }else{
+                      $final_category_id = 0;
+                    }
+                  }
 
                   if($final_brand_id!=0 && $final_category_id!=0){
                     $total_counter++;
