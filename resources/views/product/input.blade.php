@@ -13,9 +13,7 @@
     <div class="col-sm-9 col-lg-10 controls">
         <select name="category_id" id="cate" class="form-control chosen-rtl" required>
             @foreach ($categorys as $sub_category)
-
-              <option value="{{$sub_category->id}}" @if($product&&$sub_category->id==$product->category_id) selected  @endif>{{$sub_category->title}}</option>
-
+              <option value="{{$sub_category->id}}" @if($product&&$sub_category->id==$product->category_id) selected  @endif>{{$sub_category->getTranslation('title',getCode())}}</option>
             @endforeach
         </select>
     </div>
