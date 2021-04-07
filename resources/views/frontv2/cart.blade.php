@@ -86,11 +86,11 @@
 
                       <a class="img_link"  href="{{route('front.home.inner',['id' => $session_carts[$i]['product_id']])}}">
                         <img class="w-25" src="{{product($session_carts[$i]['product_id'])->main_image}}" alt="iphone">
+                      </a>
 
                         <div class="cart_shopping_title">
                           <span>{{product($session_carts[$i]['product_id'])->getTranslation('title',getCode())}}</span>
                         </div>
-                      </a>
                     </th>
 
                     <td class="item-price align-middle">{{number_format((int)$session_carts[$i]['price'])}} @lang('front.egp')</td>
