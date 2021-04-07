@@ -53,12 +53,11 @@
 
                     <a class="img_link" href="{{route('front.home.inner',['id' => $wishlist->pivot->product_id , setSlug(product($wishlist->pivot->product_id)->getTranslation('title',getCode()))])}}">
                       <img class="w-25" src="{{checkImageProduct($wishlist->pivot->product_id)}}" alt="iphone">
-
+                    </a>
 
                       <div class="wishlist_shopping_title">
                         <span>{{product($wishlist->pivot->product_id)->getTranslation('title',getCode())}}</span>
                       </div>
-                    </a>
                   </th>
 
                   <td class="item-price align-middle">{{product($wishlist->pivot->product_id)->price_after_discount > 0? product($wishlist->pivot->product_id)->price_after_discount:  number_format((int)product($wishlist->pivot->product_id)->price)}} @lang('front.egp')</td>
