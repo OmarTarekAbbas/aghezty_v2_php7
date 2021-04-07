@@ -533,6 +533,7 @@ class ProductController extends Controller
                     $product->brand_id = $final_brand_id;
                     $product->category_id = $final_category_id;
                     $product->price = $row->price;
+                    $product->Installments = json_encode([6 => (ceil($row->price/6)), 12=>null, 18=>null, 24=>null]);
                     $product->discount = $row->discount;
                     $product->sku = $row->sku;
                     if($row->price_after_discount){
@@ -660,12 +661,12 @@ class ProductController extends Controller
 
     public function getDownload()
     {
-        $file= base_path(). "/files/product-new.xlsx";
+        $file= base_path(). "/files/product-new-v1.xlsx";
 
         $headers = array(
                   'Content-Type: application/xlsx',
                 );
-        return response()->download($file, 'product-new.xlsx', $headers);
+        return response()->download($file, 'product-new-v1.xlsx', $headers);
     }
 
     public function delete_all_product(Request $request)

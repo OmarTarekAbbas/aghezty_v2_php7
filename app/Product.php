@@ -17,7 +17,7 @@ class Product extends Model
                         'key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer','main_image_resize'];
 
   protected $dates = ['deleted_at'];
-  
+
   public function getPriceAttribute($value){
     return (int) $value;
   }
@@ -137,7 +137,7 @@ class Product extends Model
     });
 
     static::deleting(function($product) { // before delete() method call this
-        if(file_exists(base_path('/uploads/product/'.basename($product->main_image))))
+        if(is_file(base_path('/uploads/product/'.basename($product->main_image))))
         {
             unlink(base_path('/uploads/product/'.basename($product->main_image))) ;
         }
