@@ -300,14 +300,13 @@
           @foreach ($recently_added as $item)
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
-            <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
-                <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}"
-                  class="text-center d-block">
-
-                <div class="mt-1">
-                  <p class="full_desc mb-0">{{$item->getTranslation('title',getCode())}}</p>
-                </div>
+              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
+                <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}" class="text-center d-block">
               </a>
+
+              <div class="mt-1">
+                <p class="full_desc mb-0">{{$item->getTranslation('title',getCode())}}</p>
+              </div>
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
               <div class="fav_product">
@@ -410,14 +409,13 @@
           @foreach ($selected_for_you as $item)
           <div class="col-md-4 col-xl-2 col-6 margin_bottom_mob">
             <div class="px-2 product_desc hvr-bob rounded">
-            <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
-                <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}"
-                  class="img_size d-block">
-
-                <div>
-                  <p class="full_desc mb-0">{{$item->getTranslation('title',getCode())}}</p>
-                </div>
+              <a class="m-1" href="{{route('front.home.inner',['id' => $item->id ,'category_name' => setSlug($item->getTranslation('title',getCode()))])}}">
+                <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="{{$item->getTranslation('title',getCode())}}" class="img_size d-block">
               </a>
+
+              <div>
+                <p class="full_desc mb-0">{{$item->getTranslation('title',getCode())}}</p>
+              </div>
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
               <div class="fav_product">

@@ -463,11 +463,11 @@
         <div class="content_view hvr-bob px-2 bg-white rounded">
           <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
             <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="Product" class="text-center d-block based_selection_img">
-
-            <h6 class="full_desc text-dark text-left text-capitalize mb-0">
-              {{$item->getTranslation('title',getCode())}}
-            </h6>
           </a>
+
+          <h6 class="full_desc text-dark text-left text-capitalize mb-0">
+            {{$item->getTranslation('title',getCode())}}
+          </h6>
 
           @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
           <div class="fav_product">
