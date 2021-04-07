@@ -291,11 +291,11 @@
                   <span class="sale-product-icon">{{$item->discount}} %</span>
                 </div>
                 @endif
+              </a>
 
                 <div>
                   <p class="full_desc mb-0">{{$item->getTranslation('title',getCode())}}</p>
                 </div>
-              </a>
 
               @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
                 <div class="fav_product">

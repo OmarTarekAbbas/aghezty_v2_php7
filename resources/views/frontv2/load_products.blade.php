@@ -4,9 +4,9 @@
   <div class="content_view hvr-bob px-2 bg-white rounded">
     <a href="{{route('front.home.inner',['id' => $product->product_id ,'slug' => setSlug($product->getTranslation('title',getCode()))]) }}">
       <img class="lazy text-center d-block" src="{{checkImageResize($product->main_image, $product->main_image_resize)}}" alt="Product">
-
-      <h6 class="full_desc text-dark text-left text-capitalize mb-0">{{$product->getTranslation('title',getCode())}}</h6>
     </a>
+
+    <h6 class="full_desc text-dark text-left text-capitalize mb-0">{{$product->getTranslation('title',getCode())}}</h6>
 
     @if(\Auth::guard('client')->check() && setting("wish_list_flag") && setting("wish_list_flag") != '')
     <div class="fav_product">
