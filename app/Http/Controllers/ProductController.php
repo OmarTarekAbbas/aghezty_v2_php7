@@ -348,12 +348,15 @@ class ProductController extends Controller
         $product->update($request->except('title','images','counter_img','description','short_description','discount','key_feature','warranty','delivery_time','cash_on_delivery','return_or_refund','offer'));
         if ($request->has('images')){
             $product->images()->saveMany($images);
-
-            $path = 'uploads/product/image_resize';
-            $resized_image = resizeImage($path, $product->main_image);
-            $product->main_image_resize = $resized_image;
-            $product->save();
         }
+
+        if ($request->has('main_image')){
+          $path = 'uploads/product/image_resize';
+          $resized_image = resizeImage($path, $product->main_image);
+          $product->main_image_resize = $resized_image;
+          $product->save();
+        }
+
 
         if($request->ajax()){
             return response()->json(['status' => 'success' , 'id' => $id]);
