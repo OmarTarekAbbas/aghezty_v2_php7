@@ -533,7 +533,7 @@ class ProductController extends Controller
                     $product->brand_id = $final_brand_id;
                     $product->category_id = $final_category_id;
                     $product->price = $row->price;
-                    $product->Installments = json_encode([6 => ((int)($row->price/6)), 12=>null, 18=>null, 24=>null]);
+                    $product->Installments = json_encode([6 => (ceil($row->price/6)), 12=>null, 18=>null, 24=>null]);
                     $product->discount = $row->discount;
                     $product->sku = $row->sku;
                     if($row->price_after_discount){

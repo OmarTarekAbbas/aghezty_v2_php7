@@ -41,7 +41,7 @@ class ProductImage extends Model
   protected static function boot() {
     parent::boot();
         static::deleting(function($productimg) { // before delete() method call this
-            if(file_exists(base_path('/uploads/product/'.basename($productimg->image))))
+            if(is_file(base_path('/uploads/product/'.basename($productimg->image))))
             {
                 unlink(base_path('/uploads/product/'.basename($productimg->image))) ;
             }
