@@ -737,17 +737,16 @@ class ProductController extends Controller
 
     public function product_update_price_excel_download()
     {
-      $file = base_path(). "/files/product_update_price_excel.xlsx";
+      $file = base_path(). "/files/product_update_price_stock_excel.xlsx";
       $headers = array(
                 'Content-Type: application/xlsx',
               );
-      return response()->download($file, 'product_update_price_excel.xlsx', $headers);
+      return response()->download($file, 'product_update_price_stock_excel.xlsx', $headers);
 
     }
 
     public function product_update_price_excel_post(Request $request)
     {
-
       if ($request->hasFile('fileToUpload')) {
         $ext =  $request->file('fileToUpload')->getClientOriginalExtension();
         if ($ext != 'xls' && $ext != 'xlsx' && $ext != 'csv') {
@@ -768,7 +767,7 @@ class ProductController extends Controller
 
             $product = Product::where('short_description',$row->model)->first();
             if($product){
-             $product->price = $row->price;
+             $product->price = isset($row->price)&&$row->price>0 ? $row->price : $product->price;
              if($row->price_after_discount){
                $product->price_after_discount = $row->price_after_discount;
                $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price ;
@@ -776,6 +775,7 @@ class ProductController extends Controller
               $product->price_after_discount = NULL ;
               $product->discount = 0 ;
              }
+             $product->stock = isset($row->stock)&&$row->stock>0 ? $row->stock : $product->stock ;
              $product->save();
             }
           }
@@ -784,7 +784,7 @@ class ProductController extends Controller
         $request->session()->flash('failed', 'Excel file is required');
         return back();
       }
-      \Session::flash('success', 'Product Add Successfully');
+      \Session::flash('success', 'Product Updated Successfully');
 
       return redirect('product');
     }
