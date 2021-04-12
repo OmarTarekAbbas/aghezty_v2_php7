@@ -1461,7 +1461,7 @@ class HomeController extends Controller
 
         if (!$product) {
           $product = Product::withTrashed()->latest('created_at')->whereId($id)->where('products.active', 1)->first();
-          if(!$product || !$product->category){
+          if(!$product || !$product->category || !$product->stock){
             return abort(404);
           }
           $get_category = Category::where("id",$product->category_id)->first();
@@ -1469,6 +1469,10 @@ class HomeController extends Controller
         }
 
         if(!$product->category){
+          return abort(404);
+        }
+
+        if(!$product->stock){
           return abort(404);
         }
 
