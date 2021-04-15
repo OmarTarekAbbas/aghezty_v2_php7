@@ -539,7 +539,12 @@ class ProductController extends Controller
                       $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price;
                     }
                     $product->sku = $row->sku;
-                    $product->price_after_discount = $row->price_after_discount;
+                    if ($row->price_after_discount) {
+                      $product->price_after_discount = $row->price_after_discount;
+                    } else {
+                      $product->price_after_discount = $row->price - (($row->price * $row->discount)/100);
+                    }
+
                     $product->stock = $row->stock;
                     $product->inch = isset($row->inch) ? $row->inch : null;
                     $product->main_image = $row->main_image;
