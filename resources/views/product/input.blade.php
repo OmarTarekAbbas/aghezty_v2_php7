@@ -1,3 +1,4 @@
+
 @if(isset($_REQUEST['category_id']))
 <div class="form-group">
     <label for="textfield5" class="col-sm-3 col-lg-2 control-label">@lang('messages.category')<span class="text-danger">*</span></label>
@@ -382,9 +383,9 @@
     <div class="col-sm-6">
       <label class="col-sm-5 col-lg-4 control-label">@lang('front.admin.property_value.value')</label>
       <div class="col-sm-7 col-lg-8 controls" >
-        <select class="form-control" @change="setProprtyValue($event)" name="property_value_id[]" required>
+        <select class="form-control" @change="setProprtyValue($event)" name="property_value_id[]" :required="i === 0 ? true : false ">
           <option value="">Remove Property</option>
-          <option v-for="property_value in properties_data[i].pvalue" :value="property_value.id" @if($product) :selected="!!~jQuery.inArray(property_value.id,{{$product->pr_value->pluck('id') }}) ?'selected' : ''" @endif>@{{property_value.value}}</option>
+          <option v-for="property_value in properties_data[i].pvalue" :value="property_value.id" @if($product) :selected="!!~jQuery.inArray(property_value.id,{{$product->pr_value->pluck('id') }}) ?'selected' : ''" @endif >@{{property_value.value}}</option>
         </select>
       </div>
     </div>
