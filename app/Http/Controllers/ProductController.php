@@ -462,7 +462,6 @@ class ProductController extends Controller
         ini_set('memory_limit', -1);
 
         if ($request->hasFile('fileToUpload')) {
-
           if($request->brand_id != -1 && $request->brand_id != -1){
             $data = $this->store_excel_functionality($request, $category, $brand, $counter, $total_counter);
           }else{
@@ -534,15 +533,13 @@ class ProductController extends Controller
                     $product->category_id = $final_category_id;
                     $product->price = $row->price;
                     $product->Installments = json_encode([6 => (ceil($row->price/6)), 12=>null, 18=>null, 24=>null]);
-                    $product->discount = $row->discount;
+                    if ($row->discount) {
+                      $product->discount = $row->discount;
+                    } else {
+                      $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price;
+                    }
                     $product->sku = $row->sku;
-                    if($row->price_after_discount){
-                      $product->price_after_discount = $row->price_after_discount;
-                    }
-                    else{
-                      $dis = ($row->discount) ? $row->discount : 0;
-                      $product->price_after_discount = $row->price - $dis;
-                    }
+                    $product->price_after_discount = $row->price_after_discount;
                     $product->stock = $row->stock;
                     $product->inch = isset($row->inch) ? $row->inch : null;
                     $product->main_image = $row->main_image;
