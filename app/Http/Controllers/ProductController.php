@@ -533,16 +533,11 @@ class ProductController extends Controller
                     $product->category_id = $final_category_id;
                     $product->price = $row->price;
                     $product->Installments = json_encode([6 => (ceil($row->price/6)), 12=>null, 18=>null, 24=>null]);
-                    if ($row->discount) {
-                      $product->discount = $row->discount;
-                    } else {
-                      $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price;
-                    }
-                    $product->sku = $row->sku;
+                     $product->sku = $row->sku;
+
                     if ($row->price_after_discount) {
                       $product->price_after_discount = $row->price_after_discount;
-                    } else {
-                      $product->price_after_discount = $row->price - (($row->price * $row->discount)/100);
+                      $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price;
                     }
 
                     $product->stock = $row->stock;
