@@ -12,6 +12,8 @@ use App\Language;
 use Illuminate\Support\Facades\Lang;
 use Validator;
 use App\Product;
+use Carbon\Carbon;
+
 class CategoryController extends Controller
 {
     /**
@@ -186,7 +188,7 @@ class CategoryController extends Controller
       }
 
       $category->offer_image_link = $request->offer_image_link;
-      
+
 
       if($category->save()){
         if(isset($category->offer_image) && $category->offer_image!=null){
@@ -230,5 +232,18 @@ class CategoryController extends Controller
       $category->save();
       \Session::flash('success', 'Category Delete Successfully');
       return back();
+    }
+
+    public function DownloadCategoryForExcel()
+    {
+      $categorys = Category::whereNotNull('parent_id')->pluck('title')->toArray();
+
+
+      \Excel::create('DownloadCategory-'.Carbon::now()->toDateString(), function($excel) use ($categorys) {
+        $excel->sheet('Excel', function($sheet) use ($categorys) {
+            $sheet->loadView('category.download_excel')->with("categorys",$categorys);
+        });
+    })->export('XLSX');
+
     }
 }

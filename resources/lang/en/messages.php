@@ -460,5 +460,6 @@ return [
     'export_product_excel' => 'Export Products Excel',
     'select_category' => 'Select category or leave the field empty',
     'select_brand' => 'Select brand or leave the field empty',
+    'list_category_excel' => 'Download Category For Excel',
 
 ];
