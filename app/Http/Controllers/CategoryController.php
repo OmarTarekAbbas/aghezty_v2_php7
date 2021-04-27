@@ -236,9 +236,8 @@ class CategoryController extends Controller
 
     public function DownloadCategoryForExcel()
     {
-      $categorys = Category::whereNotNull('parent_id')->pluck('title')->toArray();
-
-
+      $categorys = Category::whereNotNull('parent_id')->get();
+      
       \Excel::create('DownloadCategory-'.Carbon::now()->toDateString(), function($excel) use ($categorys) {
         $excel->sheet('Excel', function($sheet) use ($categorys) {
             $sheet->loadView('category.download_excel')->with("categorys",$categorys);

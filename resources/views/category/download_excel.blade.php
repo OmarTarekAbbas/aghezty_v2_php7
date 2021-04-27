@@ -3,12 +3,15 @@
         <thead>
             <tr>
                 <th>Title En</th>
+                <th>Title Ar</th>
             </tr>
         </thead>
-        @foreach ( $categorys as $category)
+        @foreach ($categorys as $category)
         <tbody>
             <tr>
-                <td> {{ $category }}</td>
+                <td> {{ $category->title }}</td>
+                <td>{{$category->getTranslation('title','ar')}}</td>
+            </tr>
         </tbody>
         @endforeach
 
