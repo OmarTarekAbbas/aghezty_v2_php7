@@ -13,6 +13,7 @@ use App\Events\Products;
 use Illuminate\Http\Request;
 use App\Constants\OrderStatus;
 use App\Constants\PaymentStatus;
+use App\PropertyValue;
 use Image;
 use File;
 use Excel;
@@ -546,13 +547,25 @@ class ProductController extends Controller
                     $product->save();
                     $gallery  = explode(',',$row->gallery);
                     if (count($gallery) > 0){
-                        foreach($gallery as $value){
-                            $product->images()->create([
-                                'image' => $value
-                            ]);
+                      foreach($gallery as $value){
+                        $product->images()->create([
+                          'image' => $value
+                          ]);
                         }
 
+                      }
+                    $property_values  = explode(',',ltrim($row->property));
+                    if (count($property_values) > 0){
+                      foreach($property_values as $value){
+                        try {
+                          $property_value = PropertyValue::where("value", "like", "%".$value."%")->first();
+                          $product->pr_value()->attach($property_value->id);
+                        } catch (\Throwable $th) {
+                          
+                        }
+                      }
                     }
+
                     if ($product)
                     {
                         $counter++ ;
