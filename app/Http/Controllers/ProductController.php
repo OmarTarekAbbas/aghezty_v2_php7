@@ -557,10 +557,8 @@ class ProductController extends Controller
                     $property_values  = explode(',', $row->property);
                     if (count($property_values) > 0){
                       foreach($property_values as $value){
-
                           $property_value = PropertyValue::where("value", "like", "%".$value."%")->first();
                           $product->pr_value()->attach($property_value->id);
-
                       }
                     }
 

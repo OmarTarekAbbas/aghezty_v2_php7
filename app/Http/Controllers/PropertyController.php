@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Property;
 use App\Language;
+use App\ProductProperty;
+use App\PropertyValue;
 use Validator;
 class PropertyController extends Controller
 {
@@ -144,7 +146,27 @@ class PropertyController extends Controller
 
       $property->delete();
 
+      $this->removeAllDependency($id);
+
       \Session::flash('success', 'Property Delete Successfully');
       return back();
+    }
+
+    /**
+     * Method removeAllDependency
+     *
+     * remove property value that belong to this property && remove product that belong to each property value
+     * @param int $id
+     *
+     * @return void
+     */
+    public function removeAllDependency($id)
+    {
+      $propertyValues = PropertyValue::where("property_id", $id)->get();
+
+      foreach($propertyValues as $value) {
+        ProductProperty::where("property_value_id",$value->id)->delete();
+        PropertyValue::whereId($value->id)->delete();
+      }
     }
 }
