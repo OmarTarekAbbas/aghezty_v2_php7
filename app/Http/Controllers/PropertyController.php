@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 
 use App\Property;
+use App\PropertyValue;
 use App\Language;
 use Validator;
 class PropertyController extends Controller
@@ -41,8 +42,9 @@ class PropertyController extends Controller
     {
       $property = null;
       $categorys = Category::whereNull('parent_id')->get();
+      $property_values = null;
       $languages = Language::all();
-      return view('property.form',compact('categorys','property','languages'));
+      return view('property.form',compact('categorys','property','languages', 'property_values'));
     }
 
     /**
@@ -96,8 +98,9 @@ class PropertyController extends Controller
     {
       $property =  Property::findOrFail($id);
       $categorys = Category::whereNotNull('parent_id')->get();
+      $property_values = PropertyValue::where('property_id',$property->id)->get();
       $languages = Language::all();
-      return view('property.form',compact('property','categorys','languages'));
+      return view('property.form',compact('property','categorys','languages','property_values'));
     }
 
     /**
@@ -109,6 +112,7 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
+      dd($request);
       $validator = Validator::make($request->all(), [
                 'title' => 'required|array',
                 'title.*' => 'required|string',
