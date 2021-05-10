@@ -36,22 +36,21 @@
   $('#property').addClass('active');
   $('#property_create').addClass('active');
 
+  var counter = 1;
   $("#new-property-value-button").click(function() {
-    //$("#new-property-value-div").clone().appendTo("#new-property-values");
-
-    var property_value_html = "<div id='new-property-value-div' style='padding-top: 10px;'>";
+    var property_value_html = "<div id='new-property-value-div-" + counter + "' style='padding-top: 10px;'>";
     property_value_html += "<div class='col-sm-9 col-lg-10'>";
-    property_value_html += "<ul id='myTab1' class='nav nav-tabs'>";
+    property_value_html += "<ul class='nav nav-tabs'>";
     property_value_html += "<?php $i = 0; ?>";
     property_value_html += "@foreach($languages as $language)";
-    property_value_html += "<li class='{{($i++)? '':'active'}}'><a href='#value_{{$language->short_code}}' data-toggle='tab'> {{$language->title}}</a></li>";
+    property_value_html += "<li class='{{($i++)? '':'active'}}'><a href='#value_{{$language->short_code}}_" + counter + "' data-toggle='tab'> {{$language->title}}</a></li>";
     property_value_html += "@endforeach";
     property_value_html += "</ul>";
     property_value_html += "<div class='tab-content'>";
     property_value_html += "<?php $i = 0; ?>";
     property_value_html += "@foreach($languages as $language)";
-    property_value_html += "<div class='tab-pane fade in {{($i++)? '':'active'}}' id='value_{{$language->short_code}}'>";
-    property_value_html += '{!! Form::text("value[$language->short_code]", (isset($property_value)) ? $property_value->getTranslation("value",$language->short_code):null, ["class"=>"form-control input-lg"]) !!}';
+    property_value_html += "<div class='tab-pane fade in {{($i++)? '':'active'}}' id='value_{{$language->short_code}}_" + counter + "'>";
+    property_value_html += "<input class='form-control input-lg' name='new_values[" + counter + "][{{ $language->short_code }}]' type='text' value='{{isset($property_value) ? $property_value->getTranslation('value',$language->short_code):null}}'>";
     property_value_html += "</div>";
     property_value_html += "@endforeach";
     property_value_html += "</div>";
@@ -61,10 +60,30 @@
     property_value_html += "</div>";
 
     $("#new-property-values").append(property_value_html);
+    counter++;
   });
 
   $(document).on("click", "#remove-property-value-button", function() {
     $(this).parent().parent().remove();
   });
+
+  function removePropertyValue(value_id) {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+      }
+    });
+
+    $.ajax({
+      type: "post",
+      url: "{{route('property.destroy.value')}}",
+      data: {
+        'value_id': value_id
+      },
+      success: function(response) {
+        $('#remove-property-value-button-' + value_id).parent().parent().remove();
+      }
+    });
+  }
 </script>
 @stop

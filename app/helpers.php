@@ -130,7 +130,7 @@ function get_static_routes()
     Route::get("products/toggle/stock", 'ProductController@toggleProductStock')->name('admin.product.toggle.stock');
     /*****************************end */
 
-
+    Route::post("property/destroy-property-value","PropertyController@destroyPropertyValue")->name("property.destroy.value");
   });
 
 
