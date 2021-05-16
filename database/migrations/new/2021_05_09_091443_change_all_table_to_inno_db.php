@@ -18,7 +18,7 @@ class ChangeAllTableToInnoDb extends Migration
       $sql = "SELECT CONCAT('ALTER TABLE ',TABLE_NAME,' ENGINE=InnoDB;') as table_name
       FROM INFORMATION_SCHEMA.TABLES
       WHERE ENGINE='MyISAM'
-      AND table_schema = 'aghezty';";
+      AND table_schema = '".env('DB_DATABASE')."'; ";
 
       $all_table = DB::select(DB::raw($sql));
 
