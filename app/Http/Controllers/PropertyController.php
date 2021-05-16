@@ -6,9 +6,9 @@ use App\Category;
 use Illuminate\Http\Request;
 
 use App\Property;
+use App\PropertyValue;
 use App\Language;
 use App\ProductProperty;
-use App\PropertyValue;
 use Validator;
 class PropertyController extends Controller
 {
@@ -43,8 +43,9 @@ class PropertyController extends Controller
     {
       $property = null;
       $categorys = Category::whereNull('parent_id')->get();
+      $property_values = null;
       $languages = Language::all();
-      return view('property.form',compact('categorys','property','languages'));
+      return view('property.form',compact('categorys','property','languages', 'property_values'));
     }
 
     /**
@@ -72,6 +73,19 @@ class PropertyController extends Controller
             $property->setTranslation('title', $key, $value);
         }
         $property->save();
+
+        //Save new property values
+        if ($request->new_values && count($request->new_values) > 0) {
+          foreach ($request->new_values as $new_value) {
+            $property_value = new PropertyValue();
+            foreach ($new_value as $key => $value) {
+              $property_value->setTranslation('value', $key, $value);
+            }
+            $property_value->property_id = $property->id;
+            $property_value->save();
+          }
+        }
+
         \Session::flash('success', 'Property Created Successfully');
         return redirect('property/'.$request->parent_id);
     }
@@ -98,41 +112,64 @@ class PropertyController extends Controller
     {
       $property =  Property::findOrFail($id);
       $categorys = Category::whereNotNull('parent_id')->get();
+      $property_values = PropertyValue::where('property_id',$property->id)->get();
       $languages = Language::all();
-      return view('property.form',compact('property','categorys','languages'));
+      return view('property.form',compact('property','categorys','languages','property_values'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-      $validator = Validator::make($request->all(), [
-                'title' => 'required|array',
-                'title.*' => 'required|string',
-                'category_id' => 'required|exists:categories,id',
-      ]);
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, $id)
+  {
+    $validator = Validator::make($request->all(), [
+      'title' => 'required|array',
+      'title.*' => 'required|string',
+    ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $property = Property::findOrFail($id);
-
-        foreach ($request->title as $key => $value)
-        {
-          $property->setTranslation('title', $key, $value);
-        }
-
-        $property->update($request->except('title'));
-
-      \Session::flash('success', 'Property Updated Successfully');
-      return redirect('property/'.$request->parent_id);
+    if ($validator->fails()) {
+      return back()->withErrors($validator)->withInput();
     }
+
+    $property = Property::findOrFail($id);
+
+    foreach ($request->title as $key => $value) {
+      $property->setTranslation('title', $key, $value);
+    }
+
+    $property->update($request->except('title'));
+
+
+    //Save new property values
+    if ($request->new_values && count($request->new_values) > 0) {
+      foreach ($request->new_values as $new_value) {
+        $property_value = new PropertyValue();
+        foreach ($new_value as $key => $value) {
+          $property_value->setTranslation('value', $key, $value);
+        }
+        $property_value->property_id = $property->id;
+        $property_value->save();
+      }
+    }
+
+    //Update old property values
+    if ($request->old_values && count($request->old_values) > 0) {
+      foreach ($request->old_values as $old_key => $old_value) {
+        $property_value = PropertyValue::findOrFail($old_key);
+        foreach ($old_value as $key => $value) {
+          $property_value->setTranslation('value', $key, $value);
+        }
+        $property_value->save();
+      }
+    }
+
+    \Session::flash('success', 'Property Updated Successfully');
+    return redirect('property/' . $request->parent_id);
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -168,5 +205,14 @@ class PropertyController extends Controller
         ProductProperty::where("property_value_id",$value->id)->delete();
         PropertyValue::whereId($value->id)->delete();
       }
+
+    }
+    public function destroyPropertyValue(Request $request)
+    {
+      ProductProperty::where("property_value_id",$request->value_id)->delete();
+      $property_value = PropertyValue::findOrFail($request->value_id);
+      $property_value->delete();
+
+      return response()->json(true);
     }
 }
