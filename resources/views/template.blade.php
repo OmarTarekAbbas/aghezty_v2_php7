@@ -479,6 +479,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                   <ul class="submenu">
                                       <li id="category_index"><a href="{{url('category')}}">@lang('messages.list_department')</a></li>
                                       <li id="category_subindex"><a href="{{url('sub_category')}}">@lang('messages.list_category')</a></li>
+                                      <li id="category_subindex"><a href="{{url('download_category_for_excel')}}">@lang('messages.list_category_excel')</a></li>
                                       <li id="category_create"><a href="{{url('category/create')}}">@lang('messages.create_category')</a></li>
                                   </ul>
                               </li>

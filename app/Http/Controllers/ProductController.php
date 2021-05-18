@@ -86,7 +86,7 @@ class ProductController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => '',
+            'title.*' => 'required',
             'main_image' => 'required',
             'price' => 'required',
             'stock' => 'required',
