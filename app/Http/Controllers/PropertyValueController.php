@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\PropertyValue;
 use App\Language;
+use App\ProductProperty;
 use Validator;
 class PropertyValueController extends Controller
 {
@@ -141,6 +142,8 @@ class PropertyValueController extends Controller
       $property_value = PropertyValue::findOrFail($id);
 
       $property_value->delete();
+
+      ProductProperty::where("property_value_id",$id)->delete();
 
       \Session::flash('success', 'Property Value Delete Successfully');
       return back();
