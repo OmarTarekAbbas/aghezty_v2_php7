@@ -1961,10 +1961,16 @@ class HomeController extends Controller
                 $cart->delete();
             }
             $client = \Auth::guard('client')->user();
+            
             Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
                 $m->from($client->email, __('front.order'));
                 $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
             });
+
+            Mail::send('front.mail_client', ['order' => $order , 'client' => $client], function ($m) use ($client) {
+              $m->from($client->email, __('front.order'));
+              $m->to($client->email, __('front.title'))->subject(__('front.order'));
+          });
             // Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
             //     $m->to(setting('front.order'), __('front.title'))->subject(__('front.order'));
             // });
