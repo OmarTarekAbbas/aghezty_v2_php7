@@ -131,6 +131,7 @@ function get_static_routes()
     /*****************************end */
 
     Route::post("property/destroy-property-value","PropertyController@destroyPropertyValue")->name("property.destroy.value");
+    Route::get("property/create-html/{item_counter}","PropertyController@createHTML")->name("property.create.html");
   });
 
 

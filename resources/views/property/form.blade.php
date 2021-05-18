@@ -38,29 +38,15 @@
 
   var counter = 1;
   $("#new-property-value-button").click(function() {
-    var property_value_html = "<div id='new-property-value-div-" + counter + "' style='padding-top: 10px;'>";
-    property_value_html += "<div class='col-sm-9 col-lg-10'>";
-    property_value_html += "<ul class='nav nav-tabs'>";
-    property_value_html += "<?php $i = 0; ?>";
-    property_value_html += "@foreach($languages as $language)";
-    property_value_html += "<li class='{{($i++)? '':'active'}}'><a href='#value_{{$language->short_code}}_" + counter + "' data-toggle='tab'> {{$language->title}}</a></li>";
-    property_value_html += "@endforeach";
-    property_value_html += "</ul>";
-    property_value_html += "<div class='tab-content'>";
-    property_value_html += "<?php $i = 0; ?>";
-    property_value_html += "@foreach($languages as $language)";
-    property_value_html += "<div class='tab-pane fade in {{($i++)? '':'active'}}' id='value_{{$language->short_code}}_" + counter + "'>";
-    property_value_html += "<input class='form-control input-lg' name='new_values[" + counter + "][{{ $language->short_code }}]' type='text' value='{{isset($property_value) ? $property_value->getTranslation('value',$language->short_code):null}}'>";
-    property_value_html += "</div>";
-    property_value_html += "@endforeach";
-    property_value_html += "</div>";
-    property_value_html += "</div>";
-    property_value_html += "<div class='col-sm-3 col-lg-2'>";
-    property_value_html += "<a class='btn btn-danger' href='javascript:void(0)' id='remove-property-value-button' style='margin-top: 40px; height: 45px; padding-top: 12px;'>Remove <i class='fa fa-trash'></i></a>";
-    property_value_html += "</div>";
+    $.ajax({
+      type: "GET",
+      url: "{{url('property/create-html/')}}/"+counter,
+      success: function(property_value_html) {
+        $("#new-property-values").append(property_value_html);
+        counter++;
+      }
+    });
 
-    $("#new-property-values").append(property_value_html);
-    counter++;
   });
 
   $(document).on("click", "#remove-property-value-button", function() {
