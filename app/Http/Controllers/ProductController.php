@@ -498,73 +498,83 @@ class ProductController extends Controller
             \Excel::filter('chunk')->load(base_path().'/uploads/product/'.date('Y-m-d').'/excel/'.$filename)->chunk(100, function($results) use ($request,&$counter,&$total_counter,&$category,&$brand)
             {
                 foreach ($results as $row) {
-                  $final_brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', ltrim($row->brand))->first()!=null ? Brand::where('title', ltrim($row->brand))->first()->id : 0);
-                  $final_category_id = 0;
-
-                  $category_title_from_tans_bodies = Category::join('translatables','translatables.record_id','=','categories.id')
+                  $model_title_from_tans_bodies = Product::join('translatables','translatables.record_id','=','products.id')
                   ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
-                  ->where('translatables.table_name','categories')
-                  ->where('translatables.column_name','title')
-                  ->where('tans_bodies.body', ltrim($row->category))
-                  ->select('categories.*','categories.id As id')
+                  ->where('translatables.table_name','products')
+                  ->where('translatables.column_name','short_description')
+                  ->where('tans_bodies.body', ltrim($row->model_en))
+                  ->select('products.*','products.id As id')
                   ->first();
+                  
+                  if($model_title_from_tans_bodies == null){
+                    $final_brand_id = isset($request->brand_id)&&$request->brand_id != -1 ? $request->brand_id : (Brand::where('title', ltrim($row->brand))->first()!=null ? Brand::where('title', ltrim($row->brand))->first()->id : 0);
+                    $final_category_id = 0;
 
-                  if (isset($request->category_id) && $request->category_id != -1) {
-                    $final_category_id =  $request->category_id;
-                  } else{
-                    if(Category::where('title', ltrim($row->category))->first()!=null){
-                      $final_category_id = Category::where('title', ltrim($row->category))->first()->id;
-                    }elseif(isset($category_title_from_tans_bodies) && $category_title_from_tans_bodies!=null){
-                      $final_category_id = $category_title_from_tans_bodies->id;
-                    }else{
-                      $final_category_id = 0;
-                    }
-                  }
+                    $category_title_from_tans_bodies = Category::join('translatables','translatables.record_id','=','categories.id')
+                    ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+                    ->where('translatables.table_name','categories')
+                    ->where('translatables.column_name','title')
+                    ->where('tans_bodies.body', ltrim($row->category))
+                    ->select('categories.*','categories.id As id')
+                    ->first();
 
-                  if($final_brand_id!=0 && $final_category_id!=0){
-                    $total_counter++;
-                    $product = new Product();
-                    $product->setTranslation('title', 'ar', $row->title_ar);
-                    $product->setTranslation('title', 'en', $row->title_en);
-                    $product->setTranslation('description', 'ar', $row->description_ar);
-                    $product->setTranslation('description', 'en', $row->description_en);
-                    $product->setTranslation('short_description', 'ar', $row->model_ar);
-                    $product->setTranslation('short_description', 'en', $row->model_en);
-                    $product->brand_id = $final_brand_id;
-                    $product->category_id = $final_category_id;
-                    $product->price = $row->price;
-                    $product->Installments = json_encode([6 => (ceil($row->price/6)), 12=>null, 18=>null, 24=>null]);
-                    $product->sku = $row->sku;
-
-                    if ($row->price_after_discount) {
-                      $product->price_after_discount = $row->price_after_discount;
-                      $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price;
+                    if (isset($request->category_id) && $request->category_id != -1) {
+                      $final_category_id =  $request->category_id;
+                    } else{
+                      if(Category::where('title', ltrim($row->category))->first()!=null){
+                        $final_category_id = Category::where('title', ltrim($row->category))->first()->id;
+                      }elseif(isset($category_title_from_tans_bodies) && $category_title_from_tans_bodies!=null){
+                        $final_category_id = $category_title_from_tans_bodies->id;
+                      }else{
+                        $final_category_id = 0;
+                      }
                     }
 
-                    $product->stock = $row->stock;
-                    $product->inch = isset($row->inch) ? $row->inch : null;
-                    $product->main_image = $row->main_image;
-                    $product->save();
-                    $gallery  = explode(',',$row->gallery);
-                    if (count($gallery) > 0){
-                      foreach($gallery as $value){
-                        $product->images()->create([
-                          'image' => $value
-                          ]);
+                    if($final_brand_id!=0 && $final_category_id!=0){
+                      $total_counter++;
+                      $product = new Product();
+                      $product->setTranslation('title', 'ar', $row->title_ar);
+                      $product->setTranslation('title', 'en', $row->title_en);
+                      $product->setTranslation('description', 'ar', $row->description_ar);
+                      $product->setTranslation('description', 'en', $row->description_en);
+                      $product->setTranslation('short_description', 'ar', $row->model_ar);
+                      $product->setTranslation('short_description', 'en', $row->model_en);
+                      $product->brand_id = $final_brand_id;
+                      $product->category_id = $final_category_id;
+                      $product->price = $row->price;
+                      $product->Installments = json_encode([6 => (ceil($row->price/6)), 12=>null, 18=>null, 24=>null]);
+                      $product->sku = $row->sku;
+
+                      if ($row->price_after_discount) {
+                        $product->price_after_discount = $row->price_after_discount;
+                        $product->discount = ceil(($row->price - $row->price_after_discount)*100) /$row->price;
+                      }
+
+                      $product->stock = $row->stock;
+                      $product->inch = isset($row->inch) ? $row->inch : null;
+                      $product->main_image = $row->main_image;
+                      $product->save();
+                      $gallery  = explode(',',$row->gallery);
+                      if (count($gallery) > 0){
+                        foreach($gallery as $value){
+                          $product->images()->create([
+                            'image' => $value
+                            ]);
+                          }
+
                         }
-
+                      $property_values  = explode(',', $row->property);
+                      if (count($property_values) > 0){
+                        foreach($property_values as $value){
+                            $property_value = PropertyValue::where("value", "like", "%".$value."%")->first();
+                            $product->pr_value()->attach($property_value->id);
+                        }
                       }
-                    $property_values  = explode(',', $row->property);
-                    if (count($property_values) > 0){
-                      foreach($property_values as $value){
-                          $property_value = PropertyValue::where("value", "like", "%".$value."%")->first();
-                          $product->pr_value()->attach($property_value->id);
-                      }
-                    }
 
-                    if ($product)
-                    {
-                        $counter++ ;
+                      if ($product)
+                      {
+                          $counter++ ;
+                      }
                     }
                   }
                 }
