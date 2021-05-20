@@ -208,38 +208,13 @@ class PropertyController extends Controller
 
     }
 
-    public function createHTML($item_counter)
-    {
-      $languages = Language::all();
+  public function createHTML($item_counter)
+  {
+    $languages = Language::all();
+    $property_value_html = view('property.value', compact('item_counter', 'languages'))->render();
 
-      $property_value_html = "<div id='new-property-value-div-" . $item_counter . "' style='padding-top: 10px;'>";
-      $property_value_html .= "<div class='col-sm-9 col-lg-10'>";
-      $property_value_html .= "<ul class='nav nav-tabs'>";
-
-      foreach ($languages as $key=>$language) {
-        $active = !$key? 'active' : '';
-        $property_value_html .= "<li class='$active'><a href='#value_$language->short_code". '_' ."$item_counter' data-toggle='tab'> $language->title </a></li>";
-      }
-
-      $property_value_html .= "</ul>";
-      $property_value_html .= "<div class='tab-content'>";
-
-
-      foreach ($languages as $key=>$language) {
-        $active = !$key? 'active' : '';
-        $property_value_html .= "<div class='tab-pane fade in $active' id='value_$language->short_code". '_' ."$item_counter'>";
-        $property_value_html .= "<input class='form-control input-lg' name='new_values[" . $item_counter . "][".$language->short_code."]' type='text'>";
-        $property_value_html .= "</div>";
-      }
-
-      $property_value_html .= "</div>";
-      $property_value_html .= "</div>";
-      $property_value_html .= "<div class='col-sm-3 col-lg-2'>";
-      $property_value_html .= "<a class='btn btn-danger' href='javascript:void(0)' id='remove-property-value-button' style='margin-top: 40px; height: 45px; padding-top: 12px;'>Remove <i class='fa fa-trash'></i></a>";
-      $property_value_html .= "</div>";
-
-      return $property_value_html;
-    }
+    return $property_value_html;
+  }
 
     public function destroyPropertyValue(Request $request)
     {
