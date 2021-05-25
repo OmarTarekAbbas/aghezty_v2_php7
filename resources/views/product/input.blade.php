@@ -52,7 +52,7 @@
           <?php $i=0;?>
           @foreach($languages as $language)
               <div class="tab-pane fade in {{($i++)? '':'active'}}" id="title{{$language->short_code}}">
-                  <input class="form-control" name="title[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('title',$language->short_code)  !!}@endif" required />
+                  <input class="form-control" name="title[{{$language->short_code}}]" value="@if($product){!! $product->getTranslation('title',$language->short_code)  !!}@endif {{old('title.'.$language->short_code)}}"/>
               </div>
           @endforeach
       </div>
@@ -76,6 +76,7 @@
                             @if($product)
                             {!! $product->getTranslation('description',$language->short_code) !!}
                             @endif
+                            {{old('description.'.$language->short_code)}}
                     </textarea>
                 </div>
             @endforeach
@@ -96,7 +97,9 @@
             <?php $i=0;?>
             @foreach($languages as $language)
                 <div class="tab-pane fade in {{($i++)? '':'active'}}" id="short_description{{$language->short_code}}">
-                    <textarea class="form-control col-md-12" name="short_description[{{$language->short_code}}]" rows="6" required>@if($product){!! $product->getTranslation('short_description',$language->short_code)  !!}@endif</textarea>
+                    <textarea class="form-control col-md-12" name="short_description[{{$language->short_code}}]" rows="6" >@if($product){!! $product->getTranslation('short_description',$language->short_code)  !!}@endif
+                    {{old('short_description.'.$language->short_code)}}
+                    </textarea>
                 </div>
             @endforeach
         </div>
@@ -296,6 +299,7 @@
                           @if($product)
                           {!! $product->getTranslation('key_feature',$language->short_code) !!}
                           @endif
+                          {{old('key_feature.'.$language->short_code)}}
                   </textarea>
               </div>
           @endforeach

@@ -10597,6 +10597,7 @@ body {
       img {
         width: 100%;
         left: 55%;
+        padding: 0 4%;
       }
     }
   }
@@ -10615,10 +10616,12 @@ body {
         }
       }
 
-      .top_banner {
-        a {
-          img {
-            height: 151px;
+      .ads {
+        .top_banner {
+          a {
+            img {
+              height: 151px;
+            }
           }
         }
       }
@@ -10845,6 +10848,7 @@ body {
       img {
         width: 100%;
         left: 55%;
+        padding: 0 7%;
       }
     }
 

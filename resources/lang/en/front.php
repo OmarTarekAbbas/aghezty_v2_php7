@@ -173,6 +173,8 @@ return [
         'contact' => 'You Can Contact Us With This',
         'link' => 'Link',
         'info' => 'Info About Your Order',
+        'Hi' => 'Hi',
+        'Welcome_to_Aghezty' => 'Welcome to Aghezty.com and thanks for shipping up',
     ],
 
     'admin' => [
