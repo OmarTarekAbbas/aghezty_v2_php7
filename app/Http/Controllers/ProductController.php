@@ -529,12 +529,12 @@ class ProductController extends Controller
                   if($final_brand_id!=0 && $final_category_id!=0){
                     $total_counter++;
                     $product = new Product();
-                    $product->setTranslation('title', 'ar', $row->title_ar);
-                    $product->setTranslation('title', 'en', $row->title_en);
-                    $product->setTranslation('description', 'ar', $row->description_ar);
-                    $product->setTranslation('description', 'en', $row->description_en);
-                    $product->setTranslation('short_description', 'ar', $row->model_ar);
-                    $product->setTranslation('short_description', 'en', $row->model_en);
+                    $product->setTranslation('title', 'ar', trim($row->title_ar));
+                    $product->setTranslation('title', 'en', trim($row->title_en));
+                    $product->setTranslation('description', 'ar', trim($row->description_ar));
+                    $product->setTranslation('description', 'en', trim($row->description_en));
+                    $product->setTranslation('short_description', 'ar', trim($row->model_ar));
+                    $product->setTranslation('short_description', 'en', trim($row->model_en));
                     $product->brand_id = $final_brand_id;
                     $product->category_id = $final_category_id;
                     $product->price = $row->price;
