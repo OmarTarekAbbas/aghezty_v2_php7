@@ -559,11 +559,22 @@ class ProductController extends Controller
                         }
 
                       }
-                    $property_values  = explode(',', $row->property);
+                    $property_values[] = $row->filter1;
+                    $property_values[] = $row->filter2;
+                    $property_values[] = $row->filter3;
+                    $property_values[] = $row->filter4;
                     if (count($property_values) > 0){
-                      foreach($property_values as $value){
-                          $property_value = PropertyValue::where("value", "like", "%".$value."%")->first();
-                          $product->pr_value()->attach($property_value->id);
+                      foreach(array_values($property_values) as $value){
+                        $property_value = PropertyValue::select('property_values.*','property_values.id as id')
+                        ->join('translatables','translatables.record_id','=','property_values.id')
+                        ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+                        ->where('translatables.table_name','property_values')
+                        ->where('translatables.column_name','value')
+                        ->where(function($q) use ($value){
+                          $q->where('property_values.value', 'like', "%".$value."%");
+                          $q->orWhere('tans_bodies.body', 'like', "%".$value."%");
+                        })->first();
+                        $product->pr_value()->attach($property_value->id);
                       }
                     }
 
