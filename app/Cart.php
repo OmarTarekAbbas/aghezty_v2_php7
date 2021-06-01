@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Cart extends Model
 {
@@ -23,5 +24,13 @@ class Cart extends Model
     public function product()
     {
         return $this->belongsTo('App\Product', 'product_id', 'id');
+    }
+
+    protected static function boot() {
+      parent::boot();
+
+      static::addGlobalScope('product', function (Builder $builder) {
+        $builder->whereHas("product");
+      });
     }
 }
