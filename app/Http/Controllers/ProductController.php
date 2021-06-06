@@ -652,17 +652,36 @@ class ProductController extends Controller
             });
             $sheet->cell('I1', function($cell)
             {
-                $cell->setValue('Description (Arabic)');
+                $cell->setValue('filter1');
             });
             $sheet->cell('J1', function($cell)
             {
+                $cell->setValue('filter2');
+            });
+            $sheet->cell('K1', function($cell)
+            {
+                $cell->setValue('filter3');
+            });
+            $sheet->cell('L1', function($cell)
+            {
+                $cell->setValue('filter4');
+            });
+            $sheet->cell('M1', function($cell)
+            {
+                $cell->setValue('Description (Arabic)');
+            });
+            $sheet->cell('N1', function($cell)
+            {
                 $cell->setValue('Description (English)');
             });
+
 
             if (!empty($data)) {
                 $sno=1;
                 foreach ($data as $key => $value)
                 {
+                    $product_filters = $this->getProductFilters($value);
+
                     $i= $key+2;
                     $sheet->cell('A'.$i, $sno);
                     $sheet->cell('B'.$i, $value->short_description);
@@ -672,13 +691,33 @@ class ProductController extends Controller
                     $sheet->cell('F'.$i, $value->price_after_discount);
                     $sheet->cell('G'.$i, $value->getTranslation('title','ar') );
                     $sheet->cell('H'.$i, $value->getTranslation('title','en') );
-                    $sheet->cell('I'.$i, strip_tags($value->getTranslation('description','ar')) );
-                    $sheet->cell('J'.$i, strip_tags($value->getTranslation('description','en')) );
+                    $sheet->cell('I'.$i, isset($product_filters[0])&&$product_filters[0]!=null ? $product_filters[0] : '');
+                    $sheet->cell('J'.$i, isset($product_filters[1])&&$product_filters[1]!=null ? $product_filters[1] : '');
+                    $sheet->cell('K'.$i, isset($product_filters[2])&&$product_filters[2]!=null ? $product_filters[2] : '');
+                    $sheet->cell('L'.$i, isset($product_filters[3])&&$product_filters[3]!=null ? $product_filters[3] : '');
+                    $sheet->cell('M'.$i, $value->getTranslation('description','ar'));
+                    $sheet->cell('N'.$i, $value->getTranslation('description','en'));
+
                     $sno++;
                 }
             }
         });
       })->download('xlsx');
+    }
+
+    private function getProductFilters($product){
+      $filters_array  = array();
+      $filters = $product->pr_value;
+      if(isset($filters) && $filters!=null){
+        foreach($filters as $filter){
+          $property = $filter->property;
+          $property_title = $property->getTranslation('title', 'en');
+
+          array_push($filters_array, $property_title);
+        }
+      }
+
+      return $filters_array;
     }
 
     public function getDownload()
