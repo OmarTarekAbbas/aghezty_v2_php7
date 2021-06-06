@@ -464,7 +464,7 @@ return [
     'select_category' => 'حدد القسم أو اترك الحقل فارغا',
     'select_brand' => 'حدد العلامة التجارية أو اترك الحقل فارغا',
     'list_category_excel' => 'تحميل قائمه الاقسام بالاكسل',
-
+    'product_description_simulate' => 'محاكاة وصف المنتج',
 
 
 ];

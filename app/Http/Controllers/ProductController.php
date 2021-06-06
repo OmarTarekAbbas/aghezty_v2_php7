@@ -945,4 +945,8 @@ class ProductController extends Controller
       }
       return response("ok");
     }
+
+    public function getProductDescriptionSimulate(){
+      return view('product.product_description_simulate');
+    }
 }

@@ -533,6 +533,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                       <li id="product_create"><a href="{{url('products/product_update_price_excel')}}">@lang('messages.product_update_price_excel')</a></li>
                                       <li id="product_create"><a href="{{url('products/export_product_excel')}}">@lang('messages.export_product_excel')</a></li>
                                       <li id="product_create"><a href="{{ route('admin.product.delete.with.model.excel.get') }}">@lang('front.delete_product_using_excel')</a></li>
+                                      <li id="description_simulate"><a href="{{ route('product.description.simulate') }}">@lang('messages.product_description_simulate')</a></li>
                                   </ul>
                               </li>
                           </ul>

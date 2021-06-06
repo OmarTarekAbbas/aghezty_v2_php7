@@ -19,7 +19,7 @@
                         <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
 
                         <div class="form-group">
-                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.category')<span class="text-danger">*</span></label>
+                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.category')</label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 <select name="category_id"  class="form-control chosen-rtl" required>
                                     <option value="-1">@lang('messages.select_category')</option>
