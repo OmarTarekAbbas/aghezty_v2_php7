@@ -628,27 +628,27 @@ class ProductController extends Controller
             });
             $sheet->cell('C1', function($cell)
             {
-                $cell->setValue('Stock');
+                $cell->setValue('Price');
             });
             $sheet->cell('D1', function($cell)
             {
-                $cell->setValue('Price');
+                $cell->setValue('Discount');
             });
             $sheet->cell('E1', function($cell)
             {
-                $cell->setValue('Discount');
+                $cell->setValue('Price After Discount');
             });
             $sheet->cell('F1', function($cell)
             {
-                $cell->setValue('Price After Discount');
+                $cell->setValue('Stock');
             });
             $sheet->cell('G1', function($cell)
             {
-                $cell->setValue('Title (Arabic)');
+                $cell->setValue('Title_Ar');
             });
             $sheet->cell('H1', function($cell)
             {
-                $cell->setValue('Title (English)');
+                $cell->setValue('Title_En');
             });
             $sheet->cell('I1', function($cell)
             {
@@ -668,11 +668,11 @@ class ProductController extends Controller
             });
             $sheet->cell('M1', function($cell)
             {
-                $cell->setValue('Description (Arabic)');
+                $cell->setValue('Description_Ar');
             });
             $sheet->cell('N1', function($cell)
             {
-                $cell->setValue('Description (English)');
+                $cell->setValue('Description_En');
             });
 
 
@@ -685,10 +685,10 @@ class ProductController extends Controller
                     $i= $key+2;
                     $sheet->cell('A'.$i, $sno);
                     $sheet->cell('B'.$i, $value->short_description);
-                    $sheet->cell('C'.$i, $value->stock);
-                    $sheet->cell('D'.$i, $value->price);
-                    $sheet->cell('E'.$i, $value->discount);
-                    $sheet->cell('F'.$i, $value->price_after_discount);
+                    $sheet->cell('C'.$i, $value->price);
+                    $sheet->cell('D'.$i, $value->discount);
+                    $sheet->cell('E'.$i, $value->price_after_discount);
+                    $sheet->cell('F'.$i, $value->stock);
                     $sheet->cell('G'.$i, $value->getTranslation('title','ar') );
                     $sheet->cell('H'.$i, $value->getTranslation('title','en') );
                     $sheet->cell('I'.$i, isset($product_filters[0])&&$product_filters[0]!=null ? $product_filters[0] : '');
@@ -710,10 +710,9 @@ class ProductController extends Controller
       $filters = $product->pr_value;
       if(isset($filters) && $filters!=null){
         foreach($filters as $filter){
-          $property = $filter->property;
-          $property_title = $property->getTranslation('title', 'en');
+          $filter_title = $filter->getTranslation('value', 'en');
 
-          array_push($filters_array, $property_title);
+          array_push($filters_array, $filter_title);
         }
       }
 
@@ -837,6 +836,37 @@ class ProductController extends Controller
               $product->discount = 0 ;
              }
              $product->stock = isset($row->stock)&&$row->stock>0 ? $row->stock : $product->stock ;
+
+            isset($row->title_ar)&&$row->title_ar!=NULL ? $product->setTranslation('title', 'ar', trim($row->title_ar)) : NULL;
+            isset($row->title_en)&&$row->title_en!=NULL ? $product->setTranslation('title', 'en', trim($row->title_en)) : NULL;
+            isset($row->description_ar)&&$row->description_ar!=NULL ? $product->setTranslation('description', 'ar', trim($row->description_ar)) : NULL;
+            isset($row->description_en)&&$row->description_en!=NULL ? $product->setTranslation('description', 'en', trim($row->description_en)) : NULL;
+
+            $property_values = array();
+            isset($row->filter1)&&$row->filter1!=NULL ? array_push($property_values, $row->filter1) : NULL;
+            isset($row->filter2)&&$row->filter2!=NULL ? array_push($property_values, $row->filter2) : NULL;
+            isset($row->filter3)&&$row->filter3!=NULL ? array_push($property_values, $row->filter3) : NULL;
+            isset($row->filter4)&&$row->filter4!=NULL ? array_push($property_values, $row->filter4) : NULL;
+            if (count($property_values) > 0){
+              $property_values_array = array();
+
+              foreach($property_values as $value){
+                $property_value = PropertyValue::select('property_values.*','property_values.id as id')
+                ->join('translatables','translatables.record_id','=','property_values.id')
+                ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
+                ->where('translatables.table_name','property_values')
+                ->where('translatables.column_name','value')
+                ->where(function($q) use ($value){
+                  $q->where('property_values.value', 'like', "%".$value."%");
+                  $q->orWhere('tans_bodies.body', 'like', "%".$value."%");
+                })->first();
+
+                isset($property_value) && $property_value!=null ? array_push($property_values_array, $property_value->id) : NULL;
+              }
+
+              $product->pr_value()->sync($property_values_array);
+            }
+
              $product->save();
             }
           }
