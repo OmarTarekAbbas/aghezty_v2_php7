@@ -100,15 +100,16 @@
 
           <div class="col-12">
             <textarea placeholder="@lang('front.auth.message')" class="form-control w-100 my-2 hvr-float" name="message"
-              id="" cols="10" rows="5"></textarea>
+              id="message" cols="10" rows="5"></textarea>
           </div>
 
           <div class="col-12">
+            <p id="max_characters" style="color: green;"><strong>Max Characters: </strong><span> 55 </span></p>
             {!! app('captcha')->display() !!}
           </div>
 
           <div class="col-12">
-            <button class="btn btn-secondary w-100 my-2 hvr-wobble-to-bottom-right">@lang('front.send')</button>
+            <button id="contact_submit" class="btn btn-secondary w-100 my-2 hvr-wobble-to-bottom-right">@lang('front.send')</button>
           </div>
         </div>
       </form>
@@ -123,5 +124,94 @@
 <script type="text/javascript" src="{{url('js/map.js')}}"></script>
 <script>
   google.maps.event.addDomListener(window, 'load', initMap('{{explode(',',setting('location'))[0]}}' , '{{explode(',',setting('location'))[1]}}'));
+</script>
+
+<script>
+  // var check_submit = true;
+  // var max_characters_number = 55;
+  // $("#message").keyup(function(e) {
+  //   if (e.keyCode !== 32) {
+  //     var characters_count = document.getElementById("message").value.replace(/\s+/g, '').length;
+  //     console.log(characters_count);
+
+  //     if(characters_count > 55){
+  //       check_submit = false;
+  //       if(check_submit == false){
+  //         $('#contact_submit').prop('disabled', true);
+  //         document.getElementById("message").style.borderColor="#FF0000";
+  //         document.getElementById("message").style.boxShadow = "#dc354561 0px 0px 0px 0.2rem";
+  //         document.getElementById("max_characters").style.color="#FF0000";
+  //       }
+  //     }else{
+  //       check_submit = true;
+  //       if(check_submit == true){
+  //         $('#contact_submit').prop('disabled', false);
+  //         document.getElementById("message").style.borderColor="#ced4da";
+  //         document.getElementById("message").style.boxShadow = "0 0 0 0.2rem rgb(107 111 115 / 25%)";
+  //         document.getElementById("max_characters").style.color="green";
+
+  //         if(e.keyCode == 8){
+  //           max_characters_number = max_characters_number + 1;
+  //         }else{
+  //           max_characters_number = max_characters_number - 1;
+  //         }
+
+  //         $('#max_characters span').text(max_characters_number);
+  //       }
+  //     }
+  //   }
+  // });
+
+  (function($) {
+    $.fn.characterCounter = function(limit) {
+      return this.filter("textarea").each(function() {
+        var $this = $(this),
+          checkCharacters = function(event) {
+
+            if ($this.val().length > limit) {
+              // Trim the string as paste would allow you to make it
+              // more than the limit.
+              $this.val($this.val().substring(0, limit))
+              // Cancel the original event
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          };
+
+        $this.keyup(function(event) {
+          // Keys "enumeration"
+          var keys = {BACKSPACE: 8, TAB: 9, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40};
+
+          // which normalizes keycode and charcode.
+          switch (event.which) {
+            case keys.UP:
+            case keys.DOWN:
+            case keys.LEFT:
+            case keys.RIGHT:
+            case keys.TAB:
+              break;
+            default:
+              checkCharacters(event);
+              break;
+          }
+        });
+
+        // Handle cut/paste.
+        $this.bind("paste cut", function(event) {
+          // Delay so that paste value is captured.
+          setTimeout(function() {
+            checkCharacters(event);
+            event = null;
+          }, 150);
+        });
+      });
+    };
+  }(jQuery));
+
+  $(document).ready(function () {
+    $("textarea").characterCounter(55);
+  });
+
+  //if (filter_var($string, FILTER_VALIDATE_URL)) {}
 </script>
 @endsection
