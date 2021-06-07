@@ -157,7 +157,9 @@ class HomeController extends Controller
 
     public function contact_store(Request $request)
     {
-        $lang = session()->get('applocale');
+      $request->merge(['message' => $this->checkMessage($request->message)]);
+      
+      $lang = session()->get('applocale');
         if($lang == 'ar'){
             $capcha = 'برجاء انهاء تحقيق الهوية اولا!';
         }else{
@@ -180,6 +182,21 @@ class HomeController extends Controller
         $contact = Contact::create($request->all());
         \Session::flash('success', __('front.contact_success_message'));
         return back();
+    }
+
+    private function checkMessage($message)
+    {
+      $url_regex = '#[-a-zA-Z0-9@:%_\+.~\#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~\#?&//=]*)?#si';
+      if (preg_match($url_regex, $message)) {
+        $message = preg_replace($url_regex, "", $message);
+      }
+
+      $email_regex = '/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/';
+      if (preg_match($email_regex, $message)) {
+        $message = preg_replace($email_regex, "", $message);
+      }
+
+      return $message;
     }
 
     public function update(Request $request)
@@ -1961,7 +1978,7 @@ class HomeController extends Controller
                 $cart->delete();
             }
             $client = \Auth::guard('client')->user();
-            
+
             Mail::send('front.mail', ['order' => $order , 'client' => $client], function ($m) use ($client) {
                 $m->from($client->email, __('front.order'));
                 $m->to(setting('super_mail'), __('front.title'))->subject(__('front.order'));
