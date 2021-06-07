@@ -143,6 +143,7 @@ class Product extends Model
         }
     });
 
+    app('App\Http\Controllers\front\HomeController')->ClearHomeCash();
   }
 
 
