@@ -6,6 +6,10 @@
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
+
+  .row {
+    min-width: 1px !important;
+    }
 </style>
 
 <link rel="stylesheet" href="{{asset('front/css/loader.css')}}">
