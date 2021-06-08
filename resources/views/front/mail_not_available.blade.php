@@ -122,6 +122,7 @@
                 </div>
 
             </main>
+            @include('front.partials.mail_socials')
         </div>
     </div>
 </body>
