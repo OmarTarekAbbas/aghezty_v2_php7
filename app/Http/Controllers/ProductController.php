@@ -601,12 +601,12 @@ class ProductController extends Controller
 
       $product = Product::query();
       if($request->category_id == -1){
-        $product->where('brand_id', $request->brand_id)->where('products.active', 1);
+        $product->where('brand_id', $request->brand_id);
 
         $brand    = Brand::where('id',$request->brand_id)->first();
         $excell_title = $brand->getTranslation('title','en') . '-'. date("d-m-Y");
       }else{
-        $product->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id])->where('products.active', 1);
+        $product->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id]);
 
         $category = Category::where('id',$request->category_id)->first();
         $brand    = Brand::where('id',$request->brand_id)->first();
@@ -807,6 +807,9 @@ class ProductController extends Controller
 
     public function product_update_price_excel_post(Request $request)
     {
+      ini_set('memory_limit', -1);
+      ini_set('max_execution_time', '300000000'); //300 seconds = 5 minutes
+
       if ($request->hasFile('fileToUpload')) {
         $ext =  $request->file('fileToUpload')->getClientOriginalExtension();
         if ($ext != 'xls' && $ext != 'xlsx' && $ext != 'csv') {
@@ -851,7 +854,7 @@ class ProductController extends Controller
               $property_values_array = array();
 
               foreach($property_values as $value){
-                $property_value = PropertyValue::select('property_values.*','property_values.id as id')
+                $property_value = PropertyValue::select('property_values.value as value','property_values.id as id')
                 ->join('translatables','translatables.record_id','=','property_values.id')
                 ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
                 ->where('translatables.table_name','property_values')
