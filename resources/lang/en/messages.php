@@ -456,7 +456,7 @@ return [
     'sold_times' => 'Solid Count',
     'offer_image' => 'Offer Image',
     'product_id' => 'Product id',
-    'product_update_price_excel' => 'Product Update Price Excel',
+    'product_update_price_excel' => 'Update Products By Excel',
     'export_product_excel' => 'Export Products Excel',
     'select_category' => 'Select category or leave the field empty',
     'select_brand' => 'Select brand or leave the field empty',

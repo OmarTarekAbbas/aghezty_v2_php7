@@ -459,7 +459,7 @@ return [
     'sold_times' => 'مرات البيع',
     'offer_image' => 'صور اوفر',
     'product_id' => 'رقم المنتج',
-    'product_update_price_excel' => 'سعر تحديث المنتج اكسل',
+    'product_update_price_excel' => ' تحديث المنتجات عن طريق اكسل',
     'export_product_excel' => 'تصدير المنتجات اكسل',
     'select_category' => 'حدد القسم أو اترك الحقل فارغا',
     'select_brand' => 'حدد العلامة التجارية أو اترك الحقل فارغا',
