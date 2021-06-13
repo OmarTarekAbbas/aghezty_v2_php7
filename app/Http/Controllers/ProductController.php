@@ -559,10 +559,13 @@ class ProductController extends Controller
                         }
 
                       }
-                    $property_values[] = $row->filter1;
-                    $property_values[] = $row->filter2;
-                    $property_values[] = $row->filter3;
-                    $property_values[] = $row->filter4;
+
+                    $property_values = [];
+                    isset($row->filter1)&&$row->filter1!=NULL ? array_push($property_values, $row->filter1) : NULL;
+                    isset($row->filter2)&&$row->filter2!=NULL ? array_push($property_values, $row->filter2) : NULL;
+                    isset($row->filter3)&&$row->filter3!=NULL ? array_push($property_values, $row->filter3) : NULL;
+                    isset($row->filter4)&&$row->filter4!=NULL ? array_push($property_values, $row->filter4) : NULL;
+
                     if (count($property_values) > 0){
                       foreach(array_values($property_values) as $value){
                         $property_value = PropertyValue::select('property_values.*','property_values.id as id')
