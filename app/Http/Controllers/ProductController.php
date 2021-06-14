@@ -602,6 +602,9 @@ class ProductController extends Controller
 
     public function download_product_excel(Request $request)
     {
+      ini_set('memory_limit', -1);
+      ini_set('max_execution_time', 60000000000);
+
       if($request->category_id==-1 && $request->brand_id==-1){
         return Redirect::back()->withErrors(['Please Select one of the provided choices at least.']);
       }
