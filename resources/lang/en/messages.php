@@ -462,4 +462,6 @@ return [
     'select_brand' => 'Select brand or leave the field empty',
     'list_category_excel' => 'Download Category For Excel',
     'product_description_simulate' => 'Product Description Simulate',
+    'export_product_excel_validation' => 'Please Select one of the provided choices at least.'
+
 ];

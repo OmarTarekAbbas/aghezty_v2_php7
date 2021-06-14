@@ -17,6 +17,7 @@ use App\PropertyValue;
 use Image;
 use File;
 use Excel;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -601,6 +602,9 @@ class ProductController extends Controller
 
     public function download_product_excel(Request $request)
     {
+      if($request->category_id==-1 && $request->brand_id==-1){
+        return Redirect::back()->withErrors(['Please Select one of the provided choices at least.']);
+      }
 
       $product = Product::query();
       if($request->category_id == -1){
@@ -608,6 +612,11 @@ class ProductController extends Controller
 
         $brand    = Brand::where('id',$request->brand_id)->first();
         $excell_title = $brand->getTranslation('title','en') . '-'. date("d-m-Y");
+      }else if($request->brand_id == -1){
+        $product->where('category_id', $request->category_id);
+
+        $category    = Category::where('id',$request->category_id)->first();
+        $excell_title = $category->getTranslation('title','en') . '-'. date("d-m-Y");
       }else{
         $product->where(['category_id'=> $request->category_id, 'brand_id' => $request->brand_id]);
 
