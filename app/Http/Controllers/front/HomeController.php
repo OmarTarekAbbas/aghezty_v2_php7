@@ -158,7 +158,7 @@ class HomeController extends Controller
     public function contact_store(Request $request)
     {
       $request->merge(['message' => $this->checkMessage($request->message)]);
-      
+
       $lang = session()->get('applocale');
         if($lang == 'ar'){
             $capcha = 'برجاء انهاء تحقيق الهوية اولا!';
