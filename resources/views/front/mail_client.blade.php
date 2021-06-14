@@ -30,11 +30,11 @@
       <main class="mainCart" style="clear:both; font-size:0.75rem; left:50%; margin:0 auto; overflow:hidden; padding:1rem 0; position:relative; top:50%; transform:translate(-50%, 0); width:100%" width="100%">
         @if(isset($subject))
         <div class="note-box success" @if($order->status == 'Finished') style="background:#1fa67a; color:#fff; margin:1.5em 0" @else style="background:#39cccc; color:#fff; margin:1.5em 0" @endif>
-          <div class="note-icon" style="background:rgba(0, 0, 0, 0.1); display:table-cell; height:100%; min-width:60px; padding:0 1em; text-align:center; vertical-align:middle" height="100%" align="center" valign="middle">
+          <!--<div class="note-icon" style="background:rgba(0, 0, 0, 0.1); display:table-cell; height:100%; min-width:60px; padding:0 1em; text-align:center; vertical-align:middle" height="100%" align="center" valign="middle">
             <span style="color:#fff; font-size:60px; max-width:60px">
               <img style="margin: auto;cursor: zoom-in;" src="https://images.vexels.com/media/users/3/155436/isolated/lists/e93670eb242ed5f2afa27aeec23b72e7-tongue-out-kawaii-emoticon.png" width="150px" height="150px">
             </span>
-          </div>
+          </div>-->
           <div class="note-text" style="display:table-cell; padding:0.3em 2em">
             <h5>@if($order->status == 'Finished') @lang('front.mail.thanks') @lang('front.title') @else @lang('front.mail.info') @endif :)</h5>
             <h4>{{$subject}} @if($order->status == 'Finished') @lang('front.mail.contact') <a href="{{url('/clients/contactv2?lang='.$order->lang)}}">@lang('front.mail.link')</a> @endif. </h4>
