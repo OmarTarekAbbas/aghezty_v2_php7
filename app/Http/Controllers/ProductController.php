@@ -578,7 +578,9 @@ class ProductController extends Controller
                           $q->where('property_values.value', 'like', "%".$value."%");
                           $q->orWhere('tans_bodies.body', 'like', "%".$value."%");
                         })->first();
-                        $product->pr_value()->attach($property_value->id);
+                        if($property_value){
+                          $product->pr_value()->attach($property_value->id);
+                        }
                       }
                     }
 
