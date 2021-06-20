@@ -73,7 +73,7 @@
         <span class="breadcrumb_slash"></span>
 
         <h1 class="breadcrumb-item font-weight-bold">
-          {{$product->getTranslation('title',getCode())}}
+          {{\Illuminate\Support\Str::words($product->getTranslation('title',getCode()),4,'...')}}
         </h1>
       </ol>
     </nav>
