@@ -461,7 +461,7 @@
       @foreach ($items as $item)
       <div class="col-md-4 col-lg-3 col-xl-3 col-12 mb-3">
         <div class="content_view hvr-bob px-2 bg-white rounded">
-          <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title',getCode()))])}}">
+          <a href="{{route('front.home.inner',['id' => $item->id ,'slug' => setSlug($item->getTranslation('title','en'))])}}">
             <img src="{{checkImageResize($item->main_image, $item->main_image_resize)}}" alt="Product" class="text-center d-block based_selection_img">
           </a>
 
