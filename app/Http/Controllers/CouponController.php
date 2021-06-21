@@ -5,12 +5,109 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Coupon;
 use Validator;
+use Carbon\Carbon;
 class CouponController extends Controller
 {
     public function index()
     {
         $coupons = Coupon::orderBy('id', 'DESC')->get();
         return view('coupon.index',compact('coupons'));
+    }
+
+    /**
+     * Method coupon_expire
+     *
+     * @return view
+     */
+    public function coupon_expire()
+    {
+        return view('coupon.younger_expiry');
+    }
+
+    /**
+     * Method bigger_expiry_coupon_allData
+     *
+     * @param Request $request [explicite description]
+     *
+     *@return val
+     */
+    public function bigger_expiry_coupon_allData(Request $request){
+      $date = Carbon::now()->toDateString();
+      $coupons = Coupon::where('expire_date','>=',$date)->orderBy('id', 'DESC')->get();
+      $datatable = \DataTables::of($coupons)
+      ->addColumn('index', function(Coupon $coupon) {
+          return '<input class="select_all_template" type="checkbox" name="selected_rows[]" value="'.$coupon->id.'" class="roles" onclick="collect_selected(this)">';
+      })
+      ->addColumn('id', function(Coupon $coupon) {
+          return $coupon->id;
+      })
+      ->addColumn('coupon', function(Coupon $coupon) {
+          return $coupon->coupon;
+      })
+      ->addColumn('value', function(Coupon $coupon) {
+        return $coupon->value;
+      })
+        ->addColumn('expire_date', function(Coupon $coupon) {
+          return $coupon->expire_date;
+      })
+        ->addColumn('used', function(Coupon $coupon) {
+          return $coupon->used;
+      })
+      ->addColumn('action', function(Coupon $coupon) {
+        return '<td class="visible-md visible-lg">
+                    <div class="btn-group">
+                        <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="'.url("coupon/".$coupon->id."/delete").'" title="Delete"><i class="fa fa-trash"></i></a>
+                    </div>
+                </td>';
+    })
+
+      ->escapeColumns([])
+      ->make(true);
+
+      return $datatable;
+    }
+
+    /**
+     * Method younger_expiry_coupon_allData
+     *
+     * @param Request $request [explicite description]
+     *
+     *@return val
+     */
+    public function younger_expiry_coupon_allData(Request $request){
+      $date = Carbon::now()->toDateString();
+      $coupons = Coupon::where('expire_date','<=',$date)->orderBy('id', 'DESC')->get();
+      $datatable = \DataTables::of($coupons)
+      ->addColumn('index', function(Coupon $coupon) {
+          return '<input class="select_all_template" type="checkbox" name="selected_rows[]" value="'.$coupon->id.'" class="roles" onclick="collect_selected(this)">';
+      })
+      ->addColumn('id', function(Coupon $coupon) {
+          return $coupon->id;
+      })
+      ->addColumn('coupon', function(Coupon $coupon) {
+          return $coupon->coupon;
+      })
+      ->addColumn('value', function(Coupon $coupon) {
+        return $coupon->value;
+      })
+        ->addColumn('expire_date', function(Coupon $coupon) {
+          return $coupon->expire_date;
+      })
+        ->addColumn('used', function(Coupon $coupon) {
+          return $coupon->used;
+      })
+      ->addColumn('action', function(Coupon $coupon) {
+        return '<td class="visible-md visible-lg">
+                    <div class="btn-group">
+                        <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="'.url("coupon/".$coupon->id."/delete").'" title="Delete"><i class="fa fa-trash"></i></a>
+                    </div>
+                </td>';
+    })
+
+      ->escapeColumns([])
+      ->make(true);
+
+      return $datatable;
     }
 
     public function create()

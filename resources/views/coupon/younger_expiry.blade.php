@@ -20,13 +20,8 @@
                         <div class="btn-toolbar pull-right">
                             <div class="btn-group">
                                 <a class="btn btn-circle show-tooltip" title="" href="{{url('coupon/create')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
-                                <?php
-                                $table_name = "coupons";
-                                // pass table name to delete all function
-                                // if the current route exists in delete all table flags it will appear in view
-                                // else it'll not appear
-                                ?>
-                                @include('partial.delete_all')
+
+                         
                             </div>
                         </div>
                         <br><br>
@@ -94,7 +89,7 @@
           //"search": {"regex": true},
           "ajax": {
           type: "GET",
-          "url": "{!! url('bigger_expiry_coupon/allData') !!}",
+          "url": "{!! url('younger_expiry_coupon/allData') !!}",
           "data":"{{csrf_token()}}"
           },
           columns: [

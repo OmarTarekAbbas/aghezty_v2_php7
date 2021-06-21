@@ -26,7 +26,7 @@ $categorys = categorys();
             <div class="brand_title">
                 <h4>@lang('front.brands')</h4>
             </div>
-       
+
             <div class="btn-more">
                 <a href="{{url('clients/all_brand')}}">@lang('front.more')
                     <i class="fas fa-chevron-left"></i>
@@ -76,7 +76,6 @@ $categorys = categorys();
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </div>
-
             <div class="row">
                 @foreach ($categorys as $category)
                 <div class="col-6">

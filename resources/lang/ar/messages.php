@@ -465,6 +465,7 @@ return [
     'select_brand' => 'حدد العلامة التجارية أو اترك الحقل فارغا',
     'list_category_excel' => 'تحميل قائمه الاقسام بالاكسل',
     'product_description_simulate' => 'محاكاة وصف المنتج',
-    'export_product_excel_validation' => 'برجاء تحديد أحد الخيارات المتوفرة على الأقل'
-
+    'export_product_excel_validation' => 'برجاء تحديد أحد الخيارات المتوفرة على الأقل',
+    'list_bigger_coupon' => 'كوبون المتاحة',
+    'list_younger_coupon' => 'كوبون المنتهيه',
 ];
