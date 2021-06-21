@@ -74,7 +74,6 @@
     </div>
 
 </div>
-
 @stop
 
 @section('script')
@@ -94,7 +93,7 @@
           //"search": {"regex": true},
           "ajax": {
           type: "GET",
-          "url": "{!! url('bigger_expiry_coupon/allData') !!}",
+          "url": "{!! url('expiry_coupon/allData?coupon=') !!}{{ request()->coupon }}",
           "data":"{{csrf_token()}}"
           },
           columns: [

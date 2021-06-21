@@ -598,9 +598,9 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
                                       <!-- BEGIN Submenu -->
                                       <ul class="submenu">
-                                          <li id="coupon_index"><a href="{{url('coupon')}}">@lang('messages.list_bigger_coupon')</a></li>
-                                          <li id="coupon_index"><a href="{{url('coupon_expire')}}">@lang('messages.list_younger_coupon')</a></li>
-                                          <li id="coupon_create"><a href="{{url('coupon/create')}}">@lang('messages.create_coupon')</a></li>
+                                        <li id="coupon_create"><a href="{{url('coupon/create')}}">@lang('messages.create_coupon')</a></li>
+                                          <li id="coupon_index"><a href="{{url('coupon?coupon=active')}}">@lang('messages.list_active_coupon')</a></li>
+                                          <li id="coupon_index"><a href="{{url('coupon?coupon=expiry')}}">@lang('messages.list_expiry_coupon')</a></li>
                                       </ul>
                                   </li>
                               </ul>
