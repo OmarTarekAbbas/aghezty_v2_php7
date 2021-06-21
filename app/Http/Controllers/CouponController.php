@@ -9,7 +9,7 @@ class CouponController extends Controller
 {
     public function index()
     {
-        $coupons = Coupon::all();
+        $coupons = Coupon::orderBy('id', 'DESC')->get();
         return view('coupon.index',compact('coupons'));
     }
 

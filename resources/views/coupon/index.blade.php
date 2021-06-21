@@ -48,7 +48,7 @@
                                     @foreach($coupons as $key=>$value)
                                     <tr>
                                         <td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}" class="roles" onclick="collect_selected(this)"></td>
-                                        <td>{{$key+1}}</td>
+                                        <td>{{$value->id}}</td>
                                         <td>
                                             {{$value->coupon}}
                                         </td>
