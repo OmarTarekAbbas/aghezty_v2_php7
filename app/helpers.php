@@ -77,6 +77,9 @@ function get_static_routes()
     Route::post('routes/store_v2', 'RouteController@store_v2');
     Route::get('get_notify/{id}', 'OrderController@load_notify');
     Route::get('order/allData', 'OrderController@allData');
+    Route::get('expiry_coupon/allData', 'CouponController@expiry_coupon');
+    // Route::get('younger_expiry_coupon/allData', 'CouponController@younger_expiry_coupon_allData');
+    // Route::get('coupon_expire', 'CouponController@coupon_expire');
     Route::get('offer_image/{id}/delete', 'CategoryController@offer_image_delete');
 
     Route::get('ldap', 'DashboardController@ldap');

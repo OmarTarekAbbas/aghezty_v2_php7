@@ -321,6 +321,8 @@ return [
     'coupon' => 'Coupon',
     'list_coupon' => 'List Coupon',
     'create_coupon' => 'Create Coupon',
+    'list_active_coupon' => 'Active Coupon',
+    'list_expiry_coupon' => 'Expire Coupon',
 
     'advertisement' => 'Advertisement',
     'list_advertisement' => 'List Advertisement',

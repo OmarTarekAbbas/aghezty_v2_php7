@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.coding') <span class="text-danger">*</span></label>
+    <label class="col-sm-3 col-lg-2 control-label">@lang('messages.coupon_number') <span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
         {!! Form::number('coupon_number',null,['placeholder'=>__('messages.coupon_number') ,'required','class'=>'form-control input-lg' , 'value' => 1 , 'min' => 1]) !!}
     </div>

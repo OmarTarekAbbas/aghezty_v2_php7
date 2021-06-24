@@ -31,7 +31,7 @@
                         </div>
                         <br><br>
                         <div class="table-responsive">
-                            <table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
+                            <table id="dtcoupon" class="table table-striped dt-responsive" cellspacing="0" width="100%">
 
                                 <thead>
                                     <tr>
@@ -44,7 +44,7 @@
                                         <th>@lang('messages.action')</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @foreach($coupons as $key=>$value)
                                     <tr>
                                         <td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}" class="roles" onclick="collect_selected(this)"></td>
@@ -64,7 +64,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                     </div>
@@ -74,7 +74,6 @@
     </div>
 
 </div>
-
 @stop
 
 @section('script')
@@ -85,4 +84,29 @@
     $('#coupon_index').addClass('active');
 
 </script>
+
+<script>
+  window.onload = function() {
+      $('#dtcoupon').DataTable({
+          "processing": true,
+          "serverSide": true,
+          //"search": {"regex": true},
+          "ajax": {
+          type: "GET",
+          "url": "{!! url('expiry_coupon/allData?coupon=') !!}{{ request()->coupon }}",
+          "data":"{{csrf_token()}}"
+          },
+          columns: [
+          {data: 'index', searchable: false, orderable: false},
+          {data: 'id'},
+          {data: 'coupon'},
+          {data: 'value'},
+          {data: 'expire_date'},
+          {data: 'used'},
+          {data: 'action', searchable: false}
+          ]
+          , "pageLength": 10
+      });
+  };
+  </script>
 @stop
