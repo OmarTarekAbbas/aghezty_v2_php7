@@ -107,7 +107,7 @@
               @else
 
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) ||
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || request()->route("category_name") ||
                 request()->filled("search")||
                 request()->filled("category_id") ||
                 (request()->filled("most_solid") && !request()->route("category_name")) ||
