@@ -2504,6 +2504,7 @@ class HomeController extends Controller
         if($request->route("brand_id")){
           session()->put('coming_from', 'brand');
         }
+
         $sub_category_ids = [];
         $brand_ids = [];
         $products = Product::stock()->select('products.*','products.id as product_id');
@@ -2639,7 +2640,9 @@ class HomeController extends Controller
 
     public function productsv2Filter(Request $request)
     {
-      session()->put('coming_from', 'brand');
+      if(!session()->has("coming_from")) {
+        session()->put('coming_from', 'brand');
+      }
         $products = Product::stock()->select('products.*','products.id as product_id');
 
         if ($request->category_name) {
