@@ -2639,7 +2639,7 @@ class HomeController extends Controller
 
     public function productsv2Filter(Request $request)
     {
-
+      session()->put('coming_from', 'brand');
         $products = Product::stock()->select('products.*','products.id as product_id');
 
         if ($request->category_name) {
