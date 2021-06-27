@@ -279,6 +279,11 @@ function filter_categorys()
       ->select('t2.*', 't2.id AS parID')
       ->groupBy('parID');
   }
+  if (request()->filled('sub_category_id')) {
+    $parent_ids = \App\Category::whereIn('id', (array) request()->get('sub_category_id'))->pluck('parent_id')->toArray();
+    $parent_ids = array_unique($parent_ids);
+    $categorys = $categorys->whereIn('categories.id', $parent_ids);
+  }
   if ((request()->route('brands_name') || request()->route('brand_name')) && session("coming_from") == 'brand') {
     $brand_name = request()->route('brand_name') ??request()->route('brands_name') ;
     $categorys = \App\Category::join('categories AS t2', 'categories.parent_id', 't2.id')
@@ -288,17 +293,12 @@ function filter_categorys()
       ->select('t2.*', 't2.id AS parID')
       ->groupBy('parID');
     }
-    if (request()->filled('sub_category_id')) {
-      $parent_ids = \App\Category::whereIn('id', (array) request()->get('sub_category_id'))->pluck('parent_id')->toArray();
-      $parent_ids = array_unique($parent_ids);
-      $categorys = $categorys->whereIn('categories.id', $parent_ids);
-    }
     if (request()->route('category_name') && session("coming_from") == 'category') {
       $parent_ids = \App\Category::where('categories.title', str_replace("-", " ", request()->route("category_name")))->pluck('parent_id')->toArray();
       $parent_ids = array_unique($parent_ids);
       $categorys = $categorys->whereIn('categories.id', $parent_ids);
     }
-    // dd(request()->route('brands_name') && session("coming_from") == 'brand');
+    // dd($categorys->get());
     return $categorys->get();
 }
 
