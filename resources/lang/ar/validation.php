@@ -76,7 +76,7 @@ return [
     'max'                  => [
         'numeric' => 'يجب أن تكون قيمة :attribute مساوية أو أصغر من :max.',
         'file'    => 'يجب أن لا يتجاوز حجم الملف :attribute :max كيلوبايت.',
-        'string'  => 'يجب أن لا يتجاوز طول النّص :attribute :max حروفٍ/حرفًا.',
+        'string'  => 'يجب أن لا يتجاوز :attribute :maxحرفًا.',
         'array'   => 'يجب أن لا يحتوي :attribute على أكثر من :max عناصر/عنصر.',
     ],
     'mimes'                => 'يجب أن يكون ملفًا من نوع : :values.',
