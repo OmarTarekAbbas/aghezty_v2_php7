@@ -644,7 +644,7 @@ $( document ).ready(function(){
         }) : []
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            checked = old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
+            // checked = old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
             html += `<div class="z-checkbox">
                             <input form="filter_form" ${checked} id="panel_brand_${brands[i].id}" class="mb-2 brand_id"
                               type="checkbox"
