@@ -169,7 +169,7 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'phone' => 'required',
-            'message' => 'required',
+            'message' => 'required|max:55',
             'g-recaptcha-response' => 'required',
         ],
         ['g-recaptcha-response.required' => $capcha]
