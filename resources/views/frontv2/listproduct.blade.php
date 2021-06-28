@@ -177,7 +177,7 @@
             @foreach (filtter_brands() as $brand)
             @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id && session("coming_from") == 'category') || (request()->filled("sub_category_id")&& session("coming_from") == 'category') || (request()->route("category_name") && session("coming_from") == 'category' )|| (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) || request()->filled("offer") || request()->filled("most_solid") || str_replace("-", " ", request()->route("brands_name")) == $brand->title)
             <div class="z-checkbox">
-              <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
+              <input id="panel_brand_{{$brand->id}}" class="mb-2 select_one_brand  brand_id"
                 {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"
                 name="brand_id[]" value="{{$brand->id}}">
               <label class="d-block text-capitalize"
@@ -316,6 +316,10 @@
                         ->select('categories.*')
                         ->groupBy('categories.id')
                         ->get();
+                $subsid = [];
+                foreach($subs as $category){
+                    array_push($subsid ,$category->id);
+                }
                 @endphp
                 @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
                 <div class="z-checkbox">
@@ -368,11 +372,11 @@
 
                 @foreach (filtter_brands() as $brand)
                 @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id && session("coming_from") == 'category') || (request()->filled("sub_category_id") && session("coming_from") == 'category') || (request()->route("category_name") && session("coming_from") == 'category' )|| (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) || request()->filled("offer") || request()->filled("most_solid") || str_replace("-", " ", request()->route("brands_name")) == $brand->title)
-                <div class="z-checkbox" style="display: {{in_array($brand->id, $brand_ids) ? '' : 'none' }}">
+                <div class="z-checkbox " style="display: {{in_array($brand->id, $brand_ids) ? '' : 'none' }}">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
                   {{((request()->route('brand_id') && $brand->id == request()->route('brand_id') )
                   || in_array($brand->id,$brand_ids))?'checked':''}}
-                    class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
+                    class="mb-2 brand_id select_one_brand" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_brand_{{$brand->id}}_mobile" data-en="{{$brand->getTranslation('title','en')}}">{{$brand->getTranslation('title',getCode())}}</label>
                 </div>
@@ -1191,50 +1195,15 @@ const propertys_mobile = new Vue({
       @endif
     }
   })
-
-  /************************** child category vue *************************/
-  // const child_category_mobile = new Vue({
-  //   el: '#child_category_mobile',
-  //   data: {
-  //     category_id: [],
-  //     childrens: [],
-  //   },
-  //   watch: {
-  //     category_id: function(val) {
-  //       var _this = this
-  //       if (val.length > 0) {
-  //         $.ajax({
-  //           type: "get",
-  //           data: {
-  //             category_id: val
-  //           },
-  //           url: "{{url('getChild')}}",
-  //           success: function(data, status) {
-  //             _this.childrens = data.data
-  //           }
-  //         });
-  //       } else {
-  //         this.childrens = []
-  //       }
-  //     }
-  //   },
-  //   created() {
-  //     var _this = this
-  //     $('.sub_cat_id').each(function(i, obj) {
-  //       if ($(this).prop("checked") == true) {
-  //         _this.category_id.push($(this).val())
-  //         return false;
-  //       }
-  //     });
-  //     $('.sub_cat_id').change(function() {
-  //       if ($(this).prop("checked") == true) {
-  //         _this.category_id.push($(this).val())
-  //       } else {
-  //         _this.category_id.pop($(this).val())
-  //       }
-  //     })
-  //   }
-  // })
-  /************************** child category vue *************************/
+  @if(session("coming_from") == 'brand')
+  $('.select_one_brand').click(function() {
+    if($(this).attr("checked")) {
+      $(this).prop('checked', true)
+    }
+    $('.select_one_brand').not(this).each(function() {
+      $(this).prop('checked', false)
+    });
+  })
+  @endif
 </script>
 @endsection

@@ -2641,7 +2641,7 @@ class HomeController extends Controller
     public function productsv2Filter(Request $request)
     {
       if(!session()->has("coming_from")) {
-        session()->put('coming_from', 'brand');
+        session()->put('coming_from', 'category');
       }
         $products = Product::stock()->select('products.*','products.id as product_id');
 
