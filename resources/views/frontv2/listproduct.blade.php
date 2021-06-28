@@ -103,12 +103,34 @@
                     for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
+              @elseif(request()->route("brands_name") && session("coming_from") == 'brand')
+
+                @php
+                $subs = \App\Category::join('products','products.category_id','=','categories.id')
+                        ->join('brands','brands.id','=','products.brand_id')
+                        ->where('brands.title', str_replace("-", " ", request()->route("brands_name")))
+                        ->select('categories.*')
+                        ->groupBy('categories.id')
+                        ->get();
+                $subsid = [];
+                foreach($subs as $category){
+                    array_push($subsid ,$category->id);
+                }
+                @endphp
+
+                @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
+                <div class="z-checkbox">
+                <input id="panel_category_{{$category->id}}" class="mb-2 select_one_category sub_cat_id" {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (request()->has('category_id') && in_array($category->id,$sub_category_ids)) || str_replace("-", " ", request()->route("category_name"))== $category->title)?'checked':''}}
+                    type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label  class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
 
               @else
 
                 @foreach ($item->sub_cats as $category)
-                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) ||
-                (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) ||
+                @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) ||
                 request()->filled("search")||
                 request()->filled("category_id") ||
                 (request()->filled("most_solid") && !request()->route("category_name")) ||
@@ -153,9 +175,9 @@
 
           <div class="panel brand_panel_change mb-3 w-100 border border-light">
             @foreach (filtter_brands() as $brand)
-            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id) || request()->filled("sub_category_id") || request()->route("category_name") || (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) || request()->filled("offer") || request()->filled("most_solid"))
+            @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id && session("coming_from") == 'category') || (request()->filled("sub_category_id")&& session("coming_from") == 'category') || (request()->route("category_name") && session("coming_from") == 'category' )|| (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) || request()->filled("offer") || request()->filled("most_solid") || str_replace("-", " ", request()->route("brands_name")) == $brand->title)
             <div class="z-checkbox">
-              <input id="panel_brand_{{$brand->id}}" class="mb-2 brand_id"
+              <input id="panel_brand_{{$brand->id}}" class="mb-2 select_one_brand  brand_id"
                 {{((request()->has('brand_id') && $brand->id == $_REQUEST['brand_id']) || in_array($brand->id,$brand_ids))?'checked':''}} type="checkbox"
                 name="brand_id[]" value="{{$brand->id}}">
               <label class="d-block text-capitalize"
@@ -285,6 +307,29 @@
                     for="panel_category_{{$category->id}}_mobile" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
                 </div>
                 @endforeach
+                @elseif(request()->route("brands_name") && session("coming_from") == 'brand')
+
+                @php
+                $subs = \App\Category::join('products','products.category_id','=','categories.id')
+                        ->join('brands','brands.id','=','products.brand_id')
+                        ->where('brands.title', str_replace("-", " ", request()->route("brands_name")))
+                        ->select('categories.*')
+                        ->groupBy('categories.id')
+                        ->get();
+                $subsid = [];
+                foreach($subs as $category){
+                    array_push($subsid ,$category->id);
+                }
+                @endphp
+                @foreach ($item->sub_cats->whereIn('id', $subsid) as $category)
+                <div class="z-checkbox">
+                  <input form="filter_form" id="panel_category_{{$category->id}}_mobile"
+                  {{((isset($_REQUEST['sub_category_id']) && $category->id == $_REQUEST['sub_category_id']) || (isset($_REQUEST['search']) && $_REQUEST['search'] == $category->title) || (in_array($category->id,$sub_category_ids)) || str_replace("-", " ", request()->route("category_name")) == $category->title)?'checked':''}}
+                    class="mb-2 select_one_category sub_cat_id" type="checkbox" name="sub_category_id[]" value="{{$category->id}}">
+                  <label class="d-block text-capitalize"
+                    for="panel_category_{{$category->id}}_mobile" data-en="{{$category->getTranslation('title','en')}}">{{$category->getTranslation('title',getCode())}}</label>
+                </div>
+                @endforeach
               @else
                 @foreach ($item->sub_cats as $category)
                 @if((request()->filled('sub_category_id') && $category->id == request()->get("sub_category_id")) || (request()->route("category_name") && strpos(str_replace("-"," ",request()->route("category_name")),$category->getTranslation('title','en'))!==false) || request()->filled("search")|| request()->filled("category_id") || (request()->filled("most_solid") && !request()->route("category_name")) || (request()->filled("offer") && !request()->route("category_name"))|| request()->route("parent_name") || request()->route("brand_name"))
@@ -326,14 +371,16 @@
               <div class="panel brand_panel_change_mobile mb-3 border border-secondary">
 
                 @foreach (filtter_brands() as $brand)
-                <div class="z-checkbox" style="display: {{in_array($brand->id, $brand_ids) ? '' : 'none' }}">
+                @if((request()->filled("brand_id") && request()->get("brand_id")  == $brand->id && session("coming_from") == 'category') || (request()->filled("sub_category_id") && session("coming_from") == 'category') || (request()->route("category_name") && session("coming_from") == 'category' )|| (request()->route("brand_id") && request()->route("brand_id")  == $brand->id) || request()->filled("offer") || request()->filled("most_solid") || str_replace("-", " ", request()->route("brands_name")) == $brand->title)
+                <div class="z-checkbox " style="display: {{in_array($brand->id, $brand_ids) ? '' : 'none' }}">
                   <input form="filter_form" id="panel_brand_{{$brand->id}}_mobile"
                   {{((request()->route('brand_id') && $brand->id == request()->route('brand_id') )
                   || in_array($brand->id,$brand_ids))?'checked':''}}
-                    class="mb-2 brand_id" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
+                    class="mb-2 brand_id select_one_brand" type="checkbox" name="brand_id[]" value="{{$brand->id}}">
                   <label class="d-block text-capitalize"
                     for="panel_brand_{{$brand->id}}_mobile" data-en="{{$brand->getTranslation('title','en')}}">{{$brand->getTranslation('title',getCode())}}</label>
                 </div>
+                @endif
                 @endforeach
               </div>
 
@@ -584,7 +631,7 @@ $( document ).ready(function(){
           cats += $(this).val()+','
         }
       });
-
+      @if(session("coming_from") == 'category')
       $.ajax({
       url: '{{url("clients/brands")}}',
       type: "get",
@@ -601,7 +648,7 @@ $( document ).ready(function(){
         }) : []
         if(brands.length){
           for (let i = 0; i < brands.length; i++) {
-            checked = old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
+            // checked = old_brand.includes(brands[i].id) || brand_array.includes(brands[i].id)? 'checked':''
             html += `<div class="z-checkbox">
                             <input form="filter_form" ${checked} id="panel_brand_${brands[i].id}" class="mb-2 brand_id"
                               type="checkbox"
@@ -622,6 +669,7 @@ $( document ).ready(function(){
         }
       },
     });
+    @endif
 
   })
   function load_content_data(start) {
@@ -841,7 +889,7 @@ $( document ).ready(function(){
 
 
 
-
+    @if(session('coming_from') == 'category')
     $.ajax({
       url: '{{url("clients/brands")}}',
       type: "get",
@@ -883,6 +931,7 @@ $( document ).ready(function(){
         }
       },
     });
+    @endif
   })
 
   $( document ).ready(function(){
@@ -1146,50 +1195,15 @@ const propertys_mobile = new Vue({
       @endif
     }
   })
-
-  /************************** child category vue *************************/
-  // const child_category_mobile = new Vue({
-  //   el: '#child_category_mobile',
-  //   data: {
-  //     category_id: [],
-  //     childrens: [],
-  //   },
-  //   watch: {
-  //     category_id: function(val) {
-  //       var _this = this
-  //       if (val.length > 0) {
-  //         $.ajax({
-  //           type: "get",
-  //           data: {
-  //             category_id: val
-  //           },
-  //           url: "{{url('getChild')}}",
-  //           success: function(data, status) {
-  //             _this.childrens = data.data
-  //           }
-  //         });
-  //       } else {
-  //         this.childrens = []
-  //       }
-  //     }
-  //   },
-  //   created() {
-  //     var _this = this
-  //     $('.sub_cat_id').each(function(i, obj) {
-  //       if ($(this).prop("checked") == true) {
-  //         _this.category_id.push($(this).val())
-  //         return false;
-  //       }
-  //     });
-  //     $('.sub_cat_id').change(function() {
-  //       if ($(this).prop("checked") == true) {
-  //         _this.category_id.push($(this).val())
-  //       } else {
-  //         _this.category_id.pop($(this).val())
-  //       }
-  //     })
-  //   }
-  // })
-  /************************** child category vue *************************/
+  @if(session("coming_from") == 'brand')
+  $('.select_one_brand').click(function() {
+    if($(this).attr("checked")) {
+      $(this).prop('checked', true)
+    }
+    $('.select_one_brand').not(this).each(function() {
+      $(this).prop('checked', false)
+    });
+  })
+  @endif
 </script>
 @endsection

@@ -25,7 +25,7 @@ class CouponController extends Controller
 
       $date = Carbon::now()->toDateString();
       if ($request->coupon == 'active') {
-        $coupons = Coupon::where('expire_date','>=',$date)->orderBy('id', 'DESC')->get();
+        $coupons = Coupon::where('expire_date','>',$date)->orderBy('id', 'DESC')->get();
       } else {
         $coupons = Coupon::where('expire_date','<=',$date)->orderBy('id', 'DESC')->get();
       }
