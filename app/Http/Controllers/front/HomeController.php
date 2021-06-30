@@ -719,7 +719,7 @@ class HomeController extends Controller
 
             if (count($homepage_cat_values) != 6) {
                 $limit = 6 - count($homepage_cat_values);
-                $homepage_catR = Category::whereNotNull('parent_id')->get(['id', 'title', 'image'])->random($limit);
+                $homepage_catR = Category::whereNotNull('parent_id')->whereHas('products')->get(['id', 'title', 'image'])->random($limit);
                 $homepage_cat_values = $homepage_cat_values->toBase()->merge($homepage_catR);
             }
 

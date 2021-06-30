@@ -275,7 +275,7 @@
           <input type="hidden" id="ifrom_in" name="ifrom" value="{{isset($_REQUEST['ifrom'])?$_REQUEST['ifrom']:''}}">
           <input type="hidden" id="ifrom_ito_in" name="ifrom_ito" value="{{isset($_REQUEST['ifrom_ito'])?$_REQUEST['ifrom_ito']:''}}">
           <input type="hidden" id="most_solid" name="most_solid" value="{{request()->filled('most_solid') ? request('most_solid') : ''}}">
-          <input type="hidden" id="in_stock " name="in_stock" value="{{request()->filled('in_stock') ? request('in_stock') : ''}}">
+          <input type="hidden" id="in_stock" name="in_stock" value="{{request()->filled('in_stock') ? request('in_stock') : ''}}">
         </form>
       </div>
       <!-- End Filter Search -->
@@ -446,8 +446,8 @@
 
               <div class="panel border border-secondary">
                 <div class="z-checkbox">
-                  <input form="filter_form" id="panel_41_mobile" {{isset($_REQUEST['most_solid'])?'checked':''}} class="mb-2 most_solid" type="checkbox" name="most_solid" value="most_solid">
-                  <label class="d-block text-capitalize" for="panel_41_mobile">@lang('front.most_solid') </label>
+                  <input form="filter_form" id="panel_40_mobile" {{isset($_REQUEST['most_solid'])?'checked':''}} class="mb-2 most_solid" type="checkbox" name="most_solid" value="most_solid">
+                  <label class="d-block text-capitalize" for="panel_40_mobile">@lang('front.most_solid') </label>
                 </div>
               </div>
 
@@ -816,6 +816,7 @@ $( document ).ready(function(){
 
   $(document).on('change', '.sub_cat_id , .brand_id , .price , .offer, .most_solid, .in_stock , #sorted', function() {
     $('#most_solid').remove()
+    $('#in_stock').remove()
     $('.load').show();
     $('#search_in , #ito_in , #ifrom_in , #ifrom_ito_in').val('')
     if ($(this).prop('checked') == false) {
@@ -842,7 +843,7 @@ $( document ).ready(function(){
     });
 
     var full_url = fullUrl()
-    if(($(".price:checkbox, .property, .offer, .most_solid, .in_stock ").filter(":checked")).length) {
+    if(($(".price:checkbox, .property, .offer, .most_solid, .in_stock").filter(":checked")).length) {
       full_url += "?"+$("#filter_form").serialize()
     }
     history.pushState({}, null, full_url);
