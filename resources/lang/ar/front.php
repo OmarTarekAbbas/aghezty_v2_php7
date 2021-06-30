@@ -193,6 +193,7 @@ return [
       'shoping_wish_list' => 'عربة الامنيات'
     ],
     'most_solid' => 'الاكثر مبيعا',
+    'in_stock' => 'متوفر',
     'date' => 'التاريخ',
     'message' => 'الرسالة',
     'subscribe' => 'اشتراك',

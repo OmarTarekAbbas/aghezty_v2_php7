@@ -195,6 +195,7 @@ return [
       'shoping_wish_list' => 'Shoping Wish List'
     ],
     'most_solid' => 'Most Solid',
+    'in_stock' => 'in stock',
     'subscribe' => 'Subscribe',
     'Email_Address' => 'Email Address',
     'message' => 'Message',

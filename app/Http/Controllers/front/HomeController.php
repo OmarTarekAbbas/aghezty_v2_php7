@@ -703,11 +703,11 @@ class HomeController extends Controller
             });
 
         $selected_for_you = cache()->remember('selected_for_you',60 * 60 * 60,function(){
-            $selected_for_you_values = Product::stock()->where('selected_for_you', 1)->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize']);
+            $selected_for_you_values = Product::where('selected_for_you', 1)->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize']);
 
             if (count($selected_for_you_values) != 6) {
                 $limit = 6 - count($selected_for_you_values);
-                $selected_for_youR = Product::stock()->get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize'])->random($limit);
+                $selected_for_youR = Product::get(['id', 'title', 'price', 'discount', 'price_after_discount', 'main_image', 'main_image_resize'])->random($limit);
                 $selected_for_you_values = $selected_for_you_values->toBase()->merge($selected_for_youR);
             }
 
@@ -958,7 +958,7 @@ class HomeController extends Controller
     {
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::stock()->select('products.*','products.id as product_id');
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -1060,6 +1060,10 @@ class HomeController extends Controller
           $products = $products->where("solid_count", '>', 0)->orderBy("solid_count","desc");
         }
 
+        if ($request->filled('in_stock')) {
+          $products = $products->where("stock", '>', 0);
+        }
+
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
           $products = $products->where(function($query) use ($property){
@@ -1087,7 +1091,7 @@ class HomeController extends Controller
       $result = [];
 
       foreach($q_array as $q_string){
-        $products = Product::stock();
+        $products = Product::query();
 
         $products = $products->join('translatables','translatables.record_id','=','products.id')
         ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
@@ -1131,7 +1135,7 @@ class HomeController extends Controller
       $q = $_GET['q'];
       $new_q = trim( preg_replace('!\s+!', ' ', $q) );
 
-      $products = Product::stock();
+      $products = Product::query();
 
       $products = $products->join('translatables','translatables.record_id','=','products.id')
       ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
@@ -1167,7 +1171,7 @@ class HomeController extends Controller
       $result = [];
 
       foreach($q_array as $q_string){
-        $products = Product::stock();
+        $products = Product::query();
 
         $products = $products->join('translatables','translatables.record_id','=','products.id')
         ->join('tans_bodies','tans_bodies.translatable_id','translatables.id')
@@ -1200,7 +1204,7 @@ class HomeController extends Controller
     {
 
         //return $request->all();
-        $products = Product::stock()->select('products.*','products.id as product_id');
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', $request->sub_category_id);
@@ -1299,6 +1303,9 @@ class HomeController extends Controller
           $products = $products->where("solid_count", '>', 0)->orderBy("solid_count","desc");
         }
 
+        if ($request->filled('in_stock')) {
+          $products = $products->where("stock", '>', 0);
+        }
 
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
@@ -1341,7 +1348,7 @@ class HomeController extends Controller
      * @return array
      */
     public function getCategoryThatHaveCurrentProperty($request) {
-      $category_ids = Product::stock()->whereHas('pr_value', function ($q) use ($request) {
+      $category_ids = Product::whereHas('pr_value', function ($q) use ($request) {
         $q->whereIn('property_values.id', $request->property_value_id);
       })->pluck("category_id")->toArray();
 
@@ -1358,7 +1365,7 @@ class HomeController extends Controller
      */
     public function redfineQueryWithoutProperty($request, $category_have_current_property)
     {
-        $products = Product::stock()->select('products.*','products.id as product_id');
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->has('sub_category_id') && $request->sub_category_id != '') {
             $request->sub_category_id = (array) $request->sub_category_id;
             $products = $products->whereIn('category_id', array_diff($request->sub_category_id, $category_have_current_property));
@@ -1478,7 +1485,8 @@ class HomeController extends Controller
 
         if (!$product) {
           $product = Product::withTrashed()->latest('created_at')->whereId($id)->where('products.active', 1)->first();
-          if(!$product || !$product->category || !$product->stock){
+
+          if(!$product || !$product->category){
             return abort(404);
           }
           $get_category = Category::where("id",$product->category_id)->first();
@@ -1489,11 +1497,7 @@ class HomeController extends Controller
           return abort(404);
         }
 
-        if(!$product->stock){
-          return abort(404);
-        }
-
-        $items = Product::stock()->where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
+        $items = Product::where('category_id', $product->category->id)->whereNotIn('id', [$id])->where('products.active', 1)->inRandomOrder()->take(4)->get();
         return view('frontv2.inner-page', compact('product', 'items'));
     }
 
@@ -1698,13 +1702,13 @@ class HomeController extends Controller
             \Session::flash('success_pr', Product::find($request->product_id));
         }
 
-        $selected_for_you = Product::stock()->where('selected_for_you', 1)->get();
+        $selected_for_you = Product::where('selected_for_you', 1)->get();
         $homepage_cat = Category::where('homepage', 1)->get();
         $ads = Advertisement::where('type', 'homeads')->where('active', 1)->orderBy('order', 'ASC')->inRandomOrder()->first();
 
         if (count($selected_for_you) != 6) {
             $limit = 6 - count($selected_for_you);
-            $selected_for_youR = Product::stock()->get()->random($limit);
+            $selected_for_youR = Product::get()->random($limit);
             $selected_for_you = $selected_for_you->toBase()->merge($selected_for_youR);
         }
 
@@ -2507,7 +2511,7 @@ class HomeController extends Controller
 
         $sub_category_ids = [];
         $brand_ids = [];
-        $products = Product::stock()->select('products.*','products.id as product_id');
+        $products = Product::select('products.*','products.id as product_id');
         if ($request->sub_category_id) {
             $request->sub_category_id = (array) $request->sub_category_id;
             $sub_category_ids  =  $request->sub_category_id;
@@ -2623,6 +2627,9 @@ class HomeController extends Controller
           // }])->groupBy("products.id")->orderBy("orders_count","desc");
           $products = $products->where("solid_count", '>', 0)->orderBy("solid_count","desc");
         }
+        if ($request->filled('in_stock')) {
+          $products = $products->where("stock", '>', 0);
+        }
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
           $products = $products->where(function($query) use ($property){
@@ -2643,7 +2650,7 @@ class HomeController extends Controller
       if(!session()->has("coming_from")) {
         session()->put('coming_from', 'category');
       }
-        $products = Product::stock()->select('products.*','products.id as product_id');
+        $products = Product::select('products.*','products.id as product_id');
 
         if ($request->category_name) {
           $products = $products->whereHas("category",function($builder) {
@@ -2748,6 +2755,9 @@ class HomeController extends Controller
           //   $query->where('orders.status','=', 3);
           // }])->groupBy("products.id")->orderBy("orders_count","desc");
           $products = $products->where("solid_count", '>', 0)->orderBy("solid_count","desc");
+        }
+        if ($request->filled('in_stock')) {
+          $products = $products->where("stock", '>', 0);
         }
         if ($request->has('property_value_id')) {
           $property = $this->getPropertyWithPropertyValue($request->property_value_id);
